@@ -87,6 +87,18 @@ async function study(page){
 }
 async function forecast(page){
  await visit(page,'forecast');await page.locator('#fm-mean').waitFor();assert.equal(await page.locator('#fm-burns tr').count(),4);
+ const scene=page.locator('#fm-spread-canvas'), chance=page.locator('#fm-spread-chance');
+ const outcomes=()=>page.locator('.fm-example-outcomes strong').allTextContents();
+ assert.equal(await chance.textContent(),'25.25%');
+ assert.deepEqual(await outcomes(),['Spread continues','Spread stops']);
+ const initialImage=await scene.evaluate(canvas=>canvas.toDataURL());
+ await page.getByLabel('Burn 3, 29 percent oxygen').check();
+ assert.equal(await chance.textContent(),'97.72%');
+ assert.deepEqual(await outcomes(),['Spread continues','Spread continues']);
+ assert.notEqual(await scene.evaluate(canvas=>canvas.toDataURL()),initialImage);
+ await page.getByLabel('Burn 4, 25 percent oxygen').check();
+ await page.getByLabel('Mean limit').fill('30');
+ assert.deepEqual(await outcomes(),['Spread stops','Spread stops']);
  await page.getByLabel('Mean limit').fill('');assert(await page.locator('#fm-export').isDisabled());await page.getByRole('button',{name:'Restore worked assumptions'}).click();
  await page.getByText('Set the central 80% interval directly').click();await page.getByLabel('Lower 80% bound').fill('25');await page.getByLabel('Upper 80% bound').fill('29');await page.getByRole('button',{name:'Use these bounds'}).click();assert.equal(await page.getByLabel('Mean limit').inputValue(),'27');await page.getByRole('button',{name:'Restore worked assumptions'}).click();
  for(let i=0;i<4;i++)await page.getByLabel('Hypothetical burn '+(i+1)+' outcome').selectOption(i<3?'yes':'no');

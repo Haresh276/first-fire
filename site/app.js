@@ -238,10 +238,12 @@ function report(id){
  root.querySelectorAll('.prose a').forEach(a=>{const raw=a.getAttribute('href');if(raw.startsWith('../dist/'))a.setAttribute('href',raw.slice(8));else if(raw.startsWith('../data/'))a.setAttribute('href',raw.slice(3));else if(raw.startsWith('https:')){a.target='_blank';a.rel='noopener noreferrer';}else if(reports[raw.replace(/\.md$/,'')])a.href='#report/'+raw.replace(/\.md$/,'');});
 }
 function notFound(){root.innerHTML=crumb('Unknown page')+head('Page not found','This link does not point to a page in this edition.')+linkbtn('#home','Return to the research desk','btn');}
+let disposeForecast;
 function route(first=false){
+ if(disposeForecast){disposeForecast();disposeForecast=null;}
  const raw=location.hash.slice(1),breakAt=raw.indexOf('?'),path=(breakAt<0?raw:raw.slice(0,breakAt)).split('/'),p=new URLSearchParams(breakAt<0?'':raw.slice(breakAt+1)),key=path[0]||'home';
  if(key==='home')home();else if(key==='chat'){root.replaceChildren();window.renderChat(root);}else if(key==='benchmark'){root.replaceChildren();window.renderBenchmark(root);}else if(key==='cases')library();else if(key==='designs')designReview();else if(key==='case')renderCase(path[1],path[2]);else if(key==='search')searchPage(p.get('q')||'');
- else if(key==='sources')sources();else if(key==='report')report(path[1]);else if(key==='forecast')window.renderForecast(root);
+ else if(key==='sources')sources();else if(key==='report')report(path[1]);else if(key==='forecast')disposeForecast=window.renderForecast(root);
  else if(key==='data'){root.innerHTML=crumb('Data explorer')+head('Data explorer','Inspect original NASA rows or rank records by how closely their conditions match your question.','Physical Sciences Informatics')+'<div id="explorer" class="stack"></div><div class="section actions">'+linkbtn('#coverage','View coverage map →')+linkbtn('#report/data','Read the data audit →')+'</div>';window.renderExplorer(root.querySelector('#explorer'),p);}
  else if(key==='claim'){root.innerHTML=crumb('Check a claim')+head('Check a claim','Find a related experiment, compare it with your question, and decide which conclusion the evidence supports.','Research workbench')+'<div id="claimtool"></div>';window.renderClaim(root.querySelector('#claimtool'));}
  else if(key==='acrylic'){root.innerHTML=crumb('Guided exercise / Acrylic')+head('Does acrylic spread faster on Earth?','Change the oxygen conditions, shape or endpoint and see whether an Earth-to-orbit comparison still holds.','Guided exercise')+'<div id="acrylictool"></div>';window.renderAcrylic(root.querySelector('#acrylictool'));}

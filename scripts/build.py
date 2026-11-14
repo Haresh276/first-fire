@@ -30,7 +30,7 @@ def hsh(content):
 def build():
     for script in ('build_data.py','forecast.py','verify_quotes.py'):
         subprocess.run([sys.executable,str(ROOT/'scripts'/script)],check=True)
-    for required in ('app.js','chat-ui.js','chat.css','benchmark-ui.js','search.js','explorer.js','study.js','claim.js','acrylic.js','forecast-ui.js','workbench.js','manual.html','first-fire-user-manual.pdf','demo.html'):
+    for required in ('app.js','chat-ui.js','chat.css','benchmark-ui.js','search.js','explorer.js','study.js','claim.js','acrylic.js','forecast-ui.js','forecast.css','spread-scene.js','workbench.js','manual.html','first-fire-user-manual.pdf','demo.html'):
         if not (SITE/required).is_file(): raise SystemExit(f'Missing site/{required}')
     cases=read_json(DATA/'cases.json'); studies=read_json(DATA/'investigations.json')
     assert len({c['id'] for c in cases})==7 and all(len(c['options'])==6 for c in cases)

@@ -173,7 +173,17 @@ async function chat(page, isLive) {
   assert.match(await second.innerText(),isLive?/nomex/i:/Suggested next test/);
   assert.equal(await page.getByRole('button',{name:'Export',exact:true}).count(),0);
   assert.doesNotMatch(await page.locator('main').innerText(),/chat mode|local (transformer|service)|archive mode|selected passages|qwen3:0\.6b/i);
+  await input.fill('Unsent draft');
+  await benchmark(page);
+  await waitForTurns(page,2);
+  assert.equal(await input.inputValue(),'Unsent draft','Navigation within this document preserves the draft and conversation.');
   await page.reload();
+  await page.getByRole('heading',{name:'What would you like to know?'}).waitFor();
+  await waitForTurns(page,0);
+  assert.equal(await input.inputValue(),'');
+  const archive = await recentChats(page);
+  assert.equal(await archive.count(),1);
+  await archive.filter({hasText:QUESTION}).click();
   await waitForTurns(page,2);
   await page.getByRole('button',{name:'Edit question'}).first().click();
   await send(page,'Which oxygen stream contained 85% in CFI-G 21202 A1?');
@@ -200,6 +210,9 @@ async function incidentChecks(page, capture) {
     sessionStorage.setItem('first-fire.chat.v1',JSON.stringify({version:1,current:existingId,threads}));
   },{existingId,question:APOLLO,oldAnswer});
   await page.reload();
+  await page.getByRole('heading',{name:'What would you like to know?'}).waitFor();
+  assert.equal(await page.locator('.ffchat-reply').count(),0,'Previous release sessions also open in an empty chat.');
+  await (await recentChats(page)).filter({hasText:APOLLO}).click();
   await page.getByText(oldAnswer,{exact:true}).waitFor();
   await page.getByRole('button',{name:'Retry answer'}).click();
   const latest = page.locator('.ffchat-reply').last();
@@ -247,11 +260,26 @@ async function incidentChecks(page, capture) {
   assert.match(await answer.innerText(),/don’t have a source|do not have a source|no source|lack.*source|no (?:evidence|record)/i);
   assert.equal(await latest.locator('.ffchat-sources a').count(),0);
   assert.doesNotMatch(await answer.innerText(),/Grissom|Saffire|Swigert/);
-  await page.reload();
-  await waitForTurns(page,6);
+  for (let refresh=0;refresh<2;refresh++) {
+    await page.reload();
+    await page.getByRole('heading',{name:'What would you like to know?'}).waitFor();
+    await waitForTurns(page,0);
+  }
   const saved = await page.evaluate(()=>JSON.parse(sessionStorage.getItem('first-fire.chat.v1')));
+  assert.equal(saved.threads.length,2,'Refreshing does not create empty History entries.');
   assert.equal(saved.threads.find(t=>t.id===existingId).turns[0].answer,oldAnswer,'Retry retains the original conversation.');
-  assert.equal(saved.threads.find(t=>t.id===saved.current).turns[0].answer,answerText);
+  const retried = saved.threads.find(t=>t.id!==existingId);
+  assert.equal(retried.turns.length,6);
+  assert.equal(retried.turns[0].answer,answerText);
+  const firstRequest = capture && page.waitForRequest(req=>req.method()==='POST' && new URL(req.url()).pathname==='/api/chat');
+  await send(page,QUESTION);
+  if (capture) assert.deepEqual((await firstRequest).postDataJSON().history,[],'First prompt after refresh must not send prior turns.');
+  await waitForTurns(page,1);
+  assert.match(await answer.innerText(),/nomex/i);
+  const allRecent = await recentChats(page);
+  assert.equal(await allRecent.count(),3);
+  await allRecent.filter({hasText:/Reply 2/}).click();
+  await waitForTurns(page,6);
 }
 
 async function main() {

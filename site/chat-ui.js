@@ -22,6 +22,7 @@
   const RESPONSE_STATUSES = new Set(['answered', 'limited', 'abstained']);
   let stopPreviousView;
   let memory;
+  let navigationDraft;
 
   function node(tag, text, className) {
     const element = document.createElement(tag);
@@ -66,16 +67,19 @@
     if (memory) return memory;
     let data;
     try { data = JSON.parse(sessionStorage.getItem(STORAGE_KEY)); } catch { /* private browsing */ }
+    const threads = [];
     if (data?.version === 1 && Array.isArray(data.threads)) {
-      const threads = data.threads.filter(t => typeof t?.id === 'string' && Array.isArray(t.turns));
-      for (const thread of threads) {
+      for (const thread of data.threads) {
+        if (typeof thread?.id !== 'string' || !Array.isArray(thread.turns)) continue;
         thread.turns = thread.turns.filter(t => typeof t?.question === 'string' && typeof t.answer === 'string')
           .map(t => ({...t, sources: Array.isArray(t.sources) ? t.sources.map(normalizeSource).filter(Boolean) : []}));
+        if (thread.turns.length) threads.push(thread);
       }
-      if (threads.length) return memory = {version: 1, threads, current: threads.find(t=>t.id===data.current)?.id || threads[0].id};
     }
+    // Reopening Chat in this document uses memory. A new document always starts a fresh conversation.
     const first = newThread();
-    return memory = {version: 1, current: first.id, threads: [first]};
+    threads.push(first);
+    return memory = {current: first.id, threads};
   }
 
   function questionTitle(text) {
@@ -329,6 +333,7 @@
     label.htmlFor = 'ffchat-question';
     const input = node('textarea');
     input.id = label.htmlFor;
+    input.autocomplete = 'off';
     input.rows = 1;
     input.maxLength = MAX_MESSAGE;
     input.placeholder = 'Ask a question…';
@@ -371,7 +376,7 @@
     function save() {
       state.current = thread.id;
       try {
-        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({version:1, threads:state.threads.filter(t => t.turns.length)}));
         persistenceWarning = '';
       } catch {
         persistenceWarning = 'Tab storage is unavailable. Reloading may clear this chat.';
@@ -609,6 +614,8 @@
       if (location.hash.split('?')[0] !== '#chat') stop();
     }
     function stop() {
+      if (stopped) return;
+      navigationDraft = request ? null : {threadId:thread.id, text:input.value, editing};
       stopped = true;
       request?.controller.abort();
       document.removeEventListener('pointerdown', outsideHistory);
@@ -622,6 +629,11 @@
     document.addEventListener('keydown', escapeHistory);
     window.addEventListener('hashchange', onHashChange);
     clearEdit();
+    if (navigationDraft?.threadId === thread.id) {
+      if (navigationDraft.editing !== null) beginEdit(navigationDraft.editing);
+      updateInput(navigationDraft.text);
+      navigationDraft = null;
+    }
     draw();
     healthTask = checkService().then(info => { mode = info ? 'local' : 'archive'; });
   };

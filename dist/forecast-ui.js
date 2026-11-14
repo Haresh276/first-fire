@@ -49,14 +49,18 @@
     }
     return {state:'available',limits,best,pair,candidates};
   }
-  function chart(m,s,xs) {
+  function modelPercent(p) {
+    // A normal threshold has tails beyond every finite starting atmosphere.
+    return p>.9999?'>99.99%':p<.0001?'<0.01%':percent(p);
+  }
+  function chart(m,s,xs,selected) {
     const X=x=>50+510*(x-20)/20,Y=p=>170-140*p;
     const path=Array.from({length:161},(_,i)=>{const x=20+i/8;return (i?'L':'M')+X(x).toFixed(2)+' '+Y(probability(x,m,s)).toFixed(2);}).join(' ');
     return '<svg role="img" aria-label="Model probability of sustained spread at starting oxygen from 20 to 40 percent. Exact values for the four burns are in the following table." viewBox="0 0 590 210" style="width:100%;height:auto;display:block"><title>Probability of sustained spread versus starting oxygen</title>'+
       [0,.5,1].map(p=>'<line x1="50" x2="560" y1="'+Y(p)+'" y2="'+Y(p)+'" stroke="#c8ccc6"/><text class="chartlab" x="44" y="'+(Y(p)+4)+'" text-anchor="end">'+(p*100)+'%</text>').join('')+
       [20,25,30,35,40].map(x=>'<text class="chartlab" x="'+X(x)+'" y="187" text-anchor="middle">'+x+'%</text>').join('')+
       '<path d="'+path+'" fill="none" stroke="#12655f" stroke-width="3"/>'+
-      xs.map((x,i)=>{const p=probability(x,m,s);return '<circle cx="'+X(x)+'" cy="'+Y(p)+'" r="5.5" fill="#a53713" stroke="white" stroke-width="2"><title>Burn '+(i+1)+': '+x+'% O₂, '+escape(percent(p))+' probability</title></circle>';}).join('')+
+      xs.map((x,i)=>{const p=probability(x,m,s);return (x===selected?'<circle cx="'+X(x)+'" cy="'+Y(p)+'" r="9" fill="none" stroke="#12655f" stroke-width="2"/>':'')+'<circle cx="'+X(x)+'" cy="'+Y(p)+'" r="5.5" fill="#a53713" stroke="white" stroke-width="2"><title>Burn '+(i+1)+': '+x+'% O₂, '+escape(modelPercent(p))+' probability</title></circle>';}).join('')+
       '<text class="chartlab" x="305" y="205" text-anchor="middle">Starting oxygen by volume (%)</text></svg>';
   }
   function snapshot(data,m,s,ys) {
@@ -74,17 +78,114 @@
     const url=URL.createObjectURL(new Blob([text],{type:'application/json'})),link=document.createElement('a');
     link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
   }
+  function illustrationPanel(data) {
+    const source=data.sources.find(s=>s.id==='lpsc-slides');
+    const radios=data.burns.map((burn,i)=>
+      '<label><input type="radio" name="fm-oxygen" value="'+burn.oxygen_pct+'" aria-label="Burn '+burn.id+', '+burn.oxygen_pct+' percent oxygen"'+(i===data.burns.length-1?' checked':'')+'><span>'+burn.oxygen_pct+'%</span></label>'
+    ).join('');
+    return '<section class="panel fm-response" id="fm-spread-panel" aria-labelledby="fm-spread-heading">'+
+      '<header><span class="eyebrow">Model response</span><h2 id="fm-spread-heading">After the igniter switches off</h2></header>'+
+      '<fieldset class="fm-atmosphere"><legend>Starting oxygen</legend><div>'+radios+'</div></fieldset>'+
+      '<p id="fm-spread-empty" class="note" hidden>Enter valid threshold assumptions to view the two examples.</p>'+
+      '<div id="fm-spread-result"><div class="fm-chance"><strong id="fm-spread-chance"></strong><span>chance of sustained spread</span></div>'+
+      '<div class="fm-probability-bar" aria-hidden="true"><i></i></div>'+
+      '<figure class="fm-figure"><div class="fm-example-head">'+
+      '<div><span>Lower assumed limit</span><b id="fm-limit-low"></b></div><div><span>Higher assumed limit</span><b id="fm-limit-high"></b></div></div>'+
+      '<canvas id="fm-spread-canvas" aria-hidden="true"></canvas>'+
+      '<div class="fm-example-outcomes"><strong id="fm-spread-low"></strong><strong id="fm-spread-high"></strong></div>'+
+      '<div class="fm-playback"><span id="fm-wire-state"></span><button id="fm-spread-play" type="button">Play ignition</button></div>'+
+      '<figcaption>Each strip uses one end of your central 80% interval. The probability uses the full distribution. A brief flame that dies out illustrates one way spread can fail. Flame shape and timing are illustrative.</figcaption></figure></div>'+
+      '<span class="sr-only" id="fm-spread-summary" role="status"></span>'+
+      '<p class="fm-source">The planned test heats a 2 × 20 cm strip of Synergy Pro Navy fabric from below at 8.2 psia.'+
+      (source?' <a href="'+escape(source.url)+'#page=10" target="_blank" rel="noopener noreferrer">NASA test design ↗</a>':'')+'</p></section>';
+  }
+  function mountIllustration(root) {
+    const get=id=>root.querySelector('#'+id);
+    const result=get('fm-spread-result'), play=get('fm-spread-play'), wire=get('fm-wire-state');
+    const scene=window.FFSpreadScene.mount(get('fm-spread-canvas'));
+    const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+    const wireOff=window.FFSpreadScene.wireOff;
+    let examples=[false,false], progress=1, frame=0, valid=false;
+    function display(value) {
+      progress=value;
+      scene.draw(progress,examples);
+      const powered=progress<wireOff;
+      if(wire.dataset.powered!==String(powered)){
+        wire.dataset.powered=String(powered);
+        wire.textContent=powered?'Igniter on':'Igniter off';
+      }
+    }
+    function stop() {
+      cancelAnimationFrame(frame);
+      frame=0;
+    }
+    function label() {
+      if(motion.matches) play.textContent=progress===1?'Show ignition':'Switch off igniter';
+      else play.textContent=frame?'Pause':progress===1?'Play ignition':'Resume';
+    }
+    function finish() {
+      stop();
+      if(valid)display(1);
+      label();
+    }
+    play.onclick=()=>{
+      if(!valid)return;
+      if(motion.matches){
+        display(progress===1?wireOff*.8:1);
+      }else if(frame){
+        stop();
+      }else{
+        if(progress===1)display(0);
+        const start=performance.now()-progress*5200;
+        const tick=now=>{
+          display(Math.min(1,(now-start)/5200));
+          if(progress<1)frame=requestAnimationFrame(tick);
+          else {frame=0;label();}
+        };
+        frame=requestAnimationFrame(tick);
+      }
+      label();
+    };
+    motion.addEventListener('change',finish);
+    function update(burn,interval) {
+      stop();
+      valid=Boolean(burn);
+      result.hidden=!valid;
+      get('fm-spread-empty').hidden=valid;
+      if(!valid){
+        get('fm-spread-summary').textContent='';
+        return;
+      }
+      const chance=modelPercent(burn.p_sustain);
+      get('fm-spread-chance').textContent=chance;
+      root.querySelector('.fm-probability-bar i').style.width=(burn.p_sustain*100)+'%';
+      // Allow round-off when the interval was entered directly and oxygen equals a bound.
+      examples=interval.map(limit=>burn.oxygen_pct-limit>Number.EPSILON*Math.max(1,Math.abs(limit))*4);
+      const outcomes=examples.map(yes=>yes?'Spread continues':'Spread stops');
+      for(const [i,side] of ['low','high'].entries()){
+        get('fm-limit-'+side).textContent=interval[i].toFixed(2)+'% O₂';
+        const output=get('fm-spread-'+side);
+        output.textContent=outcomes[i];
+        output.dataset.sustain=String(examples[i]);
+      }
+      get('fm-spread-summary').textContent='Burn '+burn.id+' at '+burn.oxygen_pct+'% oxygen. Model chance of sustained spread '+chance+'. Lower assumed limit '+interval[0].toFixed(2)+'%, '+outcomes[0]+'. Higher assumed limit '+interval[1].toFixed(2)+'%, '+outcomes[1]+'.';
+      display(1);
+      label();
+    }
+    return {update,destroy(){stop();motion.removeEventListener('change',finish);scene.destroy();}};
+  }
   function render(root) {
     const data=window.FF?.forecast;
     if(!data||!Array.isArray(data.burns)||data.burns.length!==4){root.textContent='The four-burn forecast record is unavailable.';return;}
     root.innerHTML='<div class="breadcrumb"><a href="#home">Research desk</a><span>/</span>FM² forecast</div>'+
       '<header class="pagetitle"><span class="eyebrow">Prospective case · lunar surface</span><h1>FM² forecast</h1><p class="sub">At what starting oxygen level would flame spread over Synergy Pro Navy fabric after the igniter switches off? Explore four planned lunar tests at 8.2 psia.</p></header>'+
       '<div class="callout"><strong>Illustrative model · no observed score.</strong> NASA describes a planned experiment and qualitative expectations. The probabilities below come from the assumptions you choose.</div>'+
-      '<section class="section grid2"><div class="panel stack"><span class="eyebrow">Threshold model</span><h2>Assumed oxygen limit</h2><p>The model assumes all four samples share one uncertain oxygen limit. It treats starting above that limit as sufficient for sustained spread.</p>'+
+      '<section class="section grid2 fm-comparison"><div class="panel stack"><div><span class="eyebrow">Threshold model</span><h2>Assumed oxygen limit</h2></div><p>The model assumes all four samples share one uncertain oxygen limit. It treats starting above that limit as sufficient for sustained spread.</p>'+
       '<label class="field">Mean limit (% oxygen)<input id="fm-mean" type="number" min="22" max="30" step="any"><small>Explore 22–30% oxygen by volume.</small></label>'+
       '<label class="field">Spread (percentage points)<input id="fm-sigma" type="number" min="0.5" max="4" step="any"><small>Standard deviation, from 0.5 to 4 percentage points.</small></label>'+
-      '<p id="fm-validation" role="status"></p><p id="fm-interval" class="note"></p><details><summary>Set the central 80% interval directly</summary><div class="stack"><div class="grid2"><label class="field">Lower 80% bound (% O₂)<input type="number" step="any" id="fm-lo"></label><label class="field">Upper 80% bound (% O₂)<input type="number" step="any" id="fm-hi"></label></div><button type="button" class="ghost" id="fm-apply">Use these bounds</button><p class="small" role="status" id="fm-bounds-status"></p></div></details><button type="button" id="fm-defaults" class="ghost">Restore worked assumptions</button></div>'+
-      '<div class="panel stack"><span class="eyebrow">Model response</span><h2>Chance of sustained spread</h2><div id="fm-chart"></div><p class="small">Dots mark the four planned starting atmospheres. A curve near 100% reflects the assumed threshold distribution, without evidence of certainty from the Moon.</p></div></section>'+
+      '<p id="fm-validation" role="status"></p><p id="fm-interval" class="note"></p><details><summary>Set the central 80% interval directly</summary><div class="stack"><div class="grid2"><label class="field">Lower 80% bound (% O₂)<input type="number" step="any" id="fm-lo"></label><label class="field">Upper 80% bound (% O₂)<input type="number" step="any" id="fm-hi"></label></div><button type="button" class="ghost" id="fm-apply">Use these bounds</button><p class="small" role="status" id="fm-bounds-status"></p></div></details><button type="button" id="fm-defaults" class="ghost">Restore worked assumptions</button>'+
+      '<figure class="fm-curve"><h3>Chance of sustained spread</h3><div id="fm-chart"></div><figcaption>The ring marks the selected starting atmosphere.</figcaption></figure></div>'+
+      illustrationPanel(data)+'</section>'+
       '<section class="section panel"><div class="sectionhead"><div><span class="eyebrow">March 2026 design</span><h2>Four planned burns</h2></div></div><div class="tablewrap"><table><thead><tr><th scope="col">Burn</th><th scope="col">Initial O₂</th><th scope="col">NASA expectation</th><th scope="col">Model probability</th><th scope="col">Illustrative comparator</th></tr></thead><tbody id="fm-burns"></tbody></table></div>'+
       '<p class="small">The learner guide’s worked example uses 90% or 10% for an illustrative comparator. NASA published qualitative expectations only; team adoption of the example has not been established. Ignition and sustained spread are different endpoints.</p></section>'+
       '<section class="section panel stack"><div><span class="eyebrow">What if?</span><h2>Score hypothetical outcomes</h2></div><p>Yes means sustained spread after nominal ignition power ends. No includes a valid attempt with no ignition or no sustained spread. Mark an aborted, faulty or ambiguous test void.</p><div class="fmgrid" id="fm-choices"></div><div id="fm-scores" class="note" role="status"></div><p class="small">Smaller Brier scores are better. Both predictors are scored against the same resolved burns. Four tests of the same material cannot establish calibration.</p></section>'+
@@ -103,6 +204,15 @@
       label.textContent=source.title;if(label.tagName==='A'){label.href=source.url;label.target='_blank';label.rel='noopener noreferrer';}const small=document.createElement('small');small.textContent=source.locator;div.append(label,small);sources.append(div);
     }
     let active=null,revision=0;
+    const illustration=mountIllustration(get('fm-spread-panel'));
+    const selectedOxygen=()=>Number(root.querySelector('[name="fm-oxygen"]:checked').value);
+    function updateResponse() {
+      if(!active){illustration.update(null);return;}
+      const oxygen=selectedOxygen(), burn=active.burns.find(b=>b.oxygen_pct===oxygen);
+      illustration.update(burn,active.model.interval80_o2_pct);
+      get('fm-chart').innerHTML=chart(active.model.mu_o2_pct,active.model.sigma_pp,active.burns.map(b=>b.oxygen_pct),oxygen);
+    }
+    root.querySelector('.fm-atmosphere').onchange=updateResponse;
     function refresh(){
       revision++;detail.textContent='';
       const m=mean.valueAsNumber,s=sigma.valueAsNumber,valid=Number.isFinite(m)&&Number.isFinite(s)&&m>=22&&m<=30&&s>=.5&&s<=4;
@@ -110,14 +220,14 @@
       get('fm-export').disabled=!valid;
       if(!valid){
         active=null;get('fm-validation').textContent='Enter a mean from 22 to 30 and a spread from 0.5 to 4 to calculate the scenario.';
-        ['fm-chart','fm-interval','fm-burns','fm-scores','fm-design'].forEach(id=>get(id).replaceChildren());return;
+        ['fm-chart','fm-interval','fm-burns','fm-scores','fm-design'].forEach(id=>get(id).replaceChildren());updateResponse();return;
       }
       get('fm-validation').textContent='';active=snapshot(data,m,s,ys);
-      const xs=data.burns.map(b=>b.oxygen_pct), [lo,hi]=active.model.interval80_o2_pct;
+      const [lo,hi]=active.model.interval80_o2_pct;
       get('fm-lo').value=Number(lo.toFixed(5));get('fm-hi').value=Number(hi.toFixed(5));get('fm-bounds-status').textContent='';
       get('fm-interval').textContent='Central 80% model interval: '+lo.toFixed(2)+'–'+hi.toFixed(2)+'% oxygen. NASA’s expected limit is 24–26%; it did not assign that range an 80% probability.';
-      get('fm-chart').innerHTML=chart(m,s,xs);
-      get('fm-burns').innerHTML=active.burns.map(b=>'<tr><th scope="row">'+b.id+'</th><td>'+b.oxygen_pct+'%</td><td>'+escape(b.nasa_expectation)+'</td><td><strong>'+escape(percent(b.p_sustain))+'</strong></td><td>'+escape(percent(b.guide_comparator))+'</td></tr>').join('');
+      updateResponse();
+      get('fm-burns').innerHTML=active.burns.map(b=>'<tr><th scope="row">'+b.id+'</th><td>'+b.oxygen_pct+'%</td><td>'+escape(b.nasa_expectation)+'</td><td><strong>'+escape(modelPercent(b.p_sustain))+'</strong></td><td>'+escape(percent(b.guide_comparator))+'</td></tr>').join('');
       const sc=active.hypothetical_scores, a=sc.model,b=sc.guide_comparator, pending=ys.filter(y=>y==='pending').length, voids=ys.filter(y=>y==='void').length;
       get('fm-scores').textContent=a.n_resolved===0?'No hypothetical score. 0/4 resolved · '+pending+' pending · '+voids+' void.':
         (a.n_resolved===4?'Full four-burn hypothetical Brier score':'Partial hypothetical Brier score')+': model '+a.resolved_mean.toFixed(4)+' · comparator '+b.resolved_mean.toFixed(4)+' · '+a.n_resolved+'/4 resolved · '+pending+' pending · '+voids+' void.';
@@ -134,7 +244,7 @@
       if(!Number.isFinite(m)||!Number.isFinite(s)||m<22||m>30||s<.5||s>4){
         get('fm-bounds-status').textContent='Enter increasing bounds with a midpoint from 22 to 30 and an implied spread from 0.5 to 4.';return;
       }
-      mean.value=Number(m.toFixed(8));sigma.value=Number(s.toFixed(8));refresh();
+      mean.value=m;sigma.value=s;refresh();
     };
     get('fm-defaults').onclick=()=>{mean.value=data.model.mu_o2_pct;sigma.value=data.model.sigma_pp;refresh();};
     get('fm-export').onclick=async()=>{
@@ -146,6 +256,7 @@
       }catch{if(version===revision)detail.textContent='The scenario was exported. This browser context does not provide SHA-256.';}
     };
     refresh();
+    return illustration.destroy;
   }
   if(typeof module!=='undefined' && module.exports)module.exports={probability,score,design,snapshot,percent};
   if(typeof window!=='undefined')window.renderForecast=render;
