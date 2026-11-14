@@ -136,11 +136,11 @@ async function unsafeLinks(page) {
     ]
   }}),{times:1});
   await send(page,'Check citation rendering');
-  await page.getByText(word,{exact:true}).waitFor();
+  await page.getByText('Insufficient verified evidence',{exact:true}).last().waitFor();
   const answer=page.locator('.ffchat-reply').last();
   assert.equal(await answer.locator('.ffchat-answer-text img, img[onerror]').count(),0);
-  assert.equal(await answer.locator('a').count(),1);
-  assert.equal(await answer.locator('a').getAttribute('href'),'https://ntrs.nasa.gov/citations/20170008805');
+  assert.equal(await answer.locator('a').count(),0);
+  assert(!((await answer.innerText()).includes(word)));
   assert.equal(await page.evaluate(()=>window.ffInjected),undefined);
 }
 

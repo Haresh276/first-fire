@@ -19,7 +19,7 @@ The fourth NASA expectation is specifically about **ignition**. The FIRST FIRE e
 
 ## Reproduce the illustrative model
 
-Let one uncertain effective threshold L have a normal distribution with mean 26% oxygen and standard deviation 1.5 percentage points. For a nominal burn starting at x, the model assumes propagation exactly when x > L. P(sustained spread) is the normal cumulative probability at (x−26)/1.5. The central 80% model interval for L is 24.08–27.92%. These are the learner guide's B8.3 worked assumptions. NASA gives an expected 24–26% lunar limiting-oxygen range, without a probability density or standard deviation. None of the project probabilities was fitted to flight data, and no externally timestamped forecast has been registered here.
+Let one uncertain effective threshold L have a normal distribution with mean 26% oxygen and standard deviation 1.5 percentage points. For a nominal burn starting at x, the model assumes propagation exactly when x > L. P(sustained spread) is the normal cumulative probability at (x−26)/1.5. The central 80% model interval for L is 24.08–27.92%. These are the learner guide's B8.3 worked assumptions. NASA gives an expected 24–26% lunar limiting-oxygen range, without a probability density or standard deviation. The project probabilities were specified before lunar results. The separately retained v1 file and signed timestamp appear below.
 
 | Burn | Initial O₂ by volume | NASA's qualitative expectation | Illustrative P(sustained spread) | Comparator P |
 | --- | ---: | --- | ---: | ---: |
@@ -28,7 +28,7 @@ Let one uncertain effective threshold L have a normal distribution with mean 26%
 | 3 | 29% | Continue to the limit | 97.72% | 90% |
 | 4 | 25% | Ignition unlikely | 25.25% | 10% |
 
-The learner guide’s B8.4 worked example uses 90/10 for an illustrative “NASA-style” comparator. The researchers give qualitative expectations only; the guide does not establish that the team formally adopted the example. The same four targets were used when selecting the assumptions, so agreement with NASA's expectations is not a validation test. Moving the mean from 24 to 27 with the same 1.5-point spread moves the burn-4 probability from 74.75% to 9.12%. Other materials behave differently in simulated lunar tests; they provide physical motivation, not Synergy Pro calibration. [ICES-2025-392, PDF pp. 9–11](https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf)
+The learner guide’s B8.4 worked example uses 90/10 for an illustrative “NASA-style” comparator. The researchers give qualitative expectations only; the fixed v1 forecast explicitly records that comparator. The same four targets were used when selecting the assumptions, so agreement with NASA's expectations is not a validation test. Moving the mean from 24 to 27 with the same 1.5-point spread moves the burn-4 probability from 74.75% to 9.12%. Other materials behave differently in simulated lunar tests; they provide physical motivation, not Synergy Pro calibration. [ICES-2025-392, PDF pp. 9–11](https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf)
 
 Under the Brier score, smaller is better. Average (predicted probability − binary observed outcome)² across the same resolved burns for both predictors, and give the coverage. The full score requires all four. With hypothetical outcomes yes/yes/yes/no, the model scores 0.0161 and the comparator 0.0100. With yes/yes/yes/yes, they score 0.1398 and 0.2100. Neither is an observed result. Four tests with a common material and shared threshold do not establish population calibration, even when results eventually arrive.
 
@@ -42,7 +42,7 @@ python3 scripts/forecast.py --scenario 25 2
 python3 scripts/forecast.py --score yes yes pending void
 ```
 
-Only the default invocation writes data/forecast.json. Alternate assumptions and score examples print to standard output. The protocol and numerical choices would need independent acceptance and an external timestamp before calling any prediction preregistered.
+Only the default invocation writes data/forecast.json. Alternate assumptions and score examples print to standard output. The fixed [v1 forecast](../dist/forecast-lock/fm2-v1.json) has a [signed DigiCert receipt](../dist/forecast-lock/fm2-v1.tsr) dated 14 November 2026 at 12:57:06 UTC. Its SHA-256 is `9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3`. A DOI has not been issued. The four reference travel estimates are 20, 17.5, 7.5 and 0 cm, using a linear eight-percentage-point oxygen decrease per full 20 cm sample at the mean threshold. Score future binary outcomes using the frozen probabilities.
 
 ## Candidate features considered for FM²
 

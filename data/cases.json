@@ -463,9 +463,9 @@
     "domain": "Prediction",
     "question": "What can the four planned Synergy Pro burns test, and what remains a prediction?",
     "record": "Ferkul et al. specify four separate 2 × 20 cm exposed Synergy Pro Navy fabric strips at 8.2 ± 0.3 psia, with initial oxygen of 37%, 33%, 29% and 25%. Their concept gives an expected lunar limiting oxygen concentration of 24–26%. They expect the first three tests to burn to threshold and the fourth not to ignite.",
-    "decision": "Use the published qualitative expectation as a baseline. Treat the guide’s 26% mean and 1.5 percentage-point spread as an illustrative assumption until an independent timestamped team forecast is supplied.",
+    "decision": "Use the published qualitative expectation as a baseline. The fixed team forecast assumes a 26% mean and 1.5 percentage-point spread. Verify its signed timestamp and compare its probabilities with future resolved lunar burns.",
     "reason": "FM² refreshes the chamber between burns; oxygen can fall during a burn. Initial oxygen, successful ignition, post-igniter spread and oxygen at extinction are different measurements.",
-    "limit": "The reviewed sources are design and planning documents. No completed lunar outcomes or independently time-stamped team forecast was located. A deterministic limiting-oxygen model describes propagation conditional on establishment; a failed igniter, absent evidence or short observation must not become a scored negative.",
+    "limit": "The reviewed sources are design and planning documents. No completed lunar outcomes are recorded. FIRST FIRE supplies a separately timestamped v1 team forecast. A deterministic limiting-oxygen model describes propagation conditional on establishment; a failed igniter, absent evidence or short observation must not become a scored negative.",
     "next": "Predefine each outcome, invalid-test handling, sensor requirements and scoring horizon. Preserve the forecast and its timestamp independently before using public outcome data.",
     "sources": [
       {

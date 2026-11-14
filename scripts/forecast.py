@@ -105,8 +105,8 @@ def build(mu=26.0, sigma=1.5):
         examples.append({"outcomes": demo, "model": brier_report(probabilities, demo),
                          "encoded_baseline": brier_report(BASELINE, demo)})
     return {
-        "schema_version": 1, "as_of": AS_OF, "status": "illustrative_unregistered",
-        "status_label": "Illustrative forecast · no published lunar outcomes verified",
+        "schema_version": 1, "as_of": AS_OF, "status": "timestamped_reference" if (mu, sigma) == (26, 1.5) else "illustrative_scenario",
+        "status_label": "Four planned burns · no verified lunar outcomes",
         "mission": {"investigation": "FM2", "material": "Synergy Pro Navy fabric",
                     "pressure_psia": 8.2, "pressure_tolerance_psi": 0.3, "gravity_earth_g": 0.165,
                     "balance_gas": "nitrogen", "initial_oxygen_pct": list(TARGETS),
@@ -133,7 +133,7 @@ def build(mu=26.0, sigma=1.5):
                     "void": "Insufficient telemetry, changed material or geometry, invalid initial conditions, hardware fault, abort, or ambiguous classification.",
                     "pending": "No attributable official result available. Retain the source, test identifier, actual conditions, and outcome rationale for each resolution.",
                     "missing_policy": "Score only resolved tests on matched indices. Report coverage. A full four-burn score requires four resolved tests.",
-                    "baseline_label": "The learner guide (B8.4, p. 13) uses a 90/10 illustrative comparator. NASA supplied qualitative directions only. Formal team adoption has not been established.",
+                    "baseline_label": "The learner guide (B8.4, p. 13) uses a 90/10 illustrative comparator. NASA supplied qualitative directions only. The fixed v1 file specifies this comparator.",
                     "observed_model_score": brier_report(probabilities, unresolved),
                     "observed_baseline_score": brier_report(BASELINE, unresolved),
                     "hypothetical_examples": examples},

@@ -61,6 +61,17 @@ def check(dist):
     assert not (dist/'chat').exists() and not (dist/'tests').exists(), 'Static site must not expose local model service or evaluator inputs.'
     for required in ('chat-ui.js','chat.css','benchmark-ui.js','data/chat-benchmark.json','research/chat-models.md','research/chat-benchmark.md','research/world-model.md','manual.html','first-fire-user-manual.pdf','demo.html','first-fire-demo.pdf','model.js','claim.js','acrylic.js','guide.js','workbench.js','records.js','explorer.js','forecast-ui.js','study.js','research/evaluation.md','research/search.md'):
         assert required in actual,required
+    for required in ('atlas-deck.js', 'mission-desk.js', 'observation-rows.js', 'physics-lab.js',
+                     'cabin-liquid-weights.js', 'referee-deck.js', 'referee-passages.js', 'referee-reviews.js',
+                     'first-fire-demo.mp4', 'technical-manual.html', 'first-fire-technical-manual.pdf',
+                     'research/challenge-projects.md', 'challenge-projects.csv', 'forecast-lock/fm2-v1.tsr'):
+        assert required in actual, required
+    lock='forecast-lock/fm2-v1.json'
+    assert actual[lock]=='9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3', 'The signed forecast bytes must match v1.'
+    frozen=json.loads((dist/lock).read_text())
+    current=json.loads((dist/'data/forecast.json').read_text())
+    for saved, burn in zip(frozen['predictions'], current['burns'], strict=True):
+        assert (saved['starting_o2_pct'], saved['p_sustain']) == (burn['oxygen_pct'], burn['p_sustain'])
     print(f'Verified {len(actual)} file hashes, {len(tables)} original NASA tables, {len(rows)} unique observations and offline page assets. No assessor key in site.')
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)

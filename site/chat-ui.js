@@ -46,7 +46,7 @@
 
   function sourceURL(raw) {
     if (typeof raw !== 'string') return null;
-    if (/^#(?:case\/[\w-]+(?:\/[\w-]+)?|data(?:\?[^\s]*)?|report\/[\w-]+|forecast|sources|acrylic|study|guide|benchmark)$/.test(raw)) return raw;
+    if (/^#(?:case\/[\w-]+(?:\/[\w-]+)?|data(?:\?[^\s]*)?|report\/[\w-]+|physics(?:\?mode=rover)?|referee(?:\?view=errors)?|atlas|compass|passports|rulebook|earth|forecast|sources|acrylic|study|guide|benchmark)$/.test(raw)) return raw;
     try {
       const parsed = new URL(raw);
       return parsed.protocol === 'https:' && !parsed.username && !parsed.password ? parsed.href : null;
@@ -162,6 +162,8 @@
     const q = normal(question);
     let records = matching(q);
     const rest = removeNames(q, records);
+    const extraSubjects=records.length && /\b(?:nomex|saffire|flex-?\d*|gas burner|hospital|rover|gaganyaan|mercury|sibal|luci|teflon|synergy pro|fm2)\b/i.test(q);
+    if(extraSubjects)return abstain('mixed');
     if (test(data.research, q)) return records.length ? abstain('mixed') : null;
     if (test(data.unknown_named, rest)) return abstain('unknown');
     const comparePrevious = records.length > 0 && test(data.compare_reference, q);
@@ -275,7 +277,24 @@
     const retryButton = button('Retry answer', () => retry(index), 'ffchat-quiet ffchat-retry');
     retryButton.title = 'Get a new answer in a separate chat';
     actions.append(retryButton);
-    article.append(byline, body, actions);
+    const provenance={
+      'checked':'Checked against the cited experiment',
+      'calculation':'Calculated with the FM² threshold model',
+      'input-needed':'Forecast inputs needed',
+      'quote-only':'Source excerpt · interpretation withheld',
+      'archive-note':'Supplementary archive notes · independent claim review unavailable',
+      'mission-note':'Mission history summary · independent claim review unavailable',
+      'withheld':'Insufficient verified evidence'
+    }[turn.evidenceKind];
+    article.append(byline);
+    if(provenance) article.append(node('p',provenance,'rf-evidence-label'));
+    article.append(body, actions);
+    for (const review of turn.reviewIds || (turn.reviewId ? [turn.reviewId] : [])) {
+      const proof = window.FFDeckReferee?.proof(review);
+      if (proof) article.append(proof);
+    }
+    const engine = window.FFDeckReferee?.route(turn.question);
+    if (engine) article.append(link('Open '+engine[0]+' →', engine[1], 'rf-continue'));
     return article;
   }
 
@@ -369,6 +388,10 @@
     }
     starters.append(startersTitle, suggestions);
     shell.append(top, desk, starters);
+    if (window.FFDeckReferee) shell.append(window.FFDeckReferee.preferences(question => {
+      updateInput(question);
+      input.focus();
+    }));
     root.replaceChildren(shell);
 
     function isActive() { return !stopped && shell.isConnected; }
@@ -548,9 +571,22 @@
       try {
         await healthTask;
         if (working.controller.signal.aborted || !isActive()) throw Error('Stopped');
-        const answer = mode === 'local'
-          ? await askService(message, context, working.controller.signal)
-          : await askArchive(message, context);
+        const engine = window.FFDeckReferee?.route(message);
+        const toolRequest = engine && /^(?:open|use|launch|take me to|show me the|where (?:can|do) i (?:find|open|use))\b/i.test(message);
+        let answer;
+        const calculation=!toolRequest && window.FFDeckReferee?.forecastAnswer(message,context);
+        if (calculation) {
+          answer=calculation;
+        } else if (toolRequest) {
+          answer = {answer:engine[2], status:'limited', sources:[], mode:'navigation'};
+        } else {
+          answer = mode === 'local'
+            ? await askService(message, context, working.controller.signal)
+            : await askArchive(message, context);
+          if (window.FFDeckReferee && !working.controller.signal.aborted) {
+            answer = await window.FFDeckReferee.checkedReply(message, answer);
+          }
+        }
         if (working.controller.signal.aborted || !isActive()) throw Error('Stopped');
         if (branchIndex !== null) saveBranch(context, retrying);
         thread.turns.push({question:message, ...answer});

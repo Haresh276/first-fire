@@ -28,7 +28,7 @@ def csv_rows(path):
 def hsh(content):
     return hashlib.sha256(content).hexdigest()
 def build():
-    for script in ('build_data.py','forecast.py','verify_quotes.py'):
+    for script in ('build_data.py','forecast.py','verify_quotes.py','build_referee_passages.py'):
         subprocess.run([sys.executable,str(ROOT/'scripts'/script)],check=True)
     for required in ('app.js','chat-ui.js','chat.css','benchmark-ui.js','search.js','explorer.js','study.js','claim.js','acrylic.js','forecast-ui.js','forecast.css','spread-scene.js','workbench.js','manual.html','first-fire-user-manual.pdf','demo.html'):
         if not (SITE/required).is_file(): raise SystemExit(f'Missing site/{required}')
@@ -56,7 +56,8 @@ def build():
         if exp.is_dir():
             shutil.copy2(exp/'participant.example.json',stage/'research'/'practice'/'participant.example.json')
         forecast=read_json(DATA/'forecast.json')
-        data={'incidents':read_json(DATA/'incidents.json'),'evidence':read_json(DATA/'evidence/pages.json'),'cases':cases,'tests':tests,'rawTables':tables,'investigations':studies,'forecast':forecast,'resources':read_json(DATA/'challenge-resources.json'),'research':[{'name':p.stem,'file':p.name,'text':p.read_text(encoding='utf-8')} for p in sorted(research)]}
+        data={'incidents':read_json(DATA/'incidents.json'),'evidence':read_json(DATA/'evidence/pages.json'),'cases':cases,'investigations':studies,'forecast':forecast,'resources':read_json(DATA/'challenge-resources.json'),'research':[{'name':p.stem,'file':p.name,'text':p.read_text(encoding='utf-8')} for p in sorted(research)]}
+        (stage/'observation-rows.js').write_text('Object.assign(window.FF,'+packed({'tests':tests,'rawTables':tables})+');\n',encoding='utf-8')
         benchmark=DATA/'chat-benchmark.json'
         if benchmark.is_file():
             data['chatBenchmark']=read_json(benchmark)

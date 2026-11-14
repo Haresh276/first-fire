@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "as_of": "2026-11-14",
-  "status": "illustrative_unregistered",
-  "status_label": "Illustrative forecast · no published lunar outcomes verified",
+  "status": "timestamped_reference",
+  "status_label": "Four planned burns · no verified lunar outcomes",
   "mission": {
     "investigation": "FM2",
     "material": "Synergy Pro Navy fabric",
@@ -250,7 +250,7 @@
     "void": "Insufficient telemetry, changed material or geometry, invalid initial conditions, hardware fault, abort, or ambiguous classification.",
     "pending": "No attributable official result available. Retain the source, test identifier, actual conditions, and outcome rationale for each resolution.",
     "missing_policy": "Score only resolved tests on matched indices. Report coverage. A full four-burn score requires four resolved tests.",
-    "baseline_label": "The learner guide (B8.4, p. 13) uses a 90/10 illustrative comparator. NASA supplied qualitative directions only. Formal team adoption has not been established.",
+    "baseline_label": "The learner guide (B8.4, p. 13) uses a 90/10 illustrative comparator. NASA supplied qualitative directions only. The fixed v1 file specifies this comparator.",
     "observed_model_score": {
       "per_burn": [
         null,

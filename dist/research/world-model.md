@@ -1,8 +1,39 @@
-# A physics model the chat can question
+# The sealed-cabin model and its next validation experiment
 
-**Design proposal; no world simulator has been built or benchmarked.** Start with a question the measurements can constrain: given a prescribed release of tracer gas into a ventilated chamber, what concentration should a remote sensor read, and how long should it take to respond? A model of transport can address that question without claiming to predict ignition, flame spread or whether a cabin is safe. It matters for the archive: outlet concentration can rise when flow falls even if the material does not produce more gas. NASA has modeled the vehicle response using measurements from Saffire V. [NASA vehicle-modeling paper](https://ntrs.nasa.gov/api/citations/20240008602/downloads/ICES-2024-310.pdf)
+## Run the Physics Lab
 
-## First experiment: tracer transport
+Open **Physics Lab** in the dashboard. Choose a cabin volume, starting oxygen by volume and absolute pressure. Select cellulose or polyethylene and set the linear mass loading, strip length, assumed spread speed and oxygen cutoff. Scrub across the 120-second trace to inspect wet-basis oxygen, carbon dioxide, chemical and electrical energy, and burned length. The rover sandbox lets you combine and name components, edit their size, mass and energy, and save one design on the device. Cabin and chassis presets are illustrative. The NASA Lunar Terrain Vehicle is open and NASA describes JAXA's rover as pressurized. [NASA LTV](https://www.nasa.gov/moonbase/lunar-terrain-vehicle/) · [NASA–Japan rover agreement](https://www.nasa.gov/news-release/nasa-japan-advance-space-cooperation-sign-agreement-for-lunar-rover/).
+
+The chamber starts at 300 K with oxygen and nitrogen. Initial gas amount in moles follows the ideal gas law. For each dry repeat unit CₐHᵦO𝒸, complete combustion consumes ν = a + b/4 − c/2 moles of O₂, produces a moles of CO₂ and b/2 moles of water vapor, and leaves nitrogen unchanged. If n₀ is the starting gas amount, x₀ the starting oxygen fraction, xₗ the assumed cutoff, and Δn = a + b/2 − ν, the cutoff-limited extent is max(0, n₀(x₀ − xₗ)/(ν + xₗΔn)). The reaction extent at a given time is the smallest of that quantity, the available repeat units and the units consumed at the imposed speed. Both oxygen and carbon dioxide percentages use the final gas amount as denominator.
+
+The heat calculation uses 15.2 MJ/kg for cellulose and 43.4 MJ/kg for polyethylene. The battery adds the prescribed power multiplied by elapsed time, capped at available watt-hours. A separate constant-pressure, stoichiometric flame-zone calculation balances net chemical heat against temperature-dependent sensible enthalpy for nitrogen, CO₂ and water vapor. Its upper fit bound is 3,500 K. It omits dissociation and heat loss. Condensation, smoke chemistry, electrical runaway, flame quenching, wall temperature and actual pressure history require additional models. Gravity changes weight and an illustrative buoyant velocity scale; neither the Moon nor Mars setting supplies a gravity-specific measured front speed. [NBS heat-of-combustion data](https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf) · [Cantera GRI-Mech thermochemical fits](https://github.com/Cantera/cantera/blob/v3.1.0/data/gri30.yaml).
+
+## Compare the model with the Saffire-I record
+
+**Reverse the flow** pairs the two Saffire-I runs with a controlled sensitivity test. In PSI-98, original CSV rows 2 and 3 report 20 cm/s airflow, 21.5–21.7% starting oxygen for S1 and approximately 21.5% for S2. The archived source records describe SIBAL fabric. NASA's slide 21 annotates the measured fronts at 1.8 mm/s concurrent with flow and 1.3 mm/s opposed. The rates are cited publication measurements, distinct from the original table cells. [NASA PSI-98](https://doi.org/10.60555/0t15-1z43) · [NASA Saffire-I result, slide 21](https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21).
+
+Select **Compare both inputs**. FIRST FIRE converts the two speeds to 0.18 and 0.13 cm/s and runs two scenarios at the same selected time. It holds all other user inputs fixed and preserves material exhaustion and the assumed oxygen cutoff. At the default conditions and 60 seconds the fronts reach 10.8 and 7.8 cm. These are scenario outputs. The flight rates are inputs, so replaying them supplies no independent test of a propagation prediction. Separate oxygen, flow, specimen geometry, material, gravity and front-position evidence would be necessary to transfer a measurement. The proposed follow-up uses fresh specimens and counterbalances direction order to help distinguish flow effects from thermal history.
+
+The design takes inspiration from FLUXFIRE's explicit condition matching and FlameBound's presentation of a target beside a source-located condition. The interface, calculations and tests are original to FIRST FIRE. [FLUXFIRE evidence policy](https://github.com/shomratmortaza/fluxfire-Orbital.Mind/blob/ea74d6249d636abe40220d1e907fac454487b294/SCIENTIFIC_INTEGRITY.md) · [FlameBound condition comparison](https://github.com/prattaybanik03/flamebound-flame-in-freefall/blob/main/web/src/components/HazardBanner.tsx).
+
+## Experimental liquid-network benchmark
+
+The on-device estimator predicts oxygen percentage over the same 120-second trajectory. Forty-two recurrent neurons have input- and state-dependent conductances. The recurrent weights are seeded and fixed; ridge regression fits their output weights on 640 whole synthetic simulator runs. The model constrains its prediction to the initial oxygen and assumed cutoff. Prediction is disabled outside the documented training domain. Evaluation reserved 160 independently sampled whole runs, with 60 post-initial time points per run.
+
+| Oxygen error, percentage points | Result |
+| --- | ---: |
+| Network mean absolute error | 0.275 |
+| 95th percentile absolute error | 0.957 |
+| Worst absolute error | 3.288 |
+| Mean absolute error from holding O₂ constant | 1.109 |
+
+These errors measure agreement with the sealed-chamber equations. Surface-specific fire validation needs independently measured burns. Runtime speedup has not been benchmarked. To reproduce the parameters and scores from the repository root, run `node scripts/train_cabin_liquid.cjs`. Run `node --test tests/physics-lab.test.cjs` for conservation, boundary conditions, temperature fit bounds, and surrogate range checks. [Liquid time-constant networks](https://arxiv.org/abs/2006.04439).
+
+## Proposed validation with measured sensor traces
+
+Start with a question the measurements can constrain: given a prescribed release of tracer gas into a ventilated chamber, what concentration should a remote sensor read, and how long should it take to respond? A model of transport can address that question without claiming to predict ignition, flame spread or whether a cabin is safe. It matters for the archive: outlet concentration can rise when flow falls even if the material does not produce more gas. NASA has modeled the vehicle response using measurements from Saffire V. [NASA vehicle-modeling paper](https://ntrs.nasa.gov/api/citations/20240008602/downloads/ICES-2024-310.pdf)
+
+### Tracer transport experiment
 
 1. Represent the test chamber and a remote sampling volume as connected, well-mixed zones. Store gas mass and species masses in kilograms, temperature in kelvin, pressure in pascals, zone volume in cubic metres, and directional mass flows in kg/s. Distinguish total pressure, oxygen volume fraction and oxygen in a burner stream.
 2. At each step, compute each species' mass change from incoming and outgoing species flow plus a **prescribed** source, then update the sensor with its own transport delay and first-order response. The same nonnegative flux exits one zone and enters the next. Specify the initial state, inlet composition, exhaust condition and clock origin; if a necessary condition is missing, request it. Converting a recorded volumetric flow to a mass flow requires its pressure, temperature and composition.

@@ -36,7 +36,10 @@
   }
   async function search(query){
     const rows=corpus(), keys=[...new Set(terms(query))];if(!keys.length)return {items:[],semantic:false};
-    let model;try{model=await loadModel();}catch{model=null;}
+    let model;
+    const device=window.navigator;
+    const lite=device?.connection?.saveData || (device?.deviceMemory>0 && device.deviceMemory<=2);
+    if(!lite){try{model=await loadModel();}catch{model=null;}}
     const avg=rows.reduce((n,d)=>n+d.tokens.length,0)/rows.length;
     const queryVec=model?encode(query,model):null;
     const ranked=rows.map(d=>{

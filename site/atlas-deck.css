@@ -1,0 +1,70 @@
+.atlas-heading{max-width:62rem}
+.atlas-nav{display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--line);margin-bottom:1.35rem}
+.atlas-nav a{padding:.6rem .1rem;color:var(--muted);text-decoration:none;font-weight:700;border-bottom:3px solid transparent}
+.atlas-nav a[aria-current=page]{color:var(--hot);border-color:var(--hot)}
+.atlas-counts{display:flex;align-items:baseline;gap:.4rem;flex-wrap:wrap;margin:1rem 0 1.35rem;color:var(--muted)}
+.atlas-counts b{font:700 1.65rem/1 var(--display);color:var(--ink)}
+.atlas-counts b:not(:first-child){margin-left:1rem}
+.atlas-controls,.atlas-pass-controls{display:flex;align-items:end;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.atlas-controls label,.atlas-pass-controls label{flex:1 1 17rem;max-width:32rem}
+.atlas-map,.atlas-list,.atlas-passport{margin-bottom:1.25rem}
+.atlas-map h2,.atlas-list h2,.atlas-passport h2{font-size:clamp(1.8rem,3vw,3rem)}
+.atlas-explain{max-width:76ch;margin: .6rem 0 1rem;color:var(--muted)}
+.atlas-matrix{width:100%;table-layout:fixed}
+.atlas-matrix th,.atlas-matrix td{overflow-wrap:anywhere}
+.atlas-matrix thead th,.atlas-matrix tbody th{text-align:left;font-weight:650}
+.atlas-matrix thead th:first-child{width:30%}
+.atlas-matrix thead small{display:block;font-size:.73rem;font-weight:400;color:var(--muted)}
+.atlas-plan{display:block;line-height:1.3;color:#8c3519;font:600 .76rem var(--mono)}
+.atlas-matrix thead th:not(:first-child){text-align:center}
+.atlas-matrix td{padding:2px}
+.atlas-matrix .atlas-cell{border:1px solid transparent;padding:.65rem .1rem;color:var(--muted);background:#eef0eb;width:100%;min-width:0;text-align:center;font:600 .91rem var(--mono);border-radius:3px}
+.atlas-matrix .atlas-filled{background:rgba(48,137,121,var(--strength));color:#123a36}
+.atlas-matrix .atlas-cell[aria-pressed=true],.atlas-matrix .atlas-cell:hover{border-color:var(--teal)}
+.atlas-matrix td{height:1px}
+.atlas-matrix .atlas-cell{height:100%}
+.atlas-reference,.atlas-filter-summary,.atlas-pager,.atlas-list-head,.atlas-links,.atlas-row-top{display:flex;gap:.85rem;align-items:center;flex-wrap:wrap}
+.atlas-reference{margin-top:.85rem;padding:.8rem 1rem;background:#f6eee3;border-left:3px solid var(--orange);font-size:.9rem}
+.atlas-links{font-size:.93rem;margin:.5rem 0}
+.atlas-list-head,.atlas-row-top{justify-content:space-between}
+.atlas-filter-summary,.atlas-pager{margin:.7rem 0}
+.atlas-pager{justify-content:flex-end;font-size:.85rem}
+.atlas-record-table{width:100%;margin:.6rem 0}
+.atlas-record-table small{display:block;font: .72rem/1.4 var(--mono);color:var(--muted)}
+.atlas-row-link{padding:0;background:none;color:var(--blue);border:0;text-decoration:underline;text-underline-offset:3px;font-weight:700;text-align:left}
+.atlas-dialog{width:min(44rem,94vw);max-height:84dvh;border:1px solid var(--line);border-radius:7px;padding:clamp(16px,3vw,32px);background:var(--surface);color:var(--ink);overflow:auto}
+.atlas-dialog::backdrop{background:rgba(13,24,27,.58)}
+.atlas-dialog h2{font-size:2rem}
+.atlas-raw{display:grid;grid-template-columns:minmax(7rem,42%) 1fr;font-size:.9rem}
+.atlas-raw dt,.atlas-raw dd{margin:0;padding:.4rem .25rem;border-bottom:1px solid var(--line);overflow-wrap:anywhere;line-height:1.4}
+.atlas-passport{max-width:58rem}
+.atlas-pass-title{padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.atlas-pass-title h2{margin-bottom:.4rem}
+.atlas-summary{font-size:1.1rem;margin:1rem 0}
+.atlas-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;background:#edf1eb;padding:1rem;margin:1rem 0}
+.atlas-facts dd{font-weight:650;margin:0;line-height:1.3;padding-top:3px}
+.atlas-passport h3{font-size:1.4rem;margin:.95rem 0 .3rem}
+.atlas-table-source{margin:.65rem 0;overflow-wrap:anywhere}
+.atlas-table-source summary{cursor:pointer}
+.atlas-digest{font: .77rem/1.5 var(--mono);overflow-wrap:anywhere;margin-top:.5rem}
+.atlas-deeper{font-weight:700;display:inline-block;margin-top:.7rem}
+@media(max-width:600px){.atlas-counts{display:block}.atlas-counts b{margin-right:3px}.atlas-counts b:not(:first-child){margin-left:8px}.atlas-record-table th,.atlas-record-table td{font-size:.82rem;padding:.44rem .2rem;overflow-wrap:anywhere}.atlas-matrix th{font-size:.8rem;padding:.45rem .25rem}.atlas-reference{gap:.35rem .7rem}.atlas-explain{font-size:.9rem}}
+@media print{body:has(.atlas-passport) :is(.masthead,.foot,body>footer,.atlas-nav,.atlas-heading,.atlas-pass-controls,.skip,.atlas-deeper){display:none!important}body:has(.atlas-passport),body:has(.atlas-passport) main{background:#fff;margin:0;padding:0;min-height:0}.atlas-passport{break-inside:avoid;margin:0;max-width:none;padding:1rem;box-shadow:none}.atlas-passport a{overflow-wrap:anywhere}.atlas-passport details{break-inside:avoid}}
+.atlas-compare{margin-bottom:1.25rem}
+.atlas-compare>summary{font:700 clamp(1.45rem,3vw,2rem)/1.25 var(--display);cursor:pointer}
+.atlas-compare-examples{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+.atlas-compare-examples span{color:var(--muted);font-size:.85rem}
+.atlas-compare-examples button{font-size:.85rem;padding:.45rem .7rem}
+.atlas-compare-selectors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.atlas-compare-selectors fieldset{min-width:0;margin:0;padding:.7rem .9rem;border:1px solid var(--line);border-radius:.35rem}
+.atlas-compare-selectors legend{font-weight:700;padding:0 .25rem}
+.atlas-compare-selectors .field{display:block;margin:0 0 .55rem}
+.atlas-compare-selectors select{width:100%;max-width:100%}
+.atlas-compare-selectors .atlas-row-link,.atlas-compare-footnotes{font-size:.86rem}
+.atlas-compare-note{padding:.75rem 1rem;border-left:3px solid var(--teal);background:#edf2ee;margin:1rem 0}
+.atlas-compare-table{table-layout:fixed;width:100%;margin:0 0 .75rem}
+.atlas-compare-table :is(th,td){overflow-wrap:anywhere;vertical-align:top;text-align:left}
+.atlas-compare-table th:first-child{width:26%}
+.atlas-compare-table th small{display:block;font-size:.77rem;color:var(--muted);font-weight:400}
+.atlas-compare-footnotes p{margin:.5rem 0}
+@media(max-width:600px){.atlas-compare-selectors{grid-template-columns:1fr;gap:.6rem}.atlas-compare-table :is(th,td){font-size:.82rem;padding:.45rem .3rem}.atlas-compare-table th small{font-size:.71rem}}
