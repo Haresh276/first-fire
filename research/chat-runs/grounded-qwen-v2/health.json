@@ -1,0 +1,14 @@
+{
+  "ready": true,
+  "model": "qwen3:0.6b",
+  "provider": "Ollama (local)",
+  "model_digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+  "retriever": "BAAI/bge-small-en-v1.5 + BM25 + exact run IDs",
+  "encoder_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+  "version": "2.0",
+  "engine_sha256": "38aefe31b4007d99edc8753854bf4c422fe48234fdfa68794970124dd7109b48",
+  "corpus_sha256": "8e79d6ec3237a76a342b958253616831d0199d74860881701a3d0874e011270e",
+  "passages": 85,
+  "rows": 1058,
+  "mode": "grounded passage selection"
+}

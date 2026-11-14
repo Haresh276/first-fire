@@ -1,0 +1,526 @@
+{
+  "suite": "first-fire-chat-100-v1",
+  "suite_sha256": "de7d1c8f0bd722f59475a3c30785929ef9e6b060e94c657e5edd44a214dd4afd",
+  "scorer_sha256": "382d42cdbc14870307cfea266cb4d57ecaad18d33d79a4fc92cf1f5418ddd2bb",
+  "endpoint": "http://127.0.0.1:8768/api/chat",
+  "started_utc": "2026-11-14T08:52:15.942841+00:00",
+  "finished_utc": "2026-11-14T08:52:58.865761+00:00",
+  "overall": {
+    "answer_content_pass": {
+      "passed": 84,
+      "eligible": 100,
+      "percent": 84.0
+    },
+    "strict_pass": {
+      "passed": 78,
+      "eligible": 100,
+      "percent": 78.0
+    },
+    "behavior_pass": {
+      "passed": 96,
+      "eligible": 100,
+      "percent": 96.0
+    },
+    "citation_pass": {
+      "passed": 83,
+      "eligible": 92,
+      "percent": 90.2
+    },
+    "retrieval_any_at_1": {
+      "passed": 71,
+      "eligible": 92,
+      "percent": 77.2
+    },
+    "retrieval_any_at_3": {
+      "passed": 89,
+      "eligible": 92,
+      "percent": 96.7
+    },
+    "retrieval_all_at_3": {
+      "passed": 85,
+      "eligible": 92,
+      "percent": 92.4
+    },
+    "retrieval_all_at_5": {
+      "passed": 89,
+      "eligible": 92,
+      "percent": 96.7
+    },
+    "transport_errors": 0,
+    "count": 100,
+    "latency_ms": {
+      "n": 100,
+      "median": 397.3,
+      "p95_nearest_rank": 671.9
+    }
+  },
+  "difficulty": {
+    "beginner": {
+      "answer_content_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "strict_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "behavior_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "retrieval_any_at_1": {
+        "passed": 18,
+        "eligible": 20,
+        "percent": 90.0
+      },
+      "retrieval_any_at_3": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "retrieval_all_at_3": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "retrieval_all_at_5": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "transport_errors": 0,
+      "count": 20,
+      "latency_ms": {
+        "n": 20,
+        "median": 606.0,
+        "p95_nearest_rank": 671.9
+      }
+    },
+    "intermediate": {
+      "answer_content_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "strict_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "behavior_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "retrieval_any_at_1": {
+        "passed": 18,
+        "eligible": 20,
+        "percent": 90.0
+      },
+      "retrieval_any_at_3": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "retrieval_all_at_3": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "retrieval_all_at_5": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "transport_errors": 0,
+      "count": 20,
+      "latency_ms": {
+        "n": 20,
+        "median": 390.5,
+        "p95_nearest_rank": 690.1
+      }
+    },
+    "advanced": {
+      "answer_content_pass": {
+        "passed": 15,
+        "eligible": 20,
+        "percent": 75.0
+      },
+      "strict_pass": {
+        "passed": 14,
+        "eligible": 20,
+        "percent": 70.0
+      },
+      "behavior_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 17,
+        "eligible": 20,
+        "percent": 85.0
+      },
+      "retrieval_any_at_1": {
+        "passed": 12,
+        "eligible": 20,
+        "percent": 60.0
+      },
+      "retrieval_any_at_3": {
+        "passed": 18,
+        "eligible": 20,
+        "percent": 90.0
+      },
+      "retrieval_all_at_3": {
+        "passed": 18,
+        "eligible": 20,
+        "percent": 90.0
+      },
+      "retrieval_all_at_5": {
+        "passed": 19,
+        "eligible": 20,
+        "percent": 95.0
+      },
+      "transport_errors": 0,
+      "count": 20,
+      "latency_ms": {
+        "n": 20,
+        "median": 389.3,
+        "p95_nearest_rank": 419.0
+      }
+    },
+    "complex": {
+      "answer_content_pass": {
+        "passed": 14,
+        "eligible": 20,
+        "percent": 70.0
+      },
+      "strict_pass": {
+        "passed": 13,
+        "eligible": 20,
+        "percent": 65.0
+      },
+      "behavior_pass": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 16,
+        "eligible": 20,
+        "percent": 80.0
+      },
+      "retrieval_any_at_1": {
+        "passed": 15,
+        "eligible": 20,
+        "percent": 75.0
+      },
+      "retrieval_any_at_3": {
+        "passed": 20,
+        "eligible": 20,
+        "percent": 100.0
+      },
+      "retrieval_all_at_3": {
+        "passed": 16,
+        "eligible": 20,
+        "percent": 80.0
+      },
+      "retrieval_all_at_5": {
+        "passed": 18,
+        "eligible": 20,
+        "percent": 90.0
+      },
+      "transport_errors": 0,
+      "count": 20,
+      "latency_ms": {
+        "n": 20,
+        "median": 394.1,
+        "p95_nearest_rank": 428.7
+      }
+    },
+    "challenge": {
+      "answer_content_pass": {
+        "passed": 15,
+        "eligible": 20,
+        "percent": 75.0
+      },
+      "strict_pass": {
+        "passed": 11,
+        "eligible": 20,
+        "percent": 55.0
+      },
+      "behavior_pass": {
+        "passed": 16,
+        "eligible": 20,
+        "percent": 80.0
+      },
+      "citation_pass": {
+        "passed": 10,
+        "eligible": 12,
+        "percent": 83.3
+      },
+      "retrieval_any_at_1": {
+        "passed": 8,
+        "eligible": 12,
+        "percent": 66.7
+      },
+      "retrieval_any_at_3": {
+        "passed": 11,
+        "eligible": 12,
+        "percent": 91.7
+      },
+      "retrieval_all_at_3": {
+        "passed": 11,
+        "eligible": 12,
+        "percent": 91.7
+      },
+      "retrieval_all_at_5": {
+        "passed": 12,
+        "eligible": 12,
+        "percent": 100.0
+      },
+      "transport_errors": 0,
+      "count": 20,
+      "latency_ms": {
+        "n": 20,
+        "median": 419.2,
+        "p95_nearest_rank": 703.2
+      }
+    }
+  },
+  "expected_behavior": {
+    "answer": {
+      "answer_content_pass": {
+        "passed": 56,
+        "eligible": 62,
+        "percent": 90.3
+      },
+      "strict_pass": {
+        "passed": 56,
+        "eligible": 62,
+        "percent": 90.3
+      },
+      "behavior_pass": {
+        "passed": 62,
+        "eligible": 62,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 61,
+        "eligible": 62,
+        "percent": 98.4
+      },
+      "retrieval_any_at_1": {
+        "passed": 51,
+        "eligible": 62,
+        "percent": 82.3
+      },
+      "retrieval_any_at_3": {
+        "passed": 61,
+        "eligible": 62,
+        "percent": 98.4
+      },
+      "retrieval_all_at_3": {
+        "passed": 61,
+        "eligible": 62,
+        "percent": 98.4
+      },
+      "retrieval_all_at_5": {
+        "passed": 62,
+        "eligible": 62,
+        "percent": 100.0
+      },
+      "transport_errors": 0,
+      "count": 62,
+      "latency_ms": {
+        "n": 62,
+        "median": 418.6,
+        "p95_nearest_rank": 690.1
+      }
+    },
+    "boundary": {
+      "answer_content_pass": {
+        "passed": 19,
+        "eligible": 26,
+        "percent": 73.1
+      },
+      "strict_pass": {
+        "passed": 17,
+        "eligible": 26,
+        "percent": 65.4
+      },
+      "behavior_pass": {
+        "passed": 26,
+        "eligible": 26,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 19,
+        "eligible": 26,
+        "percent": 73.1
+      },
+      "retrieval_any_at_1": {
+        "passed": 18,
+        "eligible": 26,
+        "percent": 69.2
+      },
+      "retrieval_any_at_3": {
+        "passed": 24,
+        "eligible": 26,
+        "percent": 92.3
+      },
+      "retrieval_all_at_3": {
+        "passed": 20,
+        "eligible": 26,
+        "percent": 76.9
+      },
+      "retrieval_all_at_5": {
+        "passed": 23,
+        "eligible": 26,
+        "percent": 88.5
+      },
+      "transport_errors": 0,
+      "count": 26,
+      "latency_ms": {
+        "n": 26,
+        "median": 393.3,
+        "p95_nearest_rank": 467.5
+      }
+    },
+    "unanswerable": {
+      "answer_content_pass": {
+        "passed": 9,
+        "eligible": 12,
+        "percent": 75.0
+      },
+      "strict_pass": {
+        "passed": 5,
+        "eligible": 12,
+        "percent": 41.7
+      },
+      "behavior_pass": {
+        "passed": 8,
+        "eligible": 12,
+        "percent": 66.7
+      },
+      "citation_pass": {
+        "passed": 3,
+        "eligible": 4,
+        "percent": 75.0
+      },
+      "retrieval_any_at_1": {
+        "passed": 2,
+        "eligible": 4,
+        "percent": 50.0
+      },
+      "retrieval_any_at_3": {
+        "passed": 4,
+        "eligible": 4,
+        "percent": 100.0
+      },
+      "retrieval_all_at_3": {
+        "passed": 4,
+        "eligible": 4,
+        "percent": 100.0
+      },
+      "retrieval_all_at_5": {
+        "passed": 4,
+        "eligible": 4,
+        "percent": 100.0
+      },
+      "transport_errors": 0,
+      "count": 12,
+      "latency_ms": {
+        "n": 12,
+        "median": 100.3,
+        "p95_nearest_rank": 616.6
+      }
+    }
+  },
+  "fixed_history": {
+    "answer_content_pass": {
+      "passed": 7,
+      "eligible": 9,
+      "percent": 77.8
+    },
+    "strict_pass": {
+      "passed": 7,
+      "eligible": 9,
+      "percent": 77.8
+    },
+    "behavior_pass": {
+      "passed": 9,
+      "eligible": 9,
+      "percent": 100.0
+    },
+    "citation_pass": {
+      "passed": 7,
+      "eligible": 8,
+      "percent": 87.5
+    },
+    "retrieval_any_at_1": {
+      "passed": 6,
+      "eligible": 8,
+      "percent": 75.0
+    },
+    "retrieval_any_at_3": {
+      "passed": 7,
+      "eligible": 8,
+      "percent": 87.5
+    },
+    "retrieval_all_at_3": {
+      "passed": 7,
+      "eligible": 8,
+      "percent": 87.5
+    },
+    "retrieval_all_at_5": {
+      "passed": 8,
+      "eligible": 8,
+      "percent": 100.0
+    },
+    "transport_errors": 0,
+    "count": 9,
+    "latency_ms": {
+      "n": 9,
+      "median": 441.5,
+      "p95_nearest_rank": 705.5
+    }
+  },
+  "failed_strict_ids": [
+    "Q041",
+    "Q043",
+    "Q044",
+    "Q048",
+    "Q054",
+    "Q056",
+    "Q062",
+    "Q066",
+    "Q067",
+    "Q070",
+    "Q074",
+    "Q076",
+    "Q077",
+    "Q082",
+    "Q088",
+    "Q089",
+    "Q090",
+    "Q091",
+    "Q092",
+    "Q093",
+    "Q098",
+    "Q099"
+  ]
+}

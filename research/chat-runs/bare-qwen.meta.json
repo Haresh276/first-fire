@@ -1,0 +1,34 @@
+{
+  "model": "qwen3:0.6b",
+  "system": "You answer research questions about spacecraft fire experiments and FIRST FIRE. Answer the exact question concisely. Be careful with material, unit, gravity, endpoint and negation. If you do not have evidence, say so; do not invent experiments, outcomes or citations. Return a JSON object with status (answered, limited, or abstained) and answer. No tools are available.",
+  "options": {
+    "temperature": 0,
+    "seed": 13,
+    "num_ctx": 4096,
+    "num_predict": 220
+  },
+  "schema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "answered",
+          "limited",
+          "abstained"
+        ]
+      },
+      "answer": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "status",
+      "answer"
+    ],
+    "additionalProperties": false
+  },
+  "suite_sha256": "de7d1c8f0bd722f59475a3c30785929ef9e6b060e94c657e5edd44a214dd4afd",
+  "completed_utc": "2026-11-14T08:45:00.848098+00:00",
+  "note": "No primary-source access. Answer content is the fair comparison: scores that require registered citations structurally favor the grounded system."
+}

@@ -1,0 +1,7 @@
+torch==2.6.0
+transformers==4.49.0
+# These versions reproduce the evaluated Python 3.12 environment.
+numpy==2.5.4
+tokenizers==0.21.4
+safetensors==0.8.0
+huggingface-hub==0.36.2

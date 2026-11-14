@@ -1,0 +1,530 @@
+[
+  {
+    "id": "sibal",
+    "short": "SIBAL",
+    "title": "A slower flame outlasted the faster flame",
+    "domain": "Spread and extinction",
+    "question": "Which comparison supports a claim about how long SIBAL burned?",
+    "record": "LUCI burned 5 × 30 cm cotton–fiberglass fabric downward in simulated lunar gravity. Its flame base advanced at 0.9 mm/s versus 1.5 at 1 g, and its tip at 1.1 versus 2.8 mm/s. Fabric extinction occurred about 45 seconds later in the partial-gravity run.",
+    "decision": "Use the LUCI fabric pair for extinction. Use the aircraft comparison for early spread.",
+    "reason": "A separate 20-second aircraft test matched the fuel, 5 cm width, direction, approximate gravity and initial atmosphere. It measured base spread of 0.86 mm/s versus 0.92 on LUCI. The centrifuge drop test reported 1.1 mm/s.",
+    "limit": "The rocket spun, two fuels burned in a shared chamber, and oxygen declined from about 20% to 18% over the fabric observation while the 1-g comparison stayed near 20%. The 45 seconds is an approximate difference for this comparison. It does not give a universal gravity multiplier.",
+    "next": "Repeat the pair with one material per chamber, matched initial gas and ignition, measured local flow, synchronized oxygen and images, and a fixed definition of extinction. Observe through extinction or record that the run ended first.",
+    "sources": [
+      {
+        "title": "Ferkul et al., LUCI flight and ground comparison",
+        "url": "https://ntrs.nasa.gov/api/citations/20250010653/downloads/ASGSR%202025-LUCI-Ferkul-Presentation-v2-20250010653.pdf#page=34",
+        "locator": "PDF pp. 4, 12, 16, 19, 23–27, 33–34, 42. Page 34 compares SIBAL flame width.",
+        "quote": "1-g extinction happens ~ 45 seconds sooner than partial-g extinction",
+        "anchor": "luci34"
+      },
+      {
+        "title": "Ferkul et al., matched parabolic and drop-tower tests",
+        "url": "https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=21",
+        "locator": "PDF pp. 21–22, day 2, parabola 29. Aircraft observation window 20 seconds."
+      },
+      {
+        "title": "Saffire test geometries and flow directions",
+        "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=29",
+        "locator": "PDF p. 29, Table I, tests 1-2 and 2-5. Different degrees of match."
+      }
+    ],
+    "options": [
+      {
+        "name": "Paired endpoints",
+        "mechanism": "Keep flame-base speed, tip speed and time to extinction for each material and run side by side.",
+        "tradeoff": "Needs aligned definitions and timing for both runs.",
+        "proof": "Return later extinction together with both lower speeds for the LUCI fabric."
+      },
+      {
+        "name": "Observation windows",
+        "mechanism": "Record when observation starts, when it ends, and whether the flame remained visible at the end.",
+        "tradeoff": "Short experiments often give lower bounds only.",
+        "proof": "A flame still present at the end of a parabola has an unresolved extinction time."
+      },
+      {
+        "name": "Experiment matching",
+        "mechanism": "Select comparisons separately for geometry, flow direction and endpoint before ranking conditions.",
+        "tradeoff": "The nearest run changes with the question.",
+        "proof": "Select the aircraft run for early base speed and the LUCI ground comparison for duration."
+      },
+      {
+        "name": "Competing explanations",
+        "mechanism": "Record the oxygen history, simultaneous second fuel and centrifugal effects as rival explanations of the difference.",
+        "tradeoff": "The available runs cannot identify their individual contributions.",
+        "proof": "Reject an isolated causal estimate for gravity while retaining the observed direction."
+      },
+      {
+        "name": "Image-based reanalysis",
+        "mechanism": "Estimate the width, base and tip independently from timestamped original images with a scale reference.",
+        "tradeoff": "Requires complete video, calibration, a defined visibility threshold and repeat labeling.",
+        "proof": "Two analysts agree within prespecified timing tolerance; otherwise report their disagreement."
+      },
+      {
+        "name": "Prospective validation",
+        "mechanism": "Register a matched, single-fuel repeat with an independent run held back from analysis choices.",
+        "tradeoff": "Replicated long-duration partial-gravity tests are scarce.",
+        "proof": "Test a signed prediction against new burns, report sample variation and any censored run."
+      }
+    ],
+    "check": "Answer with the material, the approximate paired duration difference and the separate direction of change in speed. Attribute the time comparison to LUCI.",
+    "human_review": "Pending team review"
+  },
+  {
+    "id": "saffire",
+    "short": "Saffire-II",
+    "title": "Blackened Nomex beside a burning acrylic strip",
+    "domain": "Ignition and material interfaces",
+    "question": "In Saffire-II sample 2-7, which part of the composite ignited?",
+    "record": "An upstream 5 cm PMMA strip overlapped Nomex HT90-40. At about 22.1% oxygen and 20 cm/s concurrent flow in orbital microgravity, PMMA was consumed. The first centimetre of Nomex was damaged and the first five were blackened. Table I records zero Nomex burn length.",
+    "decision": "Assign combustion to the PMMA, damage to the Nomex, and no observed Nomex ignition in this test.",
+    "reason": "The authors distinguish the PMMA flame plume from ignition of the downstream fabric and identify deposited soot as a possible contributor to discoloration.",
+    "limit": "The 140 s in the table belongs to the composite experiment. Related 1-g tests of externally heated HT90-40 found burning supported by a PMMA flame under some conditions. Changing the grade, pressure, oxygen or external heating changes the scope.",
+    "next": "Compare flight and ground runs at the component level. For a lunar question, match the flight-grade textile, overlap, oxygen, pressure and heat flux and measure whether flame spread continues after the heat source ends.",
+    "sources": [
+      {
+        "title": "Ferkul et al., Saffire-II composite results",
+        "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=25",
+        "locator": "PDF pp. 24–25, Table I p. 29, sample 2-7 and note ii.",
+        "quote": "Despite this significant heating load, the fabric was not ignited.",
+        "anchor": "saff25"
+      },
+      {
+        "title": "Thomsen, Berkeley dissertation, externally heated Nomex",
+        "url": "https://escholarship.org/uc/item/01d5j8mc",
+        "locator": "Chapter 6, experimental method and concurrent flame spread over HT90-40."
+      },
+      {
+        "title": "NASA PSI Saffire-II",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+        "locator": "PSI-99 experimental table row 8, sample 2-7 (header counts as row 1); note 2 assigns burn lengths to components."
+      }
+    ],
+    "options": [
+      {
+        "name": "Material components",
+        "mechanism": "Attach each observation to its material and assembly position, then join by sample ID.",
+        "tradeoff": "Legacy records often put multiple components in one cell.",
+        "proof": "Sample 2-7 returns consumed PMMA, zero Nomex burn length and the soot caveat."
+      },
+      {
+        "name": "Ignition and spread events",
+        "mechanism": "Distinguish external heating, transient ignition, sustained spread and extinction.",
+        "tradeoff": "Requires an explicit criterion for attributing flame to a component.",
+        "proof": "A 140-second composite run never becomes 140 seconds of Nomex burning."
+      },
+      {
+        "name": "Claim and counterevidence",
+        "mechanism": "Link the scoped flight finding to externally heated ground observations for the same fabric grade.",
+        "tradeoff": "Ground ignition and support conditions differ.",
+        "proof": "Retrieve both the orbital negative and the ground assisted-burning case on a broad Nomex query."
+      },
+      {
+        "name": "Condition matching",
+        "mechanism": "Rank textile ground tests by material grade, overlap, geometry, heating and atmosphere.",
+        "tradeoff": "Unreported heat flux limits quantitative transfer.",
+        "proof": "A Nomex Velcro test and a Synergy Pro sample cannot displace an exact HT90-40 grade match solely on oxygen."
+      },
+      {
+        "name": "Independent image review",
+        "mechanism": "Use time-resolved images to trace the emitting surface and compare with post-burn char or soot.",
+        "tradeoff": "Blackening alone is ambiguous and video may lack spectral information.",
+        "proof": "Return unresolved attribution if the images cannot separate the plume and the downstream fabric."
+      },
+      {
+        "name": "Replication protocol",
+        "mechanism": "Predefine the outcome for the fabric and release external heat at a recorded time across repeated conditions.",
+        "tradeoff": "Requires controlled laboratory data.",
+        "proof": "Report component ignition and post-source spread separately across replicates."
+      }
+    ],
+    "check": "Name both components, the Nomex observation, what the darkened region shows, and one condition that prevents transfer to a lunar fabric.",
+    "human_review": "Pending team review"
+  },
+  {
+    "id": "flex",
+    "short": "FLEX",
+    "title": "After the visible heptane flame disappeared",
+    "domain": "Suppression and observation",
+    "question": "Which FLEX run supports continued combustion after the visible flame went out?",
+    "record": "In FLEX-155, a free-floating heptane droplet burned in 18% O₂, 67% N₂ and 15% CO₂ at about 1 atm. Its initial/visible-extinction diameters were 2.73/2.52 mm. Subsequent high vaporization, a plateau and cloud formation led the investigators to infer cool-flame burning. In FLEX-120, a vapor cloud also formed, but its ultraviolet instrument recorded no images and the authors found the evidence inconclusive.",
+    "decision": "Retain an inferred cool-flame phase for FLEX-155 and unresolved cool-flame status for FLEX-120.",
+    "reason": "The technical report interprets multiple time-resolved observations for each run. A visible endpoint in the experimental table refers to the hot luminous flame.",
+    "limit": "FLEX-120 used a translated, fiber-supported droplet, 40% CO₂ and about 0.70 atm. The pair cannot isolate the effect of dilution. These are liquid heptane experiments in microgravity.",
+    "next": "Use synchronized droplet-size, optical and radiometric data with flagging for missing instruments. Compare matched initial diameters, diluent, support and pressure before estimating a suppression threshold.",
+    "sources": [
+      {
+        "title": "NASA FLEX final report, positive case",
+        "url": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf#page=189",
+        "locator": "PDF p. 189, printed p. 183, Fig. 159, FLEX-155.",
+        "quote": "behavior is indicative of cool flame burning and extinction.",
+        "anchor": "flex189"
+      },
+      {
+        "title": "NASA FLEX final report, unresolved case",
+        "url": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf#page=154",
+        "locator": "PDF p. 154, printed p. 148, Fig. 124, FLEX-120.",
+        "quote": "It is difficult to determine whether there was cool flame burning",
+        "anchor": "flex154"
+      },
+      {
+        "title": "NASA PSI, FLEX experimental table",
+        "url": "https://doi.org/10.60555/mbq8-0451",
+        "locator": "PSI-69, CSV rows 156 (FLEX-155) and 121 (FLEX-120), counting header as row 1."
+      },
+      {
+        "title": "Nayagam et al., cool-flame extinction across n-alkane droplets",
+        "url": "https://ntrs.nasa.gov/citations/20140006750",
+        "locator": "Abstract and PDF pp. 1–2, scope and diagnostic methods."
+      }
+    ],
+    "options": [
+      {
+        "name": "Combustion phases",
+        "mechanism": "Relate visible hot-flame extinction, inferred cool-flame burning and final extinction to the same droplet.",
+        "tradeoff": "Published summaries sometimes record only the first transition.",
+        "proof": "Return separate hot and cool outcomes for 155 and unknown cool status for 120."
+      },
+      {
+        "name": "Diagnostic availability",
+        "mechanism": "Condition each inference on working diagnostic channels and the report’s interpretation.",
+        "tradeoff": "An unrecorded channel cannot supply independent validation.",
+        "proof": "Preserve the missing UV observation in 120 and withhold a positive cool-flame inference."
+      },
+      {
+        "name": "Within-run evidence",
+        "mechanism": "Associate the evolving droplet diameter, rate, radiation and cloud with experimental time.",
+        "tradeoff": "A cloud alone has low specificity.",
+        "proof": "Demand time-aligned additional evidence before using the cloud as support."
+      },
+      {
+        "name": "Contrasting cases",
+        "mechanism": "Retrieve two cases sharing the visible event while varying the strength of evidence for the second stage.",
+        "tradeoff": "Pairs differ in support, dilution and pressure.",
+        "proof": "Recover 155 and 120 and prevent attribution of their difference solely to CO₂."
+      },
+      {
+        "name": "Conditional suppression curves",
+        "mechanism": "Estimate a threshold only within a matched fuel, diameter, support, pressure and diluent stratum.",
+        "tradeoff": "The usable subset can become too small.",
+        "proof": "Publish the count and outcome definition, and abstain when the stratum lacks both sides of a limit."
+      },
+      {
+        "name": "Independent validation",
+        "mechanism": "Test a prespecified phase detector on manually assessed held-out time series.",
+        "tradeoff": "Access to independent calibration and adjudicated event labels is necessary.",
+        "proof": "Report misses and false positives for cool combustion, including missing-channel cases."
+      }
+    ],
+    "check": "Distinguish recorded visual extinction from an investigator inference about cool combustion. Cite both figure numbers and retain “inconclusive” for FLEX-120.",
+    "human_review": "Pending team review"
+  },
+  {
+    "id": "same",
+    "short": "SAME",
+    "title": "Kapton and Teflon smoke at the alarm threshold",
+    "domain": "Detection",
+    "question": "Can a detector that responds well to overheated cellulose be assumed to detect smoke from wiring insulation?",
+    "record": "Meyer et al. compared signals from two detector technologies against alarm thresholds in SAME. The ISS light-scattering detector would have missed over half of the Kapton smoke tests and two-thirds of the Teflon tests. It responded strongly to several larger-particle smokes.",
+    "decision": "Judge performance by source material, detector type and threshold. Keep this finding separate from time to alarm in an occupied habitat.",
+    "reason": "Particles from overheated materials have different size distributions. The experiments measured the signal against defined thresholds, with no single response representing every material.",
+    "limit": "The quoted fractions apply to the published test subsets, with no per-material denominator asserted here. The Shuttle ionization detector had fewer usable data. Dust, transport, filtration and layout matter to an installed detector. The commanded smoke-generation duration in PSI is not time to alarm.",
+    "next": "Select a sensor comparison with matched fuel, heating, flow and aerosol aging. Measure detection probability alongside nuisance alarms and transport delay under relevant ventilation.",
+    "sources": [
+      {
+        "title": "Meyer et al., spacecraft smoke detector performance",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/#S8",
+        "locator": "Results §3.2 and Figure 9, left Shuttle, right ISS; dashed alarm thresholds.",
+        "quote": "over half of the Kapton smoke tests, and 2/3 of the Teflon tests.",
+        "anchor": "sameS8"
+      },
+      {
+        "title": "NIST and NASA investigators describe the flight results",
+        "url": "https://www.nist.gov/news-events/news/2018/05/nistnasa-study-shows-one-detector-doesnt-fit-all-smoke-spacecraft",
+        "locator": "Investigator comments on small and large smoke particles."
+      },
+      {
+        "title": "NASA PSI, smoke aerosol reflight",
+        "url": "https://doi.org/10.60555/2np7-jv14",
+        "locator": "PSI-101, experimental table. Kapton runs 51 and 101 differ in inlet flow and relative heater setting."
+      },
+      {
+        "title": "SAME reflight Teflon run 56 and morphology",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/#F10",
+        "locator": "Fig. 10(a), unaged smoke; PSI-101 CSV row 74. Morphology only."
+      },
+      {
+        "title": "Later NASA fire-detection white paper",
+        "url": "https://ntrs.nasa.gov/citations/20210022143",
+        "locator": "Introduction, rounds Kapton to half. Use original Fig. 9 study for the reported fraction."
+      }
+    ],
+    "options": [
+      {
+        "name": "Material and detector matrix",
+        "mechanism": "Compare threshold crossings within each source material and detector technology.",
+        "tradeoff": "Some detectors have fewer usable observations.",
+        "proof": "Return the poor Kapton/Teflon response for the ISS detector with its technology and scope."
+      },
+      {
+        "name": "Measurement provenance",
+        "mechanism": "Trace whether a value is a generation setting, particle measurement, detector signal or system alarm.",
+        "tradeoff": "Legacy tables do not record the full chain.",
+        "proof": "Prevent 60 seconds of smoke generation from being read as 60 seconds to alarm."
+      },
+      {
+        "name": "Signal distributions",
+        "mechanism": "Retain responses below and above alarm threshold and distinguish saturation and unavailable data.",
+        "tradeoff": "Published plots provide limited precision and do not establish every denominator.",
+        "proof": "A saturated signal counts as above threshold; a missing signal stays unknown."
+      },
+      {
+        "name": "Matched comparisons",
+        "mechanism": "Require the same heating setting, flow and aging for a quantitative detector comparison.",
+        "tradeoff": "Few conditions may match across campaigns.",
+        "proof": "Flag the different heater settings and zero versus 8.1 cm/s inlet for runs 101 and 51."
+      },
+      {
+        "name": "Transport and observation model",
+        "mechanism": "Link source aerosol, time-dependent transport and local detector response in different records.",
+        "tradeoff": "Requires habitat ventilation, deposition and detector placement data.",
+        "proof": "Withhold cabin alarm times until both transport and detector response are supplied."
+      },
+      {
+        "name": "False-alarm trade-off",
+        "mechanism": "Evaluate sensitivity to early fire and nuisance dust jointly on an independent test set.",
+        "tradeoff": "A detector can have good smoke sensitivity and poor specificity.",
+        "proof": "Report both missed smoke events and false alarms with denominators and held-out conditions."
+      }
+    ],
+    "check": "State the detector technology, source material and endpoint. Keep the reported within-study fractions; leave unsupported denominators and cabin-wide response times open.",
+    "human_review": "Pending team review"
+  },
+  {
+    "id": "cfig",
+    "short": "CFI-G",
+    "title": "Where the 85% oxygen actually went",
+    "domain": "Gas combustion and atmosphere",
+    "question": "Does an 85% oxygen CFI-G test provide evidence for a solid fabric in an 85% oxygen cabin?",
+    "record": "CFI-G inverse tests 21202A1 and A2 used an 85% oxygen burner stream flowing into nitrogen with 6% ethane in the chamber. The dissertation tabulates nominal oxygen mass flows of 0.93 and 1.86 mg/s. A1 had no hot ignition. A2 ignited and self-extinguished after 2 seconds.",
+    "decision": "Use these rows to study a gaseous inverse flame and the role of flow. Exclude their burner oxygen values from cabin-atmosphere and solid-fabric comparisons.",
+    "reason": "The measurement location changes the physical meaning of the oxygen percentage. The investigators give the feed direction in Methods and tabulate the runs as inverse flames.",
+    "limit": "The test matrix quotes nominal 2.0 atm. PSI has its own approximate initial pressure readings and unit labels. Use the value from the cited record in its stated units. Two consecutive trials alone cannot isolate a causal oxygen-flow effect.",
+    "next": "Compare matched normal and inverse configurations with explicit burner and chamber fields. For textile transfer, collect a separate solid-fuel record with measured ambient composition.",
+    "sources": [
+      {
+        "title": "Kimber, Spherical Gas-Fueled Cool Diffusion Flames",
+        "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/278c77a3-6e86-4dc5-8413-c0381ebe74a9/content#page=62",
+        "locator": "PDF pp. 20–21 (printed pp. 9–10), Appendix E, Table E.6 on PDF p. 62 (printed p. 51), 21202A1–A2.",
+        "quote": "The chamber was filled with its target atmosphere prior to the burner gas flow.",
+        "anchor": "cfig21"
+      },
+      {
+        "title": "NASA PSI, CFI-G experimental tables",
+        "url": "https://doi.org/10.60555/cyt1-kh64",
+        "locator": "PSI-159, inverse experimental table rows 18–19, header counted; normal and inverse tables label ambient and burner fields separately."
+      },
+      {
+        "title": "University of Maryland, CFI-G investigators",
+        "url": "https://fpe.umd.edu/release/unusual-flames-discovered-aboard-the-international-space-station",
+        "locator": "Separate n-butane test with 40% oxidizer. Scope differs from the ethane pair."
+      }
+    ],
+    "options": [
+      {
+        "name": "Location-aware composition",
+        "mechanism": "Store burner-oxidizer fraction and chamber fuel composition with their physical locations.",
+        "tradeoff": "Requires reading the normal and inverse table headings.",
+        "proof": "No inverse 85% burner entry may satisfy an 85% chamber-oxygen filter."
+      },
+      {
+        "name": "Flow-path representation",
+        "mechanism": "Represent how each gas travels from supply through burner or chamber to the reaction zone.",
+        "tradeoff": "More apparatus detail is needed per experiment.",
+        "proof": "Reverse normal and inverse configurations and verify the meaning of every gas value follows the stream."
+      },
+      {
+        "name": "Matched trial pairs",
+        "mechanism": "Retrieve runs sharing gas composition and label the settings that changed.",
+        "tradeoff": "Pair similarity cannot establish a causal effect from two outcomes.",
+        "proof": "Recover 21202A1 and A2, their mass flows, outcomes and pressure source."
+      },
+      {
+        "name": "Outcome sequence",
+        "mechanism": "Separate hot ignition, hot duration, forced termination, self-extinction and any cool phase.",
+        "tradeoff": "Hot-flame records may lack diagnostic evidence of a cool stage.",
+        "proof": "A1 returns no hot ignition; A2 returns 2 seconds and self-extinction with no invented cool outcome."
+      },
+      {
+        "name": "Evidence applicability",
+        "mechanism": "Partition gas, liquid and solid-fuel questions before scoring atmospheric proximity.",
+        "tradeoff": "The gas records become mechanistic context for a textile user.",
+        "proof": "Reject these runs as direct evidence for the flammability limit of a solid textile."
+      },
+      {
+        "name": "Source reconciliation",
+        "mechanism": "Compare nominal pressure in the publication with the original instrument field in PSI, preserving units and uncertainty.",
+        "tradeoff": "Differences need human interpretation.",
+        "proof": "Display the two records separately until their reference and units are reconciled."
+      }
+    ],
+    "check": "Identify the gas stream, chamber mixture, tested fuel and observed contrast. Keep the reported oxygen percentage attached to the correct location.",
+    "human_review": "Pending team review"
+  },
+  {
+    "id": "ices",
+    "short": "ICES",
+    "title": "Opposite directions in five-second material tests",
+    "domain": "Material screening",
+    "question": "Does the same 1-g extrapolation describe P213 tape and polycarbonate at simulated lunar gravity?",
+    "record": "At 8.2 psia, Urban et al. found the lunar buoyant extinction limit for acrylic-adhesive P213 tape below the WSTF 1-g forced-flow extrapolation. For polycarbonate, the paper reports a lunar extinction oxygen concentration substantially above the WSTF data. Nomex Velcro also showed the latter behavior.",
+    "decision": "Keep a different conclusion for each material. Preserve the comparator named in each result.",
+    "reason": "The P213 comparison is explicitly against an extrapolated line. The polycarbonate passage compares against the WSTF data, with a proposed shift onto the quenching branch. Table 2 gives a separate conservative extrapolation for a possible correction.",
+    "limit": "Both research facilities used a five-second extinction endpoint; NASA Test 1 uses five specimens and burn-length plus debris criteria. Ignition procedures differ between research rigs. The local lunar buoyant velocity was unknown. Table 2 values for P213 and polycarbonate (1.4 and 2.3 oxygen percentage points) describe the authors’ worst-case slope methodology, rather than measured shifts.",
+    "next": "Reproduce the material-specific comparison with a longer duration, measured local flow and the same matched ignition history. Keep signed observations separate from engineering margins.",
+    "sources": [
+      {
+        "title": "Urban et al., ICES-2025-392, corrected captions",
+        "url": "https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf#page=9",
+        "locator": "PDF pp. 6–11: Table 2 and Figs. 8 and 11. P213 result p. 9; opposite polycarbonate result p. 11.",
+        "quote": "the lunar-g buoyant limit was found to be less",
+        "anchor": "ices9"
+      },
+      {
+        "title": "Urban et al., higher polycarbonate and Nomex Velcro limit",
+        "url": "https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf#page=11",
+        "locator": "PDF p. 11, first paragraph. Discussion refers to the WSTF data.",
+        "quote": "the lunar-g buoyant extinction is at substantially higher oxygen concentrations",
+        "anchor": "ices11"
+      },
+      {
+        "title": "NASA materials standard and active version",
+        "url": "https://standards.nasa.gov/standard/NASA/NASA-STD-6001",
+        "locator": "NASA-STD-6001B Change 3, §§7.1.2–7.1.4; PDF pp. 27–29."
+      },
+      {
+        "title": "Takahashi et al., thin polymers in microgravity",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S1540748918302852",
+        "locator": "Results for opposed forced flow in microgravity with thin polycarbonate and aramid fabric; a different comparison."
+      },
+      {
+        "title": "Urban et al., local velocity and compensation model",
+        "url": "https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf#page=10",
+        "locator": "PDF p. 10, section A, followed by Table 2 on p. 11.",
+        "quote": "lunar gravity velocity is not known.",
+        "anchor": "ices10"
+      }
+    ],
+    "options": [
+      {
+        "name": "Material and comparator ledger",
+        "mechanism": "Record material identity, measured lunar endpoint, named Earth comparator and sign for each claim.",
+        "tradeoff": "A measured Earth data series and an extrapolated line require different labels.",
+        "proof": "P213 returns below the 1-g extrapolation; polycarbonate returns above the WSTF data."
+      },
+      {
+        "name": "Protocol comparison",
+        "mechanism": "Compare test duration, ignition history, orientation and pressure before assigning a common endpoint.",
+        "tradeoff": "Many apparent same-pressure matches fail the other criteria.",
+        "proof": "A five-second extinction result cannot produce a NASA Test 1 pass."
+      },
+      {
+        "name": "Measured versus calculated evidence",
+        "mechanism": "Separate observations and regressions from the 35-to-zero cm/s conservative compensation exercise.",
+        "tradeoff": "Results with different evidentiary roles cannot be collapsed into one numeric ranking.",
+        "proof": "Never report Table 2’s 1.4 and 2.3 as measured lunar shifts."
+      },
+      {
+        "name": "Conditional boundary model",
+        "mechanism": "Represent oxygen cutoffs by material and flow regime, allowing both quenching and blowoff.",
+        "tradeoff": "The weak-flow lunar velocity and branch location are uncertain.",
+        "proof": "Evaluate a range of local velocities and retain the authors’ branch explanation as a hypothesis."
+      },
+      {
+        "name": "Contrary evidence retrieval",
+        "mechanism": "Search the same material in other studies and name changes of direction, method and flow.",
+        "tradeoff": "Matching polymer names can conceal thickness or geometry changes.",
+        "proof": "Retrieve the thin-polycarbonate opposed-flow result alongside the upward centrifuge study and explain the difference."
+      },
+      {
+        "name": "External confirmation",
+        "mechanism": "Evaluate the compensation rule against new materials with matched protocol and longer duration.",
+        "tradeoff": "Not yet supported by these five materials alone.",
+        "proof": "Score held-out signed differences and uncertainty coverage before transfer to other textiles."
+      }
+    ],
+    "check": "Recover both signs and specify what Earth comparator each uses. Distinguish modeled corrections, formal qualification criteria and research endpoints.",
+    "human_review": "Pending team review"
+  },
+  {
+    "id": "fm2",
+    "short": "FM²",
+    "title": "Four planned lunar burns and an unscored forecast",
+    "domain": "Prediction",
+    "question": "What can the four planned Synergy Pro burns test, and what remains a prediction?",
+    "record": "Ferkul et al. specify four separate 2 × 20 cm exposed Synergy Pro Navy fabric strips at 8.2 ± 0.3 psia, with initial oxygen of 37%, 33%, 29% and 25%. Their concept gives an expected lunar limiting oxygen concentration of 24–26%. They expect the first three tests to burn to threshold and the fourth not to ignite.",
+    "decision": "Use the published qualitative expectation as a baseline. Treat the guide’s 26% mean and 1.5 percentage-point spread as an illustrative assumption until an independent timestamped team forecast is supplied.",
+    "reason": "FM² refreshes the chamber between burns; oxygen can fall during a burn. Initial oxygen, successful ignition, post-igniter spread and oxygen at extinction are different measurements.",
+    "limit": "The reviewed sources are design and planning documents. No completed lunar outcomes or independently time-stamped team forecast was located. A deterministic limiting-oxygen model describes propagation conditional on establishment; a failed igniter, absent evidence or short observation must not become a scored negative.",
+    "next": "Predefine each outcome, invalid-test handling, sensor requirements and scoring horizon. Preserve the forecast and its timestamp independently before using public outcome data.",
+    "sources": [
+      {
+        "title": "Ferkul et al., FM² science requirements",
+        "url": "https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=5",
+        "locator": "PDF pp. 5–6, 9–11, 14. Oxygen sequence and expected outcomes p. 5; Navy fabric and mounting p. 10.",
+        "quote": "not expected to ignite but would provide a margin of safety",
+        "anchor": "fm25"
+      },
+      {
+        "title": "NASA Glenn, Flammability of Materials on the Moon",
+        "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/",
+        "locator": "Mission overview, chamber and instrumentation."
+      },
+      {
+        "title": "NASA FY 2027 budget request",
+        "url": "https://www.nasa.gov/wp-content/uploads/2026/04/fiscal-year-2027-full-budget-request.pdf",
+        "locator": "Planning reference, search the PDF for “Flammability of Materials on the Moon”."
+      }
+    ],
+    "options": [
+      {
+        "name": "Prospective outcome contract",
+        "mechanism": "Define eligible ignition, post-igniter spread, extinction and invalid burns before scoring.",
+        "tradeoff": "Published summaries may leave some endpoints unresolved.",
+        "proof": "A missing or failed ignition attempt remains unscorable until the protocol permits classification."
+      },
+      {
+        "name": "Forecast registry",
+        "mechanism": "Bind the prediction, scoring definitions, version and timestamp in an externally verifiable public record.",
+        "tradeoff": "A local digest can verify file identity but does not demonstrate priority.",
+        "proof": "No badge claims preregistration without a dated public receipt predating outcomes."
+      },
+      {
+        "name": "Shared uncertainty model",
+        "mechanism": "Represent the uncertain limiting concentration once across four burns of the same textile.",
+        "tradeoff": "Monotonic outcomes and ignition assumptions can fail in practice.",
+        "proof": "Disclose common dependence and distinguish uncertainty about a limit from repeat-to-repeat variability."
+      },
+      {
+        "name": "Baseline comparisons",
+        "mechanism": "Preserve the investigators’ qualitative call and label any numeric probability translation as analyst-chosen.",
+        "tradeoff": "Brier comparisons depend on the selected probabilities.",
+        "proof": "No analyst-generated numeric vector is credited to NASA or described as independently calibrated."
+      },
+      {
+        "name": "Sequential test design",
+        "mechanism": "Use expected information to suggest a future test near an uncertain transition, subject to resources and distinct endpoints.",
+        "tradeoff": "High binary entropy gives maximum information only with deterministic, reliable observations under this model.",
+        "proof": "Show how the recommendation changes if the igniter sometimes fails or repeat variability dominates."
+      },
+      {
+        "name": "Versioned mission updates",
+        "mechanism": "Distinguish dated mission designs, proposed material tests, qualification results and published flight outcomes.",
+        "tradeoff": "Superseded concepts can remain visible in backup slides.",
+        "proof": "The older SIBAL/PMMA configuration cannot overwrite the March 2026 Synergy Pro requirements."
+      }
+    ],
+    "check": "Distinguish plans from outcomes. Identify any numeric baseline or distribution as an explicit assumption and ensure unknown burns never receive a score.",
+    "human_review": "Pending team review"
+  }
+]

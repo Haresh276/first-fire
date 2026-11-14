@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "study_id": "open-dry-run-v1",
+  "cases": [
+    {
+      "id": "a",
+      "accepted": "Reject the universal detection claim. About two-thirds of Teflon cases fell below the threshold of the ISS light-scattering detector.",
+      "evidence": "Meyer et al., section 3.2 / figure 9, right panel comparing response against threshold.",
+      "limit": "Heated-sample tests in ISS microgravity. This fraction is conditional on the tested cases and it does not measure the rate of missed cabin fires.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/"
+      ],
+      "next_action": "Credit a justified reanalysis of per-run detector response and availability against the actual device thresholds, or an explicitly matched new detector test if the needed data are absent. The rationale must connect sensitivity to smoke material and operating conditions."
+    },
+    {
+      "id": "b",
+      "accepted": "No. In the SIBAL comparison the simulated-lunar flame base moved about 0.9 mm/s vs 1.5 mm/s on Earth, with extinction roughly 45 seconds later in simulated lunar gravity.",
+      "evidence": "Ferkul et al., LUCI ASGSR 2025, SIBAL Flame Spread Fit Comparison and SIBAL Flame Width Comparison.",
+      "limit": "Specific downward fabric burn, flight and ground comparisons. Coriolis, tracking and the changing chamber oxygen limit inference to other tests.",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/20250010653"
+      ],
+      "next_action": "Credit reanalysis of the published/available flight and matched ground profiles with a defined rate and extinction metric, or a controlled replicate to resolve oxygen history or material variability. A new generic fire video alone is insufficient."
+    },
+    {
+      "id": "c",
+      "accepted": "Keep the lunar outcome pending. The March 2026 design specified Synergy Pro Navy fabric at 25% initial oxygen and a low expectation of ignition.",
+      "evidence": "Ferkul et al., LPSC 2026, PDF pp. 5 and 10 (printed 4 and 9), current concept / initial conditions. Confirm a later result if one has been published before study freeze.",
+      "limit": "Qualitative plan at 8.2 psia, not a lunar observation or NASA-assigned probability. An attempted ignition is not identical to a sustained-spread or extinction-oxygen measurement.",
+      "sources": [
+        "https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf"
+      ],
+      "next_action": "Credit waiting for or analyzing identified FM2 flight measurements when released, or a justified matched Synergy Pro gravity/pressure test that isolates a missing variable. A surrogate result must not be called a lunar observation."
+    },
+    {
+      "id": "d",
+      "accepted": "Large heptane droplets can continue burning in a cooler regime after the visible hot flame disappears; continuing quasi-steady droplet shrinkage/vaporization supports this.",
+      "evidence": "Dietrich et al., Droplet Combustion Experiments Aboard the ISS, cool-flame results, or experimental report on n-alkane droplets observing two-stage extinction.",
+      "limit": "Applies to particular large n-alkane droplets and atmospheres in microgravity; a dark video frame alone does not classify every material.",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/20140006750"
+      ],
+      "next_action": "Credit using time-resolved droplet size or diagnostic data after apparent visible extinction, or a specifically instrumented replicate with the same fuel, environment and event criteria."
+    },
+    {
+      "id": "e",
+      "accepted": "At about 20 cm/s forced flow the narrower fabric spread around 2.1 mm/s versus 1.8 mm/s for the wider fabric in the cited concurrent case.",
+      "evidence": "Saffire large-scale flammability results, slide titled SIBAL Fabric Results (continued), comparing 5 vs 40.6 cm fabric.",
+      "limit": "Starting oxygen differed (about 22.1% vs 21.7%) and side entrainment could differ; the comparison cannot isolate a width-only effect.",
+      "sources": [
+        "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf"
+      ],
+      "next_action": "Credit a new width-controlled comparison with matched oxygen and flow, or a justified reanalysis of existing runs only if sampling and confounding can be addressed."
+    },
+    {
+      "id": "f",
+      "accepted": "Leave the measured lunar velocity unknown. The study uses approximately 35 cm/s as a 1-g reference and does not report the lunar value as measured.",
+      "evidence": "Olson et al., ICES-2025-392, PDF p. 10, discussion of buoyant velocity and extrapolation.",
+      "limit": "An extrapolation or gravity-based scaling can be labeled as an estimate but depends on sample and geometry; no universal measured value follows.",
+      "sources": [
+        "https://ntrs.nasa.gov/api/citations/20250002114/downloads/ICES_2025-392-correctedcaptions.pdf"
+      ],
+      "next_action": "Credit direct flow measurement at stated geometry/gravity or a calibrated study of velocity with reported uncertainty. An unsupported universal numerical assumption receives no secondary credit."
+    }
+  ]
+}

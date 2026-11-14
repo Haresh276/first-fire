@@ -1,0 +1,52 @@
+{
+  "source_url": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+  "last_published_at_utc": "2026-11-13T03:46:21.001119Z",
+  "resources": [
+    {
+      "title": "PSI Data Repository: Combustion Science",
+      "url": "https://psi.nasa.gov/physci/repo/search?q=combustion"
+    },
+    {
+      "title": "NASA Combustion Science",
+      "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/"
+    },
+    {
+      "title": "NASA ScienceCasts: The Power of Studying Combustion on the ISS",
+      "url": "https://www.youtube.com/watch?v=W1oXykoz9zg"
+    },
+    {
+      "title": "A Researcher’s Guide to International Space Station Combustion Science",
+      "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+    },
+    {
+      "title": "Apollo 1",
+      "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-1"
+    },
+    {
+      "title": "Apollo 13",
+      "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-13"
+    },
+    {
+      "title": "25 Years Ago: Fire Aboard Space Station Mir",
+      "url": "https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/"
+    },
+    {
+      "title": "Fireman’s Air Tanks",
+      "url": "https://spinoff.nasa.gov/node/9582"
+    },
+    {
+      "title": "Fire Detector",
+      "url": "https://spinoff.nasa.gov/node/9407"
+    },
+    {
+      "title": "New Technology for the Fire Attire",
+      "url": "https://spinoff.nasa.gov/node/9918"
+    }
+  ],
+  "challenge_video": [
+    {
+      "url": "https://www.youtube.com/embed/AVuEiKxOpc0?feature=oembed",
+      "title": "2026 Challenge | Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion"
+    }
+  ]
+}

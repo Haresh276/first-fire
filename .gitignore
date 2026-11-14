@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.DS_Store
+.firstfire-build-*/
+.sites-runtime/
+.venv*/
+.chat-cache/
+*.onnx
+*.gguf
+.chat-venv/
+.openai/
+.env
+.env.*
+!.env.example

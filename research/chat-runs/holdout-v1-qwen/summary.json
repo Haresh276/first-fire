@@ -1,0 +1,220 @@
+{
+  "suite": "first-fire-chat-holdout-24-v1",
+  "suite_sha256": "e81b031beeea8b196b20efbbb5d549200e744a101cd3337f2556d7d27f372bd6",
+  "overall": {
+    "answer_content_pass": {
+      "passed": 17,
+      "eligible": 24,
+      "percent": 70.8
+    },
+    "strict_pass": {
+      "passed": 12,
+      "eligible": 24,
+      "percent": 50.0
+    },
+    "behavior_pass": {
+      "passed": 16,
+      "eligible": 24,
+      "percent": 66.7
+    },
+    "citation_pass": {
+      "passed": 14,
+      "eligible": 17,
+      "percent": 82.4
+    },
+    "retrieval_any_at_1": {
+      "passed": 14,
+      "eligible": 17,
+      "percent": 82.4
+    },
+    "retrieval_any_at_3": {
+      "passed": 16,
+      "eligible": 17,
+      "percent": 94.1
+    },
+    "retrieval_all_at_3": {
+      "passed": 14,
+      "eligible": 17,
+      "percent": 82.4
+    },
+    "retrieval_all_at_5": {
+      "passed": 15,
+      "eligible": 17,
+      "percent": 88.2
+    },
+    "transport_errors": 0,
+    "count": 24,
+    "latency_ms": {
+      "n": 24,
+      "median": 411.9,
+      "p95_nearest_rank": 468.3
+    }
+  },
+  "started_utc": "2026-11-14T08:52:05.433627+00:00",
+  "finished_utc": "2026-11-14T08:52:15.275812+00:00",
+  "expected_behavior": {
+    "answer": {
+      "answer_content_pass": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "strict_pass": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "behavior_pass": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "retrieval_any_at_1": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "retrieval_any_at_3": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "retrieval_all_at_3": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "retrieval_all_at_5": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "transport_errors": 0,
+      "count": 8,
+      "latency_ms": {
+        "n": 8,
+        "median": 399.5,
+        "p95_nearest_rank": 514.0
+      }
+    },
+    "boundary": {
+      "answer_content_pass": {
+        "passed": 5,
+        "eligible": 8,
+        "percent": 62.5
+      },
+      "strict_pass": {
+        "passed": 4,
+        "eligible": 8,
+        "percent": 50.0
+      },
+      "behavior_pass": {
+        "passed": 8,
+        "eligible": 8,
+        "percent": 100.0
+      },
+      "citation_pass": {
+        "passed": 5,
+        "eligible": 8,
+        "percent": 62.5
+      },
+      "retrieval_any_at_1": {
+        "passed": 5,
+        "eligible": 8,
+        "percent": 62.5
+      },
+      "retrieval_any_at_3": {
+        "passed": 7,
+        "eligible": 8,
+        "percent": 87.5
+      },
+      "retrieval_all_at_3": {
+        "passed": 5,
+        "eligible": 8,
+        "percent": 62.5
+      },
+      "retrieval_all_at_5": {
+        "passed": 6,
+        "eligible": 8,
+        "percent": 75.0
+      },
+      "transport_errors": 0,
+      "count": 8,
+      "latency_ms": {
+        "n": 8,
+        "median": 418.7,
+        "p95_nearest_rank": 432.0
+      }
+    },
+    "unanswerable": {
+      "answer_content_pass": {
+        "passed": 4,
+        "eligible": 8,
+        "percent": 50.0
+      },
+      "strict_pass": {
+        "passed": 0,
+        "eligible": 8,
+        "percent": 0.0
+      },
+      "behavior_pass": {
+        "passed": 0,
+        "eligible": 8,
+        "percent": 0.0
+      },
+      "citation_pass": {
+        "passed": 1,
+        "eligible": 1,
+        "percent": 100.0
+      },
+      "retrieval_any_at_1": {
+        "passed": 1,
+        "eligible": 1,
+        "percent": 100.0
+      },
+      "retrieval_any_at_3": {
+        "passed": 1,
+        "eligible": 1,
+        "percent": 100.0
+      },
+      "retrieval_all_at_3": {
+        "passed": 1,
+        "eligible": 1,
+        "percent": 100.0
+      },
+      "retrieval_all_at_5": {
+        "passed": 1,
+        "eligible": 1,
+        "percent": 100.0
+      },
+      "transport_errors": 0,
+      "count": 8,
+      "latency_ms": {
+        "n": 8,
+        "median": 429.8,
+        "p95_nearest_rank": 468.3
+      }
+    }
+  },
+  "endpoint": "http://127.0.0.1:8765/api/chat",
+  "health": {
+    "ready": true,
+    "model": "qwen3:0.6b",
+    "provider": "Ollama (local)",
+    "model_digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+    "retriever": "BAAI/bge-small-en-v1.5 + BM25 + exact run IDs",
+    "encoder_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "version": "1.0",
+    "engine_sha256": "027150686bc699e6c45a5f5c6a0e348978c7321cd81ddb909f076f501f9a8485",
+    "corpus_sha256": "8e79d6ec3237a76a342b958253616831d0199d74860881701a3d0874e011270e",
+    "passages": 85,
+    "rows": 1058,
+    "mode": "grounded passage selection"
+  },
+  "scorer_sha256": "382d42cdbc14870307cfea266cb4d57ecaad18d33d79a4fc92cf1f5418ddd2bb"
+}

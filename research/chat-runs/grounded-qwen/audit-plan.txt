@@ -1,0 +1,2 @@
+Qualitative review sample selected by question ID before reading answers to the selected questions. Inspect every fifth item, Q005 through Q100, four per difficulty band. Judge whether the answer directly supplies the requested fact or defensible boundary. Labels are adequate, partial, wrong/unsupported. Review by the implementing assistant, not an independent human expert. Compare judgments against frozen automated content checks without changing their scores.
+2026-11-14T08:48:37.270298+00:00
