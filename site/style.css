@@ -27,3 +27,49 @@
 @media(max-width:380px){.mast-inner{gap:6px;padding-inline:12px}.mast-brand{font-size:23px}.mast-brand .brandmark{width:19px;margin-right:5px}.mast-chat,.mast-explore>summary{padding-inline:8px}.mast-dropdown{min-width:0;width:min(304px,calc(100vw - 24px))}}
 @media print{.masthead{display:none}}
 .mast-explore{border:0;padding:0;margin:0;background:none}.mast-explore[open]>summary{margin-bottom:0}
+
+/* Case evidence questions */
+.question-modes {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 3px;
+  gap: 2px;
+  margin: 16px 0;
+  background: #eceee6;
+  border: 1px solid #d9ddd2;
+  border-radius: 9px;
+}
+.question-modes button {
+  font: 600 .87rem/1.3 var(--body);
+  padding: 9px 12px;
+  color: #47564e;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+.question-modes button:hover { color: var(--teal); }
+.question-modes button[aria-pressed="true"] {
+  color: #253a31;
+  border-color: #d2d7cc;
+  background: var(--surface);
+  box-shadow: 0 1px 2px #192b2314;
+}
+#pair { margin-top: 14px; }
+#pair .actions { margin-top: 10px; }
+.case-question-form { display: grid; justify-items: start; gap: 8px; }
+.case-question-form textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 4.7rem;
+  padding: 10px 12px;
+  line-height: 1.5;
+  resize: vertical;
+}
+.case-question-form .btn { margin-top: 2px; }
+#case-question-result:not(:empty) { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
+#case-question-result { overflow-wrap: anywhere; }
+#case-question-result .inlinebtn { margin-top: 7px; }
+.case-answer { margin-top: 14px; }
+.case-answer + .case-answer { border-top: 1px solid var(--line); padding-top: 14px; }
+.case-answer p { margin-top: 5px; }

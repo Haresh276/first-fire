@@ -2,6 +2,8 @@
 
 An offline research desk for the 2026 NASA Space Apps [Flame in Freefall challenge](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources). Start with a research question and find the source, boundary and next test. The project does not issue a material rating or certify a cabin design.
 
+[Technical manual](site/technical-manual.html) · [Download technical manual (PDF)](dist/first-fire-technical-manual.pdf)
+
 ## Ask the research chat
 
 On this computer, open **http://127.0.0.1:8765/#chat** when the local service is running. From this directory, start Ollama and run `.chat-venv/bin/python -m chat.server`. On a fresh machine, first install Ollama and Python 3.12, launch Ollama, then run `python3.12 scripts/setup_chat.py` to fetch the model and create the Python environment. [Complete local setup and provider contract](chat/README.md).

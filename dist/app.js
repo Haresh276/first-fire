@@ -60,10 +60,127 @@ function comparisons(c){
  return book[c.id];
 }
 function actionLink(url){return url?.startsWith('#')?linkbtn(url,'Inspect record →','inlinebtn'):out(url,'Open source');}
-function compare(c){
- const rows=comparisons(c);const host=root.querySelector('#comparison');if(!host)return;
- host.innerHTML='<div class="eyebrow">Evidence comparison</div><h2>Choose the question</h2><label class="field" style="margin-top:14px">Research question<select id="compare-q">'+rows.map((r,i)=>'<option value="'+i+'">'+esc(r[0])+'</option>').join('')+'</select></label><div id="pair" class="grid2" style="margin-top:14px"></div>';
- function draw(){const r=rows[Number(host.querySelector('select').value)];host.querySelector('#pair').innerHTML=[1,3].map((n,i)=>'<div class="panel"><span class="eyebrow">'+(i?'Comparison':'Primary evidence')+'</span><h3>'+esc(r[n])+'</h3><p>'+esc(r[n+1])+'</p><div class="actions" style="margin-top:10px">'+actionLink(r[5+i])+'</div></div>').join('');}host.querySelector('select').onchange=draw;draw();
+const caseQuestions = new Map();
+function comparisonState(c) {
+  if (!caseQuestions.has(c.id)) {
+    let saved = {};
+    try { saved = JSON.parse(sessionStorage.getItem('first-fire:case-question:' + c.id)) || {}; } catch {}
+    caseQuestions.set(c.id, {
+      mode: saved.mode === 'custom' ? 'custom' : 'suggested',
+      preset: Number.isInteger(saved.preset) ? saved.preset : 0,
+      draft: typeof saved.draft === 'string' ? saved.draft.slice(0, 1000) : '',
+      submitted: typeof saved.submitted === 'string' ? saved.submitted.slice(0, 1000) : ''
+    });
+  }
+  return caseQuestions.get(c.id);
+}
+function saveComparison(c, state) {
+  try { sessionStorage.setItem('first-fire:case-question:' + c.id, JSON.stringify(state)); } catch {}
+}
+function customSource(source) {
+  const link = source.url?.startsWith('#')
+    ? linkbtn(source.url, source.title, 'inlinebtn')
+    : out(source.url, source.title);
+  return '<div class="sourceitem">' + link +
+    (source.locator ? '<small>' + esc(source.locator) + '</small>' : '') + '</div>';
+}
+function compare(c) {
+  const host = root.querySelector('#comparison');
+  const rows = comparisons(c);
+  const state = comparisonState(c);
+  host.innerHTML = `
+    <span class="eyebrow">Evidence comparison</span><h2>Choose the question</h2>
+    <div class="question-modes" role="group" aria-label="Question type">
+      <button type="button" data-mode="suggested" aria-controls="suggested-questions">Suggested questions</button>
+      <button type="button" data-mode="custom" aria-controls="custom-question">Ask your own question</button>
+    </div>
+    <div id="suggested-questions">
+      <label class="field">Research question<select id="compare-q"></select></label>
+      <div id="pair" class="grid2"></div>
+    </div>
+    <div id="custom-question" hidden>
+      <form class="case-question-form">
+        <label class="field" for="case-question-input">Your question about ${esc(c.short)}</label>
+        <textarea id="case-question-input" rows="2" maxlength="1000" required></textarea>
+        <button class="btn" type="submit">Find evidence</button>
+      </form>
+      <div id="case-question-result" aria-live="polite" aria-atomic="true"></div>
+    </div>`;
+  const selector = host.querySelector('#compare-q');
+  rows.forEach(([question], i) => selector.add(new Option(question, String(i))));
+  selector.selectedIndex = rows[state.preset] ? state.preset : 0;
+  function drawPair() {
+    const row = rows[selector.selectedIndex];
+    host.querySelector('#pair').innerHTML = [1, 3].map((n, i) => `
+      <div class="panel"><span class="eyebrow">${i ? 'Comparison' : 'Primary evidence'}</span>
+      <h3>${esc(row[n])}</h3><p>${esc(row[n + 1])}</p><div class="actions">${actionLink(row[5 + i])}</div></div>`).join('');
+  }
+  selector.onchange = () => {
+    state.preset = selector.selectedIndex;
+    saveComparison(c, state);
+    drawPair();
+  };
+  drawPair();
+
+  const input = host.querySelector('#case-question-input');
+  const result = host.querySelector('#case-question-result');
+  input.value = state.draft;
+  function drawResult() {
+    const question = input.value.trim();
+    if (!state.submitted || question !== state.submitted) {
+      result.replaceChildren();
+      delete result.dataset.status;
+      return;
+    }
+    const answer = window.FFCaseQuestions.ask(c, question, rows);
+    result.dataset.status = answer.status;
+    result.innerHTML = (answer.message ? '<p>' + esc(answer.message) + '</p>' : '') + answer.entries.map(entry => `
+      <article class="case-answer">
+        <span class="eyebrow">${esc(entry.label)}</span><h3>${esc(entry.title)}</h3>
+        <p>${esc(entry.text)}</p>${entry.sources.map(customSource).join('')}
+      </article>`).join('');
+    if (answer.status === 'gap') {
+      const search = document.createElement('a');
+      search.className = 'inlinebtn';
+      search.href = '#search?q=' + encodeURIComponent(question);
+      search.textContent = 'Search all evidence →';
+      result.append(search);
+    }
+  }
+  input.oninput = () => {
+    input.setCustomValidity('');
+    state.draft = input.value;
+    saveComparison(c, state);
+    drawResult();
+  };
+  host.querySelector('.case-question-form').onsubmit = event => {
+    event.preventDefault();
+    if (!input.value.trim()) {
+      input.setCustomValidity('Enter a question.');
+      input.reportValidity();
+      return;
+    }
+    state.draft = input.value;
+    state.submitted = input.value.trim();
+    saveComparison(c, state);
+    drawResult();
+  };
+  drawResult();
+  const modes = host.querySelectorAll('.question-modes button');
+  function showMode() {
+    modes.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === state.mode)));
+    host.querySelector('#suggested-questions').hidden = state.mode !== 'suggested';
+    host.querySelector('#custom-question').hidden = state.mode !== 'custom';
+  }
+  modes.forEach(button => {
+    button.onclick = () => {
+      state.mode = button.dataset.mode;
+      saveComparison(c, state);
+      showMode();
+      if (state.mode === 'custom') input.focus();
+    };
+  });
+  showMode();
 }
 function fileExport(name,body,type='text/plain'){const url=URL.createObjectURL(new Blob([body],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function notesKey(c){return 'first-fire:note:v1:'+c.id;}
@@ -79,9 +196,14 @@ function renderCase(id,view='evidence'){
  }else if(view==='designs'){
  body.innerHTML='<div class="record"><div class="panel"><span class="eyebrow">Architecture review</span><h2>Six ways to handle this case</h2><p class="sub" style="margin:10px 0 16px">Ranked by fit to the decision, traceability to the original record and feasibility with the available data. The ranking is a design judgment.</p><ol class="optionlist">'+c.options.map(o=>'<li><div><h3>'+esc(o.name)+'</h3><p>'+esc(o.mechanism)+'</p><p><strong>Trade-off.</strong> '+esc(o.tradeoff)+'</p><p><strong>Acceptance check.</strong> '+esc(o.proof)+'</p></div></li>').join('')+'</ol></div><aside class="panel"><span class="eyebrow">Recommended design</span><h3>'+esc(c.options[0].name)+'</h3><p>'+esc(c.options[0].proof)+'</p><div class="actions" style="margin-top:12px">'+linkbtn('#case/'+id+'/brief','Write a brief →','btn')+'</div></aside></div>';
  }else{
- const note=getNotes(c);body.innerHTML='<div class="record"><div class="panel"><h2>My research brief</h2><p class="sub" style="margin:10px 0 16px">Record your interpretation and next test. Save on this browser or download a copy with the original citations.</p><form id="brief" class="answerform">'+[['decision','Your decision'],['limit','What limits this result?'],['next','Next measurement or reanalysis']].map(([k,l])=>'<label class="field">'+l+'<textarea name="'+k+'" maxlength="6000">'+esc(note[k]||'')+'</textarea></label>').join('')+'<div class="actions"><button class="btn" type="submit">Save on this device</button><button class="ghost" type="button" id="exportbrief">Download brief</button></div><span role="status" id="briefmsg"></span></form></div><aside class="panel"><h3>What to check</h3><p>'+esc(c.check)+'</p>'+sourceList(c.sources)+'</aside></div>';
- const f=body.querySelector('#brief'), values=()=>Object.fromEntries(new FormData(f));f.onsubmit=e=>{e.preventDefault();try{localStorage.setItem(notesKey(c),JSON.stringify(values()));f.querySelector('#briefmsg').textContent='Saved on this device.';}catch{f.querySelector('#briefmsg').textContent='Local saving is unavailable. Download your brief instead.';}};
- f.querySelector('#exportbrief').onclick=()=>{const v=values();fileExport('FIRST-FIRE-'+c.id+'-brief.txt',[c.short+' — '+c.title,c.question,'My decision: '+v.decision,'Limit: '+v.limit,'Next action: '+v.next,'Case interpretation (team review pending): '+c.decision,...c.sources.map(s=>s.title+' · '+s.locator+'\n'+s.url)].join('\n\n'));};
+ const note=getNotes(c);
+ const activeQuestion = comparisonState(c);
+ const sourceQuestion = activeQuestion.mode === 'custom' ? activeQuestion.submitted : '';
+ const selectedQuestion = sourceQuestion && sourceQuestion !== note.sourceQuestion
+   ? sourceQuestion : note.question || c.question;
+ body.innerHTML='<div class="record"><div class="panel"><h2>My research brief</h2><p class="sub" style="margin:10px 0 16px">Record your interpretation and next test. Save on this browser or download a copy with the original citations.</p><form id="brief" class="answerform"><label class="field">Research question<textarea name="question" rows="2" maxlength="1000">'+esc(selectedQuestion)+'</textarea></label>'+[['decision','Your decision'],['limit','What limits this result?'],['next','Next measurement or reanalysis']].map(([k,l])=>'<label class="field">'+l+'<textarea name="'+k+'" maxlength="6000">'+esc(note[k]||'')+'</textarea></label>').join('')+'<div class="actions"><button class="btn" type="submit">Save on this device</button><button class="ghost" type="button" id="exportbrief">Download brief</button></div><span role="status" id="briefmsg"></span></form></div><aside class="panel"><h3>What to check</h3><p>'+esc(c.check)+'</p>'+sourceList(c.sources)+'</aside></div>';
+ const f=body.querySelector('#brief'), values=()=>Object.fromEntries(new FormData(f));f.onsubmit=e=>{e.preventDefault();try{localStorage.setItem(notesKey(c),JSON.stringify({...values(), sourceQuestion}));f.querySelector('#briefmsg').textContent='Saved on this device.';}catch{f.querySelector('#briefmsg').textContent='Local saving is unavailable. Download your brief instead.';}};
+ f.querySelector('#exportbrief').onclick=()=>{const v=values();fileExport('FIRST-FIRE-'+c.id+'-brief.txt',[c.short+' — '+c.title,v.question,'My decision: '+v.decision,'Limit: '+v.limit,'Next action: '+v.next,'Case interpretation (team review pending): '+c.decision,...c.sources.map(s=>s.title+' · '+s.locator+'\n'+s.url)].join('\n\n'));};
  }
 }
 async function searchPage(q){
