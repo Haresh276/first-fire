@@ -2,6 +2,8 @@
 
 **Review date: 14 November 2026.** The review covers the *Flame in Freefall* challenge, its named projects and two fire-modeling references. The public inventory records the repository revision, the README examined, the number of files found and topics detected in the text. Topic labels support discovery. They do not certify a project's implementation or scientific accuracy. [Download the 310-repository inventory (CSV)](../dist/challenge-projects.csv) · [NASA challenge brief and resources](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources)
 
+[Read the full code audit](code-review.md) · [Find any of the 310 repositories and open its source](#code-review)
+
 ## Two changes you can try
 
 **Compare a normal and an inverse flame.** Open the CFI-G pair in the Atlas. Read the chamber and burner oxygen on separate lines. In the inverse configuration the oxygen delivered by the burner describes the jet. Entering it as cabin oxygen would give a habitat ranking based on the wrong atmosphere. Open the two source rows to see what the investigators actually recorded. A second example traces a composite specimen's apparently positive burn result to the footnote that identifies the material that burned. Both comparisons preserve the original records and can be shared by URL. [Compare the two CFI-G records](#atlas?left=PSI-159%3A1%3A2&right=PSI-159%3A2%3A2) · [Compare the Saffire-II specimens](#atlas?left=PSI-99%3A1%3A3&right=PSI-99%3A1%3A8)

@@ -217,6 +217,7 @@ async function searchPage(q){
  box.innerHTML='<div class="sectionhead"><div><span class="eyebrow">'+(semantic?'Semantic + keyword retrieval':'Keyword retrieval')+'</span><h2>'+esc(items.length?'Evidence matches':'No close matches')+'</h2></div></div>'+(items.length?'<div class="panel">'+items.map(d=>'<div class="result"><span class="tag">'+esc(d.type)+'</span><h3><a href="'+attr(d.url)+'">'+esc(d.title)+'</a></h3><p>'+esc(d.lead)+'</p></div>').join('')+'</div>':'<p>Try a material, investigation name or a shorter question.</p>')+'<p class="statusline" style="margin-top:10px">A related result may not answer your question. Open its source and check the material, conditions and measured endpoint.</p>';
 }
 const reports={
+ 'code-review':['Source code audit','Repository-level readings, validation gaps and the changes made to FIRST FIRE.'],
  'referee-replay':['Evidence checks on 100 archived chat answers','What the evidence gate changed and where it still misses the question.'],
  'challenge-projects':['Challenge project review','Public repositories, Word documents, and the comparisons they prompted in FIRST FIRE.'],
  'chat-models':['Chat model selection','Small local transformer candidates, selection trials and the Grok migration plan.'],
@@ -264,6 +265,7 @@ async function route(first=false){
  const raw=location.hash.slice(1),breakAt=raw.indexOf('?'),path=(breakAt<0?raw:raw.slice(0,breakAt)).split('/'),p=new URLSearchParams(breakAt<0?'':raw.slice(breakAt+1)),key=path[0]||'home';
  const bundles=[];
  if(['atlas','compass','passports','data','coverage'].includes(key))bundles.push('observation-rows.js');
+ if(key==='code-review')bundles.push('code-review-readings.js','code-review.js');
  if(['physics','rover'].includes(key))bundles.push('cabin-liquid-weights.js','physics-lab.js');
  if(bundles.length){
   root.innerHTML='<p role="status">Opening the research tool…</p>';
@@ -272,6 +274,7 @@ async function route(first=false){
   if(visit!==navigation)return;
  }
  if(key==='atlas'||key==='compass'){if(key==='compass')p.set('mode','rank');window.renderDeckAtlas(root,p);}
+ else if(key==='code-review')window.renderCodeReview(root,p);
  else if(key==='passports')window.renderPassports(root,p);
  else if(key==='rulebook')window.FFMissionDesk.rulebook(root);
  else if(key==='earth')window.FFMissionDesk.earth(root,p);
@@ -286,7 +289,7 @@ async function route(first=false){
  else if(key==='guide'){root.innerHTML=crumb('User guide')+window.FFGuide;root.querySelectorAll('a[href^="index.html#"]').forEach(a=>a.setAttribute('href',a.getAttribute('href').slice(10)));}
  else if(key==='coverage'||key==='quotes'){root.innerHTML=crumb('Sources & methods / '+(key==='coverage'?'Coverage map':'Quotation referee'))+head(key==='coverage'?'Coverage map':'Quotation referee',key==='coverage'?'Explore which archive rows can answer a question about the surrounding atmosphere.':'Check whether the exact words occur on the cited page or section.','Evidence tools')+'<div id="workbench"></div>';window.FFWorkbench[key==='quotes'?'referee':key](root.querySelector('#workbench'));}
  else notFound();
- const active=['case','designs'].includes(key)?'cases':key==='report'?'sources':key==='acrylic'?'cases':key==='coverage'?'data':key==='search'?'home':key;
+ const active=['case','designs'].includes(key)?'cases':['report','code-review'].includes(key)?'sources':key==='acrylic'?'cases':key==='coverage'?'data':key==='search'?'home':key;
  document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  closeMenu();
  const title=root.querySelector('h1')?.textContent||'Research desk';document.title=(key==='home'?'Research desk':title)+' · FIRST FIRE';

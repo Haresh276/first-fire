@@ -23,28 +23,41 @@
   function step(state,reason){return {state,reason};}
   function quantitative(key,claim,quote,context){
     // Only measurements with a typed quantity, unit and retrievable operands are supported.
-    const values=claim.match(/\d+(?:\.\d+)?/g)||[];
-    const durations=claim.match(/\b(\d+(?:\.\d+)?)\s*seconds?\b/i);
-    const percent=claim.match(/\b(\d+(?:\.\d+)?)\s*%/);
+    const number=String.raw`[+−-]?(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][+−-]?\d+)?`;
+    const values=claim.match(new RegExp(number,'g'))||[];
+    const value=token=>Number(token.replaceAll('−','-'));
+    const durations=claim.match(new RegExp('('+number+')\\s*(seconds?|minutes?|milliseconds?|hours?)\\b','i'));
+    const percent=claim.match(new RegExp('('+number+')\\s*%'));
     if(values.length>1 && context?.numeric!=='sample-id')return step('unavailable','This claim contains more than one numerical assertion. Check each quantity separately.');
     if(key==='luci34'&&durations){
       const measured=quote.match(/~\s*(\d+(?:\.\d+)?)\s+seconds sooner/);
       if(!measured)return step('unavailable','A duration with its direction is required in the verified excerpt.');
-      if(!/earlier|sooner/.test(claim.toLowerCase()))return step('unavailable','The registered check covers the earlier Earth-gravity extinction time.');
-      const correct=Number(durations[1])===Number(measured[1]);
-      return step(correct?'pass':'fail','The comparison reports about '+measured[1]+' seconds. The claim gives '+durations[1]+' seconds.');
+      const toSeconds={second:1,minute:60,millisecond:.001,hour:3600};
+      const given=value(durations[1])*toSeconds[durations[2].toLowerCase().replace(/s$/,'')];
+      if(Math.abs(given-Number(measured[1]))>1e-6)return step('fail','The source gives about '+measured[1]+' seconds. The stated '+durations[0]+' corresponds to '+given+' seconds.');
+      const earthFirst=/\b(?:earlier|sooner) at Earth gravity than at partial gravity\b/i.test(claim);
+      const reversed=/\b(?:earlier|sooner) at partial gravity than at Earth gravity\b/i.test(claim);
+      if(reversed)return step('fail','The cited comparison places the earlier extinction at Earth gravity.');
+      if(!earthFirst)return step('unavailable','The registered comparison needs the extinction direction and both gravity conditions.');
+      const endpoint=new RegExp('^(?:the )?(?:fabric )?flame (?:went out|extinguished) (?:about )?'+number+'\\s*(?:seconds?|minutes?|milliseconds?|hours?) (?:earlier|sooner) at Earth gravity than at partial gravity\\.?$','i');
+      if(!endpoint.test(claim))return step('unavailable','The registered LUCI quantity is time to extinction of the fabric flame. A different specimen or endpoint requires its own source.');
+      return step('pass','The comparison reports about '+measured[1]+' seconds. The stated '+durations[0]+' agrees after unit conversion.');
     }
     if(key==='sameS8'&&percent){
       const ratio=quote.match(/(\d+)\/(\d+) of the Teflon tests/);
-      if(!ratio||!Number(ratio[2])||!/(teflon)/i.test(claim))return step('unavailable','The claim needs a matching smoke material and a measured fraction.');
+      if(!ratio||!Number(ratio[2]))return step('unavailable','The verified excerpt must give the fraction for Teflon smoke.');
+      if(/\b(?:Kapton|silicone|Nomex)\b/i.test(claim))return step('fail','The two-thirds fraction belongs to Teflon smoke. The source gives a separate bound for Kapton.');
+      const missed=new RegExp('^the ISS detector (?:would have )?missed (?:about )?'+number+'\\s*% of (?:the )?Teflon smoke tests\\.?$','i');
+      if(!missed.test(claim))return step('unavailable','This registered fraction pairs the ISS detector, missed alarms and Teflon smoke tests.');
       const recomputed=100*Number(ratio[1])/Number(ratio[2]);
-      const correct=Math.abs(Number(percent[1])-recomputed)<=.05;
+      const correct=Math.abs(value(percent[1])-recomputed)<=.05;
       return step(correct?'pass':'fail',ratio[1]+' ÷ '+ratio[2]+' × 100 = '+recomputed.toFixed(1)+'%. The claim gives '+percent[1]+'%.');
     }
     if(key==='fm25'&&percent&&/ignit/i.test(claim)){
       const source=quote.match(/Start at (\d+)%/), levels=archive().forecast.burns.map(b=>Number(b.oxygen_pct));
       if(!source)return step('unavailable','Use a quotation that gives the starting oxygen for this burn.');
-      return step(levels.includes(+source[1])&&+percent[1]===+source[1]?'pass':'fail','Starting oxygen in the design and the four-burn register is '+source[1]+'%. The claim gives '+percent[1]+'%.');
+      if(!/% (?:starting |initial )?oxygen\b/i.test(claim))return step('unavailable','The design value refers to starting oxygen by volume. The claim must identify that quantity.');
+      return step(levels.includes(+source[1])&&value(percent[1])===+source[1]?'pass':'fail','Starting oxygen in the design and the four-burn register is '+source[1]+'%. The claim gives '+percent[1]+'%.');
     }
     if(key==='fm25'&&/\bfour\b|\b\d+ (?:planned )?(?:burns|tests)\b/i.test(claim)){
       const count=archive().forecast.burns.length;
@@ -52,14 +65,17 @@
       return step(n===count?'pass':'fail','The experiment register contains '+count+' separately identified planned burns.');
     }
     if(context?.numeric==='sample-id'&&/sample 2-7/.test(claim))return step('na','2-7 identifies the specimen. The claim reports no numerical measurement.');
-    if(values.length||/\b(?:one|two|three|four|five|six|seven|eight|nine|ten|half|thirds?|twice|double)\b/i.test(claim)){
+    if(values.length||/\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|[a-z]+teen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|half|thirds?|twice|double)\b/i.test(claim)){
       if(key==='sameS8'&&/over half (?:of )?(?:the )?Kapton/i.test(claim)&&/over half of the Kapton/i.test(quote))return step('pass','The same lower bound, over one half, appears in the detector results.');
       return step('unavailable','No registered calculation covers every numerical assertion in this statement.');
     }
     return step('na','This statement gives no numerical measurement or calculation.');
   }
   function scopeCheck(key,claim){
-    if(key==='fm25'&&/already|has (?:already )?(?:observed|demonstrated)|(?:proved|observed|measured) (?:on|in) the moon/i.test(claim))return step('fail','The cited page describes planned tests. It contains no lunar flight outcome.');
+    if(key==='fm25'){
+      if(/already|has (?:already )?(?:observed|demonstrated)|(?:proved|observed|measured) (?:on|in) the moon/i.test(claim))return step('fail','The cited page describes planned tests. It contains no lunar flight outcome.');
+      if(/\b(?:observed|confirmed|measured|burned|burnt|ignited|demonstrated|proved|extinguished)\b/i.test(claim)&&!/\b(?:planned|expected|anticipated|might|hypothetical|would|could)\b/i.test(claim))return step('unavailable','This page supplies design assumptions. A past-tense flight result needs a separate source.');
+    }
     if(/(?:safe for (?:any|all)|fireproof|guarantee[sd]?|certif(?:ied|ies) safe)/i.test(claim))return step('fail','This source cannot establish an unrestricted safety claim.');
     return step('pass','No registered scope conflict detected.');
   }
@@ -427,6 +443,12 @@
     const swapped=el('details');
     swapped.append(el('summary','Planted quotation with a missing “not”'),el('blockquote',bad),describe(canary));
     rows.prepend(swapped);
+    const duration=receipts().cases.find(item=>item.id==='extinction');
+    const altered=duration.claim.replace('45 seconds','45 minutes');
+    const unitCheck=await evaluate(duration.anchor,duration.quote,altered);
+    const unit=el('details');
+    unit.append(el('summary','Planted unit change · 45 seconds becomes 45 minutes'),el('blockquote',altered),describe(unitCheck));
+    rows.append(unit);
     box.replaceChildren(el('h2','Public error log'),el('p','These are the rejected and unresolved candidates from this published release, including deliberate counterexamples. Each entry replays its checks. Visitor submissions stay on their device.'),rows);
   }
   function renderDeckReferee(root,params=new URLSearchParams()){

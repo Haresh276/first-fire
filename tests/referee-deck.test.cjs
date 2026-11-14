@@ -25,7 +25,34 @@ test('record binding, independent decisions, uncertainty and numerical errors',a
   assert.equal((await run(by('teflon'))).numeric.state,'pass');
   assert.equal(quantitative('sameS8','About 66.7% of Teflon alarms were missed at 900 K.',by('teflon').quote).state,'unavailable');
   assert.equal((await run(by('fake-alarm'))).numeric.state,'fail');
+  assert.equal(quantitative('luci34','The flame went out 45 seconds earlier at partial gravity than at Earth gravity.',by('extinction').quote).state,'fail');
+  assert.equal(quantitative('sameS8','The ISS detector detected 66.7% of the Teflon smoke tests.',by('teflon').quote).state,'unavailable');
   assert.equal(quantitative('saff25','The fabric reached 900 K.','some words').state,'unavailable');
+});
+test('real numbers remain bound to the unit, specimen, source and direction in the full Referee path',async () => {
+  const duration=by('extinction'), detector=by('teflon');
+  const attacks=[
+    [duration,duration.claim.replace('seconds','minutes'),'fail'],
+    [duration,duration.claim.replace('45','−45'),'fail'],
+    [duration,duration.claim.replace('fabric flame','heptane droplet'),'unavailable'],
+    [duration,duration.claim.replace('Earth gravity than at partial','partial gravity than at Earth'),'fail'],
+    [duration,duration.claim.replace('45','forty-five'),'unavailable'],
+    [detector,detector.claim.replace('Teflon','Kapton'),'fail'],
+    [detector,detector.claim.replace('missed','detected'),'unavailable'],
+    [detector,detector.claim.replace('ISS','Shuttle'),'unavailable'],
+    [detector,detector.claim.replace('%',' mg'),'unavailable'],
+  ];
+  for(const [source,claim,state] of attacks){
+    const result=await evaluate(source.anchor,source.quote,claim);
+    assert.equal(result.quotation.state,'pass',claim);
+    assert.equal(result.numeric.state,state,claim);
+    assert.notEqual(result.state,'supported',claim);
+  }
+  const wrongSource=await evaluate(detector.anchor,duration.quote,duration.claim);
+  assert.equal(wrongSource.quotation.state,'fail');assert.equal(wrongSource.state,'rejected');
+  const positive=await evaluate(duration.anchor,duration.quote,duration.claim.replace('45 seconds','0.75 minutes'));
+  assert.equal(positive.numeric.state,'pass');
+  assert.equal(positive.state,'unverified'); // An equivalent quantity still needs its own independent semantic review.
 });
 test('same evidence through chat, unmatched evidence and intake restrictions',async()=>{
   const src=(await run(by('nomex'))).src;

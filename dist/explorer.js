@@ -54,6 +54,20 @@
     const x = num(scope === 'burner' ? r.o2_burner_pct : r.o2_final_pct);
     return x === null ? null : [x, x];
   }
+  // All three tolerances must be met in the same recorded observation.
+  function jointCoverage(rows, target) {
+    const matches=[];
+    let complete=0;
+    for(const row of rows) {
+      const gravity=num(row.gravity_g), pressure=num(row.pressure_psia), air=oxygen(row,'ambient');
+      if(gravity===null || pressure===null || air===null) continue;
+      complete++;
+      if(Math.abs(gravity-target[0])<=0.02 && target[1]>=air[0]-1 && target[1]<=air[1]+1 &&
+         Math.abs(pressure-target[2])<=0.5) matches.push(row);
+    }
+    return {complete,matches};
+  }
+  window.FFJointCoverage=jointCoverage;
   const rangeText = vals => !vals ? '—' : vals[0] === vals[1] ? fmt(vals[0]) + '%' : fmt(vals[0]) + '–' + fmt(vals[1]) + '%';
   const cmpText = (a, b) => String(a || '').localeCompare(String(b || ''), 'en', {numeric:true});
   function exportRows(rows) {
@@ -213,7 +227,8 @@
       const wo=control(weights,'Oxygen weight',select(weightOpts,ranking.wo));
       const wp=control(weights,'Pressure weight',select(weightOpts,ranking.wp));
       const report=node('p');report.setAttribute('aria-live','polite');
-      const ranks=node('div'),sensitivity=node('div'),detail=node('div');controls.append(report,ranks,sensitivity,detail);
+      const coverage=node('section',undefined,'note'), ranks=node('div'),sensitivity=node('div'),detail=node('div');
+      coverage.setAttribute('aria-label','Coverage at these conditions');controls.append(report,coverage,ranks,sensitivity,detail);
       const save=()=>Object.assign(ranking,{preset:preset.value,phase:phase.value,g:g.value,o:o.value,p:p.value,
         wg:wg.value,wo:wo.value,wp:wp.value,material:material.value});
       preset.onchange=()=>{const v=presets[preset.value];if(v.length>1){g.value=v[1];o.value=v[2];p.value=v[3];}save();draw();};
@@ -221,7 +236,7 @@
       material.oninput=()=>{save();draw();};
       [phase,wg,wo,wp].forEach(e=>e.onchange=()=>{save();draw();});
       function draw() {
-        detail.replaceChildren();ranks.replaceChildren();sensitivity.replaceChildren();
+        detail.replaceChildren();ranks.replaceChildren();sensitivity.replaceChildren();coverage.replaceChildren();coverage.hidden=true;
         if([g,o,p].some(e=>num(e.value)===null||!e.validity.valid)){report.textContent='Enter valid gravity, oxygen and positive absolute pressure.';return;}
         const target=[Number(g.value),Number(o.value),Number(p.value)], w=[Number(wg.value),Number(wo.value),Number(wp.value)];
         const mat=material.value.trim().toLowerCase();
@@ -232,6 +247,15 @@
         report.textContent=eligible.length.toLocaleString()+' eligible observations. '+
           (excluded?excluded+' inverse burner observations excluded from atmospheric ranking. ':'')+
           'Complete conditions rank first, followed by coverage of two and then one of the three fields. Every ranked gravity value is nominal orbital microgravity.';
+        const joint=jointCoverage(eligible,target);
+        coverage.hidden=false;
+        coverage.append(node('strong','Do these conditions occur together?'),node('p',
+          joint.matches.length.toLocaleString()+' of '+eligible.length.toLocaleString()+' eligible rows match all three conditions in one observation. '+
+          (eligible.length-joint.complete).toLocaleString()+' lack at least one required field.'),
+          node('p','This check uses ±0.02 g, ±1 oxygen percentage point and ±0.5 psia. A reported ambient oxygen range is retained. These are search tolerances.'));
+        if(joint.matches.length){
+          const first=joint.matches[0];coverage.append(button('Read a matching row',()=>{rawDetails(detail,first,byId.get(first.accession));detail.scrollIntoView({block:'nearest'});},'ghost'));
+        }
         const calc=(weights)=>{
           const best=new Map();
           eligible.forEach(r=>{

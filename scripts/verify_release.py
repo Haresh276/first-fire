@@ -64,7 +64,9 @@ def check(dist):
     for required in ('atlas-deck.js', 'mission-desk.js', 'observation-rows.js', 'physics-lab.js',
                      'cabin-liquid-weights.js', 'referee-deck.js', 'referee-passages.js', 'referee-reviews.js',
                      'first-fire-demo.mp4', 'technical-manual.html', 'first-fire-technical-manual.pdf',
-                     'research/challenge-projects.md', 'challenge-projects.csv', 'forecast-lock/fm2-v1.tsr'):
+                     'research/challenge-projects.md', 'challenge-projects.csv', 'forecast-lock/fm2-v1.tsr',
+                     'research/code-review.md', 'code-review-readings.js', 'code-review.js', 'code-review-readings.csv',
+                     'code-review-files.csv.gz', 'code-review-repositories.csv', 'code-review-supplement.csv'):
         assert required in actual, required
     lock='forecast-lock/fm2-v1.json'
     assert actual[lock]=='9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3', 'The signed forecast bytes must match v1.'
