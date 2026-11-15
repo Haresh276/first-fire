@@ -46,7 +46,7 @@ async function discover(page, touch) {
   const input = form.getByRole('searchbox').or(form.getByRole('textbox')).first();
   await input.fill('rover');
   await input.press('Enter');
-  await page.waitForURL(url => url.pathname.endsWith('/tools.html') && url.searchParams.get('q') === 'rover');
+  await page.waitForURL(url => /\/tools(?:\.html)?\/?$/.test(url.pathname) && url.searchParams.get('q') === 'rover');
   const filteredUrl = page.url();
   const result = page.getByRole('link', {name: '3D rover workbench', exact: true}).first();
   await result.waitFor({state: 'visible'});
@@ -107,6 +107,27 @@ async function deviceJourney(browser, profile) {
   }
 }
 
+async function slowConnection(browser) {
+  const context = await browser.newContext(profiles.phone);
+  let release;
+  const pending = new Promise(resolve => { release = resolve; });
+  try {
+    const page = await context.newPage();
+    await page.route('**/tool-directory.js', async route => { await pending; await route.continue(); });
+    await page.goto(new URL('tools.html', home).href, {waitUntil: 'commit'});
+    const input = page.getByRole('searchbox', {name: 'Search tools'});
+    await input.fill('airlock');
+    release();
+    await page.waitForLoadState('load');
+    await page.getByText('1 tool found.', {exact: true}).waitFor();
+    assert.equal(await input.inputValue(), 'airlock');
+    assert.equal(new URL(page.url()).searchParams.get('q'), 'airlock');
+    await input.fill('xyznonexistent');
+    await page.getByText('No matching tools.', {exact: false}).waitFor();
+    console.log('PASS slow phone: early input survives loading and unmatched searches have feedback');
+  } finally { release(); await context.close(); }
+}
+
 async function receiveLink(browser, address) {
   const context = await browser.newContext(profiles.phone);
   try {
@@ -128,6 +149,7 @@ async function receiveLink(browser, address) {
     for (const profile of ['phone', 'tablet']) await deviceJourney(browser, profile);
     const address = await deviceJourney(browser, 'desktop');
     await receiveLink(browser, address);
+    await slowConnection(browser);
   } finally {
     await browser.close();
   }
