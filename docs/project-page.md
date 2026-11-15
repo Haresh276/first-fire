@@ -30,7 +30,7 @@ For NASA's planned Flammability of Materials on the Moon experiment, we timestam
 
 ## Use of Super Intelligence (SI)
 
-Yes. We used OpenAI ChatGPT and Codex to help locate sources, write and test code, and draft technical explanations. Anthropic Claude assisted with FLINT, tests, figures, the rover case and presentation materials. We used models for passage retrieval, selection and quotation review. The published results distinguish measurements from model output. The demo uses synthetic English narration from macOS speech synthesis, and the rover concept illustration is SI-generated. Our disclosure and credits are at https://first-fire-lunar-lab.vercel.app/team-handoff.html#disclosure
+Yes. We used OpenAI ChatGPT and Codex to help locate sources, write and test code, and draft technical explanations. Anthropic Claude assisted with FLINT, tests, figures, the rover case, the Material Lab, the Cabin Fire Simulator and presentation materials. We used models for passage retrieval, selection and quotation review. The published results distinguish measurements from model output. The demo film is a silent, captioned recording of the live site, filmed with scripts written with Claude. Our earlier narrated film uses synthetic English narration from macOS speech synthesis, and the rover concept illustration is SI-generated. Our disclosure and credits are at https://first-fire-lunar-lab.vercel.app/team-handoff.html#disclosure
 
 ## NASA Data
 
