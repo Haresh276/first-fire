@@ -1,5 +1,49 @@
 # FIRST FIRE
 
+**NASA is about to light the first fire ever on the Moon. FIRST FIRE turns NASA's freefall fire data into checkable predictions for the Moon, Mars and the pressurized rovers in between, and we sealed our forecast before the experiment flies.**
+
+[Start here: two-minute explainer](https://first-fire-lunar-lab.vercel.app/start.html) · [Judging route](https://first-fire-lunar-lab.vercel.app/judging.html) · [FLINT evidence](https://first-fire-lunar-lab.vercel.app/flint.html) · [Rover fire case](https://first-fire-lunar-lab.vercel.app/rover-fire-case.html) · [Mission concept](https://first-fire-lunar-lab.vercel.app/mission-concept.html) · [Captioned film](https://first-fire-lunar-lab.vercel.app/master-film.mp4)
+
+Built for the 2026 NASA Space Apps Challenge *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data* by Team Code Blooded: Haresh G., Samuel Christ and Hanmathgundam Hamsika.
+
+## In sixty seconds
+
+- **The problem.** Spacecraft materials are cleared by one upward-burn test on Earth (NASA-STD-6001 Test 1). At lunar gravity, NASA found that three of five materials burned more easily than on Earth (ICES-2025-392). Moon habitats and rovers are planned at 34% oxygen. All 1,622 fire tests in NASA's PSI archive flew in orbit; none were run at lunar or Martian gravity.
+- **What we built.** A browser research desk over the 15 PSI combustion investigations named by the challenge, with a Referee that checks every quote, claim and number before it is shown. Underneath it runs FLINT, an open Python engine built on NASA's two-limit extinction model, which predicts a material's oxygen limit at any gravity, pressure and atmosphere.
+- **Sealed before the flight.** Forecast v1 (14 Nov 2026, 12:57 UTC) and FLINT's forecast v2 (15 Nov 2026, 06:27 UTC) carry DigiCert RFC 3161 timestamps.
+- **Honest limits.** FM² has not flown. FLINT is validated on four materials at 8.2 psia and has not been reviewed by NASA; other pressures are extrapolations. One method, CFI-G gas-jet ignition, showed no skill and is reported as a negative result.
+
+| What we found | The number | Evidence |
+|---|---|---|
+| Earth tests predict NASA's Moon results, each held out | 1.4 points of O₂ mean error; a straight-line estimate gives 2.3 | [flint.html](site/flint.html) |
+| FM²'s sealed chamber will read high | At extinction the sensor reads about 27.0% against a flame-equivalent 26.0%; burn 2 stops at 14.9 cm, not 17.5 | [forecast register](site/forecast-register.html) |
+| In freefall, CO₂ beats helium | 274 FLEX droplet runs; heptane dies below 14.1% O₂ in nitrogen, 16.6% with 30% CO₂, 12.9% with 30% helium | [flint.html#freefall](site/flint.html) |
+| A Moon rover fire is a materials problem | All four cabin items burn at 34% O₂ with fans off; a CO₂ flood needs 26 kg and triples the pressure; venting stops Nomex near 4 psia | [rover fire case](site/rover-fire-case.html) |
+| Mars reverses the Moon | Nomex's limit falls from 26.4% (Moon) to 22.6% (Mars): a prediction, not yet tested | [mission concept](site/mission-concept.html) |
+
+## Verify it yourself
+
+```sh
+python -m pytest -q                  # the desk tests and FLINT's 19 tests (see pytest.ini)
+node --test tests/*.test.cjs         # browser, data and release tests
+cd flint-engine && python -m flint.report out   # every FLINT number and figure, about two minutes
+```
+
+## How FIRST FIRE answers the challenge
+
+| The challenge asks for | FIRST FIRE | Where |
+|---|---|---|
+| An SI-powered dashboard over NASA microgravity combustion data | Browser research desk; a local model selects sourced passages; the Referee gates every answer | [desk](site/index.html), [Referee](site/index.html) |
+| Summaries, rankings and interpretations of the investigations | Passports, a Compass that ranks tests by closeness to a habitat, a Rulebook of seven fire-safety assumptions | [desk](site/index.html) |
+| Fire-safety insight for human exploration | FLINT limits at lunar and Martian gravity; the FM² reader; rover fire responses | [FLINT](site/flint.html), [rover](site/rover-fire-case.html) |
+| Investigations relevant to crew habitats, including pressurized rovers | Compass lunar preset (8.2 psia, 34% O₂); the pressurized rover fire case | [rover](site/rover-fire-case.html) |
+| Data that supports predictive modelling | `data/tests.csv` (1,058 normalized observations); FLINT datasets and a 350-scenario labelled atlas | [data](data), [FLINT](flint-engine) |
+| Research for next-generation controls and equipment | CO₂ versus helium suppression; vent and flood responses; four follow-up tests with falsifiable predictions | [mission concept](site/mission-concept.html) |
+| Possible Earth applications | Hospital oxygen wards, mines, submarines and aircraft, each with its transfer limits | [desk](site/index.html) |
+| An audience from students to engineers | A two-minute explainer in English, Hindi, Telugu and Tamil; reading levels; technical manual | [start here](site/start.html) |
+
+## Full project guide
+
 [Open the judging route](https://first-fire-lunar-lab.vercel.app/judging.html) · [Pressurized Rover Fire Case](https://first-fire-lunar-lab.vercel.app/rover-fire-case.html) · [FLINT evidence and source](https://first-fire-lunar-lab.vercel.app/flint.html) · [Captioned film](https://first-fire-lunar-lab.vercel.app/master-film.mp4)
 
 A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall challenge](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources). Start with a research question and find the source, boundary and next test. The project does not issue a material rating or certify a cabin design.

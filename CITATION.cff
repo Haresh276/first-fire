@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use FIRST FIRE or its FLINT engine, please cite it as below, and cite the NASA sources it builds on first."
+title: "FIRST FIRE: a research desk and the FLINT physics engine for spacecraft fire safety (NASA Space Apps 2026, Flame in Freefall)"
+authors:
+  - given-names: Haresh
+    family-names: G.
+  - given-names: Samuel
+    family-names: Christ
+  - given-names: Hamsika
+    family-names: Hanmathgundam
+date-released: 2026-11-15
+license: MIT
+url: "https://first-fire-lunar-lab.vercel.app/"
+repository-code: "https://github.com/Haresh276/first-fire"
+keywords:
+  - microgravity combustion
+  - flammability limits
+  - lunar gravity
+  - spacecraft fire safety
+  - NASA Physical Sciences Informatics
+  - FM2
