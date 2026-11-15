@@ -27,7 +27,7 @@ const views=[
  ['#forecast','The Oracle','Forecast & Next Fire','Inspect the four locked predictions and design a follow-up burn.'],
  ['#earth','At Home','Earth applications','Explore crew cabins, hospitals, mines and aircraft.']
 ];
-root.innerHTML='<section class="hero mission-hero"><div class="herocopy"><span class="eyebrow">Spacecraft fire research</span><h1>Which fire test <em>should fly next?</em></h1><p>Does more oxygen make fuel burn longer in orbit? Match NASA flight experiments, change one condition and see which runs still support an answer.</p><div class="heroactions">'+linkbtn('#transfer-lab?view=sensitivity','Compare the flight runs →','btn')+linkbtn('demo.html','See the six-slide demo')+'</div></div><figure class="heroimage"><img src="lunar-concept.jpg" alt="NASA concept rendering of a lunar lander on the Moon’s surface."><figcaption class="captionbar">'+out('https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=6','Lunar mission concept · NASA')+'</figcaption></figure></section>'+
+root.innerHTML='<section class="hero mission-hero"><div class="herocopy"><span class="eyebrow">Spacecraft fire research</span><h1>Which fire test <em>should fly next?</em></h1><p>Does more oxygen make fuel burn longer in orbit? Match NASA flight experiments, change one condition and see which runs still support an answer.</p><div class="heroactions">'+linkbtn('#instruments','Start a cabin investigation →','btn')+linkbtn('#transfer-lab?view=sensitivity','Compare the flight runs')+linkbtn('demo.html','See the six-slide demo')+'</div></div><figure class="heroimage"><img src="lunar-concept.jpg" alt="NASA concept rendering of a lunar lander on the Moon’s surface."><figcaption class="captionbar">'+out('https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=6','Lunar mission concept · NASA')+'</figcaption></figure></section>'+
 '<div class="ff-research-row">'+[['detector.html','Did the detector miss the smoke?','Inspect two instrument channels from the same NASA test.'],['#design-lab','Plan a lunar experiment','Choose an oxygen setting and write a test request for the lab.'],['classroom.html','Compare two alarm clocks','Match a NIST alarm record to its sensor readings in English or Telugu.']].map(([href,title,desc])=>'<a href="'+href+'"><strong>'+title+' ↗</strong><span>'+desc+'</span></a>').join('')+'</div>'+
 '<div class="section actions">'+linkbtn('#vehicle-designer','Design a vehicle')+linkbtn('#materials-lab','Explore material limits')+linkbtn('#master-physics','Validate cabin physics')+linkbtn('#field-guide','Field guide & judging kit')+'</div>'+
  '<nav aria-label="Research views" class="mission-views">'+views.map(([url,category,title,body])=>'<a class="panel" href="'+url+'"><span class="eyebrow">'+category+'</span><h2>'+title+'</h2><p>'+body+'</p></a>').join('')+'</nav>'+
@@ -289,6 +289,7 @@ async function route(first=false){
  if(key==='master-physics')bundles.push('physics-lab.js','transport-lab.js','master-physics-data.js','master-surrogate-data.js','master-fds-data.js','master-physics.js');
  if(key==='flame-tracking')bundles.push('front-tracking.js','saffire-frames.js','flight-frames-ui.js');
  if(key==='field-guide')bundles.push('field-guide.js');
+ if(key==='instruments')bundles.push('instruments.js');
  if(key==='archive-audit')bundles.push('archive-audit-data.js','archive-audit.js');
  if(key==='design-lab')bundles.push('design-lab.js');
  if(key==='rover-design')bundles.push('rover-model.js','rover-integration.js');
@@ -307,6 +308,7 @@ async function route(first=false){
  if(key==='atlas'||key==='compass'){if(key==='compass')p.set('mode','rank');window.renderDeckAtlas(root,p);}
  else if(key==='materials-lab')window.FFMaterials.render(root,p);
  else if(key==='master-physics')disposeForecast=window.FFMasterPhysics.render(root,p);
+ else if(key==='instruments')window.FFInstruments.render(root,p);
  else if(key==='vehicle-designer')disposeForecast=window.FFVehicleDesigner.render(root,p);
  else if(key==='flame-tracking'){
    const stopLocal=window.FFFrontTracking.render(root),gallery=document.createElement('section');
@@ -318,13 +320,13 @@ async function route(first=false){
  else if(key==='archive-audit')window.FFArchiveAudit.render(root);
  else if(key==='session')window.FFResearchSession.render(root);
  else if(key==='awareness')window.FFAwareness.render(root);
- else if(key==='rover-design')window.FFRoverDesign.render(root);
+ else if(key==='rover-design')window.FFRoverDesign.render(root,p);
  else if(key==='transfer-lab')window.FFTransferLab.render(root,p);
  else if(key==='design-lab')window.FFDesignLab.render(root);
  else if(key==='transport-lab')disposeForecast=window.FFTransportLab.render(root);
  else if(key==='code-review')window.renderCodeReview(root,p);
  else if(key==='passports')window.renderPassports(root,p);
- else if(key==='rulebook')window.FFMissionDesk.rulebook(root);
+ else if(key==='rulebook')window.FFMissionDesk.rulebook(root,p);
  else if(key==='earth')window.FFMissionDesk.earth(root,p);
  else if(key==='referee'||key==='errors'){if(key==='errors')p.set('view','errors');window.renderDeckReferee(root,p);}
  else if(key==='physics'||key==='rover'){if(key==='rover')p.set('mode','rover');window.renderPhysicsLab(root,p);}

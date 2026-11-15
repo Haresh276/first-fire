@@ -3,27 +3,27 @@
   'use strict';
   const studies = () => Object.fromEntries(window.FF.cases.map(c => [c.id, c]));
   const mir = ['NASA · Combustion Experiments on Mir, p. 5','https://www.nasa.gov/wp-content/uploads/static/history/SP-4225/science/combustion-summary.pdf#page=5'];
-  const scale = ['NASA · Saffire results, Table 2 and Figure 10','https://ntrs.nasa.gov/api/citations/20210011521/downloads/ICES%202021-266%200503-2021%20final.pdf'];
+  const scale = ['Urban et al. · Saffire results, p. 8, Table 2 and Figure 10','https://ntrs.nasa.gov/api/citations/20210011521/downloads/ICES%202021-266%200503-2021%20final.pdf#page=8'];
   const rules = [
-    {q:'Does passing an Earth test bound flammability?',id:'ices',domain:'Material screening',
-     scope:['Unresolved','Counterexample','Unresolved'],evidence:'In short lunar-gravity tests, P213 tape and polycarbonate fell on opposite sides of their Earth comparators. An Earth oxygen limit cannot serve as a universal bound.',
+    {q:'Does an Earth oxygen limit bound flammability in reduced gravity?',id:'ices',domain:'Material screening', setting:'Glenn drop-tower centrifuge · simulated lunar gravity', sourceIndexes:[0,1],
+     scope:['Unresolved','Counterexample','Unresolved'],evidence:'At 8.2 psia, P213 tape extinguished at a lower oxygen concentration than the 1 g forced-flow extrapolation. Polycarbonate extinguished at a higher concentration than the measured ground values. These comparisons used a five-second flame endpoint.',
      missing:'Match the material, flow, pressure, exposure time and ignition protocol before transferring a limiting-oxygen measurement.'},
-    {q:'Will switching off ventilation extinguish a flame?',id:'sibal',domain:'Suppression',source:mir,
+    {q:'Will switching off ventilation extinguish a flame?',id:'sibal',domain:'Suppression',setting:'Mir · orbital microgravity',source:mir,
      scope:['Counterexample','Unresolved','Unresolved'],evidence:'On Mir, stopping forced flow extinguished the tested solid flames. Candle flames persisted in quiet air. Fuel and geometry change the answer even in orbit.',
      missing:'Measure local flow and post-shutdown extinction for the same fuel. Under partial gravity, buoyancy can move gas with the fan off.'},
-    {q:'Can a small coupon stand in for a large fire?',id:'saffire',domain:'Scale',source:scale,
+    {q:'Can a small coupon stand in for a large fire?',id:'saffire',domain:'Scale',setting:'Saffire I–III · orbital microgravity',source:scale,
      scope:['Counterexample','Unresolved','Unresolved'],evidence:'Saffire recorded different peak flame sizes in different specimen and duct configurations. The narrow Saffire-II samples missed the transient overshoot seen in Saffire-I and III.',
      missing:'Vary length, width and duct height separately. Record the peak as well as steady spread before scaling from a coupon to a cabin.'},
-    {q:'Does the end of visible light mean combustion stopped?',id:'flex',domain:'Extinction',
+    {q:'Does the end of visible light mean combustion stopped?',id:'flex',domain:'Extinction',setting:'FLEX-155 · orbital microgravity',
      scope:['Counterexample','Unresolved','Unresolved'],evidence:'In FLEX-155 the heptane droplet continued to vaporize after the visible flame vanished. Investigators interpreted the later behavior as cool-flame combustion.',
      missing:'Track droplet diameter, temperature and gas composition after visible extinction. Verify the same endpoint in the target gravity.'},
-    {q:'Can one detector response represent every smoke source?',id:'same',domain:'Detection',
+    {q:'Can one detector response represent every smoke source?',id:'same',domain:'Detection',setting:'SAME · detector measurements in orbit',
      scope:['Counterexample','Unresolved','Unresolved'],evidence:'SAME detector signals depended on the material generating the smoke. A strong response to silicone rubber did not establish response to small particles from Teflon.',
      missing:'Hold the detector and threshold fixed. Compare particle-size distributions and transport times for each source.'},
-    {q:'Does slower spread mean a shorter-lasting fire?',id:'sibal',domain:'Duration',
+    {q:'Does slower spread mean a shorter-lasting fire?',id:'sibal',domain:'Duration',setting:'LUCI rotating rocket · simulated lunar gravity',
      scope:['Unresolved','Counterexample','Unresolved'],evidence:'In the LUCI rotating-flight comparison, the SIBAL flame spread more slowly in simulated lunar gravity and burned about 45 seconds longer than its ground counterpart.',
      missing:'Measure spread speed and time to extinction separately, with matched oxygen histories. The comparison was a lunar-gravity analogue aboard a rocket.'},
-    {q:'Can a burner oxygen reading represent the cabin air?',id:'cfig',domain:'Atmosphere',
+    {q:'Can a burner oxygen reading represent the cabin air?',id:'cfig',domain:'Atmosphere',setting:'CFI-G inverse flames · orbital microgravity',sourceIndexes:[0,1],
      scope:['Counterexample','Unresolved','Unresolved'],evidence:'In the inverse CFI-G configuration the oxygen mixture flowed from the burner into a fuel-containing chamber. The two gas locations describe different exposures.',
      missing:'Record the chamber gas and burner stream separately. Obtain a material test at the target ambient oxygen, pressure and gravity.'}
   ];
@@ -84,24 +84,115 @@
       history.replaceState(history.state,'','#earth?'+query);
     };
   }
-  function rulebook(root) {
-    root.innerHTML='<div class="breadcrumb"><a href="#home">Research desk</a> / The Audit</div><header class="pagetitle"><span class="eyebrow">The Audit</span><h1>Rulebook</h1><p class="sub">Which fire-safety assumptions survive a change in gravity? Select a finding to inspect the evidence and the next measurement.</p></header><div class="actions"><a class="ghost" href="#passports">Investigation passports →</a><a class="ghost" href="#referee">Open the Referee →</a></div><div class="section rule-layout"><div class="panel tablewrap"><table class="rules"><caption>Evidence for seven research questions</caption><thead><tr><th>Research question</th><th>Orbit</th><th>Moon gravity</th><th>Mars gravity</th></tr></thead><tbody></tbody></table></div><section class="panel stack" id="rule-reading" aria-live="polite"></section></div>';
+  const worlds = ['Orbit', 'Moon', 'Mars'];
+  const regimes = ['Orbital microgravity', 'Moon gravity', 'Mars gravity'];
+
+  function selectedRule(params) {
+    const entry = params.get('entry');
+    const regime = params.get('regime');
+    const target = worlds.findIndex(world => world.toLowerCase() === (params.get('world') || '').toLowerCase());
+    return {
+      entry: /^[0-6]$/.test(entry) ? Number(entry) : 0,
+      regime: /^[0-2]$/.test(regime) ? Number(regime) : target >= 0 ? target : 1
+    };
+  }
+
+  function cabinFromQuery(params) {
+    function value(key, min, max) {
+      const raw = params.get(key)?.trim() || '';
+      if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(raw)) return null;
+      const n = Number(raw);
+      return Number.isFinite(n) && n >= min && n <= max ? raw : null;
+    }
+    // Preserve the Compass input range. The rover checks its own narrower model limits.
+    const oxygen = value('oxygen', 0, 100), psia = value('psia', 0.01, 100);
+    if (oxygen === null || psia === null) return null;
+    const cabin = {oxygen, psia};
+    for (const key of ['subject','material']) {
+      const text = params.get(key)?.trim();
+      if (text) cabin[key] = text.slice(0,120);
+    }
+    return cabin;
+  }
+
+  function rulebook(root, params = new URLSearchParams((location.hash.split('?')[1] || ''))) {
+    root.innerHTML='<div class="breadcrumb"><a href="#home">Research desk</a> / The Audit</div><header class="pagetitle"><span class="eyebrow">The Audit</span><h1>Rulebook</h1><p class="sub">Choose a question and gravity setting to see where the supporting test took place and what remains to be measured.</p></header><div class="actions"><a class="ghost" href="#passports">Investigation passports →</a><a class="ghost" href="#referee">Open the Referee →</a><a class="ghost" href="#earth?case=wire">Compare lunar-gravity wire tests →</a></div><div class="section rule-layout"><div class="panel tablewrap"><table class="rules"><caption>Evidence for seven research questions</caption><thead><tr><th scope="col">Research question</th><th scope="col">Orbit</th><th scope="col">Moon gravity</th><th scope="col">Mars gravity</th></tr></thead><tbody></tbody></table></div><section class="panel stack" id="rule-reading" aria-live="polite" aria-atomic="true"></section></div>';
     const tbody=root.querySelector('tbody'), reading=root.querySelector('#rule-reading');
-    root.querySelector('.actions').insertAdjacentHTML('beforeend','<a class="ghost" href="#earth?case=wire">Compare lunar-gravity wire tests →</a>');
-    const regimes=['Orbit','Moon gravity','Mars gravity'];
-    rules.forEach((rule,i)=>{
+    const initial = selectedRule(params), cabin = cabinFromQuery(params);
+    function select(entry, regime, button, remember) {
+      const rule = rules[entry], world = worlds[regime], status = rule.scope[regime];
+      const previous = tbody.querySelector('[aria-pressed="true"]');
+      if (previous === button) return;
+      previous?.setAttribute('aria-pressed','false');
+      button.setAttribute('aria-pressed','true');
+      const researchCase = studies()[rule.id];
+      const sources = rule.source ? [rule.source] : (rule.sourceIndexes || [0]).map(i => {
+        const source = researchCase.sources[i];
+        return [source.title, source.url];
+      });
+      const target = regime === 0 ? 'orbital microgravity' : world === 'Moon' ? 'lunar gravity' : 'Martian gravity';
+      const conclusion = status === 'Unresolved'
+        ? 'The cited comparison leaves this question open for '+target+'.'
+        : regime === 1 ? 'A simulated lunar-gravity experiment found a counterexample. Application to a lunar habitat still requires matched conditions.'
+        : 'A flight experiment found a counterexample under its recorded conditions.';
+      const search = new URLSearchParams(params);
+      search.set('entry',String(entry)); search.set('regime',String(regime));
+      if (search.has('world')) search.set('world',world);
+      if (search.has('gravity')) search.set('gravity',['0','0.165','0.38'][regime]);
+      const rover = new URLSearchParams({from:'rulebook',world,case:rule.id});
+      for (const key of ['oxygen','psia','subject','material']) {
+        if (cabin && key in cabin) {
+          search.set(key, cabin[key]);
+          rover.set(key, cabin[key]);
+        } else search.delete(key);
+      }
+      const hash = '#rulebook?'+search;
+      reading.innerHTML='<div><span class="eyebrow">'+regimes[regime]+' · '+rule.domain+'</span><h2>'+rule.q+'</h2></div>'+
+        '<p class="rule-conclusion"><strong>'+status+'</strong> · '+conclusion+'</p>'+
+        '<div><h3>Where the evidence comes from</h3><p><strong>'+rule.setting+'</strong></p><p>'+rule.evidence+'</p></div>'+
+        '<div class="note"><strong>Next measurement</strong><p>'+rule.missing+'</p></div>'+
+        '<div class="sourceitem">'+sources.map(link).join('<br>')+'</div>'+
+        '<div class="actions"><a class="ghost" href="#case/'+rule.id+'">Related research case →</a></div>';
+      if (cabin || params.has('oxygen') || params.has('psia')) {
+        const context = document.createElement('aside');
+        context.className = 'note';
+        context.setAttribute('aria-label','Your cabin scenario');
+        const heading = document.createElement('strong'); heading.textContent = 'Your cabin scenario';
+        const atmosphere = document.createElement('p');
+        atmosphere.textContent = cabin
+          ? world+' · '+cabin.oxygen+'% oxygen · '+cabin.psia+' psia absolute. These are your comparison inputs.'
+          : 'To carry cabin air into the rover, supply both an oxygen fraction (0–100%) and an absolute pressure (0.01–100 psia). Only the gravity setting will transfer.';
+        context.append(heading, atmosphere);
+        if (cabin?.subject || cabin?.material) {
+          const filters = document.createElement('p');
+          filters.textContent = 'Archive search filters: '+[cabin.subject,cabin.material].filter(Boolean).join(' · ');
+          context.append(filters);
+        }
+        reading.querySelector('.rule-conclusion').after(context);
+      }
+      const activity = document.createElement('a'); activity.className='ghost';
+      activity.href = '#rover-design?'+rover;
+      activity.textContent = 'Open the rover model with '+(cabin ? 'this cabin atmosphere' : (world === 'Orbit' ? 'orbital' : world === 'Moon' ? 'lunar' : 'Martian')+' gravity')+' →';
+      reading.querySelector('.actions').append(activity);
+      const permalink = document.createElement('a'); permalink.className='inlinebtn';
+      permalink.href=hash; permalink.textContent='Link to this finding'; reading.append(permalink);
+      if (remember && location.hash.split('?')[0] === '#rulebook') history.replaceState(history.state,'',hash);
+    }
+    let selectedButton;
+    rules.forEach((rule,entry)=>{
       const tr=tbody.insertRow(), th=document.createElement('th'); th.scope='row'; th.textContent=rule.q;tr.append(th);
-      rule.scope.forEach((label,j)=>{
-        const b=document.createElement('button');b.type='button';b.textContent=label;b.className='rule-verdict';
-        b.setAttribute('aria-label',regimes[j]+' · '+rule.q+' '+label); b.setAttribute('aria-pressed','false');
-        b.onclick=()=>{
-          for(const old of tbody.querySelectorAll('[aria-pressed="true"]'))old.setAttribute('aria-pressed','false');
-          b.setAttribute('aria-pressed','true');const c=studies()[rule.id], source=rule.source||[c.sources[0].title,c.sources[0].url];
-          reading.innerHTML='<div><span class="eyebrow">'+regimes[j]+' · '+rule.domain+'</span><h2>'+rule.q+'</h2></div><strong>'+label+'</strong><p>'+(label==='Unresolved'?'The reviewed sources do not establish this claim in '+regimes[j].toLowerCase()+'. The closest comparison is below.':'This comparison challenges the general claim under the reported conditions.')+'</p><p>'+rule.evidence+'</p><div class="note"><strong>Next measurement</strong><p>'+rule.missing+'</p></div><p>'+link(source)+'</p><a href="#case/'+rule.id+'">Related research case →</a>';
-        };
-        tr.insertCell().append(b);if(i===0&&j===1)b.click();
+      rule.scope.forEach((status,regime)=>{
+        const b=document.createElement('button'); b.type='button';
+        b.textContent=status === 'Counterexample' && regime === 1 ? 'Analogue counterexample' : status;
+        b.className='rule-verdict';
+        b.setAttribute('aria-label',regimes[regime]+' · '+rule.q+' '+b.textContent);
+        b.setAttribute('aria-controls','rule-reading'); b.setAttribute('aria-pressed','false');
+        b.onclick=()=>select(entry,regime,b,true);
+        tr.insertCell().append(b);
+        if(entry===initial.entry && regime===initial.regime)selectedButton=b;
       });
     });
+    select(initial.entry,initial.regime,selectedButton,false);
   }
   function earth(root,p) {
     const item=applications.find(x=>x.id===p.get('case'))||applications[0];

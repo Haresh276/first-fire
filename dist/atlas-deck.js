@@ -129,6 +129,7 @@
     r.headers.forEach((h,i)=>{dl.append(e('dt',h.trim()),e('dd',r.cells[i]?.trim() || '—'));});
     const links=e('div',null,'atlas-links');
     links.append(makeLink('Dataset DOI','https://doi.org/'+r.study.doi),makeLink('NASA source CSV',r.table.url),downloadLink(r.table),makeLink('Investigation passport',linkStudy('passports',r.study.accession)),makeLink('Link to this row','#atlas?record='+encodeURIComponent(r.id)));
+    if(r.obs)links.append(makeLink('Compare these conditions in Compass','#compass?record='+encodeURIComponent(r.id)));
     links.prepend(action('Use this record in investigation',()=>{
       document.dispatchEvent(new CustomEvent('ff-research-result',{detail:investigationResult(r)}));
       d.close();
@@ -285,7 +286,9 @@
     counts.append(e('b',integer(rows.length)),document.createTextNode(' source records'),e('b',String(studies.length)),document.createTextNode(' investigations'),e('b',String(studies.reduce((n,s)=>n+s.tables.length,0))),document.createTextNode(' NASA tables'));
     const subtitle='Explore the orbital archive and the lunar conditions the planned FM² burns would test.';
     root.replaceChildren(header('The Gap','Combustion atlas',subtitle),atlasNav('Atlas'),counts,controls,map,comparisonPanel(root,studies,rows,params),list);
-    let active=null,page=0;
+    const preset=params.get('preset');
+    const habitat=window.FFCompassPreset(preset);
+    let active=habitat && !target ? {regime:habitat.world,bucket:habitat.oxygen<20?'low':habitat.oxygen<30?'mid':'high'} : null,page=0;
     function filtered() {
       const words=query.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
       return rows.filter(r=>(!study.value || r.study.accession===study.value) && (!words.length || words.every(w=>[r.id,r.study.name,r.kind,r.obs?.test_id,r.obs?.material,...r.cells].join(' ').toLowerCase().includes(w))));
@@ -329,7 +332,12 @@
       list.replaceChildren();
       const heading=e('h2','Source records');heading.tabIndex=-1;
       const top=e('div',null,'atlas-list-head');const save=action('Download CSV',()=>exportAtlas(filteredRows));save.disabled=!filteredRows.length;top.append(heading,save);list.append(top);
-      if(active){const row=e('div',null,'atlas-filter-summary');row.append(e('strong',active.regime+' · '+bucketLabels[active.bucket]),action('Clear cell',()=>{active=null;page=0;draw();}));list.append(row);}
+      if(active){
+        const row=e('div',null,'atlas-filter-summary');
+        row.append(e('strong',active.regime+' · '+bucketLabels[active.bucket]),action('Clear cell',()=>{active=null;page=0;draw();}));
+        row.append(makeLink('Rank the '+active.regime+' reference scenario in Compass','#compass?preset='+active.regime.toLowerCase()));
+        list.append(row);
+      }
       const total=filteredRows.length,pages=Math.max(1,Math.ceil(total/12));page=Math.min(page,pages-1);
       const status=e('p',total?'Showing '+integer(page*12+1)+'–'+integer(Math.min((page+1)*12,total))+' of '+integer(total)+' source records.':'No source records in this selection.','small');status.setAttribute('role','status');list.append(status);
       if(!total)return;

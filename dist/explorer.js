@@ -43,6 +43,19 @@
     const d = node('details'); d.append(node('summary', title)); d.open = open; return d;
   }
   const phases = [['solid','Solid fuel'],['liquid','Liquid droplet'],['gas','Gas burner'],['aerosol','Smoke aerosol']];
+  const presets = {
+    moon:['Lunar habitat','0.165','34','8.2'],
+    mars:['Mars surface · illustrative atmosphere','0.38','34','8.2'],
+    orbit:['Orbit · Earth-like cabin','0','21','14.7'],
+    earth:['Earth reference','1','21','14.7'],
+    custom:['Custom conditions']
+  };
+  const worlds = {moon:'Moon', mars:'Mars', orbit:'Orbit', earth:'Earth'};
+  window.FFCompassPreset=key=>{
+    if(!Object.hasOwn(worlds,key))return null;
+    const [,g,o,p]=presets[key];
+    return {world:worlds[key],gravity:Number(g),oxygen:Number(o),pressure:Number(p)};
+  };
   const scopes = [['ambient','Ambient O₂ at test start or reported range'],['burner','O₂ in burner stream'],['final','Final ambient O₂']];
   function oxygen(r, scope) {
     if (scope === 'ambient') {
@@ -53,6 +66,34 @@
     }
     const x = num(scope === 'burner' ? r.o2_burner_pct : r.o2_final_pct);
     return x === null ? null : [x, x];
+  }
+  function initialRanking(params, source) {
+    const selected=params.get('preset');
+    const preset=Object.hasOwn(worlds,selected)?selected:'moon';
+    const [,g,o,p]=presets[preset];
+    const rank={preset,g,o,p,phase:'solid',material:'',wg:'1',wo:'1',wp:'1'};
+    if(params.has('record')){
+      const air=source && oxygen(source,'ambient');
+      // A measured range is not a measured point; a burner inlet is not cabin air.
+      Object.assign(rank,{preset:'custom',phase:source?.phase || '',g:source?.gravity_g ?? '',
+        o:air && air[0]===air[1] && source.direction!=='inverse'?String(air[0]):'',p:source?.pressure_psia ?? ''});
+    }
+    return rank;
+  }
+  function scenarioLinks(ranking) {
+    const gravity=num(ranking.g), oxygenPct=num(ranking.o), pressure=num(ranking.p);
+    if(gravity===null || gravity<0 || gravity>3 || oxygenPct===null || oxygenPct<0 || oxygenPct>100 ||
+       pressure===null || pressure<0.01 || pressure>100)return null;
+    const preset=Object.keys(worlds).find(key=>Number(presets[key][1])===gravity);
+    const world=worlds[preset], query=new URLSearchParams({from:'compass',gravity:String(gravity),
+      oxygen:String(oxygenPct),psia:String(pressure)});
+    if(world)query.set('world',world);
+    if(ranking.phase)query.set('subject',ranking.phase);
+    if(ranking.material.trim())query.set('material',ranking.material.trim());
+    const rover='#rover-design?'+query;
+    // The rulebook addresses named regimes. Keep the cabin scenario with that regime.
+    query.delete('gravity');
+    return {rover,rulebook:world && world!=='Earth'?'#rulebook?'+query:null,world};
   }
   // All three tolerances must be met in the same recorded observation.
   function jointCoverage(rows, target) {
@@ -116,7 +157,8 @@
     const heading = node('h3', inv.name + ' · ' + r.test_id);
     heading.tabIndex = -1; target.append(heading);
     const links = node('p');
-    join(links, [link('NASA dataset DOI', 'https://doi.org/' + r.doi),link('Original NASA table (local CSV)', asset(r.source_file), true),link('Versioned NASA download', r.source_url)]);
+    join(links, [link('View this row in the Atlas','#atlas?record='+encodeURIComponent(r.record_id)),
+      link('NASA dataset DOI', 'https://doi.org/' + r.doi),link('Original NASA table (local CSV)', asset(r.source_file), true),link('Versioned NASA download', r.source_url)]);
     target.append(links, node('p', 'Source row ' + r.source_row + ' (header = 1) · ' + r.record_id));
     if (r.quality_notes) target.append(node('p', r.quality_notes, 'note'));
     const original = window.FF.rawTables?.[r.source_file] || window.FF.rawTables?.[r.source_file.split('/').pop()];
@@ -142,7 +184,8 @@
     let mode = params.get('mode') === 'rank' ? 'rank' : 'data';
     const initialStudy = byId.has(params.get('study')) ? params.get('study') : '';
     const state = {study:initialStudy,q:params.get('q') || '',phase:'',scope:'ambient',min:'',max:'',sort:'accession',ascending:true,page:0};
-    const ranking = {preset:'moon',phase:'solid',g:'0.165',o:'34',p:'8.2',wg:'1',wo:'1',wp:'1',material:''};
+    const sourceRecord=rows.find(r=>r.record_id===params.get('record'));
+    const ranking=initialRanking(params,sourceRecord);
     root.replaceChildren();
     const nav = node('div');
     const bData = button('Observations', () => { mode='data'; show(); });
@@ -222,16 +265,20 @@
     function drawRank() {
       const controls=region(content,'Rank evidence for a habitat');
       controls.append(node('p','Find the closest recorded conditions for a test subject. Each investigation is represented by its closest eligible observation.'));
+      if(params.has('record')){
+        const provenance=node('p',undefined,'note');
+        if(sourceRecord){
+          provenance.append('Starting conditions from ',link(sourceRecord.record_id,'#atlas?record='+encodeURIComponent(sourceRecord.record_id)),'. ');
+          const air=oxygen(sourceRecord,'ambient');
+          if(air && air[0]!==air[1])provenance.append('The source reports an oxygen interval of '+rangeText(air)+'. Choose a target within it to rank a specific atmosphere. ');
+          else if(sourceRecord.direction==='inverse')provenance.append('The source reports oxygen in the burner stream. Supply a separate ambient oxygen target. ');
+          provenance.append('Enter any missing conditions as scenario assumptions.');
+        }else provenance.textContent='This record has no normalized observation in the release. Choose a reference scenario or enter the conditions to compare.';
+        controls.append(provenance);
+      }
       const form=grid(); controls.append(form);
-      const presets={
-        moon:['Lunar habitat','0.165','34','8.2'],
-        mars:['Mars surface · illustrative atmosphere','0.38','34','8.2'],
-        orbit:['Orbit · Earth-like cabin','0','21','14.7'],
-        earth:['Earth reference','1','21','14.7'],
-        custom:['Custom conditions']
-      };
       const preset=control(form,'Scenario',select(Object.entries(presets).map(([k,v])=>[k,v[0]]),ranking.preset));
-      const phase=control(form,'Required test subject',select(phases,ranking.phase));
+      const phase=control(form,'Required test subject',select(ranking.phase?phases:[['','Choose the test subject'],...phases],ranking.phase));
       const g=control(form,'Gravity (Earth g)',input('number',ranking.g,{min:'0',max:'3',step:'any'}));
       const o=control(form,'Ambient oxygen (%)',input('number',ranking.o,{min:'0',max:'100',step:'any'}));
       const p=control(form,'Absolute pressure (psia)',input('number',ranking.p,{min:'0.01',max:'100',step:'any'}));
@@ -243,6 +290,7 @@
       const wg=control(weights,'Gravity weight',select(weightOpts,ranking.wg));
       const wo=control(weights,'Oxygen weight',select(weightOpts,ranking.wo));
       const wp=control(weights,'Pressure weight',select(weightOpts,ranking.wp));
+      const actions=node('div',undefined,'actions');actions.setAttribute('aria-label','Use these scenario conditions');controls.append(actions);
       const report=node('p');report.setAttribute('aria-live','polite');
       const coverage=node('section',undefined,'note'), ranks=node('div'),sensitivity=node('div'),detail=node('div');
       coverage.setAttribute('aria-label','Coverage at these conditions');controls.append(report,coverage,ranks,sensitivity,detail);
@@ -253,8 +301,15 @@
       material.oninput=()=>{save();draw();};
       [phase,wg,wo,wp].forEach(e=>e.onchange=()=>{save();draw();});
       function draw() {
+        actions.replaceChildren();
         detail.replaceChildren();ranks.replaceChildren();sensitivity.replaceChildren();coverage.replaceChildren();coverage.hidden=true;
         if([g,o,p].some(e=>num(e.value)===null||!e.validity.valid)){report.textContent='Enter valid gravity, oxygen and positive absolute pressure.';return;}
+        const next=scenarioLinks(ranking);
+        if(next){
+          actions.append(link('Open these conditions in the rover sandbox',next.rover));
+          if(next.rulebook)actions.append(link('Read the '+next.world+' rulebook',next.rulebook));
+        }
+        if(!phase.value){report.textContent='Choose a test subject to rank its recorded observations.';return;}
         const target=[Number(g.value),Number(o.value),Number(p.value)], w=[Number(wg.value),Number(wo.value),Number(wp.value)];
         const mat=material.value.trim().toLowerCase();
         const phaseRows=rows.filter(r=>r.phase===phase.value && (!mat||r.material.toLowerCase().includes(mat)));
