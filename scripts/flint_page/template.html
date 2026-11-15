@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore how gravity, ventilation and atmosphere change the oxygen needed to sustain a fire. Inspect FLINT's NASA comparisons, freefall droplets and fire scenarios.">
+<title>FLINT · Fire limits across gravity · FIRST FIRE</title>
+<link rel="stylesheet" href="flint-page.css">
+<script defer src="flint-coefficients.js"></script><script defer src="flint-solid.js"></script><script defer src="flint-page.js"></script>
+</head><body>
+<a class="skip" href="#main">Skip to results</a>
+<header class="mast"><div class="wrap"><a class="brand" href="index.html">FIRST FIRE</a><nav aria-label="Project"><a href="index.html">Judging route</a><a href="rover-fire-case.html">Rover fire case</a><a href="#sources">Sources</a></nav></div></header>
+<main id="main">
+<div class="hero"><div class="wrap hero-grid"><div><p class="eyebrow">FLINT · Flammability Limits In Nonterrestrial gravity</p>
+<h1>When does a flame run out of oxygen?</h1>
+<p>A gentle flow can feed a flame. Too little flow lets a hot surface lose heat faster than the flame supplies it. Too much flow carries gases past the surface before they can react. FLINT calculates the oxygen needed to sustain a flame on both sides of that balance.</p>
+<p class="status">Built (Python engine)</p>
+<a class="cta" href="#calculator">Try a material <span aria-hidden="true">↓</span></a>
+<a class="secondary" href="flint/FIRST-FIRE_FLINT-engine.zip" download>Download FLINT 1.1 (.zip)</a></div>
+$lunar_figure</div></div>
+<div class="wrap frame">
+<nav class="contents" aria-label="Report sections"><a href="#calculator">Solid limits</a><a href="#validation">Lunar check</a><a href="#gravity">Gravity map</a><a href="#chamber">FM² forecast</a><a href="#freefall">Flames in freefall</a><a href="#atlas">Scenario atlas</a></nav>
+<section id="calculator" class="section">
+<p class="eyebrow">Thin solids · Live calculation</p><h2>At what oxygen level would this material keep burning?</h2>
+<p>Change the material, gravity or ventilation to solve FLINT’s two extinction equations for dry oxygen and nitrogen. The higher of the two branch limits sets the threshold. FLINT screens candidate materials for testing.</p>
+<div class="lab">
+<form id="solid-form"><div class="control-grid">
+<label>Material<select name="material">$material_options</select></label>
+<label>Gravity<select name="gravity">$gravity_options</select></label>
+<label>Cabin pressure<select name="pressure">$pressure_options</select></label>
+<label>Forced ventilation<select name="fan">$fan_options</select></label>
+</div><button type="submit">Calculate limit</button></form>
+<div class="readout" aria-live="polite" aria-atomic="true"><span class="eyebrow">Limiting oxygen</span><strong id="solid-limit">—</strong><span id="solid-branch">Choose a material and calculate.</span><span id="solid-validity"></span></div>
+</div><noscript><p>The interactive solver needs JavaScript. All reference results, figures and atlas rows are available below.</p></noscript>
+<p class="source">Source · <a href="$source_core">Core calibration</a> and the Python engine’s <code>limits.py</code> and <code>rover.py</code>. The browser solves the thin-solid branch equations. The download includes the droplet, chamber and rover modules.</p>
+</section>
+<section id="validation" class="section">
+<p class="eyebrow">F4–F5 · Validation</p><h2>Can Earth tests predict the lunar oxygen limit?</h2>
+<p>FLINT fits the blow-off branch to each material’s Earth duct measurements. It holds out one material’s lunar observation and fits the shared quenching constant to the remaining lunar observations. The mean absolute error on the held-out materials is <strong>$errors oxygen percentage points</strong> using ICES Figure 13.</p>
+$validation
+<aside class="note"><strong>Figure 13 and the single-material figures disagree.</strong> FLINT’s mean error rises to $alternative points using the alternate readings, versus $alt_straight for the straight-line predictor. The ranking changes with the choice of figure. The small sample cannot settle which model transfers best.
+<details><summary>See the digitization notes</summary><ul>$f4</ul>
+<p>FLINT omits cotton until the figure attribution is clarified. The ICES points are team readings of a plot.</p></details>
+<a href="flint/closure-sensitivity.json">Alternate comparison and fit inputs</a></aside>
+$methods
+<p>The straight-line comparison uses the best fit underlying the ICES correction table. NASA’s published certification margin serves a different purpose.</p>
+$validation_figure
+</section>
+<section id="gravity" class="section"><p class="eyebrow">F6 · Model predictions</p><h2>Which materials could burn more readily on Mars?</h2>
+<p>At $pressure psia, the fitted model puts polycarbonate and Nomex closer to their most flammable gravity on Mars than on the Moon. A lower limit means a flame can survive in less oxygen. The lunar and terrestrial columns use still air. The orbit column assumes a $orbit_fan fan blowing with the flame.</p>
+$gravity
+<p>Parentheses show the range across the tested flow closures. Held-out lunar scatter is about ±$gravity_error oxygen points (RMS). Gravity minima, Mars and orbital limits are model predictions. <a href="flint/closure-sensitivity.json">Inspect the closure runs</a> or <a href="#validation">compare the ICES figure readings</a>.</p>
+$gravity_figure</section>
+<section id="chamber" class="section"><p class="eyebrow">F7 · FM² chamber forecast</p>
+<h2>How much of the lunar test strip would burn?</h2>
+<p>Oxygen falls as a sealed burn adds carbon dioxide and water vapour. Both cool the flame. This is why a chamber sensor at extinction can read more oxygen than the fabric’s flame-equivalent limit. Each run here starts with fresh gas.</p>
+$fm_lengths
+<details class="more"><summary>Fabric assumptions, sensor readings and the inverse calculation</summary>$standins $sensor $reader
+<p>Whole-strip and no-spread outcomes constrain the unknown fabric limit less tightly than a partial burn. The examples above use synthetic outcomes from FLINT. Temperature, pressure and timing depend on assumed wall cooling and spread rates.</p></details>
+<div class="gallery">$chamber_figures</div>
+<p><a href="forecast-register.html">Open the forecast register</a></p>
+</section>
+<section id="freefall" class="section"><p class="eyebrow">F12–F14 · ISS experiments</p>
+<h2>Flames in freefall</h2><h3>What stops a burning droplet?</h3>
+<p>On the ISS, a suspended droplet can burn inside a nearly spherical flame. NASA’s FLEX experiment varied the gas mixture and droplet size. FLINT fits the shrinking-droplet law to oxygen–nitrogen runs and tests how it transfers to atmospheres containing carbon dioxide or helium. $flex_n runs had the inputs needed for analysis. <a href="$psi69">FLEX · PSI-69</a></p>
+$suppressants
+<p>Carbon dioxide raises the extinction threshold for both fuels. Helium raises it slightly for methanol but lowers it for heptane. These hot-flame calculations apply to orbital droplets within the FLEX range. Cool flames and lunar or Martian droplets are outside the model.</p>
+$flex_validation
+<aside class="note"><strong>Helium bias and heptane scatter.</strong> The transferred methanol model overpredicts helium burning rates by $helium_bias%. The heptane rate has $heptane_scatter% mean absolute error even in the ordinary oxygen–nitrogen training runs. Treat heptane rate estimates as order-of-magnitude.</aside>
+<div class="gallery">$flex_figures</div>
+<h3>Can a gas leak’s temperature and pressure predict ignition?</h3>
+<p>FLINT tested a simple ignition rule against normal and inverse jets in CFI-G. For normal jets its held-out Brier score is worse than the base rate. For inverse jets the score improves but accuracy falls. FLINT therefore withholds a gas-leak ignition rule. The archive lacks igniter energy and timing. <a href="$psi159">CFI-G · PSI-159</a></p>
+$cfig
+<h3>Does turning the fans off extinguish a solid fire in orbit?</h3>
+<p>FLINT cannot answer this with the fans off: diffusion and motion of the flame can still bring oxygen to the surface. With a fan running, the solid limits are extrapolations for flames spreading with the flow. Flames opposed to the flow need a separate calibration. Compare orbital measurements from <a href="$psi26">BASS</a>, <a href="$psi25">BASS-II</a> and <a href="$psi98">Saffire-I</a>, <a href="$psi99">II</a> and <a href="$psi100">III</a>.</p>
+</section>
+<section id="atlas" class="section"><p class="eyebrow">F16 · Scenario atlas</p><h2>Where does the evidence support a fire margin?</h2>
+<p>The supplied atlases contain $solid_scenarios solid and $droplet_scenarios droplet scenarios. Their source labels are <strong>$validated validated</strong>, <strong>$extrapolated extrapolated</strong>, and <strong>$not_modelled not modelled</strong>. “Validated” marks the engine’s pressure, flow or FLEX range. Mars rows remain gravity predictions. Select a row to see its source line, units and limits.</p>
+$atlas_figure
+<div class="downloads"><a href="flint/results/micro/atlas_solids.csv" download>Download solid CSV</a><a href="flint/results/micro/atlas_droplets.csv" download>Download droplet CSV</a></div>
+<form id="atlas-form" class="atlas-controls" hidden><div class="control-grid">$atlas_controls</div><button type="reset">Clear filters</button></form>
+<p id="atlas-status" role="status">$atlas_total scenarios.</p><div id="atlas-rows">$atlas_rows</div>
+<nav id="atlas-paging" aria-label="Scenario pages" hidden><button type="button" id="atlas-prev">Previous</button><button type="button" id="atlas-next">Next</button></nav></section>
+<section id="rover" class="section"><p class="eyebrow">F15 · Crew habitat</p><h2>What changes inside a pressurized rover?</h2>
+<p>In a small cabin, a material’s oxygen margin tells only part of the story. Compare it with the heat and carbon dioxide that build up after ignition, and with the pressure or suppressant dose needed to stop the fire. The lunar solid limits use the <a href="#validation">ICES calibration with conflicting figure readings</a>.</p>
+<div class="gallery">$rover_figures</div><p><a class="cta" href="rover-fire-case.html">Open the Pressurized Rover Fire Case →</a></p>
+</section>
+<section id="sources" class="section"><p class="eyebrow">Reproduce the report</p><h2>Data, code and validity</h2>
+<p><a href="flint/FIRST-FIRE_FLINT-engine.zip" download>Download the supplied Python engine</a> and run these commands from its <code>flint-engine</code> folder. The site reads the supplied report JSON and atlas CSVs. Core measurements come from the <a href="https://ntrs.nasa.gov/citations/20250002114">ICES drop-tower and duct study</a>. FM² settings come from <a href="https://ntrs.nasa.gov/citations/20260001966">NASA’s experiment description</a>.</p>
+<pre><code>python -m pip install numpy scipy matplotlib pytest
+python -m pytest -q
+python -m flint.report out
+python -m flint.micro_report micro_out
+python -m flint.rover_report rover_out</code></pre>
+<div class="downloads"><a href="$source_core">Core results JSON</a><a href="$source_micro">Freefall results JSON</a><a href="flint/results/rover/rover_case.json">Rover case JSON</a><a href="flint/psi-pack-comparison.csv">$n_provenance PSI table byte comparisons</a></div>
+<p>Thin solids only, with concurrent flow. Earth and lunar calibration is restricted to $pressure psia. Pressure scaling, chamber spread rates and wall cooling need independent tests. The engine omits char smouldering and flame dissociation. Use these results to prioritize experiments.</p>
+</section></div></main><footer class="wrap"><a href="index.html">FIRST FIRE</a> · Team Code Blooded</footer></body></html>

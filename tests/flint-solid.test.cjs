@@ -1,13 +1,9 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const root = path.join(__dirname, '..');
 require('../site/flint-coefficients.js');
 const {solve} = require('../site/flint-solid.js');
 const report = require('../flint-engine/results/core/results.json');
 const rover = require('../flint-engine/results/rover/rover_case.json');
-const read = pathName => fs.readFileSync(path.join(root, pathName));
 const tol = 1e-6;
 
 function close(actual, expected, context) {

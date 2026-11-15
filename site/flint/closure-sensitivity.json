@@ -1,4 +1,9 @@
 {
+  "suppressant_case": {
+    "diameter_mm": 3.0,
+    "pressure_psia": 14.7,
+    "source": "flint.micro_report.main \u2192 droplet.limiting_O2"
+  },
   "source": "FLINT 1.1 flint.calibrate.closure_grid + validate; flint.data.ICES",
   "pressure_psia": 8.2,
   "ranges": {

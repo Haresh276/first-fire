@@ -1,4 +1,5 @@
 """Export the supplied Python model's dry-gas lookup and published closure sensitivity."""
+import ast
 import json
 import sys
 from dataclasses import asdict, replace
@@ -41,7 +42,18 @@ def export():
                 values.append(model.loc(limits.P_REF, closure.u_eff(0, thermo.GRAVITY[world])))
     alt = {key: data.ICES[key]['lunar_alt'] for key in physics}
     count = len(alt)
+    # The packaged micro JSON stores the results but omits the test diameter and pressure.
+    # Read the fixed arguments at the report's limiting_O2 call site so a future change propagates.
+    tree = ast.parse((ENGINE/'flint/micro_report.py').read_text())
+    settings = {(ast.literal_eval(call.args[1]), ast.literal_eval(call.args[2]))
+                for call in ast.walk(tree) if isinstance(call, ast.Call)
+                and isinstance(call.func, ast.Attribute) and call.func.attr == 'limiting_O2'}
+    if len(settings) != 1:
+        raise ValueError('The report now uses more than one droplet case. Check the suppressant table caption.')
+    diameter, pressure = settings.pop()
     sensitivity = {
+        'suppressant_case': {'diameter_mm': diameter, 'pressure_psia': pressure,
+                             'source': 'flint.micro_report.main → droplet.limiting_O2'},
         'source': 'FLINT 1.1 flint.calibrate.closure_grid + validate; flint.data.ICES',
         'pressure_psia': data.ICES_PRESSURE_PSIA, 'ranges': physics,
         'alternate_straight_line_mae_pts': sum(abs(row['straight_line_u0'] - alt[k])
