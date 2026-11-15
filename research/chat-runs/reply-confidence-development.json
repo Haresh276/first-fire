@@ -1,0 +1,1133 @@
+{
+  "method": "L2 logistic model on eight final-reply features; fit on the original development 100 only. Bins and penalty fixed before the independent fresh test.",
+  "source": "actual revised chat displays",
+  "provenance": {
+    "developmentTraceSHA256": "661cab6a71c786a343c60b0aa5d8b8e489b2aca64fe15de08d2eef3f24dbf2ce",
+    "validationTraceSHA256": "76e94b1b2a5513ca62076e5d2ee8109ea01c09176cc218386330fe5f6b751802"
+  },
+  "developmentBankSHA256": "de7d1c8f0bd722f59475a3c30785929ef9e6b060e94c657e5edd44a214dd4afd",
+  "followupBankSHA256": "e81b031beeea8b196b20efbbb5d549200e744a101cd3337f2556d7d27f372bd6",
+  "model": {
+    "version": "reply-pass-v1-2acff8cea0e2",
+    "event": "full-reply-rubric-pass",
+    "n": 100,
+    "devRate": 0.79,
+    "features": [
+      "quantitativeReceipt",
+      "reviewed",
+      "quotationOnly",
+      "withheld",
+      "targetedBoundary",
+      "questionOverlap",
+      "multiPart",
+      "sourceCount"
+    ],
+    "centers": [
+      0.02,
+      0,
+      0,
+      0.16,
+      0.05,
+      0.48608455106984544,
+      0.14,
+      0.78
+    ],
+    "intercept": 1.4969035551451848,
+    "weights": [
+      -0.21824829823332229,
+      0,
+      0,
+      -0.5222154145702474,
+      -0.42386153075054184,
+      0.8663240932862716,
+      0.10656256782183299,
+      1.1818628222296914
+    ],
+    "developmentBankSHA256": "de7d1c8f0bd722f59475a3c30785929ef9e6b060e94c657e5edd44a214dd4afd",
+    "l2": 2,
+    "featureCodeSHA256": "e4c0b6b477169e641d695550a1edd36f9edad86f8164f010a213edcaa6eac047",
+    "developmentTraceSHA256": "661cab6a71c786a343c60b0aa5d8b8e489b2aca64fe15de08d2eef3f24dbf2ce"
+  },
+  "apparentDev": {
+    "n": 100,
+    "passed": 79,
+    "accuracy": 0.79,
+    "accuracy95": [
+      0.7002003116591013,
+      0.858343459380847
+    ],
+    "meanProbability": 0.7899999699999998,
+    "brier": 0.12233000889116999,
+    "logLoss": 0.39487095965284164,
+    "constantBrier": 0.16590000000000013,
+    "ece": 0.07967816999999963,
+    "maxGap": 0.38486233333333336,
+    "eachPopulatedBinWithinTenPoints": false,
+    "reliability": [
+      {
+        "lower": 0,
+        "upper": 0.5,
+        "n": 15,
+        "passed": 6,
+        "meanProbability": 0.4346763999999999,
+        "accuracy": 0.4,
+        "accuracy95": [
+          0.1982449614134158,
+          0.6425316987937539
+        ],
+        "gap": 0.034676399999999885
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.8,
+        "n": 9,
+        "passed": 3,
+        "meanProbability": 0.7181956666666667,
+        "accuracy": 0.3333333333333333,
+        "accuracy95": [
+          0.1205838183869109,
+          0.6457978644196036
+        ],
+        "gap": 0.38486233333333336
+      },
+      {
+        "lower": 0.8,
+        "upper": 1,
+        "n": 76,
+        "passed": 70,
+        "meanProbability": 0.8686327631578952,
+        "accuracy": 0.9210526315789473,
+        "accuracy95": [
+          0.8382725651786193,
+          0.9633159947665283
+        ],
+        "gap": 0.052419868421052174
+      }
+    ]
+  },
+  "historicalFollowup": {
+    "n": 24,
+    "passed": 14,
+    "accuracy": 0.5833333333333334,
+    "accuracy95": [
+      0.3883466586522876,
+      0.7553239739018824
+    ],
+    "meanProbability": 0.7489541249999999,
+    "brier": 0.2508014667584584,
+    "logLoss": 0.7216271937974869,
+    "constantBrier": 0.2857666666666668,
+    "ece": 0.16562079166666657,
+    "maxGap": 0.29791750000000006,
+    "eachPopulatedBinWithinTenPoints": false,
+    "reliability": [
+      {
+        "lower": 0,
+        "upper": 0.5,
+        "n": 6,
+        "passed": 2,
+        "meanProbability": 0.44392950000000003,
+        "accuracy": 0.3333333333333333,
+        "accuracy95": [
+          0.09677141110578041,
+          0.700006684861608
+        ],
+        "gap": 0.11059616666666672
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.8,
+        "n": 2,
+        "passed": 1,
+        "meanProbability": 0.7979175000000001,
+        "accuracy": 0.5,
+        "accuracy95": [
+          0.09453120573423074,
+          0.9054687942657693
+        ],
+        "gap": 0.29791750000000006
+      },
+      {
+        "lower": 0.8,
+        "upper": 1,
+        "n": 16,
+        "passed": 11,
+        "meanProbability": 0.8572179374999999,
+        "accuracy": 0.6875,
+        "accuracy95": [
+          0.44404355834740666,
+          0.8583535614521796
+        ],
+        "gap": 0.16971793749999986
+      }
+    ]
+  },
+  "evidenceFactorComparison": {
+    "development": {
+      "total": 100,
+      "coverage": 82,
+      "evidenceFactor": {
+        "n": 82,
+        "passed": 73,
+        "accuracy": 0.8902439024390244,
+        "accuracy95": [
+          0.804387633588628,
+          0.9411728552386109
+        ],
+        "meanProbability": 0.22820426829268278,
+        "brier": 0.5418417644817077,
+        "logLoss": 1.3700470996133485,
+        "constantBrier": 0.10775853658536597,
+        "ece": 0.6620396341463416,
+        "maxGap": 0.6620396341463416,
+        "eachPopulatedBinWithinTenPoints": false,
+        "reliability": [
+          {
+            "lower": 0,
+            "upper": 0.5,
+            "n": 82,
+            "passed": 73,
+            "meanProbability": 0.22820426829268278,
+            "accuracy": 0.8902439024390244,
+            "accuracy95": [
+              0.804387633588628,
+              0.9411728552386109
+            ],
+            "gap": 0.6620396341463416
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.8,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 1,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          }
+        ]
+      },
+      "fittedOnSameReplies": {
+        "n": 82,
+        "passed": 73,
+        "accuracy": 0.8902439024390244,
+        "accuracy95": [
+          0.804387633588628,
+          0.9411728552386109
+        ],
+        "meanProbability": 0.860315536585366,
+        "brier": 0.08917009208397562,
+        "logLoss": 0.31829039880198484,
+        "constantBrier": 0.10775853658536597,
+        "ece": 0.06724017073170689,
+        "maxGap": 0.2549640000000001,
+        "eachPopulatedBinWithinTenPoints": false,
+        "reliability": [
+          {
+            "lower": 0,
+            "upper": 0.5,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.8,
+            "n": 6,
+            "passed": 3,
+            "meanProbability": 0.7549640000000001,
+            "accuracy": 0.5,
+            "accuracy95": [
+              0.1876163064826506,
+              0.8123836935173494
+            ],
+            "gap": 0.2549640000000001
+          },
+          {
+            "lower": 0.8,
+            "upper": 1,
+            "n": 76,
+            "passed": 70,
+            "meanProbability": 0.8686327631578952,
+            "accuracy": 0.9210526315789473,
+            "accuracy95": [
+              0.8382725651786193,
+              0.9633159947665283
+            ],
+            "gap": 0.052419868421052174
+          }
+        ]
+      }
+    },
+    "validation": {
+      "total": 24,
+      "coverage": 18,
+      "evidenceFactor": {
+        "n": 18,
+        "passed": 12,
+        "accuracy": 0.6666666666666666,
+        "accuracy95": [
+          0.43749467295945105,
+          0.837212252491663
+        ],
+        "meanProbability": 0.20756944444444442,
+        "brier": 0.43938816319444446,
+        "logLoss": 1.155017215075921,
+        "constantBrier": 0.23743333333333336,
+        "ece": 0.4590972222222222,
+        "maxGap": 0.4590972222222222,
+        "eachPopulatedBinWithinTenPoints": false,
+        "reliability": [
+          {
+            "lower": 0,
+            "upper": 0.5,
+            "n": 18,
+            "passed": 12,
+            "meanProbability": 0.20756944444444442,
+            "accuracy": 0.6666666666666666,
+            "accuracy95": [
+              0.43749467295945105,
+              0.837212252491663
+            ],
+            "gap": 0.4590972222222222
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.8,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 1,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          }
+        ]
+      },
+      "fittedOnSameReplies": {
+        "n": 18,
+        "passed": 12,
+        "accuracy": 0.6666666666666666,
+        "accuracy95": [
+          0.43749467295945105,
+          0.837212252491663
+        ],
+        "meanProbability": 0.850629,
+        "brier": 0.2552173343584445,
+        "logLoss": 0.7394445545772861,
+        "constantBrier": 0.23743333333333336,
+        "ece": 0.18396233333333323,
+        "maxGap": 0.29791750000000006,
+        "eachPopulatedBinWithinTenPoints": false,
+        "reliability": [
+          {
+            "lower": 0,
+            "upper": 0.5,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.8,
+            "n": 2,
+            "passed": 1,
+            "meanProbability": 0.7979175000000001,
+            "accuracy": 0.5,
+            "accuracy95": [
+              0.09453120573423074,
+              0.9054687942657693
+            ],
+            "gap": 0.29791750000000006
+          },
+          {
+            "lower": 0.8,
+            "upper": 1,
+            "n": 16,
+            "passed": 11,
+            "meanProbability": 0.8572179374999999,
+            "accuracy": 0.6875,
+            "accuracy95": [
+              0.44404355834740666,
+              0.8583535614521796
+            ],
+            "gap": 0.16971793749999986
+          }
+        ]
+      }
+    }
+  },
+  "development": [
+    {
+      "id": "Q001",
+      "correct": true,
+      "probability": 0.875424,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q002",
+      "correct": true,
+      "probability": 0.897211,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q003",
+      "correct": true,
+      "probability": 0.881587,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q004",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "archive-clarification"
+    },
+    {
+      "id": "Q005",
+      "correct": true,
+      "probability": 0.803344,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q006",
+      "correct": true,
+      "probability": 0.812937,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q007",
+      "correct": true,
+      "probability": 0.858305,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q008",
+      "correct": true,
+      "probability": 0.884569,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q009",
+      "correct": true,
+      "probability": 0.875424,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q010",
+      "correct": true,
+      "probability": 0.888919,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q011",
+      "correct": true,
+      "probability": 0.885827,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q012",
+      "correct": true,
+      "probability": 0.89917,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q013",
+      "correct": true,
+      "probability": 0.865665,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q014",
+      "correct": true,
+      "probability": 0.852349,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q015",
+      "correct": true,
+      "probability": 0.807117,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q016",
+      "correct": false,
+      "probability": 0.881587,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q017",
+      "correct": true,
+      "probability": 0.897759,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q018",
+      "correct": true,
+      "probability": 0.89585,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q019",
+      "correct": true,
+      "probability": 0.858305,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q020",
+      "correct": true,
+      "probability": 0.842576,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q021",
+      "correct": true,
+      "probability": 0.881587,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q022",
+      "correct": true,
+      "probability": 0.812937,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q023",
+      "correct": true,
+      "probability": 0.877582,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q024",
+      "correct": false,
+      "probability": 0.888919,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q025",
+      "correct": true,
+      "probability": 0.891273,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q026",
+      "correct": true,
+      "probability": 0.877767,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q027",
+      "correct": true,
+      "probability": 0.891273,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q028",
+      "correct": true,
+      "probability": 0.888919,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q029",
+      "correct": false,
+      "probability": 0.638355,
+      "kind": "tool-calculation"
+    },
+    {
+      "id": "Q030",
+      "correct": true,
+      "probability": 0.881587,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q031",
+      "correct": true,
+      "probability": 0.891273,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q032",
+      "correct": true,
+      "probability": 0.881587,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q033",
+      "correct": true,
+      "probability": 0.901816,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q034",
+      "correct": true,
+      "probability": 0.884569,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q035",
+      "correct": true,
+      "probability": 0.897211,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q036",
+      "correct": true,
+      "probability": 0.865665,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q037",
+      "correct": true,
+      "probability": 0.875424,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q038",
+      "correct": true,
+      "probability": 0.84367,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q039",
+      "correct": false,
+      "probability": 0.524282,
+      "kind": "archive-clarification"
+    },
+    {
+      "id": "Q040",
+      "correct": true,
+      "probability": 0.820146,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q041",
+      "correct": false,
+      "probability": 0.80171,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q042",
+      "correct": true,
+      "probability": 0.882659,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q043",
+      "correct": true,
+      "probability": 0.86102,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q044",
+      "correct": true,
+      "probability": 0.894384,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q045",
+      "correct": true,
+      "probability": 0.873841,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q046",
+      "correct": true,
+      "probability": 0.827665,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q047",
+      "correct": true,
+      "probability": 0.881587,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q048",
+      "correct": true,
+      "probability": 0.833767,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q049",
+      "correct": true,
+      "probability": 0.851325,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q050",
+      "correct": true,
+      "probability": 0.789983,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q051",
+      "correct": true,
+      "probability": 0.825756,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q052",
+      "correct": true,
+      "probability": 0.875424,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q053",
+      "correct": true,
+      "probability": 0.893124,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q054",
+      "correct": false,
+      "probability": 0.875424,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q055",
+      "correct": true,
+      "probability": 0.908572,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q056",
+      "correct": true,
+      "probability": 0.871164,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q057",
+      "correct": true,
+      "probability": 0.891273,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q058",
+      "correct": true,
+      "probability": 0.798142,
+      "kind": "calculation"
+    },
+    {
+      "id": "Q059",
+      "correct": true,
+      "probability": 0.885827,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q060",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q061",
+      "correct": true,
+      "probability": 0.885128,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q062",
+      "correct": true,
+      "probability": 0.890268,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q063",
+      "correct": true,
+      "probability": 0.85361,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q064",
+      "correct": true,
+      "probability": 0.889718,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q065",
+      "correct": true,
+      "probability": 0.859969,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q066",
+      "correct": false,
+      "probability": 0.870179,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q067",
+      "correct": true,
+      "probability": 0.861205,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q068",
+      "correct": true,
+      "probability": 0.838428,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q069",
+      "correct": true,
+      "probability": 0.890553,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q070",
+      "correct": true,
+      "probability": 0.819283,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q071",
+      "correct": false,
+      "probability": 0.78024,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q072",
+      "correct": true,
+      "probability": 0.876871,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q073",
+      "correct": true,
+      "probability": 0.885827,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q074",
+      "correct": true,
+      "probability": 0.86102,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q075",
+      "correct": true,
+      "probability": 0.784978,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q076",
+      "correct": false,
+      "probability": 0.458219,
+      "kind": "archive-clarification"
+    },
+    {
+      "id": "Q077",
+      "correct": false,
+      "probability": 0.809747,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q078",
+      "correct": true,
+      "probability": 0.875424,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q079",
+      "correct": true,
+      "probability": 0.847971,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q080",
+      "correct": true,
+      "probability": 0.897759,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q081",
+      "correct": true,
+      "probability": 0.865665,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q082",
+      "correct": false,
+      "probability": 0.738086,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q083",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "archive-clarification"
+    },
+    {
+      "id": "Q084",
+      "correct": true,
+      "probability": 0.858305,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q085",
+      "correct": true,
+      "probability": 0.884076,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q086",
+      "correct": true,
+      "probability": 0.865665,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q087",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "archive-clarification"
+    },
+    {
+      "id": "Q088",
+      "correct": true,
+      "probability": 0.877767,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "Q089",
+      "correct": false,
+      "probability": 0.720186,
+      "kind": "lunar-outcome"
+    },
+    {
+      "id": "Q090",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q091",
+      "correct": false,
+      "probability": 0.447149,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q092",
+      "correct": true,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q093",
+      "correct": false,
+      "probability": 0.689509,
+      "kind": "lunar-outcome"
+    },
+    {
+      "id": "Q094",
+      "correct": true,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q095",
+      "correct": true,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q096",
+      "correct": true,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q097",
+      "correct": true,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q098",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q099",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "Q100",
+      "correct": true,
+      "probability": 0.431906,
+      "kind": "withheld"
+    }
+  ],
+  "validation": [
+    {
+      "id": "H01",
+      "correct": true,
+      "probability": 0.865665,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H02",
+      "correct": true,
+      "probability": 0.873841,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H03",
+      "correct": false,
+      "probability": 0.861743,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H04",
+      "correct": true,
+      "probability": 0.86102,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H05",
+      "correct": false,
+      "probability": 0.855268,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H06",
+      "correct": false,
+      "probability": 0.868601,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H07",
+      "correct": true,
+      "probability": 0.873957,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H08",
+      "correct": false,
+      "probability": 0.797259,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H09",
+      "correct": false,
+      "probability": 0.458219,
+      "kind": "archive-clarification"
+    },
+    {
+      "id": "H10",
+      "correct": false,
+      "probability": 0.862271,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H11",
+      "correct": true,
+      "probability": 0.852566,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H12",
+      "correct": true,
+      "probability": 0.888919,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H13",
+      "correct": true,
+      "probability": 0.845085,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H14",
+      "correct": true,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "H15",
+      "correct": true,
+      "probability": 0.893124,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H16",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "withheld"
+    },
+    {
+      "id": "H17",
+      "correct": false,
+      "probability": 0.844211,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H18",
+      "correct": true,
+      "probability": 0.447149,
+      "kind": "withheld"
+    },
+    {
+      "id": "H19",
+      "correct": false,
+      "probability": 0.462491,
+      "kind": "archive-clarification"
+    },
+    {
+      "id": "H20",
+      "correct": true,
+      "probability": 0.824315,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H21",
+      "correct": true,
+      "probability": 0.808506,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H22",
+      "correct": false,
+      "probability": 0.431906,
+      "kind": "input-needed"
+    },
+    {
+      "id": "H23",
+      "correct": true,
+      "probability": 0.836395,
+      "kind": "bound-passages"
+    },
+    {
+      "id": "H24",
+      "correct": true,
+      "probability": 0.798576,
+      "kind": "bound-passages"
+    }
+  ]
+}

@@ -26,6 +26,9 @@ else:
     from rover_workbench import copy_rover_workbench
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from chat.receipts import write_registry
+
 DATA, SITE, DIST = ROOT/'data', ROOT/'site', ROOT/'dist'
 def read_json(path):
     return json.loads(path.read_text(encoding='utf-8'))
@@ -87,6 +90,7 @@ def build():
         stage=Path(temp)/'dist';shutil.copytree(SITE,stage)
         copy_rover_workbench(ROOT, stage)
         build_rover_bundle(stage)
+        write_registry(stage / "chat-passages.js")
         (stage/'data').mkdir()
         for f in ('cases.json','tests.csv','investigations.json','forecast.json','challenge-resources.json','incidents.json'):
             shutil.copy2(DATA/f,stage/'data'/f)

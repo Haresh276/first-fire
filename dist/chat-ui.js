@@ -111,6 +111,27 @@
     ]).slice(-MAX_HISTORY);
   }
 
+  function needsTool(intent, question, forced) {
+    const p = intent.params || {};
+    if (forced && ['compare','compass','rulebook','physics','referee','record'].includes(intent.type)) return true;
+    switch (intent.type) {
+      case 'compare':
+        return Boolean(p.left && p.right) || /\b(?:two|both|these|selected) (?:source )?(?:rows|records)\b/i.test(question);
+      case 'compass':
+        return Object.keys(p).length >= 2 || /\b(?:compass|rank|nearest|closest)\b/i.test(question);
+      case 'rulebook':
+        return /\brulebook|rule of thumb|(?:test|check|audit) (?:the |this |a )?rule|turn(?:ing)? off (?:the )?(?:fan|ventilation)/i.test(question);
+      case 'physics':
+        return Object.keys(p).length >= 3 || /(?:^|\bplease )(?:run|simulate|calculate|model)\b|\brun (?:the |a )?(?:model|simulation|solver)|\bphysics lab/i.test(question);
+      case 'referee':
+        return /["“]|\b(?:referee|verbatim|fact[- ]?check|quotation)\b/i.test(question);
+      case 'record':
+        return Boolean(p.record) && /^(?:open|inspect|show|read|find|list|look up|pull up|give me the row)\b/i.test(question);
+      default:
+        return false;
+    }
+  }
+
   async function askService(message, turns, signal) {
     const response = await fetch('/api/chat', {
       method:'POST', headers:{'Content-Type':'application/json'}, credentials:'omit', cache:'no-store',
@@ -123,6 +144,8 @@
     }
     return {
       answer:answer.answer, status:answer.status, sources:answer.citations.map(normalizeSource).filter(Boolean),
+      evidenceKind:answer.passage_receipt ? 'bound-passages' : undefined,
+      passageReceipt:answer.passage_receipt || undefined, method:answer.method, usage:answer.usage, modelDigest:answer.model_digest,
       mode:'local', model:typeof answer.model === 'string' ? answer.model : '', latency:answer.elapsed_ms
     };
   }
@@ -282,6 +305,8 @@
   async function askArchive(question, previousTurns) {
     const incident = incidentReply(question, previousTurns);
     if (incident) return incident;
+    const passage = await window.FFChatEvidenceSearch?.answer(question, previousTurns);
+    if (passage) return passage;
     const knownCases = window.FF?.cases || [];
     const selected = knownCases.filter(c => SUBJECTS[c.id]?.test(question));
     let carried = false;
@@ -393,6 +418,7 @@
     retryButton.title = 'Get a new answer in a separate chat';
     actions.append(retryButton);
     const provenance={
+      'bound-passages':'Source passages verified against this archive',
       'checked':'Checked against the cited experiment',
       'calculation':'Calculated with the FM² threshold model',
       'archive-calculation':'Calculated from NASA observation rows',
@@ -728,7 +754,7 @@
           answer=calculation;
           if(observation)intent=router.intent('abstain',{}, {boundary:'observations'});
           else if(forecastInput!==message)answer.forecastInput=forecastInput;
-        } else if(['compare','compass','rulebook','physics','referee'].includes(intent.type) || intent.type==='record'&&intent.params.record && /^(?:open|inspect|show|read|find|list|look up|pull up|give me the row)\b/i.test(message)){
+        } else if(needsTool(intent,message,chosenIntent)) {
           if(['compare','compass','record'].includes(intent.type)&&!Array.isArray(window.FF.tests))await window.FFLoadAsset('observation-rows.js');
           if(intent.type==='physics'&&!window.FFPhysics)await window.FFLoadAsset('physics-lab.js');
           if(intent.type==='referee')answer=await verifier.checkSubmitted(message,intent);
@@ -746,7 +772,7 @@
             answer.previousSelection=true;
             answer.answer+='\n\nThis calculation starts with the '+prior.analysis.rows.length+' matching rows in your previous result.';
           }
-        } else if(intent.type==='abstain'&&!toolRequest) {
+        } else if(intent.type==='abstain' && (intent.boundary || chosenIntent) && !toolRequest) {
           answer=verifier.decline('I don’t have a source that establishes an answer to that question. Name an experiment, incident or measured quantity, or choose the intended tool.');
         } else if(chosenIntent && intent.corrected) {
           answer=verifier.clarify('This question needs more information for '+intent.label+'. Edit the question or open the selected tool.');
@@ -758,7 +784,8 @@
           answer = mode === 'local'
             ? await askService(message, context, working.controller.signal)
             : await askArchive(message, context);
-          if (window.FFDeckReferee && !working.controller.signal.aborted) {
+          if (intent.type==='abstain' && answer.status!=='abstained') intent=router.intent('archive');
+          if (!answer.passageReceipt && window.FFDeckReferee && !working.controller.signal.aborted) {
             answer = await window.FFDeckReferee.checkedReply(message, answer);
           }
         }

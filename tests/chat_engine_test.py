@@ -53,6 +53,20 @@ class CorpusTests(unittest.TestCase):
         self.assertIn("PSI-101",doc.id)
         self.assertIn("Teflon",doc.text)
 
+    def test_exact_quantities_require_measurements_of_same_kind(self):
+        from chat.scope import missing_answer_quantity
+        docs,_ = corpus()
+        by_id = {p.id:p for p in docs}
+        self.assertIsNotNone(missing_answer_quantity("What was the measured flame temperature?", [by_id["sibal:record"]]))
+        self.assertIsNone(missing_answer_quantity("What was the measured flame base speed?", [by_id["sibal:record"]]))
+
+    def test_unknown_run_does_not_substitute_a_known_observation(self):
+        from chat.retrieval import Index
+        index = object.__new__(Index)
+        index.identifiers = {"155":[{"accession":"PSI-69"}], "psi-69:1:156": [{}]}
+        self.assertEqual(index.unknown_identifiers("Compare FLEX-155 with FLEX-9101"), ["FLEX-9101"])
+        self.assertEqual(index.unknown_identifiers("Read PSI-69:1:156"), [])
+
     def test_selector_never_accepts_an_invented_citation(self):
         from chat.engine import ProviderError
         docs,_=corpus()

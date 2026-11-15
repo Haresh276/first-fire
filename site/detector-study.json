@@ -1,0 +1,1191 @@
+{
+  "study": "NASA SAME-R / PSI-101 v4",
+  "doi": "10.60555/2np7-jv14",
+  "worksheet": "Original (cut and paste)",
+  "columns": [
+    "Time",
+    "TestNumber",
+    "HeatingInProgress",
+    "ISSDetectorScatterMeasurement(Volts)",
+    "ISSDetectorSelfTest"
+  ],
+  "table": {
+    "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Experimental+table_SAME-R.csv&version=1&studyVersion=4",
+    "sha256": "87164b7dc9168a4273c159f7a9f23699afbd06ad97b77974377e79b9bf8a3bef"
+  },
+  "cut_volts": 2.0,
+  "runs": [
+    {
+      "number": 73,
+      "table_row": 9,
+      "material": "Kapton",
+      "date": "26-Aug",
+      "heater_ratio": 1.38,
+      "filename": "PSI-101_Analyzed Data_2010_238_17_kapton_run73.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_238_17_kapton_run73.xls&version=1&studyVersion=4",
+      "sha256": "4ce2c2c39769a9cf998c60994a027712a3410dd5d8e9a8b51ebb8c75e35c557a",
+      "heater_start_row": 65,
+      "baseline_rows": [
+        35,
+        64
+      ],
+      "baseline_n": 30,
+      "trace_n": 300,
+      "peak_row": 193,
+      "seconds_to_peak": 129,
+      "baseline_v": -0.1841735,
+      "minimum_raw_v": -0.701599,
+      "peak_drop_v": 0.5174255
+    },
+    {
+      "number": 74,
+      "table_row": 97,
+      "material": "Pyrell",
+      "date": "26-Aug",
+      "heater_ratio": 1.22,
+      "filename": "PSI-101_Analyzed Data_2010_238_17_pyrell_run74.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_238_17_pyrell_run74.xls&version=1&studyVersion=4",
+      "sha256": "106f0d5dde43c7a7cb85af044cfa4abd43ba1d5db562d8fdbf7c2a01175cfffe",
+      "heater_start_row": 73,
+      "baseline_rows": [
+        43,
+        72
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 237,
+      "seconds_to_peak": 164,
+      "baseline_v": -0.18325799999999998,
+      "minimum_raw_v": -6.26556,
+      "peak_drop_v": 6.082302
+    },
+    {
+      "number": 75,
+      "table_row": 11,
+      "material": "Kapton",
+      "date": "26-Aug",
+      "heater_ratio": 1.43,
+      "filename": "PSI-101_Analyzed Data_2010_238_18_kapton_run75.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_238_18_kapton_run75.xls&version=1&studyVersion=4",
+      "sha256": "5425dd10abfec38d6da32ca042f48a89c8056f7024b9ecb87ba7e415178f8259",
+      "heater_start_row": 164,
+      "baseline_rows": [
+        134,
+        163
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 326,
+      "seconds_to_peak": 162,
+      "baseline_v": -0.188293,
+      "minimum_raw_v": -0.75592,
+      "peak_drop_v": 0.567627
+    },
+    {
+      "number": 76,
+      "table_row": 99,
+      "material": "Pyrell",
+      "date": "26-Aug",
+      "heater_ratio": 1.23,
+      "filename": "PSI-101_Analyzed Data_2010_238_18_pyrell_run76.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_238_18_pyrell_run76.xls&version=1&studyVersion=4",
+      "sha256": "23a292a29c88c567d571209eb08b399b5c0339096723c1596fd75c51be339cec",
+      "heater_start_row": 193,
+      "baseline_rows": [
+        163,
+        192
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 375,
+      "seconds_to_peak": 182,
+      "baseline_v": -0.18325799999999998,
+      "minimum_raw_v": -6.27441,
+      "peak_drop_v": 6.091152
+    },
+    {
+      "number": 77,
+      "table_row": 13,
+      "material": "Kapton",
+      "date": "26-Aug",
+      "heater_ratio": 1.48,
+      "filename": "PSI-101_Analyzed Data_2010_238_19_kapton_run77.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_238_19_kapton_run77.xls&version=1&studyVersion=4",
+      "sha256": "d6a7457ca7b5c11232d705bb0bcdb2f91c75454b9c53294619be129c278849ca",
+      "heater_start_row": 178,
+      "baseline_rows": [
+        148,
+        177
+      ],
+      "baseline_n": 30,
+      "trace_n": 302,
+      "peak_row": 320,
+      "seconds_to_peak": 141,
+      "baseline_v": -0.2163695,
+      "minimum_raw_v": -0.718384,
+      "peak_drop_v": 0.5020145
+    },
+    {
+      "number": 78,
+      "table_row": 59,
+      "material": "Lampwick",
+      "date": "26-Aug",
+      "heater_ratio": 1.245,
+      "filename": "PSI-101_Analyzed Data_2010_239_13_lampwick_run78.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_239_13_lampwick_run78.xls&version=1&studyVersion=4",
+      "sha256": "a211cc64f8267dd11a8f8fce4f367066c352ccce16ea7f81965586e85743b124",
+      "heater_start_row": 49,
+      "baseline_rows": [
+        19,
+        48
+      ],
+      "baseline_n": 30,
+      "trace_n": 300,
+      "peak_row": 195,
+      "seconds_to_peak": 146,
+      "baseline_v": -0.184326,
+      "minimum_raw_v": -6.24756,
+      "peak_drop_v": 6.063234
+    },
+    {
+      "number": 79,
+      "table_row": 79,
+      "material": "Teflon",
+      "date": "26-Aug",
+      "heater_ratio": 1.445,
+      "filename": "PSI-101_Analyzed Data_2010_239_14_teflon_run79.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_239_14_teflon_run79.xls&version=1&studyVersion=4",
+      "sha256": "2133cc52cfdd633bc8cb2367720504f0b6530f510cfc10fdce6ec855913d9074",
+      "heater_start_row": 205,
+      "baseline_rows": [
+        175,
+        204
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 351,
+      "seconds_to_peak": 146,
+      "baseline_v": -0.193176,
+      "minimum_raw_v": -1.19781,
+      "peak_drop_v": 1.004634
+    },
+    {
+      "number": 80,
+      "table_row": 61,
+      "material": "Lampwick",
+      "date": "26-Aug",
+      "heater_ratio": 1.28,
+      "filename": "PSI-101_Analyzed Data_2010_239_15_lampwick_run80.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_239_15_lampwick_run80.xls&version=1&studyVersion=4",
+      "sha256": "ecf12d010eaaa4b38d112886f7a289d32049de9f0a185f477e5266bbe87de668",
+      "heater_start_row": 317,
+      "baseline_rows": [
+        288,
+        316
+      ],
+      "baseline_n": 29,
+      "trace_n": 301,
+      "peak_row": 476,
+      "seconds_to_peak": 159,
+      "baseline_v": -0.184631,
+      "minimum_raw_v": -6.2616,
+      "peak_drop_v": 6.076969
+    },
+    {
+      "number": 81,
+      "table_row": 81,
+      "material": "Teflon",
+      "date": "26-Aug",
+      "heater_ratio": 1.45,
+      "filename": "PSI-101_Analyzed Data_2010_239_16_teflon_run81.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_239_16_teflon_run81.xls&version=1&studyVersion=4",
+      "sha256": "28c66a39a92da9e8111c814a4f9ca598f9f173f1f7008503ffd7d63da1e4c568",
+      "heater_start_row": 172,
+      "baseline_rows": [
+        142,
+        171
+      ],
+      "baseline_n": 30,
+      "trace_n": 300,
+      "peak_row": 301,
+      "seconds_to_peak": 129,
+      "baseline_v": -0.21759050000000002,
+      "minimum_raw_v": -2.39716,
+      "peak_drop_v": 2.1795695
+    },
+    {
+      "number": 82,
+      "table_row": 63,
+      "material": "Lampwick",
+      "date": "26-Aug",
+      "heater_ratio": 1.265,
+      "filename": "PSI-101_Analyzed Data_2010_239_16_lampwick_run82.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_239_16_lampwick_run82.xls&version=1&studyVersion=4",
+      "sha256": "95ed4293585a30680c48f6d60b62617cbe1795fab7de81839036c4201d3f94ed",
+      "heater_start_row": 460,
+      "baseline_rows": [
+        430,
+        459
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 591,
+      "seconds_to_peak": 131,
+      "baseline_v": -0.1853945,
+      "minimum_raw_v": -6.26251,
+      "peak_drop_v": 6.0771155
+    },
+    {
+      "number": 83,
+      "table_row": 83,
+      "material": "Teflon",
+      "date": "26-Aug",
+      "heater_ratio": 1.448,
+      "filename": "PSI-101_Analyzed Data_2010_239_17_teflon_run83.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_239_17_teflon_run83.xls&version=1&studyVersion=4",
+      "sha256": "e93299abe9d5956dc1f49444f6189007d9a21cd380da60d207db40461f53d9be",
+      "heater_start_row": 283,
+      "baseline_rows": [
+        253,
+        282
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 430,
+      "seconds_to_peak": 147,
+      "baseline_v": -0.189819,
+      "minimum_raw_v": -1.95313,
+      "peak_drop_v": 1.763311
+    },
+    {
+      "number": 84,
+      "table_row": 101,
+      "material": "Pyrell",
+      "date": "30-Aug",
+      "heater_ratio": 1.225,
+      "filename": "PSI-101_Analyzed Data_2010_2342_11_pyrell_run84.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_2342_11_pyrell_run84.xls&version=1&studyVersion=4",
+      "sha256": "a05e8d68ffefad20fd462218964cbc7215651934f3f6e84aa2b435f9d4c1928f",
+      "heater_start_row": 318,
+      "baseline_rows": [
+        288,
+        317
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 539,
+      "seconds_to_peak": 221,
+      "baseline_v": -0.185852,
+      "minimum_raw_v": -6.24176,
+      "peak_drop_v": 6.055908
+    },
+    {
+      "number": 85,
+      "table_row": 15,
+      "material": "Kapton",
+      "date": "30-Aug",
+      "heater_ratio": 1.43,
+      "filename": "PSI-101_Analyzed Data_2010_242_12_kapton_run85.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_242_12_kapton_run85.xls&version=1&studyVersion=4",
+      "sha256": "1f94817bc0544830a75b5f61d351efb99d4fa5a100353de1fe636a5c25572ec0",
+      "heater_start_row": 159,
+      "baseline_rows": [
+        129,
+        158
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 324,
+      "seconds_to_peak": 164,
+      "baseline_v": -0.187378,
+      "minimum_raw_v": -1.21796,
+      "peak_drop_v": 1.030582
+    },
+    {
+      "number": 86,
+      "table_row": 43,
+      "material": "Silicone",
+      "date": "30-Aug",
+      "heater_ratio": 1.345,
+      "filename": "PSI-101_Analyzed Data_2010_242_14_silicone_run86.xls",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_242_14_silicone_run86.xls&version=1&studyVersion=4",
+      "sha256": "dbb9d587170c3598772c2e7ca2518393e8e2320e278b58278fc94f1dddc6f4e4",
+      "heater_start_row": 176,
+      "baseline_rows": [
+        146,
+        175
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "peak_row": 363,
+      "seconds_to_peak": 187,
+      "baseline_v": -0.1856995,
+      "minimum_raw_v": -6.26251,
+      "peak_drop_v": 6.0768105
+    }
+  ],
+  "folds": {
+    "number": {
+      "overall": {
+        "n": 14,
+        "mae": {
+          "heater": 0.89407575,
+          "median": 4.435192643,
+          "mean": 2.689102115
+        },
+        "heater_error_range": [
+          0.020012393,
+          2.612270933
+        ],
+        "below_cut": 6,
+        "false_below": 1,
+        "false_above": 1
+      },
+      "by_material": {
+        "Kapton": {
+          "n": 4,
+          "mae": {
+            "heater": 1.115462999,
+            "median": 5.40149575,
+            "mean": 3.14822177
+          },
+          "heater_error_range": [
+            0.10568767,
+            2.493417854
+          ],
+          "below_cut": 4,
+          "false_below": 0,
+          "false_above": 1
+        },
+        "Lampwick": {
+          "n": 3,
+          "mae": {
+            "heater": 0.525285224,
+            "median": 3.89287,
+            "mean": 2.686576808
+          },
+          "heater_error_range": [
+            0.020012393,
+            0.973324937
+          ],
+          "below_cut": 0,
+          "false_below": 0,
+          "false_above": 0
+        },
+        "Pyrell": {
+          "n": 3,
+          "mae": {
+            "heater": 0.554491232,
+            "median": 3.8968845,
+            "mean": 2.690900116
+          },
+          "heater_error_range": [
+            0.383059257,
+            0.701935063
+          ],
+          "below_cut": 0,
+          "false_below": 0,
+          "false_above": 0
+        },
+        "Silicone": {
+          "n": 1,
+          "mae": {
+            "heater": 2.612270933,
+            "median": 3.897241,
+            "mean": 2.691284038
+          },
+          "heater_error_range": [
+            2.612270933,
+            2.612270933
+          ],
+          "below_cut": 0,
+          "false_below": 0,
+          "false_above": 0
+        },
+        "Teflon": {
+          "n": 3,
+          "mae": {
+            "heater": 0.734536068,
+            "median": 4.4067365,
+            "mean": 2.076942577
+          },
+          "heater_error_range": [
+            0.29409187,
+            1.229621451
+          ],
+          "below_cut": 2,
+          "false_below": 1,
+          "false_above": 0
+        }
+      },
+      "predictions": [
+        {
+          "number": 73,
+          "material": "Kapton",
+          "training_ids": [
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 0.5174255,
+          "predicted": {
+            "heater": 3.010843354,
+            "median": 6.055908,
+            "mean": 3.813171462
+          }
+        },
+        {
+          "number": 74,
+          "material": "Pyrell",
+          "training_ids": [
+            73,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.082302,
+          "predicted": {
+            "heater": 6.784237063,
+            "median": 2.1795695,
+            "mean": 3.385104038
+          }
+        },
+        {
+          "number": 75,
+          "material": "Kapton",
+          "training_ids": [
+            73,
+            74,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 0.567627,
+          "predicted": {
+            "heater": 1.763048144,
+            "median": 6.055908,
+            "mean": 3.809309808
+          }
+        },
+        {
+          "number": 76,
+          "material": "Pyrell",
+          "training_ids": [
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.091152,
+          "predicted": {
+            "heater": 6.474211257,
+            "median": 2.1795695,
+            "mean": 3.384423269
+          }
+        },
+        {
+          "number": 77,
+          "material": "Kapton",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 0.5020145,
+          "predicted": {
+            "heater": 0.39632683,
+            "median": 6.055908,
+            "mean": 3.814356923
+          }
+        },
+        {
+          "number": 78,
+          "material": "Lampwick",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.063234,
+          "predicted": {
+            "heater": 6.043221607,
+            "median": 2.1795695,
+            "mean": 3.386570808
+          }
+        },
+        {
+          "number": 79,
+          "material": "Teflon",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 1.004634,
+          "predicted": {
+            "heater": 1.29872587,
+            "median": 6.055908,
+            "mean": 3.775693885
+          }
+        },
+        {
+          "number": 80,
+          "material": "Lampwick",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.076969,
+          "predicted": {
+            "heater": 5.103644063,
+            "median": 2.1795695,
+            "mean": 3.385514269
+          }
+        },
+        {
+          "number": 81,
+          "material": "Teflon",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            82,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 2.1795695,
+          "predicted": {
+            "heater": 0.949948049,
+            "median": 6.055908,
+            "mean": 3.685314231
+          }
+        },
+        {
+          "number": 82,
+          "material": "Lampwick",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.0771155,
+          "predicted": {
+            "heater": 5.494597157,
+            "median": 2.1795695,
+            "mean": 3.385503
+          }
+        },
+        {
+          "number": 83,
+          "material": "Teflon",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            84,
+            85,
+            86
+          ],
+          "measured": 1.763311,
+          "predicted": {
+            "heater": 1.083416118,
+            "median": 6.055908,
+            "mean": 3.717334115
+          }
+        },
+        {
+          "number": 84,
+          "material": "Pyrell",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            85,
+            86
+          ],
+          "measured": 6.055908,
+          "predicted": {
+            "heater": 6.634387375,
+            "median": 2.1795695,
+            "mean": 3.387134346
+          }
+        },
+        {
+          "number": 85,
+          "material": "Kapton",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            86
+          ],
+          "measured": 1.030582,
+          "predicted": {
+            "heater": 1.697907329,
+            "median": 6.055908,
+            "mean": 3.773697885
+          }
+        },
+        {
+          "number": 86,
+          "material": "Silicone",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85
+          ],
+          "measured": 6.0768105,
+          "predicted": {
+            "heater": 3.464539567,
+            "median": 2.1795695,
+            "mean": 3.385526462
+          }
+        }
+      ]
+    },
+    "material": {
+      "overall": {
+        "n": 14,
+        "mae": {
+          "heater": 1.249902851,
+          "median": 4.619191643,
+          "mean": 3.249381624
+        },
+        "heater_error_range": [
+          0.11312353,
+          2.920460834
+        ],
+        "below_cut": 6,
+        "false_below": 1,
+        "false_above": 3
+      },
+      "by_material": {
+        "Kapton": {
+          "n": 4,
+          "mae": {
+            "heater": 1.771716576,
+            "median": 5.41561,
+            "mean": 4.0926883
+          },
+          "heater_error_range": [
+            0.912356818,
+            2.920460834
+          ],
+          "below_cut": 4,
+          "false_below": 0,
+          "false_above": 3
+        },
+        "Lampwick": {
+          "n": 3,
+          "mae": {
+            "heater": 0.73644061,
+            "median": 4.3091285,
+            "mean": 3.175045318
+          },
+          "heater_error_range": [
+            0.312692866,
+            1.117826696
+          ],
+          "below_cut": 0,
+          "false_below": 0,
+          "false_above": 0
+        },
+        "Pyrell": {
+          "n": 3,
+          "mae": {
+            "heater": 1.036702988,
+            "median": 4.313143,
+            "mean": 3.180154682
+          },
+          "heater_error_range": [
+            0.887398388,
+            1.165461588
+          ],
+          "below_cut": 0,
+          "false_below": 0,
+          "false_above": 0
+        },
+        "Silicone": {
+          "n": 1,
+          "mae": {
+            "heater": 2.612270933,
+            "median": 3.897241,
+            "mean": 2.691284038
+          },
+          "heater_error_range": [
+            2.612270933,
+            2.612270933
+          ],
+          "below_cut": 0,
+          "false_below": 0,
+          "false_above": 0
+        },
+        "Teflon": {
+          "n": 3,
+          "mae": {
+            "heater": 0.826690627,
+            "median": 4.4140625,
+            "mean": 2.4545685
+          },
+          "heater_error_range": [
+            0.11312353,
+            1.417489524
+          ],
+          "below_cut": 2,
+          "false_below": 1,
+          "false_above": 0
+        }
+      },
+      "predictions": [
+        {
+          "number": 73,
+          "material": "Kapton",
+          "training_ids": [
+            74,
+            76,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            86
+          ],
+          "measured": 0.5174255,
+          "predicted": {
+            "heater": 3.437886334,
+            "median": 6.07002225,
+            "mean": 4.74710055
+          }
+        },
+        {
+          "number": 74,
+          "material": "Pyrell",
+          "training_ids": [
+            73,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            85,
+            86
+          ],
+          "measured": 6.082302,
+          "predicted": {
+            "heater": 7.247763588,
+            "median": 1.763311,
+            "mean": 2.896299318
+          }
+        },
+        {
+          "number": 75,
+          "material": "Kapton",
+          "training_ids": [
+            74,
+            76,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            86
+          ],
+          "measured": 0.567627,
+          "predicted": {
+            "heater": 2.426128826,
+            "median": 6.07002225,
+            "mean": 4.74710055
+          }
+        },
+        {
+          "number": 76,
+          "material": "Pyrell",
+          "training_ids": [
+            73,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            85,
+            86
+          ],
+          "measured": 6.091152,
+          "predicted": {
+            "heater": 6.978550388,
+            "median": 1.763311,
+            "mean": 2.896299318
+          }
+        },
+        {
+          "number": 77,
+          "material": "Kapton",
+          "training_ids": [
+            74,
+            76,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            86
+          ],
+          "measured": 0.5020145,
+          "predicted": {
+            "heater": 1.414371318,
+            "median": 6.07002225,
+            "mean": 4.74710055
+          }
+        },
+        {
+          "number": 78,
+          "material": "Lampwick",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            79,
+            81,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.063234,
+          "predicted": {
+            "heater": 5.750541134,
+            "median": 1.763311,
+            "mean": 2.897394182
+          }
+        },
+        {
+          "number": 79,
+          "material": "Teflon",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            80,
+            82,
+            84,
+            85,
+            86
+          ],
+          "measured": 1.004634,
+          "predicted": {
+            "heater": 0.89151047,
+            "median": 6.063234,
+            "mean": 4.10374
+          }
+        },
+        {
+          "number": 80,
+          "material": "Lampwick",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            79,
+            81,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.076969,
+          "predicted": {
+            "heater": 4.959142304,
+            "median": 1.763311,
+            "mean": 2.897394182
+          }
+        },
+        {
+          "number": 81,
+          "material": "Teflon",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            80,
+            82,
+            84,
+            85,
+            86
+          ],
+          "measured": 2.1795695,
+          "predicted": {
+            "heater": 0.762079976,
+            "median": 6.063234,
+            "mean": 4.10374
+          }
+        },
+        {
+          "number": 82,
+          "material": "Lampwick",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            79,
+            81,
+            83,
+            84,
+            85,
+            86
+          ],
+          "measured": 6.0771155,
+          "predicted": {
+            "heater": 5.298313231,
+            "median": 1.763311,
+            "mean": 2.897394182
+          }
+        },
+        {
+          "number": 83,
+          "material": "Teflon",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            80,
+            82,
+            84,
+            85,
+            86
+          ],
+          "measured": 1.763311,
+          "predicted": {
+            "heater": 0.813852174,
+            "median": 6.063234,
+            "mean": 4.10374
+          }
+        },
+        {
+          "number": 84,
+          "material": "Pyrell",
+          "training_ids": [
+            73,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            85,
+            86
+          ],
+          "measured": 6.055908,
+          "predicted": {
+            "heater": 7.113156988,
+            "median": 1.763311,
+            "mean": 2.896299318
+          }
+        },
+        {
+          "number": 85,
+          "material": "Kapton",
+          "training_ids": [
+            74,
+            76,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            86
+          ],
+          "measured": 1.030582,
+          "predicted": {
+            "heater": 2.426128826,
+            "median": 6.07002225,
+            "mean": 4.74710055
+          }
+        },
+        {
+          "number": 86,
+          "material": "Silicone",
+          "training_ids": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85
+          ],
+          "measured": 6.0768105,
+          "predicted": {
+            "heater": 3.464539567,
+            "median": 2.1795695,
+            "mean": 3.385526462
+          }
+        }
+      ]
+    }
+  }
+}

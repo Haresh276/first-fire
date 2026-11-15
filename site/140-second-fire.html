@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Investigate NASA Saffire-II sample 2-7. Inspect the original specimen photographs, correct a caption, and exchange a source-backed review.">
+  <title>The 140-second fire · FIRST FIRE</title>
+  <link rel="icon" href="icon.svg"><link rel="stylesheet" href="flight-story.css"><script defer src="flight-story.js"></script>
+</head>
+<body>
+<a class="skip" href="#story">Skip to the investigation</a>
+<header><nav><a class="brand" href="index.html#home">FIRST FIRE<span>.</span></a><a href="evidence-guide.html">Rank NASA studies</a></nav></header>
+<main id="story">
+  <div class="opening">
+    <div><p class="kicker">Cygnus spacecraft · Saffire-II · Sample 2-7</p><h1>The 140-second fire</h1>
+      <p class="lede">A strip of acrylic touched a strip of flame-resistant fabric. NASA recorded a burn lasting 140 seconds. Which material actually caught fire?</p>
+    </div>
+    <figure>
+      <img width="574" height="135" src="saffire-2-7-specimen.jpg" alt="NASA photograph of the unburned composite strip, with the fabric alongside the acrylic lead-in.">
+      <figcaption>Before ignition. The 5 cm acrylic strip overlapped the 24 cm Nomex fabric by about 7 mm. <a href="https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=24">Ferkul et al., p. 24</a></figcaption>
+    </figure>
+  </div>
+  <section class="record" aria-labelledby="row-title"><div><p class="kicker">The flight record</p><h2 id="row-title">One row, two materials</h2><p>Read these columns as they appeared together in the experimental table.</p></div>
+    <dl class="cells"><div><dt>Sample</dt><dd>2-7</dd></div><div><dt>Material</dt><dd>PMMA &amp; Nomex</dd></div><div><dt>Burn Time (s)</dt><dd>140 s</dd></div></dl>
+    <details id="evidence"><summary>See the photograph and the component measurements</summary>
+      <figure><img width="664" height="133" src="saffire-2-7-exposure.jpg" alt="Flight report image of a bright flame at the end of the strip with a plume extending along the fabric."><figcaption>During exposure. The acrylic flame extended over the Nomex. <a href="https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=25">Ferkul et al., p. 25</a></figcaption></figure>
+      <div class="reading"><div><h3>5 cm of acrylic consumed</h3><p>The upstream acrylic, also called PMMA, burned away. NASA recorded the 140 seconds for the combined specimen.</p></div>
+      <div><h3>0 cm of Nomex burned</h3><p>The first centimetre of fabric showed significant damage. Five centimetres blackened. The investigators found no ignition of the fabric and identified soot from the acrylic as one possible cause of discoloration.</p></div></div>
+      <p class="sources"><a href="data/raw/PSI-99-experimental.csv" download>Original PSI table, row 8 and note 2</a> · <a href="https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=29">Flight report, Table I</a></p>
+    </details>
+  </section>
+  <section id="caption" aria-labelledby="caption-title">
+    <p class="kicker">Your interpretation</p><h2 id="caption-title">Which caption would you publish?</h2>
+    <form id="choose"><fieldset><legend>Choose a caption for this flight record.</legend>
+      <label><input type="radio" name="interpretation" value="fabric" required> The Nomex fabric burned for 140 seconds.</label>
+      <label><input type="radio" name="interpretation" value="assembly"> The assembly burned for 140 seconds. The acrylic burned and the Nomex showed damage.</label>
+      <label><input type="radio" name="interpretation" value="rating"> This test clears the fabric for use in a lunar cabin.</label>
+    </fieldset><button type="submit">Check against NASA’s report</button><p id="feedback" role="status"></p></form>
+    <p>To test this fabric for a rover, match its grade, seam and adjacent heat source, set the proposed oxygen and pressure, and measure whether the flame keeps spreading when the heat source ends.</p>
+  </section>
+  <section id="review" aria-labelledby="peer-title">
+    <p class="kicker">Peer review</p><h2 id="peer-title">Give another reader a caption to check</h2>
+    <p>Write your caption in your own language. Include the source cell or page that settled the question. Another reader can open your file, agree or dispute the interpretation, and send back a reviewed copy.</p>
+    <form id="write-caption"><label for="caption-text">Your caption</label><textarea id="caption-text" rows="2" maxlength="1200" required></textarea>
+      <label for="locator">Source and location</label><input id="locator" maxlength="400" required placeholder="e.g. PSI-99, sample 2-7, note 2">
+      <label for="author">Credit as (optional)</label><input id="author" maxlength="100" autocomplete="off">
+      <button type="submit">Download caption for review</button><p id="written" role="status"></p>
+    </form>
+    <details><summary>Review a reader’s file</summary><label for="peer-file">Open a caption or reviewed copy</label>
+      <input id="peer-file" type="file" accept=".json,application/json"><p id="file-status" role="status"></p>
+      <div id="loaded" hidden><blockquote id="their-caption"></blockquote><p id="their-source"></p><ol id="review-history"></ol>
+        <form id="reply"><label for="verdict">Your judgment</label><select id="verdict"><option value="agree">Agree with the caption</option><option value="dispute">Dispute the caption</option><option value="uncertain">Need more evidence</option></select>
+          <label for="review-note">Evidence and source location for your judgment</label><textarea id="review-note" rows="2" required maxlength="1200"></textarea>
+          <label for="credit">Reviewer credit (optional)</label><input id="credit" maxlength="100"><button type="submit">Download reviewed copy</button><p id="reply-status" role="status"></p>
+        </form>
+      </div>
+    </details><noscript>File exchange and the caption check require JavaScript. The flight record, photographs and source notes are available above.</noscript>
+  </section>
+  <footer><p>Photographs from the Saffire investigators’ 2017 flight report. Team Code Blooded prepared the interpretation exercise with AI assistance.</p><a href="judging-evidence.html">Explore the project evidence</a> · <a href="index.html#case/saffire">Full research case</a></footer>
+</main></body></html>

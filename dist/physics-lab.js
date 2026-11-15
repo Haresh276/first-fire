@@ -10,13 +10,14 @@
     cellulose: {name:'Cellulose', formula:'C₆H₁₀O₅', carbon:6, hydrogen:10, oxygen:5, heat:15.2},
     polyethylene: {name:'Polyethylene', formula:'CH₂', carbon:1, hydrogen:2, oxygen:0, heat:43.4}
   };
+  const loadings = {coupon:0.05, stress:2};
   const ranges = {
     volume:[1,60], pressure:[30,110], oxygen:[10,40], cutoff:[5,30], length:[10,100],
-    density:[0.1,10], speed:[0,2], chassisMass:[100,5000], capacity:[0,2000], power:[0,3000]
+    density:[loadings.coupon,10], speed:[0,2], chassisMass:[100,5000], capacity:[0,2000], power:[0,3000]
   };
   const defaults = {
     planet:'Moon', fuel:'cellulose', volume:12, pressure:56.54, oxygen:34, cutoff:18, length:40,
-    density:2, speed:0.3, chassisMass:800, capacity:20, power:0
+    density:loadings.stress, speed:0.3, chassisMass:800, capacity:20, power:0
   };
   const gravity = {Moon:1.62, Mars:3.71};
   const trainingDomain = {
@@ -118,8 +119,11 @@
       return target+(prev[cell.index]-target)*Math.exp(-conductance*interval);
     });
   }
+  function inTrainingDomain(s) {
+    return Object.entries(trainingDomain).every(([key,[low,high]])=>s[key]>=low && s[key]<=high);
+  }
   function liquidPrediction(s,model) {
-    if(!model || Object.entries(trainingDomain).some(([key,[low,high]])=>s[key]<low || s[key]>high))return null;
+    if(!model || !inTrainingDomain(s))return null;
     const inputs=liquidInputs(s);
     let state=model.cells.map(()=>0);
     const result=[s.oxygen];
@@ -138,7 +142,7 @@
       direction,atTime({...s,speed:mmPerSecond/10},t)
     ]));
   }
-  const api={saffireSpeeds,compareReferenceSpeeds,defaults,ranges,trainingDomain,fuels,gravity,horizon,interval,validate,chemistry,atTime,run,flameTemperature,liquidInputs,liquidStep,liquidPrediction};
+  const api={saffireSpeeds,compareReferenceSpeeds,defaults,ranges,loadings,trainingDomain,inTrainingDomain,fuels,gravity,horizon,interval,validate,chemistry,atTime,run,flameTemperature,liquidInputs,liquidStep,liquidPrediction};
   if(typeof module!=='undefined' && module.exports) module.exports=api;
   if(typeof window!=='undefined') window.FFPhysics=api;
 })();
@@ -200,7 +204,10 @@
   }
   function renderPhysicsLab(root,params) {
     const roverMode=params?.get?.('mode')==='rover' || params?.mode==='rover';
-    const d=physics.defaults;
+    // Existing rover and reference links use the heavier scenario from the original worked example.
+    const requested=params?.get?.('reference');
+    const d=roverMode || Object.hasOwn(physics.saffireSpeeds,requested)
+      ? physics.defaults : {...physics.defaults,density:physics.loadings.coupon};
     root.innerHTML='<div class="pl"><div class="breadcrumb"><a href="#home">Research desk</a><span>/</span>Physics Lab</div>'+
       '<header class="pagetitle"><span class="eyebrow">Physics Lab</span><h1>Inside a sealed cabin</h1><p class="sub">Give a burning strip a fuel, a starting atmosphere and a spread speed. Follow the oxygen it consumes and the heat it releases.</p><div class="actions"><a class="ghost" href="#transport-lab">Model a remote sensor →</a></div></header>'+
       '<form id="pl-form"><div class="pl-grid">'+
@@ -209,9 +216,10 @@
       select('fuel','Strip material',Object.fromEntries(Object.entries(physics.fuels).map(([k,v])=>[k,v.name])),d.fuel)+
       field('oxygen','Starting oxygen',d.oxygen,'%')+field('pressure','Absolute pressure',d.pressure,'kPa')+
       field('volume','Free cabin volume',d.volume,'m³')+field('cutoff','Assumed O₂ cutoff',d.cutoff,'%')+
-      '</div><details class="pl-details"><summary>Fuel strip and spread</summary><div class="pl-fields">'+
-      field('length','Strip length',d.length,'cm')+field('density','Fuel per centimetre',d.density,'g/cm')+
-      field('speed','Assumed front speed',d.speed,'cm/s')+'</div><p class="small">The strip starts ignited if oxygen exceeds the cutoff. You supply its speed. Fresh fabric is consumed until the front reaches the strip end or the oxygen cutoff.</p></details>'+
+      field('length','Strip length',d.length,'cm')+field('density','Dry combustible mass per centimetre',d.density,'g/cm')+
+      '</div><div class="actions"><button type="button" class="ghost" id="pl-coupon">Thin coupon · 0.05 g/cm</button><button type="button" class="ghost" id="pl-stress">Stress case · 2 g/cm</button></div><p id="pl-inventory" class="pl-aside"></p>'+
+      '<details class="pl-details"><summary>Spread and specimen assumptions</summary><div class="pl-fields">'+
+      field('speed','Assumed front speed',d.speed,'cm/s')+'</div><p class="small">The thin coupon assumes a 2 cm wide strip with 250 g/m² of combustible material. The stress case concentrates forty times as much fuel per centimetre. For a real specimen, divide its dry combustible mass by its active length and exclude inert backing. Both examples impose the front speed until the strip ends or the assumed oxygen cutoff is reached.</p></details>'+
       '<p class="pl-message" id="pl-message" role="status"></p><button type="button" class="ghost" id="pl-reset">Reset conditions</button></section>'+
       '<section class="pl-readout" aria-labelledby="pl-trace-title"><span class="eyebrow">Sealed-cabin calculation</span><h2 id="pl-trace-title">Cabin gas over time</h2>'+
       '<div id="pl-live-data"><div class="pl-chart-key"><span class="pl-o2">Oxygen</span><span class="pl-co2">Carbon dioxide</span><span id="pl-liquid-key">Liquid model O₂</span></div>'+
@@ -248,8 +256,9 @@
     const desk=window.FFAwareness;
     const lite=desk?.tier?.()==='lite';
     let model=lite?null:window.FFCabinLiquid;
+    let runNetwork;
     if(lite){
-      const runNetwork=document.createElement('button');
+      runNetwork=document.createElement('button');
       runNetwork.type='button';runNetwork.className='ghost';runNetwork.textContent='Run liquid model on this device';
       get('evaluation').after(runNetwork);
       runNetwork.onclick=async()=>{
@@ -295,8 +304,10 @@
       get('front').textContent=fmt(sample.position,1);
       get('char').style.width=(100*sample.position/scenario.length)+'%';
       get('fate').textContent=sample.state+' · '+fmt(sample.burned,1)+' g consumed · '+fmt(sample.chemical,1)+' kJ combustion + '+fmt(sample.electrical,1)+' kJ electrical.';
-      get('estimate').textContent=predicted?fmt(predicted[index])+'% O₂':model?'Outside training range':'Available on demand';
-      get('network-result').textContent=predicted?'At '+sample.time+' s the simulator gives '+fmt(sample.oxygen)+'%. The absolute difference is '+fmt(Math.abs(predicted[index]-sample.oxygen),3)+' percentage points.':model?'The solver is available for this scenario. Network coverage requires 4–30 m³, 50–105 kPa, 21–37% O₂, a 15–20% cutoff, 20–60 cm of strip, 0.5–5 g/cm and 0.03–0.65 cm/s.':'Lite mode runs the physics solver. Enable the liquid model to compare its estimate at the same time.';
+      const covered=physics.inTrainingDomain(scenario);
+      if(runNetwork)runNetwork.hidden=Boolean(model)||!covered;
+      get('estimate').textContent=predicted?fmt(predicted[index])+'% O₂':covered?'Available on demand':'Outside training range';
+      get('network-result').textContent=predicted?'At '+sample.time+' s the simulator gives '+fmt(sample.oxygen)+'%. The absolute difference is '+fmt(Math.abs(predicted[index]-sample.oxygen),3)+' percentage points.':covered?'Lite mode runs the physics solver. Enable the liquid model to compare its estimate at the same time.':'The gas balance runs directly. The network was trained on 0.5–5 g/cm, 4–30 m³, 50–105 kPa, 21–37% O₂, a 15–20% cutoff, 20–60 cm of strip and 0.03–0.65 cm/s.';
       get('liquid-key').hidden=!predicted;
       if(!lite)chart(get('chart'),current.trace,predicted,sample.time);
       const basis=reference?'The '+reference+' Saffire-I speed is imposed on this strip. ':'The strip speed is a user assumption. ';
@@ -311,7 +322,8 @@
       publish({kind:'simulated',inputs:{...scenario},parts:selectedParts(),designName:control('designName').value.slice(0,60),
         reference,seconds:sample.time,outputs:{...sample,chassisWeightN:current.chassisWeight,idealFlameK:current.flame.kelvin},
         units:{position:'cm',oxygen:'wet vol%',co2:'wet vol%',water:'wet vol%',burned:'g',chemical:'kJ',electrical:'kJ',energy:'kJ'},
-        liquidStatus:predicted?'evaluated':model?'outside training domain':'deferred in Lite mode',
+        fuelInventory:{massG:scenario.length*scenario.density,loadingGPerCm:scenario.density,basis:'assumed dry combustible mass per active length'},
+        liquidStatus:predicted?'evaluated':covered?'deferred in Lite mode':'outside training domain',
         liquid:predicted?{oxygenPercent:predicted[index],errorPercentagePoints:Math.abs(sample.oxygen-predicted[index]),training:'synthetic cabin runs'}:null,
         sources,boundary:'The front speed is imposed. Source and rover differ in gravity, fuel and atmosphere. The liquid model approximates the solver.'});
     }
@@ -357,9 +369,12 @@
       get('live-data').hidden=!!err;
       if(err){
         current=null;compare();publish(null);
-        for(const id of ['temp','temp-source','estimate','network-result','rover-result','match'])get(id).textContent='Complete the test conditions to calculate.';
+        if(runNetwork)runNetwork.hidden=true;
+        for(const id of ['inventory','temp','temp-source','estimate','network-result','rover-result','match'])get(id).textContent='Complete the test conditions to calculate.';
         return;
       }
+      const loadingLabel=scenario.density===physics.loadings.coupon?'Thin-coupon example':scenario.density===physics.loadings.stress?'High-loading stress example':'Custom loading';
+      get('inventory').textContent=loadingLabel+' · '+fmt(scenario.length*scenario.density,3)+' g of combustible material across '+fmt(scenario.length)+' cm. Both the fuel loading and the cabin conditions are model inputs.';
       current=physics.run(scenario);predicted=physics.liquidPrediction(scenario,model);
       get('match').textContent='Your scenario uses '+physics.fuels[scenario.fuel].name.toLowerCase()+' on '+scenario.planet+' at '+fmt(scenario.oxygen)+'% O₂. The flight used a composite in orbit; this sealed-box solver has no airflow direction, and the cited PSI table supplies no pressure measurement. Only the speed is borrowed.';
       compare();
@@ -384,6 +399,9 @@
 
     }
     form.addEventListener('submit',e=>e.preventDefault());
+    for(const [key,loading] of Object.entries(physics.loadings)){
+      get(key).onclick=()=>{control('density').value=loading;calculate();};
+    }
     form.addEventListener('input',evt=>{
       if(evt.target===clock){inspect();return;}
       if(evt.target.name.endsWith('Name')){inspect();return;}
@@ -432,7 +450,6 @@
       if(Number.isInteger(previous.seconds) && previous.seconds>=0 && previous.seconds<=physics.horizon && previous.seconds%physics.interval===0)clock.value=previous.seconds;
       if(Object.hasOwn(physics.saffireSpeeds,previous.reference) && previous.inputs.speed===physics.saffireSpeeds[previous.reference]/10)reference=previous.reference;
     }
-    const requested=params?.get?.('reference');
     if(Object.hasOwn(physics.saffireSpeeds,requested)){
       reference=requested;control('speed').value=physics.saffireSpeeds[requested]/10;
     }
