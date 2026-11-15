@@ -1,5 +1,7 @@
 # FIRST FIRE
 
+[Open the 3D rover workbench](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/rover-workbench/prototype/index.html#workbench). Assemble a rover, drive a NASA reference course, and compare telemetry with a field trial. [Source and integration guide](rover-design/HANDOFF.md).
+
 A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall challenge](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources). Start with a research question and find the source, boundary and next test. The project does not issue a material rating or certify a cabin design.
 
 [Technical manual](site/technical-manual.html) · [Download technical manual (PDF)](dist/first-fire-technical-manual.pdf)

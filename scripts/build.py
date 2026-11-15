@@ -14,6 +14,11 @@ import tempfile
 from pathlib import Path
 from offline_edition import FILENAME as OFFLINE_EDITION, package_offline_site
 
+if __package__:
+    from .rover_workbench import copy_rover_workbench
+else:
+    from rover_workbench import copy_rover_workbench
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA, SITE, DIST = ROOT/'data', ROOT/'site', ROOT/'dist'
 def read_json(path):
@@ -42,6 +47,7 @@ def build():
         assert 1 < int(row['source_row']) <= len(tables[row['source_file']])
     with tempfile.TemporaryDirectory(dir=ROOT,prefix='.firstfire-build-') as temp:
         stage=Path(temp)/'dist';shutil.copytree(SITE,stage)
+        copy_rover_workbench(ROOT, stage)
         (stage/'data').mkdir()
         for f in ('cases.json','tests.csv','investigations.json','forecast.json','challenge-resources.json','incidents.json'):
             shutil.copy2(DATA/f,stage/'data'/f)

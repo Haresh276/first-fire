@@ -1,0 +1,385 @@
+[
+  {
+    "id": "nasa-01",
+    "agency": "NASA",
+    "title": "Moon Base Phases",
+    "url": "https://www.nasa.gov/moonbase-phases/",
+    "locator": "Lunar Terrain Vehicles, crew/cargo capacity and control modes",
+    "role": "NASA commissions commercial crew and cargo surface mobility for the lunar south pole.",
+    "evidenceClass": "mission description",
+    "quantities": [
+      {
+        "quantity": "suited crew capacity",
+        "value": 2,
+        "unit": "people"
+      }
+    ],
+    "conditions": "Planned open lunar vehicles, Astrolab CLV-1 and Lunar Outpost Pegasus. Crews wear pressure suits.",
+    "supports": "Model an unpressurized transport with crew seats, cargo space and remote or onboard driving.",
+    "limits": "Source does not publish an occupied pressure vessel, free air volume, design mass, or combustible inventory for these vehicles.",
+    "localFile": "evidence/files/nasa-04-moon-phases.html"
+  },
+  {
+    "id": "nasa-02",
+    "agency": "NASA",
+    "title": "Perseverance Rover Components",
+    "url": "https://science.nasa.gov/mission/mars-2020-perseverance/rover-components/",
+    "locator": "Body: Tech Specs; Wheels and Legs: Tech Specs – Wheels; How the Wheels Move",
+    "role": "NASA and JPL provide flight rover geometry, mass, wheel dimensions, steering and suspension descriptions.",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "overall length",
+        "value": 3,
+        "unit": "m"
+      },
+      {
+        "quantity": "overall width",
+        "value": 2.7,
+        "unit": "m"
+      },
+      {
+        "quantity": "overall height",
+        "value": 2.2,
+        "unit": "m"
+      },
+      {
+        "quantity": "rover mass",
+        "value": 1025,
+        "unit": "kg"
+      },
+      {
+        "quantity": "wheel count",
+        "value": 6,
+        "unit": "wheels"
+      },
+      {
+        "quantity": "wheel diameter (Tech Specs table)",
+        "value": 52.5,
+        "unit": "cm"
+      }
+    ],
+    "conditions": "As-built robotic Mars rover. Exterior dimensions are rounded; the rock-sampling arm extends outside the body.",
+    "supports": "Set a scale for a six-wheel imaging and sample-collection chassis and illustrate equipment deck, robotic arm and rocker-bogie suspension.",
+    "limits": "Dimensions bound the whole rover. They do not specify a pressure-vessel volume, crew atmosphere, mass of an individual part, or fire response.",
+    "localFile": "evidence/files/nasa-02-perseverance.html"
+  },
+  {
+    "id": "nasa-03",
+    "agency": "NASA",
+    "title": "Fire Safety Implications of Preliminary Results from Saffire IV and V Experiments on Large Scale Spacecraft Fires",
+    "url": "https://ntrs.nasa.gov/api/citations/20210011521/downloads/ICES%202021-266%200503-2021%20final.pdf",
+    "locator": "ICES-2021-266, Table 2, Flight-Sample V-2 column; section III.A and Figure 3",
+    "role": "NASA Glenn and partners conducted orbital fuel burns in uncrewed Cygnus and measured thin-fabric flame size.",
+    "evidenceClass": "experiment",
+    "quantities": [
+      {
+        "quantity": "reported oxygen concentration",
+        "value": 26.2,
+        "unit": "mol% O2"
+      },
+      {
+        "quantity": "absolute pressure",
+        "value": 70.7,
+        "unit": "kPa"
+      },
+      {
+        "quantity": "airflow speed with fan on",
+        "value": 20,
+        "unit": "cm/s"
+      },
+      {
+        "quantity": "cotton jersey sample width",
+        "value": 41,
+        "unit": "cm"
+      },
+      {
+        "quantity": "cotton jersey sample length",
+        "value": 50,
+        "unit": "cm"
+      },
+      {
+        "quantity": "duct height as tabulated",
+        "value": 30,
+        "unit": "cm"
+      },
+      {
+        "quantity": "steady flame size",
+        "value": 10,
+        "unit": "cm"
+      },
+      {
+        "quantity": "maximum flame size",
+        "value": 14,
+        "unit": "cm"
+      }
+    ],
+    "conditions": "Saffire V sample 2, cotton jersey, orbital microgravity, forced coflow; the fan was stopped and later restarted. The flame recovered when ventilation resumed.",
+    "supports": "Use as an observed flame-size reference at the reported material, atmosphere, flow and size. Keep flame size separate from distance burned and spread speed.",
+    "limits": "Not a partial-gravity rover cabin burn. Changing gravity, material construction, ventilation or mounting breaks direct equivalence. It supplies no whole-cabin heat-release law.",
+    "localFile": "evidence/files/nasa-03-saffire-iv-v.pdf"
+  },
+  {
+    "id": "nasa-04",
+    "agency": "NASA",
+    "title": "Lunar Terrain Vehicle",
+    "url": "https://www.nasa.gov/moonbase/lunar-terrain-vehicle/",
+    "locator": "Lunar Terrain Vehicle Commercial Companies: Astrolab and Lunar Outpost",
+    "role": "NASA identifies the two LTV providers and their individual lunar vehicle designs.",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "NASA public program overview, accessed November 2026. Images include mockups or renderings.",
+    "supports": "Identify Astrolab CLV-1 and Lunar Outpost Pegasus as separate open crew-transport designs.",
+    "limits": "Images are not surveyed blueprints or flight measurements. They do not establish cabin air, material properties, electrical loads or exact component positions.",
+    "localFile": "evidence/files/nasa-01-ltv.html"
+  },
+  {
+    "id": "nasa-05",
+    "agency": "NASA",
+    "title": "Evaluating Material Flammability in Microgravity and Martian Gravity Compared to the NASA Standard Normal Gravity Test",
+    "url": "https://ntrs.nasa.gov/api/citations/20130010991/downloads/20130010991.pdf",
+    "locator": "Sections II and III; Table I, Mylar G at 10.2 psia column; Figure 5",
+    "role": "NASA reports short-duration partial-gravity flammability tests and separates the surviving and extinguishing oxygen concentrations.",
+    "evidenceClass": "experiment",
+    "quantities": [
+      {
+        "quantity": "Mylar G film thickness",
+        "value": 5,
+        "unit": "mil"
+      },
+      {
+        "quantity": "test absolute pressure",
+        "value": 10.2,
+        "unit": "psia"
+      },
+      {
+        "quantity": "Martian-g lowest tested oxygen with sustained flame (ULOI*)",
+        "value": 18,
+        "unit": "mol% O2"
+      },
+      {
+        "quantity": "Martian-g highest tested oxygen with extinction (MOC*)",
+        "value": 17,
+        "unit": "mol% O2"
+      },
+      {
+        "quantity": "lunar-g lowest tested oxygen with sustained flame (ULOI*)",
+        "value": 15.6,
+        "unit": "mol% O2"
+      },
+      {
+        "quantity": "lunar-g highest tested oxygen with extinction (MOC*)",
+        "value": 14.1,
+        "unit": "mol% O2"
+      },
+      {
+        "quantity": "Martian-g drop duration",
+        "value": 5.18,
+        "unit": "s"
+      }
+    ],
+    "conditions": "Mylar G film; hot-wire ignition; buoyant upward spread under simulated partial gravity in a centrifuge aboard a drop-tower rig. Starred limits use flame survival to the end of a short test.",
+    "supports": "Compare a single material and pressure under two gravity levels and distinguish tested oxygen brackets from long-duration material qualification.",
+    "limits": "Earlier lunar results are reproduced in the paper. Different exposure times, surface geometry, forced flow, pressure or fuel can change the bracket. Not a transferable cabin cutoff, spread rate or certification.",
+    "localFile": "evidence/files/nasa-05-gravity-flammability.pdf"
+  },
+  {
+    "id": "csa-01",
+    "agency": "CSA",
+    "title": "Canada's Contribution to Mars Science Laboratory",
+    "url": "https://www.canada.ca/en/news/archive/2012/08/canada-contribution-mars-science-laboratory.html",
+    "locator": "The Maple Leaf on Mars: Canada's Contribution, APXS measurement sequence",
+    "role": "CSA provided the arm-mounted APXS instrument on Curiosity and funded its operations centre.",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "full analysis typical lower duration",
+        "value": 2,
+        "unit": "h"
+      },
+      {
+        "quantity": "full analysis typical upper duration",
+        "value": 3,
+        "unit": "h"
+      },
+      {
+        "quantity": "rapid major/minor element lower duration",
+        "value": 5,
+        "unit": "min"
+      },
+      {
+        "quantity": "rapid major/minor element upper duration",
+        "value": 10,
+        "unit": "min"
+      }
+    ],
+    "conditions": "Canadian prelanding engineering description of bringing the sensor head close to a soil or rock target and integrating X-ray counts.",
+    "supports": "Support an externally mounted contact-science instrument and differentiate a quick survey from a full analysis.",
+    "limits": "These are approximate integration times, dependent on measurement objectives. They do not specify motor energy, interior fuel, component mass or fire properties.",
+    "localFile": "evidence/files/csa-01-apxs.html"
+  },
+  {
+    "id": "esa-01",
+    "agency": "ESA",
+    "title": "ExoMars Rosalind Franklin (RFM)",
+    "url": "https://explorationscience.esa.int/project/exomars-rosalind-franklin-rfm/",
+    "locator": "Mission overview; ExoMars Rosalind Franklin Rover; Drilling in brief",
+    "role": "ESA leads the rover mission and describes its mobility, sample acquisition and onboard delivery system.",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "maximum drill reach",
+        "value": 2,
+        "unit": "m"
+      },
+      {
+        "quantity": "independently driven wheels",
+        "value": 6,
+        "unit": "wheels"
+      },
+      {
+        "quantity": "extension rods needed for full reach",
+        "value": 3,
+        "unit": "rods"
+      }
+    ],
+    "conditions": "Planned solar-powered Mars surface mission. Each wheel has independent steering and drive.",
+    "supports": "Represent a robotic mobile drilling lab with flexible wheels, extension rods, sample handling and orbital data relay.",
+    "limits": "Mission design values do not give measured Mars drilling performance, human-cabin dimensions, or rover fire measurements.",
+    "localFile": "evidence/files/esa-01-rosalind-franklin.html"
+  },
+  {
+    "id": "esa-02",
+    "agency": "ESA",
+    "title": "First deep drilling success for ExoMars",
+    "url": "https://www.esa.int/articles/first-deep-drilling-success-for-exomars",
+    "locator": "Opening account; Drill operations; No easy feat",
+    "role": "ESA reports a sample retrieval by its ground twin at the ALTEC Mars Terrain Simulator in Turin.",
+    "evidenceClass": "experiment",
+    "quantities": [
+      {
+        "quantity": "depth sampled",
+        "value": 1.7,
+        "unit": "m"
+      },
+      {
+        "quantity": "platform inclination",
+        "value": 7,
+        "unit": "deg"
+      },
+      {
+        "quantity": "sample pellet diameter, approximate",
+        "value": 1,
+        "unit": "cm"
+      },
+      {
+        "quantity": "sample pellet length, approximate",
+        "value": 2,
+        "unit": "cm"
+      }
+    ],
+    "conditions": "A gravity-offloaded rover test model on Earth sampled medium-hard cemented clay in a layered test well.",
+    "supports": "Provide a measured drill demonstration with substitute terrain and a sample transferred into the rover laboratory.",
+    "limits": "The rig offloaded vehicle weight. It did not reproduce the complete Mars environment or prove the same depth on Mars.",
+    "localFile": "evidence/files/esa-02-drilling.html"
+  },
+  {
+    "id": "isro-01",
+    "agency": "ISRO",
+    "title": "Chandrayaan-3 Details",
+    "url": "https://www.isro.gov.in/Chandrayaan3_Details.html",
+    "locator": "Overall specifications: Mass, Power generation, Communication; Rover Payloads",
+    "role": "ISRO publishes the mass, power generation rating, communications path and instrument list for the Chandrayaan-3 rover.",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "Pragyan rover mass",
+        "value": 26,
+        "unit": "kg"
+      },
+      {
+        "quantity": "rover power generation rating",
+        "value": 50,
+        "unit": "W"
+      }
+    ],
+    "conditions": "Lunar robotic rover, designed for one lunar day. Relays data through the lander. Rover payloads include APXS and LIBS.",
+    "supports": "Provide a compact lunar rover comparison and distinguish electrical power generation in watts from battery storage in watt-hours.",
+    "limits": "The 50 W value is a generation rating. This source does not give time-resolved output, battery storage, a crew cabin or material flammability.",
+    "localFile": "evidence/files/isro-01-pragyan.html"
+  },
+  {
+    "id": "asi-01",
+    "agency": "ASI",
+    "title": "ExoMars",
+    "url": "https://www.asi.it/en/planets-stars-universe/solar-system-and-beyond/exomars/",
+    "locator": "Italian contribution, MA_MISS; International agreements, drilling system",
+    "role": "ASI describes Italian instrument and industrial contributions, including INAF-IAPS collaboration on Ma_MISS in the drill.",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "drill full design depth",
+        "value": 2,
+        "unit": "m"
+      }
+    ],
+    "conditions": "ExoMars payload design: observe the borehole wall spectroscopically during drilling.",
+    "supports": "Support an Italian drill-integrated sensor that interrogates layers in place and distinguishes a sensor in the drill from a camera on the mast.",
+    "limits": "Historical ASI page contains superseded launch dates. Use this source for payload architecture; drill depth is design reach, and no borehole data from Mars is reported here.",
+    "localFile": "evidence/files/asi-01-mamiss.html"
+  },
+  {
+    "id": "jaxa-01",
+    "agency": "JAXA",
+    "title": "Inside development of the crewed pressurized rover for Artemis (JAXA engineering interview, in Japanese)",
+    "url": "https://humans-in-space.jaxa.jp/space-job/specialist/voice/detail/13.html",
+    "locator": "31 March 2026; section 過酷な月面でも宇宙飛行士が快適に過ごせるように, answers on thermal control and environmental control",
+    "role": "JAXA’s habitat thermal and life-support engineer describes the pressurized rover being developed with Toyota.",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Preliminary design reported in March 2026. Cabin environmental systems regulate pressure, temperature and humidity and remove CO₂. Insulation, pumps and radiators help manage heat.",
+    "supports": "Distinguish the occupied pressure vessel and its actively controlled atmosphere from an open vehicle or a sealed passive test box.",
+    "limits": "Public interview offers no cabin pressure setpoint, O₂ fraction, ventilation rate, free gas volume, internal material inventory or validated fire response.",
+    "localFile": "evidence/files/jaxa-01-cabin.html"
+  },
+  {
+    "id": "jaxa-02",
+    "agency": "JAXA",
+    "title": "JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration",
+    "url": "https://global.toyota/en/newsroom/corporate/27059582.html",
+    "locator": "12 March 2019; Concept proposal for the pressurized rover being studied by JAXA and Toyota",
+    "role": "JAXA and Toyota jointly describe their early lunar pressurized rover concept.",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "concept outer length",
+        "value": 6,
+        "unit": "m"
+      },
+      {
+        "quantity": "concept outer width",
+        "value": 5.2,
+        "unit": "m"
+      },
+      {
+        "quantity": "concept outer height",
+        "value": 3.8,
+        "unit": "m"
+      },
+      {
+        "quantity": "concept living space",
+        "value": 13,
+        "unit": "m3"
+      },
+      {
+        "quantity": "nominal occupants",
+        "value": 2,
+        "unit": "people"
+      }
+    ],
+    "conditions": "Historical concept dimensions as of March 2019. Toyota hosted this joint announcement, which identifies JAXA as a coauthor.",
+    "supports": "Compare the scale of an early crewed lunar concept to a robotic chassis and distinguish living space from the vehicle bounding box.",
+    "limits": "The 13 m³ figure describes proposed living space. Effective free gas volume, final flight geometry, atmosphere, heat removal, and actual component masses require independent evidence.",
+    "localFile": "evidence/files/jaxa-02-concept.html"
+  }
+]

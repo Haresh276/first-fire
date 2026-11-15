@@ -1,0 +1,1539 @@
+{
+  "version": "1.0",
+  "asOf": "2026-11-15",
+  "lead": "NASA",
+  "partners": {
+    "GGPEN": "Angola - National Space Programme Management Office",
+    "CONAE": "Argentina - National Commission on Space Activities",
+    "BSA": "Bahrain Space Agency",
+    "AEB": "Brazilian Space Agency",
+    "CSA": "Canadian Space Agency",
+    "ESA": "European Space Agency",
+    "ISRO": "Indian Space Research Organization",
+    "ASI": "Italian Space Agency",
+    "JAXA": "Japan Aerospace Exploration Agency",
+    "KASA": "Korea AeroSpace Administration",
+    "NASRDA": "Nigeria - National Space Research and Development Agency",
+    "AEP": "Paraguayan Space Agency",
+    "ASES": "Senegalese Space Studies Agency",
+    "AEE": "Spanish Space Agency",
+    "TUA": "Turkish Space Agency",
+    "MBRSC": "United Arab Emirates - Mohammed Bin Rashid Space Centre",
+    "UKSA": "United Kingdom Space Agency"
+  },
+  "sources": [
+    {
+      "id": "ggpen-01",
+      "agency": "GGPEN",
+      "title": "GGPEN satellite mission control centre (MCC)",
+      "url": "https://ggpen.gov.ao/public/index.php/solucoes/mcc",
+      "locator": "Capacidade para operar até três satélites em simultâneo, including the list of MCC functions",
+      "role": "engineering reference only",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "Maximum number of satellites the centre can operate simultaneously",
+          "value": 3,
+          "unit": "satellites"
+        }
+      ],
+      "conditions": "The Angolan ground control centre monitors the ANGOSAT-2 telecommunications satellite. Its continuous monitoring is a ground-service capability.",
+      "supports": "A precedent for recording subsystem telemetry and diagnosing faults from a control room.",
+      "limits": "The source contains no public rover hardware specifications, rover fault-response times or Earth–Moon communications link budget.",
+      "localFile": "evidence/files/ggpen-01-mcc.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "2d3797fcb07f234429ec815c411f8b51c751d816dfe6a71741a677f5360b7e0f",
+      "bytes": 46602
+    },
+    {
+      "id": "conae-01",
+      "agency": "CONAE",
+      "title": "CONAE deep-space stations and receiver specifications",
+      "url": "https://www.argentina.gob.ar/node/182397",
+      "locator": "Section 6, Detalle del Equipamiento Disponible, Estación CLTC-CONAE-NEUQUEN, (a) Antena y receptores",
+      "role": "engineering reference only",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "Neuquén ground antenna diameter",
+          "value": 35,
+          "unit": "m"
+        },
+        {
+          "quantity": "S-band reception, lower edge",
+          "value": 2.2,
+          "unit": "GHz"
+        },
+        {
+          "quantity": "S-band reception, upper edge",
+          "value": 2.3,
+          "unit": "GHz"
+        },
+        {
+          "quantity": "X-band reception, lower edge",
+          "value": 8.4,
+          "unit": "GHz"
+        },
+        {
+          "quantity": "X-band reception, upper edge",
+          "value": 8.5,
+          "unit": "GHz"
+        }
+      ],
+      "conditions": "Ground receive equipment at the Argentina–China Neuquén station. The page also lists a different station at Malargüe.",
+      "supports": "A real ground endpoint for lunar communications planning. The listed receive bands can be checked against a proposed transmitting system.",
+      "limits": "A ground antenna specification supplies neither a rover transmit power nor an available relay, data rate or coverage guarantee.",
+      "localFile": "evidence/files/conae-01-neuquen.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "e8cfcd1602b983ed7342acc4d488d38a280ff272dc2cb4b7332f2de7f64bb9a0",
+      "bytes": 46173
+    },
+    {
+      "id": "conae-02",
+      "agency": "CONAE",
+      "title": "Argentina reports tracking support for Chinese lunar and Mars missions",
+      "url": "https://www.argentina.gob.ar/noticias/filmus-visito-la-estacion-de-espacio-profundo-cltc-conae-neuquen-un-puente-de-cooperacion",
+      "locator": "Paragraph beginning «La Estación CLTC-CONAE-NEUQUÉN brindó soporte»",
+      "role": "engineering reference only",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "Argentina's account of ground support to Chang’e and Tianwen-1 through the joint Neuquén station.",
+      "supports": "Distinguishes an actual deep-space ground-support contribution from ownership of the lunar and Mars rover vehicles.",
+      "limits": "This account does not specify a direct radio link between a rover and Neuquén, contact durations, or rover radio characteristics.",
+      "localFile": "evidence/files/conae-02-mission-support.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "4fc36c1ec6118df67005e0c7fd1ef05e47423fc956995c0a97720ca5993a7182",
+      "bytes": 43648
+    },
+    {
+      "id": "bsa-01",
+      "agency": "BSA",
+      "title": "Bahrain’s report to COPUOS on navigation cameras for Rashid Rover 3",
+      "url": "https://documents.un.org/doc/undoc/gen/v24/076/85/pdf/v2407685.pdf",
+      "locator": "A/AC.105/1337, Bahrain submission dated 27 October 2024, p. 6, Space segment, paragraph 1(c)",
+      "role": "lunar rover navigation payload under development",
+      "evidenceClass": "mission description",
+      "quantities": [
+        {
+          "quantity": "Navigation cameras in Bahrain's Rashid Rover 3 contribution",
+          "value": 4,
+          "unit": "cameras"
+        }
+      ],
+      "conditions": "Bahrain's national submission describes collaboration with the UAE's Mohammed Bin Rashid Space Centre on the Rashid Rover 3 lunar mission.",
+      "supports": "A direct example of navigation and science cameras supplied by a partner to a lunar rover.",
+      "limits": "Bahrain supplied the camera development effort. The report gives no camera field of view, stereo baseline, hazard detection accuracy, or surface performance.",
+      "localFile": "evidence/files/bsa-01-bahrain-un.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "0e5f44f52d6a2c504b0fd6ee73959994dfcffb24137affc3a887368e445db975",
+      "bytes": 279177
+    },
+    {
+      "id": "bsa-02",
+      "agency": "BSA",
+      "title": "Bahrain’s 2025 update on lunar surface and orbital instruments",
+      "url": "https://documents.un.org/api/symbol/access?l=en&s=A%2FAC.105%2F1367&t=pdf",
+      "locator": "A/AC.105/1367, Bahrain submission dated 21 October 2025, p. 3, final two paragraphs of Space segment",
+      "role": "lunar rover navigation payload development update",
+      "evidenceClass": "mission description",
+      "quantities": [
+        {
+          "quantity": "Navigation cameras developed in-house",
+          "value": 4,
+          "unit": "cameras"
+        }
+      ],
+      "conditions": "Bahrain reported developing the four surface-rover cameras. A separate joint hyperspectral instrument with Egypt is intended for a lunar orbiter.",
+      "supports": "Distinguishes the navigation camera contribution from orbital mineral and ice mapping.",
+      "limits": "The submission describes planned mounting and launch. It supplies no in-situ imagery or camera acceptance-test data.",
+      "localFile": "evidence/files/bsa-02-bahrain-un.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "2714f4f7676f8ab02c7fbbc4eb3ba875cee849f4fb361b7414e2c2e54a6e58c6",
+      "bytes": 257915
+    },
+    {
+      "id": "aeb-01",
+      "agency": "AEB",
+      "title": "AEB 2023 management report on Brazil’s integration and test facility",
+      "url": "https://www.gov.br/aeb/pt-br/canais_atendimento/ouvidoria/RelatorioDeGestaoAEB2023.pdf",
+      "locator": "Printed p. 61, Laboratório de Integração e Testes (LIT), text above Figure 31",
+      "role": "engineering reference only",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "Reported upper satellite mass for the facility's integration and environmental tests",
+          "value": 2,
+          "unit": "metric tonnes"
+        }
+      ],
+      "conditions": "AEB describes INPE's Brazilian satellite integration facility and lists thermal-vacuum, electromagnetic, vibration, acoustic, shock and mass-property work.",
+      "supports": "A documented precedent for checking structure, mass properties, electronics and thermal response with complementary tests.",
+      "limits": "This is a laboratory satellite mass limit. The source contains no qualifying test result or mass requirement for a planetary rover.",
+      "localFile": null,
+      "checkedOn": "2026-11-15",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "id": "aeb-02",
+      "agency": "AEB",
+      "title": "Brazilian space programme test facility, INPE LIT thermal-vacuum laboratory",
+      "url": "https://www.gov.br/inpe/pt-br/area-conhecimento/montagem-integracao-e-testes/laboratorio-vacuo-termico",
+      "locator": "Principais Meios de Testes, item (a), Câmara de Simulação Espacial 6m x 8m",
+      "role": "engineering reference only",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "Large chamber ultimate vacuum",
+          "value": 1e-07,
+          "unit": "mbar"
+        },
+        {
+          "quantity": "Thermal shroud independently controlled zones",
+          "value": 6,
+          "unit": "zones"
+        },
+        {
+          "quantity": "Zone temperature lower limit",
+          "value": -196,
+          "unit": "°C"
+        },
+        {
+          "quantity": "Zone temperature upper limit",
+          "value": 150,
+          "unit": "°C"
+        }
+      ],
+      "conditions": "The facility operator INPE specifies a high-vacuum chamber with a zoned thermal shroud. AEB identifies this facility in its programme report (aeb-01).",
+      "supports": "Defines an example equipment envelope for a future subsystem thermal-vacuum test.",
+      "limits": "Chamber capability alone establishes no rover survival temperature, test cycle, or qualification result.",
+      "localFile": "evidence/files/aeb-02-inpe-thermal-vacuum.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "be466483fdf6002b1d76442156bf0fef4f590280d09f531bcc1dec34a7421fe9",
+      "bytes": 103682
+    },
+    {
+      "id": "nasrda-01",
+      "agency": "NASRDA",
+      "title": "NASRDA Centre for Space Transport and Propulsion reports structural integration and test work",
+      "url": "https://www.nasrda.gov.ng/center-for-space-transport-and-propulsion/",
+      "locator": "Technical Divisions at CSTP & Activities, sections 2 (Structural Integration Systems) and 4 (Project Division)",
+      "role": "engineering reference only",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Ground and flight preparation for a Nigerian rocket test in April 2019 included integration at CSTP and final checks on the launch platform.",
+      "supports": "An example of separating fabrication, integrated checks, and safety and quality-control responsibilities in a test plan.",
+      "limits": "This was a rocket integration exercise. No public rover specification, rover load case, measured vibration spectrum or planetary traction result was identified in this record.",
+      "localFile": "evidence/files/nasrda-01-cstp.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "25477f1a9ff6f452c0af17a8400dfc1c88d269f907ba31f21e27cb2ca47b615d",
+      "bytes": 85231
+    },
+    {
+      "id": "aep-01",
+      "agency": "AEP",
+      "title": "GuaraniSat-2 mechanical properties and payload distribution",
+      "url": "https://aep.gov.py/wp-content/uploads/2025/07/GUARANISAT-2_Structure-20250717_compressed.pdf",
+      "locator": "17 July 2025 drawing presentation, p. 2, Satellite properties, and p. 3, Isometric view (deployed configuration)",
+      "role": "engineering reference only",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "GuaraniSat-2 total mass listed in the drawing",
+          "value": 3.94,
+          "unit": "kg"
+        },
+        {
+          "quantity": "Stowed envelope, first dimension",
+          "value": 110.4,
+          "unit": "mm"
+        },
+        {
+          "quantity": "Stowed envelope, second dimension",
+          "value": 112,
+          "unit": "mm"
+        },
+        {
+          "quantity": "Stowed envelope, third dimension",
+          "value": 341.5,
+          "unit": "mm"
+        }
+      ],
+      "conditions": "AEP publishes separate bare-structure and overall stowed dimensions for the satellite. Its table specifies hardcoat-anodized 6061-T6 aluminum for the structure.",
+      "supports": "Demonstrates why a payload drawing records the overall envelope and explicit stowed/deployed configuration as well as mass.",
+      "limits": "A CubeSat drawing is an integration example. It supplies no public rover chassis dimensions, structural load rating or flight qualification for its use on a rover.",
+      "localFile": null,
+      "checkedOn": "2026-11-15",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "id": "aep-02",
+      "agency": "AEP",
+      "title": "Paraguay’s COPUOS report on its deployed GuaraniSat-1 and planned sensor telemetry",
+      "url": "https://www.unoosa.org/documents/pdf/copuos/lsc/2021/statements/item_3_Paraguay_ver.1_3_June_PM.pdf",
+      "locator": "Republic of Paraguay statement, 2021 legal subcommittee, agenda item 3, pp. 3–5",
+      "role": "engineering reference only",
+      "evidenceClass": "mission description",
+      "quantities": [
+        {
+          "quantity": "GuaraniSat-1 CubeSat form factor",
+          "value": 1,
+          "unit": "U"
+        }
+      ],
+      "conditions": "Paraguay reported the March 2021 orbital deployment of GuaraniSat-1 and described plans for communicating field detector data through the satellite.",
+      "supports": "An example of specifying the sensor, ground terminal and spacecraft as separate endpoints when designing telemetry.",
+      "limits": "The statement records orbital deployment. It gives no measured link throughput, detector yield, or rover communications specification.",
+      "localFile": "evidence/files/aep-02-guaranisat1.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "b4b7521a44df6dec993de1e662328fde505f647e8d888760bbfffa7c2df373fc",
+      "bytes": 411061
+    },
+    {
+      "id": "ases-01",
+      "agency": "ASES",
+      "title": "Agence Sénégalaise d’Études Spatiales — agency mandate",
+      "url": "https://aps.sn/wp-content/uploads/2024/02/MAGAZINE-APS-n6.pdf",
+      "locator": "PDF p. 36, ASES back-cover notice citing decree 2023-754",
+      "role": "engineering reference only",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Senegalese agency notice published in the national press agency magazine in 2024.",
+      "supports": "Establishes ASES’s policy, research and training mandate. It identifies the institution represented in the partner roster.",
+      "limits": "No rover hardware, cabin specification or fire experiment is described.",
+      "localFile": "evidence/files/ases-mandate-aps.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "4d7cab8c941744ced023b1ffd4e12a992235667735a79e8818d5f4c3901791aa",
+      "bytes": 8409373
+    },
+    {
+      "id": "ases-02",
+      "agency": "ASES",
+      "title": "SENSAT — GAINDESAT-1A",
+      "url": "https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1a",
+      "locator": "Fiche technique and Comment ça fonctionne, including Balises au sol, Collecte en orbite and Transmission",
+      "role": "engineering reference only",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "Senegal’s SENSAT programme describes an Earth-orbiting CubeSat launched on 16 August 2024 to collect and relay environmental data from ground stations.",
+      "supports": "Documents national experience with telemetry and orbital data collection. The source is a SENSAT programme record.",
+      "limits": "Orbital satellite data cannot establish a planetary rover’s mass, wheels, atmosphere or fire response. No applicable public ASES rover specification was identified in the reviewed sources.",
+      "localFile": "evidence/files/ases-gaindesat.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "ea1874afcc6455d3a0fda6260375ac3ace87453819439b26c556f444e4a978ff",
+      "bytes": 28261
+    },
+    {
+      "id": "aee-01",
+      "agency": "AEE",
+      "title": "Agencia Espacial Española — Relaciones internacionales y bilaterales",
+      "url": "https://www.aee.gob.es/eu/Actividades/Bilaterales.html",
+      "locator": "Programas bilaterales, paragraph headed Colaboración con la NASA",
+      "role": "national contribution attribution",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "AEE attributes the HGAS antennas and the MEDA and REMS weather instruments on NASA’s Perseverance and Curiosity to Spain.",
+      "supports": "Establishes Spain’s contribution to flown Mars rovers. CAB (CSIC–INTA) led MEDA as detailed in aee-02.",
+      "limits": "The agency record attributes a national contribution. It supplies no complete rover or fire-system design.",
+      "localFile": "evidence/files/aee-spanish-contributions.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "b71f822e75b40eee7defc2b6093e4446d44f1c10e6cdbe01b22275850ae90336",
+      "bytes": 60992
+    },
+    {
+      "id": "aee-02",
+      "agency": "AEE",
+      "title": "CAB (CSIC–INTA) — MEDA envía el primer informe meteorológico desde el cráter Jezero en Marte",
+      "url": "https://cab.inta-csic.es/wp-content/uploads/2021/04/np_2021_04_06_parte_meteorologico_meda.pdf",
+      "locator": "PDF pp. 1–3, instrument description, first reading, and sols 43–44",
+      "role": "rover weather-instrument measurement",
+      "evidenceClass": "measurement",
+      "quantities": [
+        {
+          "quantity": "Approximate MEDA instrument suite mass",
+          "value": 5.5,
+          "unit": "kg"
+        },
+        {
+          "quantity": "Jezero maximum reported for sols 43–44",
+          "value": -22,
+          "unit": "°C"
+        },
+        {
+          "quantity": "Jezero minimum reported for sols 43–44",
+          "value": -83,
+          "unit": "°C"
+        },
+        {
+          "quantity": "Approximate measured wind gust for sols 43–44",
+          "value": 35.4,
+          "unit": "km/h"
+        }
+      ],
+      "conditions": "The CAB-led suite flew on NASA’s Perseverance. Weather observations cover Jezero crater on 3–4 April 2021, ahead of the Ingenuity flight.",
+      "supports": "Constrains an exposed Mars environmental sensor payload and provides an example of time- and site-specific weather data.",
+      "limits": "The reported weather is local and outside the rover. A cabin temperature, ventilation rate, fire threshold or qualification range cannot be inferred.",
+      "localFile": "evidence/files/aee-meda-first-weather.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "f49bfd51b0be3922989efac0e025a62cd74b7e239ec6b8b3ead3ccd398c557e1",
+      "bytes": 665123
+    },
+    {
+      "id": "tua-01",
+      "agency": "TUA",
+      "title": "Türkiye Uzay Ajansı — 2025 Performans Programı",
+      "url": "https://cdn.tua.gov.tr/679399ed1cd1a.pdf",
+      "locator": "Printed p. 16 (PDF p. 20), performance indicator 2 for the lunar soft-landing project, explanatory paragraph",
+      "role": "engineering reference only",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "TUA describes the AYAP-2 soft-landing phase and preliminary work, including student teams, on a planned mobile rover.",
+      "supports": "Establishes a planned lunar surface mobility activity in the second phase and the maturity of the public evidence.",
+      "limits": "Programme completion percentages are administrative indicators. The document gives no measured rover mass, payload, speed or cabin values.",
+      "localFile": "evidence/files/tua-performance-2025.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "03dc51664fcdfc72f053fea6fc49acc128d5feff31988102ff38f61f2de8ec99",
+      "bytes": 4832339
+    },
+    {
+      "id": "tua-02",
+      "agency": "TUA",
+      "title": "Türkiye Uzay Ajansı — Türkiye’nin Ay Yolculuğunda Geri Sayım Başladı",
+      "url": "https://tua.gov.tr/tr/haberler/turkiye-nin-ay-yolculugunda-geri-sayim-basladi",
+      "locator": "16 September 2026 announcement, paragraphs on integration, environmental testing and lunar orbit",
+      "role": "engineering reference only",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "The first Turkish deep-space spacecraft had completed assembly and integration and entered the system-level environmental test phase.",
+      "supports": "Separates current phase-one spacecraft testing from the second-phase rover proposal in tua-01.",
+      "limits": "The orbital spacecraft’s test programme and mass supply no ground mobility or cabin fire data for a rover.",
+      "localFile": "evidence/files/tua-ayap-environmental-tests.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "93bc819aa2da40379e5b1b10b789fbc81221fe3d6cc5553d34a753cb947b7710",
+      "bytes": 63140
+    },
+    {
+      "id": "tua-03",
+      "agency": "TUA",
+      "title": "Turkish Space Agency — AYAP-1",
+      "url": "https://tua.gov.tr/en/project/ayap-1-3",
+      "locator": "Projects → Ongoing Projects → AYAP-1, programme objective",
+      "role": "engineering reference only",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "TUA frames lunar surface mobility as an objective of the overall Lunar Research Programme.",
+      "supports": "Provides an English-language agency pointer to the programme. The detailed performance plan identifies the rover with its second phase.",
+      "limits": "The page title alone does not establish phase-one rover hardware or surface operations.",
+      "localFile": "evidence/files/tua-ayap-plan.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "a57c3c76a0a573246d4ddebb83028c2709903e3e30541e5e15db746bbbf50a1e",
+      "bytes": 83360
+    },
+    {
+      "id": "mbrsc-01",
+      "agency": "MBRSC",
+      "title": "MBRSC team — The Rashid rover: to guide the way for the next generation lunar missions and solar system exploration",
+      "url": "https://presentations.copernicus.org/EGU21/EGU21-12950_presentation.pdf",
+      "locator": "EGU 2021, first PDF page, rover specifications table, Mobility row",
+      "role": "historical rover design specification",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "Preflight wheel count",
+          "value": 4,
+          "unit": "wheels"
+        },
+        {
+          "quantity": "Preflight maximum speed",
+          "value": 10,
+          "unit": "cm/s"
+        },
+        {
+          "quantity": "Preflight obstacle height",
+          "value": 10,
+          "unit": "cm"
+        },
+        {
+          "quantity": "Preflight slope capability",
+          "value": 20,
+          "unit": "degrees"
+        }
+      ],
+      "conditions": "MBRSC’s mission engineers presented the Rashid-1 preflight design in 2021. The differential drive was intended to operate during lunar daylight.",
+      "supports": "Supplies engineering targets for comparison with a small, uncrewed, exposed rover.",
+      "limits": "This preflight configuration differs from the later dimensional summary in mbrsc-02. No successful surface operation confirmed these design targets.",
+      "localFile": "evidence/files/mbrsc-rashid1-preflight.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "2c158f4f25f5c60d03b2982b22c6b8ca81912286ac2b1a8f0c2547458c7d02b9",
+      "bytes": 1442685
+    },
+    {
+      "id": "mbrsc-02",
+      "agency": "MBRSC",
+      "title": "Protocol Department of Dubai — Rashid 1 landing outcome and Rashid 2 announcement",
+      "url": "https://www.protocol.dubai.ae/en/media-listing/news-events/mohammed-bin-rashid-visits-mbrsc-announces-rashid-2-new-emirati-lunar-mission/",
+      "locator": "26 April 2023, paragraphs on HAKUTO-R, the first Emirates Lunar Mission and the dimensions of the first rover",
+      "role": "flown uncrewed rover geometry",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "Approximate Rashid-1 mass",
+          "value": 10,
+          "unit": "kg"
+        },
+        {
+          "quantity": "Approximate Rashid-1 height",
+          "value": 80,
+          "unit": "cm"
+        },
+        {
+          "quantity": "Approximate Rashid-1 length",
+          "value": 53.5,
+          "unit": "cm"
+        },
+        {
+          "quantity": "Approximate Rashid-1 width",
+          "value": 53.85,
+          "unit": "cm"
+        }
+      ],
+      "conditions": "MBRSC built the first Rashid rover. Its HAKUTO-R carrier reached lunar orbit and the landing attempt on 25 April 2023 failed.",
+      "supports": "Provides a government summary of approximate flight-vehicle dimensions and mission outcome.",
+      "limits": "The dimensions refer to Rashid 1. Its lunar wheel performance, internal temperatures and survival time were never measured on the surface.",
+      "localFile": "evidence/files/mbrsc-rashid1-flight.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "6ef5b8327057c7a1cf2ebd765b4fcfd0c7f155926db3bb7e19085fe517ee695b",
+      "bytes": 35379
+    },
+    {
+      "id": "mbrsc-03",
+      "agency": "MBRSC",
+      "title": "Hurrell et al. — Traction Performance Evaluation for a Rashid-1 Rover Wheel",
+      "url": "https://link.springer.com/article/10.1007/s11214-025-01164-8",
+      "locator": "PDF pp. 4–6, §2.1 Single-Wheel Experiment, figures 1–3; §§3–4 for experiment versus simulation",
+      "role": "engineering reference only",
+      "evidenceClass": "experiment",
+      "quantities": [
+        {
+          "quantity": "Experimental wheel radius",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "quantity": "Experimental wheel width",
+          "value": 80,
+          "unit": "mm"
+        },
+        {
+          "quantity": "Experimental grouser height",
+          "value": 20,
+          "unit": "mm"
+        },
+        {
+          "quantity": "Final flight wheel grouser height",
+          "value": 15,
+          "unit": "mm"
+        },
+        {
+          "quantity": "Earth validation load",
+          "value": 24.5,
+          "unit": "N"
+        },
+        {
+          "quantity": "Minimum controlled slip",
+          "value": 10,
+          "unit": "%"
+        },
+        {
+          "quantity": "Maximum controlled slip",
+          "value": 50,
+          "unit": "%"
+        }
+      ],
+      "conditions": "The authors measured traction, sinkage and tracks using a rigid test wheel on a terrestrial rig, with loosely packed simulant at about 25% relative density. The flight wheel had an open structure and shorter grousers.",
+      "supports": "Provides a component-level test method with declared loads, wheel geometry and slip conditions suitable for planning a validation experiment.",
+      "limits": "Predicted performance at lunar gravity came from simulation. The ground wheel differed from flight hardware. These results supply no cabin fire data.",
+      "localFile": "evidence/files/mbrsc-wheel-traction.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "c704c4dc83a8e72983c5ef9c58878ef07ceff1d917314f5ff12ff42bb102c58e",
+      "bytes": 1989220
+    },
+    {
+      "id": "mbrsc-04",
+      "agency": "MBRSC",
+      "title": "Firefly Aerospace — Blue Ghost Mission 2 manifest",
+      "url": "https://fireflyspace.com/missions/blue-ghost-mission-2/",
+      "locator": "Mission Summary and Rashid Rover 2 payload section",
+      "role": "engineering reference only",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "Firefly lists MBRSC’s Rashid Rover 2 on an upcoming lunar far-side delivery targeted no earlier than 2027 in the manifest reviewed in November 2026.",
+      "supports": "Identifies a planned wheel-material exposure experiment on the Moon’s far side.",
+      "limits": "The announced test objective provides no measured durability or abrasion result.",
+      "localFile": "evidence/files/mbrsc-rashid2-manifest.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "64f500b7454e39da0192ecfefbfa2520dd4a72c1f61dfece9c761d0d089b563e",
+      "bytes": 125662
+    },
+    {
+      "id": "kasa-01",
+      "agency": "KASA",
+      "title": "Korea AeroSpace Administration — 원격 제어를 넘어 ‘자율 주행’을 위한 우주탐사 모빌리티에 AI 도입 추진",
+      "url": "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=427",
+      "locator": "24 June 2026 press release no. 427, second and third body paragraphs, including ‘달의 낮 기간(14일 이내)’",
+      "role": "planned lunar rover operating concept",
+      "evidenceClass": "mission description",
+      "quantities": [
+        {
+          "quantity": "Upper bound on the described lunar daytime operating period",
+          "value": 14,
+          "unit": "Earth days"
+        }
+      ],
+      "conditions": "KASA described its planned 2032 landing mission at an expert meeting on autonomous navigation and payload support.",
+      "supports": "Documents a daylight mission concept and trade-offs between route energy and hazard avoidance.",
+      "limits": "The quoted interval is a planning window. It supplies no measured battery endurance, night survival or flight-qualified specification.",
+      "localFile": null,
+      "checkedOn": "2026-11-15",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "id": "kasa-02",
+      "agency": "KASA",
+      "title": "Wang, Kim and Han — Experimental Analysis of Lunar Rover Wheel’s Mobility Performance Depending on Soil Condition and Wheel Configuration",
+      "url": "https://kscejournal.or.kr/jksce/XmlViewer/f406872",
+      "locator": "§§3.1–3.4 (tables 2–4), §4.1 (figures 5–6), §4.2 (wheel comparisons)",
+      "role": "engineering reference only",
+      "evidenceClass": "experiment",
+      "quantities": [
+        {
+          "quantity": "Terrestrial rig vertical wheel load",
+          "value": 6,
+          "unit": "kgf"
+        },
+        {
+          "quantity": "Translation speed",
+          "value": 10,
+          "unit": "mm/s"
+        },
+        {
+          "quantity": "Minimum imposed slip ratio",
+          "value": 0.1,
+          "unit": "dimensionless"
+        },
+        {
+          "quantity": "Maximum imposed slip ratio",
+          "value": 0.4,
+          "unit": "dimensionless"
+        },
+        {
+          "quantity": "Grouser height in the cross-soil comparison",
+          "value": 15,
+          "unit": "mm"
+        }
+      ],
+      "conditions": "The KICT researchers used a single-wheel terrestrial rig with KLS-1 Korean lunar simulant and Jumunjin sand. They compared drawbar pull, torque and sinkage under controlled slip.",
+      "supports": "Provides an engineering test matrix showing that the same wheel responds differently to soil and grouser geometry.",
+      "limits": "Research published in 2017 predates KASA. It is not a KASA-run test or a measurement of the planned national flight rover.",
+      "localFile": "evidence/files/kasa-wheel-test.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "c6827813bf596fabbe6e8b9cedd57cdd61e299726bd6533fedb242571e8ccaf9",
+      "bytes": 252135
+    },
+    {
+      "id": "uksa-01",
+      "agency": "UKSA",
+      "title": "UK Space Agency — Mission to explore life on Mars one step closer as UK team to replace Russian components for Mars Rover",
+      "url": "https://www.gov.uk/government/news/mission-to-explore-life-on-mars-one-step-closer-as-uk-team-to-replace-russian-components-for-mars-rover",
+      "locator": "23 November 2023, paragraphs on Airbus Stevenage, Enfys and the drill sampling depth",
+      "role": "planned Mars rover sampling specification",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "Approximate intended maximum subsurface sampling depth",
+          "value": 2,
+          "unit": "m"
+        }
+      ],
+      "conditions": "Airbus built Rosalind Franklin in Stevenage for ESA’s mission. UKSA funded the Aberystwyth-led Enfys instrument to select sampling targets. The drill depth is an overall rover system capability.",
+      "supports": "Supports a sampling-tool reach requirement and documents the roles of UKSA, Airbus and the instrument team.",
+      "limits": "The depth is a design capability. The source does not report a drilling operation on Mars or attribute construction of the drill to the UK team.",
+      "localFile": "evidence/files/uksa-rosalind-franklin.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "2d992e54c67d5fd04400c20d647259a9402d3114d2a38421e2dc9b50f7a4b58d",
+      "bytes": 81876
+    },
+    {
+      "id": "uksa-02",
+      "agency": "UKSA",
+      "title": "UK Space Agency — Airbus Defence and Space opens state-of-the-art Mars Yard",
+      "url": "https://www.gov.uk/government/news/airbus-defence-and-space-opens-state-of-the-art-mars-yard",
+      "locator": "27 March 2014 announcement, paragraph containing Colin Paynter’s statement on the enlarged facility",
+      "role": "engineering reference only",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "Test arena length",
+          "value": 30,
+          "unit": "m"
+        },
+        {
+          "quantity": "Test arena width",
+          "value": 13,
+          "unit": "m"
+        },
+        {
+          "quantity": "Specially selected sand in the test arena",
+          "value": 300,
+          "unit": "tonnes"
+        }
+      ],
+      "conditions": "UKSA describes the Airbus ground-test facility in Stevenage where the ExoMars team could evaluate autonomous navigation in an enclosed analogue.",
+      "supports": "Offers a dimensional reference for a terrain and navigation test course.",
+      "limits": "The ground facility dimensions do not give a rover’s maximum climb angle or performance on Mars. Mission dates forecast in this historical announcement are obsolete.",
+      "localFile": "evidence/files/uksa-mars-yard.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "e629fb4430337179598c3ad098527f9282984ac78f60c801d76b8d9c0ddda0cc",
+      "bytes": 71387
+    },
+    {
+      "id": "nasa-01",
+      "agency": "NASA",
+      "title": "Moon Base Phases",
+      "url": "https://www.nasa.gov/moonbase-phases/",
+      "locator": "Lunar Terrain Vehicles, crew/cargo capacity and control modes",
+      "role": "NASA commissions commercial crew and cargo surface mobility for the lunar south pole.",
+      "evidenceClass": "mission description",
+      "quantities": [
+        {
+          "quantity": "suited crew capacity",
+          "value": 2,
+          "unit": "people"
+        }
+      ],
+      "conditions": "Planned open lunar vehicles, Astrolab CLV-1 and Lunar Outpost Pegasus. Crews wear pressure suits.",
+      "supports": "Model an unpressurized transport with crew seats, cargo space and remote or onboard driving.",
+      "limits": "Source does not publish an occupied pressure vessel, free air volume, design mass, or combustible inventory for these vehicles.",
+      "localFile": "evidence/files/nasa-04-moon-phases.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "5dd9e1add4de71e9e5e9dd9d9c666236093b327f06de873339620569beb206ed",
+      "bytes": 365174
+    },
+    {
+      "id": "nasa-02",
+      "agency": "NASA",
+      "title": "Perseverance Rover Components",
+      "url": "https://science.nasa.gov/mission/mars-2020-perseverance/rover-components/",
+      "locator": "Body: Tech Specs; Wheels and Legs: Tech Specs – Wheels; How the Wheels Move",
+      "role": "NASA and JPL provide flight rover geometry, mass, wheel dimensions, steering and suspension descriptions.",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "overall length",
+          "value": 3,
+          "unit": "m"
+        },
+        {
+          "quantity": "overall width",
+          "value": 2.7,
+          "unit": "m"
+        },
+        {
+          "quantity": "overall height",
+          "value": 2.2,
+          "unit": "m"
+        },
+        {
+          "quantity": "rover mass",
+          "value": 1025,
+          "unit": "kg"
+        },
+        {
+          "quantity": "wheel count",
+          "value": 6,
+          "unit": "wheels"
+        },
+        {
+          "quantity": "wheel diameter (Tech Specs table)",
+          "value": 52.5,
+          "unit": "cm"
+        }
+      ],
+      "conditions": "As-built robotic Mars rover. Exterior dimensions are rounded; the rock-sampling arm extends outside the body.",
+      "supports": "Set a scale for a six-wheel imaging and sample-collection chassis and illustrate equipment deck, robotic arm and rocker-bogie suspension.",
+      "limits": "Dimensions bound the whole rover. They do not specify a pressure-vessel volume, crew atmosphere, mass of an individual part, or fire response.",
+      "localFile": "evidence/files/nasa-02-perseverance.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "18f82ee64c6ae3004e9a9cd6d467c8485a1457e038120cc1b027a699f242ec9c",
+      "bytes": 377822
+    },
+    {
+      "id": "nasa-03",
+      "agency": "NASA",
+      "title": "Fire Safety Implications of Preliminary Results from Saffire IV and V Experiments on Large Scale Spacecraft Fires",
+      "url": "https://ntrs.nasa.gov/api/citations/20210011521/downloads/ICES%202021-266%200503-2021%20final.pdf",
+      "locator": "ICES-2021-266, Table 2, Flight-Sample V-2 column; section III.A and Figure 3",
+      "role": "NASA Glenn and partners conducted orbital fuel burns in uncrewed Cygnus and measured thin-fabric flame size.",
+      "evidenceClass": "experiment",
+      "quantities": [
+        {
+          "quantity": "reported oxygen concentration",
+          "value": 26.2,
+          "unit": "mol% O2"
+        },
+        {
+          "quantity": "absolute pressure",
+          "value": 70.7,
+          "unit": "kPa"
+        },
+        {
+          "quantity": "airflow speed with fan on",
+          "value": 20,
+          "unit": "cm/s"
+        },
+        {
+          "quantity": "cotton jersey sample width",
+          "value": 41,
+          "unit": "cm"
+        },
+        {
+          "quantity": "cotton jersey sample length",
+          "value": 50,
+          "unit": "cm"
+        },
+        {
+          "quantity": "duct height as tabulated",
+          "value": 30,
+          "unit": "cm"
+        },
+        {
+          "quantity": "steady flame size",
+          "value": 10,
+          "unit": "cm"
+        },
+        {
+          "quantity": "maximum flame size",
+          "value": 14,
+          "unit": "cm"
+        }
+      ],
+      "conditions": "Saffire V sample 2, cotton jersey, orbital microgravity, forced coflow; the fan was stopped and later restarted. The flame recovered when ventilation resumed.",
+      "supports": "Use as an observed flame-size reference at the reported material, atmosphere, flow and size. Keep flame size separate from distance burned and spread speed.",
+      "limits": "Not a partial-gravity rover cabin burn. Changing gravity, material construction, ventilation or mounting breaks direct equivalence. It supplies no whole-cabin heat-release law.",
+      "localFile": "evidence/files/nasa-03-saffire-iv-v.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "d25b394f43774ee79a3223b53e90571be299c8996d1cff2512c76e3308e107f5",
+      "bytes": 6518291
+    },
+    {
+      "id": "nasa-04",
+      "agency": "NASA",
+      "title": "Lunar Terrain Vehicle",
+      "url": "https://www.nasa.gov/moonbase/lunar-terrain-vehicle/",
+      "locator": "Lunar Terrain Vehicle Commercial Companies: Astrolab and Lunar Outpost",
+      "role": "NASA identifies the two LTV providers and their individual lunar vehicle designs.",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "NASA public program overview, accessed November 2026. Images include mockups or renderings.",
+      "supports": "Identify Astrolab CLV-1 and Lunar Outpost Pegasus as separate open crew-transport designs.",
+      "limits": "Images are not surveyed blueprints or flight measurements. They do not establish cabin air, material properties, electrical loads or exact component positions.",
+      "localFile": "evidence/files/nasa-01-ltv.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "53a2b7f29d958d03d7368e0e42b22ae2066bcde4b4f6971a7cbd3fd351bde18a",
+      "bytes": 369208
+    },
+    {
+      "id": "nasa-05",
+      "agency": "NASA",
+      "title": "Evaluating Material Flammability in Microgravity and Martian Gravity Compared to the NASA Standard Normal Gravity Test",
+      "url": "https://ntrs.nasa.gov/api/citations/20130010991/downloads/20130010991.pdf",
+      "locator": "Sections II and III; Table I, Mylar G at 10.2 psia column; Figure 5",
+      "role": "NASA reports short-duration partial-gravity flammability tests and separates the surviving and extinguishing oxygen concentrations.",
+      "evidenceClass": "experiment",
+      "quantities": [
+        {
+          "quantity": "Mylar G film thickness",
+          "value": 5,
+          "unit": "mil"
+        },
+        {
+          "quantity": "test absolute pressure",
+          "value": 10.2,
+          "unit": "psia"
+        },
+        {
+          "quantity": "Martian-g lowest tested oxygen with sustained flame (ULOI*)",
+          "value": 18,
+          "unit": "mol% O2"
+        },
+        {
+          "quantity": "Martian-g highest tested oxygen with extinction (MOC*)",
+          "value": 17,
+          "unit": "mol% O2"
+        },
+        {
+          "quantity": "lunar-g lowest tested oxygen with sustained flame (ULOI*)",
+          "value": 15.6,
+          "unit": "mol% O2"
+        },
+        {
+          "quantity": "lunar-g highest tested oxygen with extinction (MOC*)",
+          "value": 14.1,
+          "unit": "mol% O2"
+        },
+        {
+          "quantity": "Martian-g drop duration",
+          "value": 5.18,
+          "unit": "s"
+        }
+      ],
+      "conditions": "Mylar G film; hot-wire ignition; buoyant upward spread under simulated partial gravity in a centrifuge aboard a drop-tower rig. Starred limits use flame survival to the end of a short test.",
+      "supports": "Compare a single material and pressure under two gravity levels and distinguish tested oxygen brackets from long-duration material qualification.",
+      "limits": "Earlier lunar results are reproduced in the paper. Different exposure times, surface geometry, forced flow, pressure or fuel can change the bracket. Not a transferable cabin cutoff, spread rate or certification.",
+      "localFile": "evidence/files/nasa-05-gravity-flammability.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "2b0cabdfe7942f56bad38967e9c870dd1c73f3cb52f614a1873a93f8cc51436e",
+      "bytes": 2790304
+    },
+    {
+      "id": "csa-01",
+      "agency": "CSA",
+      "title": "Canada's Contribution to Mars Science Laboratory",
+      "url": "https://www.canada.ca/en/news/archive/2012/08/canada-contribution-mars-science-laboratory.html",
+      "locator": "The Maple Leaf on Mars: Canada's Contribution, APXS measurement sequence",
+      "role": "CSA provided the arm-mounted APXS instrument on Curiosity and funded its operations centre.",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "full analysis typical lower duration",
+          "value": 2,
+          "unit": "h"
+        },
+        {
+          "quantity": "full analysis typical upper duration",
+          "value": 3,
+          "unit": "h"
+        },
+        {
+          "quantity": "rapid major/minor element lower duration",
+          "value": 5,
+          "unit": "min"
+        },
+        {
+          "quantity": "rapid major/minor element upper duration",
+          "value": 10,
+          "unit": "min"
+        }
+      ],
+      "conditions": "Canadian prelanding engineering description of bringing the sensor head close to a soil or rock target and integrating X-ray counts.",
+      "supports": "Support an externally mounted contact-science instrument and differentiate a quick survey from a full analysis.",
+      "limits": "These are approximate integration times, dependent on measurement objectives. They do not specify motor energy, interior fuel, component mass or fire properties.",
+      "localFile": "evidence/files/csa-01-apxs.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "8f2498ee5bd83022bcc52ecfda672bcd18a26d47bd6b1ee302c876d3f1870c08",
+      "bytes": 31871
+    },
+    {
+      "id": "esa-01",
+      "agency": "ESA",
+      "title": "ExoMars Rosalind Franklin (RFM)",
+      "url": "https://explorationscience.esa.int/project/exomars-rosalind-franklin-rfm/",
+      "locator": "Mission overview; ExoMars Rosalind Franklin Rover; Drilling in brief",
+      "role": "ESA leads the rover mission and describes its mobility, sample acquisition and onboard delivery system.",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "maximum drill reach",
+          "value": 2,
+          "unit": "m"
+        },
+        {
+          "quantity": "independently driven wheels",
+          "value": 6,
+          "unit": "wheels"
+        },
+        {
+          "quantity": "extension rods needed for full reach",
+          "value": 3,
+          "unit": "rods"
+        }
+      ],
+      "conditions": "Planned solar-powered Mars surface mission. Each wheel has independent steering and drive.",
+      "supports": "Represent a robotic mobile drilling lab with flexible wheels, extension rods, sample handling and orbital data relay.",
+      "limits": "Mission design values do not give measured Mars drilling performance, human-cabin dimensions, or rover fire measurements.",
+      "localFile": "evidence/files/esa-01-rosalind-franklin.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "a970666cac74a4b907fd6eab8a72ab1f3d001633a607723b3c1c3d071849353f",
+      "bytes": 81096
+    },
+    {
+      "id": "esa-02",
+      "agency": "ESA",
+      "title": "First deep drilling success for ExoMars",
+      "url": "https://www.esa.int/articles/first-deep-drilling-success-for-exomars",
+      "locator": "Opening account; Drill operations; No easy feat",
+      "role": "ESA reports a sample retrieval by its ground twin at the ALTEC Mars Terrain Simulator in Turin.",
+      "evidenceClass": "experiment",
+      "quantities": [
+        {
+          "quantity": "depth sampled",
+          "value": 1.7,
+          "unit": "m"
+        },
+        {
+          "quantity": "platform inclination",
+          "value": 7,
+          "unit": "deg"
+        },
+        {
+          "quantity": "sample pellet diameter, approximate",
+          "value": 1,
+          "unit": "cm"
+        },
+        {
+          "quantity": "sample pellet length, approximate",
+          "value": 2,
+          "unit": "cm"
+        }
+      ],
+      "conditions": "A gravity-offloaded rover test model on Earth sampled medium-hard cemented clay in a layered test well.",
+      "supports": "Provide a measured drill demonstration with substitute terrain and a sample transferred into the rover laboratory.",
+      "limits": "The rig offloaded vehicle weight. It did not reproduce the complete Mars environment or prove the same depth on Mars.",
+      "localFile": "evidence/files/esa-02-drilling.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "87d7775f9e1058e2360017d19eb5e106d83e33cabfa32aa5b377c080613416c9",
+      "bytes": 220274
+    },
+    {
+      "id": "isro-01",
+      "agency": "ISRO",
+      "title": "Chandrayaan-3 Details",
+      "url": "https://www.isro.gov.in/Chandrayaan3_Details.html",
+      "locator": "Overall specifications: Mass, Power generation, Communication; Rover Payloads",
+      "role": "ISRO publishes the mass, power generation rating, communications path and instrument list for the Chandrayaan-3 rover.",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "Pragyan rover mass",
+          "value": 26,
+          "unit": "kg"
+        },
+        {
+          "quantity": "rover power generation rating",
+          "value": 50,
+          "unit": "W"
+        }
+      ],
+      "conditions": "Lunar robotic rover, designed for one lunar day. Relays data through the lander. Rover payloads include APXS and LIBS.",
+      "supports": "Provide a compact lunar rover comparison and distinguish electrical power generation in watts from battery storage in watt-hours.",
+      "limits": "The 50 W value is a generation rating. This source does not give time-resolved output, battery storage, a crew cabin or material flammability.",
+      "localFile": "evidence/files/isro-01-pragyan.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "1cd93453d0c774e35ed58b52a2d9a87eba81be65433f30ae421e8f6add92eded",
+      "bytes": 33528
+    },
+    {
+      "id": "asi-01",
+      "agency": "ASI",
+      "title": "ExoMars",
+      "url": "https://www.asi.it/en/planets-stars-universe/solar-system-and-beyond/exomars/",
+      "locator": "Italian contribution, MA_MISS; International agreements, drilling system",
+      "role": "ASI describes Italian instrument and industrial contributions, including INAF-IAPS collaboration on Ma_MISS in the drill.",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "drill full design depth",
+          "value": 2,
+          "unit": "m"
+        }
+      ],
+      "conditions": "ExoMars payload design: observe the borehole wall spectroscopically during drilling.",
+      "supports": "Support an Italian drill-integrated sensor that interrogates layers in place and distinguishes a sensor in the drill from a camera on the mast.",
+      "limits": "Historical ASI page contains superseded launch dates. Use this source for payload architecture; drill depth is design reach, and no borehole data from Mars is reported here.",
+      "localFile": "evidence/files/asi-01-mamiss.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "79833fc9cfbacc1cc2dbb72f7dac45a30aa3819e8b1d45c21c6758a9dbe8799a",
+      "bytes": 103743
+    },
+    {
+      "id": "jaxa-01",
+      "agency": "JAXA",
+      "title": "Inside development of the crewed pressurized rover for Artemis (JAXA engineering interview, in Japanese)",
+      "url": "https://humans-in-space.jaxa.jp/space-job/specialist/voice/detail/13.html",
+      "locator": "31 March 2026; section 過酷な月面でも宇宙飛行士が快適に過ごせるように, answers on thermal control and environmental control",
+      "role": "JAXA’s habitat thermal and life-support engineer describes the pressurized rover being developed with Toyota.",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Preliminary design reported in March 2026. Cabin environmental systems regulate pressure, temperature and humidity and remove CO₂. Insulation, pumps and radiators help manage heat.",
+      "supports": "Distinguish the occupied pressure vessel and its actively controlled atmosphere from an open vehicle or a sealed passive test box.",
+      "limits": "Public interview offers no cabin pressure setpoint, O₂ fraction, ventilation rate, free gas volume, internal material inventory or validated fire response.",
+      "localFile": "evidence/files/jaxa-01-cabin.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "1350113e4cd36b19e1b48c08a907267a9e38216df668948aa6ed0775dd8ddbc9",
+      "bytes": 45667
+    },
+    {
+      "id": "jaxa-02",
+      "agency": "JAXA",
+      "title": "JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration",
+      "url": "https://global.toyota/en/newsroom/corporate/27059582.html",
+      "locator": "12 March 2019; Concept proposal for the pressurized rover being studied by JAXA and Toyota",
+      "role": "JAXA and Toyota jointly describe their early lunar pressurized rover concept.",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "concept outer length",
+          "value": 6,
+          "unit": "m"
+        },
+        {
+          "quantity": "concept outer width",
+          "value": 5.2,
+          "unit": "m"
+        },
+        {
+          "quantity": "concept outer height",
+          "value": 3.8,
+          "unit": "m"
+        },
+        {
+          "quantity": "concept living space",
+          "value": 13,
+          "unit": "m3"
+        },
+        {
+          "quantity": "nominal occupants",
+          "value": 2,
+          "unit": "people"
+        }
+      ],
+      "conditions": "Historical concept dimensions as of March 2019. Toyota hosted this joint announcement, which identifies JAXA as a coauthor.",
+      "supports": "Compare the scale of an early crewed lunar concept to a robotic chassis and distinguish living space from the vehicle bounding box.",
+      "limits": "The 13 m³ figure describes proposed living space. Effective free gas volume, final flight geometry, atmosphere, heat removal, and actual component masses require independent evidence.",
+      "localFile": "evidence/files/jaxa-02-concept.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "7cf7da625a91fa249c4dabbb1d51bcb7d5c90b21efcdc644710b594ed04863fa",
+      "bytes": 37090
+    },
+    {
+      "id": "roster-2026",
+      "agency": "Space Apps",
+      "title": "2026 Space Agency Partners",
+      "url": "https://www.spaceappschallenge.org/2026/space-agency-partners/",
+      "locator": "2026 Space Agency Partners, 17 agency tiles",
+      "role": "roster",
+      "evidenceClass": "mission description",
+      "quantities": [
+        {
+          "quantity": "partners in addition to NASA",
+          "value": 17,
+          "unit": "agencies"
+        }
+      ],
+      "conditions": "2026 edition, retrieved 15 November 2026.",
+      "supports": "Determines register membership.",
+      "limits": "Event participation gives no endorsement, hardware supply or test approval.",
+      "localFile": "evidence/files/partner-roster-2026.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "37d213aa7232b86d2f5bdbc4f1d457a930994ea770eed682ec96ede97ae7eee9",
+      "bytes": 123374
+    },
+    {
+      "id": "nasa-06",
+      "agency": "NASA",
+      "title": "The Apollo Lunar Roving Vehicle",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html",
+      "locator": "Opening mission summary and following chassis and wheel descriptions",
+      "role": "chassis and wheels",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "Apollo 17 distance driven",
+          "value": 35.9,
+          "unit": "km"
+        },
+        {
+          "quantity": "LRV mass",
+          "value": 210,
+          "unit": "kg"
+        }
+      ],
+      "conditions": "Open electric vehicle carrying suited Apollo astronauts on lunar EVA.",
+      "supports": "Flown lunar mobility and purpose of the wire-mesh wheel.",
+      "limits": "Original frame and wheel figures describe Apollo hardware only.",
+      "localFile": "evidence/files/nasa-06-apollo-rover.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "466755f90624ea15ccea4f7c1a0b9b22b910538a11e19f6d05946a1a4e9613c7",
+      "bytes": 10462
+    },
+    {
+      "id": "material-heat",
+      "agency": "NBS/NIST",
+      "title": "NBS Technical Note 1128, heats of combustion",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf",
+      "locator": "Table 1, printed p. 66, PDF p. 78",
+      "role": "coupon chemistry",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "net heat, cellulose",
+          "value": 15.2,
+          "unit": "MJ/kg"
+        },
+        {
+          "quantity": "net heat, polyethylene",
+          "value": 43.4,
+          "unit": "MJ/kg"
+        }
+      ],
+      "conditions": "Table of common materials. Oxygen volume column is referenced to 25 °C. Net heat is per mass of fuel.",
+      "supports": "Energy accounting on the assumption the specified dry mass reacts completely.",
+      "limits": "Generic substances. No coupon-lot measurement, speed, heat flux to a wall, ignition or extinction limit.",
+      "localFile": "evidence/files/tn1128.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "2a57bf6d4c7d473d6bd971cefcec3759b0c8ee80bc5e3a29bf28937dead6f5e9",
+      "bytes": 4159053
+    },
+    {
+      "id": "crew-method",
+      "agency": "NASA",
+      "title": "Life Support Baseline Values and Assumptions Document, revision 2",
+      "url": "https://ntrs.nasa.gov/api/citations/20210024855/downloads/BVAD_2.15.22-final.pdf",
+      "locator": "Table 3-24, PDF p. 63",
+      "role": "life support",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "sleep O2 use",
+          "value": 0.37,
+          "unit": "g/person/min"
+        },
+        {
+          "quantity": "sleep CO2 output",
+          "value": 0.44,
+          "unit": "g/person/min"
+        },
+        {
+          "quantity": "nominal O2 use",
+          "value": 0.59,
+          "unit": "g/person/min"
+        },
+        {
+          "quantity": "nominal CO2 output",
+          "value": 0.69,
+          "unit": "g/person/min"
+        },
+        {
+          "quantity": "aerobic O2 use",
+          "value": 3.99,
+          "unit": "g/person/min"
+        },
+        {
+          "quantity": "aerobic CO2 output",
+          "value": 5.22,
+          "unit": "g/person/min"
+        }
+      ],
+      "conditions": "HIDH reference crew and daily activity schedule, modeled metabolic loads. Aerobic interval in source schedule is 0.5 h.",
+      "supports": "Sizing a constant-activity interval.",
+      "limits": "Not an individual crew measurement or a multi-day exercise prescription. No regulator capacity stated.",
+      "localFile": "evidence/files/metabolism.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "b9eab584c2bc88b52f6eb6744e321eb72ca58003e8ac77dc1ebeb034aba11d1e",
+      "bytes": 3134809
+    },
+    {
+      "id": "access-method",
+      "agency": "NASA",
+      "title": "Evaluating Extravehicular Activity Access Options for a Lunar Surface Habitat",
+      "url": "https://ntrs.nasa.gov/citations/20230002484",
+      "locator": "NTRS abstract, comparison of three EVA access options",
+      "role": "airlock and suitport",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Lunar habitat trade study, including an air-save system and a suitport-airlock maintained in vacuum.",
+      "supports": "Different cycled gas volumes and gas recovery architectures.",
+      "limits": "Published abstract supplies no measured leak rate or suitport dead volume for this design.",
+      "localFile": "evidence/files/airlock.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "7bd906b93e4708a6f959a8a82d0a2464b37ec81a491851bdbf39184fa1b363d7",
+      "bytes": 105882
+    },
+    {
+      "id": "thermal-method",
+      "agency": "NASA",
+      "title": "Small Spacecraft Technology State of the Art, Thermal Control",
+      "url": "https://www.nasa.gov/wp-content/uploads/2025/02/7-soa-thermal-2024.pdf",
+      "locator": "Section 7.1, equation 1 and Figure 7.1, printed p. 205",
+      "role": "radiator and external environment",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Spacecraft radiation exchange, solar absorption and heat generation.",
+      "supports": "Separates solar projection from infrared-emitting area in a steady panel budget.",
+      "limits": "The teaching case omits convection, conduction, transient storage and a resolved view-factor model.",
+      "localFile": "evidence/files/thermal.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "6fb6e34bb1b64a75e62e27f79fb4fa3f0aa69168943c1f87b4943ebab51f543b",
+      "bytes": 1322524
+    },
+    {
+      "id": "fire-method",
+      "agency": "NASA",
+      "title": "OCHMO-TB-008, Fire Protection",
+      "url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-008-fire-protection.pdf",
+      "locator": "PDF pp. 8–10, Fire Detection, Fire Suppression, Post-Fire Monitoring",
+      "role": "detector placement and suppression",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Human spaceflight guidance for equipment bays, cabin and ventilation-return detectors and crew access to extinguishers.",
+      "supports": "Use release and sampling location as separate controls. Track agent and post-fire cleanup.",
+      "limits": "No calibration of a tracer alarm or extinguishing dose for this hybrid.",
+      "localFile": "evidence/files/fire-protection.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "13c1a06a15bceea4b282eccf50129298f56f02d32e5b8533c8bdc9c1dcad8560",
+      "bytes": 1220495
+    },
+    {
+      "id": "mist-method",
+      "agency": "NASA",
+      "title": "Development of the ISS Fine Water Mist Portable Fire Extinguisher",
+      "url": "https://ntrs.nasa.gov/api/citations/20120018019/downloads/20120018019.pdf",
+      "locator": "PDF p. 1, abstract",
+      "role": "suppression concept",
+      "evidenceClass": "mission description",
+      "quantities": [],
+      "conditions": "Engineering-development abstract comparing ISS extinguisher types and microgravity design issues.",
+      "supports": "Water-mist technology as a component family.",
+      "limits": "No extracted discharge curve, electrical suitability or installed-system extinguishment tests.",
+      "localFile": "evidence/files/mist.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "8bb487aefcc4342be12c8067fab2d6ae083c8d5df4740895e78560a7d3d2aabc",
+      "bytes": 78162
+    },
+    {
+      "id": "stock-cellulose",
+      "agency": "Cytiva",
+      "title": "Whatman filtration product guide",
+      "url": "https://info.cytivalifesciences.com/rs/614-VFU-334/images/Whatman-filtration-product-guide.pdf",
+      "locator": "PDF p. 16, Technical specifications, Qualitative filter papers—standard grades, grade 1",
+      "role": "Earth stock candidate",
+      "evidenceClass": "specification",
+      "quantities": [
+        {
+          "quantity": "nominal thickness",
+          "value": 180,
+          "unit": "µm"
+        },
+        {
+          "quantity": "nominal basis weight",
+          "value": 87,
+          "unit": "g/m²"
+        }
+      ],
+      "conditions": "Nominal properties for commercial qualitative filter paper, grade 1.",
+      "supports": "A candidate source of identifiable cellulose-rich lab stock and a check against weighing and measuring the lot.",
+      "limits": "No fire values or flight material qualification. No purchased lot assumed.",
+      "localFile": "evidence/files/filter-paper.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "d74df2ce67c4685cf217d5e78a025b7d38ac9915f55950719e0639ddcfa6f0e7",
+      "bytes": 10327876
+    },
+    {
+      "id": "stock-pe",
+      "agency": "Röchling Industrial",
+      "title": "Product handling information, Polystone G HD natural extruded, 590976",
+      "url": "https://www.roechling.com/fileadmin/assets/Product%20Handling%20Information%20Sheet%20Polystone%C2%AE%20G%20HD%20natural%20extruded%20590976%20EN.pdf",
+      "locator": "PDF p. 1, §2 Product details",
+      "role": "Earth stock candidate",
+      "evidenceClass": "specification",
+      "quantities": [],
+      "conditions": "PE-HD/PE 300 semifinished product. Product lists stabilizer and additives.",
+      "supports": "Traceable candidate grade for a sourced PE coupon.",
+      "limits": "Additives prevent equating stock with a pure CH2 repeat unit for an installed fire test.",
+      "localFile": "evidence/files/hdpe.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "d05be834943fbd05521906a8b254efb1eeeae9da31f467ec8a1b596254ebd67f",
+      "bytes": 68379
+    },
+    {
+      "id": "materials-index",
+      "agency": "NASA",
+      "title": "NASA-STD-6001 status record",
+      "url": "https://standards.nasa.gov/standard/NASA/NASA-STD-6001",
+      "locator": "Document Identifiers and Document Scope",
+      "role": "materials test provenance",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Standards registry lists revision B with change 3.",
+      "supports": "Identifies the active revision used for this research.",
+      "limits": "Applicability depends on the program and material configuration.",
+      "localFile": "evidence/files/materials-standard.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "2c13059af940fbd19b6f364b3bec31047c269c5bc28041d2871a212da7fb831a",
+      "bytes": 28441
+    },
+    {
+      "id": "materials-method",
+      "agency": "NASA",
+      "title": "NASA-STD-6001B with Change 3",
+      "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B-w/CHANGE-3/3/2025_06_25_NASA-STD-6001B_w_Change_3_FINAL_Admin-Change-FINAL.pdf",
+      "locator": "§7.1.1–7.1.2, PDF p. 27, Test 1",
+      "role": "materials screening",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "specimens in Test 1 summary",
+          "value": 5,
+          "unit": "specimens"
+        },
+        {
+          "quantity": "nominal length",
+          "value": 30,
+          "unit": "cm"
+        },
+        {
+          "quantity": "nominal width",
+          "value": 6.5,
+          "unit": "cm"
+        }
+      ],
+      "conditions": "Worst-case anticipated atmosphere, bottom ignition, vertical specimens, one specimen per test, subject to applicable standard provisions.",
+      "supports": "Gives a concrete comparison protocol and highlights geometry and atmosphere.",
+      "limits": "This archive contains no such qualification report for the proposed assembly.",
+      "localFile": "evidence/files/standard6001.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "8a8d6fca9a3bbe5c3728146a72424aa905346f1db0471a162ddd853e0c0f2394",
+      "bytes": 2249435
+    },
+    {
+      "id": "moon-env",
+      "agency": "NASA",
+      "title": "Moon Facts",
+      "url": "https://science.nasa.gov/moon/facts/",
+      "locator": "Structure, surface and atmosphere sections, including sunlit/dark temperatures",
+      "role": "lunar environment",
+      "evidenceClass": "engineering reference",
+      "quantities": [
+        {
+          "quantity": "illustrative full-sun surface extreme",
+          "value": 127,
+          "unit": "°C"
+        },
+        {
+          "quantity": "illustrative dark surface extreme",
+          "value": -173,
+          "unit": "°C"
+        }
+      ],
+      "conditions": "Lunar surface in sunlight or darkness. Local latitude, shadow and exposure affect temperature.",
+      "supports": "Demonstrates why illumination and external thermal boundary are separate controls.",
+      "limits": "Surface temperature does not determine radiator sink temperature or cabin gas temperature.",
+      "localFile": "evidence/files/moon.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "c553cd743bc58e48af89d9f13a74ea9bec4847636a79b152d19b206f882a39e7",
+      "bytes": 313732
+    },
+    {
+      "id": "mars-env",
+      "agency": "NASA",
+      "title": "Mars Facts",
+      "url": "https://science.nasa.gov/mars/facts/",
+      "locator": "Atmosphere and Surface",
+      "role": "Mars environment",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Thin CO2-dominated Martian atmosphere and varying surface temperature.",
+      "supports": "Mars requires a distinct external pressure and radiative boundary.",
+      "limits": "No site weather time series or pressure-vessel performance.",
+      "localFile": "evidence/files/mars.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "5554c0e429cbb5bc904bcaaeffeea6f6a75fb7fb4eb0e93987c7845c9c6f2ae1",
+      "bytes": 298041
+    },
+    {
+      "id": "orbit-env",
+      "agency": "NASA",
+      "title": "What Is Microgravity?",
+      "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/",
+      "locator": "Why do astronauts float in space? Explanation of orbital free fall",
+      "role": "orbit and sensing",
+      "evidenceClass": "engineering reference",
+      "quantities": [],
+      "conditions": "Spacecraft and occupants freely fall together in orbit.",
+      "supports": "Use ideal zero support force in an unrestrained orbit case.",
+      "limits": "An accelerometer measures specific force; a lone reading cannot infer world or distinguish all motions.",
+      "localFile": "evidence/files/microgravity.html",
+      "checkedOn": "2026-11-15",
+      "sha256": "ef1955a47a4782143e4aac7ae32c3a54b0a04aaaa02a7b857a661fdaee049452",
+      "bytes": 292947
+    },
+    {
+      "id": "psi-saffire",
+      "agency": "NASA",
+      "title": "PSI-98 Saffire-I original experimental table",
+      "url": "https://doi.org/10.60555/0t15-1z43",
+      "locator": "CSV rows 2–3, sample S1 and S2, columns Air Flow, Percent O2 and Flow Direction",
+      "role": "fan and ignition evidence",
+      "evidenceClass": "measurement",
+      "quantities": [
+        {
+          "quantity": "forced flow speed, both burns",
+          "value": 20,
+          "unit": "cm/s"
+        },
+        {
+          "quantity": "S1 O2 lower",
+          "value": 21.5,
+          "unit": "vol%"
+        },
+        {
+          "quantity": "S1 O2 upper",
+          "value": 21.7,
+          "unit": "vol%"
+        },
+        {
+          "quantity": "S2 approximate O2",
+          "value": 21.5,
+          "unit": "vol%"
+        }
+      ],
+      "conditions": "SIBAL fabric in orbital microgravity. S1 concurrent and S2 opposed. Same specimen reused.",
+      "supports": "A real controlled-flow comparator with material, atmosphere and direction recorded.",
+      "limits": "Velocity in a test duct is not whole-cabin volume flow. The CSV does not give a cabin detector threshold.",
+      "localFile": "evidence/files/saffire-i.csv",
+      "checkedOn": "2026-11-15",
+      "sha256": "c01f29c62455f0a3b512290ab85e5687ecded326733189f002f580368402308d",
+      "bytes": 469
+    },
+    {
+      "id": "flow-measurement",
+      "agency": "NASA",
+      "title": "Large-scale spacecraft fire safety experiments, SIBAL results",
+      "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf",
+      "locator": "Slide 21, SIBAL Fabric Results, 40.6-cm-wide sample",
+      "role": "fan and ignition orientation comparator",
+      "evidenceClass": "measurement",
+      "quantities": [
+        {
+          "quantity": "concurrent average spread rate",
+          "value": 1.8,
+          "unit": "mm/s"
+        },
+        {
+          "quantity": "opposed average spread rate",
+          "value": 1.3,
+          "unit": "mm/s"
+        }
+      ],
+      "conditions": "Orbital Saffire-I, wide cotton/fiberglass specimen, 20 cm/s airflow. PSI-98 identifies differing initial O2 and reused fuel.",
+      "supports": "Direction mattered for these measured front speeds.",
+      "limits": "Pure cellulose, PE and other assemblies cannot inherit either speed. Flame length and spread speed are distinct.",
+      "localFile": "evidence/files/saffire-i-slides.pdf",
+      "checkedOn": "2026-11-15",
+      "sha256": "e38ec36f54817aa97e0c01a05f12b212521d6320ce3f4cb7a38bb7c837cfea8d",
+      "bytes": 5091642
+    }
+  ]
+}

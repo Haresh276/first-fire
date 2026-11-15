@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1e322e">
+  <link rel="icon" href="data:,">
+  <title>Rover workbench · FIRST FIRE</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="workbench.css">
+  <link rel="stylesheet" href="mission-review.css">
+</head>
+<body>
+<a href="#workspace" class="skip">Skip to workspace</a>
+<header class="top"><div class="wrap brand"><strong>FIRST FIRE</strong><a id="main-site" hidden href="../../index.html#home">Research desk</a><span>Team Code Blooded</span><a class="top-doc" href="../OPERATIONS.md" target="_blank" rel="noopener">Workbench guide ↗</a></div></header>
+<main id="workspace" class="wrap">
+  <div class="intro">
+    <div><h1>Rover workbench</h1><p>Inspect the vehicle, plan a traverse and compare the engineering evidence.</p></div>
+    <div class="transfer"><button id="import" type="button">Import JSON</button><button id="export" type="button" disabled>Export scenario</button><input id="file" hidden type="file" accept=".json,application/json"></div>
+  </div>
+  <p id="status" role="status">Loading the parts and examples…</p>
+  <script>if (location.protocol === 'file:') document.getElementById('status').textContent = 'To open the 3D lab offline, run python3 -m http.server 8000 in the site folder and visit http://localhost:8000/ in your browser.';</script>
+  <div id="lab" hidden>
+    <details id="scenario-settings"><summary>Design and reference scenarios</summary><section class="scenario" aria-label="Scenario selection">
+      <label>Reference scenarios<select id="example"></select></label>
+      <button id="reset" type="button">Reload example</button>
+      <label class="name">Design name<input id="name" type="text" maxlength="80" required></label>
+    </section></details>
+    <section id="summary" aria-label="Scenario summary"></section>
+    <nav id="views" aria-label="Workspace views">
+      <a href="#workbench" data-view="workbench">3D workbench</a><a href="#assembly" data-view="assembly">Assembly</a><a href="#conditions" data-view="conditions">Conditions</a><a href="#results" data-view="results">Results</a><a href="#evidence" data-view="evidence">Evidence</a><a href="#review" data-view="review">Mission review</a>
+    </nav>
+    <section class="view" id="workbench" aria-label="3D rover and traverse">
+      <div class="operations-layout">
+        <section class="simulation-panel" aria-label="Vehicle viewer">
+          <div class="viewer-tools">
+            <div class="segmented" aria-label="Model layers"><button type="button" data-layer="exterior" aria-pressed="true">Exterior</button><button type="button" data-layer="cutaway" aria-pressed="false">Cutaway</button><button type="button" data-layer="exploded" aria-pressed="false">Exploded</button></div>
+            <label class="overlay-control">Overlay<select id="scene-overlay" aria-label="Engineering overlay"><option value="none">None</option><option value="gravity">Gravity</option><option value="power">Solar power</option><option value="thermal">Radiator exchange</option><option value="access">Airlock gas loss</option><option value="ventilation">Cabin ventilation</option><option value="suppression">Agent discharge</option></select></label>
+            <button id="reset-camera" type="button">Reset camera</button>
+          </div>
+          <div class="screen"><canvas id="rover-scene" aria-label="Interactive three-dimensional rover. Drag to orbit, scroll to zoom, or use the camera controls. Use the subsystem selector to inspect each part." tabindex="0"></canvas>
+            <div class="scene-title"><span id="scene-terrain">Lunar test range</span><strong id="scene-title">Lunar field lab</strong></div>
+            <div class="camera-controls" aria-label="Camera controls"><button type="button" data-camera="[-0.3,0,1]" aria-label="Orbit camera left">↶</button><button type="button" data-camera="[0.3,0,1]" aria-label="Orbit camera right">↷</button><button type="button" data-camera="[0,0,0.8]" aria-label="Zoom in">+</button><button type="button" data-camera="[0,0,1.25]" aria-label="Zoom out">−</button></div><div id="scene-help" class="scene-help">Concept geometry · drag to orbit</div>
+            <div id="overlay-reading" hidden role="status"></div>
+          </div>
+          <dl class="drive-telemetry">
+            <div><dt>Distance</dt><dd id="motion-distance">0 m</dd></div><div><dt>Speed</dt><dd id="motion-speed">0 m/s</dd></div><div><dt>Battery</dt><dd id="motion-battery">— Wh</dd></div><div><dt>Elapsed</dt><dd id="motion-time">0 s</dd></div>
+          </dl>
+        </section>
+        <aside class="ops-controls" aria-label="Motion and inspection controls">
+          <div class="tool-tabs"><button type="button" data-tool="drive" aria-pressed="true">Drive</button><button type="button" data-tool="inspect" aria-pressed="false">Inspect</button><button type="button" data-tool="fire" aria-pressed="false">Cabin test</button></div>
+          <section id="tool-drive">
+            <h2>Traverse controls</h2>
+            <div class="control-pair"><label>Environment<select id="drive-world"><option>Moon</option><option>Mars</option><option>Earth</option><option>Orbit</option></select></label><label>Illumination<select id="drive-phase"><option value="day">Day</option><option value="night">Night</option></select></label></div>
+            <label>Terrain<select id="drive-terrain"><option value="rolling">Rolling test terrain</option><option value="flat">Level test course</option><option value="grade">10% grade test</option><option value="lola">Lunar south pole · LOLA</option></select></label>
+            <div class="drive-pad" role="group" aria-label="Hold a button to drive"><button type="button" data-command="forward" aria-label="Drive forward">▲</button><button type="button" data-command="left" aria-label="Turn left">◀</button><button type="button" data-command="reverse" aria-label="Drive in reverse">▼</button><button type="button" data-command="right" aria-label="Turn right">▶</button></div>
+            <p class="control-note">Hold a button or use W/A/S/D in the viewer.</p>
+            <button id="play-route" class="primary-action" type="button">Run planned traverse</button>
+            <div class="small-actions"><button type="button" id="reset-drive">Reset drive</button><label>Playback<select id="drive-rate" aria-label="Playback speed"><option value="1">1×</option><option value="4" selected>4×</option><option value="12">12×</option><option value="30">30×</option></select></label></div>
+            <p id="drive-status" class="control-note" role="status"></p>
+          </section>
+          <section id="tool-inspect" hidden><h2>Component inspection</h2><label>Subsystem<select id="inspect-slot"></select></label><label>Component<select id="inspect-part"></select></label><p id="inspect-reading" class="inspection-reading"></p><p id="inspect-description"></p><div id="inspect-sources"></div><a href="#assembly">Edit component assumptions →</a></section>
+          <section id="tool-fire" hidden><h2>Cabin tracer test</h2><p class="control-note">Follow an ideal tracer release between two mixed compartments.</p>
+            <label>Release zone<select id="fire-origin"><option>equipment bay</option><option>crew space</option></select></label><label>Sensor zone<select id="fire-sensor"><option>equipment bay</option><option>crew space</option></select></label>
+            <label>Fan exchange (L/s)<input type="number" id="fire-fan" min="0" max="500" step="any"></label>
+            <label>Elapsed tracer time <output id="fire-clock">0 s</output><input type="range" id="fire-seek" min="0" max="120" step="0.5" value="0"></label>
+            <button id="play-fire" type="button">Play tracer test</button><p id="fire-reading"></p>
+          </section>
+        </aside>
+      </div>
+      <div id="replay-line" hidden><label>Traverse replay <output id="replay-label"></output><input type="range" id="replay-seek" min="0" max="1" value="0" step="1"></label></div>
+      <section class="planning-grid">
+        <article class="plan-map"><header><h2>Route plan</h2><label>Course<select id="route-preset"><option value="survey">Survey loop</option><option value="straight">Straight traverse</option><option value="slope">Cross-slope traverse</option><option value="jezero">Perseverance · Sol 15</option><option value="custom" disabled>Custom waypoints</option></select></label></header>
+          <canvas id="route-map" tabindex="0" aria-label="Plan view in projected metres. Click to append a waypoint or use the coordinate fields."></canvas>
+          <div class="waypoint-entry"><label>X (m)<input id="point-x" type="number" step="any" value="10"></label><label>Z (m)<input id="point-z" type="number" step="any" value="20"></label><button id="add-point" type="button">Add waypoint</button><button id="undo-point" type="button">Undo</button><button id="clear-points" type="button">Clear</button></div>
+          <p id="route-description"></p><details><summary>Waypoint coordinates</summary><ol id="waypoints-list"></ol></details>
+        </article>
+        <article class="run-report"><h2>Run telemetry</h2><p id="run-context"></p><canvas id="drive-profile" aria-label="Elevation profile of the traveled path in metres"></canvas><dl id="run-metrics"></dl>
+          <details id="drive-assumptions"><summary>Drive assumptions</summary><div id="drive-fields" class="drive-settings"></div><p>These drive parameters apply only to this traverse. Editing them starts a fresh run.</p></details>
+          <div class="small-actions"><button id="export-track" type="button">Export telemetry CSV</button><button id="export-plan" type="button">Save route plan</button><button id="import-plan" type="button">Load plan</button><input type="file" id="plan-file" accept=".json,application/json" hidden></div>
+        </article>
+      </section>
+      <div id="field-panel"></div>
+    </section>
+    <section class="view" id="review" hidden><div id="review-panel"></div></section>
+    <section class="view" id="assembly" hidden><div class="sectionhead"><h2>Selected components</h2><p>Changing a part applies its listed assumptions. Other conditions keep their current values.</p></div><div id="parts"></div></section>
+    <section class="view" id="conditions" hidden><div class="sectionhead"><h2>Test conditions</h2><p>World and illumination load a reference exterior. Adjust the inputs for the case you want to study.</p></div><div id="fields"></div></section>
+    <section class="view" id="results" hidden><div class="sectionhead"><h2>Calculated results</h2><p>Independent calculations for the current assembly. Differences use the lunar daytime cellulose example as the baseline.</p></div><div id="notes"></div><div id="metrics"></div></section>
+    <section class="view" id="evidence" hidden><div class="sectionhead"><h2>Evidence for this assembly</h2><p>Each entry identifies what the source supports and which values still require measurement.</p></div><div id="sources"></div></section>
+  </div>
+</main>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>

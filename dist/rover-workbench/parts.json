@@ -1,0 +1,429 @@
+{
+  "version": "1.0",
+  "settingsClass": "assumptions unless independently measured for this assembly",
+  "parts": [
+    {
+      "id": "mobile-hab",
+      "slot": "cabin",
+      "title": "Pressurized mobile habitat",
+      "kind": "sealed",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "jaxa-01"
+      ],
+      "assumedSettings": {
+        "volumeM3": 12
+      },
+      "scope": "JAXA mobile-habitat role. The free gas volume is a team assumption.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "open-deck",
+      "slot": "cabin",
+      "title": "Open crew deck",
+      "kind": "open",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "nasa-01"
+      ],
+      "assumedSettings": {},
+      "scope": "Suited operation. Shared-cabin gas, coupon and tracer tools are unavailable.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "research-pod",
+      "slot": "cabin",
+      "title": "Theoretical research pod",
+      "kind": "sealed",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "volumeM3": 4
+      },
+      "scope": "Independent sealed gas volume.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "ltv-frame",
+      "slot": "chassis",
+      "title": "Lunar transport frame",
+      "kind": "surface",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "nasa-01"
+      ],
+      "assumedSettings": {
+        "chassisKg": 800
+      },
+      "scope": "Mobility role only. Payload rating and attachment points unknown.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "bench-frame",
+      "slot": "chassis",
+      "title": "Theoretical test frame",
+      "kind": "surface",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "chassisKg": 350
+      },
+      "scope": "Editable chassis mass, independent of the cabin.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "six-wheel",
+      "slot": "wheels",
+      "title": "Mars-inspired six-wheel set",
+      "kind": "surface",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "nasa-02"
+      ],
+      "assumedSettings": {
+        "wheels": 6
+      },
+      "scope": "Wheel count inspired by Perseverance. No assumed strength or traction.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "four-wheel",
+      "slot": "wheels",
+      "title": "Theoretical four-wheel set",
+      "kind": "surface",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "wheels": 4
+      },
+      "scope": "Static load sensitivity only.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "solar-pack",
+      "slot": "power",
+      "title": "Solar array and pack",
+      "kind": "solar",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "capacityWh": 4000,
+        "panelM2": 2
+      },
+      "scope": "Assumed net conversion and capacity.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "pack-only",
+      "slot": "power",
+      "title": "Battery only",
+      "kind": "battery",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "capacityWh": 4000,
+        "panelM2": 0
+      },
+      "scope": "Generation disabled.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "radiator",
+      "slot": "thermal",
+      "title": "Exposed radiator panel",
+      "kind": "radiator",
+      "origin": "reference-inspired",
+      "sourceIds": [
+        "thermal-method"
+      ],
+      "assumedSettings": {
+        "radiatorM2": 2,
+        "projectedM2": 0.4
+      },
+      "scope": "Steady radiative budget for one component.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "shade",
+      "slot": "thermal",
+      "title": "Shaded radiator",
+      "kind": "radiator",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "radiatorM2": 2,
+        "projectedM2": 0
+      },
+      "scope": "Ideal direct-sun shade on the radiator. PV is separate.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "scrubber",
+      "slot": "lifeSupport",
+      "title": "Regulated cabin with CO₂ scrubber",
+      "kind": "scrubber",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "jaxa-01",
+        "crew-method"
+      ],
+      "assumedSettings": {
+        "scrubGhr": 90
+      },
+      "scope": "Compares demand with assumed capacity.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "storage",
+      "slot": "lifeSupport",
+      "title": "Oxygen resupply without scrubbing",
+      "kind": "no-scrubber",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "scrubGhr": 0
+      },
+      "scope": "Reports unsatisfied CO₂ removal.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "lock",
+      "slot": "access",
+      "title": "Pump-recovery airlock",
+      "kind": "cycled",
+      "origin": "reference-inspired",
+      "sourceIds": [
+        "access-method"
+      ],
+      "assumedSettings": {
+        "lockM3": 1.5,
+        "recovery": 0.75
+      },
+      "scope": "Isolated gas volume, externally replenished after cycling.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "suitport",
+      "slot": "access",
+      "title": "Rear-entry suitport",
+      "kind": "cycled",
+      "origin": "reference-inspired",
+      "sourceIds": [
+        "access-method"
+      ],
+      "assumedSettings": {
+        "lockM3": 0.04,
+        "recovery": 0
+      },
+      "scope": "Only an assumed trapped interface volume cycles. Includes no suit purge.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "sample",
+      "slot": "detection",
+      "title": "Sampling detector",
+      "kind": "tracer",
+      "origin": "reference-inspired",
+      "sourceIds": [
+        "fire-method"
+      ],
+      "assumedSettings": {
+        "delayS": 5
+      },
+      "scope": "Ideal tracer threshold and time delay. No aerosol-specific calibration.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "no-detector",
+      "slot": "detection",
+      "title": "Detector omitted",
+      "kind": "none",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {},
+      "scope": "Transport can be calculated, alarm unavailable.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "mist",
+      "slot": "suppression",
+      "title": "Water-mist inventory concept",
+      "kind": "agent",
+      "origin": "reference-inspired",
+      "sourceIds": [
+        "fire-method",
+        "mist-method"
+      ],
+      "assumedSettings": {
+        "agentKg": 2,
+        "agentGps": 40
+      },
+      "scope": "Inventory model only. Fire location, agent, hardware and cleanup need tests.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "no-agent",
+      "slot": "suppression",
+      "title": "No installed agent supply",
+      "kind": "none",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {
+        "agentKg": 0
+      },
+      "scope": "No deliverable agent.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "cellulose",
+      "slot": "material",
+      "title": "Dry cellulose coupon",
+      "kind": "cellulose",
+      "origin": "reference-inspired",
+      "sourceIds": [
+        "material-heat",
+        "stock-cellulose"
+      ],
+      "assumedSettings": {},
+      "scope": "Pure repeat-unit idealization. Manufacturer stock is a possible lab analogue.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "pe",
+      "slot": "material",
+      "title": "Dry polyethylene coupon",
+      "kind": "polyethylene",
+      "origin": "reference-inspired",
+      "sourceIds": [
+        "material-heat",
+        "stock-pe"
+      ],
+      "assumedSettings": {},
+      "scope": "Pure repeat-unit idealization. Stock may contain additives.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "unknown",
+      "slot": "material",
+      "title": "Uncharacterized custom laminate",
+      "kind": "unknown",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {},
+      "scope": "Unknown chemistry. Withhold oxygen demand and heat.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "apxs",
+      "slot": "payload",
+      "title": "Canadian-inspired contact spectrometer",
+      "kind": "instrument",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "csa-01"
+      ],
+      "assumedSettings": {},
+      "scope": "Science payload role only. Include its hypothetical installed mass and electrical draw in the budgets.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "cargo",
+      "slot": "payload",
+      "title": "Theoretical sample locker",
+      "kind": "passive",
+      "origin": "theoretical",
+      "sourceIds": [],
+      "assumedSettings": {},
+      "scope": "Cargo and its fixtures enter the declared payload mass.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "mesh-set",
+      "slot": "wheels",
+      "title": "Apollo-inspired mesh wheels",
+      "kind": "surface",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "nasa-06"
+      ],
+      "assumedSettings": {
+        "wheels": 4
+      },
+      "scope": "Woven wheel concept and count only. Tire loading and soil behavior require a matched test.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "grouser-set",
+      "slot": "wheels",
+      "title": "Rashid-inspired grouser wheels",
+      "kind": "surface",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "mbrsc-01",
+        "mbrsc-03",
+        "kasa-02"
+      ],
+      "assumedSettings": {
+        "wheels": 4
+      },
+      "scope": "Rashid design and separate Earth soil rigs inspire terrain tests. Test geometry and slip data are reference-only.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "met-suite",
+      "slot": "payload",
+      "title": "Mars environmental sensor suite",
+      "kind": "instrument",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "aee-01",
+        "aee-02"
+      ],
+      "assumedSettings": {},
+      "scope": "CAB-led MEDA inspires external weather sensing. Installed mass, mounting and bus draw are user budgets.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "nav-camera",
+      "slot": "payload",
+      "title": "Lunar navigation cameras",
+      "kind": "instrument",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "bsa-01"
+      ],
+      "assumedSettings": {},
+      "scope": "Bahrain reported four cameras for Rashid Rover 3. Optical and electronic interfaces need confirmation.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "drill",
+      "slot": "payload",
+      "title": "Drill and borehole spectrometer",
+      "kind": "instrument",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "esa-01",
+        "esa-02",
+        "asi-01",
+        "uksa-01"
+      ],
+      "assumedSettings": {},
+      "scope": "ESA/UK rover integration and Italy’s instrument roles. No sample or hole depth is predicted here.",
+      "compatibility": "unverified hybrid interface"
+    },
+    {
+      "id": "regolith-lab",
+      "slot": "payload",
+      "title": "Lunar elemental-analysis package",
+      "kind": "instrument",
+      "origin": "agency-inspired",
+      "sourceIds": [
+        "isro-01"
+      ],
+      "assumedSettings": {},
+      "scope": "Pragyan LIBS/APXS payload role. Whole rover power is excluded from instrument sizing.",
+      "compatibility": "unverified hybrid interface"
+    }
+  ]
+}

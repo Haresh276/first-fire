@@ -1,0 +1,240 @@
+[
+  {
+    "id": "ggpen-01",
+    "agency": "GGPEN",
+    "title": "GGPEN satellite mission control centre (MCC)",
+    "url": "https://ggpen.gov.ao/public/index.php/solucoes/mcc",
+    "locator": "Capacidade para operar até três satélites em simultâneo, including the list of MCC functions",
+    "role": "engineering reference only",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "Maximum number of satellites the centre can operate simultaneously",
+        "value": 3,
+        "unit": "satellites"
+      }
+    ],
+    "conditions": "The Angolan ground control centre monitors the ANGOSAT-2 telecommunications satellite. Its continuous monitoring is a ground-service capability.",
+    "supports": "A precedent for recording subsystem telemetry and diagnosing faults from a control room.",
+    "limits": "The source contains no public rover hardware specifications, rover fault-response times or Earth–Moon communications link budget.",
+    "localFile": "evidence/files/ggpen-01-mcc.html"
+  },
+  {
+    "id": "conae-01",
+    "agency": "CONAE",
+    "title": "CONAE deep-space stations and receiver specifications",
+    "url": "https://www.argentina.gob.ar/node/182397",
+    "locator": "Section 6, Detalle del Equipamiento Disponible, Estación CLTC-CONAE-NEUQUEN, (a) Antena y receptores",
+    "role": "engineering reference only",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "Neuquén ground antenna diameter",
+        "value": 35,
+        "unit": "m"
+      },
+      {
+        "quantity": "S-band reception, lower edge",
+        "value": 2.2,
+        "unit": "GHz"
+      },
+      {
+        "quantity": "S-band reception, upper edge",
+        "value": 2.3,
+        "unit": "GHz"
+      },
+      {
+        "quantity": "X-band reception, lower edge",
+        "value": 8.4,
+        "unit": "GHz"
+      },
+      {
+        "quantity": "X-band reception, upper edge",
+        "value": 8.5,
+        "unit": "GHz"
+      }
+    ],
+    "conditions": "Ground receive equipment at the Argentina–China Neuquén station. The page also lists a different station at Malargüe.",
+    "supports": "A real ground endpoint for lunar communications planning. The listed receive bands can be checked against a proposed transmitting system.",
+    "limits": "A ground antenna specification supplies neither a rover transmit power nor an available relay, data rate or coverage guarantee.",
+    "localFile": "evidence/files/conae-01-neuquen.html"
+  },
+  {
+    "id": "conae-02",
+    "agency": "CONAE",
+    "title": "Argentina reports tracking support for Chinese lunar and Mars missions",
+    "url": "https://www.argentina.gob.ar/noticias/filmus-visito-la-estacion-de-espacio-profundo-cltc-conae-neuquen-un-puente-de-cooperacion",
+    "locator": "Paragraph beginning «La Estación CLTC-CONAE-NEUQUÉN brindó soporte»",
+    "role": "engineering reference only",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "Argentina's account of ground support to Chang’e and Tianwen-1 through the joint Neuquén station.",
+    "supports": "Distinguishes an actual deep-space ground-support contribution from ownership of the lunar and Mars rover vehicles.",
+    "limits": "This account does not specify a direct radio link between a rover and Neuquén, contact durations, or rover radio characteristics.",
+    "localFile": "evidence/files/conae-02-mission-support.html"
+  },
+  {
+    "id": "bsa-01",
+    "agency": "BSA",
+    "title": "Bahrain’s report to COPUOS on navigation cameras for Rashid Rover 3",
+    "url": "https://documents.un.org/doc/undoc/gen/v24/076/85/pdf/v2407685.pdf",
+    "locator": "A/AC.105/1337, Bahrain submission dated 27 October 2024, p. 6, Space segment, paragraph 1(c)",
+    "role": "lunar rover navigation payload under development",
+    "evidenceClass": "mission description",
+    "quantities": [
+      {
+        "quantity": "Navigation cameras in Bahrain's Rashid Rover 3 contribution",
+        "value": 4,
+        "unit": "cameras"
+      }
+    ],
+    "conditions": "Bahrain's national submission describes collaboration with the UAE's Mohammed Bin Rashid Space Centre on the Rashid Rover 3 lunar mission.",
+    "supports": "A direct example of navigation and science cameras supplied by a partner to a lunar rover.",
+    "limits": "Bahrain supplied the camera development effort. The report gives no camera field of view, stereo baseline, hazard detection accuracy, or surface performance.",
+    "localFile": "evidence/files/bsa-01-bahrain-un.pdf"
+  },
+  {
+    "id": "bsa-02",
+    "agency": "BSA",
+    "title": "Bahrain’s 2025 update on lunar surface and orbital instruments",
+    "url": "https://documents.un.org/api/symbol/access?l=en&s=A%2FAC.105%2F1367&t=pdf",
+    "locator": "A/AC.105/1367, Bahrain submission dated 21 October 2025, p. 3, final two paragraphs of Space segment",
+    "role": "lunar rover navigation payload development update",
+    "evidenceClass": "mission description",
+    "quantities": [
+      {
+        "quantity": "Navigation cameras developed in-house",
+        "value": 4,
+        "unit": "cameras"
+      }
+    ],
+    "conditions": "Bahrain reported developing the four surface-rover cameras. A separate joint hyperspectral instrument with Egypt is intended for a lunar orbiter.",
+    "supports": "Distinguishes the navigation camera contribution from orbital mineral and ice mapping.",
+    "limits": "The submission describes planned mounting and launch. It supplies no in-situ imagery or camera acceptance-test data.",
+    "localFile": "evidence/files/bsa-02-bahrain-un.pdf"
+  },
+  {
+    "id": "aeb-01",
+    "agency": "AEB",
+    "title": "AEB 2023 management report on Brazil’s integration and test facility",
+    "url": "https://www.gov.br/aeb/pt-br/canais_atendimento/ouvidoria/RelatorioDeGestaoAEB2023.pdf",
+    "locator": "Printed p. 61, Laboratório de Integração e Testes (LIT), text above Figure 31",
+    "role": "engineering reference only",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "Reported upper satellite mass for the facility's integration and environmental tests",
+        "value": 2,
+        "unit": "metric tonnes"
+      }
+    ],
+    "conditions": "AEB describes INPE's Brazilian satellite integration facility and lists thermal-vacuum, electromagnetic, vibration, acoustic, shock and mass-property work.",
+    "supports": "A documented precedent for checking structure, mass properties, electronics and thermal response with complementary tests.",
+    "limits": "This is a laboratory satellite mass limit. The source contains no qualifying test result or mass requirement for a planetary rover.",
+    "localFile": null
+  },
+  {
+    "id": "aeb-02",
+    "agency": "AEB",
+    "title": "Brazilian space programme test facility, INPE LIT thermal-vacuum laboratory",
+    "url": "https://www.gov.br/inpe/pt-br/area-conhecimento/montagem-integracao-e-testes/laboratorio-vacuo-termico",
+    "locator": "Principais Meios de Testes, item (a), Câmara de Simulação Espacial 6m x 8m",
+    "role": "engineering reference only",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "Large chamber ultimate vacuum",
+        "value": 1e-7,
+        "unit": "mbar"
+      },
+      {
+        "quantity": "Thermal shroud independently controlled zones",
+        "value": 6,
+        "unit": "zones"
+      },
+      {
+        "quantity": "Zone temperature lower limit",
+        "value": -196,
+        "unit": "°C"
+      },
+      {
+        "quantity": "Zone temperature upper limit",
+        "value": 150,
+        "unit": "°C"
+      }
+    ],
+    "conditions": "The facility operator INPE specifies a high-vacuum chamber with a zoned thermal shroud. AEB identifies this facility in its programme report (aeb-01).",
+    "supports": "Defines an example equipment envelope for a future subsystem thermal-vacuum test.",
+    "limits": "Chamber capability alone establishes no rover survival temperature, test cycle, or qualification result.",
+    "localFile": "evidence/files/aeb-02-inpe-thermal-vacuum.html"
+  },
+  {
+    "id": "nasrda-01",
+    "agency": "NASRDA",
+    "title": "NASRDA Centre for Space Transport and Propulsion reports structural integration and test work",
+    "url": "https://www.nasrda.gov.ng/center-for-space-transport-and-propulsion/",
+    "locator": "Technical Divisions at CSTP & Activities, sections 2 (Structural Integration Systems) and 4 (Project Division)",
+    "role": "engineering reference only",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Ground and flight preparation for a Nigerian rocket test in April 2019 included integration at CSTP and final checks on the launch platform.",
+    "supports": "An example of separating fabrication, integrated checks, and safety and quality-control responsibilities in a test plan.",
+    "limits": "This was a rocket integration exercise. No public rover specification, rover load case, measured vibration spectrum or planetary traction result was identified in this record.",
+    "localFile": "evidence/files/nasrda-01-cstp.html"
+  },
+  {
+    "id": "aep-01",
+    "agency": "AEP",
+    "title": "GuaraniSat-2 mechanical properties and payload distribution",
+    "url": "https://aep.gov.py/wp-content/uploads/2025/07/GUARANISAT-2_Structure-20250717_compressed.pdf",
+    "locator": "17 July 2025 drawing presentation, p. 2, Satellite properties, and p. 3, Isometric view (deployed configuration)",
+    "role": "engineering reference only",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "GuaraniSat-2 total mass listed in the drawing",
+        "value": 3.94,
+        "unit": "kg"
+      },
+      {
+        "quantity": "Stowed envelope, first dimension",
+        "value": 110.4,
+        "unit": "mm"
+      },
+      {
+        "quantity": "Stowed envelope, second dimension",
+        "value": 112,
+        "unit": "mm"
+      },
+      {
+        "quantity": "Stowed envelope, third dimension",
+        "value": 341.5,
+        "unit": "mm"
+      }
+    ],
+    "conditions": "AEP publishes separate bare-structure and overall stowed dimensions for the satellite. Its table specifies hardcoat-anodized 6061-T6 aluminum for the structure.",
+    "supports": "Demonstrates why a payload drawing records the overall envelope and explicit stowed/deployed configuration as well as mass.",
+    "limits": "A CubeSat drawing is an integration example. It supplies no public rover chassis dimensions, structural load rating or flight qualification for its use on a rover.",
+    "localFile": null
+  },
+  {
+    "id": "aep-02",
+    "agency": "AEP",
+    "title": "Paraguay’s COPUOS report on its deployed GuaraniSat-1 and planned sensor telemetry",
+    "url": "https://www.unoosa.org/documents/pdf/copuos/lsc/2021/statements/item_3_Paraguay_ver.1_3_June_PM.pdf",
+    "locator": "Republic of Paraguay statement, 2021 legal subcommittee, agenda item 3, pp. 3–5",
+    "role": "engineering reference only",
+    "evidenceClass": "mission description",
+    "quantities": [
+      {
+        "quantity": "GuaraniSat-1 CubeSat form factor",
+        "value": 1,
+        "unit": "U"
+      }
+    ],
+    "conditions": "Paraguay reported the March 2021 orbital deployment of GuaraniSat-1 and described plans for communicating field detector data through the satellite.",
+    "supports": "An example of specifying the sensor, ground terminal and spacecraft as separate endpoints when designing telemetry.",
+    "limits": "The statement records orbital deployment. It gives no measured link throughput, detector yield, or rover communications specification.",
+    "localFile": "evidence/files/aep-02-guaranisat1.pdf"
+  }
+]

@@ -1,0 +1,369 @@
+[
+  {
+    "id": "roster-2026",
+    "agency": "Space Apps",
+    "title": "2026 Space Agency Partners",
+    "url": "https://www.spaceappschallenge.org/2026/space-agency-partners/",
+    "locator": "2026 Space Agency Partners, 17 agency tiles",
+    "role": "roster",
+    "evidenceClass": "mission description",
+    "quantities": [
+      {
+        "quantity": "partners in addition to NASA",
+        "value": 17,
+        "unit": "agencies"
+      }
+    ],
+    "conditions": "2026 edition, retrieved 15 November 2026.",
+    "supports": "Determines register membership.",
+    "limits": "Event participation gives no endorsement, hardware supply or test approval.",
+    "localFile": "evidence/files/partner-roster-2026.html"
+  },
+  {
+    "id": "nasa-06",
+    "agency": "NASA",
+    "title": "The Apollo Lunar Roving Vehicle",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html",
+    "locator": "Opening mission summary and following chassis and wheel descriptions",
+    "role": "chassis and wheels",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "Apollo 17 distance driven",
+        "value": 35.9,
+        "unit": "km"
+      },
+      {
+        "quantity": "LRV mass",
+        "value": 210,
+        "unit": "kg"
+      }
+    ],
+    "conditions": "Open electric vehicle carrying suited Apollo astronauts on lunar EVA.",
+    "supports": "Flown lunar mobility and purpose of the wire-mesh wheel.",
+    "limits": "Original frame and wheel figures describe Apollo hardware only.",
+    "localFile": "evidence/files/nasa-06-apollo-rover.html"
+  },
+  {
+    "id": "material-heat",
+    "agency": "NBS/NIST",
+    "title": "NBS Technical Note 1128, heats of combustion",
+    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf",
+    "locator": "Table 1, printed p. 66, PDF p. 78",
+    "role": "coupon chemistry",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "net heat, cellulose",
+        "value": 15.2,
+        "unit": "MJ/kg"
+      },
+      {
+        "quantity": "net heat, polyethylene",
+        "value": 43.4,
+        "unit": "MJ/kg"
+      }
+    ],
+    "conditions": "Table of common materials. Oxygen volume column is referenced to 25 °C. Net heat is per mass of fuel.",
+    "supports": "Energy accounting on the assumption the specified dry mass reacts completely.",
+    "limits": "Generic substances. No coupon-lot measurement, speed, heat flux to a wall, ignition or extinction limit.",
+    "localFile": "evidence/files/tn1128.pdf"
+  },
+  {
+    "id": "crew-method",
+    "agency": "NASA",
+    "title": "Life Support Baseline Values and Assumptions Document, revision 2",
+    "url": "https://ntrs.nasa.gov/api/citations/20210024855/downloads/BVAD_2.15.22-final.pdf",
+    "locator": "Table 3-24, PDF p. 63",
+    "role": "life support",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "sleep O2 use",
+        "value": 0.37,
+        "unit": "g/person/min"
+      },
+      {
+        "quantity": "sleep CO2 output",
+        "value": 0.44,
+        "unit": "g/person/min"
+      },
+      {
+        "quantity": "nominal O2 use",
+        "value": 0.59,
+        "unit": "g/person/min"
+      },
+      {
+        "quantity": "nominal CO2 output",
+        "value": 0.69,
+        "unit": "g/person/min"
+      },
+      {
+        "quantity": "aerobic O2 use",
+        "value": 3.99,
+        "unit": "g/person/min"
+      },
+      {
+        "quantity": "aerobic CO2 output",
+        "value": 5.22,
+        "unit": "g/person/min"
+      }
+    ],
+    "conditions": "HIDH reference crew and daily activity schedule, modeled metabolic loads. Aerobic interval in source schedule is 0.5 h.",
+    "supports": "Sizing a constant-activity interval.",
+    "limits": "Not an individual crew measurement or a multi-day exercise prescription. No regulator capacity stated.",
+    "localFile": "evidence/files/metabolism.pdf"
+  },
+  {
+    "id": "access-method",
+    "agency": "NASA",
+    "title": "Evaluating Extravehicular Activity Access Options for a Lunar Surface Habitat",
+    "url": "https://ntrs.nasa.gov/citations/20230002484",
+    "locator": "NTRS abstract, comparison of three EVA access options",
+    "role": "airlock and suitport",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Lunar habitat trade study, including an air-save system and a suitport-airlock maintained in vacuum.",
+    "supports": "Different cycled gas volumes and gas recovery architectures.",
+    "limits": "Published abstract supplies no measured leak rate or suitport dead volume for this design.",
+    "localFile": "evidence/files/airlock.html"
+  },
+  {
+    "id": "thermal-method",
+    "agency": "NASA",
+    "title": "Small Spacecraft Technology State of the Art, Thermal Control",
+    "url": "https://www.nasa.gov/wp-content/uploads/2025/02/7-soa-thermal-2024.pdf",
+    "locator": "Section 7.1, equation 1 and Figure 7.1, printed p. 205",
+    "role": "radiator and external environment",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Spacecraft radiation exchange, solar absorption and heat generation.",
+    "supports": "Separates solar projection from infrared-emitting area in a steady panel budget.",
+    "limits": "The teaching case omits convection, conduction, transient storage and a resolved view-factor model.",
+    "localFile": "evidence/files/thermal.pdf"
+  },
+  {
+    "id": "fire-method",
+    "agency": "NASA",
+    "title": "OCHMO-TB-008, Fire Protection",
+    "url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-008-fire-protection.pdf",
+    "locator": "PDF pp. 8–10, Fire Detection, Fire Suppression, Post-Fire Monitoring",
+    "role": "detector placement and suppression",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Human spaceflight guidance for equipment bays, cabin and ventilation-return detectors and crew access to extinguishers.",
+    "supports": "Use release and sampling location as separate controls. Track agent and post-fire cleanup.",
+    "limits": "No calibration of a tracer alarm or extinguishing dose for this hybrid.",
+    "localFile": "evidence/files/fire-protection.pdf"
+  },
+  {
+    "id": "mist-method",
+    "agency": "NASA",
+    "title": "Development of the ISS Fine Water Mist Portable Fire Extinguisher",
+    "url": "https://ntrs.nasa.gov/api/citations/20120018019/downloads/20120018019.pdf",
+    "locator": "PDF p. 1, abstract",
+    "role": "suppression concept",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "Engineering-development abstract comparing ISS extinguisher types and microgravity design issues.",
+    "supports": "Water-mist technology as a component family.",
+    "limits": "No extracted discharge curve, electrical suitability or installed-system extinguishment tests.",
+    "localFile": "evidence/files/mist.pdf"
+  },
+  {
+    "id": "stock-cellulose",
+    "agency": "Cytiva",
+    "title": "Whatman filtration product guide",
+    "url": "https://info.cytivalifesciences.com/rs/614-VFU-334/images/Whatman-filtration-product-guide.pdf",
+    "locator": "PDF p. 16, Technical specifications, Qualitative filter papers—standard grades, grade 1",
+    "role": "Earth stock candidate",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "nominal thickness",
+        "value": 180,
+        "unit": "µm"
+      },
+      {
+        "quantity": "nominal basis weight",
+        "value": 87,
+        "unit": "g/m²"
+      }
+    ],
+    "conditions": "Nominal properties for commercial qualitative filter paper, grade 1.",
+    "supports": "A candidate source of identifiable cellulose-rich lab stock and a check against weighing and measuring the lot.",
+    "limits": "No fire values or flight material qualification. No purchased lot assumed.",
+    "localFile": "evidence/files/filter-paper.pdf"
+  },
+  {
+    "id": "stock-pe",
+    "agency": "Röchling Industrial",
+    "title": "Product handling information, Polystone G HD natural extruded, 590976",
+    "url": "https://www.roechling.com/fileadmin/assets/Product%20Handling%20Information%20Sheet%20Polystone%C2%AE%20G%20HD%20natural%20extruded%20590976%20EN.pdf",
+    "locator": "PDF p. 1, §2 Product details",
+    "role": "Earth stock candidate",
+    "evidenceClass": "specification",
+    "quantities": [],
+    "conditions": "PE-HD/PE 300 semifinished product. Product lists stabilizer and additives.",
+    "supports": "Traceable candidate grade for a sourced PE coupon.",
+    "limits": "Additives prevent equating stock with a pure CH2 repeat unit for an installed fire test.",
+    "localFile": "evidence/files/hdpe.pdf"
+  },
+  {
+    "id": "materials-index",
+    "agency": "NASA",
+    "title": "NASA-STD-6001 status record",
+    "url": "https://standards.nasa.gov/standard/NASA/NASA-STD-6001",
+    "locator": "Document Identifiers and Document Scope",
+    "role": "materials test provenance",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Standards registry lists revision B with change 3.",
+    "supports": "Identifies the active revision used for this research.",
+    "limits": "Applicability depends on the program and material configuration.",
+    "localFile": "evidence/files/materials-standard.html"
+  },
+  {
+    "id": "materials-method",
+    "agency": "NASA",
+    "title": "NASA-STD-6001B with Change 3",
+    "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B-w/CHANGE-3/3/2025_06_25_NASA-STD-6001B_w_Change_3_FINAL_Admin-Change-FINAL.pdf",
+    "locator": "§7.1.1–7.1.2, PDF p. 27, Test 1",
+    "role": "materials screening",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "specimens in Test 1 summary",
+        "value": 5,
+        "unit": "specimens"
+      },
+      {
+        "quantity": "nominal length",
+        "value": 30,
+        "unit": "cm"
+      },
+      {
+        "quantity": "nominal width",
+        "value": 6.5,
+        "unit": "cm"
+      }
+    ],
+    "conditions": "Worst-case anticipated atmosphere, bottom ignition, vertical specimens, one specimen per test, subject to applicable standard provisions.",
+    "supports": "Gives a concrete comparison protocol and highlights geometry and atmosphere.",
+    "limits": "This archive contains no such qualification report for the proposed assembly.",
+    "localFile": "evidence/files/standard6001.pdf"
+  },
+  {
+    "id": "moon-env",
+    "agency": "NASA",
+    "title": "Moon Facts",
+    "url": "https://science.nasa.gov/moon/facts/",
+    "locator": "Structure, surface and atmosphere sections, including sunlit/dark temperatures",
+    "role": "lunar environment",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "illustrative full-sun surface extreme",
+        "value": 127,
+        "unit": "°C"
+      },
+      {
+        "quantity": "illustrative dark surface extreme",
+        "value": -173,
+        "unit": "°C"
+      }
+    ],
+    "conditions": "Lunar surface in sunlight or darkness. Local latitude, shadow and exposure affect temperature.",
+    "supports": "Demonstrates why illumination and external thermal boundary are separate controls.",
+    "limits": "Surface temperature does not determine radiator sink temperature or cabin gas temperature.",
+    "localFile": "evidence/files/moon.html"
+  },
+  {
+    "id": "mars-env",
+    "agency": "NASA",
+    "title": "Mars Facts",
+    "url": "https://science.nasa.gov/mars/facts/",
+    "locator": "Atmosphere and Surface",
+    "role": "Mars environment",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Thin CO2-dominated Martian atmosphere and varying surface temperature.",
+    "supports": "Mars requires a distinct external pressure and radiative boundary.",
+    "limits": "No site weather time series or pressure-vessel performance.",
+    "localFile": "evidence/files/mars.html"
+  },
+  {
+    "id": "orbit-env",
+    "agency": "NASA",
+    "title": "What Is Microgravity?",
+    "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/",
+    "locator": "Why do astronauts float in space? Explanation of orbital free fall",
+    "role": "orbit and sensing",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Spacecraft and occupants freely fall together in orbit.",
+    "supports": "Use ideal zero support force in an unrestrained orbit case.",
+    "limits": "An accelerometer measures specific force; a lone reading cannot infer world or distinguish all motions.",
+    "localFile": "evidence/files/microgravity.html"
+  },
+  {
+    "id": "psi-saffire",
+    "agency": "NASA",
+    "title": "PSI-98 Saffire-I original experimental table",
+    "url": "https://doi.org/10.60555/0t15-1z43",
+    "locator": "CSV rows 2–3, sample S1 and S2, columns Air Flow, Percent O2 and Flow Direction",
+    "role": "fan and ignition evidence",
+    "evidenceClass": "measurement",
+    "quantities": [
+      {
+        "quantity": "forced flow speed, both burns",
+        "value": 20,
+        "unit": "cm/s"
+      },
+      {
+        "quantity": "S1 O2 lower",
+        "value": 21.5,
+        "unit": "vol%"
+      },
+      {
+        "quantity": "S1 O2 upper",
+        "value": 21.7,
+        "unit": "vol%"
+      },
+      {
+        "quantity": "S2 approximate O2",
+        "value": 21.5,
+        "unit": "vol%"
+      }
+    ],
+    "conditions": "SIBAL fabric in orbital microgravity. S1 concurrent and S2 opposed. Same specimen reused.",
+    "supports": "A real controlled-flow comparator with material, atmosphere and direction recorded.",
+    "limits": "Velocity in a test duct is not whole-cabin volume flow. The CSV does not give a cabin detector threshold.",
+    "localFile": "evidence/files/saffire-i.csv"
+  },
+  {
+    "id": "flow-measurement",
+    "agency": "NASA",
+    "title": "Large-scale spacecraft fire safety experiments, SIBAL results",
+    "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf",
+    "locator": "Slide 21, SIBAL Fabric Results, 40.6-cm-wide sample",
+    "role": "fan and ignition orientation comparator",
+    "evidenceClass": "measurement",
+    "quantities": [
+      {
+        "quantity": "concurrent average spread rate",
+        "value": 1.8,
+        "unit": "mm/s"
+      },
+      {
+        "quantity": "opposed average spread rate",
+        "value": 1.3,
+        "unit": "mm/s"
+      }
+    ],
+    "conditions": "Orbital Saffire-I, wide cotton/fiberglass specimen, 20 cm/s airflow. PSI-98 identifies differing initial O2 and reused fuel.",
+    "supports": "Direction mattered for these measured front speeds.",
+    "limits": "Pure cellulose, PE and other assemblies cannot inherit either speed. Flame length and spread speed are distinct.",
+    "localFile": "evidence/files/saffire-i-slides.pdf"
+  }
+]

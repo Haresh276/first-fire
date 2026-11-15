@@ -13,9 +13,9 @@ def package(target):
     if target.is_relative_to(ROOT):raise ValueError('Choose a destination outside the source tree.')
     target.parent.mkdir(parents=True,exist_ok=True)
     sources=[ROOT/x for x in ('README.md','LICENSE')]
-    for folder in ('site','data','dist','chat','scripts','tests','research'):
+    for folder in ('site','data','dist','chat','scripts','tests','research','rover-design'):
         sources.extend(p for p in (ROOT/folder).rglob('*') if p.is_file() and
-                       not any(s.startswith('.') or s in ('__pycache__','node_modules') for s in p.relative_to(ROOT).parts))
+                       not any(s.startswith('.') or s in ('__pycache__','node_modules','share') for s in p.relative_to(ROOT).parts))
     with tempfile.TemporaryDirectory(dir=target.parent) as tmp:
         out=Path(tmp)/'release.zip'
         with ZipFile(out,'w',compression=ZIP_DEFLATED,compresslevel=7) as z:
