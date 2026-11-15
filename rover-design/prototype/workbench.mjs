@@ -43,7 +43,7 @@ function overlayReading(mode,d,c,r) {
     default:return '';
   }
 }
-const driveFields={
+export const driveFields={
   speedMps:['Commanded wheel speed','m/s',.01,8],turnRateRadS:['Turn rate','rad/s',.01,2],
   rollingResistance:['Rolling resistance','ratio',0,1],friction:['Friction coefficient','ratio',0,2],
   efficiency:['Drivetrain efficiency','fraction',.01,1],slipFraction:['Prescribed slip','fraction',0,.95],

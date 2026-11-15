@@ -1,5 +1,6 @@
 import { selectPart, setEnvironment, simulate } from './model.mjs';
-import {mountWorkbench} from './workbench.mjs';
+import {mountWorkbench,driveFields} from './workbench.mjs';
+import {buildDestinations,mountFinder,viewNames} from './finder.mjs';
 import {mountMissionReview} from './mission-review.mjs';
 import {mountFieldComparison} from './field-comparison.mjs';
 
@@ -64,7 +65,7 @@ const noteForGroup = {
 const format = new Intl.NumberFormat('en-US',{maximumFractionDigits:3});
 let catalog, schema, sourceRows, sourceError, scenarios, baseline, state, result, selectedExample;
 const fieldWidgets = new Map();
-let workbench, missionReview;
+let workbench, missionReview, finder;
 
 async function json(path) {
   const response = await fetch(path);
@@ -86,9 +87,8 @@ function currentPart(slot) {
   return catalog.parts.find(p => p.slot===slot && p.id===state.parts[slot]);
 }
 function showView(scroll=false) {
-  const available=['workbench','assembly','conditions','results','evidence','review'];
-  const requested=location.hash.slice(1);
-  const view=available.includes(requested) ? requested : 'workbench';
+  const available=Object.keys(viewNames);
+  const destination=finder.resolve(location.hash),view=destination.view;
   document.body.dataset.view=view;
   workbench?.visible(view==='workbench');
   if(view==='review')missionReview?.update();
@@ -97,7 +97,7 @@ function showView(scroll=false) {
     if (link.dataset.view === view) link.setAttribute('aria-current','page');
     else link.removeAttribute('aria-current');
   }
-  if (scroll) $('views').scrollIntoView({block:'start'});
+  if(location.hash!=='#workspace') finder.apply(destination,scroll);
 }
 function setEdited() {
   $('example').value='';
@@ -139,8 +139,7 @@ function renderParts() {
         aliasLabel.append(alias);card.append(aliasLabel);
       }
       if (part.sourceIds.length) {
-        const link=el('a','View source evidence','evidence-jump');link.href='#evidence';
-        link.addEventListener('click',()=>requestAnimationFrame(()=>$('evidence-'+slot)?.scrollIntoView({block:'center'})));
+        const link=el('a','View source evidence','evidence-jump');link.href='#evidence/'+slot;
         card.append(link);
       }
       grid.append(card);
@@ -200,7 +199,7 @@ function renderMetrics() {
   for (const [key,title,rows] of metricGroups) {
     if (!(key in result)) continue;
     const block=el('article',undefined,'metrics-group'),header=el('header');
-    header.append(el('h3',title));block.append(header);
+    const heading=el('h3',title);heading.id='result-'+key;header.append(heading);block.append(header);
     if (!result[key]) {
       const why=currentPart('cabin').kind==='open' ? 'Unavailable on an open crew deck. This calculation requires a shared cabin atmosphere.' : 'Unavailable for an uncharacterized material. The reaction chemistry and specific energy are unknown.';
       block.append(el('p',why));container.append(block);continue;
@@ -256,10 +255,11 @@ function renderOutput() {
     result=null;report('Check the scenario: '+error.message,true);$('export').disabled=true;
     $('summary').replaceChildren(el('p','Correct the highlighted input or scenario constraint to calculate results.','stat'));
     $('metrics').replaceChildren();$('notes').textContent='Results unavailable until the scenario is valid.';
-    renderEvidence();workbench?.update(state,null);missionReview?.update();return;
+    renderEvidence();workbench?.update(state,null);missionReview?.update();finder?.refreshPart();return;
   }
   report();$('export').disabled=false;renderSummary();renderMetrics();renderEvidence();
-  workbench?.update(state,result);if(location.hash==='#review')missionReview?.update();
+  workbench?.update(state,result);if(document.body.dataset.view==='review')missionReview?.update();
+  finder?.refreshPart();
 }
 function loadScenario(s,exampleKey) {
   simulate(s,catalog,schema);
@@ -310,7 +310,7 @@ async function init() {
   });
   buildFields();loadScenario(scenarios[0],exampleFiles[0][0]);
   if (location.pathname.split('/').at(-3)==='rover-workbench') {
-    $('main-site').hidden=false;
+    $('main-site').closest('nav').hidden=false;
     const key='first-fire.rover-workbench.scenario.v1';
     try {
       const pending=sessionStorage.getItem(key);
@@ -325,6 +325,12 @@ async function init() {
   }
   mountFieldComparison($('field-panel'),{getTraverse:()=>workbench.snapshot()});
   missionReview=mountMissionReview($('review-panel'),{catalog,sourceIndex:sourceIndex||{sources:[],partners:{}},getScenario:()=>state,getResult:()=>result,getTraverse:()=>workbench.snapshot()});
+  finder=mountFinder(buildDestinations({catalog,schema,partNames,metricGroups,driveFields}),{
+    getSelectedPart:slot=>state.parts[slot],
+    onInstall:(slot,id)=>{
+      const select=$('part-'+slot);select.value=id;select.dispatchEvent(new Event('change'));
+    }
+  });
   $('lab').hidden=false;showView();window.addEventListener('hashchange',()=>showView(true));
 }
 init().catch(error=>report('Unable to open the lab. '+error.message+'. Serve the rover-design folder over local HTTP to load the JSON files.',true));

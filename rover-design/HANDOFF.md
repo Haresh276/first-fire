@@ -1,6 +1,6 @@
 # FIRST FIRE rover workbench handoff
 
-**Project location** — `/Users/samuelmorningstar/Documents/Projects/NASA/first-fire/rover-design/`. The standalone workbench opens at [127.0.0.1:8766/prototype/](http://127.0.0.1:8766/prototype/). Every path below is relative to the project location. This package owns its renderer and models. The integration chat owns shared navigation, awareness, deployment and the existing Physics Lab adapter.
+**Project location** — `/Users/samuelmorningstar/Documents/Projects/NASA/first-fire/rover-design/`. Use the [public rover workbench](https://first-fire-lunar-lab.vercel.app/rover-workbench/) on another device. The local development server is described below. Every path below is relative to the project location. This package owns its renderer and models. The integration chat owns shared navigation, awareness, deployment and the existing Physics Lab adapter.
 
 | Deliverable | Exact package path |
 |---|---|

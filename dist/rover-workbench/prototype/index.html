@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#1e322e">
   <link rel="icon" href="data:,">
-  <title>Rover workbench · FIRST FIRE</title>
+  <title>FIRST FIRE · 3D Rover Workbench · Team Code Blooded</title>
+  <meta name="description" content="Build and inspect a 3D rover, drive lunar or Martian terrain, test cabin ventilation and compare engineering results with agency evidence in Team Code Blooded’s FIRST FIRE workbench.">
+  <link rel="canonical" href="./">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="workbench.css">
   <link rel="stylesheet" href="mission-review.css">
+  <link rel="stylesheet" href="finder.css">
 </head>
 <body>
 <a href="#workspace" class="skip">Skip to workspace</a>
-<header class="top"><div class="wrap brand"><strong>FIRST FIRE</strong><a id="main-site" hidden href="../../index.html#home">Research desk</a><span>Team Code Blooded</span><a class="top-doc" href="../OPERATIONS.md" target="_blank" rel="noopener">Workbench guide ↗</a></div></header>
+<header class="top"><div class="wrap brand"><strong>FIRST FIRE</strong><span>Team Code Blooded</span><nav class="site-return" aria-label="Research desk" hidden><a id="main-site" href="../../index.html#home">Research desk</a><a href="../../tools.html">Search site tools</a></nav><a class="top-doc" href="../OPERATIONS.md" target="_blank" rel="noopener">Workbench guide ↗</a></div></header>
 <main id="workspace" class="wrap">
   <div class="intro">
     <div><h1>Rover workbench</h1><p>Inspect the vehicle, plan a traverse and compare the engineering evidence.</p></div>
@@ -21,6 +24,17 @@
   <p id="status" role="status">Loading the parts and examples…</p>
   <script>if (location.protocol === 'file:') document.getElementById('status').textContent = 'To open the 3D lab offline, run python3 -m http.server 8000 in the site folder and visit http://localhost:8000/ in your browser.';</script>
   <div id="lab" hidden>
+    <search id="workbench-finder" aria-label="Workbench destinations">
+      <form id="finder-form" class="finder-form">
+        <label for="finder-query">Find in workbench</label>
+        <input id="finder-query" type="search" autocomplete="off" placeholder="Search tools, controls or parts" aria-controls="finder-matches">
+        <button type="submit">Search</button>
+      </form>
+      <div id="finder-matches" hidden>
+        <div class="finder-heading"><p id="finder-count" role="status"></p><button type="button" id="finder-close">Close results</button></div>
+        <ul id="finder-list"></ul><button type="button" id="finder-more" hidden>Show all matches</button>
+      </div>
+    </search>
     <details id="scenario-settings"><summary>Design and reference scenarios</summary><section class="scenario" aria-label="Scenario selection">
       <label>Reference scenarios<select id="example"></select></label>
       <button id="reset" type="button">Reload example</button>
@@ -83,7 +97,7 @@
       <div id="field-panel"></div>
     </section>
     <section class="view" id="review" hidden><div id="review-panel"></div></section>
-    <section class="view" id="assembly" hidden><div class="sectionhead"><h2>Selected components</h2><p>Changing a part applies its listed assumptions. Other conditions keep their current values.</p></div><div id="parts"></div></section>
+    <section class="view" id="assembly" hidden><div class="sectionhead"><h2>Selected components</h2><p>Changing a part applies its listed assumptions. Other conditions keep their current values.</p></div><aside id="part-preview" aria-labelledby="part-preview-title" hidden></aside><div id="parts"></div></section>
     <section class="view" id="conditions" hidden><div class="sectionhead"><h2>Test conditions</h2><p>World and illumination load a reference exterior. Adjust the inputs for the case you want to study.</p></div><div id="fields"></div></section>
     <section class="view" id="results" hidden><div class="sectionhead"><h2>Calculated results</h2><p>Independent calculations for the current assembly. Differences use the lunar daytime cellulose example as the baseline.</p></div><div id="notes"></div><div id="metrics"></div></section>
     <section class="view" id="evidence" hidden><div class="sectionhead"><h2>Evidence for this assembly</h2><p>Each entry identifies what the source supports and which values still require measurement.</p></div><div id="sources"></div></section>

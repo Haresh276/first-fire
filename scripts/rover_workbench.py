@@ -9,6 +9,7 @@ def copy_rover_workbench(root: Path, stage: Path):
     source = root / 'rover-design'
     destination = stage / 'rover-workbench'
     destination.mkdir()
+    shutil.copy2(source / 'index.html', destination / 'index.html')
     for name in ('prototype', 'examples', 'evidence', 'terrain', 'preview'):
         shutil.copytree(source / name, destination / name,
                         ignore=shutil.ignore_patterns('*.test.mjs', '.*', '__pycache__'))

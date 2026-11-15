@@ -1,6 +1,12 @@
 # FIRST FIRE rover workbench
 
-Choose a pressurized lunar rover, inspect the eleven installed systems, then drive the same design on an adjustable course. Every component has a conceptual 3D representation. The selectable configuration includes 30 agency-inspired or theoretical component choices. Three render modes expose the hull, cabin interior and separated assemblies. [Open the local workbench](http://127.0.0.1:8766/prototype/#workbench) · [16-second recorded walkthrough](preview/rover-workbench.mp4)
+Choose a pressurized lunar rover, inspect the eleven installed systems, then drive the same design on an adjustable course. Every component has a conceptual 3D representation. The selectable configuration includes 30 agency-inspired or theoretical component choices. Three render modes expose the hull, cabin interior and separated assemblies. [Open the public workbench](https://first-fire-lunar-lab.vercel.app/rover-workbench/) · [16-second recorded walkthrough](preview/rover-workbench.mp4)
+
+## Find a tool or share a view
+
+From the [site directory](https://first-fire-lunar-lab.vercel.app/tools.html?q=rover), choose **3D rover workbench**. On a phone, all six workspace sections appear above the simulation. Use **Find in workbench** to search for a part, control, or result. For example, search for **cabin tracer**, open **Cabin tracer test**, and copy the address from your browser. Opening that address on another device selects the same tool. A component link previews the part; choose **Install this component** to change the design.
+
+A link identifies a destination within the workbench. To move your custom component selections and test conditions to another device, choose **Export scenario**, transfer the JSON file and choose **Import JSON** on the second device.
 
 ## Drive and inspect
 
