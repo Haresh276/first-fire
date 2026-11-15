@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cabin Fire Simulator · FIRST FIRE</title><meta name="description" content="A fire starts in a lunar rover, a Moon or Mars habitat or a space station module. FLINT follows the oxygen, heat, pressure and CO₂ second by second and shows whether the fire puts itself out before it endangers the crew, and which response works."><meta property="og:title" content="Cabin Fire Simulator · FIRST FIRE"><meta property="og:description" content="A fire starts in the cabin. Does it put itself out before it endangers the crew, and which response works?"><meta property="og:image" content="https://first-fire-lunar-lab.vercel.app/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="judging.css"><link rel="stylesheet" href="start.css"><link rel="stylesheet" href="lab.css"><link rel="stylesheet" href="sim.css"></head>
+<body><a class="skip" href="#main">Skip to the simulator</a><header><a class="wordmark" href="judging.html">FIRST FIRE<span>.</span></a><span>CABIN FIRE SIMULATOR &nbsp; / &nbsp; FLINT 1.1</span></header>
+<main id="main">
+<div class="intro" style="grid-template-columns:1fr;padding-bottom:28px"><div><p class="eyebrow">Rover and habitat fire simulator · runs in your browser</p><h1>A fire starts in the cabin. What happens next?</h1><p class="lead">Pick a cabin, the item that catches fire and what the crew does. FLINT follows the oxygen, heat, pressure and CO₂ second by second, and shows whether the fire puts itself out before it endangers the crew, and which response works.</p>
+<p class="q"><b>The question this answers:</b> in a sealed rover on the Moon, breathing NASA's 34% oxygen exploration atmosphere, does a cabin fire die on its own? If not, should the crew turn the fans off, flood the cabin or vent it, and what does each choice cost them?</p></div></div>
+
+<section aria-labelledby="setup"><div class="panel">
+<div class="controls" role="group" aria-labelledby="setup"><h2 id="setup" style="margin:0;font-size:1.4rem">1 · The cabin</h2>
+<div class="presets" id="cabins" aria-label="Cabin"></div>
+<p class="note" id="cabnote" style="margin:0"></p>
+<div class="row2"><label>World<select id="world"><option value="orbit">Orbit</option><option value="moon">Moon</option><option value="mars">Mars</option><option value="earth">Earth</option></select></label><label>Volume (m³)<input id="V" type="number" min="2" max="1000" step="1"></label></div>
+<div class="row2"><label>Pressure <output id="Po"></output><input id="P" type="range" min="4" max="14.7" step="0.1"></label><label>Oxygen <output id="Xo"></output><input id="X" type="range" min="18" max="40" step="0.5"></label></div>
+<label>Cabin fans <output id="fano"></output><input id="fan" type="range" min="0" max="0.3" step="0.01"></label>
+<h2 style="margin:8px 0 0;font-size:1.4rem">2 · What catches fire</h2>
+<label>Item<select id="item"></select></label>
+<div class="row2"><label>Area (m²)<input id="area" type="number" min="0.02" max="10" step="0.01"></label><label>Mass per area (kg/m²)<input id="rho" type="number" min="0.05" max="20" step="0.01"></label></div>
+<p class="note" style="margin:0" id="itemnote"></p>
+<h2 style="margin:8px 0 0;font-size:1.4rem">3 · What the crew does</h2>
+<div class="resp">
+<label class="check"><input id="fansOff" type="checkbox" checked> Turn the fans off at <input id="fansAt" type="number" min="0" max="600" step="1" value="10" style="width:70px;padding:4px 6px"> s</label>
+<div class="row2"><label>Flood the cabin<select id="flood"><option value="">No flood</option><option value="CO2">CO₂ extinguisher gas</option><option value="N2">Nitrogen</option></select></label><label>Released at (s)<input id="floodAt" type="number" min="0" max="600" step="1" value="30"></label></div>
+<div class="row2" id="floodrow" hidden><label>Amount (kg)<input id="floodKg" type="number" min="0" max="500" step="0.1" value="10"></label><button type="button" id="dose" class="ghostbtn" style="font:700 .8rem DM,sans-serif;padding:9px;border:1px solid #164d40;background:#fff;color:#164d40;cursor:pointer">Use FLINT's dose</button></div>
+<label class="check"><input id="vent" type="checkbox"> Vent the cabin at <input id="ventAt" type="number" min="0" max="600" step="1" value="30" style="width:64px;padding:4px 6px"> s</label>
+<div class="row2" id="ventrow" hidden><label>Down to (psia)<input id="ventTo" type="number" min="0.2" max="14" step="0.1" value="2"></label><button type="button" id="ventp" style="font:700 .8rem DM,sans-serif;padding:9px;border:1px solid #164d40;background:#fff;color:#164d40;cursor:pointer">Use FLINT's pressure</button></div>
+</div>
+<details><summary><b>Model assumptions</b></summary><div style="display:grid;gap:10px;margin-top:10px">
+<label>Flame spread speed at 6 points of excess oxygen <output id="vupo"></output><input id="vup" type="range" min="1" max="6" step="0.1" value="3"></label>
+<label>Burning rate at 6 points of excess oxygen <output id="mfo"></output><input id="mf" type="range" min="4" max="20" step="0.5" value="10"></label>
+<label class="check"><input id="chem" type="checkbox" checked> Sealed-cabin chemistry: the flame feels the cabin's CO₂ and steam, and its limit follows the pressure</label>
+<p class="note" style="margin:0">Spread and burning rates are assumptions, not measurements. With sealed-cabin chemistry off, the simulator is FLINT 1.1's Python rover case exactly.</p></div></details>
+</div>
+
+<div class="result" aria-live="polite"><p class="eyebrow">Verdict</p><p class="verdict" id="verdict">–</p><p class="sub" id="why"></p>
+<div class="gauges" id="gauges"></div>
+<div class="scrub"><button type="button" id="play">▶ Play</button><input id="scrub" type="range" min="0" max="1799" step="1" value="0" aria-label="Time since ignition"><output id="tnow">0:00</output></div>
+<div class="cabinview"><svg id="panelview" viewBox="0 0 200 200" role="img" aria-label="The burning panel at the chosen time: the flame front and the burned-out area"></svg><ol class="timeline" id="timeline"></ol></div>
+<div class="actions2"><a class="primary" href="material-lab.html" id="tolab">Design a safer material →</a><button type="button" id="share">Copy link to this scenario</button></div></div>
+</div></section>
+
+<section aria-labelledby="trace"><p class="eyebrow">Second by second</p><h2 id="trace">Inside the cabin</h2><div class="charts" id="charts"></div>
+<p class="note">The flame-equivalent oxygen is the dry-air oxygen level that would give the flame the same temperature: the CO₂ and steam the fire makes act like missing oxygen. The fire stops when it falls to the item's limit, or when the item has burned away.</p></section>
+
+<section aria-labelledby="cmp"><p class="eyebrow">Decide</p><h2 id="cmp">Which response works?</h2><p>The same fire, five ways. Doses and the vent pressure are FLINT's own, worked out for this item in this cabin.</p>
+<div style="overflow-x:auto"><table class="cmp" id="compare"></table></div><p class="note" id="cmpnote"></p></section>
+
+<section aria-labelledby="how"><p class="eyebrow">Said plainly</p><h2 id="how">How the simulator works, and its limits</h2>
+<ul class="open"><li><b>The limit is FLINT's.</b> The least oxygen the item needs comes from FLINT's two-limit model at the cabin's gravity, pressure and fan speed, calibrated on NASA's Earth tests and checked on NASA's lunar tests (mean error 1.4 points of oxygen at 8.2 psia, no fan).</li>
+<li><b>The fire is a model.</b> A panel lit at its bottom centre grows as a half-ellipse; every patch burns until its fuel is gone. Spread and burning rates grow with the oxygen in excess of the limit; their sizes are assumptions you can change above.</li>
+<li><b>The cabin is well mixed.</b> One gas, one temperature; 30% of the heat leaves as radiation and the walls take the rest out slowly. No smoke, carbon monoxide or local hot layers, which matter to a real crew.</li>
+<li><b>Crew thresholds.</b> Above 4% CO₂ an unsuited crew must mask up; below 16 kPa of oxygen pressure an unsuited crew is impaired. Floods and venting are the cabin-level responses of FLINT's rover case; pressures far from 8.2 psia are extrapolations.</li>
+<li><b>Validated against the Python engine.</b> With sealed-cabin chemistry off it reproduces FLINT's rover case to the half second (acrylic window: 10 kW at 14.5 s, peak 183 kW), and its doses match the engine's to within 0.1%. Not reviewed by NASA; not a safety certification.</li></ul>
+<p class="back"><a href="material-lab.html">Material Lab</a> · <a href="rover-fire-case.html">The rover fire case</a> · <a href="fire-lab.html">Gravity Fire Lab</a> · <a href="judging.html">Judging route</a></p></section>
+</main><footer>FIRST FIRE · Team Code Blooded · Independent challenge project · <a href="judging.html">Judging route</a></footer>
+<div class="toast" id="toast" role="status"></div>
+<script src="flint-coefficients.js"></script><script src="flint-thermo.js"></script><script src="flint-solid.js"></script><script src="flint-custom.js"></script><script src="flint-cabin.js"></script>
+<script>
+(() => {
+  'use strict';
+  const c = globalThis.FLINTCoefficients, F = globalThis.FLINTCustom, S = globalThis.FLINTSolid, K = globalThis.FLINTCabin;
+  const $ = id => document.getElementById(id), PSIA = c.psia, G = {orbit: 0, moon: 0.1654, mars: 0.3794, earth: 1};
+  const esc = s => String(s).replace(/[&<>"']/g, ch => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[ch]));
+  const pct = (x, d = 1) => Number.isFinite(x) ? (100 * x).toFixed(d) + '%' : '–';
+  const mmss = t => t == null ? '–' : Math.floor(t / 60) + ':' + String(Math.round(t % 60)).padStart(2, '0');
+  const CABINS = [
+    {id: 'rover', name: 'Lunar rover', V: 13, P: 8.2, X: 34, world: 'moon', fan: 0.10, note: "13 m³, the size of the JAXA/Toyota Lunar Cruiser concept, at NASA's 8.2 psia, 34% oxygen exploration atmosphere. FLINT's rover case."},
+    {id: 'moonhab', name: 'Moon habitat (example)', V: 60, P: 8.2, X: 34, world: 'moon', fan: 0.10, note: 'An illustrative 60 m³ surface module in the exploration atmosphere.'},
+    {id: 'marshab', name: 'Mars habitat (example)', V: 60, P: 8.2, X: 34, world: 'mars', fan: 0.10, note: 'The same module under Mars gravity, where FLINT predicts Nomex and polycarbonate burn more readily than on the Moon.'},
+    {id: 'station', name: 'Station module (example)', V: 100, P: 14.7, X: 21, world: 'orbit', fan: 0.10, note: 'An illustrative 100 m³ module in sea-level air. In orbit only the fans move the air; FLINT does not model a flame in still air.'},
+  ];
+  const ITEMS = [
+    {id: 'PMMA', key: 'PMMA', name: 'Window and display cover (acrylic, 3 mm)', fuel: {C: 5, H: 8, O: 2, N: 0}, area: 0.6, rho: 3.57},
+    {id: 'P213', key: 'P213', name: 'Cable-bundle and stowage tape (P213)', fuel: {C: 5, H: 8, O: 2, N: 0}, area: 0.3, rho: 0.40},
+    {id: 'PC', key: 'PC', name: 'Equipment housings (polycarbonate, 2 mm)', fuel: {C: 16, H: 14, O: 3, N: 0}, area: 1.2, rho: 2.40},
+    {id: 'NOMEX', key: 'NOMEX', name: 'Hook-and-loop fasteners (Nomex Velcro)', fuel: {C: 14, H: 10, O: 2, N: 2}, area: 0.8, rho: 0.45},
+  ];
+  const dec = s => { try { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; return JSON.parse(decodeURIComponent(escape(atob(s)))); } catch (e) { return null; } };
+  const enc = o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  function customItems() {
+    const out = [], add = (s, tag) => {
+      if (!s || typeof s !== 'object' || !((+s.C || 0) + (+s.H || 0) > 0)) return;
+      const b = F.build(s); if (!b.mat) return;
+      const key = 'CAB' + out.length; F.register(key, b);
+      out.push({id: 'u' + out.length, key, name: (s.name || 'Custom material') + ' · ' + tag, fuel: {C: b.spec.C, H: b.spec.H, O: b.spec.O, N: b.spec.N, Hc: b.spec.Hc}, area: 0.5, rho: 1.0, spec: s, status: b.status});
+    };
+    const q = new URLSearchParams(location.search);
+    if (q.has('m')) add(dec(q.get('m')), 'from the Material Lab');
+    try { const l = JSON.parse(localStorage.getItem('ff-materials-v1') || '[]'); if (Array.isArray(l)) l.slice(0, 20).forEach(s => add(s, 'saved')); } catch (e) {}
+    return out;
+  }
+  const items = ITEMS.concat(customItems());
+  $('cabins').innerHTML = CABINS.map(cb => `<button type="button" data-cab="${cb.id}">${esc(cb.name)}</button>`).join('');
+  $('item').innerHTML = items.map(it => `<option value="${it.id}">${esc(it.name)}</option>`).join('');
+  let toastT = 0;
+  const toast = m => { const t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 1800); };
+  function setCabin(id) {
+    const cb = CABINS.find(x => x.id === id) || CABINS[0];
+    $('V').value = cb.V; $('P').value = cb.P; $('X').value = cb.X; $('world').value = cb.world; $('fan').value = cb.fan;
+    $('cabnote').textContent = cb.note;
+    $('fansOff').checked = cb.world !== 'orbit';
+    document.querySelectorAll('[data-cab]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cab === cb.id)));
+  }
+  function setItem(id) {
+    const it = items.find(x => x.id === id) || items[0];
+    $('item').value = it.id; $('area').value = it.area; $('rho').value = it.rho;
+    $('itemnote').textContent = it.spec ? (it.status === 'tested' ? 'Calibrated on an Earth test in the Material Lab.' : 'An estimate from the Material Lab (no Earth test). Area and mass are placeholders: set your own.') :
+      "Item from FLINT's rover inventory; the material is calibrated on NASA's tests.";
+  }
+  const item = () => items.find(x => x.id === $('item').value) || items[0];
+  function scenario(over = {}) {
+    const it = item(), w = $('world').value;
+    const base = {key: it.key, fuel: it.fuel, areal: Math.max(0.01, +$('rho').value || 0.1), area: Math.max(0.01, +$('area').value || 0.1),
+      V: Math.max(1, +$('V').value || 13), P_psia: +$('P').value, X0: +$('X').value / 100, g: G[w], fan: +$('fan').value,
+      fanOff: $('fansOff').checked ? Math.max(0, +$('fansAt').value || 0) : null, chem: $('chem').checked,
+      vUp: +$('vup').value / 1000, mFluxRef: +$('mf').value / 1000,
+      flood: $('flood').value && $('chem').checked ? {agent: $('flood').value, kg: Math.max(0, +$('floodKg').value || 0), at: Math.max(0, +$('floodAt').value || 0)} : null,
+      vent: $('vent').checked && $('chem').checked ? {to: Math.max(0.2, +$('ventTo').value || 1), at: Math.max(0, +$('ventAt').value || 0), tau: 60} : null};
+    return Object.assign(base, over);
+  }
+  const cab = () => ({V: +$('V').value, P_psia: +$('P').value, X0: +$('X').value / 100, g: G[$('world').value]});
+  const respFan = () => $('world').value === 'orbit' ? +$('fan').value : 0;
+
+  // ---------- drawing ----------
+  let sim = null, idx = 0;
+  function chart(el, title, series, opts) {
+    const W = 440, H = 210, x0 = 46, x1 = 430, y0 = 182, y1 = 12, t = sim.t, tm = t[t.length - 1] || 1;
+    const vals = series.flatMap(s => s.v).filter(Number.isFinite);
+    let lo = opts.lo ?? Math.min(...vals), hi = opts.hi ?? Math.max(...vals);
+    if (opts.lines) for (const l of opts.lines) { lo = Math.min(lo, l.y); hi = Math.max(hi, l.y); }
+    if (hi - lo < 1e-9) hi = lo + 1;
+    const pad = (hi - lo) * 0.08; hi += pad; if (opts.lo == null) lo -= pad;
+    const X = v => x0 + v / tm * (x1 - x0), Y = v => y0 - (v - lo) / (hi - lo) * (y0 - y1);
+    let s = `<line x1="${x0}" x2="${x1}" y1="${y0}" y2="${y0}" stroke="#9fb0a6"/>`;
+    for (let k = 0; k <= 4; k++) { const v = lo + (hi - lo) * k / 4; s += `<text x="${x0 - 6}" y="${Y(v) + 4}" font-size="11" text-anchor="end" fill="#40574e">${opts.fmt(v)}</text><line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="#eef1ec"/>`; }
+    for (let m = 0; m <= tm; m += tm > 600 ? 180 : 60) s += `<text x="${X(m)}" y="${y0 + 15}" font-size="11" text-anchor="middle" fill="#40574e">${mmss(m)}</text>`;
+    for (const l of opts.lines || []) s += `<line x1="${x0}" x2="${x1}" y1="${Y(l.y)}" y2="${Y(l.y)}" stroke="${l.col}" stroke-dasharray="5 4"/><text x="${x1 - 2}" y="${Y(l.y) - 4}" font-size="11" text-anchor="end" fill="${l.col}" font-weight="700">${l.label}</text>`;
+    const step = Math.max(1, Math.floor(t.length / 360));
+    for (const se of series) {
+      let d = '';
+      for (let i = 0; i < t.length; i += step) if (Number.isFinite(se.v[i])) d += (d ? 'L' : 'M') + X(t[i]).toFixed(1) + ',' + Y(se.v[i]).toFixed(1);
+      s += `<path d="${d}" fill="none" stroke="${se.col}" stroke-width="${se.w || 2.5}" ${se.dash ? 'stroke-dasharray="' + se.dash + '"' : ''}/>`;
+    }
+    const tn = t[Math.min(idx, t.length - 1)] || 0;
+    s += `<line x1="${X(tn)}" x2="${X(tn)}" y1="${y1}" y2="${y0}" stroke="#17352f" stroke-width="1.5"/>`;
+    const leg = series.filter(se => se.name).map(se => `<span><i style="background:${se.col}"></i>${se.name}</span>`).join('');
+    el.innerHTML = `<figcaption>${title}</figcaption><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${title} against time">${s}</svg>${leg ? '<div class="legend" style="margin:2px 0 4px">' + leg + '</div>' : ''}`;
+  }
+  function drawCharts() {
+    const box = $('charts');
+    if (!box.children.length) box.innerHTML = Array.from({length: 6}, () => '<figure></figure>').join('');
+    const f = box.children, P0 = +$('P').value;
+    chart(f[0], 'Oxygen and the flame limit', [{v: sim.O2, col: '#17352f', name: 'cabin O₂'}, {v: sim.xeq, col: '#ae411e', name: 'flame-equivalent', dash: '6 4'}, {v: sim.L, col: '#2f7d5b', name: 'limit', w: 2}], {fmt: v => (100 * v).toFixed(0) + '%'});
+    chart(f[1], 'Heat release', [{v: sim.hrr.map(v => v / 1e3), col: '#ae411e'}], {lo: 0, fmt: v => v.toFixed(0) + ' kW'});
+    chart(f[2], 'CO₂', [{v: sim.CO2.map(v => 100 * v), col: '#5b4a9a'}], {lo: 0, lines: [{y: 4, col: '#ae411e', label: 'crew must mask'}], fmt: v => v.toFixed(0) + '%'});
+    chart(f[3], 'Gas temperature', [{v: sim.T.map(v => v - 273.15), col: '#c2441c'}], {fmt: v => v.toFixed(0) + ' °C'});
+    chart(f[4], 'Pressure', [{v: sim.P.map(v => v / PSIA), col: '#1e4fd8', name: 'actual'}, {v: sim.Pcold.map(v => v / PSIA), col: '#8aa094', name: 'when cooled', dash: '5 4'}], {lo: 0, fmt: v => v.toFixed(1)});
+    chart(f[5], 'Oxygen the crew breathes (kPa)', [{v: sim.pO2.map(v => v / 1000), col: '#17352f'}], {lo: 0, lines: [{y: 16, col: '#ae411e', label: 'unsuited crew impaired'}], fmt: v => v.toFixed(0)});
+  }
+  function drawNow() {
+    const i = Math.min(idx, sim.t.length - 1), t = sim.t[i] ?? 0;
+    $('tnow').textContent = mmss(t);
+    const P0 = +$('P').value;
+    const g = [['Oxygen', pct(sim.O2[i]), sim.pO2[i] / 1000 < K.CREW.pO2kPa], ['Flame limit', pct(sim.L[i]), false], ['CO₂', pct(sim.CO2[i]), sim.CO2[i] >= K.CREW.co2],
+      ['Gas', Number.isFinite(sim.T[i]) ? (sim.T[i] - 273.15).toFixed(0) + ' °C' : '–', false], ['Pressure', Number.isFinite(sim.P[i]) ? (sim.P[i] / PSIA).toFixed(1) + ' psia' : '–', sim.P[i] / PSIA > 2 * P0]];
+    $('gauges').innerHTML = g.map(([n, v, a]) => `<div class="gauge${a ? ' alarm' : ''}"><small>${n}</small><b>${v}</b></div>`).join('');
+    // panel view
+    const pw = sim.panel.w, ph = sim.panel.h, sc = 150 / Math.max(pw, ph), W = pw * sc, H = ph * sc, ox = 100 - W / 2, oy = 175, cx = 100;
+    const a = (sim.a[i] || 0) * sc, b = (sim.b[i] || 0) * sc, area = 0.5 * Math.PI * (sim.a[i] || 0) * (sim.b[i] || 0);
+    const k = area > 0 ? Math.sqrt(Math.min(1, (sim.burnt[i] || 0) / area)) : 0, burning = (sim.hrr[i] || 0) > 1;
+    const half = (ra, rb) => ra > 0 && rb > 0 ? `M${cx - rb},${oy} A${rb},${ra} 0 0 1 ${cx + rb},${oy} Z` : '';
+    $('panelview').innerHTML = `<defs><radialGradient id="fl" cx="50%" cy="100%" r="100%"><stop offset="0" stop-color="#ffe08a"/><stop offset=".55" stop-color="#ff8a3d"/><stop offset="1" stop-color="#c2441c"/></radialGradient></defs>` +
+      `<rect x="${ox}" y="${oy - H}" width="${W}" height="${H}" fill="#e9ede4" stroke="#9fb0a6"/>` +
+      `<path d="${half(a, b)}" fill="${burning ? 'url(#fl)' : '#5b4f45'}" stroke="${burning ? '#ff6a00' : '#3b322b'}" stroke-width="${burning ? 3 : 1}"/>` +
+      `<path d="${half(a * k, b * k)}" fill="#2b2420"/>` +
+      `<text x="100" y="196" font-size="11" text-anchor="middle" fill="#40574e">${pw.toFixed(2)} × ${ph.toFixed(2)} m panel · ${burning ? 'burning' : i && sim.hrr[i - 1] > 1 ? 'out' : (t > 0 ? 'out' : 'lit at the bottom')}</text>`;
+    drawCharts();
+  }
+  function describe(s, sc) {
+    const S1 = s.summary, crew = [];
+    if (S1.t_mask_s != null) crew.push('CO₂ passes 4% at ' + mmss(S1.t_mask_s) + ', so an unsuited crew must mask up');
+    if (S1.t_hypoxia_s != null) crew.push('the oxygen the crew breathes drops below 16 kPa at ' + mmss(S1.t_hypoxia_s));
+    const fire = S1.out_reason === 'oxygen' ? 'The fire puts itself out at ' + mmss(S1.t_out_s) :
+      S1.out_reason === 'fuel' ? 'The item burns away completely by ' + mmss(S1.t_out_s) :
+      S1.out_reason === 'nm' ? 'Outside the model' : S1.out_reason === 'nospread' ? 'The flame never spreads' : 'Still burning after 15 minutes';
+    const cls = S1.out_reason === 'nospread' ? 'ok' : S1.out_reason === 'nm' ? 'mid' : (crew.length || S1.out_reason === 'burning') ? 'bad' : (S1.burned_kg > 0.5 * S1.fuel_kg ? 'mid' : 'ok');
+    return {fire, crew, cls};
+  }
+  function run() {
+    const sc = scenario();
+    $('Po').textContent = (+$('P').value).toFixed(1) + ' psia'; $('Xo').textContent = (+$('X').value).toFixed(1) + '%'; $('fano').textContent = (+$('fan').value).toFixed(2) + ' m/s';
+    $('vupo').textContent = (+$('vup').value).toFixed(1) + ' mm/s'; $('mfo').textContent = (+$('mf').value).toFixed(1) + ' g/m²s';
+    $('floodrow').hidden = !$('flood').value; $('ventrow').hidden = !$('vent').checked;
+    ['flood', 'floodAt', 'floodKg', 'vent', 'ventAt', 'ventTo'].forEach(id => { $(id).disabled = !$('chem').checked; });
+    sim = K.simulate(sc);
+    const d = describe(sim, sc), S1 = sim.summary;
+    $('verdict').className = 'verdict ' + d.cls;
+    $('verdict').textContent = S1.out_reason === 'nm' ? 'Outside the model: in orbit with the fans off there is no flow at all' :
+      d.fire + (d.crew.length ? ', but ' + d.crew[0].replace('so an unsuited', 'and an unsuited') + '.' : ', and the crew can still breathe the cabin air.');
+    const L0 = S1.limit_start, X0 = sc.X0;
+    $('why').innerHTML = S1.out_reason === 'nm' ? 'FLINT needs a flow past the flame. A still flame in orbit usually starves, but the model cannot say when. Keep the fans on, or pick another world.' :
+      `The item needs <b>${pct(L0)}</b> oxygen here${sc.fan > 0 && sc.fanOff !== 0 ? ' with the fans on' : ''}; the cabin has <b>${pct(X0)}</b>. ` +
+      (S1.out_reason === 'nospread' ? 'It cannot keep a flame spreading in this cabin, so an ignition goes out on its own.' : S1.out_reason === 'oxygen' ? `It burns until its own CO₂ and steam, and the oxygen it eats, bring the flame-equivalent oxygen down to its limit. ${(S1.burned_kg).toFixed(2)} of ${S1.fuel_kg.toFixed(2)} kg burned.` :
+       S1.out_reason === 'fuel' ? `There was too little of it to use up the cabin's oxygen: all ${S1.fuel_kg.toFixed(2)} kg burned.` : `${S1.burned_kg.toFixed(2)} of ${S1.fuel_kg.toFixed(2)} kg burned in 15 minutes.`) +
+      (d.crew.length > 1 ? ' Also, ' + d.crew[1] + '.' : '');
+    const ev = [[0, 'Ignition at the bottom of the panel', '']];
+    if (S1.t_hrr_10kW_s != null) ev.push([S1.t_hrr_10kW_s, 'Fire passes 10 kW', 'bad']);
+    if (sc.fanOff != null && sc.fan > 0) ev.push([sc.fanOff, 'Fans off', 'good']);
+    for (const e of S1.events) if (e.kind === 'flood') ev.push([e.t, e.text, 'good']);
+    if (sc.vent) ev.push([sc.vent.at, 'Venting starts, down to ' + sc.vent.to.toFixed(1) + ' psia', 'good']);
+    if (S1.t_mask_s != null) ev.push([S1.t_mask_s, 'CO₂ 4%: unsuited crew must mask', 'bad']);
+    if (S1.t_hypoxia_s != null) ev.push([S1.t_hypoxia_s, 'Oxygen pressure below 16 kPa', 'bad']);
+    const iPk = sim.hrr.indexOf(Math.max(...sim.hrr));
+    if (iPk >= 0 && S1.peak_hrr_kW > 0.5) ev.push([sim.t[iPk], 'Peak heat ' + S1.peak_hrr_kW.toFixed(0) + ' kW', 'bad']);
+    if (S1.t_out_s != null) ev.push([S1.t_out_s, S1.out_reason === 'fuel' ? 'Burned out: no fuel left' : 'Flame out: oxygen at its limit', 'good']);
+    ev.sort((p, q) => p[0] - q[0]);
+    $('timeline').innerHTML = ev.map(([t, txt, cl]) => `<li class="${cl}"><span>${mmss(t)}</span>${esc(txt)}</li>`).join('');
+    $('scrub').max = Math.max(0, sim.t.length - 1);
+    if (idx > sim.t.length - 1) idx = sim.t.length - 1;
+    $('scrub').value = idx;
+    drawNow();
+    clearTimeout(cmpT); cmpT = setTimeout(compare, 60);
+  }
+  let cmpT = 0;
+  function compare() {
+    const it = item(), cb = cab(), fan = respFan();
+    if (!$('chem').checked) { $('compare').innerHTML = ''; $('cmpnote').textContent = 'Turn sealed-cabin chemistry on to compare floods and venting.'; return; }
+    const co2 = K.floodDose(it.key, it.fuel, cb, 'CO2', 0.01, fan), n2 = K.floodDose(it.key, it.fuel, cb, 'N2', 0.01, fan), vp = K.ventPressure(it.key, cb, 0.01, fan);
+    const off = $('world').value === 'orbit' ? null : 10;
+    const rows = [['Do nothing', 'Fans keep running', {fanOff: null, flood: null, vent: null}],
+      ['Fans off', 'At 10 s', {fanOff: off, flood: null, vent: null}],
+      ['CO₂ flood', co2.needed ? (Number.isFinite(co2.kg) ? co2.kg.toFixed(1) + ' kg at 30 s, fans off' : 'no dose is enough') : 'not needed', {fanOff: off, flood: co2.needed && Number.isFinite(co2.kg) ? {agent: 'CO2', kg: co2.kg, at: 30} : null, vent: null}],
+      ['Nitrogen flood', n2.needed ? (Number.isFinite(n2.kg) ? n2.kg.toFixed(1) + ' kg at 30 s, fans off' : 'no dose is enough') : 'not needed', {fanOff: off, flood: n2.needed && Number.isFinite(n2.kg) ? {agent: 'N2', kg: n2.kg, at: 30} : null, vent: null}],
+      ['Vent the cabin', vp.needed ? (vp.P_psia ? 'to ' + vp.P_psia.toFixed(1) + ' psia from 30 s, fans off' : 'not even a near-vacuum is enough') : 'not needed', {fanOff: off, flood: null, vent: vp.needed && vp.P_psia ? {to: vp.P_psia, at: 30, tau: 60} : null}]];
+    const P0 = cb.P_psia;
+    const res = rows.map(([n, how, over]) => {
+      const r = K.simulate(scenario(over)).summary, pills = [];
+      if (r.t_mask_s != null) pills.push(['r', 'mask by ' + mmss(r.t_mask_s)]);
+      if (r.t_hypoxia_s != null) pills.push(['r', 'O₂ unbreathable by ' + mmss(r.t_hypoxia_s)]);
+      if (r.final_P_psia > 2 * P0) pills.push(['a', 'pressure ×' + (r.final_P_psia / P0).toFixed(1)]);
+      if (!pills.length) pills.push(['g', 'breathable throughout']);
+      const fire = r.out_reason === 'nospread' ? 'Never spreads' : r.out_reason === 'oxygen' ? 'Out at ' + mmss(r.t_out_s) : r.out_reason === 'fuel' ? 'Burned out at ' + mmss(r.t_out_s) : r.out_reason === 'nm' ? 'Outside the model' : 'Burning at 15:00';
+      return {n, how, r, pills, fire};
+    });
+    const best = res.reduce((bi, x, i) => (x.r.out_reason !== 'nm' && x.r.burned_kg < res[bi].r.burned_kg - 1e-6 ? i : bi), 0);
+    $('compare').innerHTML = '<tr><th>Response</th><th>Fire</th><th>Burned</th><th>Peak heat</th><th>Crew</th><th>Cabin afterwards</th></tr>' + res.map((x, i) =>
+      `<tr class="${i === best ? 'best' : ''}"><td><b>${x.n}</b>${esc(x.how)}</td><td>${x.fire}</td><td>${x.r.burned_kg.toFixed(2)} kg</td><td>${x.r.peak_hrr_kW.toFixed(0)} kW</td><td>${x.pills.map(([k, t]) => `<span class="pill ${k}">${t}</span>`).join('')}</td><td>${x.r.final_P_psia.toFixed(1)} psia, ${pct(x.r.final_O2)} O₂, ${pct(x.r.final_CO2)} CO₂</td></tr>`).join('');
+    const allBad = res.every(x => x.pills.some(p => p[0] !== 'g'));
+    const costs = [...new Set(res.flatMap(x => x.pills.filter(p => p[0] !== 'g').map(p => p[1].startsWith('mask') ? 'CO₂ the crew cannot breathe' : p[1].startsWith('O₂') ? 'oxygen too thin to breathe without suits' : 'a cabin pressure several times its design')))];
+    $('cmpnote').innerHTML = allBad ? '<b>Every response costs the crew something here:</b> ' + costs.join(', ') + '. That is FLINT\'s rover finding: in this much oxygen a cabin fire is a materials problem, and the fix is a material whose limit sits above the cabin\'s oxygen. <a href="material-lab.html">Design one in the Material Lab.</a>' :
+      'The shaded row burns the least. Doses and the vent pressure come from FLINT\'s rover model, worked out for this item with the fire\'s own products left out, so they are conservative.';
+  }
+
+  // ---------- events ----------
+  let raf = 0;
+  const update = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(run); };
+  document.addEventListener('click', e => { const b = e.target.closest('[data-cab]'); if (b) { setCabin(b.dataset.cab); update(); } });
+  ['V', 'P', 'X', 'fan', 'area', 'rho', 'fansAt', 'floodAt', 'floodKg', 'ventAt', 'ventTo', 'vup', 'mf'].forEach(id => $(id).addEventListener('input', update));
+  ['world', 'fansOff', 'flood', 'vent', 'chem'].forEach(id => $(id).addEventListener('change', update));
+  $('item').addEventListener('change', () => { setItem($('item').value); update(); });
+  $('dose').addEventListener('click', () => {
+    const it = item(), d = K.floodDose(it.key, it.fuel, cab(), $('flood').value || 'CO2', 0.01, respFan());
+    if (d.needed === false) toast('No flood needed: the item cannot burn here');
+    else if (!Number.isFinite(d.kg)) toast('No amount of this gas is enough here');
+    else { $('floodKg').value = d.kg.toFixed(1); update(); toast('FLINT dose: ' + d.kg.toFixed(1) + ' kg'); }
+  });
+  $('ventp').addEventListener('click', () => {
+    const it = item(), v = K.ventPressure(it.key, cab(), 0.01, respFan());
+    if (!v.needed) toast('No venting needed'); else if (!v.P_psia) toast('Even a near-vacuum is not enough');
+    else { $('ventTo').value = v.P_psia.toFixed(2); update(); toast('FLINT vent pressure: ' + v.P_psia.toFixed(2) + ' psia'); }
+  });
+  $('scrub').addEventListener('input', () => { idx = +$('scrub').value; stop(); drawNow(); });
+  let playing = 0;
+  const stop = () => { if (playing) { cancelAnimationFrame(playing); playing = 0; $('play').textContent = '▶ Play'; } };
+  $('play').addEventListener('click', () => {
+    if (playing) { stop(); return; }
+    const end = sim.summary.t_out_s != null ? Math.min(sim.t.length - 1, Math.round((sim.summary.t_out_s + 60) / 0.5)) : sim.t.length - 1;
+    if (idx >= end) idx = 0;
+    let last = performance.now();
+    $('play').textContent = '❚❚ Pause';
+    const frame = now => {
+      idx = Math.min(end, idx + Math.max(1, Math.round((now - last) / 1000 * end / 10))); last = now;
+      $('scrub').value = idx; drawNow();
+      if (idx < end) playing = requestAnimationFrame(frame); else stop();
+    };
+    playing = requestAnimationFrame(frame);
+  });
+  $('share').addEventListener('click', async () => {
+    const q = new URLSearchParams({cab: (document.querySelector('[data-cab][aria-pressed=true]') || {}).dataset?.cab || 'rover', item: $('item').value});
+    const it = item(); if (it.spec) q.set('m', enc(it.spec));
+    const url = location.origin + location.pathname + '?' + q.toString();
+    try { await navigator.clipboard.writeText(url); toast('Link copied'); } catch (e) { toast(url); }
+  });
+
+  // ---------- start ----------
+  const q = new URLSearchParams(location.search);
+  setCabin(q.get('cab') || 'rover');
+  setItem(q.has('item') ? q.get('item') : (q.has('m') && items.length > ITEMS.length ? 'u0' : 'PMMA'));
+  if (q.has('t')) idx = Math.round(+q.get('t') / 0.5) || 0;
+  run();
+})();
+</script></body></html>

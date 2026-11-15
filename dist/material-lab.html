@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Material Lab · FIRST FIRE</title><meta name="description" content="Invent a cabin material from its chemistry, or blend existing ones, give it one Earth fire test, and FLINT predicts the least oxygen it needs to keep burning in orbit, on the Moon, on Mars and on Earth."><meta property="og:title" content="Material Lab · FIRST FIRE"><meta property="og:description" content="Invent a material. Find out where it burns: orbit, Moon, Mars or Earth."><meta property="og:image" content="https://first-fire-lunar-lab.vercel.app/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="judging.css"><link rel="stylesheet" href="start.css"><link rel="stylesheet" href="lab.css"><link rel="stylesheet" href="sim.css"></head>
+<body><a class="skip" href="#main">Skip to the lab</a><header><a class="wordmark" href="judging.html">FIRST FIRE<span>.</span></a><span>MATERIAL LAB &nbsp; / &nbsp; FLINT 1.1</span></header>
+<main id="main">
+<div class="intro" style="grid-template-columns:1fr;padding-bottom:28px"><div><p class="eyebrow">Material tester · runs in your browser</p><h1>Invent a material. Find out where it burns.</h1><p class="lead">Spacecraft materials are approved with fire tests on Earth. The challenge asks whether a material that passes on Earth will keep burning in orbit, on the Moon or on Mars. Build a material from its chemistry, or blend existing ones, give it one Earth test, and FLINT predicts the least oxygen it needs on each world.</p>
+<ol class="purpose"><li><b>1 · Make it</b>Pick a known material, type its atoms, or blend two or three by mass.</li><li><b>2 · Test it on Earth</b>Enter one measured oxygen limit. FLINT calibrates on it, as it did on NASA's tests.</li><li><b>3 · Predict</b>Read its limit on four worlds, where it sits among NASA's materials, and send it into a cabin fire.</li></ol></div></div>
+
+<section aria-labelledby="mk"><div class="panel">
+<div class="controls" role="group" aria-labelledby="mk"><h2 id="mk" style="margin:0;font-size:1.4rem">1 · Make it</h2>
+<div class="presets" id="presets" aria-label="Start from a known material"></div>
+<label>Name<input id="name" type="text" maxlength="60" value="Custom material"></label>
+<div><h3>Atoms per repeat unit</h3><div class="row4"><label>C<input id="nC" type="number" min="0" step="0.01"></label><label>H<input id="nH" type="number" min="0" step="0.01"></label><label>O<input id="nO" type="number" min="0" step="0.01"></label><label>N<input id="nN" type="number" min="0" step="0.01"></label></div></div>
+<details id="blendbox"><summary><b>Blend materials by mass</b> (a composite, a coated fabric, a filled plastic)</summary>
+<div style="display:grid;gap:8px;margin-top:10px"><div class="row2"><label>Material<select id="b1m"></select></label><label>Mass %<input id="b1w" type="number" min="0" max="100" step="1" value="70"></label></div>
+<div class="row2"><label>Material<select id="b2m"></select></label><label>Mass %<input id="b2w" type="number" min="0" max="100" step="1" value="30"></label></div>
+<div class="row2"><label>Material (optional)<select id="b3m"></select></label><label>Mass %<input id="b3w" type="number" min="0" max="100" step="1" value="0"></label></div>
+<div class="actions2" style="margin:0"><button type="button" id="mkblend" class="primary">Make the blend</button></div>
+<p class="note" style="margin:0">Atoms, heat of combustion and pyrolysis temperature are mixed by mass; the flame chemistry is mass-weighted. A blend is an estimate until you give it an Earth test.</p></div></details>
+<div class="row2"><label>Pyrolysis temperature <output id="tpo"></output><input id="tp" type="range" min="500" max="950" step="1"></label><label>Surface emissivity <output id="epso"></output><input id="eps" type="range" min="0.5" max="1" step="0.01"></label></div>
+<label>Flame chemistry<select id="kin"><option value="PMMA">Acrylic-like · activation energy 125 kJ/mol</option><option value="PC">Polycarbonate-like · 200 kJ/mol</option><option value="NOMEX">Nomex-like · 408 kJ/mol</option><option value="BLEND">Blend · mass-weighted</option></select></label>
+<div class="row2"><label>Heat of combustion<select id="hcmode"><option value="h">From the atoms (Huggett)</option><option value="m">I measured it</option></select></label><label id="hcl" hidden>Measured (MJ/kg)<input id="hc" type="number" min="5" max="60" step="0.1"></label></div>
+<h2 style="margin:8px 0 0;font-size:1.4rem">2 · Test it on Earth</h2>
+<label class="check"><input id="hasTest" type="checkbox"> I have an Earth test of this material</label>
+<div id="testbox" class="row3" hidden><label>Oxygen limit (%)<input id="tx" type="number" min="5" max="95" step="0.1" value="21"></label><label>Pressure (psia)<input id="tP" type="number" min="1" max="30" step="0.1" value="8.2"></label><label>Forced flow (cm/s)<input id="tu" type="number" min="0" max="300" step="1" value="0"></label></div>
+<p class="note" style="margin:0">The least oxygen at which a flame kept spreading upward at 1 g, as in NASA-STD-6001 Test 1. Use 0 cm/s for still air.</p>
+<h2 style="margin:8px 0 0;font-size:1.4rem">3 · Choose the cabin</h2>
+<div class="presets" aria-label="Cabin air"><button type="button" data-a="8.2,34">Moon habitat or rover</button><button type="button" data-a="14.7,21">Space Station</button><button type="button" data-a="10.2,26.5">Spacewalk prep</button><button type="button" data-a="14.7,25">Oxygen-enriched room</button></div>
+<div class="row2"><label>Cabin oxygen <output id="xo"></output><input id="x" type="range" min="15" max="45" step="0.5" value="34"></label><label>Cabin pressure <output id="po"></output><input id="p" type="range" min="4" max="14.7" step="0.1" value="8.2"></label></div>
+<label>Fan breeze <output id="fo"></output><input id="f" type="range" min="0" max="0.3" step="0.01" value="0"></label></div>
+
+<div class="result" aria-live="polite"><p class="eyebrow" id="muse">–</p><p class="formula" id="mform">–</p><p class="sub" id="mname" style="margin-top:4px">–</p>
+<p><span class="badge" id="badge">–</span></p><p class="note" id="badgenote"></p>
+<div class="worlds" id="worlds"></div>
+<p id="sentence" style="margin:14px 0 0"></p><div id="testcheck"></div>
+<div class="chem" id="chem" style="margin-top:12px"></div>
+<div class="actions2"><a class="primary" id="tocabin" href="cabin-fire.html">Test it in a cabin fire →</a><button type="button" id="save">Save</button><button type="button" id="share">Copy link</button><button type="button" id="export">Export JSON</button><label class="btn" for="import">Import JSON</label><input id="import" type="file" accept=".json,application/json" hidden></div>
+<p class="note" id="sharebox" hidden></p></div>
+</div></section>
+
+<section aria-labelledby="cmp"><p class="eyebrow">Compared with NASA's tested materials</p><h2 id="cmp">Where it sits at every gravity</h2>
+<svg class="chart" id="gchart" viewBox="0 0 900 380" role="img" aria-label="Oxygen limit of your material and NASA's four tested materials from near-zero gravity to Earth gravity, with the cabin oxygen level"></svg>
+<div class="legend" id="glegend"></div>
+<div class="row2" style="align-items:end;margin-top:16px"><div><h3 style="margin:0;font-size:1.1rem">Ranking</h3><p class="note" style="margin:2px 0 0">Hardest to burn first, in the cabin you chose.</p></div><label style="font-weight:700">World <select id="rw"><option value="moon">Moon</option><option value="mars">Mars</option><option value="earth">Earth</option><option value="orbit">Orbit (with the fan)</option></select></label></div>
+<table class="rank" id="rank"></table></section>
+
+<section aria-labelledby="map"><p class="eyebrow">The physics underneath</p><h2 id="map">The flammability map</h2>
+<p>Every material has a U-shaped map. At the left, the flow is too weak to feed the flame faster than it loses heat, so it starves. At the right, the flow outruns the chemistry and blows the flame off. Gravity sets where a cabin sits on the map, because rising hot gas is the only flow in still air. That is why the Moon is not simply "Earth with less fire".</p>
+<svg class="chart" id="uchart" viewBox="0 0 900 380" role="img" aria-label="Oxygen limit of your material against the flow speed past the flame, with the still-air flow on the Moon, Mars and Earth marked"></svg>
+<div class="legend"><span><i style="background:#17352f"></i>Your material</span><span><i style="background:#c9d3cc"></i>NASA's four tested materials</span><span><i style="background:#ae411e;height:2px"></i>Cabin oxygen</span></div></section>
+
+<section aria-labelledby="sv"><p class="eyebrow">Kept in this browser</p><h2 id="sv">Your materials</h2><div class="saved" id="saved"></div><p class="note" id="savednote"></p></section>
+
+<section aria-labelledby="how"><p class="eyebrow">Said plainly</p><h2 id="how">How the prediction works, and its limits</h2>
+<ul class="open"><li><b>Chemistry to flame temperature.</b> From the atoms FLINT works out how much oxygen the material needs, its heat of combustion (Huggett's 13.1 MJ per kg of oxygen, unless you measured it) and its flame temperature in any oxygen level, with NIST-JANAF gas data.</li>
+<li><b>Two ways to die.</b> NASA's model (ICES-2025-392) says a flame dies when the flow blows it off or when it loses heat faster than it makes it. FLINT adds a flow speed for any gravity and pressure.</li>
+<li><b>One Earth test calibrates it.</b> The blow-off constant is set so FLINT reproduces your test exactly, the way FLINT was calibrated on NASA's 1-g tests and then predicted NASA's four lunar limits to within 1.4 points of oxygen on average.</li>
+<li><b>Without a test it is an estimate.</b> The flame chemistry is borrowed from acrylic, polycarbonate or Nomex. Pyrolysis temperatures for the non-NASA presets are typical values; replace them with your own.</li>
+<li><b>What it does not cover.</b> Thin solids spreading a flame upward in oxygen and nitrogen. Not thick parts, dripping, smouldering, fluorine or chlorine chemistry, or still air in orbit. It has not been reviewed by NASA and it is not a safety certification. <a href="flint.html">Inspect the evidence and the Python engine.</a></li></ul>
+<p class="back"><a href="cabin-fire.html">Cabin Fire Simulator</a> · <a href="fire-lab.html">Gravity Fire Lab</a> · <a href="fm2-decoder.html">FM² decoder</a> · <a href="judging.html">Judging route</a></p></section>
+</main><footer>FIRST FIRE · Team Code Blooded · Independent challenge project · <a href="judging.html">Judging route</a></footer>
+<div class="toast" id="toast" role="status"></div>
+<script src="flint-coefficients.js"></script><script src="flint-thermo.js"></script><script src="flint-solid.js"></script><script src="flint-custom.js"></script>
+<script>
+(() => {
+  'use strict';
+  const c = globalThis.FLINTCoefficients, F = globalThis.FLINTCustom, S = globalThis.FLINTSolid, Th = globalThis.FLINTThermo;
+  const $ = id => document.getElementById(id);
+  const LIB = [['PMMA', 'Acrylic', '#c2441c'], ['P213', 'Cable tape', '#9a7300'], ['PC', 'Polycarbonate', '#1e4fd8'], ['NOMEX', 'Nomex', '#6b3fc9']];
+  const LOW = {PMMA: 'acrylic', P213: 'cable tape', PC: 'polycarbonate', NOMEX: 'Nomex'};
+  const STORE = 'ff-materials-v1', ME = '#17352f';
+  const pct = x => Number.isFinite(x) ? (100 * x).toFixed(1) + '%' : '–';
+  const esc = s => String(s).replace(/[&<>"']/g, ch => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[ch]));
+  const loadList = () => { try { const v = JSON.parse(localStorage.getItem(STORE) || '[]'); return Array.isArray(v) ? v.map(sanitize).filter(Boolean) : []; } catch (e) { return []; } };
+  const saveList = l => { try { localStorage.setItem(STORE, JSON.stringify(l)); return true; } catch (e) { return false; } };
+  const enc = o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const dec = s => { try { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; return JSON.parse(decodeURIComponent(escape(atob(s)))); } catch (e) { return null; } };
+  function sanitize(o) {
+    if (!o || typeof o !== 'object') return null;
+    const s = {name: String(o.name || 'Imported material').slice(0, 60)};
+    for (const k of ['C', 'H', 'O', 'N', 'Tp', 'eps']) if (o[k] != null && Number.isFinite(+o[k])) s[k] = +o[k];
+    for (const k of ['Hc', 'Ea', 'lnK']) if (o[k] != null && Number.isFinite(+o[k])) s[k] = +o[k];
+    s.kin = ['PMMA', 'PC', 'NOMEX'].includes(o.kin) ? o.kin : 'PMMA';
+    if (['PMMA', 'P213', 'PC', 'NOMEX'].includes(o.lib)) s.lib = o.lib;
+    if (o.test && Number.isFinite(+o.test.x)) s.test = {x: +o.test.x, P: Number.isFinite(+o.test.P) ? +o.test.P : 8.2, u: Number.isFinite(+o.test.u) ? +o.test.u : 0};
+    if (Array.isArray(o.blend)) s.blend = o.blend.slice(0, 3).map(p => ({name: String(p.name || '').slice(0, 40), w: +p.w || 0}));
+    if (o.use) s.use = String(o.use).slice(0, 60);
+    if (F.PRESETS.some(p => p.id === o.preset)) s.preset = o.preset;
+    s.id = o.id ? String(o.id).slice(0, 40) : 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    return (s.C || 0) + (s.H || 0) > 0 ? s : null;
+  }
+  let toastT = 0;
+  const toast = m => { const t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 1800); };
+  let spec = sanitize(F.PRESETS.find(p => p.id === 'PC'));
+
+  // ---------- form ----------
+  $('presets').innerHTML = F.PRESETS.map(p => `<button type="button" data-preset="${p.id}" title="${esc(p.use)}">${esc(p.name)}</button>`).join('');
+  function blendOptions() {
+    const opts = F.PRESETS.map(p => `<option value="p:${p.id}">${esc(p.name)}</option>`).concat(loadList().map(s => `<option value="s:${esc(s.id)}">${esc(s.name)} (saved)</option>`));
+    for (const [id, def] of [['b1m', 'p:PC'], ['b2m', 'p:NOMEX'], ['b3m', 'p:PE']]) {
+      const cur = $(id).value || def; $(id).innerHTML = opts.join(''); $(id).value = cur; if (!$(id).value) $(id).value = def;
+    }
+  }
+  function fill(s) {
+    $('name').value = s.name || 'Custom material';
+    for (const k of ['C', 'H', 'O', 'N']) $('n' + k).value = +(s[k] || 0).toFixed(4);
+    $('tp').value = s.Tp ?? 650; $('eps').value = s.eps ?? 0.9;
+    $('kin').value = s.blend || s.Ea != null ? 'BLEND' : s.kin;
+    $('kin').querySelector('[value=BLEND]').hidden = !(s.blend || s.Ea != null);
+    $('hcmode').value = s.Hc && !s.blend ? 'm' : 'h'; $('hcl').hidden = $('hcmode').value !== 'm';
+    if (s.Hc && !s.blend) $('hc').value = (s.Hc / 1e6).toFixed(1);
+    $('hasTest').checked = !!s.test; $('testbox').hidden = !s.test;
+    if (s.test) { $('tx').value = (100 * s.test.x).toFixed(1); $('tP').value = s.test.P; $('tu').value = s.test.u; }
+    document.querySelectorAll('[data-preset]').forEach(b => b.setAttribute('aria-pressed', String(!!s.lib && b.dataset.preset === s.lib || (!s.lib && b.dataset.preset === s.preset))));
+  }
+  function read() {
+    const s = {...spec};
+    s.name = $('name').value.trim() || 'Custom material';
+    for (const k of ['C', 'H', 'O', 'N']) s[k] = Math.max(0, +$('n' + k).value || 0);
+    s.Tp = +$('tp').value; s.eps = +$('eps').value;
+    const kv = $('kin').value;
+    if (kv !== 'BLEND') { s.kin = kv; delete s.Ea; delete s.lnK; if (spec.Ea != null) delete s.blend; }
+    if (!s.blend) s.Hc = $('hcmode').value === 'm' && +$('hc').value > 0 ? +$('hc').value * 1e6 : null;
+    s.test = $('hasTest').checked ? {x: (+$('tx').value || 0) / 100, P: +$('tP').value || 8.2, u: Math.max(0, +$('tu').value || 0)} : null;
+    if (!s.test) delete s.test;
+    return s;
+  }
+  const cabin = () => ({X: +$('x').value / 100, P: +$('p').value, fan: +$('f').value});
+
+  // ---------- charts ----------
+  function gChart(series, X, fan) {
+    const W = 900, H = 380, x0 = 64, x1 = 880, y0 = 330, y1 = 18, gmin = 0.005, gmax = 1.2;
+    const all = series.flatMap(s => s.pts.map(p => p[1])).filter(Number.isFinite);
+    const top = Math.min(0.7, Math.max(0.4, X + 0.04, ...all.map(v => v + 0.03))), bot = 0.08;
+    const Xp = g => x0 + Math.log(g / gmin) / Math.log(gmax / gmin) * (x1 - x0), Yp = v => y0 - (v - bot) / (top - bot) * (y0 - y1);
+    let s = '';
+    for (let v = 0.1; v <= top + 1e-9; v += 0.05) s += `<line x1="${x0}" x2="${x1}" y1="${Yp(v)}" y2="${Yp(v)}" stroke="#e1e6e0"/><text x="${x0 - 8}" y="${Yp(v) + 4}" font-size="12" text-anchor="end" fill="#40574e">${Math.round(100 * v)}%</text>`;
+    for (const [g, n] of [[0.1654, 'Moon'], [0.3794, 'Mars'], [1, 'Earth'], [0.01, '0.01 g']]) s += `<line x1="${Xp(g)}" x2="${Xp(g)}" y1="${y1}" y2="${y0}" stroke="#c6cfc7" stroke-dasharray="${n.includes('g') ? '2 4' : '5 4'}"/><text x="${Xp(g)}" y="${y0 + 20}" font-size="13" text-anchor="middle" fill="#40574e" font-weight="700">${n}</text>`;
+    s += `<line x1="${x0}" x2="${x1}" y1="${Yp(X)}" y2="${Yp(X)}" stroke="#ae411e" stroke-width="2" stroke-dasharray="8 6"/><text x="${x1}" y="${Yp(X) - 7}" font-size="13" text-anchor="end" fill="#ae411e" font-weight="700">cabin oxygen ${pct(X)}</text>`;
+    for (const se of series) {
+      const d = se.pts.filter(p => Number.isFinite(p[1]) && p[1] <= top).map((p, i) => (i ? 'L' : 'M') + Xp(p[0]).toFixed(1) + ',' + Yp(p[1]).toFixed(1)).join(' ');
+      s += `<path d="${d}" fill="none" stroke="${se.col}" stroke-width="${se.me ? 5 : 2.2}" opacity="${se.me ? 1 : 0.8}"/>`;
+    }
+    s += `<text x="${(x0 + x1) / 2}" y="${H - 6}" font-size="12" text-anchor="middle" fill="#40574e">gravity, log scale${fan > 0 ? ' · fan ' + fan.toFixed(2) + ' m/s' : ' · no fan'}</text>`;
+    $('gchart').innerHTML = s;
+  }
+  function uChart(X, P, fan) {
+    const W = 900, H = 380, x0 = 64, x1 = 880, y0 = 330, y1 = 18, ulo = 0.003, uhi = 3;
+    const me = F.uCurve('CUSTOM', P, 110, ulo, uhi), libs = LIB.map(([k]) => F.uCurve(k, P, 70, ulo, uhi));
+    const vals = me.map(p => p.limit).filter(Number.isFinite);
+    const top = Math.min(0.8, Math.max(0.4, X + 0.05, Math.min(...vals) + 0.25)), bot = 0.08;
+    const Xp = u => x0 + Math.log(u / ulo) / Math.log(uhi / ulo) * (x1 - x0), Yp = v => y0 - (Math.min(v, top) - bot) / (top - bot) * (y0 - y1);
+    let cross = null;
+    for (let i = 1; i < me.length; i++) if (me[i - 1].thermal > me[i - 1].kinetic && me[i].thermal <= me[i].kinetic) cross = me[i].u;
+    let s = '';
+    if (cross) {
+      s += `<rect x="${x0}" y="${y1}" width="${Xp(cross) - x0}" height="${y0 - y1}" fill="#eef1f8"/><rect x="${Xp(cross)}" y="${y1}" width="${x1 - Xp(cross)}" height="${y0 - y1}" fill="#fbf1ea"/>`;
+      s += `<text x="${x0 + 10}" y="${y1 + 20}" font-size="13" fill="#2d3f7a" font-weight="700">STARVED · heat loss wins</text><text x="${x1 - 10}" y="${y1 + 20}" font-size="13" fill="#8a3415" font-weight="700" text-anchor="end">BLOWN OFF · flow outruns chemistry</text>`;
+    }
+    for (let v = 0.1; v <= top + 1e-9; v += 0.05) s += `<line x1="${x0}" x2="${x1}" y1="${Yp(v)}" y2="${Yp(v)}" stroke="#e1e6e0"/><text x="${x0 - 8}" y="${Yp(v) + 4}" font-size="12" text-anchor="end" fill="#40574e">${Math.round(100 * v)}%</text>`;
+    for (const u of [0.01, 0.03, 0.1, 0.3, 1, 3]) s += `<text x="${Xp(u)}" y="${y0 + 18}" font-size="12" text-anchor="middle" fill="#40574e">${u >= 1 ? u : u.toFixed(2)} m/s</text>`;
+    const path = pts => pts.filter(p => Number.isFinite(p.limit)).map((p, i) => (i ? 'L' : 'M') + Xp(p.u).toFixed(1) + ',' + Yp(p.limit).toFixed(1)).join(' ');
+    for (const l of libs) s += `<path d="${path(l)}" fill="none" stroke="#c9d3cc" stroke-width="2"/>`;
+    s += `<line x1="${x0}" x2="${x1}" y1="${Yp(X)}" y2="${Yp(X)}" stroke="#ae411e" stroke-width="2" stroke-dasharray="8 6"/>`;
+    s += `<path d="${path(me)}" fill="none" stroke="${ME}" stroke-width="5"/>`;
+    const marks = [['Moon', F.flow(0.1654, P, 0)], ['Mars', F.flow(0.3794, P, 0)], ['Earth', F.flow(1, P, 0)]];
+    if (fan > 0) marks.push(['Orbit + fan', fan]);
+    marks.forEach(([n, u], i) => {
+      const r = S.solve('CUSTOM', 0, P, u), yy = Number.isFinite(r.limit) ? Yp(r.limit) : y0;
+      s += `<line x1="${Xp(u)}" x2="${Xp(u)}" y1="${yy}" y2="${y0}" stroke="${ME}" stroke-dasharray="3 4"/><circle cx="${Xp(u)}" cy="${yy}" r="7" fill="#fff" stroke="${ME}" stroke-width="3"/><text x="${Xp(u)}" y="${yy - 13 - i * 16}" font-size="13" text-anchor="middle" font-weight="700" fill="${ME}">${n}</text>`;
+    });
+    s += `<text x="${(x0 + x1) / 2}" y="${H - 6}" font-size="12" text-anchor="middle" fill="#40574e">flow speed past the flame, log scale · ${P.toFixed(1)} psia</text>`;
+    $('uchart').innerHTML = s;
+  }
+
+  // ---------- render ----------
+  const VWORD = {burns: 'Keeps burning', close: 'Too close to call', out: 'Goes out', nm: 'Not modelled'};
+  const BR = b => b.startsWith('quench') ? 'starved by weak flow' : b.startsWith('blow') ? 'blown off by the flow' : b;
+  function render() {
+    spec = read();
+    const b = F.build(spec), {X, P, fan} = cabin();
+    $('xo').textContent = (100 * X).toFixed(1) + '% O₂'; $('po').textContent = P.toFixed(1) + ' psia'; $('fo').textContent = fan.toFixed(2) + ' m/s';
+    $('tpo').textContent = (+$('tp').value) + ' K'; $('epso').textContent = (+$('eps').value).toFixed(2);
+    $('mname').textContent = spec.name; $('mform').innerHTML = (F.formula(spec) || '–').replace(/(\d+(?:\.\d+)?)/g, '<sub>$1</sub>'); $('muse').textContent = spec.use || 'Custom material';
+    if (!b.mat) {
+      $('badge').className = 'badge extra'; $('badge').textContent = 'Not a fuel';
+      $('badgenote').textContent = 'Give it carbon or hydrogen that needs oxygen to burn.';
+      $('worlds').innerHTML = ''; $('sentence').textContent = ''; $('chem').innerHTML = ''; $('testcheck').innerHTML = '';
+      return;
+    }
+    F.register('CUSTOM', b);
+    const kinName = {PMMA: 'acrylic', PC: 'polycarbonate', NOMEX: 'Nomex'}[spec.kin];
+    const B = {nasa: ['valid', "Calibrated on NASA's Earth tests", "Blow-off constant fitted to NASA's four 1-g tests (ICES-2025-392). FLINT then predicted NASA's lunar limits to within 1.4 points of oxygen on average."],
+      tested: ['cal', 'Calibrated on your Earth test', 'FLINT reproduces your test exactly; the flame chemistry is ' + (spec.Ea != null ? 'mass-weighted from the blend' : 'like ' + kinName + "'s") + '.'],
+      borrowed: ['extra', 'Estimate · no Earth test yet', 'The flame chemistry is borrowed from ' + kinName + '. Add one Earth test to turn this estimate into a calibrated prediction.'],
+      blend: ['extra', 'Blend estimate · no Earth test yet', 'Atoms, heat and pyrolysis temperature mixed by mass; flame chemistry mass-weighted. Test the blend on Earth to calibrate it.']}[b.status];
+    $('badge').className = 'badge ' + B[0]; $('badge').textContent = B[1];
+    $('badgenote').textContent = B[2] + (Math.abs(P - 8.2) > 0.05 || fan > 0 ? ' FLINT is checked at 8.2 psia with no fan; this setting is an extrapolation.' : '');
+    const pr = F.predict('CUSTOM', P, fan, X);
+    $('worlds').innerHTML = pr.map(r => {
+      const pos = v => Math.max(0, Math.min(100, (v - 0.1) / 0.5 * 100));
+      const meter = Number.isFinite(r.limit) ? `<div class="meter" aria-hidden="true"><i style="left:${pos(r.limit)}%;background:${ME}"></i><i style="left:${pos(X)}%;background:#ae411e"></i></div>` : '';
+      return `<div class="world ${r.v}"><h4>${r.name}</h4><span class="lim">${Number.isFinite(r.limit) ? pct(r.limit) : '–'}</span><span class="v">${VWORD[r.v]}</span><span class="br">${r.v === 'nm' ? (r.id === 'orbit' ? 'still air in orbit: add a fan breeze' : 'outside the oxygen range') : BR(r.branch)}</span>${meter}</div>`;
+    }).join('');
+    const moon = pr[1], libMoon = LIB.filter(([k]) => !(b.status === 'nasa' && k === spec.lib)).map(([k]) => [LOW[k], S.solve(k, 'moon', P, fan).limit]).sort((p, q) => p[1] - q[1]);
+    const below = libMoon.filter(l => l[1] < moon.limit - 5e-4).map(l => l[0] + ' (' + pct(l[1]) + ')');
+    const above = libMoon.filter(l => l[1] >= moon.limit - 5e-4).map(l => l[0] + ' (' + pct(l[1]) + ')');
+    $('sentence').innerHTML = Number.isFinite(moon.limit) ? `On the Moon it needs <b>${pct(moon.limit)}</b> oxygen to keep a flame spreading` +
+      (below.length ? `, more than ${below.join(' and ')}` : '') + (above.length ? `${below.length ? ' but' : ','} less than ${above.join(' and ')}` : '') +
+      `. In this ${pct(X)} cabin it ${moon.v === 'burns' ? '<b>keeps burning</b>' : moon.v === 'out' ? '<b>goes out</b>' : 'is <b>too close to call</b> (within FLINT\'s ±1.7-point error)'}.` : '';
+    const t = b.test;
+    $('testcheck').innerHTML = !t ? '' : t.quenchAbove ?
+      `<div class="warn"><b>FLINT cannot reproduce this test.</b> With this pyrolysis temperature and emissivity its heat-loss limit at the test conditions is already ${pct(S.solve('CUSTOM', 1, t.P, (spec.test.u || 0) / 100).thermal)}, above your ${pct(t.x)}. Check the test value or the material properties.</div>` :
+      `<div class="okay">Calibrated: FLINT now gives ${pct(t.reproduced)} at 1 g, ${t.P} psia and ${spec.test.u || 0} cm/s, matching your test.</div>`;
+    const f = b.fuel;
+    $('chem').innerHTML = `<span><b>${f.MW.toFixed(1)} g/mol</b> per ${spec.blend ? '100 g of blend' : 'repeat unit'}</span><span><b>${f.r.toFixed(2)} kg</b> of O₂ per kg</span><span><b>${(f.Hc / 1e6).toFixed(1)} MJ/kg</b> heat of combustion${spec.Hc && !spec.blend ? ' (measured)' : ''}</span><span>model flame temperature <b>${Math.round(F.tfAt(b.mat, 0.21))} K</b> in air, <b>${Math.round(F.tfAt(b.mat, X))} K</b> at ${pct(X)} (no dissociation)</span>`;
+    const share = location.origin + location.pathname + '?m=' + enc(spec);
+    $('tocabin').href = 'cabin-fire.html?m=' + enc(spec);
+    $('share').dataset.url = share;
+    // charts
+    const gs = [];
+    for (let i = 0; i <= 60; i++) gs.push(0.005 * (1.2 / 0.005) ** (i / 60));
+    const series = LIB.map(([k, n, col]) => ({col, name: n, pts: gs.map(g => [g, S.solve(k, g, P, fan).limit])}));
+    series.push({col: ME, me: true, name: spec.name, pts: gs.map(g => [g, S.solve('CUSTOM', g, P, fan).limit])});
+    gChart(series, X, fan);
+    $('glegend').innerHTML = series.map(s => `<span><i style="background:${s.col};${s.me ? 'height:6px' : ''}"></i>${esc(s.name)}</span>`).join('');
+    uChart(X, P, fan);
+    rank();
+  }
+  function rank() {
+    const {X, P, fan} = cabin(), w = $('rw').value, g = {orbit: 0, moon: 0.1654, mars: 0.3794, earth: 1}[w];
+    const rows = LIB.map(([k, n]) => ({n: n + " · NASA-tested", k, st: 'nasa'}));
+    loadList().forEach((s, i) => { const bb = F.build(s); if (bb.mat) { F.register('S' + i, bb); rows.push({n: s.name + ' · saved', k: 'S' + i, st: bb.status}); } });
+    rows.push({n: spec.name + ' · this material', k: 'CUSTOM', me: true});
+    for (const r of rows) r.L = g === 0 && !(fan > 0) ? NaN : S.solve(r.k, g, P, fan).limit;
+    rows.sort((a, b) => (Number.isFinite(b.L) ? b.L : -1) - (Number.isFinite(a.L) ? a.L : -1));
+    $('rank').innerHTML = '<tr><th>#</th><th>Material</th><th style="text-align:right">Oxygen limit</th><th>In a ' + pct(X) + ' cabin</th></tr>' + rows.map((r, i) =>
+      `<tr class="${r.me ? 'me' : ''}"><td>${i + 1}</td><td>${esc(r.n)}</td><td class="n">${pct(r.L)}</td><td>${VWORD[F.verdict(r.L, X)]}</td></tr>`).join('') +
+      (g === 0 && !(fan > 0) ? '<tr><td colspan="4" class="note">Orbit needs a fan breeze: FLINT does not model a flame in still air in orbit.</td></tr>' : '');
+  }
+  function savedList() {
+    const l = loadList();
+    $('saved').innerHTML = l.length ? l.map(s => {
+      const bb = F.build(s); let moon = NaN;
+      if (bb.mat) { F.register('VIEW', bb); moon = S.solve('VIEW', 'moon', 8.2, 0).limit; }
+      return `<article><b>${esc(s.name)}</b><small>${esc(F.formula(s))} · ${bb.status === 'tested' ? 'calibrated on an Earth test' : bb.status === 'nasa' ? 'NASA-calibrated' : 'estimate'} · Moon limit ${pct(moon)} at 8.2 psia</small><div class="tiny"><button type="button" data-load="${esc(s.id)}">Load</button><a href="cabin-fire.html?m=${enc(s)}">Cabin fire →</a><button type="button" data-del="${esc(s.id)}">Delete</button></div></article>`;
+    }).join('') : '<p class="note">Nothing saved yet. Press Save to keep a material here; it stays in this browser only. Export JSON to keep or share it.</p>';
+    blendOptions();
+  }
+  let raf = 0;
+  const update = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(render); };
+
+  // ---------- events ----------
+  document.addEventListener('click', e => {
+    const p = e.target.closest('[data-preset]');
+    if (p) { spec = sanitize({...F.PRESETS.find(q => q.id === p.dataset.preset), preset: p.dataset.preset}); spec.preset = p.dataset.preset; fill(spec); update(); return; }
+    const a = e.target.closest('[data-a]');
+    if (a) { const [P, X] = a.dataset.a.split(',').map(Number); $('p').value = P; $('x').value = X; update(); return; }
+    const ld = e.target.closest('[data-load]');
+    if (ld) { const s = loadList().find(q => q.id === ld.dataset.load); if (s) { spec = s; fill(s); update(); scrollTo({top: 0, behavior: 'smooth'}); } return; }
+    const dl = e.target.closest('[data-del]');
+    if (dl) { saveList(loadList().filter(q => q.id !== dl.dataset.del)); savedList(); rank(); toast('Deleted'); }
+  });
+  ['name', 'nC', 'nH', 'nO', 'nN', 'tp', 'eps', 'hc', 'tx', 'tP', 'tu', 'x', 'p', 'f'].forEach(id => $(id).addEventListener('input', () => {
+    if (['nC', 'nH', 'nO', 'nN', 'tp', 'eps'].includes(id) && spec.lib) { delete spec.lib; document.querySelectorAll('[data-preset]').forEach(b => b.setAttribute('aria-pressed', 'false')); }
+    update();
+  }));
+  $('kin').addEventListener('change', () => { if ($('kin').value !== 'BLEND') { delete spec.lib; } update(); });
+  $('hcmode').addEventListener('change', () => { $('hcl').hidden = $('hcmode').value !== 'm'; if (!$('hc').value) $('hc').value = '25'; delete spec.lib; update(); });
+  $('hasTest').addEventListener('change', () => { $('testbox').hidden = !$('hasTest').checked; update(); });
+  $('rw').addEventListener('change', rank);
+  $('mkblend').addEventListener('click', () => {
+    const pick = v => v.startsWith('p:') ? F.PRESETS.find(q => q.id === v.slice(2)) : loadList().find(q => q.id === v.slice(2));
+    const parts = [1, 2, 3].map(i => ({spec: pick($('b' + i + 'm').value), w: Math.max(0, +$('b' + i + 'w').value || 0) / 100})).filter(q => q.spec && q.w > 0);
+    const bl = F.blend(parts);
+    if (!bl) { toast('Give at least one component a mass %'); return; }
+    spec = sanitize(bl); fill(spec); update(); toast('Blend made: ' + spec.name);
+  });
+  $('save').addEventListener('click', () => {
+    if (!spec.id || F.PRESETS.some(p => p.id === spec.id)) spec.id = 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+    const l = loadList(), s = {...spec}, i = l.findIndex(q => q.id === s.id);
+    if (i >= 0) l[i] = s; else l.unshift(s);
+    if (saveList(l.slice(0, 40))) { toast('Saved in this browser'); savedList(); rank(); } else toast('This browser blocks saving: use Export JSON');
+  });
+  $('share').addEventListener('click', async () => {
+    const url = $('share').dataset.url;
+    try { await navigator.clipboard.writeText(url); toast('Link copied'); } catch (e) { $('sharebox').hidden = false; $('sharebox').textContent = url; }
+  });
+  $('export').addEventListener('click', () => {
+    const {X, P, fan} = cabin(), b = F.build(spec); F.register('CUSTOM', b);
+    const out = {tool: 'FIRST FIRE Material Lab', engine: 'FLINT 1.1', material: spec, status: b.status,
+      derived: {MW_g_mol: b.fuel.MW, O2_kg_per_kg: b.fuel.r, heat_of_combustion_MJ_kg: b.fuel.Hc / 1e6, lnK: b.mat.lnK, Ea_J_mol: b.mat.Ea},
+      cabin: {P_psia: P, O2: X, fan_m_s: fan}, predictions: F.predict('CUSTOM', P, fan, X).map(r => ({world: r.name, limit: r.limit, verdict: r.v, branch: r.branch}))};
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(out, null, 2)], {type: 'application/json'}));
+    a.download = (spec.name || 'material').replace(/[^\w-]+/g, '-').toLowerCase() + '.flint.json';
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  });
+  $('import').addEventListener('change', async () => {
+    const file = $('import').files[0]; if (!file) return;
+    try {
+      const j = JSON.parse(await file.text()), list = (Array.isArray(j) ? j : [j.material || j]).map(sanitize).filter(Boolean);
+      if (!list.length) throw new Error('no material');
+      spec = list[0]; fill(spec); update();
+      const l = loadList(); saveList(list.concat(l).slice(0, 40)); savedList(); toast('Imported ' + list.length + ' material' + (list.length > 1 ? 's' : ''));
+    } catch (e) { toast('That file is not a FLINT material'); }
+    $('import').value = '';
+  });
+
+  // ---------- start ----------
+  const q = new URLSearchParams(location.search);
+  if (q.has('m')) { const s = sanitize(dec(q.get('m'))); if (s) spec = s; }
+  else if (q.has('preset')) { const p = F.PRESETS.find(r => r.id === q.get('preset')); if (p) spec = sanitize({...p, preset: p.id}); }
+  if (q.has('x')) $('x').value = +q.get('x'); if (q.has('p')) $('p').value = +q.get('p'); if (q.has('fan')) $('f').value = +q.get('fan');
+  fill(spec); savedList(); render();
+})();
+</script></body></html>
