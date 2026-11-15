@@ -8,7 +8,7 @@ FIRST FIRE — A Research Desk for Spacecraft Fire Safety
 
 ## High-level summary
 
-NASA is about to light the first fire ever on the Moon: FM² will burn four fabric strips in a sealed chamber on the lunar surface. Nobody knows the result, because every fire test in NASA's Physical Sciences Informatics archive was flown in orbit, with no gravity. FIRST FIRE turns that freefall data into fire-safety answers for the Moon, Mars and pressurized rovers. A browser research desk organises 1,622 source rows from the 15 challenge investigations and checks every claim against its source. FLINT, our open physics engine built on NASA's own extinction model, predicts NASA's four lunar-gravity flammability limits from Earth tests alone to within 1.4 points of oxygen. It also shows that FM²'s oxygen sensor will read about a point high, finds CO₂ a better suppressant than helium in 274 Space Station droplet runs, and shows that a rover cabin fire is a materials problem. We sealed our forecast with a timestamp before the flight. If we're wrong, the Moon will tell us.
+NASA is about to light the first fire ever on the Moon: FM² will burn four fabric strips in a sealed chamber on the lunar surface. Nobody knows the result, because every fire test in NASA's Physical Sciences Informatics archive was flown in orbit, with no gravity. FIRST FIRE turns that freefall data into fire-safety answers for the Moon, Mars and pressurized rovers. A browser research desk organises 1,622 source rows from the 15 challenge investigations and checks every claim against its source. FLINT, our open physics engine built on NASA's own extinction model, predicts NASA's four lunar-gravity flammability limits from Earth tests alone to within 1.4 points of oxygen. It also shows that FM²'s oxygen sensor will read about a point high, finds CO₂ a better suppressant than helium in 274 Space Station droplet runs, and shows that a rover cabin fire is a materials problem. Anyone can explore it in our gravity fire lab, and NASA can use our decoder the day FM² reports. We sealed our forecast with a timestamp before the flight. If we're wrong, the Moon will tell us.
 
 ## Link to project demo
 
@@ -26,7 +26,8 @@ https://first-fire-lunar-lab.vercel.app/judging.html
 
 - A research desk over the 15 PSI combustion investigations: an Atlas of every record, a Compass that ranks tests by closeness to a chosen habitat, a Rulebook that audits seven fire-safety assumptions for orbit, the Moon and Mars, and passports for each investigation.
 - FLINT, a physics engine that predicts a material's oxygen limit at any gravity, pressure and atmosphere. It reads sealed-chamber burns such as FM² correctly, models droplet flames in freefall from NASA's FLEX runs and works through a pressurized-rover fire case.
-- A sealed forecast of FM²'s four burns, timestamped before the flight and scored when NASA reports.
+- A sealed forecast of FM²'s four burns, timestamped before the flight, and a day-one decoder that turns FM²'s measured burn lengths into the lunar oxygen limit, corrected for the sealed box.
+- A gravity fire lab that runs FLINT in any browser: choose orbit, Moon, Mars or Earth, a cabin air and a fan speed, and see which cabin materials keep burning.
 
 **How it works.** The desk is a static website that runs offline. A small local language model only selects passages from NASA's records; it does not compose numbers. A Referee checks that every quotation exists on the cited page, that the claim follows from it and that each number recomputes, and every rejected claim is published.
 
@@ -39,7 +40,7 @@ FLINT is built on the two-limit extinction model in NASA's 2025 lunar flammabili
 3. **CO₂ beats helium.** Across 274 FLEX droplet runs, CO₂ raises the oxygen a flame needs more than helium does. Helium can make a heptane fire harder to put out.
 4. **A rover fire is a materials problem.** In a 13 m³ rover at 34% oxygen, every cabin item we modelled keeps burning with the fans off. A CO₂ flood would triple the cabin pressure, and venting works only with the crew suited.
 
-**Benefits.** Cabin-material engineers at NASA, ISRO, ESA and JAXA get an evidence trail from each flight record to each prediction, with every result labelled validated, extrapolated or not modelled. The same physics informs fire safety in oxygen-enriched hospital wards, mines, submarines and aircraft. Students get a two-minute explainer in English, Hindi, Telugu and Tamil.
+**Benefits.** Cabin-material engineers at NASA, ISRO, ESA and JAXA get an evidence trail from each flight record to each prediction, with every result labelled validated, extrapolated or not modelled. The same physics informs fire safety in oxygen-enriched hospital wards, mines, submarines and aircraft. Students get a two-minute explainer with summaries in Hindi, Telugu, Tamil, Spanish, French, Portuguese, Japanese and Chinese. A page on India links the physics to the oxygen-rich ICUs where 122 people died in 29 hospital fires in about 20 months from August 2020.
 
 **What makes it creative.** It forecasts an experiment that has not happened yet, sealed and scored, so the project can be proven wrong. It publishes its own failures next to its scores. And it proposes four follow-up fires on existing NASA hardware, each with FLINT's prediction and the result that would falsify it.
 
@@ -96,11 +97,11 @@ NASA papers:
 |---|---|
 | Best Use of Science | A forecast sealed before the experiment; FLINT tested on held-out lunar data; four falsifiable follow-up predictions (mission-concept.html) |
 | Best Use of Data | 1,622 rows traced to file, row and checksum; 1,058 normalized observations; FLEX and CFI-G reused for new questions |
-| Best Use of Technology | FLINT physics engine; an offline desk with local models and a Referee gate; a benchmark with failures published |
-| Galactic Impact | Fire-safety answers for the first Moon habitats and rovers |
+| Best Use of Technology | FLINT physics engine running live in the browser (fire-lab.html); the FM² decoder; an offline desk with local models and a Referee gate; a benchmark with failures published |
+| Galactic Impact | Fire-safety answers for the first Moon habitats and rovers; a decoder NASA can use the day FM² reports |
 | Best Mission Concept | Mission concept page: four follow-up fires on existing NASA hardware, each with its falsifier |
 | Most Inspirational | "If we're wrong, the Moon will tell us": a student forecast of the first fire on the Moon |
 | Best Use of Storytelling | The rule, the doubt, the test, told on the start-here page and in the 30-second film |
-| Global Connection | Evidence from NASA and JAXA in one desk; an explainer in four languages; runs offline anywhere |
-| Art & Technology | The deck's flame and Moon art, the rover workbench, the ignition illustration |
-| Local Impact | Gaganyaan and hospital oxygen wards in India, explained in Hindi, Telugu and Tamil |
+| Global Connection | Evidence from NASA and JAXA in one desk; an explainer with summaries in eight languages; runs offline anywhere |
+| Art & Technology | The gravity fire lab, whose flame changes shape with gravity; the rover workbench; the deck's flame and Moon art |
+| Local Impact | india.html: Indian hospital ICU fires (sourced), Gaganyaan, and summaries in Hindi, Telugu and Tamil |

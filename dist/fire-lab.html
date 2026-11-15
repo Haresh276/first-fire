@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gravity fire lab · FIRST FIRE</title><meta name="description" content="Change gravity, cabin air and fan speed, and see which spacecraft materials keep burning. Powered by FLINT, calibrated on NASA's Earth tests and checked on NASA's Moon tests."><link rel="icon" href="icon.svg"><link rel="stylesheet" href="judging.css"><link rel="stylesheet" href="start.css"><link rel="stylesheet" href="lab.css"></head>
+<body><a class="skip" href="#main">Skip to the lab</a><header><a class="wordmark" href="judging.html">FIRST FIRE<span>.</span></a><span>GRAVITY FIRE LAB &nbsp; / &nbsp; FLINT 1.1</span></header>
+<main id="main">
+<div class="intro" style="grid-template-columns:1fr;padding-bottom:32px"><div><p class="eyebrow">Interactive · runs in your browser</p><h1>Change gravity. Watch the fire change.</h1><p class="lead">Pick a gravity, a cabin air and a fan speed. FLINT, calibrated on NASA's Earth tests and checked against NASA's Moon tests, tells you which of four common spacecraft materials keep burning, and why.</p></div></div>
+<section aria-labelledby="lab"><div class="panel">
+<div class="controls" role="group" aria-labelledby="lab"><h2 id="lab" style="margin:0;font-size:1.4rem">The world and the cabin</h2>
+<div class="presets" aria-label="Gravity"><button type="button" data-g="0">Orbit</button><button type="button" data-g="0.1654">Moon</button><button type="button" data-g="0.3794">Mars</button><button type="button" data-g="1">Earth</button></div>
+<label>Gravity <output id="go"></output><input id="g" type="range" min="0" max="1000" step="1" value="0"></label>
+<div class="presets" aria-label="Cabin air"><button type="button" data-a="8.2,34">Moon habitat or rover</button><button type="button" data-a="14.7,21">Space Station</button><button type="button" data-a="10.2,26.5">Shuttle spacewalk prep</button><button type="button" data-a="14.7,25">Oxygen-enriched room</button></div>
+<div class="row2"><label>Cabin oxygen <output id="xo"></output><input id="x" type="range" min="15" max="40" step="0.5" value="34"></label><label>Cabin pressure <output id="po"></output><input id="p" type="range" min="4" max="14.7" step="0.1" value="8.2"></label></div>
+<label>Fan breeze <output id="fo"></output><input id="f" type="range" min="0" max="0.3" step="0.01" value="0"></label>
+<p class="note">The fan adds a breeze on top of the rising-air flow that gravity makes. Space stations run fans; fans off is a first step in a fire response.</p></div>
+<div class="result" aria-live="polite"><p class="eyebrow" id="where">Moon</p>
+<svg class="hero-flame" id="hero" viewBox="0 0 200 200" role="img" aria-label="The flame's shape at the chosen gravity"></svg>
+<p class="big" id="count" style="text-align:center">–</p><p class="sub" id="countnote" style="text-align:center">–</p>
+<p style="text-align:center"><span class="badge" id="badge">–</span></p><p class="note" id="badgenote" style="text-align:center"></p></div>
+</div></section>
+<section aria-labelledby="mats"><p class="eyebrow">Four materials found in crew cabins</p><h2 id="mats">Who keeps burning?</h2><div class="grid4" id="cards"></div>
+<p class="note">The oxygen limit is the least oxygen a material needs to keep spreading a flame. If the cabin has more oxygen than the limit, the material burns. "Blown off" means the flow outruns the chemistry; "starved" means the flow is too weak to feed the flame faster than it loses heat.</p></section>
+<section aria-labelledby="curve"><p class="eyebrow">The whole picture</p><h2 id="curve">Oxygen limit at every gravity</h2>
+<svg class="chart" id="chart" viewBox="0 0 900 380" role="img" aria-label="Oxygen limit of each material from orbit to Earth gravity, with the cabin oxygen level and the chosen gravity marked"></svg>
+<div class="legend" id="legend"></div>
+<p class="note">Lines below the dashed cabin-oxygen line burn at that gravity. The steep left side of each curve is where weak flow starves the flame; that is why Nomex and polycarbonate burned less readily on the Moon in NASA's tests, and why FLINT predicts they burn more readily on Mars.</p></section>
+<section aria-labelledby="limits"><p class="eyebrow">Said plainly</p><h2 id="limits">What this lab can and cannot tell you</h2>
+<ul class="open"><li>FLINT is checked against NASA's four lunar-gravity results at 8.2 psia with no fan (mean error 1.4 points of oxygen). Every other setting is a model extrapolation, and the badge says so.</li>
+<li>It covers thin solid materials spreading a flame upward in dry oxygen and nitrogen. It does not cover still air in orbit, thick parts, smouldering or other gases.</li>
+<li>It is a research tool from an independent student team, not a safety certification, and it has not been reviewed by NASA. <a href="flint.html">Inspect the evidence and the Python engine.</a></li></ul>
+<p class="back"><a href="start.html">New to fire science? Start here</a> · <a href="fm2-decoder.html">FM² day-one decoder</a> · <a href="judging.html">Judging route</a></p></section>
+</main><footer>FIRST FIRE · Team Code Blooded · Independent challenge project · <a href="judging.html">Judging route</a></footer>
+<script src="flint-coefficients.js"></script><script src="flint-solid.js"></script>
+<script>
+(() => {
+  'use strict';
+  const S = globalThis.FLINTSolid, $ = id => document.getElementById(id);
+  const MATS = [['PMMA', 'Acrylic', 'windows and screens', '#c2441c'], ['P213', 'Cable tape', 'P213 tape on wiring', '#9a7300'],
+                ['PC', 'Polycarbonate', 'equipment housings', '#1e4fd8'], ['NOMEX', 'Nomex fabric', 'Velcro and suits', '#6b3fc9']];
+  const GMAX = 1.2, GMIN = 0.005;
+  const toG = s => s <= 0 ? 0 : GMIN * (GMAX / GMIN) ** (s / 1000);
+  const toS = g => g <= 0 ? 0 : Math.round(1000 * Math.log(g / GMIN) / Math.log(GMAX / GMIN));
+  const place = g => g === 0 ? 'Orbit' : Math.abs(g - 0.1654) < 0.01 ? 'Moon' : Math.abs(g - 0.3794) < 0.012 ? 'Mars' : Math.abs(g - 1) < 0.02 ? 'Earth' : g.toFixed(2) + ' g';
+  function flame(H, W, cx = 100, base = 182) {
+    const t = base - H;
+    return `M${cx},${t} C${cx + W * 0.28},${t + H * 0.32} ${cx + W / 2},${t + H * 0.55} ${cx + W / 2},${t + H * 0.74} C${cx + W / 2},${base + 4} ${cx - W / 2},${base + 4} ${cx - W / 2},${t + H * 0.74} C${cx - W / 2},${t + H * 0.55} ${cx - W * 0.28},${t + H * 0.32} ${cx},${t} Z`;
+  }
+  function hero(g, fan) {
+    const e = Math.cbrt(g) + 0.6 * fan / 0.3;
+    if (e < 0.05) return '<circle cx="100" cy="110" r="62" fill="#1e4fd8" fill-opacity=".14"/><circle cx="100" cy="110" r="50" fill="none" stroke="#1e4fd8" stroke-width="9"/><circle cx="100" cy="110" r="12" fill="#182c29"/>';
+    const k = Math.min(1, e), H = 70 + 100 * k, W = 92 - 22 * k;
+    return `<path d="${flame(H, W)}" fill="#e0400c"/><path d="${flame(H * 0.62, W * 0.62)}" fill="#ffb020"/><path d="${flame(H * 0.3, W * 0.36)}" fill="#fff1c9"/><rect x="94" y="184" width="12" height="16" fill="#182c29"/>`;
+  }
+  function mini(margin) {
+    if (!(margin > 0)) return '<path d="M50,64 C46,52 56,46 50,34 C58,42 60,52 54,64 Z" fill="#a9b6ae"/><rect x="46" y="64" width="8" height="6" fill="#182c29"/>';
+    const k = Math.min(1, margin / 20), H = 22 + 40 * k, W = 22 + 10 * k;
+    const f = (h, w) => flame(h, w, 50, 64);
+    return `<path d="${f(H, W)}" fill="#e0400c"/><path d="${f(H * .6, W * .6)}" fill="#ffb020"/><rect x="46" y="64" width="8" height="6" fill="#182c29"/>`;
+  }
+  function badge(g, P, fan) {
+    if (g === 0 && fan === 0) return ['extra', 'Not modelled', 'With no gravity and no fan there is no flow at all. FLINT does not cover still air in orbit.'];
+    if (Math.abs(P - 8.2) <= 0.1 && fan === 0 && Math.abs(g - 0.1654) <= 0.01) return ['valid', 'Checked against NASA Moon tests', 'These are the conditions of NASA’s lunar-gravity tests. FLINT matched them to 1.4 points on average.'];
+    return ['extra', 'Model extrapolation', 'Outside the conditions NASA tested at Moon gravity. Treat the numbers as estimates.'];
+  }
+  function chart(P, fan, g, X) {
+    const W = 900, H = 380, x0 = 60, x1 = 880, y0 = 330, y1 = 16, lo = 10, hi = 45;
+    const gx = v => x0 + Math.log(v / 0.01) / Math.log(GMAX / 0.01) * (x1 - x0);
+    const yy = v => y0 - (Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo) * (y0 - y1);
+    let s = `<rect x="${x0}" y="${y1}" width="${x1 - x0}" height="${y0 - y1}" fill="#fbfaf6"/>`;
+    for (let t = 10; t <= 45; t += 5) s += `<line x1="${x0}" x2="${x1}" y1="${yy(t)}" y2="${yy(t)}" stroke="#e3e6df"/><text x="${x0 - 8}" y="${yy(t) + 4}" font-size="13" text-anchor="end" fill="#40574e">${t}%</text>`;
+    for (const [v, name] of [[0.01, '0.01 g'], [0.1654, 'Moon'], [0.3794, 'Mars'], [1, 'Earth']]) s += `<line x1="${gx(v)}" x2="${gx(v)}" y1="${y1}" y2="${y0}" stroke="#c6cfc7" stroke-dasharray="3 5"/><text x="${gx(v)}" y="${y0 + 20}" font-size="13" text-anchor="middle" fill="#40574e">${name}</text>`;
+    for (const [key, , , col] of MATS) {
+      const pts = [];
+      for (let i = 0; i <= 80; i++) { const gv = 0.01 * (GMAX / 0.01) ** (i / 80); const r = S.solve(key, gv, P, fan); if (Number.isFinite(r.limit)) pts.push(`${gx(gv).toFixed(1)},${yy(100 * r.limit).toFixed(1)}`); }
+      if (pts.length) s += `<polyline points="${pts.join(' ')}" fill="none" stroke="${col}" stroke-width="4" stroke-linejoin="round"/>`;
+    }
+    s += `<line x1="${x0}" x2="${x1}" y1="${yy(X)}" y2="${yy(X)}" stroke="#182c29" stroke-width="2" stroke-dasharray="8 6"/><text x="${x1 - 4}" y="${yy(X) - 8}" font-size="13" text-anchor="end" fill="#182c29">cabin oxygen ${X}%</text>`;
+    if (g > 0.01) s += `<line x1="${gx(g)}" x2="${gx(g)}" y1="${y1}" y2="${y0}" stroke="#ae411e" stroke-width="2"/>`;
+    $('chart').innerHTML = s;
+  }
+  function update() {
+    const g = toG(+$('g').value), X = +$('x').value, P = +$('p').value, fan = +$('f').value;
+    $('go').textContent = place(g) + (g > 0 ? ` (${g.toFixed(3)} g)` : ' (0 g)');
+    $('xo').textContent = X + '%'; $('po').textContent = P.toFixed(1) + ' psia'; $('fo').textContent = (100 * fan).toFixed(0) + ' cm/s';
+    $('where').textContent = place(g) + ' · ' + P.toFixed(1) + ' psia · ' + X + '% oxygen';
+    $('hero').innerHTML = hero(g, fan);
+    let burning = 0, modelled = 0, html = '';
+    for (const [key, name, use] of MATS) {
+      const r = S.solve(key, g, P, fan), lim = 100 * r.limit, ok = Number.isFinite(lim);
+      const margin = ok ? X - lim : NaN; if (ok) modelled++; if (margin > 0) burning++;
+      const why = !ok ? 'not modelled here' : r.branch.startsWith('quenching') ? 'limited by starving' : 'limited by blow-off';
+      html += `<div class="mat ${margin > 0 ? 'burns' : 'out'}"><svg viewBox="0 0 100 70" aria-hidden="true">${mini(margin)}</svg><b>${name}</b><span class="note">${use}</span>` +
+        `<span class="lim">${ok ? lim.toFixed(1) + '%' : '–'}</span><span class="note">oxygen limit, ${why}</span>` +
+        `<span class="verdict">${!ok ? 'Not modelled' : margin > 0 ? 'Keeps burning, ' + margin.toFixed(1) + ' points over' : 'Goes out, ' + (-margin).toFixed(1) + ' points short'}</span></div>`;
+    }
+    $('cards').innerHTML = html;
+    $('count').textContent = modelled ? `${burning} of 4` : '–';
+    $('countnote').textContent = modelled ? (burning === 1 ? 'material keeps burning' : 'materials keep burning') : 'not modelled at these settings';
+    const [cls, label, note] = badge(g, P, fan); $('badge').className = 'badge ' + cls; $('badge').textContent = label; $('badgenote').textContent = note;
+    chart(P, fan, g, X);
+    document.querySelectorAll('[data-g]').forEach(b => b.setAttribute('aria-pressed', String(Math.abs(+b.dataset.g - g) < 0.004)));
+  }
+  $('legend').innerHTML = MATS.map(([, name, , col]) => `<span><i style="background:${col}"></i>${name}</span>`).join('');
+  document.querySelectorAll('[data-g]').forEach(b => b.addEventListener('click', () => { $('g').value = toS(+b.dataset.g); update(); }));
+  document.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => { const [p, x] = b.dataset.a.split(','); $('p').value = p; $('x').value = x; update(); }));
+  ['g', 'x', 'p', 'f'].forEach(id => $(id).addEventListener('input', update));
+  const q = new URLSearchParams(location.search);
+  $('g').value = toS(q.has('g') ? +q.get('g') : 0.1654);
+  if (q.has('x')) $('x').value = q.get('x'); if (q.has('p')) $('p').value = q.get('p'); if (q.has('fan')) $('f').value = q.get('fan');
+  update();
+})();
+</script></body></html>

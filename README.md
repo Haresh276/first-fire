@@ -2,7 +2,7 @@
 
 **NASA is about to light the first fire ever on the Moon. FIRST FIRE turns NASA's freefall fire data into checkable predictions for the Moon, Mars and the pressurized rovers in between, and we sealed our forecast before the experiment flies.**
 
-[Start here: two-minute explainer](https://first-fire-lunar-lab.vercel.app/start.html) · [Judging route](https://first-fire-lunar-lab.vercel.app/judging.html) · [FLINT evidence](https://first-fire-lunar-lab.vercel.app/flint.html) · [Rover fire case](https://first-fire-lunar-lab.vercel.app/rover-fire-case.html) · [Mission concept](https://first-fire-lunar-lab.vercel.app/mission-concept.html) · [Captioned film](https://first-fire-lunar-lab.vercel.app/master-film.mp4)
+[Start here: two-minute explainer](https://first-fire-lunar-lab.vercel.app/start.html) · [Gravity fire lab](https://first-fire-lunar-lab.vercel.app/fire-lab.html) · [FM² day-one decoder](https://first-fire-lunar-lab.vercel.app/fm2-decoder.html) · [Judging route](https://first-fire-lunar-lab.vercel.app/judging.html) · [India](https://first-fire-lunar-lab.vercel.app/india.html) · [FLINT evidence](https://first-fire-lunar-lab.vercel.app/flint.html) · [Rover fire case](https://first-fire-lunar-lab.vercel.app/rover-fire-case.html) · [Mission concept](https://first-fire-lunar-lab.vercel.app/mission-concept.html) · [Captioned film](https://first-fire-lunar-lab.vercel.app/master-film.mp4)
 
 Built for the 2026 NASA Space Apps Challenge *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data* by Team Code Blooded: Haresh G., Samuel Christ and Hanmathgundam Hamsika.
 
@@ -20,6 +20,7 @@ Built for the 2026 NASA Space Apps Challenge *Flame in Freefall: SI-Powered Fire
 | In freefall, CO₂ beats helium | 274 FLEX droplet runs; heptane dies below 14.1% O₂ in nitrogen, 16.6% with 30% CO₂, 12.9% with 30% helium | [flint.html#freefall](site/flint.html) |
 | A Moon rover fire is a materials problem | All four cabin items burn at 34% O₂ with fans off; a CO₂ flood needs 26 kg and triples the pressure; venting stops Nomex near 4 psia | [rover fire case](site/rover-fire-case.html) |
 | Mars reverses the Moon | Nomex's limit falls from 26.4% (Moon) to 22.6% (Mars): a prediction, not yet tested | [mission concept](site/mission-concept.html) |
+| FM² can be read on day one | The [decoder](site/fm2-decoder.html) turns four measured burn lengths into the lunar limit; reading the sensor naively would overstate it by about 0.7 points | [FM² decoder](site/fm2-decoder.html) |
 
 ## Verify it yourself
 
@@ -38,9 +39,10 @@ cd flint-engine && python -m flint.report out   # every FLINT number and figure,
 | Fire-safety insight for human exploration | FLINT limits at lunar and Martian gravity; the FM² reader; rover fire responses | [FLINT](site/flint.html), [rover](site/rover-fire-case.html) |
 | Investigations relevant to crew habitats, including pressurized rovers | Compass lunar preset (8.2 psia, 34% O₂); the pressurized rover fire case | [rover](site/rover-fire-case.html) |
 | Data that supports predictive modelling | `data/tests.csv` (1,058 normalized observations); FLINT datasets and a 350-scenario labelled atlas | [data](data), [FLINT](flint-engine) |
-| Research for next-generation controls and equipment | CO₂ versus helium suppression; vent and flood responses; four follow-up tests with falsifiable predictions | [mission concept](site/mission-concept.html) |
-| Possible Earth applications | Hospital oxygen wards, mines, submarines and aircraft, each with its transfer limits | [desk](site/index.html) |
-| An audience from students to engineers | A two-minute explainer in English, Hindi, Telugu and Tamil; reading levels; technical manual | [start here](site/start.html) |
+| Research for next-generation controls and equipment | CO₂ versus helium suppression; vent and flood responses; four follow-up tests with falsifiable predictions; an FM² decoder for the day NASA reports | [mission concept](site/mission-concept.html), [decoder](site/fm2-decoder.html) |
+| Insight anyone can explore | The gravity fire lab runs FLINT in the browser: orbit to Earth, any cabin air, fans on or off, with each result labelled validated or extrapolated | [fire lab](site/fire-lab.html) |
+| Possible Earth applications | Hospital oxygen wards, mines, submarines and aircraft, each with its transfer limits; a sourced page on India's hospital ICU fires | [desk](site/index.html), [India](site/india.html) |
+| An audience from students to engineers | A two-minute explainer with summaries in Hindi, Telugu, Tamil, Spanish, French, Portuguese, Japanese and Chinese; reading levels; technical manual | [start here](site/start.html) |
 
 ## Full project guide
 
