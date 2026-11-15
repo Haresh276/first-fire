@@ -14,6 +14,14 @@
 2. [Open the Moon column in the Atlas](https://first-fire-lunar-lab.vercel.app/#atlas). Distinguish planned settings from observations.
 3. [Test the planted quotation in the Referee](https://first-fire-lunar-lab.vercel.app/#referee) and open the source page.
 
+### Three flight-evidence exercises
+
+1. [Rank studies for a rover smoke-detector decision](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/evidence-guide.html?task=detection&question=transfer). Open the original record, inspect the rejected comparison and export the brief.
+2. [Repeat the flight detector study](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/detector-study.html). Compare the held-out errors for Kapton and Teflon.
+3. [Read The 140-second fire](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/140-second-fire.html). Correct a caption using NASA’s photograph and Table I.
+
+[Evidence and open tests for the ten global awards](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/judging-evidence.html)
+
 ## Project demonstration
 
 [Round 2 oral presentation](https://first-fire-lunar-lab.vercel.app/master-round2-slides.pdf) · [Timed run sheet](https://first-fire-lunar-lab.vercel.app/master-round2.html). For the global submission demonstration, use the short film or the six-slide deck below.
@@ -28,7 +36,9 @@
 
 ## High-level project summary
 
-NASA designed FM² to burn four fabric strips in a sealed chamber on the Moon. FIRST FIRE uses the existing flight archive to show what a researcher can learn before those burns take place. Its Atlas links 1,622 source rows from 15 NASA investigations to their original tables. Researchers can compare two experiments, see whether a single record matches a proposed cabin, check a quotation, and model a fire in a pressurized rover. The Moon-surface column in this archive has no measured fire outcomes. Team Code Blooded fixed four probabilities of sustained spread with a signed timestamp. A predeclared Brier score will compare those probabilities with a stated comparator when official outcomes become available.
+A researcher preparing a spacecraft fire test needs to know which earlier experiments measured the same thing. FIRST FIRE ranks NASA investigations for prevention, detection and suppression. Researchers can trace a comparison to the original run, see why a similar-looking study was excluded, and download a brief naming the next measurement.
+
+In 14 NASA SAME-R flight runs across five materials, we tested whether the heater setting could predict a detector’s peak optical response for a held-out material. Its mean absolute error was 1.25 V, compared with 3.25 V for the pooled training mean. Three Kapton runs still crossed the study’s 2 V reference in the wrong direction. This result identifies where a material-specific measurement matters. The separate FM² forecast fixes four prospective probabilities with a signed timestamp and a scoring rule for future lunar outcomes.
 
 ## Detailed project description
 

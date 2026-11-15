@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Code Blooded’s proposed rover analogue experiment separates the time for particles to reach a detector from the time the detector takes to respond.">
+  <title>Rover detector test plan · FIRST FIRE</title>
+  <link rel="stylesheet" href="handoff.css">
+</head>
+<body>
+<main>
+  <nav aria-label="Research desk"><a href="index.html#transport-lab">← Tracer transport lab</a><button type="button" onclick="window.print()">Print test plan</button></nav>
+  <header>
+    <p>FIRST FIRE · Code Blooded · Proposed ground experiment</p>
+    <h1>What delays a rover smoke warning?</h1>
+    <p>A payload engineer needs to decide whether to move a detector inlet or change the detector. Time a tracer pulse at the source, at the inlet and at the detector output. The two intervals tell the engineer which change to test first.</p>
+  </header>
+  <section>
+    <h2>Start with the flight evidence</h2>
+    <p>In NASA’s SAME-R data, a quiet alarm is interpretable only with the corresponding power and self-test channels. The investigators also reported different particle sizes for Kapton and lamp wick. For aged Kapton run 94 and aged lamp-wick run 55, microscopy gave count-mean diameters of 0.120 and 0.359 µm respectively. These observations motivate two test sizes. <a href="detector.html">Inspect the SAME-R channels</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/#T1">Investigators’ measurements, Table 1</a> · <a href="https://doi.org/10.60555/2np7-jv14">NASA flight archive</a></p>
+  </section>
+  <section>
+    <h2>Ground demonstrator</h2>
+    <p>Use two sealed, unoccupied 2 × 1 × 1 m test volumes linked by a fan-driven supply and return. Place the release in the source bay, a fast independent particle counter beside it and a second counter within 5 cm of the candidate detector inlet in the receiving bay. Record the measured duct flow, temperature and humidity. Filter and recirculate between runs until both counters recover their baseline.</p>
+    <p>Use an approved, noncombustion calibration aerosol with nominal particle diameters of 0.15 and 0.35 µm. Verify size and number concentration independently. Select reference counters with demonstrated sensitivity at both sizes. The surrogate tests particle transport and instrument response. Its optical properties, shape and aging can differ from smoke.</p>
+    <ol>
+      <li>Before running the chambers, apply a pulse directly at the inlet with the reference counter and detector side by side. At each size record the reference response time, the candidate’s configured threshold and alarm latency. Repeat this check at the end of the session.</li>
+      <li>Cross the two sizes with 10 and 20 L/s measured recirculation. For each of the four settings, randomize three independent release runs and one no-release blank. Keep detector position, release mass and humidity fixed within each size. Record the order and actual values.</li>
+      <li>Record 30 s of background, release for 20 s, then continue to 300 s after release starts. Check power, self-test, detector output and both reference channels on a common clock. Archive all runs, including saturations and missing alarms.</li>
+    </ol>
+  </section>
+  <section>
+    <h2>How to decide</h2>
+    <p>In the direct-inlet check, choose a count threshold that both counters reliably resolve above the blank and record it before testing. Mark the first sustained crossing (at least 1 s) at the source and at the inlet. Subtract their times to estimate transport delay. Subtract inlet time from the candidate’s first alarm time to estimate warning delay after arrival. The latter includes the local concentration rise and the detector response. Replay the inlet exposure directly to distinguish them.</p>
+    <p>Measure clock offsets with a shared pulse and bound counter and sampling-line delays using a common inlet. For each interval report an uncertainty bound from those delays, time resolution and the threshold crossing range. Carry these bounds through the difference between the intervals. Require a common direction beyond the bounds in all three repeats at a setting before choosing a change.</p>
+    <ul>
+      <li><strong>Particles arrive late.</strong> If transport consistently takes longer, move the inlet closer to the source or change the return-air path. Repeat with the same detector.</li>
+      <li><strong>The inlet responds early.</strong> If the post-arrival interval dominates and direct replay reproduces the delay, compare detector technologies at the same particle size and concentration.</li>
+      <li><strong>The evidence is incomplete.</strong> Mark no alarm by 300 s as right-censored. If particles never reach a measurable concentration, either instrument saturates, a self-test fails, the detector triggers before the reference crossing, or the timing bounds overlap, record the reason and repeat the affected control.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Payload allocation and telemetry</h2>
+    <p>These are preliminary design allowances. Weigh the selected instruments and measure peak power on the bench before choosing a host. The host supplies the two chambers, containment and mounting structure.</p>
+    <table>
+      <thead><tr><th scope="col">Equipment</th><th scope="col">Mass</th><th scope="col">Peak power</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Two reference counters</th><td>10 kg</td><td>120 W</td></tr>
+        <tr><th scope="row">Pulse source and circulation fan</th><td>6 kg</td><td>70 W</td></tr>
+        <tr><th scope="row">Candidate detector, logger and clock</th><td>2 kg</td><td>18 W</td></tr>
+        <tr><th scope="row">Ducts, filters, valves and harness</th><td>7 kg</td><td>12 W</td></tr>
+        <tr><th scope="row">Total with 25% reserve</th><td>31.25 kg</td><td>275 W</td></tr>
+      </tbody>
+    </table>
+    <p>Budget 16 four-byte channels and one eight-byte timestamp per frame at 10 Hz. Each 330 s run produces 237,600 bytes. The 16 chamber runs total 3.80 MB before headers. Reserve 10 MB for raw channels, direct-inlet checks and metadata. Verify each instrument’s native sample rate and latency. Repeated logger samples from a slower counter supply no additional timing information.</p>
+  </section>
+  <section>
+    <h2>When would flight change the decision?</h2>
+    <p>First establish a repeatable placement or detector effect on Earth. Test the dependence on orientation at a fixed flow and particle size. Request reduced gravity only if a plausible settling or deposition effect could change the selected design. A flight version would carry the same synchronized references, detector, pulse source and filtered loop in host-approved containment. A smaller chamber needs a new ground comparison at the same geometry and flow.</p>
+    <p>The primary measurement lasts 300 s after release. A short gravity interval ending before the ground-measured crossing times and their uncertainty cannot resolve the comparison. Compare the host’s continuous gravity window, mounting, power and mass allocation with the bench measurements. Until those requirements are met, continue on the ground.</p>
+    <p>The two-zone lab can rehearse changes in exchange and sensor lag. Its fitter accepts calibrated mass concentration in mg/m³ or µg/m³ over 0–300 s. Retain raw number counts and detector volts separately. Only upload traces with an independently calibrated mass conversion, and reserve a whole repeat for testing. <a href="index.html#transport-lab">Open the model and trace fitter</a> · <a href="research/transport-fit.md">Read the fitting method</a></p>
+  </section>
+</main>
+</body>
+</html>

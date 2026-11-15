@@ -26,6 +26,9 @@ else:
     from rover_workbench import copy_rover_workbench
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from chat.receipts import write_registry
+
 DATA, SITE, DIST = ROOT/'data', ROOT/'site', ROOT/'dist'
 def read_json(path):
     return json.loads(path.read_text(encoding='utf-8'))
@@ -87,12 +90,17 @@ def build():
         stage=Path(temp)/'dist';shutil.copytree(SITE,stage)
         copy_rover_workbench(ROOT, stage)
         build_rover_bundle(stage)
+        write_registry(stage / "chat-passages.js")
         (stage/'data').mkdir()
         for f in ('cases.json','tests.csv','investigations.json','forecast.json','challenge-resources.json','incidents.json'):
             shutil.copy2(DATA/f,stage/'data'/f)
         shutil.copytree(DATA/'raw',stage/'data'/'raw')
         if (DATA/'evidence').is_dir():shutil.copytree(DATA/'evidence',stage/'data'/'evidence')
-        research=[p for p in (ROOT/'research').glob('*.md') if p.is_file()]
+        # Chat reproduces its sealed November 15 evidence edition. Publish the current
+        # research review, including FLINT's ICES figure reconciliation, at its stable URL.
+        research_dir = ROOT / 'research'
+        research = sorted((research_dir / 'current' / p.name if p.name == 'review.md' else p)
+                          for p in research_dir.glob('*.md') if p.is_file())
         (stage/'research').mkdir()
         for p in research:
             content=p.read_text(encoding='utf-8').replace('](../dist/','](../')

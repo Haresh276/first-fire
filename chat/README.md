@@ -1,42 +1,71 @@
 # Local research chat
 
-Open **http://127.0.0.1:8765/#chat** while the FIRST FIRE service is running. The browser and the service communicate on the same origin. The static file version of the dashboard links to the local service.
+## Choose a model
 
-## First run
+| Mode | Ollama tag | What it does |
+| --- | --- | --- |
+| Research synthesis | `qwen3.6:35b-a3b` | Writes an answer using retrieved NASA records and project documents. It can compare records and request calculations that FIRST FIRE evaluates independently. |
+| Compact selection | `qwen3:0.6b` | Selects existing attributed passages. The application displays their archived text. This is the smaller installation and the setup script’s default. |
+| Alternate selection | `gemma3:1b` | Uses the same structured passage-selection interface with a different local model. |
 
-Install [Ollama](https://ollama.com/download) and Python 3.12. Start Ollama from its application or in a terminal with `OLLAMA_NO_CLOUD=1 ollama serve`. The service uses the local Ollama port 11434. From the FIRST FIRE project directory:
+All three use a pinned local BGE encoder. The judge-facing static site uses its browser archive and research tools. Running the Python service on your own machine enables the installed Ollama model.
+
+## Start the service
+
+Install Python 3.11 or 3.12 and start Ollama. The terminal command `OLLAMA_NO_CLOUD=1 ollama serve` starts Ollama locally if the app is not already running. [Ollama installer](https://ollama.com/download)
+
+For research synthesis, run these commands from the project directory.
 
 ```sh
-python3.12 scripts/setup_chat.py
-.chat-venv/bin/python -m chat.server
+python3.12 scripts/setup_chat.py --model qwen3.6:35b-a3b
+python3 scripts/build.py
+.chat-venv/bin/python -m chat.server --model qwen3.6:35b-a3b
 ```
 
-The initial setup installs Python packages, the pinned BGE encoder and the selected local instruction model. Allow time for these downloads. On Windows, use `.chat-venv\Scripts\python.exe` for the server command. For subsequent runs, start Ollama and the local server. Both models run on this device. The service reads the existing built dashboard in `dist/`. When rebuilding from source, run `python3 scripts/build.py` before launching. Inspect the model identities and readiness at `/api/health`. If a port is occupied, use `--port 8770` and open that port in the browser.
+For compact selection, substitute `qwen3:0.6b` in the setup and server commands. On Windows use `.chat-venv\Scripts\python.exe` for the server. Initial setup downloads the dependencies, BGE weights and the requested Ollama model. The larger model requires considerably more storage and memory. For an existing installation, use `--offline --model <tag>` with the setup script to check the installed files.
 
-For the alternate generator, run `python3.12 scripts/setup_chat.py --model gemma3:1b` and launch `.chat-venv/bin/python -m chat.server --model gemma3:1b`. Use `--offline` on the setup command to verify already-installed cached models without downloading. The BGE weights are pinned to commit `5c38ec7c405ec4b44b94cc5a9bb96e735b38267a`. Ollama model tags may be updated over time. The health response and benchmark manifest record the specific local model digest, so compare it before reproducing a result. Qwen's evaluated digest is `7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435`. Gemma's is `8648f39daa8fbf5b18c7b4e6a8fb4990c692751d49917417b8842ca5758e7ffc`.
+Open [research chat](http://127.0.0.1:8765/#chat) and inspect [service health](http://127.0.0.1:8765/api/health) to confirm the active mode and exact model digest. The server binds to loopback and calls Ollama on port 11434. When no model is specified, the service prefers the installed research model and falls back to the installed compact Qwen model. An explicit `--model` argument or `FIRST_FIRE_CHAT_MODEL` selects that tag. Use `--port 8770` if the dashboard port is occupied.
 
-## Answer generation and citations
+## How answers are produced
 
-The chat searches 85 source-linked passages plus the 1,058 locally archived observation rows. BGE transforms a question and each indexed passage into a contextual embedding using its BERT transformer, CLS pooling and L2 normalization. A BM25 score rewards exact words and material identifiers. Known investigation names provide an additional small ranking signal. Run identifiers also look up archived PSI records directly. An ambiguous general query about an arbitrary CSV field has more limited coverage than a lookup by run ID. Check the source row through Data explorer for numeric work.
+The research path retrieves source-table rows, original column labels and units, affected study passages and project protocols. The transformer receives up to 15 passages and returns short blocks of prose, source numbers and arithmetic expressions. A request may use conditional inputs supplied by the researcher. Each number used in a calculation must come from the question, the cited evidence or a small set of mathematical constants. The restricted expression evaluator supports arithmetic, bounded powers, square roots, absolute values and the standard normal CDF. The server may request one correction when a response fails validation. A second failed validation produces an abstention.
 
-The instruction transformer chooses between zero and three evidence passages from a short ranked set through Ollama's JSON schema mode. The server validates every selection and presents the actual passage text and source locator in the selected order. The text includes curated research summaries and proposed tests. It can therefore be relevant yet still fail to answer the full question. Selecting an inappropriate true statement remains a major failure mode. A genuine research conclusion needs verification against the linked records. The shipped v2 first checks task scope, data availability and requests for unsupported measurements or flight certification. The `method` field records guard decisions. Questions that pass these checks reach the local instruction transformer. A scope rule can reject a valid paraphrase or miss a new kind of unsupported request. A biomedical, arbitrary open-domain or unmeasured numerical question extends outside the collection.
+The browser compares each citation’s identity, URL and locator with the released registry, replays the arithmetic and checks that the displayed text matches the returned blocks. Source matching establishes provenance. A researcher still needs to judge whether the sources support the interpretation, whether a field represents the requested physical quantity and whether two experiments can be compared.
 
-Named mission-incident questions take a separate path. The service and the standalone dashboard read the same source-linked Apollo 1 and Apollo 13 records in `data/incidents.json`. A direct lookup can answer an incident overview, a documented detail, or a question that distinguishes the two missions. Each paragraph cites its source. Unsupported details and unrecognized incidents receive an evidence-limit response. These curated answers use no model tokens and have an empty `retrieved` list. The v2 benchmark predates the incident records.
+The compact mode uses BGE embeddings, lexical retrieval and exact identifiers to find candidates. Qwen or Gemma selects passages with structured output. The browser verifies their complete text against its registry. Curated Apollo incident lookups and the built-in numerical tools can produce answers independently of the compact model. In synthesis mode, natural-language questions can return to the transformer when an automatic tool selection needs more information. The status and usage fields identify which path actually answered.
 
-Only preceding user messages help resolve a short follow-up. A figure mentioned in a previous answer is a reading aid, and the chat must retrieve the underlying source again. The service neither sends chat to other hosts nor writes prompts to a server-side history file. External publisher links open only when the reader follows them.
+## API and reproduction
 
-## API
+`GET /api/health` returns readiness, model tag and digest, active mode, encoder revision and release fingerprints.
 
-`GET /api/health` reports the model and digest, BGE revision, corpus and engine fingerprints, number of rows and passages, and whether the configured model exists in local Ollama.
+`POST /api/chat` accepts a `message` of 1–2,000 characters and optional `history` with up to 12 user or assistant messages, each with `content` of up to 4,000 characters. The answer includes `status`, `answer`, `citations`, `retrieved`, `method`, `model_digest`, `usage` and `elapsed_ms`. A successful synthesized response includes a `synthesis_receipt` containing the source IDs and per-block arithmetic trees. Selected passages carry a `passage_receipt`. Deterministic guards can return an evidence limit with no generation tokens.
 
-`POST /api/chat` accepts an object with `message` of 1–2,000 characters and optional `history` of up to 12 records with roles `user` or `assistant` and text `content` of up to 4,000 characters. It returns `answer`, `status` (answered, limited or abstained), `citations` with their source and locator, raw ranked `retrieved` candidates, provider/model identity, usage and wall time. Empty or invalid input returns HTTP 400. Wrong content type returns 415. A host or origin mismatch returns 403. When the selector produces invalid structured output twice, the server abstains. Unavailable Ollama returns 503. Server-side errors do not become a purported source-supported answer.
+Malformed input yields HTTP 400, an unsupported content type 415, and a mismatched host or origin 403. If the selected local model is unavailable, an inference request returns 503. The server keeps no prompt log. The browser retains its own conversation history.
 
-The initial benchmark uses the v1 implementation. To reproduce it, see [the baseline archive instructions](versions/README.md).
+Use `python3 -m unittest discover -s tests -p 'chat*test.py'` for local protocol and synthesis checks. Reproducing a benchmark also requires the archived question bank, code, corpus, model digest, scoring rule and documented answer path. Earlier benchmarks used different model and gate versions. [Original baseline instructions](versions/README.md)
 
-The current selector interface in `engine.py` accepts a question and a list of retrieved passages. A future Grok adapter would implement the same schema and passage-ID validation server-side. It will require an explicit hosted-mode configuration, an API key supplied by the operator, and a fresh evaluation against this frozen suite. No physics calculation is executed by the language model.
+The local providers use structured outputs and the pinned BGE encoder. Model weights are separate installations subject to their respective licenses. A Grok API provider remains planned. [BGE model card](https://huggingface.co/BAAI/bge-small-en-v1.5) · [Ollama structured output specification](https://docs.ollama.com/capabilities/structured-outputs)
 
-## Sources and licenses
+## Reproduce the fresh evaluations
 
-The retrieval implementation follows the [BGE model card](https://huggingface.co/BAAI/bge-small-en-v1.5). Model selection uses [Ollama structured outputs](https://docs.ollama.com/capabilities/structured-outputs). Official model cards describe [Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B) and [Gemma 3 1B instruction-tuned](https://huggingface.co/google/gemma-3-1b-it). The release ships application code and the evaluation evidence. BGE, Qwen and Gemma weights remain separate installations under their respective model licenses.
+The [results browser](../site/fresh-chat-benchmark.html) shows the question, expected answer, citations and specific reason for each verdict. On a built site open `dist/fresh-chat-benchmark.html`. Download its audit ZIP and extract the nested archive for the series you want to inspect.
 
-A successful HTTP response means the evidence selection process ran. A checked citation ID establishes where the displayed text came from. It does not validate that the passage fully answers the question. During development, a vague question about a Moon probe and an unspecified plot returned FM² planning information. Supplying the mission, run, figure and physical quantity makes an ambiguity of this kind visible to the researcher.
+With the service running on loopback and Chromium installed, capture new answers using the questions-only file:
+
+```sh
+node scripts/run_local_chat_exam.cjs questions.json new-visible.jsonl http://127.0.0.1:8765
+.chat-venv/bin/python scripts/run_synthesis_exam.py questions.json new-visible.jsonl new-synthesis.jsonl
+```
+
+The second command uses the stronger model. It keeps actual model responses from the browser run and sends every remaining prompt through the same local synthesis configuration. Set `CHROMIUM_EXECUTABLE` for a custom Chromium installation. Historical transcript files retain the full model digest, evidence fingerprints and the serving JavaScript hashes. A rerun after a model or evidence change is a new result. The released questions are now public and can be used for regression testing.
+
+### Evidence edition used for the blind benchmark
+
+Both local modes and the offline chat search the evidence edition frozen on 15 November 2026. The [indexed research review](../research/review.md) is retained to reproduce that run. The [current research review](../research/current/review.md), served at `#report/review` and `research/review.md` on the dashboard, includes the subsequent ICES clarification. Figure 13 and the single-material figures give different lunar limits for some materials. The [FLINT comparison](../site/flint.html#validation) reports both readings and excludes cotton. The separately [timestamped FLINT v2](../site/forecast-register.html#fm2-v2) estimates conditional burn lengths. A question about that newer forecast should be checked against its own signed record.
+
+The current field guide keeps every word on the eleven indexed pages. Four of those pages add the ICES source note. To regenerate the archived guide passages, use the PDF at commit `a55546f` and install `pypdf` in the environment running the extraction.
+
+```sh
+git show a55546f:site/first-fire-field-guide.pdf > /tmp/first-fire-nov15-guide.pdf
+python3 scripts/extract_chat_guide.py --guide /tmp/first-fire-nov15-guide.pdf
+```

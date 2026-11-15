@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Review a spacecraft fire-test decision · FIRST FIRE</title>
+<meta name="description" content="Record a fire-test decision, inspect original NASA evidence, and compare an independent group's review of the same decision.">
+<link rel="icon" href="icon.svg"><link rel="stylesheet" href="flight-story.css"><script defer src="decision-review.js"></script>
+<style>
+.opening h1{max-width:15ch}.opening{padding-bottom:1rem}label{display:block;font-weight:700;margin-top:1rem}
+select{max-width:100%}input[type=file]{display:block;margin:.6rem 0;width:100%}
+form button,.actions{margin-top:1rem}.hint{color:#485b54;font-size:.9rem}.task{margin:1.3rem 0;padding:1rem 1.25rem;border-left:4px solid #276258;background:#e5ede6}
+.task p{margin:.3rem 0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.pair article{min-width:0;padding:1rem;background:#e7ece5;overflow-wrap:anywhere}dt{font-weight:700}dd{margin:0 0 .7rem;white-space:pre-line}.actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.answer{white-space:pre-line;overflow-wrap:anywhere}summary{width:fit-content}.caution{font-weight:bold;color:#7b381a}.plain{background:#edf0eb;color:#234333}
+@media(max-width:630px){.pair{grid-template-columns:1fr}button{max-width:100%}}
+</style></head><body><a class="skip" href="#main">Skip to decision review</a>
+<header><nav><a class="brand" href="index.html#home">FIRST FIRE<span>.</span></a><a href="judging-evidence.html">Project evidence</a></nav></header>
+<main id="main"><div class="opening"><p class="kicker">Independent engineering review</p><h1>Would the flight record change your test plan?</h1>
+<p class="lede">Record what you would test before looking at the NASA evidence. Inspect the source, explain what changed or stayed the same, and let another group try the same decision independently.</p>
+<a href="#facilitator">Run a 12-minute session</a></div>
+<noscript>This review needs JavaScript to prepare local files. You can also use the facilitator protocol below on paper.</noscript>
+<div id="app" hidden>
+<div id="intake"><label for="open-file">Open a task invitation, saved decision, or completed exchange</label><input type="file" id="open-file" accept=".json,application/json"></div>
+<p id="file-status" role="status"></p>
+<section id="setup"><h2>Record your starting decision</h2><form id="before-form">
+<label for="case-id">Safety question</label><select id="case-id"><option value="detector">Detection · smoke from different materials</option><option value="fabric">Prevention · ignition at a material junction</option><option value="extinction">Suppression · extinction in a diluted atmosphere</option></select>
+<div class="task"><p id="question"></p></div>
+<label for="setting">Shared test-planning context</label><textarea id="setting" maxlength="600" rows="2" required></textarea><small>Both groups receive these exact conditions in the invitation.</small>
+<div class="pair"><div><label for="group">Group or anonymous group code</label><input id="group" maxlength="100" required><label for="role">Your role in this decision</label><input id="role" maxlength="100" required placeholder="e.g. aerosol engineer, lab instructor"></div>
+<div><label for="country">Country or territory (optional)</label><input id="country" maxlength="90"><label for="participation">Relationship to FIRST FIRE</label><select id="participation" required><option value="">Choose one</option><option value="external">External reviewer working independently</option><option value="team">Build team or coached participant</option><option value="practice">Practice or demonstration</option></select></div></div>
+<label for="before">Which experiment or measurement would you choose now, and why?</label><textarea id="before" rows="3" maxlength="1800" required></textarea>
+<button>Save starting decision and open the evidence</button></form></section>
+<section id="saved" hidden><p class="kicker" id="stage"></p><h2>Your starting decision</h2><p class="answer" id="starting"></p><p id="reviewer" class="hint"></p>
+<div class="actions"><button type="button" class="plain" id="invite">Download task invitation</button><button type="button" class="plain" id="backup">Download starting record</button></div>
+<p class="hint">Send a second group the task invitation alone. It carries the common question, context and source fingerprints. Your answers and group details stay in your own decision file.</p></section>
+<section id="analysis" hidden><h2>Inspect the evidence</h2><p id="locked-task"></p><div class="actions"><a id="guide" class="action-link" target="_blank" rel="noopener">Open ranked studies</a><a id="inspect" target="_blank" rel="noopener">Inspect the experiment</a></div>
+<details><summary>Identify the original tables</summary><ul id="source-list"></ul></details>
+<form id="after-form"><label for="change">What happened to your decision?</label><select id="change" required><option value="">Choose one</option><option value="changed">Changed my plan</option><option value="unchanged">Kept my original plan</option><option value="deferred">Deferred the decision</option></select>
+<label for="after">Your decision after reviewing the evidence</label><textarea id="after" rows="2" maxlength="1800" required></textarea>
+<label for="locator">Which exact row, run, figure, cell or quoted passage did you check?</label><input id="locator" required maxlength="500">
+<label for="why">How did that observation support, contradict or fail to settle your decision?</label><textarea id="why" rows="2" required maxlength="1600"></textarea>
+<label for="challenge">What limitation, disagreement or counterexample should the other group check?</label><textarea id="challenge" rows="2" required maxlength="1200"></textarea>
+<label for="use">Where has this decision been used?</label><select id="use" required><option value="">Choose one</option><option value="draft">Proposed change or draft test plan</option><option value="used">Applied in an actual test plan or teaching session</option><option value="none">No use outside this review</option></select>
+<label for="artifact" id="artifact-label">Document or session reference if applied</label><input id="artifact" maxlength="500" placeholder="e.g. dated test-plan revision and section">
+<label for="sharing">Permission for this response</label><select id="sharing" required><option value="">Choose one</option><option value="private">Private copy for me</option><option value="partners">Share only with the participating groups</option><option value="public">May quote this response and group code in public project evidence</option></select>
+<p class="hint">Your file includes your role, group code, optional country and the words you enter. It stays on this device until you choose to send it. A practice run should be labeled as practice.</p>
+<button>Save reviewed decision</button></form></section>
+<section id="complete" hidden><h2>Completed decision</h2><div id="mine"></div><button type="button" id="export">Download decision record</button>
+<div id="join" hidden><h3 style="margin-top:1.4rem">Compare a second group’s result</h3><p>Both groups must use invitations with the same task ID. Load the other group’s completed decision file after saving your own.</p><label for="peer-file">Second completed decision</label><input type="file" id="peer-file" accept=".json,application/json"><p id="peer-status" role="status"></p></div></section>
+<section id="comparison" hidden><h2>Review the two decisions together</h2><p id="scope"></p><div id="pair" class="pair"></div><form id="return-form"><label for="disposition">Originating group’s response to the other group’s challenge</label><select id="disposition" required><option value="">Choose one</option><option value="revised">Revised the shared proposal</option><option value="retained">Retained the proposal with a reason</option><option value="unresolved">Disagreement remains open</option></select>
+<label for="resolution">Record what changed or why the disagreement remains, and cite the source checked</label><textarea id="resolution" required rows="3" maxlength="1800"></textarea>
+<button>Download completed exchange</button></form><p id="return-status" role="status"></p></section>
+<button type="button" class="plain" id="reset" hidden>Start another review</button>
+</div>
+<section id="facilitator"><h2>Run a 12-minute session</h2><ol>
+<li><strong>First two minutes.</strong> Invite a researcher, engineer or instructor responsible for a real testing decision. Agree on one safety question and a shareable context. The reviewer records the first decision before seeing the evidence and saves a starting record.</li>
+<li><strong>Next six minutes.</strong> Let the reviewer open the ranked studies and original sources without coaching. Ask for the exact observation that informed the second decision. Capture unchanged plans, deferrals and challenges alongside changes.</li>
+<li><strong>Last four minutes.</strong> Record any actual use with a dated document or session reference, choose sharing permission, and download the decision. File dates are local device times. Ask permission before identifying a group or publishing its words.</li>
+<li><strong>Independent reuse.</strong> Send another group only the task invitation. Ask them to repeat the 12-minute exercise and return their decision file with a source or counterexample. Record the second group’s location with permission if geographic reach is relevant.</li>
+<li><strong>Close the loop.</strong> Open the originating group’s completed decision, add the second decision, and document the response to its challenge. Return the exchange file to both groups. A facilitator should keep private records local, follow the narrower sharing permission, and verify claimed real-world use with its owner.</li>
+</ol><details><summary>Invitation to send to a reviewer</summary><p>Would you spend 12 minutes reviewing a spacecraft fire-test decision using NASA flight data? Open the attached task file in FIRST FIRE and record what you would do before reading the sources. A changed plan, an unchanged plan, or a reason to defer is equally valuable. Please return your completed decision file only if you are comfortable with the sharing option you chose. We would also welcome a source-based objection for the originating group to answer.</p></details>
+<p class="hint">For paper sessions, retain both dated answers, the exact NASA locator, how the decision was used, the second group’s objection and both groups’ permissions. Count practices, completed independent reviews, applied decisions and cross-country exchanges separately.</p></section>
+<footer><a href="paired-review.html">Compare two methods with a masked scorer</a> · <a href="judging-evidence.html">Evidence for the global awards</a></footer>
+</main></body></html>

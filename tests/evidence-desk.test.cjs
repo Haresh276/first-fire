@@ -60,3 +60,24 @@ test('publisher-bound claims use independently reviewed facets and recheck the m
   const extracted=await FFReviewedSources.reviewed('What was the initial gas composition in FLEX?',proposed,FF);
   assert(extracted.answer.includes('“'));assert(!extracted.answer.includes(gases.claim));
 });
+
+test('locally selected paragraphs bind the entire answer, source identity and units', async()=>{
+  require('../dist/chat-passages.js');
+  const id='cfig:flows', d=FFChatPassages.docs[id], source={id,title:d.title,url:d.url,locator:d.locator};
+  const turn={mode:'local',status:'answered',evidenceKind:'bound-passages',passageReceipt:{version:FFChatPassages.version,ids:[id]},sources:[source],answer:d.text+' [1]'};
+  const input='Compare the oxygen flow in the two inverse CFI-G runs.';
+  const good=await desk.gate(input,turn);
+  assert.equal(good.answer,turn.answer);
+  assert.equal(good.verification.checks.quote.state,'pass');
+  for(const forged of [
+    {...turn,answer:turn.answer.replace('mg/s','kg/s')},
+    {...turn,answer:turn.answer+' All garments are flight safe.'},
+    {...turn,sources:[{...source,locator:'page 999'}]},
+    {...turn,passageReceipt:{version:'unknown',ids:[id]}},
+    {...turn,passageReceipt:{version:FFChatPassages.version,ids:['__proto__']}},
+  ]){
+    const checked=await desk.gate(input,forged);
+    assert.equal(checked.status,'abstained');
+    assert.equal(checked.verification.checks.quote.state,'fail');
+  }
+});

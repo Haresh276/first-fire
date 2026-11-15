@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare a local Python environment and the two models for the FIRST FIRE chat.
+"""Prepare a local Python environment, BGE encoder and one FIRST FIRE chat model.
 
 Run with Python 3.11 or 3.12. The optional --offline mode only checks a ready
 installation and never contacts a package registry or model hub.
@@ -21,7 +21,8 @@ REVISION = "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--offline", action="store_true", help="verify the local environment and encoder")
-    parser.add_argument("--model", choices=("qwen3:0.6b", "gemma3:1b"), default="qwen3:0.6b")
+    parser.add_argument("--model", choices=("qwen3:0.6b", "qwen3.6:35b-a3b", "gemma3:1b"), default="qwen3:0.6b",
+                        help="qwen3:0.6b installs the compact passage selector; qwen3.6:35b-a3b enables source-linked synthesis and arithmetic")
     args = parser.parse_args()
     envdir = ROOT / ".chat-venv"
     python = envdir / ("Scripts/python.exe" if os.name == "nt" else "bin/python")

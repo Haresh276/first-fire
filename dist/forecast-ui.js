@@ -63,14 +63,37 @@
       xs.map((x,i)=>{const p=probability(x,m,s);return (x===selected?'<circle cx="'+X(x)+'" cy="'+Y(p)+'" r="9" fill="none" stroke="#12655f" stroke-width="2"/>':'')+'<circle cx="'+X(x)+'" cy="'+Y(p)+'" r="5.5" fill="#a53713" stroke="white" stroke-width="2"><title>Burn '+(i+1)+': '+x+'% O₂, '+escape(modelPercent(p))+' probability</title></circle>';}).join('')+
       '<text class="chartlab" x="305" y="205" text-anchor="middle">Starting oxygen by volume (%)</text></svg>';
   }
-  const referenceLength=(oxygen,limit)=>Math.min(20,Math.max(0,2.5*(oxygen-limit)));
+  const stripLengthCm=20, fullStripDepletionPp=8;
+  const cmPerPoint=stripLengthCm/fullStripDepletionPp;
+  const referenceLength=(oxygen,limit)=>Math.min(stripLengthCm,Math.max(0,cmPerPoint*(oxygen-limit)));
+  function expectedTravel(oxygen,mean,spread) {
+    // E[(x-L)⁺] for a normally distributed threshold L, in oxygen percentage points.
+    function excess(x) {
+      const z=(x-mean)/spread;
+      const density=Math.exp(-z*z/2)/Math.sqrt(2*Math.PI);
+      return spread*(z*tail(-z)+density);
+    }
+    // Subtract the excess beyond the far end of the strip to enforce the 20 cm cap.
+    const length=cmPerPoint*(excess(oxygen)-excess(oxygen-fullStripDepletionPp));
+    return Math.min(stripLengthCm,Math.max(0,length));
+  }
+  function displayTravel(cm) {
+    return cm>0 && cm<.005?'<0.01 cm':cm.toFixed(2)+' cm';
+  }
   function snapshot(data,m,s,ys) {
     const xs=data.burns.map(b=>b.oxygen_pct), ps=xs.map(x=>probability(x,m,s)),bs=data.burns.map(b=>b.baseline_p_sustain);
     return {version:1,type:'first_fire_fm2_local_scenario',evidence_as_of:data.as_of,
       status:'illustrative_unregistered',actual_outcomes:xs.map(()=>null),actual_score:null,
       material:data.mission.material,pressure_psia:data.mission.pressure_psia,gravity_earth_g:data.mission.gravity_earth_g,
       model:{mu_o2_pct:m,sigma_pp:s,interval80_o2_pct:[m-s*Z80,m+s*Z80],event:data.model.event,assumption:data.model.assumption},
-      burns:data.burns.map((b,i)=>({id:b.id,oxygen_pct:b.oxygen_pct,p_sustain:ps[i],nasa_expectation:b.nasa_expectation,guide_comparator:bs[i],reference_length_cm:referenceLength(b.oxygen_pct,m),hypothetical_outcome:ys[i]})),
+      travel_model:{status:'unregistered_sensitivity',strip_length_cm:stripLengthCm,linear_full_strip_depletion_pp:fullStripDepletionPp,
+        basis:'At each possible threshold, travel is 2.5 cm per oxygen percentage point above the threshold, clipped to the strip. Expected travel includes zero for every threshold at or above the starting oxygen. The mean given spread averages only thresholds below starting oxygen.'},
+      burns:data.burns.map((b,i)=>{
+        const meanLength=expectedTravel(b.oxygen_pct,m,s);
+        return {id:b.id,oxygen_pct:b.oxygen_pct,p_sustain:ps[i],nasa_expectation:b.nasa_expectation,guide_comparator:bs[i],
+          reference_length_cm:referenceLength(b.oxygen_pct,m),expected_travel_cm:meanLength,
+          mean_travel_given_spread_cm:ps[i]>0?meanLength/ps[i]:null,hypothetical_outcome:ys[i]};
+      }),
       hypothetical_scores:{model:score(ps,ys),guide_comparator:score(bs,ys)},hypothetical_next_experiment:design(xs,ys,m,s),
       sources:data.sources.map(({title,url,locator})=>({title,url,locator})),
       comparator_basis:data.scoring.baseline_label,verification:'Local scenario only. A checksum identifies the exported bytes; it supplies neither a public timestamp nor publication.'};
@@ -89,7 +112,7 @@
       '<fieldset class="fm-atmosphere"><legend>Starting oxygen</legend><div>'+radios+'</div></fieldset>'+
       '<p id="fm-spread-empty" class="note" hidden>Enter valid threshold assumptions to view the two examples.</p>'+
       '<div id="fm-spread-result"><div class="fm-chance"><strong id="fm-spread-chance"></strong><span>chance of sustained spread</span></div>'+
-      '<div class="fm-probability-bar" aria-hidden="true"><i></i></div>'+
+      '<div class="fm-probability-bar" aria-hidden="true"><i></i></div><p id="fm-travel-detail"></p>'+
       '<figure class="fm-figure"><div class="fm-example-head">'+
       '<div><span>Lower assumed limit</span><b id="fm-limit-low"></b></div><div><span>Higher assumed limit</span><b id="fm-limit-high"></b></div></div>'+
       '<canvas id="fm-spread-canvas" aria-hidden="true"></canvas>'+
@@ -159,6 +182,7 @@
       }
       const chance=modelPercent(burn.p_sustain);
       get('fm-spread-chance').textContent=chance;
+      get('fm-travel-detail').textContent='Unregistered travel estimate at '+burn.oxygen_pct+'% O₂. Counting every possible threshold gives a mean of '+displayTravel(burn.expected_travel_cm)+'. Counting only thresholds that allow spread gives '+displayTravel(burn.mean_travel_given_spread_cm)+'.';
       root.querySelector('.fm-probability-bar i').style.width=(burn.p_sustain*100)+'%';
       // Allow round-off when the interval was entered directly and oxygen equals a bound.
       examples=interval.map(limit=>burn.oxygen_pct-limit>Number.EPSILON*Math.max(1,Math.abs(limit))*4);
@@ -182,14 +206,15 @@
       '<header class="pagetitle"><span class="eyebrow">Prospective case · lunar surface</span><h1>FM² forecast</h1><p class="sub">At what starting oxygen level would flame spread over Synergy Pro Navy fabric after the igniter switches off? Explore four planned lunar tests at 8.2 psia.</p></header>'+
       '<section class="panel fm-lock"><span class="eyebrow">The Oracle · Forecast v1</span><h2>The fixed forecast</h2><p>Code Blooded fixed the oxygen limit at 26% with a standard deviation of 1.5 percentage points. The four predictions have a signed timestamp of 14 November 2026 at 12:57:06 UTC. No lunar outcomes have been verified.</p><div class="actions"><a href="forecast-lock/fm2-v1.json" download>Forecast JSON ↓</a><a href="forecast-lock/fm2-v1.tsr" download>Signed timestamp ↓</a></div><details><summary>Verify the forecast fingerprint</summary><p>SHA-256 <code>9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3</code></p><p>Download both files. OpenSSL checks the signed time against a trusted CA bundle and verifies the digest of the exact forecast bytes.</p><pre>openssl ts -verify -data fm2-v1.json -in fm2-v1.tsr -CAfile /etc/ssl/cert.pem</pre><p>Timestamp authority: DigiCert. DOI pending. <a href="forecast-lock/README.txt" download>Verification and repository deposit notes ↓</a></p></details></section>'+
       '<p class="section small">Explore different assumptions below. Each edit creates a local scenario. The signed forecast file stays available above. <a href="forecast-register.html#fm2-v2">Compare the separately timestamped FLINT v2 lengths</a>.</p>'+
-      '<section class="section grid2 fm-comparison"><div class="panel stack"><div><span class="eyebrow">Threshold model</span><h2>Assumed oxygen limit</h2></div><p>The model assumes all four samples share one uncertain oxygen limit. It treats starting above that limit as sufficient for sustained spread.</p>'+
+      '<section class="section grid2 fm-comparison"><div class="panel stack"><div><span class="eyebrow">Threshold model</span><h2>Assumed oxygen limit</h2></div><p>The model assumes all four samples share one uncertain oxygen limit. It treats starting above that limit as sufficient for sustained spread. The team chose the mean and spread by judgement. The orbital archive contains no lunar Synergy Pro burns to fit them.</p>'+
       '<label class="field">Mean limit (% oxygen)<input id="fm-mean" type="number" min="22" max="30" step="any"><small>Explore 22–30% oxygen by volume.</small></label>'+
       '<label class="field">Spread (percentage points)<input id="fm-sigma" type="number" min="0.5" max="4" step="any"><small>Standard deviation, from 0.5 to 4 percentage points.</small></label>'+
       '<p id="fm-validation" role="status"></p><p id="fm-interval" class="note"></p><details><summary>Set the central 80% interval directly</summary><div class="stack"><div class="grid2"><label class="field">Lower 80% bound (% O₂)<input type="number" step="any" id="fm-lo"></label><label class="field">Upper 80% bound (% O₂)<input type="number" step="any" id="fm-hi"></label></div><button type="button" class="ghost" id="fm-apply">Use these bounds</button><p class="small" role="status" id="fm-bounds-status"></p></div></details><button type="button" id="fm-defaults" class="ghost">Restore worked assumptions</button>'+
       '<figure class="fm-curve"><h3>Chance of sustained spread</h3><div id="fm-chart"></div><figcaption>The ring marks the selected starting atmosphere.</figcaption></figure></div>'+
       illustrationPanel(data)+'</section>'+
-      '<section class="section panel"><div class="sectionhead"><div><span class="eyebrow">March 2026 design</span><h2>Four planned burns</h2></div></div><div class="tablewrap"><table><thead><tr><th scope="col">Burn</th><th scope="col">Initial O₂</th><th scope="col">NASA expectation</th><th scope="col">Model probability</th><th scope="col">Guide comparator</th><th scope="col">Travel at mean limit</th></tr></thead><tbody id="fm-burns"></tbody></table></div>'+
-      '<p class="small">NASA describes a 14.4 L chamber and up to eight percentage points of oxygen depletion. The deck’s travel scenario assumes a linear eight-point drop over 20 cm. At the mean limit, each point of oxygen above the limit gives 2.5 cm of travel, capped at 20 cm. Zero means no sustained travel in that scenario. The probabilities use the full distribution. NASA supplied qualitative expectations only. The guide supplies the 90/10 comparator. <a href="https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=14" target="_blank" rel="noopener noreferrer">NASA depletion assumption, p. 14 ↗</a></p></section>'+
+      '<section class="section panel"><div class="sectionhead"><div><span class="eyebrow">March 2026 design</span><h2>Four planned burns</h2></div></div><div class="tablewrap"><table><thead><tr><th scope="col">Burn</th><th scope="col">Initial O₂</th><th scope="col">NASA expectation</th><th scope="col">Model probability</th><th scope="col">Guide comparator</th><th scope="col">Travel at mean limit</th><th scope="col">Mean travel across limits (unregistered)</th></tr></thead><tbody id="fm-burns"></tbody></table></div>'+
+      '<p class="small">NASA supplied qualitative expectations for the four burns. The guide supplies the 90/10 comparator. The team assumes that burning a full 20 cm strip lowers oxygen by eight percentage points and that oxygen use increases linearly with distance. Each oxygen point above a chosen limit then gives 2.5 cm of travel, up to 20 cm. <a href="https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=14" target="_blank" rel="noopener noreferrer">NASA chamber design, p. 14 ↗</a></p>'+
+      '<p class="small">The first travel column evaluates one limit. The second averages the clipped distance over the full normal distribution, including zero when spread fails. It explores uncertainty in the limit alone. Flight camera measurements would be needed to test the assumed distance law. <a href="#report/forecast">Travel calculation and scoring method →</a></p></section>'+
       '<section class="section panel stack"><div><span class="eyebrow">What if?</span><h2>Score hypothetical outcomes</h2></div><p>Yes means sustained spread after nominal ignition power ends. No includes a valid attempt with no ignition or no sustained spread. Mark an aborted, faulty or ambiguous test void.</p><div class="fmgrid" id="fm-choices"></div><div id="fm-scores" class="note" role="status"></div><p class="small">Smaller Brier scores are better. Both predictors are scored against the same resolved burns. Four tests of the same material cannot establish calibration.</p></section>'+
       '<section class="section panel stack"><div><span class="eyebrow">Design a follow-up</span><h2>Choose the next oxygen test</h2></div><p>Hold material, pressure, gravity, geometry and ignition protocol fixed. Among 22–30% oxygen in half-point steps, choose the extra test that would teach the most about the common threshold.</p><div id="fm-design" role="status"></div><div class="actions"><a class="btn" href="#design-lab">Plan an adaptive experiment →</a></div></section>'+
       '<section class="section grid2"><div class="panel stack"><span class="eyebrow">Local copy</span><h2>Export this scenario</h2><p>The JSON records your assumptions, probabilities, and simulated outcomes. All four actual observations remain empty. A local checksum can identify this exact file later.</p><div class="actions"><button id="fm-export" type="button" class="btn">Download scenario JSON</button></div><p class="small" id="fm-digest" role="status"></p></div>'+
@@ -229,7 +254,7 @@
       get('fm-lo').value=Number(lo.toFixed(5));get('fm-hi').value=Number(hi.toFixed(5));get('fm-bounds-status').textContent='';
       get('fm-interval').textContent='Central 80% model interval: '+lo.toFixed(2)+'–'+hi.toFixed(2)+'% oxygen. NASA’s expected limit is 24–26%; it did not assign that range an 80% probability.';
       updateResponse();
-      get('fm-burns').innerHTML=active.burns.map(b=>'<tr><th scope="row">'+b.id+'</th><td>'+b.oxygen_pct+'%</td><td>'+escape(b.nasa_expectation)+'</td><td><strong>'+escape(modelPercent(b.p_sustain))+'</strong></td><td>'+escape(percent(b.guide_comparator))+'</td><td>'+Number(b.reference_length_cm.toFixed(2))+' cm</td></tr>').join('');
+      get('fm-burns').innerHTML=active.burns.map(b=>'<tr><th scope="row">'+b.id+'</th><td>'+b.oxygen_pct+'%</td><td>'+escape(b.nasa_expectation)+'</td><td><strong>'+escape(modelPercent(b.p_sustain))+'</strong></td><td>'+escape(percent(b.guide_comparator))+'</td><td>'+Number(b.reference_length_cm.toFixed(2))+' cm</td><td>'+escape(displayTravel(b.expected_travel_cm))+'</td></tr>').join('');
       const sc=active.hypothetical_scores, a=sc.model,b=sc.guide_comparator, pending=ys.filter(y=>y==='pending').length, voids=ys.filter(y=>y==='void').length;
       get('fm-scores').textContent=a.n_resolved===0?'No hypothetical score. 0/4 resolved · '+pending+' pending · '+voids+' void.':
         (a.n_resolved===4?'Full four-burn hypothetical Brier score':'Partial hypothetical Brier score')+': model '+a.resolved_mean.toFixed(4)+' · comparator '+b.resolved_mean.toFixed(4)+' · '+a.n_resolved+'/4 resolved · '+pending+' pending · '+voids+' void.';

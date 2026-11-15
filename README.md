@@ -8,6 +8,8 @@ A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall ch
 
 Open the [six-slide project demonstration](dist/demo.html) to follow a flight comparison from the original measurements to the next test. The [FLEX sensitivity view](dist/index.html#transfer-lab?view=sensitivity) lets you change the droplet matching rule before revealing burn durations. In the [SAME-R detector case](dist/detector.html), inspect optical readings and instrument power in four NASA flight workbooks. The [English and Telugu classroom exercise](dist/classroom.html) asks two readers to match a NIST alarm report to the original sensor record and exchange evidence. Results from independent participants have yet to be collected.
 
+[Inspect the fresh local chat benchmarks](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/fresh-chat-benchmark.html) to compare model answers, calibrations and individual failures. [Local chat setup](chat/README.md) includes both tested model sizes.
+
 ## FLINT 1.1 and the Pressurized Rover Fire Case
 
 **Built (Python engine).** Start at the [FLINT report](site/flint.html) to compare the measured and predicted lunar limits, conditional FM² burn lengths, FLEX suppressant fits, the CFI-G negative result and the labelled atlas of solids and droplets. The browser calculator runs the calibrated thin-solid limit solver. The [original ZIP](site/flint/FIRST-FIRE_FLINT-engine.zip) contains the full Python analyses; its source and saved outputs are also in [flint-engine](flint-engine). Use Python 3.10+ in a clean virtual environment:

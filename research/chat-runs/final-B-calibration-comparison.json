@@ -1,0 +1,240 @@
+{
+  "description": "Untouched B, first responses. First two entries use identical stronger answers and correct/incorrect labels. The third uses the compact system’s own answers, probabilities and labels. The compact constant comparator uses its own original development prevalence.",
+  "strongTraceSHA256": "da656e0b9cf52914fec2727f3954ba36a918323a54bd63127c12b9bd72f8a308",
+  "compactTraceSHA256": "94a937ac95a21b2a199167475507f5580060b6d9aafffe434b70afe92d78e8f3",
+  "gradesSHA256": "b09c66fa26de7fec8d913c2dc4c6520d1d809159571e5c3ef7b040b8b684431c",
+  "mappingSHA256": "c33fc2ade40deef03f888a51aa4d7270ef4ac42f932af6dbe3dd0d4623ddf7d3",
+  "pairedRowsSHA256": "6471d9568e998e70446ca480c8089288ec31a64edba6ea8985b14e6af4a280e6",
+  "semanticallyGradedTrainingPrevalence": 0.38571428571428573,
+  "compactTrainingPrevalence": 0.79,
+  "strongNumericDisplayCoverage": 0,
+  "strongerAnswerCurrentEstimator": {
+    "n": 100,
+    "passed": 44,
+    "accuracy": 0.44,
+    "accuracy95": [
+      0.34672026630160796,
+      0.5377189534832302
+    ],
+    "meanProbability": 0.35582263999999997,
+    "brier": 0.13663210488470004,
+    "logLoss": 0.40984670622633784,
+    "constantBrier": 0.24934693877551037,
+    "ece": 0.08417736000000002,
+    "maxGap": 0.15085100000000007,
+    "eachPopulatedBinWithinTenPoints": false,
+    "reliability": [
+      {
+        "lower": 0,
+        "upper": 0.5,
+        "n": 49,
+        "passed": 7,
+        "meanProbability": 0.12807479591836737,
+        "accuracy": 0.14285714285714285,
+        "accuracy95": [
+          0.0709642372040676,
+          0.26667706223914406
+        ],
+        "gap": 0.014782346938775476
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.8,
+        "n": 51,
+        "passed": 37,
+        "meanProbability": 0.5746391960784313,
+        "accuracy": 0.7254901960784313,
+        "accuracy95": [
+          0.5905334923922092,
+          0.8288572476535512
+        ],
+        "gap": 0.15085100000000007
+      },
+      {
+        "lower": 0.8,
+        "upper": 1,
+        "n": 0,
+        "passed": 0,
+        "meanProbability": null,
+        "accuracy": null,
+        "accuracy95": null,
+        "gap": null
+      }
+    ],
+    "calibrationInTheLarge": -0.08417736000000003,
+    "highConfidenceMisses": []
+  },
+  "strongerAnswerEarlierEstimator": {
+    "n": 100,
+    "passed": 44,
+    "accuracy": 0.44,
+    "accuracy95": [
+      0.34672026630160796,
+      0.5377189534832302
+    ],
+    "meanProbability": 0.6780480699999996,
+    "brier": 0.19871022985923006,
+    "logLoss": 0.5965853952806844,
+    "constantBrier": 0.24934693877551037,
+    "ece": 0.23804807000000003,
+    "maxGap": 0.423963487179487,
+    "eachPopulatedBinWithinTenPoints": false,
+    "reliability": [
+      {
+        "lower": 0,
+        "upper": 0.5,
+        "n": 39,
+        "passed": 0,
+        "meanProbability": 0.423963487179487,
+        "accuracy": 0,
+        "accuracy95": [
+          0,
+          0.08966685370757144
+        ],
+        "gap": 0.423963487179487
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.8,
+        "n": 9,
+        "passed": 4,
+        "meanProbability": 0.7428145555555555,
+        "accuracy": 0.4444444444444444,
+        "accuracy95": [
+          0.18877852109766452,
+          0.733348706504507
+        ],
+        "gap": 0.2983701111111111
+      },
+      {
+        "lower": 0.8,
+        "upper": 1,
+        "n": 52,
+        "passed": 40,
+        "meanProbability": 0.8574019230769233,
+        "accuracy": 0.7692307692307693,
+        "accuracy95": [
+          0.6386621744190016,
+          0.8627573907450726
+        ],
+        "gap": 0.08817115384615404
+      }
+    ],
+    "calibrationInTheLarge": 0.23804806999999956,
+    "highConfidenceMisses": [
+      "G019",
+      "G029",
+      "G041",
+      "G048",
+      "G055",
+      "G056",
+      "G057",
+      "G063",
+      "G070",
+      "G073",
+      "G077",
+      "G097"
+    ]
+  },
+  "compactAnswerOwnEstimator": {
+    "n": 100,
+    "passed": 29,
+    "accuracy": 0.29,
+    "accuracy95": [
+      0.2101483574912227,
+      0.3853889117557111
+    ],
+    "meanProbability": 0.7558274899999999,
+    "brier": 0.3935394528012701,
+    "logLoss": 1.0785761643623788,
+    "constantBrier": 0.4558999999999995,
+    "ece": 0.46582748999999984,
+    "maxGap": 0.4908278181818182,
+    "eachPopulatedBinWithinTenPoints": false,
+    "reliability": [
+      {
+        "lower": 0,
+        "upper": 0.5,
+        "n": 22,
+        "passed": 0,
+        "meanProbability": 0.4466932272727272,
+        "accuracy": 0,
+        "accuracy95": [
+          0,
+          0.14865487460862087
+        ],
+        "gap": 0.4466932272727272
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.8,
+        "n": 11,
+        "passed": 3,
+        "meanProbability": 0.7635550909090909,
+        "accuracy": 0.2727272727272727,
+        "accuracy95": [
+          0.09746059290024889,
+          0.5656453011761291
+        ],
+        "gap": 0.4908278181818182
+      },
+      {
+        "lower": 0.8,
+        "upper": 1,
+        "n": 67,
+        "passed": 26,
+        "meanProbability": 0.8560655522388058,
+        "accuracy": 0.3880597014925373,
+        "accuracy95": [
+          0.28049048016711003,
+          0.5077691032787037
+        ],
+        "gap": 0.46800585074626844
+      }
+    ],
+    "calibrationInTheLarge": 0.46582748999999996,
+    "highConfidenceMisses": [
+      "G012",
+      "G013",
+      "G014",
+      "G016",
+      "G018",
+      "G021",
+      "G023",
+      "G028",
+      "G031",
+      "G035",
+      "G036",
+      "G039",
+      "G040",
+      "G042",
+      "G044",
+      "G045",
+      "G047",
+      "G051",
+      "G054",
+      "G057",
+      "G059",
+      "G060",
+      "G061",
+      "G062",
+      "G063",
+      "G064",
+      "G065",
+      "G066",
+      "G068",
+      "G070",
+      "G071",
+      "G073",
+      "G079",
+      "G083",
+      "G084",
+      "G086",
+      "G087",
+      "G089",
+      "G092",
+      "G097",
+      "G098"
+    ]
+  }
+}

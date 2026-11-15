@@ -3,6 +3,8 @@
 (() => {
   'use strict';
   const version='master-v1.1';
+  const replyConfidence=globalThis.FFReplyCalibration || (typeof require==='function'?require('./reply-calibration.js'):null);
+  const replyConfidenceFit=globalThis.FFReplyCalibrationFit || (typeof require==='function'?require('./reply-calibration-fit.js'):null);
   const pass=reason=>({state:'pass',reason}), na=reason=>({state:'na',reason}), fail=reason=>({state:'fail',reason});
   const limited=reason=>({state:'unavailable',reason});
   const base={beginner:1,intermediate:1,advanced:.70,complex:.65,challenge:.55};
@@ -117,6 +119,107 @@
     if(matches.length!==1)return decline(matches.length?'The quotation occurs at multiple pinned locations. Open the Referee and specify the intended original.':'I could not match those exact words to a pinned source page. Open the Referee to select the original and check its wording.');
     return {mode:'archive',status:'limited',evidenceKind:'submitted-claim',sources:[],answer:'',submission:{key:matches[0],quote,claim}};
   }
+  async function replayPassages(turn) {
+    if (!globalThis.FFChatPassages && globalThis.FFLoadAsset) await globalThis.FFLoadAsset('chat-passages.js');
+    const registry = globalThis.FFChatPassages, receipt = turn.passageReceipt;
+    if (!registry || !receipt || receipt.version !== registry.version || !Array.isArray(receipt.ids)) return null;
+    const ids = receipt.ids, sources = turn.sources;
+    if (!ids.length || ids.length > 3 || new Set(ids).size !== ids.length || !Array.isArray(sources) || sources.length !== ids.length) return null;
+    const paragraphs = [], canonical = [];
+    for (let i = 0; i < ids.length; i++) {
+      const id = ids[i], source = sources[i];
+      if (typeof id !== 'string' || !Object.hasOwn(registry.docs, id) || !source) return null;
+      const doc = registry.docs[id];
+      const url = doc.url.startsWith('https://') ? new URL(doc.url).href : doc.url;
+      if (source.id !== id || (source.url !== url && source.url !== doc.url) || source.title !== doc.title || source.locator !== doc.locator) return null;
+      paragraphs.push(doc.text + ' [' + (i + 1) + ']');
+      canonical.push({id, title:doc.title, url, locator:doc.locator});
+    }
+    if (receipt.scopeNote !== undefined) {
+      if (!Object.hasOwn(registry.scopeNotes, receipt.scopeNote)) return null;
+      paragraphs.push(registry.scopeNotes[receipt.scopeNote]);
+    }
+    const answer = paragraphs.join('\n\n');
+    return turn.answer === answer ? {answer, sources:canonical} : null;
+  }
+  const cardinalWords=['one','two','three','four','five','six','seven','eight','nine','ten'];
+  const fractionUnits={half:2,halves:2,third:3,quarter:4,fourth:4,fifth:5,sixth:6,seventh:7,eighth:8,ninth:9,tenth:10};
+  function numericSpelling(text) {
+    return text.normalize('NFKC').replace(/−/g,'-').replace(/–/g,' ').replace(/(?<=\d),(?=\d{3}(?:\D|$))/g,'')
+      .replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten)[ -](half|halves|thirds?|quarters?|fourths?|fifths?|sixths?|sevenths?|eighths?|ninths?|tenths?)\b/gi,(_,n,d)=>{
+        const unit=d.toLowerCase();return (1+cardinalWords.indexOf(n.toLowerCase()))+'/'+(fractionUnits[unit]||fractionUnits[unit.replace(/s$/,'')]);
+      });
+  }
+  function numericTokens(text) {
+    return numericSpelling(text).match(/(?<![\p{L}\p{N}_.])[-+]?(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?(?![\p{L}\p{N}_])/gu) || [];
+  }
+  function statedFractions(text) {
+    return [...numericSpelling(text).matchAll(/(?<![\p{L}\p{N}_.])(\d+)\s*\/\s*(\d+)(?![\p{L}\p{N}_]|\.\d)/gu)].filter(m=>Number(m[2])!==0).map(m=>Number(m[1])/Number(m[2]));
+  }
+  function replayOperation(node, observed, depth=0) {
+    const same=(a,b)=>Math.abs(a-b)<=1e-9*Math.max(1,Math.abs(a),Math.abs(b));
+    if(depth>20)throw Error('Expression exceeds depth limit');
+    if(typeof node==='number' && Number.isFinite(node) &&
+       ([0,1,2,10,100,1000,60].includes(node)||observed.some(x=>same(node,x)))) return node;
+    if(!Array.isArray(node)||node.length<2||node.length>3)throw Error('Unsupported operation');
+    const [op,a,b]=node,x=replayOperation(a,observed,depth+1);
+    if(node.length===2){
+      if(op==='neg')return -x;
+      if(op==='abs')return Math.abs(x);
+      if(op==='sqrt')return Math.sqrt(x);
+      if(op==='normalcdf'){
+        const z=Math.abs(x),t=1/(1+.2316419*z);
+        const tail=Math.exp(-z*z/2)/Math.sqrt(2*Math.PI)*t*(.319381530+t*(-.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));
+        return x>=0?1-tail:tail;
+      }
+    }else{
+      const y=replayOperation(b,observed,depth+1);
+      if(op==='+')return x+y;
+      if(op==='-')return x-y;
+      if(op==='*')return x*y;
+      if(op==='/')return x/y;
+      if(op==='**'&&Math.abs(y)<=8)return x**y;
+    }
+    throw Error('Unsupported operation');
+  }
+  async function replaySynthesis(q,turn) {
+    if(!globalThis.FFChatPassages && globalThis.FFLoadAsset)await globalThis.FFLoadAsset('chat-passages.js');
+    const registry=globalThis.FFChatPassages,receipt=turn.synthesisReceipt;
+    if(!registry || receipt?.version!=='ff-synthesis-1' || !Array.isArray(receipt.ids) ||
+       !Array.isArray(receipt.blocks)|| !receipt.blocks.length || receipt.blocks.length>3) return null;
+    if(new Set(receipt.ids).size!==receipt.ids.length || receipt.ids.length>10 ||
+       !Array.isArray(turn.sources)||turn.sources.length!==receipt.ids.length)return null;
+    const docs=[],sources=[];
+    for(let i=0;i<receipt.ids.length;i++){
+      const id=receipt.ids[i],s=turn.sources[i];
+      if(typeof id!=='string'||!Object.hasOwn(registry.docs,id)||!s)return null;
+      const d=registry.docs[id],url=d.url.startsWith('https://')?new URL(d.url).href:d.url;
+      if(s.id!==id||s.title!==d.title||s.locator!==d.locator||(s.url!==url&&s.url!==d.url))return null;
+      docs.push(d);sources.push({id,title:d.title,locator:d.locator,url});
+    }
+    const output=[];let operations=0;
+    for(const block of receipt.blocks){
+      if(typeof block.text!=='string'||block.text.length>1400||!block.text.length||
+         /\[\d+\]|https?:\/\//.test(block.text)||!Array.isArray(block.refs)||
+         !Array.isArray(block.calculations)||block.calculations.length>5||block.refs.length>6||
+         (turn.status!=='abstained'&&!block.refs.length)||new Set(block.refs).size!==block.refs.length||
+         block.refs.some(n=>!Number.isInteger(n)||n<0||n>=docs.length))return null;
+      const evidence=[q,...block.refs.flatMap(i=>[docs[i].text,docs[i].title,docs[i].locator,receipt.ids[i]])];
+      const support=evidence.join(' '),ratios=statedFractions(support),obs=[...numericTokens(support).map(Number),...ratios];
+      const outcomes=block.calculations.map(calc=>replayOperation(calc,obs));
+      if(outcomes.some(num=>!Number.isFinite(num)||Math.abs(num)>1e12))return null;
+      operations+=outcomes.length;
+      if(statedFractions(block.text).some(f=>![...ratios,...outcomes].some(n=>Math.abs(f-n)<=1e-9*Math.max(1,Math.abs(f),Math.abs(n)))))return null;
+      for(const t of numericTokens(block.text)){
+        const v=Number(t),precision=t.includes('.')&&!/[eE]/.test(t)?t.split('.')[1].length:0,radius=.50000001*10**(-precision);
+        if(obs.some(n=>Math.abs(n-v)<=1e-9*Math.max(1,Math.abs(v),Math.abs(n))))continue;
+        if(!outcomes.some(n=>Math.abs(n-v)<=radius+1e-7)&&!obs.some(n=>Math.abs(n-v)<=radius&&Math.abs(n-v)<.005*Math.max(1,Math.abs(n))))return null;
+      }
+      output.push(block.text+block.refs.map(i=>' ['+(i+1)+']').join(''));
+    }
+    const answer=output.join('\n\n');
+    return answer===turn.answer?{answer,sources,operations}:null;
+  }
   async function gate(q,turn,prior=[],intent={},opts={}){
     const c={quote:limited('No source receipt attached.'),interpretation:limited('No independent review for this wording.'),
       quantity:na('No numerical measurement was proposed.'),scope:fail('No research conclusion was established.')};
@@ -130,7 +233,30 @@
       if(canReview&&!Array.isArray(ff.tests)&&globalThis.FFLoadAsset)await globalThis.FFLoadAsset('observation-rows.js');
       const record=canReview && globalThis.FFRecordFacts?.fact(q,ff,turn.sources);
       const registered=canReview && await globalThis.FFReviewedSources?.reviewed(q,turn,ff);
-      if(record){
+      if(turn.evidenceKind==='grounded-synthesis'){
+        const replay=await replaySynthesis(q,turn);
+        if(!replay){
+          c.quote=fail('The source, rendering or numerical receipt failed replay.');reject(noFigures);
+        }else {
+          answer={...turn,answer:replay.answer,sources:replay.sources};
+          c.quote=replay.sources.length?pass('Citations match the archive. The prose is a model synthesis, not a quotation.'):na('No source claim was made.');
+          c.quantity=replay.operations?pass('Recomputed '+replay.operations+' expression(s) from numbers in the question or cited records.'):na('No new arithmetic result was reported.');
+          c.interpretation=limited('A local transformer wrote this interpretation. The citations and arithmetic were checked, but their scientific relevance was not independently graded.');
+          c.scope=turn.status==='abstained'?limited('The model identified missing evidence.'):pass('The question was answered using the listed archive records.');
+        }
+      }else if(turn.evidenceKind==='bound-passages'){
+        const reconstructed = await replayPassages(turn);
+        if(!reconstructed){
+          c.quote=fail('The answer or citation differs from the versioned passage in this release.');
+          reject(noFigures);
+        }else{
+          answer={...turn,...reconstructed};
+          c.quote=pass('The complete displayed text and each citation match the published FIRST FIRE passage snapshot.');
+          c.interpretation=limited('This is a sourced summary or source-row transcription. Agreement with the snapshot does not independently validate an interpretation.');
+          c.quantity=na('Only values already present in the cited passage are displayed. No new quantity was calculated.');
+          c.scope=pass('The passage and locator identify the conditions and endpoint it describes.');
+        }
+      }else if(record){
         answer={...turn,status:'answered',evidenceKind:'archive-row',answer:record.answer,sources:record.sources,reviewIds:[],reviewId:undefined};
         c.quote=pass('Matched the pinned source table, release inventory or registered forecast protocol.');c.quantity=pass(record.why);
         c.interpretation=na('Structured data or a direct release rule.');c.scope=pass('Only the identified observations, fields and release definitions apply.');
@@ -241,6 +367,9 @@
     }
     const difficulty=opts.level||level(q);
     answer.verification={release:version,checks:c,confidence:confidence(difficulty,c,matches)};
+    if(replyConfidence && replyConfidenceFit){
+      answer.verification.calibration=replyConfidence.predict(q,answer,replyConfidenceFit,opts.confidenceEnvironment);
+    }
     return answer;
   }
   const localErrors=[];
@@ -254,14 +383,21 @@
   function el(tag,value){const e=document.createElement(tag);if(value!==undefined)e.textContent=value;return e;}
   function panel(turn){
     const v=turn.verification,c=v.confidence,box=el('details');box.className='ff-chat-evidence';
-    const score=c.value===null?'':(' · '+c.value.toFixed(2));
-    box.append(el('summary','Evidence checks · '+c.label+score));
-    box.append(el('p',c.reason));
+    const estimate=v.calibration;
+    if(estimate?.showPercentage && Number.isFinite(estimate.probability)){
+      box.dataset.strictPassProbability=String(estimate.probability);
+      box.dataset.confidenceModel=estimate.model;
+      box.append(el('summary','Evidence checks · '+(5*Math.round(20*estimate.probability))+'% reply confidence'));
+      box.append(el('p','This estimates the chance that the whole reply would pass a benchmark check for content, sources and appropriate handling of the question. It also scores decisions to withhold an answer. The estimate comes from earlier local chat results.'));
+    }else{
+      box.append(el('summary','Evidence checks'));
+      if(estimate?.reason==='insufficient-calibration-data')box.append(el('p','There are too few reliable examples of this kind of reply to show a confidence percentage.'));
+    }
     const list=el('dl');
     const names={quote:'Source',interpretation:'Interpretation',quantity:'Quantity',scope:'Scope'};
     for(const [key,step] of Object.entries(v.checks)){list.append(el('dt',names[key]),el('dd',step.state+' · '+step.reason));}
     box.append(list);
-    if(c.factors.length)box.append(el('p',c.factors.map(([label,v])=>label+' '+v).join(' × ')+'. This is a benchmark-weighted evidence score.'));
+    if(c.factors.length)box.append(el('p','Evidence coverage · '+c.reason));
     const audit=el('a','Inspect calibration and errors');audit.href='#referee?view=errors';box.append(audit,' · ');
     const report=el('a','Report an error');report.target='_blank';report.rel='noopener noreferrer';
     report.href='https://github.com/Haresh276/first-fire/issues/new?'+new URLSearchParams({title:'FIRST FIRE evidence review · '+(turn.intent?.label||'chat'),
@@ -270,14 +406,19 @@
   }
   function auditPanel(){
     const section=el('section');section.className='panel stack section';section.append(el('h2','Evidence scores and release history'));
+    if(replyConfidenceFit?.ready){
+      section.append(el('p','Chat estimates the chance that the complete reply would satisfy the answer rubric. Its calibration uses '+replyConfidenceFit.n+' earlier development questions, including decisions to abstain.'));
+      const method=el('a','How reply confidence is estimated and tested');method.href='#report/reply-confidence';section.append(method);
+    }
     const data=globalThis.FFEvidenceRelease;
     if(data){
+      section.append(el('h3','Earlier evidence-factor scores'));
       section.append(el('p',data.method));
       const table=el('table'),header=table.createTHead().insertRow();
       for(const title of ['Set','Evidence label','Answers','Mean score','Post-gate passes','Original passes']){const h=el('th',title);h.scope='col';header.append(h);}
       const body=table.createTBody();
       for(const row of data.bins){const tr=body.insertRow();for(const v of [row.set,row.label,row.n,row.mean==null?'—':row.mean.toFixed(2),row.gatePassed+'/'+row.n+' ('+(100*row.gatePassed/row.n).toFixed(0)+'%)',row.passed+'/'+row.n])tr.insertCell().textContent=v;}
-      const wrap=el('div');wrap.className='tablewrap';wrap.append(table);section.append(wrap,el('p',data.result));
+      const wrap=el('div');wrap.className='tablewrap';wrap.append(table);section.append(wrap,el('p',data.result.replace('Live scores retain the published evidence factors.','This release used those factors.')));
       const all=el('a','Download the 124 decisions, post-gate outcomes, refitted bins and fingerprints');all.href='evidence-calibration.json';all.download='first-fire-evidence-calibration.json';section.append(all);
       const series=el('details');series.append(el('summary','Versioned public errors ('+data.errors.length+')'));
       for(const entry of data.errors){

@@ -77,14 +77,15 @@
     const validating=/\b(?:audit|check|validate|verify|authenticate|fact[- ]?check|referee|word.for.word|planted|accurate|accurately|supports?|supported|genuine|verbatim)\b/.test(q) && /\b(?:quote[ds]?|claim|passage|quotation|statement|source|wording|referee)\b|["“]/.test(q);
     const sourceCheck=/\b(?:source|paper|authors?|report|passage|citation|quotation|original)\b/.test(q) &&
       /\b(?:really say|actually say|back(?:s)? up|faithful|verif(?:y|ication)|misquot(?:e|ed)|misrepresent|cherry.pick|made up|negation|entail(?:s|ment)?|support(?:ed)? by|attributed|trace .*wording)\b/.test(q);
+    if(/\b(?:my|our|patient'?s?)\b.{0,40}\b(?:symptoms?|asthma|chest pain|medication|burn wound|oxygen saturation|smoke inhalation|inhaled smoke)\b|\b(?:diagnos\w*|prescri\w*|dosage|treat(?:ment)?)\b.{0,60}\b(?:patient|my|medication|smoke inhalation|burn wound)\b/.test(q))return intent('abstain',{}, {boundary:'clinical'});
     if(validating || sourceCheck || /["“].+["”].*\b(?:support|mean|prove|is true)/.test(q))return intent('referee');
-    if(/\b(?:fabricate|invent|make up|ignore (?:all|previous)|certify|approve .*safe|declare .*safe)\b/.test(q))return intent('abstain');
+    if(/\b(?:fabricate|invent|make up|ignore (?:all|previous)|certify|approve .*safe|declare .*safe)\b/.test(q))return intent('abstain',{}, {boundary:'request'});
     if(lunar && /\b(?:actually|already|observed|confirmed|measured|succeeded|so far|official results|did .*burn|flight outcomes?|empirical|returned data|results? from the (?:moon|lunar)|flight[- ]observed)\b/.test(q)&& !/\b(?:if|hypothetical|predict(?:ed)?|simulate)\b/.test(q))return intent('abstain',{},{boundary:'observations'});
     const rule=/rulebook|rule of thumb|(?:audit|test|examine|evaluate|check) (?:the |this |an? )?(?:rule|assumption)|can (?:we|i) assume|can .* stand in for|does .+ (?:mean|guarantee|prove|bound|imply)|always |can .* generalize|does .+ appl[yie]|(?:switch|turn)(?:ing)? off (?:the )?(?:fan|ventilation).*extinguish|prove .* safe/.test(q);
     const namedDomain=studyName.test(q)||/\b(?:flame|burning|smoke|detectors?|oxygen|extinction|flammab\w+|ventilation|gravity|fuel|alarm|spacecraft|fire test|ignition|ignit\w+)\b/.test(q);
     const transferQuestion=namedDomain && /\b(?:safe to (?:assume|conclude|infer|say)|reasonable to (?:assume|infer)|hold(?:s)? (?:true|for|across)|hold up|generaliz\w*|overgeneraliz\w*|stand[- ]in|surrogate for|proxy for|translate(?:s)? to|apply (?:across|to)|carry (?:over|across)|rule out|automatically|necessarily|enough to (?:prove|conclude)|counterexample|breaks? down|valid (?:assumption|inference)|can (?:we|i) (?:infer|conclude|treat|extrapolate))\b/.test(q);
     if(rule||transferQuestion)return intent('rulebook');
-    if(/\bguarantee\b/.test(q))return intent('abstain');
+    if(/\bguarantee\b/.test(q))return intent('abstain',{}, {boundary:'certification'});
     const cabin=/\b(?:cabin|compartment|rover|enclosure|sandbox|sealed.box|closed volume|sealed chamber|crew module)\b/.test(q);
     const physics=/physics (?:lab|model|simulation)|mass balance|simulate|simulation|what.if|what happens if|if .*(?:burn|ignit)|heat release|consum(?:e|ed|ption)|sealed.cabin|(?:free|cabin) volume|time trace|oxygen depletion|pressure evolution|thermal history|combustion products|scrubber|carbon dioxide|co2|cubic met|\bm3\b|\bgrams?\b/.test(q);
     const habitat=/\b(?:habitat|atmosphere|compass|mission (?:conditions|profile|environment)|target environment|match(?:ing)? conditions|environmental analogue)\b/.test(q);

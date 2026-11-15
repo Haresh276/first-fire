@@ -17,6 +17,7 @@ REPRODUCTION_FILES = frozenset({
     "flint/FIRST-FIRE_FLINT-engine.zip",
     "master-round2-slides.pptx",
     "code-review-files.csv.gz",
+    "fresh-chat-audit.zip",
 })
 OPTIONAL = (EXPERIMENTS, ENGINEERING, AGENCIES, FILM, REPRODUCTION)
 LIMIT = {FILENAME: 23*1024**2, **{name: 20*1024**2 for name in OPTIONAL}}

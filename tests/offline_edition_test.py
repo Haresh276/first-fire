@@ -28,6 +28,7 @@ class OfflineEditionTest(unittest.TestCase):
             'flint/FIRST-FIRE_FLINT-engine.zip': REPRODUCTION,
             'master-round2-slides.pptx': REPRODUCTION,
             'code-review-files.csv.gz': REPRODUCTION,
+            'fresh-chat-audit.zip': REPRODUCTION,
             'rover-workbench/prototype/scene/drive.mjs': FILENAME,
             'rover-workbench/terrain/reference.geojson': FILENAME,
             'rover-workbench/evidence/files/saffire-i.csv': FILENAME,

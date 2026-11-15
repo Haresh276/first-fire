@@ -2,6 +2,7 @@
 import argparse
 import csv
 import hashlib
+import gzip
 import json
 from html.parser import HTMLParser
 from pathlib import Path
@@ -110,6 +111,7 @@ def check(dist):
     for required in ('chat-ui.js','chat.css','benchmark-ui.js','data/chat-benchmark.json','research/chat-models.md','research/chat-benchmark.md','research/world-model.md','manual.html','first-fire-user-manual.pdf','demo.html','first-fire-demo.pdf','search-vectors.js','claim.js','acrylic.js','guide.js','workbench.js','records.js','explorer.js','forecast-ui.js','study.js','research/evaluation.md','research/search.md'):
         assert required in actual,required
     for required in ('atlas-deck.js', 'mission-desk.js', 'observation-rows.js', 'physics-lab.js',
+                     'chat-passages.js', 'answer-confidence.js', 'answer-confidence-fit.js', 'chat-evidence-search.js',
                      'cabin-liquid-weights.js', 'referee-deck.js', 'referee-passages.js', 'referee-reviews.js',
                      'first-fire-demo.mp4', 'technical-manual.html', 'first-fire-technical-manual.pdf',
                      'research/challenge-projects.md', 'challenge-projects.csv', 'forecast-lock/fm2-v1.tsr',
@@ -129,23 +131,33 @@ def check(dist):
         assert run['n']==len(run['cases'])==len(set(c['id'] for c in run['cases']))
         assert sum(c['pass'] for c in run['cases'])==run['passed']
         assert hashlib.sha256((ROOT/'tests/chat'/bank).read_bytes()).hexdigest()==run['bankSHA256']
+    # The historical score belongs to the implementation that produced its transcript.
+    snapshots = ROOT / "tests/chat/snapshots"
+    archived = dict(actual)
+    for asset, filename in {"chat-ui.js": "ui-v2.js.gz", "intent-router.js": "intent-v3.js.gz",
+                            "evidence-desk.js": "evidence-desk-v1.js.gz", "proof-drawer.js": "proof-drawer-v1.js.gz"}.items():
+        archived[asset] = hashlib.sha256(gzip.decompress((snapshots/filename).read_bytes())).hexdigest()
     for name, bank in [('master-science-24.json','science-acceptance-v1.json'),('master-science-40.json','science-unseen-v1.json')]:
         latest=json.loads((dist/name).read_text())
-        assert latest['localChatUISHA256']==actual['chat-ui.js'], 'Repeat release chat replay: '+name
-        assert latest['engineSHA256'] and all(actual.get(file)==digest for file,digest in latest['engineSHA256'].items()), 'Chat engine changed since '+name
+        assert latest['localChatUISHA256']==archived['chat-ui.js'], 'Wrong recorded chat UI: '+name
+        assert latest['engineSHA256'] and all(archived.get(file)==digest for file,digest in latest['engineSHA256'].items()), 'Historical engine hash mismatch: '+name
         assert latest['bankSHA256']==hashlib.sha256((ROOT/'tests/chat'/bank).read_bytes()).hexdigest()
         assert latest['passed']==sum(row['pass'] for row in latest['cases'])
+    for n, bank in [(24, "science-acceptance-v1.json"), (40, "science-unseen-v1.json")]:
+        replay = json.loads((dist / f"repaired-archive-replay-{n}.json").read_text())
+        assert replay["bankSHA256"] == hashlib.sha256((ROOT/"tests/chat"/bank).read_bytes()).hexdigest()
+        assert replay["localChatUISHA256"] == actual["chat-ui.js"]
+        assert replay["engineSHA256"] and all(actual.get(asset) == digest for asset, digest in replay["engineSHA256"].items())
+        assert n == replay["n"] == len({row["id"] for row in replay["cases"]}) == len(replay["cases"])
+        assert replay["passed"] == sum(row["pass"] for row in replay["cases"])
     for name, bank in [('master-route-first','master-route-60'),('master-route-replay','master-route-60'),('master-route-generalization','master-route-generalization'),('master-route-third','master-route-third')]:
         report=json.loads((dist/(name+'.json')).read_text())
         assert report['bankSHA256']==hashlib.sha256((ROOT/'tests/chat'/(bank+'.json')).read_bytes()).hexdigest()
         assert len(report['cases'])==report['count']==60 and sum(row['pass'] for row in report['cases'])==report['correct']
-        if name=='master-route-third':
-            assert report['routerSHA256']==actual['intent-router.js'], 'Rerun '+name
-        else:
-            import gzip
-            revision='1' if name=='master-route-first' else '2'
-            snapshot=ROOT/'tests/chat/snapshots'/('intent-v'+revision+'.js.gz')
-            assert report['routerSHA256']==hashlib.sha256(gzip.decompress(snapshot.read_bytes())).hexdigest()
+        revision = {'master-route-first':1, 'master-route-replay':2,
+                    'master-route-generalization':2, 'master-route-third':3}[name]
+        frozen = gzip.decompress((snapshots / f'intent-v{revision}.js.gz').read_bytes())
+        assert report['routerSHA256'] == hashlib.sha256(frozen).hexdigest(), name
     from zipfile import ZipFile
     with ZipFile(dist/'challenge-data-pack.zip') as core:
         study_summary = json.loads(core.read('archive-summary.json'))
@@ -172,6 +184,11 @@ def check(dist):
     current=json.loads((dist/'data/forecast.json').read_text())
     for saved, burn in zip(frozen['predictions'], current['burns'], strict=True):
         assert (saved['starting_o2_pct'], saved['p_sustain']) == (burn['oxygen_pct'], burn['p_sustain'])
+    try:
+        from .verify_chat_release import verify_chat_release
+    except ImportError:
+        from verify_chat_release import verify_chat_release
+    verify_chat_release(dist)
     print(f'Verified {len(actual)} file hashes, {len(tables)} original NASA tables, {len(rows)} unique observations and offline page assets. No assessor key in site.')
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)

@@ -44,6 +44,21 @@ python3 scripts/forecast.py --score yes yes pending void
 
 Only the default invocation writes data/forecast.json. Alternate assumptions and score examples print to standard output. The fixed [v1 forecast](../forecast-lock/fm2-v1.json) has a [signed DigiCert receipt](../forecast-lock/fm2-v1.tsr) dated 14 November 2026 at 12:57:06 UTC. Its SHA-256 is `9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3`. A DOI has not been issued. The four reference travel estimates are 20, 17.5, 7.5 and 0 cm, using a linear eight-percentage-point oxygen decrease per full 20 cm sample at the mean threshold. Score future binary outcomes using the frozen probabilities.
 
+## How uncertain is the travel estimate?
+
+At 25% initial oxygen, a strip travels 0 cm if its threshold is exactly 26%. A lower threshold can allow spread. In this unregistered extension we average travel over the same normal distribution used for sustained spread. For each possible threshold, the length ranges from zero to the full 20 cm strip. It increases by 2.5 cm per oxygen percentage point between those limits. The team chose this linear depletion law for the scenario. The flight design provides the specimen geometry and an estimate of chamber oxygen depletion. [Ferkul et al., PDF pp. 10 and 14](https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=14)
+
+| Initial O₂ | Travel at the 26% threshold | Mean travel across all thresholds | Mean travel given sustained spread |
+| ---: | ---: | ---: | ---: |
+| 37% | 20 cm | 19.97 cm | 19.97 cm |
+| 33% | 17.5 cm | 16.93 cm | 16.93 cm |
+| 29% | 7.5 cm | 7.53 cm | 7.71 cm |
+| 25% | 0 cm | 0.57 cm | 2.24 cm |
+
+To reproduce the calculation, let `H(x) = (x − μ) Φ(z) + σ φ(z)`, where `z = (x − μ)/σ`, Φ is the standard normal cumulative distribution and φ is its density. H is the expected positive excess of starting oxygen x above the threshold. The mean clipped travel is `2.5 × [H(x) − H(x − 8)]` cm. Dividing by the probability of sustained spread gives the last column, since the remaining thresholds contribute zero travel. The numerical test compares the formula with direct integration of the clipped length against the normal density.
+
+The table varies the assumed threshold alone. Testing this distance law requires measured travel after igniter cutoff, together with oxygen readings and the reason spread stopped. The signed file specifies how to evaluate its original point estimates. The exploratory averages shown here have no registered scoring role.
+
 ## Candidate features considered for FM²
 
 | Rank | Design | Evidence against or limitation | Acceptance test |

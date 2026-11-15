@@ -10,17 +10,18 @@ function renderBenchmark(root){
  root.replaceChildren();
  const crumbs=make('div',null,'breadcrumb');crumbs.append(anchor('Research desk','#home'),make('span','/'),'Model evaluation');
  const hero=make('section',null,'bm-head'),kicker=make('span','RECORDED EVALUATION','eyebrow');hero.append(kicker,make('h1','Can the chat defend its answers?'),make('p','Inspect the answers, sources and scoring checks from the recorded 100-question run. The results describe the tested version; they do not measure a researcher’s performance.','sub'));root.append(crumbs,hero);
+ const fresh=make('section',null,'panel stack');fresh.append(make('h2','Blind tests of the local chat'),make('p','Compare the answers shown to researchers, check how often their confidence matched the verdict, and inspect every missed question.'),anchor('Open the fresh-question results →','fresh-chat-benchmark.html'));root.append(fresh);
  const calibration=window.FFEvidenceRelease;
  if(calibration?.bins?.length){
    const panel=make('section',null,'panel stack'),table=make('table'),thead=table.createTHead().insertRow();
-   panel.append(make('h2','What changed with live evidence checks?'),make('p','Each recorded reply was scored again after citation, interpretation and quantity checks. A withheld reply can lose points when the question calls for supported facts.'));
+   panel.append(make('h2','How the earlier evidence gate performed'),make('p','Each recorded reply was scored again after citation, interpretation and quantity checks. A withheld reply can lose points when the question calls for supported facts.'));
    for(const title of ['Recorded prose set','Earlier strict passes','Passes after checks'])thead.append(make('th',title));
    const body=table.createTBody();
    for(const set of new Set(calibration.bins.map(b=>b.set))){
      const bins=calibration.bins.filter(b=>b.set===set),sum=k=>bins.reduce((n,b)=>n+b[k],0),tr=body.insertRow();
      [set,score(sum('passed'),sum('n')),score(sum('gatePassed'),sum('n'))].forEach(t=>tr.insertCell().textContent=t);
    }
-   panel.append(table,make('p','The confidence factors missed the ten-point calibration target on the follow-up set. The separate archive-calculation and routing results use different questions and scoring rules.'));
+   panel.append(table,make('p','The earlier confidence factors missed the ten-point calibration target on the follow-up set. The separate archive-calculation and routing results use different questions and scoring rules.'));
    const links=make('div',null,'actions');links.append(anchor('Read the verification report','#report/answer-verification'),anchor('Inspect archive calculations','#archive-audit'),anchor('Inspect unseen routing decisions','master-route-third.json'));
    panel.append(links);root.append(panel,make('h2','Original local-model run'));
  }

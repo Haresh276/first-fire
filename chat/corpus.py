@@ -79,6 +79,8 @@ def corpus():
                 val = val.split(" For polycarbonate")[0]
             add(topic, field, val, hints, source(topic,n))
 
+        add(topic, "decision", case["decision"], "how to decide choose comparison infer evidence", source(topic,0))
+
     def local(topic,key,fact,hints,report,section):
         add(topic,key,fact,hints,dict(title="FIRST FIRE · "+section,url="#report/"+report,locator=section))
 
@@ -99,8 +101,8 @@ def corpus():
     primary("ices","qualification","NASA-STD-6001B Change 3 Test 1 uses at least five specimens, burn length and flaming-debris criteria. The research apparatus used a five-second extinction criterion. A short research test does not establish material qualification for a crewed vehicle.","qualification certify material flight approved five specimens 15 centimetres debris standard test protocol safety",2)
     primary("fm2","date","The April 2026 NASA FY 2027 budget request describes planned lunar FM² work in 2027. This review has no verified launch date or actual flight outcome. A budget year does not establish a launch commitment.","official launch dates completed expected 2027 flight schedule planning status",2)
     f=read("forecast.json")
-    burns=f["burns"]; probabilities=", ".join(f"{b['oxygen_pct']}% O₂: {100*b['p_sustain']:.2f}%" for b in burns)
-    local("fm2","probability","The illustrative shared-threshold model assumes mean limiting oxygen 26% with standard deviation 1.5 percentage points. Its probabilities of sustained spread are "+probabilities+". These are conditional model probabilities. NASA gave qualitative expectations and an expected 24–26% limit, without numerical probabilities.","model probabilities illustrative 25 percent value sigma mean normal distribution likelihood","forecast","Reproduce the illustrative model")
+    burns=f["burns"]; probabilities=", ".join(f"{b['oxygen_pct']}% O₂: " + (">99.99%" if b["p_sustain"]>.9999 else f"{100*b['p_sustain']:.2f}%") for b in burns)
+    local("fm2","probability","The registered FIRST FIRE v1 shared-threshold forecast adopts a mean limiting oxygen of 26% with standard deviation 1.5 percentage points. Its probabilities of sustained spread are "+probabilities+". These are conditional model probabilities. NASA gave qualitative expectations and an expected 24–26% limit, without numerical probabilities.","model probabilities illustrative 25 percent value sigma mean normal distribution likelihood","forecast","Reproduce the illustrative model")
     local("fm2","scoring","A Brier score is the mean squared difference between the predicted probability and the observed binary outcome. Lower is better. Score only burns with resolved outcomes on the same indices and report coverage. Hypothetical yes/yes/yes/no gives 0.0161 for the model and 0.0100 for the guide's illustrative comparator. There are no observed FM² scores.","Brier score formula hypothetical missing comparator 90 10 scoring calibration dependent four burns","forecast","Reproduce the illustrative model")
     local("fm2","event","A scored yes means sustained flame spread after the igniter turns off. A nominal attempt with no ignition scores no. Hardware failure, invalid conditions, abort or unclassifiable observations are void. All four official outcomes in this release are pending. The learner guide's 90/10 numbers are an illustrative encoding of NASA's qualitative expectations.","scoring missing null no ignition abort void preregistration official observed team forecast","forecast","One event per burn")
     local("fm2","test","The four modeled tests share a latent limiting oxygen concentration. Their outcomes are dependent. With no outcomes, the most informative next oxygen setting on the candidate grid is 26%, the median assumed threshold. Four burns cannot establish calibration across materials or habitats.","information gain next test dependence shared uncertain threshold optimal assumptions","forecast","Choosing the next oxygen test")
@@ -119,7 +121,14 @@ def corpus():
     link="https://pmc.ncbi.nlm.nih.gov/articles/PMC5760683/#Fig8"
     add("acrylic","rod","For the 9.53 and 12.7 mm cast black PMMA rods near 21% oxygen, the measured Earth spread rates were higher than in orbit under these flow conditions. The 6.35 mm orbital series extends only to about 19% oxygen. At roughly 17.5% oxygen, all three diameters spread in orbit. Earth flames did not spread below 19% in this comparison without added radiation. Buoyancy changes the local opposed flow.","BASS-II acrylic oxygen plastic PMMA rod geometry spread reversal diameters 17.5 21 oxygen Earth ISS material",dict(title="Link et al., The Effect of Gravity on Flame Spread over PMMA Cylinders",url=link,locator="Figure 8(a–c), oxygen and rod diameter"))
     add("acrylic","panel","Saffire V tested a ribbed PMMA panel at 26.9% oxygen and 76.1 kPa in orbit. The flames advanced along rib edges. The observed downstream ignition was preceded by an upstream attempt with apparent loss of igniter contact. These observations cannot supply a rod spread speed, a panel ignition probability or a general cabin safety rating.","Saffire V panel geometry rib sheet spark acrylic versus rod oxygen ignition failed upstream test",dict(title="Opposed Flame Spreading Along a Structured PMMA Sample",url="https://ntrs.nasa.gov/citations/20210017785",locator="Figs. 6–9, 14–15, specimen, ignition and edge speeds"))
+    incident_archive = read("incidents.json")
+    for record in incident_archive["records"]:
+        for facet, facts in record["facts"].items():
+            for number, fact in enumerate(facts, 1):
+                source = incident_archive["sources"][fact["source"]]
+                add(record["id"], f"{facet}-{number}", fact["text"], record["name"] + " " + facet, source)
     extend_methods(docs)
+    extend_reports(docs)
     return docs, rows
 
 
@@ -146,6 +155,44 @@ def extend_methods(docs):
         docs.append(Passage(topic+f":review{i}","FIRST FIRE research review","#report/review",
                             "Experiments and counterevidence · "+NAMES[topic].split()[0],
                             prose, NAMES[topic]+" scope published analysis"))
+
+def extend_reports(docs):
+    """Index complete, attributable scientific paragraphs. Evaluation banks are never input."""
+    reports = {
+        "data": ("archive", {"Measuring conditions and endpoints", "Consequential counterexamples"}),
+        "forecast": ("fm2", {"One event per burn", "Reproduce the illustrative model", "How uncertain is the travel estimate?"}),
+        "advanced-methods": ("methods", {"Match before revealing the outcomes", "Model a remote tracer sensor", "Choose the next experiment"}),
+        "master-physics": ("physics-lab", None),
+        "video-measurement": ("imaging", None),
+        "transport-fit": ("transport", {"What the model estimates", "Read the synthetic example"}),
+        "world-model": ("world-model", {"Compare the model with the Saffire-I record", "Validation with sensor traces", "Tracer transport experiment", "Chat-to-solver boundary"}),
+    }
+    for name, (topic, sections) in reports.items():
+        title = heading = ""
+        code = False
+        for line_no, line in enumerate((ROOT / "research" / (name + ".md")).read_text().splitlines(), 1):
+            if line.startswith("```"):
+                code = not code
+                continue
+            if code:
+                continue
+            if line.startswith("# "):
+                title = line[2:].strip()
+            if line.startswith(("## ", "### ")):
+                heading = line.lstrip("# ").strip()
+                continue
+            if not heading or (sections is not None and heading not in sections):
+                continue
+            if line.startswith(("|", "!", "    ")):
+                continue
+            # The linked local report retains original tables, equations and primary sources.
+            text = re.sub(r"\s*\[[^\]]+\]\([^\s)]+\)", "", line)
+            text = text.replace("**", "").replace("`", "").lstrip("*- ").strip(" ·")
+            if not 85 <= len(text) <= 1550 or not re.match(r"[A-Za-z0-9]", text):
+                continue
+            docs.append(Passage(f"{topic}:{name}-{line_no}", "FIRST FIRE · " + title,
+                                "#report/" + name, heading + f" · source line {line_no}",
+                                text, heading))
 
 def fundamentals():
     title="NASA OCHMO · Fire Protection technical brief"

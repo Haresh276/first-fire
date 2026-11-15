@@ -46,7 +46,7 @@
 
   function sourceURL(raw) {
     if (typeof raw !== 'string') return null;
-    if(raw==='data/tests.csv')return raw;
+    if(raw==='data/tests.csv'||/^first-fire-field-guide\.pdf#page=[1-9]\d{0,3}$/.test(raw)||/^forecast-lock\/(?:fm2|pmma)-v1\.json$/.test(raw))return raw;
     if (/^#(?:case\/[\w-]+(?:\/[\w-]+)?|data(?:\?[^\s]*)?|report\/[\w-]+|physics(?:\?mode=rover)?|referee(?:\?view=errors)?|atlas|compass|passports|rulebook|earth|forecast|sources|acrylic|study|guide|benchmark)$/.test(raw)) return raw;
     try {
       const parsed = new URL(raw);
@@ -105,10 +105,31 @@
   }
 
   function history(turns) {
-    return turns.filter(t=>t.mode === 'local').flatMap(t => [
+    return turns.filter(t=>typeof t.question==='string' && typeof t.answer==='string').flatMap(t => [
       {role:'user', content:t.question.slice(0,4000)},
       {role:'assistant', content:t.answer.slice(0,4000)}
     ]).slice(-MAX_HISTORY);
+  }
+
+  function needsTool(intent, question, forced) {
+    const p = intent.params || {};
+    if (forced && ['compare','compass','rulebook','physics','referee','record'].includes(intent.type)) return true;
+    switch (intent.type) {
+      case 'compare':
+        return Boolean(p.left && p.right) || /\b(?:two|both|these|selected) (?:source )?(?:rows|records)\b/i.test(question);
+      case 'compass':
+        return Object.keys(p).length >= 2 || /\b(?:compass|rank|nearest|closest)\b/i.test(question);
+      case 'rulebook':
+        return /\brulebook|rule of thumb|(?:test|check|audit) (?:the |this |a )?rule|turn(?:ing)? off (?:the )?(?:fan|ventilation)/i.test(question);
+      case 'physics':
+        return Object.keys(p).length >= 3 || /(?:^|\bplease )(?:run|simulate|calculate|model)\b|\brun (?:the |a )?(?:model|simulation|solver)|\bphysics lab/i.test(question);
+      case 'referee':
+        return /["“]|\b(?:referee|verbatim|fact[- ]?check|quotation)\b/i.test(question);
+      case 'record':
+        return Boolean(p.record) && /^(?:open|inspect|show|read|find|list|look up|pull up|give me the row)\b/i.test(question);
+      default:
+        return false;
+    }
   }
 
   async function askService(message, turns, signal) {
@@ -123,6 +144,9 @@
     }
     return {
       answer:answer.answer, status:answer.status, sources:answer.citations.map(normalizeSource).filter(Boolean),
+      evidenceKind:answer.synthesis_receipt ? 'grounded-synthesis' : answer.passage_receipt ? 'bound-passages' : undefined,
+      synthesisReceipt:answer.synthesis_receipt || undefined,
+      passageReceipt:answer.passage_receipt || undefined, method:answer.method, usage:answer.usage, modelDigest:answer.model_digest,
       mode:'local', model:typeof answer.model === 'string' ? answer.model : '', latency:answer.elapsed_ms
     };
   }
@@ -282,6 +306,8 @@
   async function askArchive(question, previousTurns) {
     const incident = incidentReply(question, previousTurns);
     if (incident) return incident;
+    const passage = await window.FFChatEvidenceSearch?.answer(question, previousTurns);
+    if (passage) return passage;
     const knownCases = window.FF?.cases || [];
     const selected = knownCases.filter(c => SUBJECTS[c.id]?.test(question));
     let carried = false;
@@ -393,6 +419,8 @@
     retryButton.title = 'Get a new answer in a separate chat';
     actions.append(retryButton);
     const provenance={
+      'grounded-synthesis':'Local model synthesis with linked sources',
+      'bound-passages':'Source passages verified against this archive',
       'checked':'Checked against the cited experiment',
       'calculation':'Calculated with the FM² threshold model',
       'archive-calculation':'Calculated from NASA observation rows',
@@ -440,6 +468,7 @@
     let thread = state.threads.find(t => t.id === state.current);
     let mode;
     let healthTask;
+    let serviceHealth;
     let request;
     let editing = null;
     let stopped = false;
@@ -728,7 +757,7 @@
           answer=calculation;
           if(observation)intent=router.intent('abstain',{}, {boundary:'observations'});
           else if(forecastInput!==message)answer.forecastInput=forecastInput;
-        } else if(['compare','compass','rulebook','physics','referee'].includes(intent.type) || intent.type==='record'&&intent.params.record && /^(?:open|inspect|show|read|find|list|look up|pull up|give me the row)\b/i.test(message)){
+        } else if(needsTool(intent,message,chosenIntent)) {
           if(['compare','compass','record'].includes(intent.type)&&!Array.isArray(window.FF.tests))await window.FFLoadAsset('observation-rows.js');
           if(intent.type==='physics'&&!window.FFPhysics)await window.FFLoadAsset('physics-lab.js');
           if(intent.type==='referee')answer=await verifier.checkSubmitted(message,intent);
@@ -746,7 +775,7 @@
             answer.previousSelection=true;
             answer.answer+='\n\nThis calculation starts with the '+prior.analysis.rows.length+' matching rows in your previous result.';
           }
-        } else if(intent.type==='abstain'&&!toolRequest) {
+        } else if(intent.type==='abstain' && (intent.boundary || chosenIntent) && !toolRequest) {
           answer=verifier.decline('I don’t have a source that establishes an answer to that question. Name an experiment, incident or measured quantity, or choose the intended tool.');
         } else if(chosenIntent && intent.corrected) {
           answer=verifier.clarify('This question needs more information for '+intent.label+'. Edit the question or open the selected tool.');
@@ -758,11 +787,22 @@
           answer = mode === 'local'
             ? await askService(message, context, working.controller.signal)
             : await askArchive(message, context);
-          if (window.FFDeckReferee && !working.controller.signal.aborted) {
+          if (intent.type==='abstain' && answer.status!=='abstained') intent=router.intent('archive');
+          if (!answer.synthesisReceipt && !answer.passageReceipt && window.FFDeckReferee && !working.controller.signal.aborted) {
             answer = await window.FFDeckReferee.checkedReply(message, answer);
           }
         }
-        answer=await verifier.gate(message,answer,context,intent);
+        await healthTask;
+        // A tool that cannot bind a free-form question may defer to the local research model.
+        // Keep valid numerical results, explicit tool commands and hard scope boundaries intact.
+        if(answer.mode!=='local' && !chosenIntent && !toolRequest && !intent.boundary &&
+           !answer.analysis?.rows?.length && (answer.status==='abstained' || ['input-needed','archive-clarification'].includes(answer.evidenceKind))){
+          await healthTask;
+          if(serviceHealth?.mode==='grounded synthesis' && mode==='local' && !working.controller.signal.aborted){
+            answer=await askService(message,context,working.controller.signal);
+          }
+        }
+        answer=await verifier.gate(message,answer,context,intent,{confidenceEnvironment:{local:mode==='local',digest:serviceHealth?.model_digest,engine:serviceHealth?.engine_sha256,corpus:serviceHealth?.corpus_sha256,research:serviceHealth?.research_sha256,encoder:serviceHealth?.encoder_revision}});
         const {type,label,href,params}=intent;answer.intent={type,label,href,params};
         verifier.remember(message,answer);
         if (working.controller.signal.aborted || !isActive()) throw Error('Stopped');
@@ -862,6 +902,6 @@
       updateInput(suggested.slice(0,MAX_MESSAGE));
     }
     draw();
-    healthTask = checkService().then(info => { mode = info ? 'local' : 'archive'; });
+    healthTask = checkService().then(info => { serviceHealth=info;mode = info ? 'local' : 'archive'; });
   };
 })();

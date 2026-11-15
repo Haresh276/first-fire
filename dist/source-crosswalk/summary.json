@@ -1,0 +1,93 @@
+{
+  "schema": "first-fire.source-crosswalk.v1",
+  "same_r": {
+    "source_observations": 109,
+    "label_forms": {
+      "unsuffixed observation": 67,
+      "a-suffixed observation": 42
+    },
+    "distinct_numeric_labels": 66,
+    "material_number_groups": 67,
+    "number_collisions": {
+      "57": [
+        "Lampwick",
+        "Teflon"
+      ]
+    },
+    "table_material_groups_by_material": {
+      "Kapton": 16,
+      "Silicone": 14,
+      "Lampwick": 13,
+      "Teflon": 12,
+      "Pyrell": 12
+    },
+    "distinct_catalogue_material_number_folders": 67,
+    "matched_material_number_groups": 66,
+    "groups_missing_catalogue_folder": [
+      [
+        "Teflon",
+        57
+      ]
+    ],
+    "catalogue_groups_missing_table_rows": [
+      {
+        "material": "Kapton",
+        "number": 112,
+        "example_file": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_253_14_kapton_run112.xls&version=1&studyVersion=4"
+      }
+    ],
+    "published_completed_test_points": 66,
+    "published_scope": "NASA's PSI-101 Approach section counts completed SAME-R flight test points, 16 July to 9 September 2010. Post-flight ground tests are described separately.",
+    "published_source": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+    "boundary": "A folder confirms a material/number catalogue association. The source does not list the mission's completion decision per observation. A repeat or reburn remains a distinct numbered group. Row numbers count the CSV header as row 1."
+  },
+  "cfi_g": {
+    "predicate": "Keep all nonempty CFI-G rows, across all fuels and ignition outcomes. Normal flames: Decimal(row[' XO2 before test']) >= Decimal('0.34') (column F, initial chamber). Inverse flames: Decimal(row['XO2']) >= Decimal('0.34') (column H, burner stream).",
+    "nonempty_attempts": 333,
+    "by_location": {
+      "initial_chamber": 179,
+      "burner_stream": 154
+    },
+    "above_or_equal": {
+      "initial_chamber": 113,
+      "burner_stream": 106
+    },
+    "naively_pooled": 219,
+    "extra_burner_only_matches": 106,
+    "boundary": "A burner-stream oxygen value cannot establish ambient cabin oxygen. The corrected result identifies source chamber conditions in gas-flame tests; it is not a validated habitat material comparison."
+  },
+  "source_tables": [
+    {
+      "file_name": "PSI-101_Experimental table_SAME-R.csv",
+      "file_size": 5674,
+      "version": 1,
+      "restricted": false,
+      "visible": true,
+      "local_file": "PSI-101-experimental.csv",
+      "download_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Experimental+table_SAME-R.csv&version=1&studyVersion=4",
+      "sha256": "87164b7dc9168a4273c159f7a9f23699afbd06ad97b77974377e79b9bf8a3bef"
+    },
+    {
+      "file_name": "PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+      "file_size": 22166,
+      "version": 1,
+      "restricted": false,
+      "visible": true,
+      "local_file": "PSI-159-experimental.csv",
+      "download_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-159/download?file=PSI-159_Experimental+table_CFI-G_Normal+Flames.csv&version=1&studyVersion=1",
+      "sha256": "d95a621c3fbd27d204dd32ed29fa17d68f2b779d6a523cde8479ed7ebaa5251a"
+    },
+    {
+      "file_name": "PSI-159_Experimental table_CFI-G_Inverse Flames.csv",
+      "file_size": 39422,
+      "version": 1,
+      "restricted": false,
+      "visible": true,
+      "local_file": "PSI-159-experimental-2.csv",
+      "download_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-159/download?file=PSI-159_Experimental+table_CFI-G_Inverse+Flames.csv&version=1&studyVersion=1",
+      "sha256": "d4d44f8b9896936728748e34d1b6ad0812032a92fa5289599b708c138e3a9b39"
+    }
+  ],
+  "psi_file_list_endpoint": "https://psi.nasa.gov/geode-py/ws/files/v2",
+  "file_census_sha256": "1a4fe79db869951e3fceb7092adf47711cfd6018c6c14ae5e38a7b5c13eb46c3"
+}
