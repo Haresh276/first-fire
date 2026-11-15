@@ -95,7 +95,7 @@
   "explore-nav.css": "0ca1846e288099de5524ae41fb2767af8bf92ca1cadf5e7e9c97f285825bda85",
   "explorer.js": "c34caae7f1b53070092b3b31e5ed066f45ed127ad159548a6eff1b5a8444efe7",
   "field-guide.js": "0d1afae56ad7dc93cc295436721b281fe2cc519e9ee008e174c9b34fa99556c0",
-  "fire-lab.html": "5f8f355233520aa2cabeb2d07cb0ebf0c403ca9d82301311b5e86b59baca79e4",
+  "fire-lab.html": "9d70760fb9a1e47d44c898cdc25ea27ebbc771213de914bbf35e7ea0986c7a14",
   "first-fire-demo.mp4": "a5cadb09e686fc77419145ed0a9cd40c42ae7f8dc00bb93510d860c8bfdd8604",
   "first-fire-demo.pdf": "8632290f82ab4fbc4960ca2b633660400c56fa8758a053fdc35ec84939a39156",
   "first-fire-field-guide.pdf": "e5784f1fdd3ee6314c04f15e1f577bcbbc14e8440a5be353ed582e6e2dcf07e7",
@@ -145,7 +145,7 @@
   "flint-solid.js": "72b0a3859b117ed3099e8becca30b02443f015fd12f5f7d9fa2c13c40b953612",
   "flint.html": "609119132630f0ba8d0dea103e9c3e822ac458a482ba4da2852f370e963dd764",
   "fm2-decoder-data.js": "5b16392e713d021005df8bf2479c6df66a868e3f85a7bdbe3ac2fad8e0f46c69",
-  "fm2-decoder.html": "fcad9fd31cc3f928d78f953f7b037f13c34d74f60c7bce6d2f0850bb03e46811",
+  "fm2-decoder.html": "2f42ad3085aeca7212a75e9ab1a0822b3dacbcc81ed4256fdef2dd936cd6d532",
   "fm2-worked-example.png": "c6342b32d18d429800cd7668284c561556235b9a8b91dc4aa12c5c5483aeb871",
   "fonts/barlow-bold.ttf": "7dde307fa887fc65ff5830cfada77a7decc5dae8d3c816c9d39ba3f1af1c4ed7",
   "fonts/barlow-license.txt": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
@@ -184,8 +184,9 @@
   "judge-lab.html": "d6e407270444d3ae8812c6de79422bba3c11141ad80e9e0f3d0348681c0081fa",
   "judging-evidence.html": "9b368720fc8e9bc802410a8f9037bed62a7f91afe955d0e23c2c178d36d0c914",
   "judging.css": "45010ba3d4fc0fd3681ee2f12193aa712844d55370145fbbb3273dfdfe8e4f26",
-  "judging.html": "0561b20a72217799c5776b9e947d38f1de716f6a957798c0b90f8ef228c5a9ff",
-  "lab.css": "856ee0e916caa91905ccc61b193bdbb9eb961e77dea5e6b570ed18ff9c585ac1",
+  "judging.html": "da4cf994f806d3f616e0c64dc2ef6c8bead4b253bceb62f024b5db2c12c34916",
+  "lab-film.mp4": "fe5ff8b39f456e4a4842bbbef827129895cca30b231aaf030a39ed5059e3c6a5",
+  "lab.css": "a91869c27dc76779d860b69f2358536da6c5e3461f174567f4002cbd96853797",
   "landing.html": "e7199ca3fd8249afbe560e34875dd896ae5467c99d7de0e866ef559b2198447e",
   "licenses/model-LICENSE.txt": "b0214f148eceae739f916209e78cfe15712c4b810c8bc9d44b6c2d1d1616aab6",
   "licenses/model-README.md": "38af170acce93b5eb0c4e18659ab0b30581b2f6860f3e12d8ba8b8751e249363",
@@ -460,5 +461,5 @@
   "first-fire-rover-film.zip": "1c5c4c2c570cfc3aa8de38862a71896ccfb4d4bb10f5f320a167a156940c0886",
   "first-fire-reproduction.zip": "e3e97145f1e4beadbd9314cea83b5f06da8de0d6b2171d3f21f1d15baf876bc8",
   "offline-packs.json": "a8d62e29eee686244658929fd3b8b28047140e815a1397c73b29a344d565bf82",
-  "first-fire-offline.zip": "8cb8fd1c2853041b1a041648199e76ffd64106781b4bcbd426d4e100088bf8f0"
+  "first-fire-offline.zip": "11d2f2bf497ebc7868860af955bf25a5ce34ffe283c58961ab3cf08ddb79da64"
 }

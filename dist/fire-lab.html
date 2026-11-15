@@ -18,7 +18,7 @@
 <p style="text-align:center"><span class="badge" id="badge">–</span></p><p class="note" id="badgenote" style="text-align:center"></p></div>
 </div></section>
 <section aria-labelledby="mats"><p class="eyebrow">Four materials found in crew cabins</p><h2 id="mats">Who keeps burning?</h2><div class="grid4" id="cards"></div>
-<p class="note">The oxygen limit is the least oxygen a material needs to keep spreading a flame. If the cabin has more oxygen than the limit, the material burns. "Blown off" means the flow outruns the chemistry; "starved" means the flow is too weak to feed the flame faster than it loses heat.</p></section>
+<p class="note">±1.7 is FLINT's model error, measured by predicting each of NASA's four lunar tests with that material held out. Within that band a result is too close to call. The oxygen limit is the least oxygen a material needs to keep spreading a flame. If the cabin has more oxygen than the limit, the material burns. "Blown off" means the flow outruns the chemistry; "starved" means the flow is too weak to feed the flame faster than it loses heat.</p></section>
 <section aria-labelledby="curve"><p class="eyebrow">The whole picture</p><h2 id="curve">Oxygen limit at every gravity</h2>
 <svg class="chart" id="chart" viewBox="0 0 900 380" role="img" aria-label="Oxygen limit of each material from orbit to Earth gravity, with the cabin oxygen level and the chosen gravity marked"></svg>
 <div class="legend" id="legend"></div>
@@ -88,9 +88,10 @@
       const r = S.solve(key, g, P, fan), lim = 100 * r.limit, ok = Number.isFinite(lim);
       const margin = ok ? X - lim : NaN; if (ok) modelled++; if (margin > 0) burning++;
       const why = !ok ? 'not modelled here' : r.branch.startsWith('quenching') ? 'limited by starving' : 'limited by blow-off';
-      html += `<div class="mat ${margin > 0 ? 'burns' : 'out'}"><svg viewBox="0 0 100 70" aria-hidden="true">${mini(margin)}</svg><b>${name}</b><span class="note">${use}</span>` +
-        `<span class="lim">${ok ? lim.toFixed(1) + '%' : '–'}</span><span class="note">oxygen limit, ${why}</span>` +
-        `<span class="verdict">${!ok ? 'Not modelled' : margin > 0 ? 'Keeps burning, ' + margin.toFixed(1) + ' points over' : 'Goes out, ' + (-margin).toFixed(1) + ' points short'}</span></div>`;
+      const close = ok && Math.abs(margin) <= 1.7;
+      html += `<div class="mat ${close ? 'close' : margin > 0 ? 'burns' : 'out'}"><svg viewBox="0 0 100 70" aria-hidden="true">${mini(margin)}</svg><b>${name}</b><span class="note">${use}</span>` +
+        `<span class="lim">${ok ? lim.toFixed(1) + '%' : '–'}<small> ±1.7</small></span><span class="note">oxygen limit, ${why}</span>` +
+        `<span class="verdict">${!ok ? 'Not modelled' : close ? 'Too close to call (' + (margin > 0 ? '+' : '') + margin.toFixed(1) + ' points)' : margin > 0 ? 'Keeps burning, ' + margin.toFixed(1) + ' points over' : 'Goes out, ' + (-margin).toFixed(1) + ' points short'}</span></div>`;
     }
     $('cards').innerHTML = html;
     $('count').textContent = modelled ? `${burning} of 4` : '–';
@@ -98,6 +99,7 @@
     const [cls, label, note] = badge(g, P, fan); $('badge').className = 'badge ' + cls; $('badge').textContent = label; $('badgenote').textContent = note;
     chart(P, fan, g, X);
     document.querySelectorAll('[data-g]').forEach(b => b.setAttribute('aria-pressed', String(Math.abs(+b.dataset.g - g) < 0.004)));
+    try { history.replaceState(null, '', `?g=${g.toFixed(4)}&p=${P}&x=${X}&fan=${fan}`); } catch (e) {}
   }
   $('legend').innerHTML = MATS.map(([, name, , col]) => `<span><i style="background:${col}"></i>${name}</span>`).join('');
   document.querySelectorAll('[data-g]').forEach(b => b.addEventListener('click', () => { $('g').value = toS(+b.dataset.g); update(); }));

@@ -35,3 +35,4 @@
 .legend i{display:inline-block;width:18px;height:4px;vertical-align:middle;margin-right:6px}
 .hero-flame{width:100%;max-width:280px;height:auto;display:block;margin:auto}
 @media(max-width:900px){.panel{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}}
+.mat.close .verdict{color:#9a6a00}.mat .lim small{font-size:.8rem;font-weight:400;color:#40574e;letter-spacing:0}

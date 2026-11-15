@@ -16,6 +16,8 @@ The 30-second captioned film: https://first-fire-lunar-lab.vercel.app/master-fil
 
 The demo must be a video of 30 seconds or less, or at most seven slides. Our Round 2 deck has twelve slides, so link the film.
 
+Alternative: https://first-fire-lunar-lab.vercel.app/lab-film.mp4, a 29.8-second captioned screen film of the live gravity fire lab and the FM² decoder. Pick one: the original film tells the story; this one shows the tools working.
+
 ## Link to final project
 
 https://first-fire-lunar-lab.vercel.app/judging.html

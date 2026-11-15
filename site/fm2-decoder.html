@@ -84,6 +84,9 @@
     btn.dataset.p.split(',').forEach((v, k) => { $(ids[k]).value = v; }); update();
   }));
   [...ids, 'sd'].forEach(id => $(id).addEventListener('input', update));
+  const q = new URLSearchParams(location.search);
+  if (q.has('l')) q.get('l').split(',').slice(0, 4).forEach((v, k) => { if (Number.isFinite(+v)) $(ids[k]).value = +v; });
   update();
+  [...ids, 'sd'].forEach(id => $(id).addEventListener('change', () => { try { history.replaceState(null, '', '?l=' + ids.map(i => $(i).value).join(',')); } catch (e) {} }));
 })();
 </script></body></html>
