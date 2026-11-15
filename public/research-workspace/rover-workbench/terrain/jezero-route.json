@@ -1,0 +1,35 @@
+{
+  "id": "perseverance-sol15",
+  "mission": "Mars 2020",
+  "sol": 15,
+  "fromRMC": "3_110",
+  "toRMC": "3_386",
+  "cataloguedLengthM": 36.39,
+  "inputCoordinates": 47,
+  "originLonLat": [
+    77.45094675,
+    18.44454338
+  ],
+  "frame": "Local equirectangular metres. +X east and +Z north. Assumed Mars radius 3389500 m.",
+  "simplificationToleranceM": 0.15,
+  "sourceUrl": "https://mars.nasa.gov/mmgis-maps/M20/Layers/json/M20_traverse.json",
+  "missionMapUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/location-map/",
+  "upstreamSnapshotName": "M20_Traverse_Path_tosol2022",
+  "upstreamSha256": "6ddd0ece913d75b45d105946082f95ed84e68f4718b68d32a4421dc30877e7e6",
+  "featureSha256": "cb233a675fb31af4d941f4effad9800304d1a1ba15ed5eb87c7647543724fa88",
+  "limits": "Flight horizontal path reference only. Source elevations are retained in the GeoJSON. The replay uses a flat surface and the hypothetical vehicle, speed, control and power model.",
+  "waypoints": [
+    {
+      "xM": -0.624,
+      "zM": 8.6566
+    },
+    {
+      "xM": -0.3154,
+      "zM": 24.9771
+    },
+    {
+      "xM": 4.8981,
+      "zM": 35.002
+    }
+  ]
+}

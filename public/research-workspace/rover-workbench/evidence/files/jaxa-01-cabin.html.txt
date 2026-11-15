@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXRW3FP');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>アルテミス計画の広範な月面探査を支える有人与圧ローバーの開発最前線にせまる | JAXA 有人宇宙技術部門</title>
+<meta name="description" content="ISSや「きぼう」などを舞台に実施される日本の有人宇宙活動には、多岐に渡るスペシャリストが関わっています。それぞれのスペシャリストたちは有人宇宙活動とどのように関わっているのでしょうか。インタビューで詳しく話を聞きました。">
+<meta property="og:title" content="アルテミス計画の広範な月面探査を支える有人与圧ローバーの開発最前線にせまる | JAXA 有人宇宙技術部門">
+<meta property="og:description" content="ISSや「きぼう」などを舞台に実施される日本の有人宇宙活動には、多岐に渡るスペシャリストが関わっています。それぞれのスペシャリストたちは有人宇宙活動とどのように関わっているのでしょうか。インタビューで詳しく話を聞きました。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://humans-in-space.jaxa.jp/space-job/specialist/voice/detail/13.html">
+<meta property="og:image" content="https://humans-in-space.jaxa.jp/space-job/specialist/voice/item/13/img_01.jpg">
+<meta property="og:site_name" content="JAXA 有人宇宙技術部門">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="アルテミス計画の広範な月面探査を支える有人与圧ローバーの開発最前線にせまる | JAXA 有人宇宙技術部門">
+<meta name="twitter:description" content="ISSや「きぼう」などを舞台に実施される日本の有人宇宙活動には、多岐に渡るスペシャリストが関わっています。それぞれのスペシャリストたちは有人宇宙活動とどのように関わっているのでしょうか。インタビューで詳しく話を聞きました。">
+<meta name="twitter:url" content="https://humans-in-space.jaxa.jp/space-job/specialist/voice/detail/13.html">
+<meta name="twitter:image" content="https://humans-in-space.jaxa.jp/space-job/specialist/voice/item/13/img_01.jpg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#00599c">
+<link rel="manifest" crossorigin="use-credentials" href="/manifest.json">
+<link rel="shortcut icon" href="/assets/images/common/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/images/common/homeicon_180x180.png" size="180x180">
+<link rel="icon" type="image/png" href="/assets/images/common/homeicon_192x192.png" sizes="192x192">
+<link rel="canonical" href="https://humans-in-space.jaxa.jp/space-job/specialist/voice/detail/13.html">
+<link rel="index" href="/" />
+<link rel="stylesheet" href="/assets/css/style.css?240327">
+<script src="/assets/js/font.js"></script>
+</head>
+<body class="is-page-undefined">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXRW3FP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="l-header -c">
+<div class="l-header-logo">
+<div class="l-header-logo__container -jaxa">
+<a href="https://www.jaxa.jp/" target="_blank" class="l-header-logo__link">
+<div class="l-header-logo__base">
+<picture>
+<source media="(min-width: 1366px)" srcset="/assets/images/common/logo_header_jaxa_lg.svg">
+<source media="(min-width: 1100px)" srcset="/assets/images/common/logo_header_jaxa_md.svg">
+<img src="/assets/images/common/logo_header_jaxa.svg" alt="JAXA">
+</picture>
+</div>
+<div class="l-header-logo__top"><img src="/assets/images/common/logo_header_jaxa_top.svg" alt="JAXA"></div>
+</a>
+</div>
+<div class="l-header-logo__container -humans">
+<a href="/" class="l-header-logo__link">
+<div class="l-header-logo__base">
+<picture>
+<source media="(min-width: 1366px)" srcset="/assets/images/common/logo_header_humans_lg.svg">
+<source media="(min-width: 1100px)" srcset="/assets/images/common/logo_header_humans_md.svg">
+<img src="/assets/images/common/logo_header_humans.svg" alt="有人宇宙技術部門 Humans in Space">
+</picture>
+</div>
+<div class="l-header-logo__top"><img src="/assets/images/common/logo_header_humans_top.svg" alt="有人宇宙技術部門 Humans in Space"></div>
+</a>
+</div>
+</div>
+<a href="/" class="l-header-sm__btn -search">検索</a>
+<div class="l-header-sm__search">
+<form action="/search/">
+<input type="hidden" name="cx" value="93d9ec63b84eac3e9">
+<input type="hidden" name="ie" value="UTF-8">
+<input type="text" placeholder="フリーワード検索" name="q">
+<button type="submit" sname="sa" value="a"></button>
+</form>
+</div>
+<a href="/" class="l-header-sm__btn -menu">メニュー</a>
+<nav class="l-header-sm__nav">
+<a href="/kibo/" class="l-header-sm__link -parent">「きぼう」日本実験棟</a>
+<div class="l-header-sm__child">
+<a href="/kibo/" class="l-header-sm__link -child">「きぼう」日本実験棟 トップ</a>
+<a href="/kibo/structure/" class="l-header-sm__link -child">「きぼう」のつくり</a>
+<a href="/kibo/result/" class="l-header-sm__link -child">「きぼう」でできること</a>
+<a href="/kibo/operation/" class="l-header-sm__link -child">「きぼう」の運用</a>
+<a href="/kibo/tour/" class="l-header-sm__link -child">「きぼう」ツアー</a>
+<a href="/kibo/view/" class="l-header-sm__link -child">「きぼう」の窓から</a>
+<a href="/kibouser/" class="l-header-sm__link -child">「きぼう」利用のご案内</a>
+<a href="/biz-lab/kuoa/" class="l-header-sm__link -child">きぼうアジア利用推進室（KUOA）</a>
+</div>
+<a href="/iss/" class="l-header-sm__link -parent">国際宇宙ステーション（ISS）</a>
+<div class="l-header-sm__child">
+<a href="/iss/" class="l-header-sm__link -child">国際宇宙ステーション（ISS） トップ</a>
+<a href="/iss/about/" class="l-header-sm__link -child">国際宇宙ステーション（ISS）とは</a>
+<a href="/iss/crew/" class="l-header-sm__link -child">ISS滞在クルー</a>
+<a href="/iss/flight/" class="l-header-sm__link -child">ISSへのフライト情報</a>
+<a href="/iss/launch/" class="l-header-sm__link -child">ISSへの打上げ機</a>
+<a href="/iss/eva/" class="l-header-sm__link -child">ISS関連の船外活動</a>
+</div>
+<a href="/htv/" class="l-header-sm__link -parent">宇宙ステーション補給機</a>
+<div class="l-header-sm__child">
+<a href="/htv/" class="l-header-sm__link -child">宇宙ステーション補給機 トップ</a>
+<a href="/htv/mission/" class="l-header-sm__link -child">HTV-X ミッション</a>
+<a href="/htv/mission/htv-x1/" class="l-header-sm__link -child">HTV-X1号機 ミッション</a>
+<a href="/htv/mission/jdocx/" class="l-header-sm__link -child">JDOCX ミッション</a>
+</div>
+<a href="/future/" class="l-header-sm__link -child">国際宇宙探査の取り組み</a>
+<!-- <div class="l-header-sm__child">
+<a href="/future/" class="l-header-sm__link -child">国際宇宙探査の取り組み トップ</a>
+<a href="/future/artemis/" class="l-header-sm__link -child">アルテミス計画</a>
+<a href="/future/rover/" class="l-header-sm__link -child">有人与圧ローバ</a>
+<a href="/future/robotics/" class="l-header-sm__link -child">ロボティクス</a>
+<a href="/future/eclss/" class="l-header-sm__link -child">ECLSS</a>
+</div> -->
+<a href="/space-job/" class="l-header-sm__link -parent">宇宙のしごと</a>
+<div class="l-header-sm__child">
+<a href="/space-job/" class="l-header-sm__link -child">宇宙のしごと トップ</a>
+<a href="/space-job/astronaut/" class="l-header-sm__link -child">JAXA宇宙飛行士</a>
+<a href="/space-job/specialist/" class="l-header-sm__link -child">地上で支える人びと</a>
+<a href="https://astro-mission.jaxa.jp/" class="l-header-sm__link -child">JAXA 宇宙飛行士特設サイト</a>
+</div>
+<a href="/life/" class="l-header-sm__link -parent">宇宙のくらし</a>
+<div class="l-header-sm__child">
+<a href="/life/" class="l-header-sm__link -child">宇宙のくらし トップ</a>
+<a href="/life/wear-in-space/" class="l-header-sm__link -child">宇宙で着る</a>
+<a href="/life/food-in-space/" class="l-header-sm__link -child">宇宙で食べる</a>
+<a href="/life/health-in-space/" class="l-header-sm__link -child">宇宙とからだ</a>
+<a href="/biz-lab/med-in-space/healthcare/cpi/" class="l-header-sm__link -child">宇宙で使う</a>    
+</div>
+<a href="/event/" class="l-header-sm__link -child">イベント・セミナー</a>
+<a href="/enjoy/" class="l-header-sm__link -child">Enjoy Space Experience</a>
+<a href="/supporter/" class="l-header-sm__link -child">つながる・ひろがる</a>
+<a href="/mailmagazine/" class="l-header-sm__link -child">メールマガジンのご案内</a>
+<a href="/about/" class="l-header-sm__link -child"><span>有人宇宙技術部門について</span></a>
+<div class="l-header-sm__inner">
+<div class="l-header-sm__inner-col2">
+<a href="/news/" class="l-header-sm__link -icon -news">ニュース</a>
+<a href="/gallery/" class="l-header-sm__link -icon -gallery"><span>ギャラリー</span></a>
+</div>
+<div class="l-header-sm__inner-col2">
+<a href="/faq/" class="l-header-sm__link -icon -faq"><span>よくあるご質問</span></a>
+<a href="/glossary/" class="l-header-sm__link -icon -glossary"><span>用語集</span></a>
+</div>
+</div>
+<div class="l-header-sm__bottom">
+<div>
+<a href="/story/" class="l-header-sm__bn"><img src="/assets/images/common/header_bn_story.png" alt="さあ、次の冒険へ。Our Story ストーリーを読んでクイズに答えよう！"></a>
+<a href="/biz-lab/" class="l-header-sm__bn"><img src="/assets/images/common/header_bn_bizlab.png" alt="企業・研究機関の皆様へ 宇宙環境利用をお考えの方へ"></a>
+<a href="/kibouser/" class="l-header-sm__bn"><img src="/assets/images/common/header_bn_kibouser.png" alt="ビジネスや研究・開発に 「きぼう」利用のご案内"></a>
+</div>
+<a href="/for-media/" class="l-header-sm__link -min"><span>報道関係者の皆さまへ</span></a>
+<a href="/sns-policy/" class="l-header-sm__link -min">SNS運用方針</a>
+<a href="https://www.jaxa.jp/policy_j.html" target="_blank" rel="noopener" class="l-header-sm__link -min c-icon -blank">サイトポリシー・利用規約</a>
+<a href="/en/" class="l-header-sm__link -min"><span>English</span></a>
+</div>
+</nav>
+<div class="l-header-lg">
+<nav class="l-header-lg__nav">
+<div class="l-header-lg__inner -top">
+<a href="/news/" class="l-header-lg__link -sm"><span>ニュース</span></a>
+<a href="/event/" class="l-header-lg__link -sm"><span>イベント・セミナー</span></a>
+<a href="/gallery/" class="l-header-lg__link -sm"><span>ギャラリー</span></a>
+<a href="/faq/" class="l-header-lg__link -sm"><span>よくあるご質問</span></a>
+<a href="/about/" class="l-header-lg__link -sm"><span>有人宇宙技術部門について</span></a>
+<div class="l-header-lg-search">
+<a href="/" class="l-header-lg__btn -search">検索</a>
+<form action="/search/">
+<input type="hidden" name="cx" value="93d9ec63b84eac3e9">
+<input type="hidden" name="ie" value="UTF-8">
+<input type="text" placeholder="フリーワード検索" name="q" class="l-header-lg-search__input">
+<button type="submit" sname="sa" value="a"></button>
+</form>
+<a class="l-header-lg-search__btn-close"></a>
+</div>
+<div class="l-header__btn -guide -c"><a href="/biz-lab/"><span>企業・研究機関の皆様へ</span></a></div>
+</div>
+<div class="l-header-lg__inner -bottom">
+<div class="l-header-lg__dropdown">
+<a href="/kibo/" class="l-header-lg__link -lg"><span>きぼう</span></a>
+<div class="l-header-lg-menu">
+<div class="l-header-lg-menu__container">
+<div class="l-header-lg-menu__container-left">
+<p class="l-header-lg-menu__ttl -theme-yellow">「きぼう」日本実験棟</p>
+<div class="l-header-lg-menu__textarea">
+<div class="l-header-lg-menu__img"><img src="/assets/images/common/header_menu_kibo.jpg" alt="「きぼう」日本実験棟"></div>
+<p class="l-header-lg-menu__copy">日本ではじめての有人宇宙施設。宇宙環境を利用したさまざまな実験や観測が、ここで行われています。</p>
+</div>
+<div class="c-linkA"><a href="/kibo/">詳しく見る</a></div>
+</div>
+<div class="l-header-lg-menu__container-right">
+<ul class="c-linkList -sm">
+<li><a href="/kibo/structure/">「きぼう」のつくり</a></li>
+<li><a href="/kibo/result/">「きぼう」でできること</a></li>
+<li><a href="/kibo/operation/">「きぼう」の運用</a></li>
+<li><a href="/kibo/tour/">「きぼう」ツアー</a></li>
+<li><a href="/kibo/view/">「きぼう」の窓から</a></li>
+<li><a href="/kibouser/">「きぼう」利用のご案内</a></li>
+<li><a href="/biz-lab/kuoa/">きぼうアジア利用推進室（KUOA）</a></li>
+</ul>
+<a href="/biz-lab/" class="l-header-lg-menu__bn"><img src="/assets/images/common/header_menu_bn_kibo.jpg" alt=""></a>
+</div>
+</div>
+</div>
+</div>
+<div class="l-header-lg__dropdown">
+<a href="/iss/" class="l-header-lg__link -lg"><span>ISS</span></a>
+<div class="l-header-lg-menu">
+<div class="l-header-lg-menu__container">
+<div class="l-header-lg-menu__container-left">
+<p class="l-header-lg-menu__ttl -theme-yellow">国際宇宙ステーション（ISS）</p>
+<div class="l-header-lg-menu__textarea">
+<div class="l-header-lg-menu__img"><img src="/assets/images/common/header_menu_iss.jpg" alt=""></div>
+<p class="l-header-lg-menu__copy">地上から約400km上空に建設された巨大な有人実験施設。アメリカやロシア、日本など計15カ国が協力して計画を進め、運用しています。</p>
+</div>
+<div class="c-linkA"><a href="/iss/">詳しく見る</a></div>
+</div>
+<div class="l-header-lg-menu__container-right">
+<ul class="c-linkList -sm">
+<li><a href="/iss/about/">国際宇宙ステーション（ISS）とは</a></li>
+<li><a href="/iss/crew/">ISS滞在クルー</a></li>
+<li><a href="/iss/flight/">ISSへのフライト情報</a></li>
+<li><a href="/iss/launch/">ISSへの打上げ機</a></li>
+<li><a href="/iss/eva/">ISS関連の船外活動</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="l-header-lg__dropdown">
+<a href="/htv/" class="l-header-lg__link -lg"><span>宇宙ステーション補給機</span></a>
+<div class="l-header-lg-menu">
+<div class="l-header-lg-menu__container">
+<div class="l-header-lg-menu__container-left">
+<p class="l-header-lg-menu__ttl -theme-yellow">宇宙ステーション補給機</p>
+<div class="l-header-lg-menu__textarea">
+<div class="l-header-lg-menu__img"><img src="/assets/images/common/header_menu_htv.jpg" alt=""></div>
+<p class="l-header-lg-menu__copy">新型宇宙ステーション補給機（HTV-X）は、ISSへ物資を運ぶだけでなく、将来の宇宙技術を拓く舞台としても期待されています。</p>
+</div>
+<div class="c-linkA"><a href="/htv/">詳しく見る</a></div>
+</div>
+<div class="l-header-lg-menu__container-right">
+<ul class="c-linkList -sm">
+<!-- <li><a href="/htv/htv-x/">HTV-Xのミッション</a></li> -->
+<li><a href="/htv/mission/">HTV-X ミッション</a></li>
+<li><a href="/htv/mission/jdocx/">JDOCX ミッション</a></li>
+</ul>
+<a href="/htv/mission/htv-x1/" class="l-header-lg-menu__bn"><img src="/assets/images/common/header_menu_bn_htv-x1.png" alt="HTV-X1 ミッションサイト"></a>
+</div>
+</div>
+</div>
+</div>
+<a href="/future/" class="l-header-lg__link -lg"><span>国際宇宙探査の取り組み</span></a>
+<!-- <div class="l-header-lg__dropdown">
+<a href="/future/" class="l-header-lg__link -lg"><span>国際宇宙探査の取り組み</span></a>
+<div class="l-header-lg-menu">
+<div class="l-header-lg-menu__container">
+<div class="l-header-lg-menu__container-left">
+<p class="l-header-lg-menu__ttl -theme-red">国際宇宙探査の取り組み</p>
+<div class="l-header-lg-menu__textarea">
+<div class="l-header-lg-menu__img"><img src="/assets/images/common/header_menu_future.jpg" alt=""></div>
+<p class="l-header-lg-menu__copy">簡単な説明コピーが入る。ダミー。簡単な説明コピーが入る。ダミー。簡単な説明コピーが入る。</p>
+</div>
+<div class="c-linkA"><a href="/future/">詳しく見る</a></div>
+</div>
+<div class="l-header-lg-menu__container-right">
+<ul class="c-linkList -sm">
+<li><a href="/future/artemis/">アルテミス計画</a></li>
+<li><a href="/future/rover/">有人与圧ローバ</a></li>
+<li><a href="/future/robotics/">ロボティクス</a></li>
+<li><a href="/future/eclss/">ECLSS</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div> -->
+<div class="l-header-lg__dropdown">
+<a href="/space-job/" class="l-header-lg__link -lg"><span>宇宙のしごと</span></a>
+<div class="l-header-lg-menu">
+<div class="l-header-lg-menu__container">
+<div class="l-header-lg-menu__container-left">
+<p class="l-header-lg-menu__ttl -theme-lightBlue">宇宙のしごと</p>
+<div class="l-header-lg-menu__textarea">
+<div class="l-header-lg-menu__img"><img src="/assets/images/common/header_menu_space_job.jpg" alt=""></div>
+<p class="l-header-lg-menu__copy">JAXA宇宙飛行士の活動や実績、宇宙活動を地上から支えるスペシャリストたちのしごとを紹介します。</p>
+</div>
+<div class="c-linkA"><a href="/space-job/">詳しく見る</a></div>
+</div>
+<div class="l-header-lg-menu__container-right">
+<ul class="c-linkList -sm">
+<li><a href="/space-job/astronaut/">JAXA宇宙飛行士</a></li>
+<li><a href="/space-job/specialist/">地上で支える人びと</a></li>
+<li><a href="https://astro-mission.jaxa.jp/">JAXA 宇宙飛行士特設サイト</a></li>
+</ul>
+<a href="https://astro-mission.jaxa.jp/onishi/" class="l-header-lg-menu__bn"><img src="/assets/images/common/header_menu_bn_space_job_onishi_520x180.jpg?241127" alt="大西宇宙飛行士 ISS長期滞在ミッション特設サイト"></a>
+<a href="https://astro-mission.jaxa.jp/yui/" class="l-header-lg-menu__bn u-mt24"><img src="/assets/images/common/header_menu_bn_space_job_yui_520x180.jpg?250501" alt="油井宇宙飛行士 ISS長期滞在ミッション特設サイト"/></a>
+<!-- <a href="https://astro-mission.jaxa.jp/" class="l-header-lg-menu__bn u-mt24"><img src="/assets/images/common/header_menu_bn_space_job_astronauts.jpg" alt="宇宙飛行士特設サイト"/></a> -->
+</div>
+</div>
+</div>
+</div>
+<div class="l-header-lg__dropdown">
+<a href="/life/" class="l-header-lg__link -lg"><span>宇宙のくらし</span></a>
+<div class="l-header-lg-menu">
+<div class="l-header-lg-menu__container">
+<div class="l-header-lg-menu__container-left">
+<p class="l-header-lg-menu__ttl -theme-green">宇宙のくらし</p>
+<div class="l-header-lg-menu__textarea">
+<div class="l-header-lg-menu__img"><img src="/assets/images/common/header_menu_life.jpg" alt=""></div>
+<p class="l-header-lg-menu__copy">厳しい環境の宇宙空間。宇宙服や宇宙日本食、宇宙飛行士の健康管理などを通して宇宙での生活を紹介します。</p>
+</div>
+<div class="c-linkA"><a href="/life/">詳しく見る</a></div>
+</div>
+<div class="l-header-lg-menu__container-right">
+<ul class="c-linkList -sm">
+<li><a href="/life/wear-in-space/">宇宙で着る</a></li>
+<li><a href="/life/food-in-space/">宇宙で食べる</a></li>
+<li><a href="/life/health-in-space/">宇宙とからだ</a></li>
+<li><a href="/biz-lab/med-in-space/healthcare/cpi/">宇宙で使う</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<a href="/en/" class="l-header-lg__btn -lang">EN</a>
+</div>
+</nav>
+<div class="l-header-lg-menu-bg"></div>
+</div>
+</header>
+
+<main class="l-main">
+<ol class="p-breadcrumb">
+<li><a href="/">ホーム</a></li>
+<li><a href="/space-job/">宇宙のしごと</a></li>
+<li><a href="/space-job/specialist/">地上で支える人びと</a></li>
+<li><a href="/space-job/specialist/voice/">スペシャリストの声</a></li>
+<li>アルテミス計画の広範な月面探査を支える有人与圧ローバーの開発最前線にせまる</li>
+</ol>
+<div class="c-bgSkew"></div>
+<div class="l-main__top p-mainHeading -typeD">
+<div class="p-mainHeading__inner">
+<div class="p-mainHeading__date c-date -lg">2026.03.31</div>
+<ul class="p-mainHeading__catLabel01 c-catLabel1 -lg"><li>スペシャリストの声</li></ul>
+<h1 class="p-mainHeading__ttl c-heading1 -article">アルテミス計画の広範な月面探査を支える<br>有人与圧ローバーの開発最前線にせまる</h1>
+<div class="p-event-infoTxt02">有人宇宙技術部門有人与圧ローバーエンジニアリングセンター<br>土居 龍弥</div>
+</div>
+<div class="p-mainHeading__sns c-snsShere">
+<div class="c-snsShere__label">Share</div>
+<ul class="c-snsShere__btn">
+<li><a href="javascript:window.open('https://www.facebook.com/sharer.php?u='+encodeURIComponent(location.href),'sharewindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1, resizable=!');" title="Facebook"><i class="c-icon -facebook"></i></a></li>
+<li><a href="javascript:window.open('https://twitter.com/share?text='+encodeURIComponent(document.title)+'&amp;url='+encodeURIComponent(location.href),'sharewindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1, resizable=!');" title="X (Twitter)"><i class="c-icon -x"></i></a></li>
+<li><a href="javascript:window.open('https://line.me/R/msg/text/?'+encodeURIComponent(document.title)+'%20'+encodeURIComponent(location.href),'sharewindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1, resizable=!');" title="Line"><i class="c-icon -line"></i></a></li>
+</ul>
+</div>
+</div>
+<div class="l-main__content">
+<div class="l-section -mb-lg -w-md">
+<div class="l-inner -mb-lg">
+<figure class="c-imgCard -w-free"><img src="/space-job/specialist/voice/item/13/img_01.jpg" alt=""></figure>
+</div>
+<div class="p-editorStyles">
+<div class="c-txt">今、人類はより遠くの宇宙へと探査の範囲を広げようとしています。その第一歩として、アメリカを中心に進められているのが、有人月探査プログラム「アルテミス計画」です。アルテミス計画では、半世紀ぶりとなる有人月面着陸を含む複数の有人月面探査の実施が予定されています。人類の持続的な月面探査を進めるうえで、日本が大きく貢献すると期待されているのが、「有人与圧ローバー」です。この前例のない挑戦に取り組む土居龍弥さんに、開発への思いと現場のリアルを伺いました。</div>
+<h2>“動く居住空間” で月面を探査</h2>
+<div class="p-editorStyles__richTxt"><p class="c-heading3"><span style="color: #00599c;"><strong>Q: 有人与圧ローバーは、どういう乗り物ですか。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>わかりやすく言うと、「月面を走るキャンピングカー」です。有人与圧ローバーは、月面での移動機能と、宇宙服を脱いで居住する機能の両方を備える、世界初の乗り物です。現在、JAXAが自動車メーカーのトヨタと協力しながら開発を進めています。<br><br>私は、JAXA側の担当部署である有人与圧ローバーエンジニアリングセンターに所属しています。このセンターは2023年に発足した部署で、現在、40名ほどが所属しています。メンバーは、若手、中堅、ベテランがバランスよくいて、お互いに刺激を受け合いながら仕事をしています。</p>
+<p class="c-heading3"><span style="color: #00599c;"><strong>Q: 有人与圧ローバーエンジニアリングセンターの役割を教えてください。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>有人与圧ローバーは、アルテミス計画の中で開発を進めています。ローバーの運用や仕様については、アルテミス計画を主導するアメリカ航空宇宙局（NASA）と協議しながら検討を進めています。この国際調整はJAXAの役割で、主に有人与圧ローバーエンジニアリングセンターが担当しています。NASAとの協議の結果を踏まえ、JAXAが詳しい要求や仕様に落とし込み、トヨタと共有します。トヨタと協力しながら設計を進め、最終的にトヨタが実際のものづくりをするという分担になっています。</p></div>
+<div class="l-col1">
+<figure class="c-imgCard">
+<img src="/space-job/specialist/voice/item/13/img_02.jpg" alt="">
+<figcaption>有人与圧ローバーとJAXAの役割について語る土居氏</figcaption>
+</figure>
+</div>
+<h2>過酷な月面でも宇宙飛行士が快適に過ごせるように</h2>
+<div class="p-editorStyles__richTxt"><p class="c-heading3"><span style="color: #00599c;"><strong>Q: 土居さんが担当しているのは、どの部分ですか。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>有人与圧ローバーは例えば「走行系」や「構造系」など、10個ほどのサブシステムで構成されています。私は、それらの中で、「熱制御系」と「生命維持・環境制御系」を主に担当しています。<br><br>アルテミス計画で探査することになる月の南極域は、太陽光が当たる昼間は最高で30℃ほど、夜は最低でマイナス200℃くらいになります。しかも、月面にはほぼ空気がありません。この過酷な環境から宇宙飛行士や機器を守る役割を担うのが、私が担当する2つのサブシステムです。</p></div>
+<div class="l-col1">
+<figure class="c-imgCard">
+<img src="/space-job/specialist/voice/item/13/img_03.jpg" alt="">
+<figcaption>試作段階の熱制御系機器について、その仕組みをわかりやすく説明する場面</figcaption>
+</figure>
+</div>
+<div class="p-editorStyles__richTxt"><p class="c-heading3"><span style="color: #00599c;"><strong>Q: それぞれのサブシステムは、どのように働くのでしょうか。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>ローバーを家に例えると、「熱制御系」は外壁とリビング間の断熱や廃熱のシステム、「生命維持・環境制御系」はエアコンや空気清浄機の役割を担っています。地球上でも、夏は室内が蒸し暑くなり、冬は冷えますよね。月面でも、もし何もしなければ、ローバー内部が昼間は暑く、夜は極寒の状態になってしまいます。</p>
+<p>有人与圧ローバーには、宇宙飛行士が宇宙服を着ないで生活できる与圧キャビンが搭載されます。与圧キャビンの温度変化を抑えたり、ローバーに搭載される様々な機器から発生する熱を外に逃がしたりするのが、熱制御系の役割です。具体的には、外部からの熱や寒さが伝わらないようにする断熱材や、ポンプやラジエーターなどの機器を用いた排熱システムなどから構成されています。</p>
+<p>生命維持・環境制御系は、与圧キャビン内部の圧力や温度・湿度を制御する装置や、二酸化炭素などの有害ガスを除去する装置などから構成されています。この2つのサブシステムが協調することで、極端な温度変化、真空に近い状況など、月面の過酷な環境からローバー内の宇宙飛行士や機器を守り、安全や快適性を保つことができます。</p></div>
+<div class="l-col1">
+<figure class="c-imgCard">
+<img src="/space-job/specialist/voice/item/13/img_04.jpg" alt="">
+<figcaption>有人与圧ローバーの熱制御系サブシステムで使用される試作品</figcaption>
+</figure>
+</div>
+<h2>前例のない開発に挑む醍醐味</h2>
+<div class="p-editorStyles__richTxt"><p class="c-heading3"><span style="color: #00599c;"><strong>Q: 有人与圧ローバーの開発の進め方を教えてください。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>ローバーの開発は、概念検討、概念設計、基本設計、詳細設計と段階を経て、実際に月面に送る車両の製造へと進みます。現在は基本設計に入った段階です。</p>
+<p>ローバーの運用や仕様は、NASAとの協議を踏まえてこれまで大枠を決めてきました。例えば、1日の走行時間や走行距離、各機器が作動できる環境条件などが、全体の要求として固まってきています。これらの要求や仕様を元に、サブシステムごとに、個別機器の具体的な仕様に落とし込んでいる所です。その後、各機器を試作して性能を確かめ、次の詳細設計へとつなげていきます。</p>
+<p class="c-heading3"><span style="color: #00599c;"><strong>Q: 開発は順調に進んでいますか。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>今のところ、順調に進んでいます。ただ、重量をもう少し減らす必要があるなど、開発にあたっての課題もいろいろと出てきています。それらの課題をうまくクリアしながら、基本設計を進めていき、詳細設計に入る目処を立てていければと思います。</p>
+<p class="c-heading3"><span style="color: #00599c;"><strong>Q: 仕事を進めるうえで苦労していることは何ですか。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>月面を走る与圧ローバーの開発は、これまで誰も取り組んだことがありません。新たに開発する機器の仕様を決めていく過程でも、「これでいいのだろうか」と手探りで進めている部分も多くあります。試作品を作って試験し、試行錯誤しながら仕様を固めていく、というサイクルをしっかりと回しながら、開発を進めています。</p>
+<p>新しいものを作りだすのは大変ですが、同時にそれがエンジニアとしての醍醐味だと感じています。これまで誰も作ったことのない車を月に送るんだ、という部分が、一番のモチベーションになっています。</p></div>
+<div class="l-col1">
+<figure class="c-imgCard">
+<img src="/space-job/specialist/voice/item/13/img_05.jpg" alt="">
+<figcaption>前例のない開発に挑む真摯な思いが語られた</figcaption>
+</figure>
+</div>
+<h2>“鉄道から宇宙へ” 異分野の経験を活かす</h2>
+<div class="p-editorStyles__richTxt"><p class="c-heading3"><span style="color: #00599c;"><strong>Q: 土居さんのキャリアは、JAXAからスタートしたのですか。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>私は大学で航空宇宙工学を学んでいたのですが、修士課程修了後に鉄道会社へ就職しました。有人宇宙開発にも興味はあったのですが、当時はエンジニアとして自分の仕事が社会に実装されることに魅力を感じ、鉄道会社を選び、リニアモーターカーの設計開発に携わりました。</p>
+<p>転機となったのは2022年に実施された宇宙飛行士候補者選抜試験です。私も応募して挑戦しましたが、第2次選抜で落選してしまいました。しかし、その過程で、宇宙を志す受験者の方たちと話をしているうちに、「有人宇宙開発の仕事に携わりたい」という気持ちを改めて強く感じました。そのような状況で、有人与圧ローバーエンジニアリングセンターの募集が目に留まり、応募しました。</p>
+<p class="c-heading3"><span style="color: #00599c;"><strong>Q: 鉄道会社での経験は、今の仕事に活きていますか。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>宇宙と地上の違いはたくさんありますが、様々なサブシステムを組み合わせながら大規模なシステムを設計する必要がある点は、リニアモーターカーと共通しており、鉄道会社での経験が役立っています。また、重量の削減など、乗り越えないといけない課題も似ています。エンジニアとして苦労するポイントは同じだなと思いながら、日々、開発しています。</p>
+<p>もちろん、違いもたくさんあります。リニアモーターカーの開発でも環境条件が厳しいと感じていましたが、宇宙の方がはるかに過酷です。熱制御系の観点で言うと、ローバーが動作する環境の温度差が激しいですし、月面では地上のように空気を使った冷却法が使えない、という難点もあります。ハードルはとても高いですが、ローバーの完成に向けて一歩一歩、開発を進めていきます。</p></div>
+<div class="l-col1">
+<figure class="c-imgCard">
+<img src="/space-job/specialist/voice/item/13/img_06.jpg" alt="">
+<figcaption>NASAスタッフとの意見交換の様子</figcaption>
+</figure>
+</div>
+<div class="p-editorStyles__richTxt"><p class="c-heading3"><span style="color: #00599c;"><strong>Q: 将来、宇宙開発に携わりたいと考えている人たちにメッセージをお願いします。</strong></span></p>
+<p><span class="c-blueTxt">土居: </span>宇宙開発の現場では様々なバックグラウンドや専門知識を持った人が協力して、いくつものプロジェクトを進めています。私も長い間、鉄道会社にいましたが、宇宙と直接関係ないと思うような分野の経験も、宇宙開発に役立つことがあると日々実感しています。</p>
+<p>まず、自分が現在取り組んでいる分野や研究を極めていくことが大切だと思います。そのうえで、宇宙が好きであれば、ぜひ、宇宙開発に挑戦してみて欲しいと思います。人類が当たり前に月面で生活する未来を、一緒に実現していきましょう。</p></div>
+<div class="c-contentCardB">
+<div class="c-contentCardB__img">
+<figure class="c-imgCard"><img src="/space-job/specialist/voice/item/13/img_doi_profile.jpg" alt="">
+</figure>
+</div>
+<div class="c-contentCardB__txt p-editorStyles__richTxt">
+<div class="c-contentCardB__ttl">土居 龍弥（どい たつや）</div>
+<p>有人宇宙技術部門　有人与圧ローバーエンジニアリングセンター<br>主任研究開発員</p>
+<p>工学系研究科航空宇宙工学専攻修了、鉄道会社を経て、2024年入社。有人与圧ローバーの熱制御系、生命維持・環境制御系のサブシステム開発、機器開発に従事。また、全体システムの観点から電力、排熱等のリソース管理を担当。目標は、有人与圧ローバーの運用に携わりつつ、持続的な月面社会の実現に貢献すること。</p>
+</div>
+</div>
+</div><!-- //.p-editorStyles -->
+</div>
+<div class="l-section -mb-lg -w-md">
+<div class="c-linkA -center"><a href="/space-job/specialist/voice/">スペシャリストの声一覧に戻る</a></div>
+</div>
+</div><!-- /.l-main__content -->
+<div class="p-creditTxt">
+<p class="c-txt u-fzXs u-alignR">※特に断りのない限り、画像クレジットは&copy;JAXA</p>
+</div>
+
+</main>
+<nav class="l-footer-nav">
+<div class="l-footer-nav__item"><a class="l-footer-nav__link" href="/"><span class="l-footer-nav__img"><img src="/assets/images/top/ico-home.svg" alt=""></span><span class="l-footer-nav__txt">ホーム</span></a></div>
+<div class="l-footer-nav__item"><a class="l-footer-nav__link" href="/story/"><span class="l-footer-nav__img"><img src="/assets/images/top/ico-story.svg" alt=""></span><span class="l-footer-nav__txt">ストーリー</span></a></div>
+<div class="l-footer-nav__item"><a class="l-footer-nav__link" href="/enjoy/"><span class="l-footer-nav__img"><img src="/assets/images/top/ico-osusume.svg" alt=""></span><span class="l-footer-nav__txt">おすすめ</span></a></div>
+<div class="l-footer-nav__item"><a class="l-footer-nav__link" href="/news/"><span class="l-footer-nav__img"><img src="/assets/images/top/ico-news.svg" alt=""></span><span class="l-footer-nav__txt">ニュース</span></a></div>
+</nav>
+<footer class="l-footer">
+<div class="l-footer__inner">
+<div class="l-footer__logo"><a href="/"><img src="/assets/images/common/logo_header.svg" alt="JAXA 有人宇宙技術部門 Humans in Space"></a></div>
+<div class="l-footer-sns">
+<p class="l-footer-sns__heading">Follow Us</p>
+<ul class="l-footer-sns__list">
+<li class="l-footer-sns__item -x"><a href="/supporter/#twitter" class="l-footer-sns__link"><span>X (Twitter)</span></a></li>
+<li class="l-footer-sns__item -instagram"><a href="/supporter/#instagram" class="l-footer-sns__link"><span>Instagram</span></a></li>
+</ul>
+</div>
+</div>
+<div class="l-footer-sm">
+<nav>
+<a href="/kibo/" class="l-footer-sm__link -child">「きぼう」日本実験棟</a>
+<a href="/iss/" class="l-footer-sm__link -child">国際宇宙ステーション（ISS）</a>
+<a href="/htv/" class="l-footer-sm__link -child">宇宙ステーション補給機</a>
+<a href="/future/" class="l-footer-sm__link -child">国際宇宙探査の取り組み</a>
+<a href="/space-job/" class="l-footer-sm__link -child">宇宙のしごと</a>
+<a href="/life/" class="l-footer-sm__link -child">宇宙のくらし</a>
+<div class="l-footer-sm__bottom">
+<a href="/biz-lab/" class="l-footer-sm__btn -guide">企業・研究機関の皆様へ</a>
+<a href="/for-media/" class="l-footer-sm__link -min">報道関係者の皆さまへ</a>
+<a href="/sns-policy/" class="l-footer-sm__link -min">SNS運用方針</a>
+<a href="https://www.jaxa.jp/policy_j.html" target="_blank" rel="noopener" class="l-footer-sm__link -min c-icon -blank">サイトポリシー・利用規約</a>
+<a href="https://reg18.smp.ne.jp/regist/is?SMPFORM=ois-pipbs-e40112f04237c38219fdd995e5f8cd34" target="_blank" rel="noopener" class="l-footer-sm__link -min c-icon -blank">JAXAに関するお問い合わせ</a>
+<a href="/en/" class="l-footer-sm__link -min">English</a>
+</div>
+</nav>
+<p class="l-footer-sm__copyright">&copy; Japan Aerospace Exploration Agency</p>
+</div>
+<div class="l-footer-lg">
+<nav>
+<div class="l-footer-lg__inner">
+<div>
+<a href="/kibo/" class="l-footer-lg__link"><span>「きぼう」日本実験棟</span></a>
+<a href="/kibo/structure/" class="l-footer-lg__link -child"><span>「きぼう」のつくり</span></a>
+<a href="/kibo/result/" class="l-footer-lg__link -child"><span>「きぼう」でできること</span></a>
+<a href="/kibo/operation/" class="l-footer-lg__link -child"><span>「きぼう」の運用</span></a>
+<a href="/kibo/tour/" class="l-footer-lg__link -child"><span>「きぼう」ツアー</span></a>
+<a href="/kibo/view/" class="l-footer-lg__link -child"><span>「きぼう」の窓から</span></a>
+</div>
+<div>
+<a href="/iss/" class="l-footer-lg__link"><span>国際宇宙ステーション（ISS）</span></a>
+<a href="/iss/about/" class="l-footer-lg__link -child"><span>国際宇宙ステーション（ISS）とは</span></a>
+<a href="/iss/crew/" class="l-footer-lg__link -child"><span>ISS滞在クルー</span></a>
+<a href="/iss/flight/" class="l-footer-lg__link -child"><span>ISSへのフライト情報</span></a>
+<a href="/iss/launch/" class="l-footer-lg__link -child"><span>ISSへの打上げ機</span></a>
+<a href="/iss/eva/" class="l-footer-lg__link -child"><span>ISS関連の船外活動</span></a>
+</div>
+<div>
+<a href="/htv/" class="l-footer-lg__link"><span>宇宙ステーション補給機</span></a>
+<a href="/htv-x/" class="l-footer-lg__link -child"><span>新型宇宙ステーション補給機（HTV-X）</span></a>
+<!-- <a href="/htv/htv-x/" class="l-footer-lg__link -child">HTV-Xのミッション</a> -->
+<a href="/htv/kounotori/" class="l-footer-lg__link -child"><span>「こうのとり」（HTV）のこれまでの歩み</span></a>
+</div>
+<div>
+<a href="/future/" class="l-footer-lg__link"><span>国際宇宙探査の取り組み</span></a>
+<!-- <a href="/future/artemis/" class="l-footer-lg__link -child"><span>アルテミス計画</span></a>
+<a href="/future/rover/" class="l-footer-lg__link -child"><span>有人与圧ローバ</span></a>
+<a href="/future/robotics/" class="l-footer-lg__link -child"><span>ロボティクス</span></a>
+<a href="/future/eclss/" class="l-footer-lg__link -child"><span>ECLSS</span></a> -->
+</div>
+<div>
+<a href="/space-job/" class="l-footer-lg__link"><span>宇宙のしごと</span></a>
+<a href="/space-job/astronaut/" class="l-footer-lg__link -child"><span>JAXA宇宙飛行士</span></a>
+<a href="/space-job/specialist/" class="l-footer-lg__link -child"><span>地上で支える人びと</span></a>
+</div>
+<div>
+<a href="/life/" class="l-footer-lg__link"><span>宇宙のくらし</span></a>
+<a href="/life/wear-in-space/" class="l-footer-lg__link -child"><span>宇宙で着る</span></a>
+<a href="/life/food-in-space/" class="l-footer-lg__link -child"><span>宇宙で食べる</span></a>
+<a href="/life/health-in-space/" class="l-footer-lg__link -child"><span>宇宙とからだ</span></a>
+</div>
+<div>
+<a href="/news/" class="l-footer-lg__link"><span>ニュース</span></a>
+<a href="/event/" class="l-footer-lg__link"><span>イベント・セミナー</span></a>
+<a href="/gallery/" class="l-footer-lg__link"><span>ギャラリー</span></a>
+<a href="/faq/" class="l-footer-lg__link"><span>よくあるご質問</span></a>
+<a href="/glossary/" class="l-footer-lg__link"><span>用語集</span></a>
+<a href="/mailmagazine/" class="l-footer-lg__link"><span>メールマガジンのご案内</span></a>
+</div>
+<div>
+<a href="/story/" class="l-footer-lg__link"><span>OUR STORY</span></a>
+<a href="/enjoy/" class="l-footer-lg__link"><span>Enjoy Space Experience</span></a>
+<a href="/supporter/" class="l-footer-lg__link"><span>つながる・ひろがる</span></a>
+<a href="/data/" class="l-footer-lg__link"><span>データで見る有人宇宙活動</span></a>
+<a href="/about/" class="l-footer-lg__link"><span>有人宇宙技術部門について</span></a>
+</div>
+</div>
+<div class="l-footer-lg__inner">
+<div>
+<a href="/biz-lab/" class="l-footer-lg__link"><span>企業・研究機関の皆様へ</span></a>
+</div>
+<div>
+<a href="/kibouser/" class="l-footer-lg__link -child"><span>「きぼう」利用のご案内</span></a>
+<a href="/biz-lab/experiment/" class="l-footer-lg__link -child"><span>「きぼう」での実験</span></a>
+<a href="/biz-lab/kuoa/" class="l-footer-lg__link -child"><span>きぼうアジア利用推進室（KUOA）</span></a>
+</div>
+<div>
+<a href="/biz-lab/med-in-space/" class="l-footer-lg__link -child"><span>宇宙医学</span></a>
+<a href="/biz-lab/med-in-space/med/" class="l-footer-lg__link -child"><span>宇宙医学分野の研究開発</span></a>
+<a href="/biz-lab/med-in-space/healthcare/" class="l-footer-lg__link -child"><span>宇宙飛行士の健康管理運用</span></a>
+<a href="/biz-lab/tech/" class="l-footer-lg__link -child"><span>将来有人宇宙技術</span></a>
+</div>
+<div>
+<a href="/biz-lab/news/" class="l-footer-lg__link -child"><span>ニュース</span></a>
+<a href="/biz-lab/case/" class="l-footer-lg__link -child"><span>インタビュー</span></a>
+<a href="/biz-lab/faq/" class="l-footer-lg__link -child"><span>よくあるご質問</span></a>
+<a href="/biz-lab/contact/" class="l-footer-lg__link -child"><span>お問い合わせ・相談</span></a>
+</div>
+</div>
+</nav>
+<div class="l-footer-lg__bottom">
+<p class="l-footer-lg__copyright">&copy; Japan Aerospace Exploration Agency</p>
+<div>
+<a href="/for-media/" class="l-footer-lg__link -min">報道関係者の皆さまへ</a>
+<a href="/sns-policy/" class="l-footer-lg__link -min">SNS運用方針</a>
+<a href="https://www.jaxa.jp/policy_j.html" target="_blank" rel="noopener" class="l-footer-lg__link -min c-icon -blank">サイトポリシー・利用規約</a>
+<a href="https://reg18.smp.ne.jp/regist/is?SMPFORM=ois-pipbs-e40112f04237c38219fdd995e5f8cd34" target="_blank" rel="noopener" class="l-footer-lg__link -min c-icon -blank">JAXAに関するお問い合わせ</a>
+<a href="/en/" class="l-footer-lg__link -min">English</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.2/picturefill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js"></script>
+<script src="/assets/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Corporate,JAXA,international space exploration,rover,Hayabusa2,Hiroshi Yamakawa,Akio Toyoda,Koichi Wakata,Shigeki Terashi" />
+	<meta name="description" content="The Japan Aerospace Exploration Agency (JAXA) and Toyota Motor Corporation (Toyota) announce their agreement today to consider the possibility of collaborating on international space exploration. As a first step, JAXA and Toyota have reached agreement to further cooperate on and accelerate their ongoing joint study of a manned, pressurized rover that employs fuel cell electric vehicle technologies. Such a form of mobility is deemed necessary for human exploration activities on the lunar surface. Even with the limited amount of energy that can be transported to the moon, the pressurized rover would have a total lunar-surface cruising range of more than 10,000 km." />
+	<meta name="copyright" content="(C) TOYOTA MOTOR CORPORATION. All Rights Reserved." />
+	<meta name="robots" content="index, follow" />
+	<meta name="author" content="TOYOTA MOTOR CORPORATION." />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2, shrink-to-fit=no" />
+	<meta name="cms-page-type" content="corporate" />
+
+<meta property="og:title" content="JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration | Corporate | Global Newsroom | Toyota Motor Corporation Official Global Website">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://global.toyota/pages/news/images/2019/03/12/1600/20190312_01_ogp_2.jpg">
+
+<meta property="og:url" content="https://global.toyota/en/newsroom/corporate/27059582.html">
+
+<meta property="og:site_name" content="Toyota Motor Corporation Official Global Website">
+
+<meta property="og:description" content="The Japan Aerospace Exploration Agency (JAXA) and Toyota Motor Corporation (Toyota) announce their agreement today to consider the possibility of collaborating on international space exploration. As a first step, JAXA and Toyota have reached agreement to further cooperate on and accelerate their ongoing joint study of a manned, pressurized rover that employs fuel cell electric vehicle technologies. Such a form of mobility is deemed necessary for human exploration activities on the lunar surface. Even with the limited amount of energy that can be transported to the moon, the pressurized rover would have a total lunar-surface cruising range of more than 10,000 km.">
+
+<meta property="og:locale" content="en_US">
+	<meta property="fb:app_id" content="">
+	<meta property="sitename" content="Toyota Motor Corporation Official Global Website">
+<title>JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration | Corporate | Global Newsroom | Toyota Motor Corporation Official Global Website</title>
+	<link rel="canonical" href="https://global.toyota/en/newsroom/corporate/27059582.html" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+	<script type="text/javascript" src="https://global.toyota/static/7c9a6a9302f0a0c97e31d064b0b0dcfdbb5061178a9631"  ></script><script type="text/javascript">
+	<!--
+		(function(r2data) {
+			dmp_r2_tags = r2data.tagList;
+			dmp_r2_contentsid = r2data.contentsId;
+		})({"contentsId":27059582,"tagList":["Corporate"]});
+	//-->
+	</script>
+	<script type="text/javascript" src="/pages/_system/js/lib/jquery-3.3.1.min.js"></script>
+
+	<script type="text/javascript" src="/pages/_system/js/YouTube_iframe.js"></script>
+<script type="text/javascript">
+<!--
+	// This code loads the IFrame Player API code asynchronously.
+	var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//-->
+</script>
+<link rel="stylesheet" href="/pages/_system/css/slick.css">
+	<script type="text/javascript" src="/pages/_system/js/lib/slick.min.js"></script>
+	<script type="text/javascript" src="/include/js/tgn_webbeacon.js?v=2026111511"></script>
+<script type="application/json" id="download-data">
+		{"pdf":{"type":"2","title":"JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration","imagePath":"/pages/contents/image/img_pdf.svg","fieldId":"36890634","itemId":"36890635","fileSize":"467.1KB","fileName":"20190312_01_en_3.pdf"},"zip":{"type":"3","title":"JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration","imagePath":"/pages/contents/image/img_zip.svg","fieldId":"36890636","itemId":"36890637","fileSize":"7.2MB","fileName":"20190312_01_2.zip"},"list":[{"itemId":"36890679","title":"Pressurized Rover \u003cspan class\u003d\"disp_ib\"\u003eMovie\u003c/span\u003e","type":"1","alt":"Pressurized Rover Movie","youtubeLink":"https://www.youtube.com/embed/VSO1Cat2wWo","imagePath":"","large":{"fileSize":"206.4MB","fileName":"20190312_01_01_2.mp4","height":"","width":"","fieldId":"36890678","showWH":false},"hasMeasureMov":true},{"itemId":"36890684","title":"Pressurized Rover (Image)","type":"0","alt":"Pressurized Rover (Image)","imagePath":"/pages/news/images/2019/03/12/1600/20190312_01_01_2_s.jpg","small":{"fileSize":"408.7KB","fileName":"20190312_01_01_2_s.jpg","height":"1,080px","width":"1,920px","fieldId":"36890682","showWH":true},"large":{"fileSize":"1.1MB","fileName":"20190312_01_01_2.jpg","height":"1,440px","width":"2,560px","fieldId":"36890683","showWH":true},"hasMeasureMov":false},{"itemId":"36890689","title":"Pressurized Rover (Image)","type":"0","alt":"Pressurized Rover (Image)","imagePath":"/pages/news/images/2019/03/12/1600/20190312_01_02_s.jpg","small":{"fileSize":"469.3KB","fileName":"20190312_01_02_s.jpg","height":"1,080px","width":"1,920px","fieldId":"36890687","showWH":true},"large":{"fileSize":"1.4MB","fileName":"20190312_01_02.jpg","height":"1,440px","width":"2,560px","fieldId":"36890688","showWH":true},"hasMeasureMov":false},{"itemId":"36890694","title":"Pressurized Rover (Image)","type":"0","alt":"Pressurized Rover (Image)","imagePath":"/pages/news/images/2019/03/12/1600/20190312_01_03_s.jpg","small":{"fileSize":"373.7KB","fileName":"20190312_01_03_s.jpg","height":"1,080px","width":"1,920px","fieldId":"36890692","showWH":true},"large":{"fileSize":"1.1MB","fileName":"20190312_01_03.jpg","height":"1,440px","width":"2,560px","fieldId":"36890693","showWH":true},"hasMeasureMov":false},{"itemId":"36890699","title":"Pressurized Rover (Image)","type":"0","alt":"Pressurized Rover (Image)","imagePath":"/pages/news/images/2019/03/12/1600/20190312_01_04_2_s.jpg","small":{"fileSize":"323.3KB","fileName":"20190312_01_04_2_s.jpg","height":"1,080px","width":"1,920px","fieldId":"36890697","showWH":true},"large":{"fileSize":"1,009.5KB","fileName":"20190312_01_04_2.jpg","height":"1,440px","width":"2,560px","fieldId":"36890698","showWH":true},"hasMeasureMov":false},{"itemId":"36890704","title":"Pressurized Rover (Image)","type":"0","alt":"Pressurized Rover (Image)","imagePath":"/pages/news/images/2019/03/12/1600/20190312_01_05_s.jpg","small":{"fileSize":"329.3KB","fileName":"20190312_01_05_s.jpg","height":"1,080px","width":"1,920px","fieldId":"36890702","showWH":true},"large":{"fileSize":"1MB","fileName":"20190312_01_05.jpg","height":"1,440px","width":"2,560px","fieldId":"36890703","showWH":true},"hasMeasureMov":false},{"itemId":"36890709","title":"Pressurized Rover (Image)","type":"0","alt":"Pressurized Rover (Image)","imagePath":"/pages/news/images/2019/03/12/1600/20190312_01_06_2_s.jpg","small":{"fileSize":"314.6KB","fileName":"20190312_01_06_2_s.jpg","height":"1,080px","width":"1,920px","fieldId":"36890707","showWH":true},"large":{"fileSize":"969.7KB","fileName":"20190312_01_06_2.jpg","height":"1,440px","width":"2,560px","fieldId":"36890708","showWH":true},"hasMeasureMov":false},{"itemId":"36890714","title":"Pressurized Rover (Image)","type":"0","alt":"Pressurized Rover (Image)","imagePath":"/pages/news/images/2019/03/12/1600/20190312_01_07_2_s.jpg","small":{"fileSize":"339.7KB","fileName":"20190312_01_07_2_s.jpg","height":"1,080px","width":"1,920px","fieldId":"36890712","showWH":true},"large":{"fileSize":"1MB","fileName":"20190312_01_07_2.jpg","height":"1,440px","width":"2,560px","fieldId":"36890713","showWH":true},"hasMeasureMov":false}]}</script>
+	<script type="application/json" id="article-data">
+		{"title":{"pageTitle":"JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration | Corporate | Global Newsroom | Toyota Motor Corporation Official Global Website","title":"JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration","subTitle":"Aiming to make future lunar mobility a reality","jointStatement":"Japan Aerospace Exploration Agency\r\nToyota Motor Corporation","isTitleEnabled":true},"dateStr":"Mar. 12, 2019","tags":["News Release","Management","LUNAR CRUISER","Innovation","CASE","Electric","Autonomous/Automated"],"isAnnouncementDateEnabled":true,"siteCatalystKey":"/27059582/36887916"}</script>
+	<script type="application/json" id="sns-data">
+		{"hasZip":true,"zipItemId":"36890637","hasPdf":true,"pdfItemId":"36890635","zipName":"Download all images","showShareIcon":true}</script>
+	
+	<script type="text/javascript" src="/pages/_system/js/detail.bundle.js?v=2026111511"></script>
+	
+	<link rel="stylesheet" href="/pages/contents/css/normalize.css">
+<link rel="stylesheet" href="/pages/contents/css/common.css">
+<link rel="stylesheet" href="/pages/contents/css/common_en.css">
+<link rel="stylesheet" href="/pages/contents/css/parts.css">
+<link rel="stylesheet" href="/pages/contents/css/parts_en.css">
+<link rel="stylesheet" href="/pages/contents/css/style_list_en.css">
+<link rel="stylesheet" href="/pages/contents/css/header_footer.css?v=2024050113">
+<link rel="stylesheet" href="/pages/contents/css/print.css">
+<script type="text/javascript" src="/pages/_system/suggest/sug.js"></script>
+<meta name="twitter:card" content="summary_large_image" /> <meta name="twitter:site" content="@ToyotaMotorCorp">
+<link rel="stylesheet" href="/pages/contents/css/20190228/style.css"></head>
+<body>
+	<!-- Header -->
+	<div id="header"></div>
+<script type="text/javascript"><!--
+	GT.navi.header.print();
+//--></script>
+<!-- /Header -->
+
+	<!-- topgrid start -->
+	<div id="topgrid">
+</div>
+<!-- topgrid end -->
+
+	<!-- Main -->
+	<div id="main">
+		<!-- Contents -->
+		<div id="contents">
+			<!-- Contents-inner -->
+			<div class="contents_inner">
+<!-- Contents-body -->
+				<div class="contents_body">
+					<!-- Section -->
+					<div class="contents_main" id="">
+<div class="section html article_info">
+	<div>
+<p class="date">Mar. 12, 2019</p>
+<h1 class="title">JAXA and Toyota Reach Agreement on Consideration Toward International Space Exploration<span class="subtitle">Aiming to make future lunar mobility a reality</span>
+</h1>
+<div class="article_tag">
+<a href="#" data-searchable-tag>News Release</a>
+<a href="#" data-searchable-tag>Management</a>
+<a href="#" data-searchable-tag>LUNAR CRUISER</a>
+<a href="#" data-searchable-tag>Innovation</a>
+<a href="#" data-searchable-tag>CASE</a>
+<a href="#" data-searchable-tag>Electric</a>
+<a href="#" data-searchable-tag>Autonomous/Automated</a>
+</div>
+		
+		<div class="share ">
+	<div class="dl_items">
+	
+<a href="#" class="download_item_zip zip_dl" data-itemId="36890637">
+			<span class="dl_items_text">Download all images</span>
+		</a>
+<a href="#" class="download_item_pdf pdf_dl" data-itemId="36890635">
+			<span class="dl_items_text">PDF</span>
+		</a>
+</div>
+	<!-- AddThis Button BEGIN -->
+	<div class="addthis_toolbox addthis_20x20_style">
+<a class="addthis_button_facebook"><img class="follow" src="/pages/contents/image/icon_fb.png"></a>
+		<a class="addthis_button_twitter"><img class="follow" src="/pages/contents/image/icon_tw.png"></a>
+<a class="addthis_button_linkedin"><img class="follow" src="/pages/contents/image/icon_linkedin.png"></a>
+<a class="addthis_button_compact"><img src="/pages/contents/image/icon_addthis_other.png" alt="other"></a>
+</div>
+	<!-- AddThis Button END -->
+</div>
+</div>
+</div>
+<div class="section html nomarginb">
+	<div>
+		<div class="jointstatement">Japan Aerospace Exploration Agency<br>Toyota Motor Corporation</div>
+	</div>
+</div>
+<div class="section html " id="">
+
+	<div><p>Tokyo, Japan, March 12, 2019―The Japan Aerospace Exploration Agency (JAXA) and Toyota Motor Corporation (Toyota) announce their agreement today to consider the possibility of collaborating on international space exploration. As a first step, JAXA and Toyota have reached agreement to further cooperate on and accelerate their ongoing joint study<sup>*1</sup> of a manned, pressurized rover<sup>*2</sup> that employs fuel cell electric vehicle technologies. Such a form of mobility is deemed necessary for human exploration activities on the lunar surface. Even with the limited amount of energy that can be transported to the moon, the pressurized rover would have a total lunar-surface cruising range of more than 10,000 km.</p>
+
+<p>International space exploration, aiming to achieve sustainable prosperity for all of humankind by expanding the domain of human activity and giving rise to intellectual properties, has its sights set on the moon and Mars. To achieve the goals of such exploration, coordination between robotic missions, such as the recent successful touchdown by the asteroid probe Hayabusa2 on the asteroid Ryugu, and human missions, such as those involving humans using pressurized rovers to conduct activities on the moon, is essential. When it comes to challenging missions such as lunar or Martian exploration, various countries are competing in advancing their technologies, while also advancing their cooperative efforts.</p>
+
+<p>JAXA President Hiroshi Yamakawa said today about the agreement between JAXA and Toyota: "At JAXA, we are pursuing international coordination and technological studies toward Japan's participation in international space exploration. We aim to contribute through leading Japanese technologies that can potentially generate spin-off benefits. Having Toyota join us in the challenge of international space exploration greatly strengthens our confidence. Manned rovers with pressurized cabins are an element that will play an important role in full-fledged exploration and use of the lunar surface. For this, we would like to concentrate our country's technological abilities and conduct technological studies. Through our joint studies going forward, we would like to put to use Toyota's excellent technological abilities related to mobility, and we look forward to the acceleration of our technological studies for the realization of a manned, pressurized rover."</p>
+
+<p>Toyota President Akio Toyoda said: "The automotive industry has long done business with the concepts of 'hometown' and 'home country' largely in mind. However, from now on, in responding to such matters as environmental issues of global scale, the concept of 'home planet', from which all of us come, will become a very important concept. Going beyond the frameworks of countries or regions, I believe that our industry, which is constantly thinking about the role it should fulfill, shares the same aspirations of international space exploration. Furthermore, cars are used in all of Earth's regions, and, in some regions, cars play active roles as partners for making sure that people come back alive. And I think that coming back alive is exactly what is needed in this project. I am extremely happy that, for this project, expectations have been placed on the thus-far developed durability and driving performance of Toyota vehicles and on our fuel cell environmental technologies."</p>
+
+<p>Also, at a symposium held today in Tokyo, JAXA Vice President Koichi Wakata and Toyota Executive Vice President Shigeki Terashi held a talk session, excerpts from which are shown below.</p></div>
+</div>
+<div class="section image list1 " id="">
+<div class="figure_block">
+		
+			
+	
+	<dl>
+																
+								<dt class="video measure-movie-on">
+			<iframe src="https://www.youtube.com/embed/MfrAD7ctLrY?rel=0&amp;wmode=transparent&amp;enablejsapi=1" allowfullscreen=""></iframe>
+		</dt>
+
+									</dl>
+	</div>
+
+</div>
+<div class="section html " id="">
+
+	<div><h4 class="title marginb1">Comments by <span class="disp_ib">JAXA Vice President</span> <span class="disp_ib">Koichi Wakata</span></h4>
+
+<p>"At JAXA, we are studying various scenarios as well as technologies that will be applied to specific space missions. Manned, pressurized rovers will be an important element supporting human lunar exploration, which we envision will take place in the 2030s. We aim at launching such a rover into space in 2029.</p>
+
+<p>"Lunar gravity is one-sixth of that on Earth. Meanwhile, the moon has a complex terrain with craters, cliffs, and hills. Moreover, it is exposed to radiation and temperature conditions that are much harsher than those on Earth, as well as an ultra-high vacuum environment. For wide ranging human exploration of the moon, a pressurized rover that can travel more than 10,000 km in such environments is a necessity. Toyota's 'space mobility' concept meets such mission requirements. Toyota and JAXA have been jointly studying the concept of a manned, pressurized rover since May of 2018.</p>
+
+<p>"Thus far, our joint study, has examined a preliminary concept for a manned, pressurized rover system, and we have identified the technological issues that must be solved. Going forward, we want to utilize Toyota's and JAXA's technologies, human resources, and knowledge, among others, to continuously solve those issues.</p>
+
+<p>"International space exploration is a challenge to conquer the unknown. To take up such a challenge, we believe it is important to gather our country's technological capabilities and engage as 'Team Japan'. Through our collaboration with Toyota as the starting point, we can further expand the resources of 'Team Japan' in the continued pursuit of international space exploration."</p></div>
+</div>
+<div class="section html " id="">
+
+	<div><h4 class="title marginb1">Comment by <span class="disp_ib">Toyota Executive Vice President</span> <span class="disp_ib">Shigeki Terashi</span></h4>
+
+<p>"As an engineer, there is no greater joy than being able to participate in such a lunar project by way of Toyota's car-making and, furthermore, by way of our technologies related to electrified vehicles, such as fuel cell batteries, and our technologies related to autonomous and automated driving. I am filled with great excitement.</p>
+
+<p>"Fuel cells, which use clean power-generation methods, emit only water, and, because of their high energy density, they can provide a lot of energy, making them especially suited for the project being discussed with JAXA.</p>
+
+<p>"Toyota believes that achieving a sustainable mobility society on Earth will involve the coexistence and widespread use of electrified vehicles, such as hybrid electric vehicles, plug-in hybrid electric vehicles, battery electric vehicles, and fuel cell electric vehicles. For electrification, fuel cell batteries represent an indispensable technology.</p>
+
+<p>"Fuel cell electric vehicles have the ability to emit reduced amounts of harmful substances, such as particulate matter, that are found in the air they take in. As such, they are characterized by having so-called 'minus emissions'<sup>*3</sup>. We want to further improve on this characteristic.</p>
+
+<p>"Contributing to Earth's environment cannot be achieved without the widespread use of electrified vehicles. As a full-line manufacturer of electrified vehicles, and aiming for the widespread use of such vehicles, Toyota―going beyond only making complete vehicles―wants to provide electrification to its customers in various forms, such as through systems and technologies.</p>
+
+<p>"Our joint studies with JAXA are a part of this effort. Being allowed to be a member of 'Team Japan', we would like to take up the challenge of space."</p></div>
+</div>
+<div class="section html " id="">
+
+	<div><h4 class="title marginb1">Concept proposal for the pressurized rover being studied by JAXA and Toyota</h4>
+
+<ul class="list_space">
+    <li>Length: 6.0 m; width: 5.2 m; <span class="disp_ib">height: 3.8 m</span> <span class="disp_ib">(about the size of two microbuses)</span></li>
+    <li>Living space: 13m<sup>3</sup></li>
+    <li>Capable of accommodating two people <span class="disp_ib">(four people in an emergency)</span></li>
+</ul></div>
+</div>
+<div class="section image list2 " id="">
+<ul class="figure_block">
+	
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/001_2.jpg');">
+				<img src="https://global.toyota/pages/news/images/2019/03/12/1600/001_2.jpg"
+					alt="Pressurized Rover (Image)"
+					data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/001_2.jpg"
+					data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/001_2.jpg">
+			</dt>
+		
+						</dl>
+	</li>
+
+
+		
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/002.jpg');">
+				<img src="https://global.toyota/pages/news/images/2019/03/12/1600/002.jpg"
+					alt="Pressurized Rover (Image)"
+					data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/002.jpg"
+					data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/002.jpg">
+			</dt>
+		
+						</dl>
+	</li>
+
+
+	</ul>
+
+</div>
+<div class="section image list1 " id="">
+<div class="figure_block">
+		
+			
+	
+	<dl>
+																
+								<dt class="video measure-movie-on">
+			<iframe src="https://www.youtube.com/embed/VSO1Cat2wWo?rel=0&amp;wmode=transparent&amp;enablejsapi=1" allowfullscreen=""></iframe>
+		</dt>
+
+									</dl>
+	</div>
+
+</div>
+<div class="section html " id="">
+
+	<div><table class="notes">
+    <tbody>
+        <tr>
+            <th class="num1">*1</th>
+            <td>A conceptual study on a manned, pressurized rover, jointly pursued by Toyota and JAXA since May 2018 based on a cooperation agreement</td>
+        </tr>
+        <tr>
+            <th>*2</th>
+            <td>As envisioned in this project, a vehicle that has an enclosed body equipped with functions and space that enable astronauts to live in the vehicle for fixed periods without wearing space suits, that allows ingress and egress while wearing space suits, and that makes sustainable mobility on the surface of a moon or planet by way of astronaut operation, remote operation, or autonomous driving possible.</td>
+        </tr>
+        <tr>
+            <th>*3</th>
+            <td>Fuel cell electric vehicles reduce particulate matter in the air they take in by way of a filter, and supply the resulting cleaner air to their fuel cell batteries, emitting only water and surplus air.</td>
+        </tr>
+    </tbody>
+</table></div>
+</div>
+<div class="section html " id="">
+
+	<div><div id="snsbottom">
+</div>
+<script>
+$('.article_info .share').clone(true).addClass('article_bottom').appendTo('#snsbottom');
+</script></div>
+</div>
+</div>
+<div class="contents_side" id="">
+<div class="section image list1 list_tile" id="">
+	<h2 class="title">DOWNLOADS (VIDEOS)</h2>
+<div class="figure_block">
+		
+			
+	
+	<dl>
+																
+								<dt class="measure-movie-on" style="background-image: url('//i.ytimg.com/vi/VSO1Cat2wWo/hqdefault.jpg');">
+			<a rel="36890656" class="video_thumbnail download-item" href="https://www.youtube.com/embed/VSO1Cat2wWo" data-itemid="36890679" target="_blank">
+				<img src="//i.ytimg.com/vi/VSO1Cat2wWo/hqdefault.jpg"
+					alt="Pressurized Rover Movie"
+					data-pc="//i.ytimg.com/vi/VSO1Cat2wWo/hqdefault.jpg"
+					data-sp="//i.ytimg.com/vi/VSO1Cat2wWo/hqdefault.jpg">
+			</a>
+		</dt>
+
+										<dd class="figure_title">Pressurized Rover <span class="disp_ib">Movie</span></dd>
+					</dl>
+	</div>
+
+</div>
+<div class="section image list3 image_tile" id="">
+	<h2 class="title">DOWNLOADS (IMAGES)</h2>
+<ul class="figure_block">
+	
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_01_2_W480_H320.jpg');">
+				<a rel="36890657" href="#" class="download-item" data-itemid="36890684" target="_blank">
+					<img src="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_01_2_W480_H320.jpg"
+						alt="Pressurized Rover (Image)"
+						data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_01_2_W480_H320.jpg"
+						data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_01_2_W610_H407.jpg">
+				</a>
+			</dt>
+
+				
+					<dd class="figure_title">Pressurized Rover (Image)</dd>
+						</dl>
+	</li>
+
+
+		
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_02_W480_H320.jpg');">
+				<a rel="36890657" href="#" class="download-item" data-itemid="36890689" target="_blank">
+					<img src="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_02_W480_H320.jpg"
+						alt="Pressurized Rover (Image)"
+						data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_02_W480_H320.jpg"
+						data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_02_W610_H407.jpg">
+				</a>
+			</dt>
+
+				
+					<dd class="figure_title">Pressurized Rover (Image)</dd>
+						</dl>
+	</li>
+
+
+		
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_03_W480_H320.jpg');">
+				<a rel="36890657" href="#" class="download-item" data-itemid="36890694" target="_blank">
+					<img src="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_03_W480_H320.jpg"
+						alt="Pressurized Rover (Image)"
+						data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_03_W480_H320.jpg"
+						data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_03_W610_H407.jpg">
+				</a>
+			</dt>
+
+				
+					<dd class="figure_title">Pressurized Rover (Image)</dd>
+						</dl>
+	</li>
+
+
+		
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_04_2_W480_H320.jpg');">
+				<a rel="36890657" href="#" class="download-item" data-itemid="36890699" target="_blank">
+					<img src="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_04_2_W480_H320.jpg"
+						alt="Pressurized Rover (Image)"
+						data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_04_2_W480_H320.jpg"
+						data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_04_2_W610_H407.jpg">
+				</a>
+			</dt>
+
+				
+					<dd class="figure_title">Pressurized Rover (Image)</dd>
+						</dl>
+	</li>
+
+
+		
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_05_W480_H320.jpg');">
+				<a rel="36890657" href="#" class="download-item" data-itemid="36890704" target="_blank">
+					<img src="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_05_W480_H320.jpg"
+						alt="Pressurized Rover (Image)"
+						data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_05_W480_H320.jpg"
+						data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_05_W610_H407.jpg">
+				</a>
+			</dt>
+
+				
+					<dd class="figure_title">Pressurized Rover (Image)</dd>
+						</dl>
+	</li>
+
+
+		
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_06_2_W480_H320.jpg');">
+				<a rel="36890657" href="#" class="download-item" data-itemid="36890709" target="_blank">
+					<img src="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_06_2_W480_H320.jpg"
+						alt="Pressurized Rover (Image)"
+						data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_06_2_W480_H320.jpg"
+						data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_06_2_W610_H407.jpg">
+				</a>
+			</dt>
+
+				
+					<dd class="figure_title">Pressurized Rover (Image)</dd>
+						</dl>
+	</li>
+
+
+		
+			
+	
+	<li>
+		<dl>
+
+							<dt style="background-image: url('https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_07_2_W480_H320.jpg');">
+				<a rel="36890657" href="#" class="download-item" data-itemid="36890714" target="_blank">
+					<img src="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_07_2_W480_H320.jpg"
+						alt="Pressurized Rover (Image)"
+						data-pc="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_07_2_W480_H320.jpg"
+						data-sp="https://global.toyota/pages/news/images/2019/03/12/1600/rendition/20190312_01_07_2_W610_H407.jpg">
+				</a>
+			</dt>
+
+				
+					<dd class="figure_title">Pressurized Rover (Image)</dd>
+						</dl>
+	</li>
+
+
+	</ul>
+
+</div>
+<div class="section html " id="">
+	<h2 class="title">RELATED CONTENT</h2>
+
+	<div><!-- marsfinderoff: index -->
+<div class="tile_wrapper pdgb1_half">
+    <!-- corporate -->
+    <div class="grid_tile">
+        <div class="grid_image">
+            <a href="/en/newsroom/corporate/27046877.html" style="background-image: url('/pages/news/images/2019/03/12/jaxa/jaxa_04_t_w610_en.jpg');" target="_self">
+                <img src="/pages/news/images/2019/03/12/jaxa/jaxa_04_t_w610_en.jpg" alt="Video: Joint Talk Session by JAXA and Toyota: &quot;Lunar Surface Activities by Collective Efforts Across the Nation&quot;">
+            </a>
+        </div>
+        <div class="grid_detail">
+            <div class="datetime">Mar. 12, 2019</div>
+            <a class="grid_title" href="/en/newsroom/corporate/27046877.html" target="_self">
+                <span>Video: Joint Talk Session by JAXA and Toyota: "Lunar Surface Activities by Collective Efforts Across the Nation"</span>
+            </a>
+            <div class="grid_bottom">
+                <span class="grid_tag">
+                    <a href="#" data-searchable-tag="">Feature</a>
+                    <a href="#" data-searchable-tag="">Management</a>
+                    <a href="#" data-searchable-tag="">Press Conference</a>
+                    <a href="#" data-searchable-tag="">Innovation</a>
+                    <a href="#" data-searchable-tag="">Environmental Technology</a>
+                    <a href="#" data-searchable-tag="">Automated Driving Technology</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="grid_tile">
+        <div class="grid_image">
+            <a href="/en/newsroom/corporate/toyotatimes/27157958.html" style="background-image: url('/pages/news/images/2019/03/15/1500/20190315_03_t_w610.jpg');" target="_self">
+                <img src="/pages/news/images/2019/03/15/1500/20190315_03_t_w610.jpg" alt="Toyota Drives Lunar Exploration with Manned, Pressurized Rover">
+            </a>
+        </div>
+        <div class="grid_detail">
+            <div class="datetime">Mar. 15, 2019</div>
+            <a class="grid_title" href="/en/newsroom/corporate/toyotatimes/27157958.html" target="_self">
+                <span>Toyota Drives Lunar Exploration with Manned, Pressurized Rover</span>
+            </a>
+            <div class="grid_bottom">
+                <span class="grid_tag">
+                    <a href="#" data-searchable-tag="">Feature</a>
+                    <a href="#" data-searchable-tag="">Toyota Times</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="related_news"><div></div></div> 
+<script>
+GT.grid.parts.article('#related_news', 'type3', {
+  size: 3, // 5件で固定
+  labelTags: ['2851', '5055', '5053'], // 任意のラベルタグ
+  labelTagOperation: 'and', // デフォルト and
+  excludes: ['27059582', '27046877', '27157958'], // この記事のIDは除外する
+})
+</script>
+<!-- marsfinderon: index --></div>
+</div>
+<div class="section html rank_style" id="">
+	<h2 class="title">MOST POPULAR</h2>
+
+	<div><!-- marsfinderoff: index -->
+<div class="tile_wrapper">
+    <div class="grid_tile">
+        <div class="grid_image">
+            <a href="/en/newsroom/corporate/44970123.html?padid=ag478_from_popular" style="background-image: url(/pages/_system/image/tmb_corporate.png);">
+                <img src="/pages/_system/image/tmb_corporate.png" alt="TMC Announces Changes to Organizational Structure and Executive and Senior Professional / Senior Management Employee Positions">
+            </a>
+        </div>
+        <div class="grid_detail">
+            <div class="datetime">Nov. 05, 2026</div>
+            <a class="grid_title" href="/en/newsroom/corporate/44970123.html?padid=ag478_from_popular"><span>TMC Announces Changes to Organizational Structure and Executive and Senior Professional / Senior Management Employee Positions</span></a>
+        </div>
+    </div>
+    <div class="grid_tile">
+        <div class="grid_image">
+            <a href="/en/newsroom/toyota/40658942.html?padid=ag478_from_popular" style="background-image: url(/pages/news/images/2024/04/18/1330/20240418_01_t_w610.jpg);">
+                <img src="/pages/news/images/2024/04/18/1330/20240418_01_t_w610.jpg" alt="Toyota Launches All-New Land Cruiser &quot;250&quot; Series in Japan">
+            </a>
+        </div>
+        <div class="grid_detail">
+            <div class="datetime">Apr. 18, 2024</div>
+            <a class="grid_title" href="/en/newsroom/toyota/40658942.html?padid=ag478_from_popular"><span>Toyota Launches All-New Land Cruiser "250" Series in Japan</span></a>
+        </div>
+    </div>
+    <div class="grid_tile">
+        <div class="grid_image">
+            <a href="/en/newsroom/toyota/44397819.html?padid=ag478_from_popular" style="background-image: url(/pages/news/images/2026/05/28/1330_hilux/20260528_01_t_w610.jpg);">
+                <img src="/pages/news/images/2026/05/28/1330_hilux/20260528_01_t_w610.jpg" alt="Toyota Launches New Hilux in Japan">
+            </a>
+        </div>
+        <div class="grid_detail">
+            <div class="datetime">May 28, 2026</div>
+            <a class="grid_title" href="/en/newsroom/toyota/44397819.html?padid=ag478_from_popular"><span>Toyota Launches New Hilux in Japan</span></a>
+        </div>
+    </div>
+    <div class="grid_tile">
+        <div class="grid_image">
+            <a href="/en/newsroom/corporate/44960881.html?padid=ag478_from_popular" style="background-image: url(/pages/news/images/2026/10/30/1600/20261030_01_t_w610.jpg);">
+                <img src="/pages/news/images/2026/10/30/1600/20261030_01_t_w610.jpg" alt="Toyota and Waymo Advance Autonomous Driving Collaboration for Safer Streets and Freedom of Movement for All">
+            </a>
+        </div>
+        <div class="grid_detail">
+            <div class="datetime">Oct. 30, 2026</div>
+            <a class="grid_title" href="/en/newsroom/corporate/44960881.html?padid=ag478_from_popular"><span>Toyota and Waymo Advance Autonomous Driving Collaboration for Safer Streets and Freedom of Movement for All</span></a>
+        </div>
+    </div>
+    <div class="grid_tile">
+        <div class="grid_image">
+            <a href="/en/newsroom/toyota/44331143.html?padid=ag478_from_popular" style="background-image: url(/pages/news/images/2026/05/14/1330/20260514_01_t_w610.jpg);">
+                <img src="/pages/news/images/2026/05/14/1330/20260514_01_t_w610.jpg" alt="Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan">
+            </a>
+        </div>
+        <div class="grid_detail">
+            <div class="datetime">May 14, 2026</div>
+            <a class="grid_title" href="/en/newsroom/toyota/44331143.html?padid=ag478_from_popular"><span>Toyota Launches All-New Land Cruiser "FJ" Series in Japan</span></a>
+        </div>
+    </div>
+</div>
+<!-- marsfinderon: index --></div>
+</div>
+</div><!-- /Section -->
+				</div>
+				<!-- /Contents-body -->
+</div>
+			<!-- /Contents-inner -->
+		</div>
+		<!-- /Contents -->
+	</div>
+
+	<!-- /Main -->
+
+	<!-- footer -->
+	<div id="footer"></div>
+<script type="text/javascript"><!--
+	GT.navi.footer.print();
+//--></script>
+<!-- /footer -->
+
+	<div id="smartphone"></div>
+	<div id="tablet"></div>
+	<script type="text/javascript">
+	<!--
+	
+		SCoutput_bc();
+	
+	//-->
+	</script>
+	<script type="text/javascript" src="/pages/search/en/ss_suggest_config.js"></script></body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FIRST FIRE editable route plan, version 1",
+  "description": "Local X/Z metres from (0,0). Displayed files are limited to 2 MB. An altered reference route becomes a custom route.",
+  "type": "object",
+  "required": ["format", "scenario", "terrain", "preset", "overrides", "waypoints"],
+  "properties": {
+    "format": {"const": "first-fire.route/1"},
+    "scenario": {"$ref": "scenario.schema.json"},
+    "terrain": {"enum": ["flat", "rolling", "grade", "lola"]},
+    "preset": {"enum": ["custom", "survey", "straight", "slope", "jezero"]},
+    "overrides": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "speedMps": {"type": "number", "minimum": 0.01, "maximum": 8, "description": "Commanded wheel speed in m/s."},
+        "turnRateRadS": {"type": "number", "minimum": 0.01, "maximum": 2},
+        "wheelRadiusM": {"type": "number", "minimum": 0.01, "maximum": 2},
+        "trackWidthM": {"type": "number", "minimum": 0.05, "maximum": 10},
+        "rollingResistance": {"type": "number", "minimum": 0, "maximum": 1},
+        "friction": {"type": "number", "minimum": 0, "maximum": 2},
+        "efficiency": {"type": "number", "minimum": 0.01, "maximum": 1},
+        "slipFraction": {"type": "number", "minimum": 0, "maximum": 0.95},
+        "reservePct": {"type": "number", "minimum": 0, "maximum": 100}
+      }
+    },
+    "waypoints": {"type": "array", "maxItems": 64, "items": {"$ref": "#/$defs/waypoint"}}
+  },
+  "$defs": {
+    "waypoint": {
+      "type": "object", "required": ["xM", "zM"],
+      "properties": {
+        "xM": {"type": "number", "minimum": -1000000, "maximum": 1000000},
+        "zM": {"type": "number", "minimum": -1000000, "maximum": 1000000}
+      }
+    }
+  },
+  "allOf": [{
+    "if": {"properties": {"terrain": {"const": "lola"}}},
+    "then": {"properties": {
+      "scenario": {"properties": {"conditions": {"properties": {"world": {"const": "Moon"}}}}},
+      "waypoints": {"items": {"properties": {
+        "xM": {"minimum": -2560, "maximum": 2560}, "zM": {"minimum": -2560, "maximum": 2560}
+      }}}
+    }}
+  }]
+}

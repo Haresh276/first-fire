@@ -1,0 +1,130 @@
+{
+  "id": "W2",
+  "question": "Provide a reusable check that accepts a fresh consistent record and rejects one whose reported front distance has been altered. For plain JavaScript use function valid(rateMmS,timeS,travelCm) returning a boolean (finite nonnegative inputs, no strip-end clipping within this test, tolerance 0.000001 cm). A native validator that replays and checks the corresponding full trial files is equally acceptable. We will test two genuine records and one altered distance. A description alone is insufficient.",
+  "chat": null,
+  "instrument": {
+    "url": "https://first-fire-lunar-lab.vercel.app/judge-lab.html",
+    "controlActions": [
+      {
+        "method": "fill",
+        "selector": "#question",
+        "value": "Provide a reusable check that accepts a fresh consistent record and rejects one whose reported front distance has been altered. For plain JavaScript use function valid(rateMmS,timeS,travelCm) returning a boolean (finite nonnegative inputs, no strip-end clipping within this test, tolerance 0.000001 cm). A native validator that replays and checks the corresponding full trial files is equally acceptable. We will test two genuine records and one altered distance. A description alone is insufficient."
+      },
+      {
+        "method": "click",
+        "selector": "#question-form button",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#rover-settings > summary",
+        "value": null
+      },
+      {
+        "method": "select",
+        "selector": "#speed-mode",
+        "value": "custom"
+      },
+      {
+        "method": "fill",
+        "selector": "#custom-speed",
+        "value": 2
+      },
+      {
+        "method": "press",
+        "selector": "#custom-speed",
+        "value": "Tab"
+      },
+      {
+        "method": "slider",
+        "selector": "#time",
+        "value": 17
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "first"
+      },
+      {
+        "method": "upload",
+        "selector": "#import",
+        "value": "first"
+      },
+      {
+        "method": "alterFrontAndUpload",
+        "selector": "#import",
+        "value": "first"
+      },
+      {
+        "method": "select",
+        "selector": "#speed-mode",
+        "value": "custom"
+      },
+      {
+        "method": "fill",
+        "selector": "#custom-speed",
+        "value": "1.3"
+      },
+      {
+        "method": "press",
+        "selector": "#custom-speed",
+        "value": "Tab"
+      },
+      {
+        "method": "slider",
+        "selector": "#time",
+        "value": 63
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "second"
+      },
+      {
+        "method": "upload",
+        "selector": "#import",
+        "value": "second"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 8,
+        "filename": "W2-first.json",
+        "sha256": "2587cd7170cfdd11fc9edbba0d07e5bbb6e984101e1e1656a04057675ba3a6ee",
+        "label": "Original downloaded JSON"
+      },
+      {
+        "step": 11,
+        "element": "#file-status",
+        "label": null,
+        "text": "Replay verified. Both trials, their differences, model fingerprint and source records match."
+      },
+      {
+        "step": 12,
+        "filename": "W2-altered.json",
+        "sha256": "f3ac43872eae114d35f579036c0d61e43d92c835eaa3def521b70b30c09a9ea4",
+        "label": "Only current.metrics.positionCm was changed, from 3.4 to 3.8 cm"
+      },
+      {
+        "step": 14,
+        "element": "#file-status",
+        "label": null,
+        "text": "File not applied. Recorded inputs, results or source records differ from this rerun. The current experiment is unchanged."
+      },
+      {
+        "step": 19,
+        "filename": "W2-second.json",
+        "sha256": "7363c14d6f28c7d5cf22892432a0aa17b8916f059c195cd468b87da41a770897",
+        "label": "Original downloaded JSON"
+      },
+      {
+        "step": 22,
+        "element": "#file-status",
+        "label": null,
+        "text": "Replay verified. Both trials, their differences, model fingerprint and source records match."
+      }
+    ],
+    "elapsedMs": 454
+  },
+  "pageErrors": []
+}

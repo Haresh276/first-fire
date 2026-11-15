@@ -1,0 +1,426 @@
+/* The desk opens as one scene. Opening a conversation gives the transcript the full reading column. */
+body:has(#content > .ff-cinema-home) {
+  --cinema-sky: #070c11;
+  --cinema-text: #f2f1ed;
+  --cinema-soft: #b0bbbe;
+  --cinema-rule: #ffffff23;
+  --cinema-ember: #ff9c6d;
+  --cinema-gutter: max(6.25vw, calc((100vw - 1560px) / 2));
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cinema-sky);
+  color: var(--cinema-text);
+}
+body:has(.ff-cinema-home) .ff-shell-header {
+  z-index: 5;
+  border: 0;
+  background: var(--cinema-sky);
+  color: var(--cinema-text);
+}
+body:has(.ff-cinema-home) .mast-inner,
+body:has(.ff-cinema-home) .ff-shell-footer {
+  width: 100%;
+  max-width: none;
+  padding-inline: var(--cinema-gutter);
+}
+body:has(.ff-cinema-home) .mast-inner {
+  position: relative;
+  min-height: clamp(64px, 7.6vh, 88px);
+}
+body:has(.ff-cinema-home) .mast-inner::after,
+body:has(.ff-cinema-home) .ff-shell-footer::before {
+  content: "";
+  position: absolute;
+  inset-inline: var(--cinema-gutter);
+  height: 1px;
+  background: var(--cinema-rule);
+  pointer-events: none;
+}
+body:has(.ff-cinema-home) .mast-inner::after { bottom: 0; }
+body:has(.ff-cinema-home) .ff-shell-identity { flex-direction: row; align-items: center; gap: clamp(14px, 2vw, 29px); }
+body:has(.ff-cinema-home) .mast-brand { color: var(--cinema-text); font-size: clamp(25px, 2.3vw, 32px); }
+body:has(.ff-cinema-home) .ff-shell-current {
+  border: 0;
+  border-left: 1px solid #ffffff41;
+  border-radius: 0;
+  padding: 2px 0 2px clamp(14px, 1.8vw, 26px);
+  background: none;
+  color: #bcc7c9;
+  font: 400 .81rem/1.4 var(--body);
+}
+body:has(.ff-cinema-home) .mast-chat { display: none; }
+body:has(.ff-cinema-home) .mast-explore > summary {
+  gap: 9px;
+  padding: 7px 0 7px 14px;
+  border-radius: 3px;
+  color: var(--cinema-text);
+  background: none;
+  font: 500 .91rem/1.3 var(--body);
+}
+body:has(.ff-cinema-home) .mast-explore[open] > summary,
+body:has(.ff-cinema-home) .mast-explore > summary:hover { color: var(--cinema-ember); }
+body:has(.ff-cinema-home) .ff-shell-dropdown {
+  color-scheme: dark;
+  background: #121a21;
+  border: 1px solid #46515a;
+  border-radius: 10px;
+  box-shadow: 0 24px 80px #0009;
+}
+body:has(.ff-cinema-home) .ff-shell-group h2 { color: #f3f1ee; border-color: #ffffff2b; }
+body:has(.ff-cinema-home) .ff-shell-group a { color: #e4e9e8; }
+body:has(.ff-cinema-home) .ff-shell-group small { color: #b4c2c6; }
+body:has(.ff-cinema-home) .ff-shell-group a:hover,
+body:has(.ff-cinema-home) .ff-shell-group a:focus-visible { background: #24343f; }
+body:has(.ff-cinema-home) :is(.ff-shell-header a, .ff-shell-header summary, footer a):focus-visible {
+  outline: 2px solid var(--cinema-ember);
+  outline-offset: 3px;
+}
+#content:has(> .ff-cinema-home) {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ff-cinema-home {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: clamp(585px, calc(100svh - 148px), 1000px);
+  padding: clamp(56px, 7.3vh, 104px) var(--cinema-gutter) clamp(62px, 9vh, 126px);
+  color: var(--cinema-text);
+  background-color: var(--cinema-sky);
+}
+.ff-cinema-lead, .ff-cinema-home [data-home-chat], .ff-cinema-pending-chat {
+  position: relative;
+  z-index: 2;
+  width: min(43vw, 590px);
+  min-width: 0;
+}
+.ff-cinema-topic {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 clamp(17px, 2.6vh, 30px);
+  color: #d1d7d9;
+  font: 500 clamp(.67rem, .8vw, .76rem)/1.3 var(--body);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.ff-cinema-topic::before { content: ""; width: 25px; height: 2px; background: var(--cinema-ember); }
+.ff-cinema-lead h1 {
+  margin: 0;
+  color: var(--cinema-text);
+  font: 400 clamp(78px, 7.6vw, 132px)/.94 var(--body);
+  letter-spacing: -.075em;
+}
+.ff-cinema-lead h1 span { display: block; }
+.ff-cinema-description {
+  max-width: 36ch;
+  margin: clamp(18px, 2.7vh, 28px) 0 0;
+  color: #b8c3c9;
+  font: 400 clamp(16px, 1.34vw, 21px)/1.5 var(--body);
+  letter-spacing: -.02em;
+}
+.ff-cinema-home [data-home-chat], .ff-cinema-pending-chat { margin-top: clamp(23px, 3.5vh, 40px); }
+.ff-cinema-pending-input { height: 62px; border: 1px solid #51616b; border-radius: 15px; background: #10171d; }
+.ff-cinema-pending-prompts { display: flex; gap: 20px; margin-top: 17px; }
+.ff-cinema-pending-prompts i { width: min(36%, 130px); height: 9px; border-radius: 4px; background: #2d3a42; }
+
+.ff-cinema-home:has(.ffchat-desk:not(.ffchat-fresh)) {
+  min-height: 0;
+  overflow: visible;
+  justify-content: flex-start;
+  padding-block: clamp(22px, 4.5vh, 55px) clamp(36px, 7vh, 90px);
+}
+.ff-cinema-home:has(.ffchat-desk:not(.ffchat-fresh)) .ff-cinema-lead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.ff-cinema-home:has(.ffchat-desk:not(.ffchat-fresh)) .ff-cinema-earth { display: none; }
+.ff-cinema-home:has(.ffchat-desk:not(.ffchat-fresh)) [data-home-chat] {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+body:has(.ff-cinema-home) footer {
+  border: 0;
+  margin: 0;
+  background: var(--cinema-sky);
+  color: #9eaeb6;
+}
+body:has(.ff-cinema-home) .ff-shell-footer {
+  position: relative;
+  min-height: 72px;
+  padding-block: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  color: #a5b1b6;
+  font: 400 .76rem/1.4 var(--body);
+}
+body:has(.ff-cinema-home) .ff-shell-footer::before { top: 0; }
+body:has(.ff-cinema-home) .footbrand { display: none; }
+body:has(.ff-cinema-home) .ff-shell-footer a { color: #c1cbcd; text-decoration: none; }
+body:has(.ff-cinema-home) .ff-shell-footer a:hover { color: white; text-decoration: underline; }
+@media (max-width: 899px) {
+  body:has(#content > .ff-cinema-home) { --cinema-gutter: clamp(20px, 6vw, 46px); }
+  .ff-cinema-home { min-height: clamp(590px, calc(100svh - 138px), 820px); }
+  .ff-cinema-lead, .ff-cinema-home [data-home-chat], .ff-cinema-pending-chat { width: min(58vw, 490px); }
+  .ff-cinema-lead h1 { font-size: clamp(70px, 9.4vw, 92px); }
+}
+@media (max-width: 620px) {
+  .ff-cinema-home {
+    min-height: clamp(515px, calc(100svh - 156px), 720px);
+    justify-content: flex-start;
+    padding-top: clamp(65px, 14svh, 138px);
+    padding-bottom: 42px;
+  }
+  .ff-cinema-lead, .ff-cinema-home [data-home-chat], .ff-cinema-pending-chat { width: 100%; }
+  .ff-cinema-topic { margin-bottom: 18px; gap: 8px; font-size: .64rem; letter-spacing:.12em; }
+  .ff-cinema-topic::before { width: 15px; }
+  .ff-cinema-lead h1 { width: max-content; font-size: clamp(59px, 16.5vw, 87px); }
+  .ff-cinema-description { max-width: 29ch; margin-top: 22px; font-size: 16px; }
+  .ff-cinema-home [data-home-chat], .ff-cinema-pending-chat { margin-top: 23px; }
+  body:has(.ff-cinema-home) .ff-shell-footer { min-height: 78px; flex-wrap: wrap; }
+  body:has(.ff-cinema-home) .ff-shell-footer nav { gap: 15px; }
+  body:has(.ff-cinema-home) .ff-shell-footer a { min-height: 36px; }
+}
+@media (max-width: 360px) {
+  body:has(#content > .ff-cinema-home) { --cinema-gutter: 16px; }
+  body:has(.ff-cinema-home) .ff-shell-identity { gap: 9px; }
+  body:has(.ff-cinema-home) .ff-shell-current { padding-left: 9px; font-size: .7rem; }
+}
+@media print {
+  .ff-cinema-home { min-height: 0; padding: 1rem; color: black; background: white; }
+  .ff-cinema-lead h1, .ff-cinema-description, .ff-cinema-topic { color: black; }
+}
+@media (max-width: 430px) {
+  body:has(.ff-cinema-home) .mast-inner { gap: 6px; }
+  body:has(.ff-cinema-home) .ff-shell-identity { gap: 9px; }
+  body:has(.ff-cinema-home) .ff-shell-current { flex: none; max-width: none; padding-left: 9px; font-size: .75rem; }
+  body:has(.ff-cinema-home) .mast-explore > summary { padding-inline: 3px; gap: 6px; }
+  body:has(.ff-cinema-home) .mast-brand { font-size: 24px; }
+  body:has(.ff-cinema-home) .ff-shell-footer { flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px; }
+}
+@media (max-width: 360px) {
+  body:has(.ff-cinema-home) .ff-shell-identity { flex-direction: column; align-items: flex-start; gap: 1px; }
+  body:has(.ff-cinema-home) .mast-brand { padding-block: 0 2px; }
+  body:has(.ff-cinema-home) .ff-shell-current { border: 0; padding: 0; font-size: .68rem; }
+}
+.ff-cinema-lead { pointer-events: none; }
+.ff-cinema-lead > * { width: fit-content; pointer-events: auto; }
+body:has(.ff-cinema-home) .ff-shell-footer > span { width: auto; margin: 0; }
+@media (prefers-reduced-motion: reduce) {
+  body:has(.ff-cinema-home) { scroll-behavior: auto; }
+}
+@media (min-width: 621px) and (max-width: 899px) {
+  .ff-cinema-lead, .ff-cinema-home [data-home-chat], .ff-cinema-pending-chat { width: min(48vw, 445px); }
+}
+
+/* NASA Blue Marble image and canvas share the same lighting treatment.
+   The figure spans the stage; only the globe and its two controls take input. */
+.ff-cinema-home > .earth-figure.ff-cinema-earth {
+  --earth-x: 81.5%;
+  --earth-y: 50%;
+  --earth-diameter: min(53vw, 81svh, 58rem);
+  --earth-control-edge: clamp(18px, 4.5vw, 72px);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  justify-self: stretch;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  isolation: isolate;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+.ff-cinema-home .ff-cinema-earth::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  /* Uneven brightness and spacing keep the star field still and unobtrusive. */
+  background:
+    radial-gradient(1px 1px at 3.2% 29%, #81909f 45%, transparent),
+    radial-gradient(.8px .8px at 5.7% 66%, #839bb8 40%, transparent),
+    radial-gradient(1px 1px at 10.4% 9.7%, #7c8da0 45%, transparent),
+    radial-gradient(.8px .8px at 14.6% 85%, #677a8b 45%, transparent),
+    radial-gradient(1.1px 1.1px at 19.4% 15%, #94a4bc 40%, transparent),
+    radial-gradient(.9px .9px at 28.6% 75%, #647788 45%, transparent),
+    radial-gradient(1px 1px at 31.8% 24.7%, #7c8c9a 45%, transparent),
+    radial-gradient(1.4px 1.4px at 35.3% 9%, #cad4e6 30%, #93a2b577 54%, transparent),
+    radial-gradient(.9px .9px at 38.8% 87%, #8294a3 45%, transparent),
+    radial-gradient(.9px .9px at 43.4% 46.3%, #9da7bc 45%, transparent),
+    radial-gradient(1px 1px at 46.8% 19%, #8097a8 45%, transparent),
+    radial-gradient(.7px .7px at 51.1% 30%, #bdcddd 45%, transparent),
+    radial-gradient(1.35px 1.35px at 53.7% 69.8%, #b6d4e2 30%, #8aafc866 57%, transparent),
+    radial-gradient(.8px .8px at 59.3% 56%, #a9c1ce 40%, transparent),
+    radial-gradient(1px 1px at 62.5% 6.8%, #7f99af 50%, transparent),
+    radial-gradient(.9px .9px at 67.1% 87.4%, #7791a4 45%, transparent),
+    radial-gradient(1px 1px at 73.3% 21%, #95b1c3 45%, transparent),
+    radial-gradient(.9px .9px at 81.7% 95.2%, #758c9b 45%, transparent),
+    radial-gradient(1.3px 1.3px at 88.8% 9.1%, #99afbb 35%, transparent),
+    radial-gradient(.9px .9px at 94.6% 77.3%, #a0b5c3 46%, transparent),
+    radial-gradient(1px 1px at 97.2% 40.6%, #6f899b 40%, transparent);
+}
+.ff-cinema-home .ff-cinema-earth::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: auto;
+  height: auto;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 32% 54% at 72% 44%, #132b433d 15%, transparent 100%);
+}
+
+.ff-cinema-home .ff-cinema-earth .earth-disc {
+  position: absolute;
+  left: var(--earth-x);
+  top: var(--earth-y);
+  width: var(--earth-diameter);
+  height: auto;
+  max-width: none;
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  isolation: isolate;
+  pointer-events: auto;
+}
+.ff-cinema-earth .earth-disc::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0.6%;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    -2px -1px 6px 1px #89c5fb66,
+    -4px -3px 17px 1px #4597d24f,
+    -7px -5px 45px 2px #176ba52e;
+  mask-image: linear-gradient(122deg, #000 9%, #000c 36%, transparent 70%);
+}
+.ff-cinema-earth :is(.earth-poster, .earth-surface) {
+  filter: saturate(.81) contrast(1.08) brightness(.95);
+}
+.ff-cinema-earth .earth-disc::after {
+  /* Light falls across the Sahara and North Atlantic from upper left.
+     Shape the night side without blurring the photographed surface. */
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: .25%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(ellipse 82% 100% at 12% 12%,
+    transparent 36%, #0208140c 52%, #0207124f 69%, #01040ca3 86%, #01040cdc 100%);
+}
+.ff-cinema-earth .earth-longitude { display: none; }
+.ff-cinema-earth .earth-disc:has(.earth-scrub:focus-visible) {
+  outline: 2px solid #e4f3ff;
+  outline-offset: 3px;
+}
+.ff-cinema-home .ff-cinema-earth :is(.earth-credit, .earth-toggle) {
+  position: absolute;
+  top: auto;
+  bottom: clamp(14px, 3.4vh, 36px);
+  z-index: 3;
+  min-height: 44px;
+  margin: 0;
+  pointer-events: auto;
+}
+.ff-cinema-home .ff-cinema-earth .earth-credit { left: auto; right: calc(var(--earth-control-edge) + 49px); }
+.ff-cinema-earth .earth-credit a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 5px;
+  color: #c4d0db;
+  font: 500 11px/1.25 var(--body, sans-serif);
+  letter-spacing: .035em;
+  text-decoration-color: #7790a4;
+  text-underline-offset: 4px;
+}
+.ff-cinema-home .ff-cinema-earth .earth-toggle {
+  right: var(--earth-control-edge);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #738da15e;
+  border-radius: 50%;
+  color: #ecf4fb;
+  background: #060c11b8;
+  font-size: 0;
+}
+.ff-cinema-home .ff-cinema-earth .earth-toggle[hidden] { display: none; }
+.ff-cinema-earth .earth-toggle:hover { background: #22323f; }
+.ff-cinema-earth :is(.earth-toggle, .earth-credit a):focus-visible { outline: 2px solid #e4f3ff; outline-offset: 2px; }
+.ff-cinema-earth:not(:has(.earth-toggle:not([hidden]))) .earth-credit { right: var(--earth-control-edge); }
+
+@media (min-width: 900px) and (max-height: 640px) {
+  .ff-cinema-home > .earth-figure.ff-cinema-earth { --earth-diameter: min(52vw, 94svh); --earth-y: 47%; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  .ff-cinema-home > .earth-figure.ff-cinema-earth {
+    --earth-x: 86%;
+    --earth-y: 38%;
+    --earth-diameter: min(63vw, 69svh);
+  }
+}
+@media (max-width: 599px) {
+  .ff-cinema-home > .earth-figure.ff-cinema-earth {
+    --earth-x: 93%;
+    --earth-y: 90px;
+    --earth-diameter: min(75vw, 320px);
+    --earth-control-edge: 16px;
+  }
+  .ff-cinema-home .ff-cinema-earth .earth-disc {
+    mask-image: linear-gradient(68deg, #0005 3%, #000c 21%, #000 45%);
+  }
+  .ff-cinema-home .ff-cinema-earth .earth-credit {
+    left: var(--cinema-gutter, 16px);
+    right: auto;
+  }
+  .ff-cinema-home .ff-cinema-earth .earth-disc::before {
+    box-shadow: -1px -1px 4px #8dcbff66, -3px -2px 12px #4c96da50, -5px -3px 26px #226ca531;
+  }
+  .ff-cinema-home .ff-cinema-earth :is(.earth-credit, .earth-toggle) {
+    top: 5px;
+    bottom: auto;
+  }
+}
+@media (max-width: 359px) {
+  .ff-cinema-home > .earth-figure.ff-cinema-earth { --earth-y: 75px; --earth-x: 95%; }
+}

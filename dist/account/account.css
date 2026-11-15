@@ -1,0 +1,33 @@
+@font-face { font-family: DM; src: url("/fonts/dm-regular.ttf"); font-weight: 400; font-display: swap; }
+@font-face { font-family: DM; src: url("/fonts/dm-bold.ttf"); font-weight: 700; font-display: swap; }
+@font-face { font-family: Barlow; src: url("/fonts/barlow-bold.ttf"); font-weight: 700; font-display: swap; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { color-scheme: dark; background: #101315; color: #f5f5ef; font: 16px/1.5 DM, sans-serif; }
+body { margin: 0; }
+header {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1rem clamp(1rem, 5vw, 5rem); border-bottom: 1px solid #3c4245;
+}
+a { color: #f4b294; text-underline-offset: .22em; }
+header a { text-decoration: none; }
+.wordmark { font: 700 1.55rem/1 Barlow, sans-serif; letter-spacing: -.04em; color: white; }
+.wordmark span { color: #ff8856; }
+main { width: min(28rem, calc(100% - 2.5rem)); margin: clamp(3.5rem, 11vh, 8rem) auto; }
+h1 { margin: 0; font: 700 clamp(2.75rem, 8vw, 4rem)/1 Barlow, sans-serif; letter-spacing: -.045em; }
+p { margin: .9rem 0; overflow-wrap: anywhere; }
+#description { color: #c2c9cb; margin-bottom: 1.75rem; }
+#status, #notice { color: #d5c6bd; font-size: .93rem; }
+#notice:empty, #status:empty { display: none; }
+.actions { display: grid; gap: .7rem; }
+button {
+  display: block; width: 100%; min-height: 3rem; padding: .8rem 1.1rem; text-align: left;
+  font: 700 1rem DM, sans-serif; color: #f6f7f3; background: #20282b;
+  border: 1px solid #707a7c; border-radius: .4rem; cursor: pointer;
+}
+button:enabled:hover { border-color: #ff9568; background: #2d3234; }
+button:disabled { color: #9da4a6; background: #1c2022; border-color: #474d50; cursor: default; }
+#retry { width: auto; background: transparent; min-height: 2.5rem; padding: .4rem .7rem; }
+.workspace { display: inline-block; margin-top: 1.7rem; }
+:is(a, button):focus-visible { outline: 3px solid #ffa37b; outline-offset: 4px; }

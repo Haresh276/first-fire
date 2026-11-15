@@ -1,0 +1,29 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.320
+FIRST FIRE and ChatGPT each scored 18/18 in science.
+Both used the same NASA evidence for six questions. Here is the rover trial.
+
+00:00:03.320 --> 00:00:07.400
+Reverse the airflow at 37 seconds.
+Modeled travel changes from 6.66 cm to 4.81 cm, a decrease of 1.85 cm.
+
+00:00:07.400 --> 00:00:10.520
+Open the source behind the rate.
+Saffire-I S2 provides the run conditions. NASA’s slide 21 reports 1.3 mm/s.
+
+00:00:10.520 --> 00:00:13.440
+Enter 2 mm/s and set the clock to 40 seconds.
+The prescribed-front model now calculates 8 cm of travel.
+
+00:00:13.440 --> 00:00:16.800
+Check who supplied the speed.
+FIRST FIRE labels this input as the judge’s assumption.
+
+00:00:16.800 --> 00:00:20.080
+Replay the original 17-second file.
+Its 2 mm/s input reproduces 3.4 cm. The source records and outputs match.
+
+00:00:20.080 --> 00:00:23.960
+Change the recorded 3.4 cm to 3.8 cm and replay.
+The model still returns 3.4 cm. FIRST FIRE rejects the altered file.

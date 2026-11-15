@@ -252,6 +252,7 @@
     const get=id=>root.querySelector('#pl-'+id), form=get('form'), clock=get('time');
     const control=name=>form.elements.namedItem(name);
     let current=null,scenario=null,predicted=null;
+    let refreshMaterialScreen;
     let reference=null;
     const desk=window.FFAwareness;
     const lite=desk?.tier?.()==='lite';
@@ -368,7 +369,7 @@
       get('save').disabled=!!err;get('compare').disabled=!!err;
       get('live-data').hidden=!!err;
       if(err){
-        current=null;compare();publish(null);
+        current=null;compare();publish(null);refreshMaterialScreen?.();
         if(runNetwork)runNetwork.hidden=true;
         for(const id of ['inventory','temp','temp-source','estimate','network-result','rover-result','match'])get(id).textContent='Complete the test conditions to calculate.';
         return;
@@ -376,6 +377,7 @@
       const loadingLabel=scenario.density===physics.loadings.coupon?'Thin-coupon example':scenario.density===physics.loadings.stress?'High-loading stress example':'Custom loading';
       get('inventory').textContent=loadingLabel+' · '+fmt(scenario.length*scenario.density,3)+' g of combustible material across '+fmt(scenario.length)+' cm. Both the fuel loading and the cabin conditions are model inputs.';
       current=physics.run(scenario);predicted=physics.liquidPrediction(scenario,model);
+      refreshMaterialScreen?.();
       get('match').textContent='Your scenario uses '+physics.fuels[scenario.fuel].name.toLowerCase()+' on '+scenario.planet+' at '+fmt(scenario.oxygen)+'% O₂. The flight used a composite in orbit; this sealed-box solver has no airflow direction, and the cited PSI table supplies no pressure measurement. Only the speed is borrowed.';
       compare();
       const kelvin=current.flame.kelvin;
@@ -454,6 +456,20 @@
       reference=requested;control('speed').value=physics.saffireSpeeds[requested]/10;
     }
     calculate();
+    const screen=document.createElement('section');
+    screen.className='panel section pl-method';
+    screen.textContent='Loading cabin material screening…';
+    get('form').after(screen);
+    import('./material-screening.mjs').then(({mountMaterialScreen,physicsReturn})=>{
+      if(!screen.isConnected)return;
+      refreshMaterialScreen=mountMaterialScreen(screen,{
+        from:'physics',params:params || new URLSearchParams(),
+        read:()=>current ? {place:scenario.planet.toLowerCase(),pressurePsia:Number((scenario.pressure/6.894757).toFixed(6)),
+          oxygenPct:scenario.oxygen,trace:current.trace} : null,
+        snapshot:()=>({inputs:read(),parts:Object.fromEntries(['cabin','chassis','pack','cabinName','chassisName','packName','designName'].map(k=>[k,control(k).value]))}),
+        apply:(environment,saved)=>{const message=physicsReturn(form,environment,saved,physics);calculate();return message;}
+      });
+    }).catch(()=>{screen.textContent='The material screening model could not load.';});
     const observer=!lite && typeof ResizeObserver==='function'?new ResizeObserver(()=>{if(current)chart(get('chart'),current.trace,predicted,Number(clock.value));}):null;
     observer?.observe(get('live-data'));
     if(roverMode)requestAnimationFrame(()=>get('rover')?.scrollIntoView({block:'start'}));

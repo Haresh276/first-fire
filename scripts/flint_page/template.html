@@ -32,8 +32,8 @@ $lunar_figure</div></div>
 <p class="source">Source · <a href="$source_core">Core calibration</a> and the Python engine’s <code>limits.py</code> and <code>rover.py</code>. Figure 13 and the single-material ICES figures disagree on the lunar calibration points. <a href="#validation">Compare the readings</a>. The browser solves the thin-solid branch equations. The download includes the droplet, chamber and rover modules.</p>
 </section>
 <section id="validation" class="section">
-<p class="eyebrow">F4–F5 · Validation</p><h2>Can Earth tests predict the lunar oxygen limit?</h2>
-<p>FLINT fits the blow-off branch to each material’s Earth duct measurements. It holds out one material’s lunar observation and fits the shared quenching constant to the remaining lunar observations. The mean absolute error on the held-out materials is <strong>$errors oxygen percentage points</strong> using ICES Figure 13.</p>
+<p class="eyebrow">F4–F5 · Validation</p><h2>How well does FLINT predict the oxygen limit under simulated lunar gravity?</h2>
+<p>FLINT fits the blow-off branch to each material’s Earth duct measurements. NASA recreated lunar gravity in a drop tower on Earth. FLINT uses three of the four lunar-gravity measurements to fit a shared quenching constant and predicts the fourth, rotating through all four. The mean absolute error on the held-out materials is <strong>$errors oxygen percentage points</strong> using ICES Figure 13. The straight-line estimate averaged 2.3 points on the same figure.</p>
 $validation
 <aside class="note"><strong>Figure 13 and the single-material figures disagree.</strong> FLINT’s mean error rises to $alternative points using the alternate readings, versus $alt_straight for the straight-line predictor. The ranking changes with the choice of figure. The small sample cannot settle which model transfers best.
 <details><summary>See the digitization notes</summary><ul>$f4</ul>

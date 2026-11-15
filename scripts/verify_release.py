@@ -26,6 +26,22 @@ class Links(HTMLParser):
             if u and not urlsplit(u).scheme and not u.startswith(('#','//')):
                 self.assets.append(u)
 
+def local_asset(dist, page, url):
+    root = dist.resolve()
+    path = unquote(urlsplit(url).path)
+    if not path:
+        target = page
+    elif path.startswith('/'):
+        target = root / path.lstrip('/')
+    else:
+        target = page.parent / path
+    if target.is_dir():
+        target = target / 'index.html'
+    target = target.resolve()
+    assert target.is_relative_to(root), (page, url)
+    return target
+
+
 def verify_offline_packs(dist, actual):
     index = json.loads((dist/PACK_INDEX).read_text())
     assert index['schema'] == 'first-fire.offline-packs.v1' and index['core'] == FILENAME and index['folder'] == 'FIRST-FIRE'
@@ -46,7 +62,9 @@ def verify_offline_packs(dist, actual):
                           'rover-workbench/prototype/scene/vendor/three.module.min.js', 'rover-workbench/parts.json',
                           'data/tests.csv', 'challenge-data-pack.zip', 'forecast-lock/fm2-v1.json', 'master-physics.js',
                           'master-film.mp4', 'master-film.vtt', 'master-round2-slides.pdf', 'master-round2.html',
-                          'flint.html', 'flint-page.js', 'flint-solid.js', 'flint-coefficients.js', 'rover-fire-case.html'])
+                          'flint.html', 'flint-page.js', 'flint-solid.js', 'flint-coefficients.js', 'rover-fire-case.html',
+                          'material-observer.html', 'material-observer.js', 'material-observer-model.js',
+                          'material-observer-evidence.js', 'material-screening.mjs'])
                 assert all(p in members for p in catalog if p.startswith(('data/', 'flint/results/', 'rover-fire-', 'flight-frames/', 'rover-workbench/prototype/',
                            'rover-workbench/terrain/', 'rover-workbench/examples/'))), 'Runtime or science files missing from core'
             else:
@@ -75,11 +93,10 @@ def check(dist):
     actual={p.relative_to(dist).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
             for p in dist.rglob('*') if p.is_file() and p.name!='checksums.json'}
     assert digests==actual,'One or more release files changed: rebuild before release.'
-    for page in dist.glob('*.html'):
+    for page in [*dist.glob('*.html'), *dist.glob('account/index.html')]:
         parser=Links();parser.feed(page.read_text())
         for url in parser.assets:
-            f=(page.parent/unquote(urlsplit(url).path)).resolve()
-            assert f.is_relative_to(dist.resolve()) and f.is_file(), (page.name,url)
+            assert local_asset(dist, page, url).is_file(), (page.relative_to(dist), url)
     assert not any(p.name in ('key.example.json','.DS_Store') for p in dist.rglob('*')), 'Do not ship assessor keys or system files.'
     assert not any(p.suffix in ('.env','.pem') or p.name=='.git' for p in dist.rglob('*'))
     catalog=json.loads((dist/'data/investigations.json').read_text())

@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FIRST FIRE rover design result",
+  "type": "object",
+  "description": "A single run of the independent rover sizing models. Physical quantities use the units specified at each field. Null denotes a missing measurement, an inapplicable model or an outcome that the calculation cannot establish.",
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "resultClass": {
+      "const": "simulation"
+    },
+    "compatibility": {
+      "const": "unverified"
+    },
+    "sourceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Identifiers in sources.json for the selected component references and shared calculation or environmental references. A reference may describe an analogue or a method without measuring the selected assembly."
+    },
+    "mobility": {
+      "type": "object",
+      "description": "Static support and optional accelerometer comparison.",
+      "properties": {
+        "massKg": {
+          "type": "number",
+          "unit": "kg",
+          "minimum": 0,
+          "description": "Declared chassis, other hardware, payload and occupants."
+        },
+        "idealSupportAccelerationMs2": {
+          "type": "number",
+          "unit": "m/s²",
+          "minimum": 0,
+          "description": "Modelled support acceleration on level ground, or zero in ideal orbital free fall."
+        },
+        "staticSupportN": {
+          "type": "number",
+          "unit": "N",
+          "minimum": 0,
+          "description": "Total ideal support force associated with the declared mass."
+        },
+        "staticLoadPerWheelN": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "N",
+          "minimum": 0,
+          "description": "Equal static load per wheel on level ground. Null for orbital free fall."
+        },
+        "specificForceNormMs2": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "m/s²",
+          "minimum": 0,
+          "description": "Magnitude of the user-provided accelerometer sample. Null when no reading is supplied."
+        },
+        "stationaryNormAgrees": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Agreement within the input tolerance. Null when a stationary, surface-supported comparison is unavailable."
+        }
+      },
+      "required": [
+        "massKg",
+        "idealSupportAccelerationMs2",
+        "staticSupportN",
+        "staticLoadPerWheelN",
+        "specificForceNormMs2",
+        "stationaryNormAgrees"
+      ],
+      "additionalProperties": false
+    },
+    "power": {
+      "type": "object",
+      "description": "Constant-power generation, requested load and bounded battery state over the scenario duration.",
+      "properties": {
+        "generationW": {
+          "type": "number",
+          "unit": "W",
+          "minimum": 0,
+          "description": "Solar electrical generation under the specified illumination."
+        },
+        "demandWh": {
+          "type": "number",
+          "unit": "Wh",
+          "minimum": 0,
+          "description": "Total electrical demand over the selected period."
+        },
+        "endWh": {
+          "type": "number",
+          "unit": "Wh",
+          "minimum": 0,
+          "description": "Stored energy at the end of the period."
+        },
+        "unmetWh": {
+          "type": "number",
+          "unit": "Wh",
+          "minimum": 0,
+          "description": "Demand exceeding available energy."
+        },
+        "curtailedWh": {
+          "type": "number",
+          "unit": "Wh",
+          "minimum": 0,
+          "description": "Energy beyond the available battery capacity."
+        }
+      },
+      "required": [
+        "generationW",
+        "demandWh",
+        "endWh",
+        "unmetWh",
+        "curtailedWh"
+      ],
+      "additionalProperties": false
+    },
+    "thermal": {
+      "type": "object",
+      "description": "Single radiator heat balance at a prescribed surface temperature.",
+      "properties": {
+        "netLongwaveOutW": {
+          "type": "number",
+          "unit": "W",
+          "description": "Net infrared radiation outward. A negative value represents net absorption."
+        },
+        "absorbedSunW": {
+          "type": "number",
+          "unit": "W",
+          "minimum": 0,
+          "description": "Radiator heat input from direct sunlight."
+        },
+        "rejectedMinusLoadW": {
+          "type": "number",
+          "unit": "W",
+          "description": "Net infrared rejection minus direct solar heating and the specified internal load."
+        }
+      },
+      "required": [
+        "netLongwaveOutW",
+        "absorbedSunW",
+        "rejectedMinusLoadW"
+      ],
+      "additionalProperties": false
+    },
+    "air": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Dry, regulated cabin gas inventory, metabolic demands and makeup gas. Null for an open deck.",
+      "properties": {
+        "inventoryMol": {
+          "type": "number",
+          "unit": "mol",
+          "minimum": 0,
+          "description": "Total initial dry cabin gas."
+        },
+        "initialO2Mol": {
+          "type": "number",
+          "unit": "mol",
+          "minimum": 0,
+          "description": "Initial oxygen in the cabin."
+        },
+        "initialO2KPa": {
+          "type": "number",
+          "unit": "kPa",
+          "minimum": 0,
+          "description": "Initial oxygen partial pressure."
+        },
+        "metabolicO2G": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Oxygen consumed over the period."
+        },
+        "metabolicCO2G": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Carbon dioxide produced over the period."
+        },
+        "scrubbedCO2G": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Carbon dioxide removed from the crew-generated amount."
+        },
+        "unremovedCO2G": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Crew-generated carbon dioxide exceeding available removal."
+        },
+        "outwardLeakMol": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "mol",
+          "minimum": 0,
+          "description": "Outward loss to leakage. Null for an inward pressure gradient."
+        },
+        "accessLossMol": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "mol",
+          "minimum": 0,
+          "description": "Net gas vented by access cycles. Null for an inward pressure gradient."
+        },
+        "replacementMixtureMol": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "mol",
+          "minimum": 0,
+          "description": "Cabin mix to replace access and leak losses. Null for an inward pressure gradient."
+        },
+        "oxygenSupplyG": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "g",
+          "minimum": 0,
+          "description": "Oxygen to cover metabolism plus oxygen lost with cabin gas. Null for an inward pressure gradient."
+        },
+        "nitrogenSupplyG": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "g",
+          "minimum": 0,
+          "description": "Nitrogen to replace the nitrogen lost with cabin gas. Null for an inward pressure gradient."
+        }
+      },
+      "required": [
+        "inventoryMol",
+        "initialO2Mol",
+        "initialO2KPa",
+        "metabolicO2G",
+        "metabolicCO2G",
+        "scrubbedCO2G",
+        "unremovedCO2G",
+        "outwardLeakMol",
+        "accessLossMol",
+        "replacementMixtureMol",
+        "oxygenSupplyG",
+        "nitrogenSupplyG"
+      ],
+      "additionalProperties": false
+    },
+    "coupon": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Ideal stoichiometric coupon calculation. Null for an open cabin or an uncharacterized material.",
+      "properties": {
+        "prescribedG": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Specified mass for complete reaction."
+        },
+        "stoichiometricO2Mol": {
+          "type": "number",
+          "unit": "mol",
+          "minimum": 0,
+          "description": "Oxygen required by the complete reaction."
+        },
+        "netChemicalPotentialKJ": {
+          "type": "number",
+          "unit": "kJ",
+          "minimum": 0,
+          "description": "Complete-reaction net chemical energy for the prescribed mass."
+        },
+        "inventoryCoversDemand": {
+          "type": "boolean",
+          "description": "Whether initial cabin oxygen covers the stoichiometric demand."
+        }
+      },
+      "required": [
+        "prescribedG",
+        "stoichiometricO2Mol",
+        "netChemicalPotentialKJ",
+        "inventoryCoversDemand"
+      ],
+      "additionalProperties": false
+    },
+    "tracer": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Passive impulse transported between two equal zones. Null for an open deck.",
+      "properties": {
+        "sourceMgM3": {
+          "type": "number",
+          "unit": "mg/m³",
+          "minimum": 0,
+          "description": "Source-zone concentration at the end of the observation window."
+        },
+        "remoteMgM3": {
+          "type": "number",
+          "unit": "mg/m³",
+          "minimum": 0,
+          "description": "Other-zone concentration at the end of the observation window."
+        },
+        "atSamplingZoneMgM3": {
+          "type": "number",
+          "unit": "mg/m³",
+          "minimum": 0,
+          "description": "Concentration at the sampling position at the end of the observation window."
+        },
+        "tracerAccountedMg": {
+          "type": "number",
+          "unit": "mg",
+          "minimum": 0,
+          "description": "Tracer mass accounted for across both zones."
+        },
+        "thresholdTimeWithDelayS": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "unit": "s",
+          "minimum": 0,
+          "description": "Earliest ideal alarm time including sampling delay. Null when no alarm is available within the observation window."
+        }
+      },
+      "required": [
+        "sourceMgM3",
+        "remoteMgM3",
+        "atSamplingZoneMgM3",
+        "tracerAccountedMg",
+        "thresholdTimeWithDelayS"
+      ],
+      "additionalProperties": false
+    },
+    "flow": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Mean local flow under the assumed return-duct geometry. Null for an open deck.",
+      "properties": {
+        "ductSpeedMs": {
+          "type": "number",
+          "unit": "m/s",
+          "minimum": 0,
+          "description": "Exchange flow divided by duct cross-section."
+        },
+        "relativeDirection": {
+          "type": "string",
+          "enum": [
+            "concurrent",
+            "opposed",
+            "no forced flow"
+          ],
+          "description": "Direction of duct flow relative to the assumed direction of spread away from the coupon ignition end."
+        },
+        "spreadRateMmS": {
+          "type": "null",
+          "unit": "mm/s",
+          "description": "Unresolved flame spread. The geometric calculation supplies no measured propagation rate."
+        }
+      },
+      "required": [
+        "ductSpeedMs",
+        "relativeDirection",
+        "spreadRateMmS"
+      ],
+      "additionalProperties": false
+    },
+    "suppression": {
+      "type": "object",
+      "description": "Agent inventory during a commanded discharge.",
+      "properties": {
+        "deliveredKg": {
+          "type": "number",
+          "unit": "kg",
+          "minimum": 0,
+          "description": "Mass delivered, capped by available inventory."
+        },
+        "remainingKg": {
+          "type": "number",
+          "unit": "kg",
+          "minimum": 0,
+          "description": "Mass remaining after the commanded discharge."
+        },
+        "extinction": {
+          "type": "null",
+          "description": "Extinguishment is outside the inventory model."
+        }
+      },
+      "required": [
+        "deliveredKg",
+        "remainingKg",
+        "extinction"
+      ],
+      "additionalProperties": false
+    },
+    "sourcing": {
+      "type": "object",
+      "description": "Coupon stock procurement, excluding processing qualification.",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "enum": [
+            "Earth supplier",
+            "reclaimed stock",
+            "lunar feedstock",
+            "Martian feedstock"
+          ]
+        },
+        "netG": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Coupon mass requested for reaction."
+        },
+        "feedG": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Required feed mass at assumed usable yield."
+        },
+        "trimG": {
+          "type": "number",
+          "unit": "g",
+          "minimum": 0,
+          "description": "Mass difference between required feed and usable coupon."
+        },
+        "thicknessMm": {
+          "type": "number",
+          "unit": "mm",
+          "minimum": 0,
+          "description": "Declared stock thickness."
+        },
+        "evidenceStatus": {
+          "type": "string",
+          "enum": [
+            "vendor analogue only",
+            "unverified source or process"
+          ]
+        },
+        "traceability": {
+          "type": "string",
+          "minLength": 1,
+          "description": "User-declared batch identifier or an explicit indication that the lot is unknown."
+        },
+        "qualification": {
+          "type": "null",
+          "description": "The stock record supplies no flight qualification."
+        }
+      },
+      "required": [
+        "origin",
+        "netG",
+        "feedG",
+        "trimG",
+        "thicknessMm",
+        "evidenceStatus",
+        "traceability",
+        "qualification"
+      ],
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Explanatory model limits and warnings for the selected case."
+    }
+  },
+  "required": [
+    "version",
+    "name",
+    "resultClass",
+    "compatibility",
+    "sourceIds",
+    "mobility",
+    "power",
+    "thermal",
+    "air",
+    "coupon",
+    "tracer",
+    "flow",
+    "suppression",
+    "sourcing",
+    "notes"
+  ],
+  "additionalProperties": false
+}

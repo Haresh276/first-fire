@@ -1,0 +1,437 @@
+{
+  "schema": "first-fire.coupled-trial.v1",
+  "created": "2026-11-15T04:52:40.472Z",
+  "state": {
+    "baseline": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Moon",
+      "time": 50,
+      "volume": 16,
+      "speedMmS": null,
+      "couponMassG": 10
+    },
+    "current": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Moon",
+      "time": 17,
+      "volume": 16,
+      "speedMmS": 2,
+      "couponMassG": 10
+    },
+    "level": "beginner",
+    "display": "auto",
+    "question": "Provide a reusable check that accepts a fresh consistent record and rejects one whose reported front distance has been altered. For plain JavaScript use function valid(rateMmS,timeS,travelCm) returning a boolean (finite nonnegative inputs, no strip-end clipping within this test, tolerance 0.000001 cm). A native validator that replays and",
+    "intentOverride": "auto",
+    "edits": [
+      {
+        "at": "2026-11-15T04:52:40.295Z",
+        "field": "speedMmS",
+        "from": null,
+        "to": 1.8
+      },
+      {
+        "at": "2026-11-15T04:52:40.305Z",
+        "field": "speedMmS",
+        "from": 1.8,
+        "to": 2
+      },
+      {
+        "at": "2026-11-15T04:52:40.349Z",
+        "field": "time",
+        "from": 50,
+        "to": 49
+      },
+      {
+        "at": "2026-11-15T04:52:40.353Z",
+        "field": "time",
+        "from": 49,
+        "to": 48
+      },
+      {
+        "at": "2026-11-15T04:52:40.357Z",
+        "field": "time",
+        "from": 48,
+        "to": 47
+      },
+      {
+        "at": "2026-11-15T04:52:40.361Z",
+        "field": "time",
+        "from": 47,
+        "to": 46
+      },
+      {
+        "at": "2026-11-15T04:52:40.366Z",
+        "field": "time",
+        "from": 46,
+        "to": 45
+      },
+      {
+        "at": "2026-11-15T04:52:40.369Z",
+        "field": "time",
+        "from": 45,
+        "to": 44
+      },
+      {
+        "at": "2026-11-15T04:52:40.373Z",
+        "field": "time",
+        "from": 44,
+        "to": 43
+      },
+      {
+        "at": "2026-11-15T04:52:40.376Z",
+        "field": "time",
+        "from": 43,
+        "to": 42
+      },
+      {
+        "at": "2026-11-15T04:52:40.379Z",
+        "field": "time",
+        "from": 42,
+        "to": 41
+      },
+      {
+        "at": "2026-11-15T04:52:40.382Z",
+        "field": "time",
+        "from": 41,
+        "to": 40
+      },
+      {
+        "at": "2026-11-15T04:52:40.385Z",
+        "field": "time",
+        "from": 40,
+        "to": 39
+      },
+      {
+        "at": "2026-11-15T04:52:40.389Z",
+        "field": "time",
+        "from": 39,
+        "to": 38
+      },
+      {
+        "at": "2026-11-15T04:52:40.392Z",
+        "field": "time",
+        "from": 38,
+        "to": 37
+      },
+      {
+        "at": "2026-11-15T04:52:40.395Z",
+        "field": "time",
+        "from": 37,
+        "to": 36
+      },
+      {
+        "at": "2026-11-15T04:52:40.398Z",
+        "field": "time",
+        "from": 36,
+        "to": 35
+      },
+      {
+        "at": "2026-11-15T04:52:40.401Z",
+        "field": "time",
+        "from": 35,
+        "to": 34
+      },
+      {
+        "at": "2026-11-15T04:52:40.404Z",
+        "field": "time",
+        "from": 34,
+        "to": 33
+      },
+      {
+        "at": "2026-11-15T04:52:40.407Z",
+        "field": "time",
+        "from": 33,
+        "to": 32
+      },
+      {
+        "at": "2026-11-15T04:52:40.410Z",
+        "field": "time",
+        "from": 32,
+        "to": 31
+      },
+      {
+        "at": "2026-11-15T04:52:40.413Z",
+        "field": "time",
+        "from": 31,
+        "to": 30
+      },
+      {
+        "at": "2026-11-15T04:52:40.416Z",
+        "field": "time",
+        "from": 30,
+        "to": 29
+      },
+      {
+        "at": "2026-11-15T04:52:40.418Z",
+        "field": "time",
+        "from": 29,
+        "to": 28
+      },
+      {
+        "at": "2026-11-15T04:52:40.422Z",
+        "field": "time",
+        "from": 28,
+        "to": 27
+      },
+      {
+        "at": "2026-11-15T04:52:40.424Z",
+        "field": "time",
+        "from": 27,
+        "to": 26
+      },
+      {
+        "at": "2026-11-15T04:52:40.427Z",
+        "field": "time",
+        "from": 26,
+        "to": 25
+      },
+      {
+        "at": "2026-11-15T04:52:40.430Z",
+        "field": "time",
+        "from": 25,
+        "to": 24
+      },
+      {
+        "at": "2026-11-15T04:52:40.433Z",
+        "field": "time",
+        "from": 24,
+        "to": 23
+      },
+      {
+        "at": "2026-11-15T04:52:40.436Z",
+        "field": "time",
+        "from": 23,
+        "to": 22
+      },
+      {
+        "at": "2026-11-15T04:52:40.440Z",
+        "field": "time",
+        "from": 22,
+        "to": 21
+      },
+      {
+        "at": "2026-11-15T04:52:40.443Z",
+        "field": "time",
+        "from": 21,
+        "to": 20
+      },
+      {
+        "at": "2026-11-15T04:52:40.446Z",
+        "field": "time",
+        "from": 20,
+        "to": 19
+      },
+      {
+        "at": "2026-11-15T04:52:40.449Z",
+        "field": "time",
+        "from": 19,
+        "to": 18
+      },
+      {
+        "at": "2026-11-15T04:52:40.452Z",
+        "field": "time",
+        "from": 18,
+        "to": 17
+      }
+    ],
+    "baselineFrozen": false
+  },
+  "units": {
+    "positionCm": "cm",
+    "chemicalKJ": "kJ",
+    "couponKJ": "kJ",
+    "oxygenPct": "%",
+    "initialO2KPa": "kPa",
+    "supportN": "N"
+  },
+  "baseline": {
+    "settings": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Moon",
+      "time": 50,
+      "volume": 16,
+      "speedMmS": null,
+      "couponMassG": 10
+    },
+    "physicallyModeledInputs": {
+      "planet": "Moon",
+      "fuel": "cellulose",
+      "volume": 16,
+      "pressure": 70,
+      "oxygen": 30,
+      "cutoff": 18,
+      "length": 40,
+      "density": 0.25,
+      "speed": 0.18,
+      "chassisMass": 800,
+      "capacity": 0,
+      "power": 0
+    },
+    "status": "modeled",
+    "modelState": "Prescribed spread",
+    "metrics": {
+      "positionCm": 9,
+      "chemicalKJ": 34.199999999999996,
+      "couponKJ": 152,
+      "oxygenPct": 29.9768249197056,
+      "supportN": 2689.2000000000003,
+      "initialO2KPa": 21
+    },
+    "sources": [
+      {
+        "id": "PSI-98:1:2",
+        "title": "Saffire-I S1 · concurrent flow",
+        "url": "https://doi.org/10.60555/0t15-1z43",
+        "locator": "Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s",
+        "boundary": "S2 used the material remaining after S1. The CSV records the conditions of each burn.",
+        "localUrl": "data/raw/PSI-98-experimental.csv",
+        "atlasUrl": "index.html#atlas?record=PSI-98%3A1%3A2"
+      },
+      {
+        "id": "flow-measurement",
+        "title": "Large-scale spacecraft fire safety experiments, SIBAL results",
+        "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21",
+        "locator": "Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity",
+        "boundary": "The reported front speed supplies a prescribed input to this trial."
+      },
+      {
+        "id": "NBS-TN-1128:table-1",
+        "title": "NBS Technical Note 1128 · fuel chemistry",
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf",
+        "locator": "Table 1 · Cellulose · net heat 15.2 MJ/kg",
+        "boundary": "The energy calculation uses a reference fuel composition. Testing would establish the properties of a particular rover material."
+      },
+      {
+        "id": "moon-env",
+        "title": "Moon Facts",
+        "url": "https://science.nasa.gov/moon/facts/",
+        "locator": "Structure, surface and atmosphere sections, including sunlit/dark temperatures",
+        "boundary": "Surface temperature does not determine radiator sink temperature or cabin gas temperature."
+      }
+    ],
+    "imposedRate": {
+      "kind": "orbital-analogue",
+      "speedMmS": 1.8,
+      "sourceRow": "PSI-98:1:2",
+      "observedDurationS": 420
+    },
+    "boundary": "The orbital study used cotton–fiberglass. Applying its rate to a different material, atmosphere or gravity is an assumption. Ignition, sustained spread and flight qualification need separate measurements.",
+    "roverModelSHA256": "d2a9b0d206fa419d15242d489aa3cb6716cb24283461124f0c6f8be75e0cd8e2"
+  },
+  "current": {
+    "settings": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Moon",
+      "time": 17,
+      "volume": 16,
+      "speedMmS": 2,
+      "couponMassG": 10
+    },
+    "physicallyModeledInputs": {
+      "planet": "Moon",
+      "fuel": "cellulose",
+      "volume": 16,
+      "pressure": 70,
+      "oxygen": 30,
+      "cutoff": 18,
+      "length": 40,
+      "density": 0.25,
+      "speed": 0.2,
+      "chassisMass": 800,
+      "capacity": 0,
+      "power": 0
+    },
+    "status": "modeled",
+    "modelState": "Prescribed spread",
+    "metrics": {
+      "positionCm": 3.4000000000000004,
+      "chemicalKJ": 12.92,
+      "couponKJ": 152,
+      "oxygenPct": 29.991244127932475,
+      "supportN": 2689.2000000000003,
+      "initialO2KPa": 21
+    },
+    "sources": [
+      {
+        "id": "NBS-TN-1128:table-1",
+        "title": "NBS Technical Note 1128 · fuel chemistry",
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf",
+        "locator": "Table 1 · Cellulose · net heat 15.2 MJ/kg",
+        "boundary": "The energy calculation uses a reference fuel composition. Testing would establish the properties of a particular rover material."
+      },
+      {
+        "id": "moon-env",
+        "title": "Moon Facts",
+        "url": "https://science.nasa.gov/moon/facts/",
+        "locator": "Structure, surface and atmosphere sections, including sunlit/dark temperatures",
+        "boundary": "Surface temperature does not determine radiator sink temperature or cabin gas temperature."
+      }
+    ],
+    "imposedRate": {
+      "kind": "user-imposed",
+      "speedMmS": 2,
+      "sourceRow": null,
+      "observedDurationS": null
+    },
+    "boundary": "The imposed front speed is a user assumption. Ignition, sustained spread and flight qualification need separate measurements.",
+    "roverModelSHA256": "d2a9b0d206fa419d15242d489aa3cb6716cb24283461124f0c6f8be75e0cd8e2"
+  },
+  "deltas": {
+    "positionCm": -5.6,
+    "chemicalKJ": -21.279999999999994,
+    "couponKJ": 0,
+    "oxygenPct": 0.014419208226875924,
+    "supportN": 0,
+    "initialO2KPa": 0
+  },
+  "changed": [
+    "time",
+    "speedMmS"
+  ],
+  "nextMeasurement": "Measure front position over time on fresh specimens in the proposed material, atmosphere, gravity and flow.",
+  "effectiveDeviceMode": "standard",
+  "decisionTrace": [
+    {
+      "id": "user",
+      "label": "Reader",
+      "observed": "beginner",
+      "response": "Compare how far the front travels and how much oxygen is left. The cabin calculation starts with the speed you give it."
+    },
+    {
+      "id": "intent",
+      "label": "Question",
+      "observed": "Detected intent · Evidence needed",
+      "response": "No supported instrument answers this question as written. Identify a measurable quantity and an applicable experiment."
+    },
+    {
+      "id": "state",
+      "label": "Experiment state",
+      "observed": "Current trial at 17 s · baseline available",
+      "response": "2 inputs differ from baseline A. This difference combines their effects. Isolate one change."
+    },
+    {
+      "id": "device",
+      "label": "Device",
+      "observed": "standard · The measured memory, graphics and storage signals do not together qualify for automatic Pro.",
+      "response": "Show the time series."
+    },
+    {
+      "id": "evidence",
+      "label": "Evidence",
+      "observed": "User-specified rate",
+      "response": "The judge supplied the front speed. The cabin model uses that assumption to calculate the result."
+    }
+  ]
+}

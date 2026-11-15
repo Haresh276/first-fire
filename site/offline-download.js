@@ -8,19 +8,20 @@
   const le16 = (data, offset) => data.getUint16(offset, true);
   const le32 = (data, offset) => data.getUint32(offset, true);
 
-  function plan(manifest, hostedHashes) {
+  function plan(manifest, hostedHashes, editionHashes = hostedHashes) {
     check(manifest?.schema === 'first-fire.offline-packs.v1' && manifest.folder === 'FIRST-FIRE' &&
       manifest.core === 'first-fire-offline.zip' && manifest.supplements && typeof manifest.supplements === 'object',
       'Unrecognized offline edition manifest.');
     check(hashPattern.test(hostedHashes[manifest.core]),'This installed edition contains the dashboard and files. Open the public downloads page for a new complete copy.');
+    check(editionHashes[manifest.core] === hostedHashes[manifest.core], 'The hosted core and the offline release manifest describe different packages.');
     const entries = [{name:manifest.core, hash:hostedHashes[manifest.core], files:null}];
     const supplemental=new Set();
     for (const [name, item] of Object.entries(manifest.supplements)) {
       check(packName.test(name) && name !== manifest.core && item && Number.isSafeInteger(item.bytes) &&
-        item.bytes > 0 && item.files && Object.keys(item.files).length > 0 && hostedHashes[name] === item.sha256,
+        item.bytes > 0 && item.files && Object.keys(item.files).length > 0 && hostedHashes[name] === item.sha256 && editionHashes[name] === item.sha256,
         'Package manifest and hosted checksums disagree for ' + name + '.');
       for(const [file,hash] of Object.entries(item.files)){
-        check(!supplemental.has(file) && hashPattern.test(hash) && hostedHashes[file]===hash,
+        check(!supplemental.has(file) && hashPattern.test(hash) && editionHashes[file]===hash,
           'Supplement file checksum or membership differs for '+file+'.');
         supplemental.add(file);
       }
@@ -28,7 +29,8 @@
     }
     check(entries.length > 1 && entries.every(p=>hashPattern.test(p.hash)), 'An offline package checksum is missing.');
     const hostedOnly=new Set(['model.js','checksums.json',...entries.map(p=>p.name)]);
-    entries[0].files=['checksums.json',...Object.keys(hostedHashes).filter(n=>!hostedOnly.has(n)&&!supplemental.has(n))];
+    // The live host can ship extra pages. Membership is defined by the packaged release.
+    entries[0].files=['checksums.json',...Object.keys(editionHashes).filter(n=>!hostedOnly.has(n)&&!supplemental.has(n))];
     check(['index.html','offline-packs.json'].every(n=>entries[0].files.includes(n)), 'Missing core dashboard or integrity manifest.');
     return entries;
   }
@@ -111,8 +113,9 @@
     let working=false,downloadURL='';
     button.disabled=false;
     const notify=text=>{status.textContent=text;};
-    const get=async name=>{
+    const get=async (name,optional=false)=>{
       const response=await fetch(new URL(name,location.href),{credentials:'same-origin',mode:'same-origin',redirect:'error',cache:'no-cache'});
+      if(optional && response.status===404)return null;
       check(response.ok,'Could not download '+name+' (HTTP '+response.status+').');return response;
     };
     button.addEventListener('click',async()=>{
@@ -120,8 +123,24 @@
       if(downloadURL){URL.revokeObjectURL(downloadURL);downloadURL='';}
       notify('Reading package sizes and checksums…');
       try{
-        const [manifest,hashes]=await Promise.all(['offline-packs.json','checksums.json'].map(async n=>(await get(n)).json()));
-        const full=await combine(plan(manifest,hashes),async name=>new Uint8Array(await(await get(name)).arrayBuffer()),notify);
+        const [manifest,hashes,edition]=await Promise.all([
+          get('offline-packs.json').then(r=>r.json()), get('checksums.json').then(r=>r.json()),
+          get('offline-edition-checksums.json',true)
+        ]);
+        let editionHashes=hashes;
+        if(edition){
+          const bytes=await edition.arrayBuffer();
+          const expected=hashes['offline-edition-checksums.json'];
+          if(expected){
+            const digest=await crypto.subtle.digest('SHA-256',bytes);
+            const value=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
+            check(value===expected,'Offline release manifest checksum differs. Reload to obtain one release.');
+          }
+          editionHashes=JSON.parse(new TextDecoder().decode(bytes));
+        }else{
+          check(!hashes['offline-edition-checksums.json'],'Offline release manifest is missing. Reload to obtain one release.');
+        }
+        const full=await combine(plan(manifest,hashes,editionHashes),async name=>new Uint8Array(await(await get(name)).arrayBuffer()),notify);
         downloadURL=URL.createObjectURL(full.blob);
         const anchor=document.createElement('a');anchor.download='FIRST-FIRE-complete-offline.zip';anchor.href=downloadURL;
         anchor.textContent='Save the verified ZIP';status.replaceChildren(`Verified ${full.files} files. `,anchor);

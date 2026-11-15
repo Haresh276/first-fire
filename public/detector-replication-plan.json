@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "question": "Can the original 14-run fit predict the peak ISS optical response in other SAME-R runs under the same four nominal settings?",
+  "selection_timing": "The team fixed this analysis plan and the predictions from runs 73–86 before extracting the comparison workbooks for this follow-up. This retrospective check has no independent timestamp.",
+  "training": "Exactly the published 14 base runs numbered 73 through 86, inclusive. Fit the heater-only ordinary least-squares model once. Clamp negative predictions to zero.",
+  "comparators": [
+    "Mean peak drop across all training runs",
+    "Median peak drop across all training runs",
+    "Mean peak drop among training runs of the named material"
+  ],
+  "conditions": {
+    "Inlet velocity (cm/s)": "8.1",
+    "Duration (sec)": "60",
+    "Primary aging time (sec)": "11",
+    "Primary mixing time (sec)": "8"
+  },
+  "cohort": "All other numeric base IDs in the v4 condition table matching these four fields. Require one unambiguous material and an analyzed reduced-gravity workbook with matching folder material and run identifier. Exclude aged suffixes. Record all unmatched or unscorable settings.",
+  "primary_exclusions": {
+    "90": "This condition lists a reburn of training run 85.",
+    "92": "The earlier FIRST FIRE detector power case already inspected the optical trace.",
+    "93": "The earlier FIRST FIRE detector power case already inspected the optical trace."
+  },
+  "target": "Median native ISS scatter voltage over the 30 s preceding heater onset minus minimum native ISS scatter voltage from onset through 300 s, inclusive. Require finite readings, self-test off, coverage to within 1 s of both ends and no gap exceeding 2 s. Use the first minimum in a tie.",
+  "metrics": "Run-weighted mean absolute error in volts is primary. Report errors by material, earlier/later run number relative to training, equal-material mean, and all usable runs including the three overlap checks. Do not use alarm flags, the published 2 V line or a selected voltage range as an endpoint.",
+  "scope": "Same PSI study, instrument and five training materials. Material labels and prescribed heater settings are available before optical response. No inference about unseen materials, mission-independent replication, concentration, particle detection rate or cabin alarms.",
+  "frozen_model": {
+    "training_sha256": "d934fe3e40289283e7fc6b0dc2e87c4ba3b5a5c4e56bd0d8dfb2529c4e69ee5c",
+    "slope_v_per_ratio": -23.94974670461032,
+    "intercept_v": 35.863730289722184,
+    "pooled_mean_v": 3.5777610357142855,
+    "pooled_median_v": 4.11773875,
+    "material_means_v": {
+      "Kapton": 0.65441225,
+      "Lampwick": 6.0724395,
+      "Pyrell": 6.076454,
+      "Silicone": 6.0768105,
+      "Teflon": 1.6491715
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Material observer · FIRST FIRE</title>
+<meta name="description" content="Compare flame-spread thresholds for reference materials and record observations from a physical specimen.">
+<link rel="icon" href="icon.svg"><link rel="stylesheet" href="material-observer.css">
+<script defer src="flint-coefficients.js"></script><script defer src="flint-solid.js"></script>
+<script defer src="material-observer-model.js"></script><script defer src="material-observer-evidence.js"></script><script defer src="material-observer.js"></script>
+</head><body>
+<a href="#main" class="skip">Skip to material observer</a>
+<header class="top"><a class="brand" href="index.html">FIRST FIRE<span>.</span></a><a href="judging.html">Judging route</a></header>
+<main id="main">
+<section class="intro"><h1>Material observer</h1><p>Build a specimen, compare its ingredients with NASA’s test materials, and record what actually happened in a burn test.</p>
+<nav class="tool-links" aria-label="Try a measured case"><a href="?mix=CELLULOSE:75,FIBERGLASS:25&amp;place=orbit&amp;pressure=14.5&amp;oxygen=22.1&amp;fan=20&amp;name=SIBAL+flight+reference#material-evidence" data-case-example>Replay two NASA fabric burns</a><a href="?material=NOMEX&amp;place=moon&amp;pressure=8.2&amp;oxygen=34&amp;fan=0&amp;name=Nomex+reference#screening-heading" data-case-example>Check Nomex against a Moon-gravity test</a></nav></section>
+<div class="instrument">
+<section class="inputs" aria-labelledby="specimen-heading">
+ <h2 id="specimen-heading">Your specimen</h2>
+ <label>Specimen name<input id="specimen-name" value="Panel A" maxlength="120" required></label>
+ <label>Construction or specimen ID<input id="construction" maxlength="240" placeholder="e.g. woven fabric, lot A, 0.5 mm thick"></label>
+ <fieldset><legend>Composition by mass</legend><div class="mix-head" aria-hidden="true"><span>Reference material</span><span>Mass %</span></div><div id="ingredients"></div><div class="mix-footer"><button type="button" id="add-material" class="plain">Add material</button><output id="total"></output></div></fieldset>
+ <h2>Test conditions</h2>
+ <div class="fields">
+  <label>Gravity<select id="place"><option value="moon">Moon</option><option value="orbit">Orbital freefall</option><option value="mars">Mars</option><option value="earth">Earth</option></select></label>
+  <label>Cabin oxygen (%)<input id="oxygen" type="number" min="0" max="100" step="any" value="34"></label>
+  <label>Pressure (psia)<input id="pressure" type="number" min="7" max="14.7" step="any" value="8.2"></label>
+  <label>Assisting flow (cm/s)<input id="fan" type="number" min="0" max="145.3" step="any" value="0"></label>
+ </div>
+ <p id="input-status" role="status" class="message"></p>
+ <button type="button" id="reset-link" class="plain" hidden>Use the example recipe</button>
+</section>
+<section class="results" aria-labelledby="screening-heading">
+ <h2 id="screening-heading">Model screening</h2><p id="screen-label" class="result-value">Loading reference model…</p>
+ <p id="screen-note" class="result-note"></p><div id="parts"></div>
+ <p id="screen-scope" class="small"></p>
+ <div class="actions"><button type="button" id="save-scenario" disabled>Save for comparison</button></div>
+ <nav class="tool-links" aria-label="Use these conditions"><a id="physics-link" href="index.html#physics">Open in Physics Lab</a><a id="rover-link" href="index.html#rover-design">Open in rover design</a></nav>
+ <p><a id="return-tool" hidden></a></p>
+</section></div>
+<section class="section" aria-labelledby="compare-heading"><h2 id="compare-heading">Scenario comparison</h2><p id="compare-empty">Save a scenario above, change the conditions, then save again to compare.</p><div id="comparison" class="scroll"></div></section>
+<section id="material-evidence" class="section"></section>
+<section class="section"><details id="validation"><summary>How well did FLINT match the NASA tests?</summary><p>NASA simulated lunar gravity in a drop tower. The team fitted one part of the model to Earth tests and used three lunar-gravity materials to predict the fourth, repeating this for each material.</p><div id="validation-values" class="scroll"></div><p class="links"><a href="flint.html">FLINT methods and results</a><a href="https://ntrs.nasa.gov/citations/20250002114">NASA paper and figures</a></p></details></section>
+<section class="section" aria-labelledby="observations-heading"><h2 id="observations-heading">Observed burns</h2><p>Record the measured oxygen and what happened after the igniter stopped. Each entry keeps its own specimen and test conditions. Saved records stay in this browser.</p>
+<div class="observations"><form id="observation-form">
+ <div class="fields"><label>Measured oxygen (%)<input required type="number" min="0" max="100" step="any" id="measured"></label>
+ <label>Observed outcome<select id="outcome"><option value="sustained">Flame kept spreading</option><option value="extinguished">Flame went out</option><option value="unclear">Inconclusive</option></select></label></div>
+ <label>Source or test record<input required maxlength="400" id="source" placeholder="e.g. lab notebook, test ID or data link"></label>
+ <label>Observation notes<textarea rows="2" maxlength="2000" id="notes"></textarea></label>
+ <div class="actions"><button id="save-observation" disabled>Save observation</button><button type="button" class="plain" id="cancel-edit" hidden>Cancel edit</button></div>
+</form>
+<aside aria-labelledby="range-heading"><h3 id="range-heading">Observed oxygen range</h3><p id="observed-range"></p><p class="small">This compares tests on the same named specimen and construction, with matching mass fractions, gravity, pressure and fan speed. Actual tests can differ in other ways.</p></aside></div>
+<div id="observation-list"></div><div class="actions"><button type="button" id="export-data" class="plain">Export results as JSON</button></div><p id="log-status" role="status" class="message"></p></section>
+<noscript><p>Enable JavaScript to use the calculator. <a href="flint.html">Read the reference results.</a></p></noscript>
+</main><footer>FIRST FIRE · Team Code Blooded</footer></body></html>

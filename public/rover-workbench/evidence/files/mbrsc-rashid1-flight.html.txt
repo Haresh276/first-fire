@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html class="" dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mohammed bin Rashid visits MBRSC, announces Rashid 2 new Emirati lunar mission</title>
+    <script type="text/javascript" src="https://happinessmeter.dubai.gov.ae/HappinessMeter2/HMResources/fancy/3.5.7/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://happinessmeter.dubai.gov.ae/HappinessMeter2/HMResources/fancy/3.5.7/jquery.fancybox.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://happinessmeter.dubai.gov.ae/HappinessMeter2/HMResources/fancy/3.5.7/jquery.fancybox.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N91G4B3NMD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-N91G4B3NMD');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#happinessMeter').fancybox();
+        });
+        // get the page name
+        var pageName = (function () {
+            var a =
+                window.location.href, b =
+                a.lastIndexOf("/");
+            return a.substr(b + 1);
+        }());
+        // it will open the happiness div on transaction page. You can specify the transaction page name
+        function autoClick() {
+            if (pageName == 'TransactionIndex.aspx') {
+                document.getElementById('onload').click();
+            }
+        }
+        
+
+    </script>
+    <style type="text/css">
+        .fancybox-custom .fancybox-skin {
+            boxshadow: 0 0 50px #222;
+        }
+
+        body {
+            /*max-width: 700px;*/
+            margin: 0 auto;
+        }
+
+        
+    </style>
+
+        <link rel="preload" as="image" href="/media/1ell5gjc/pdd-logo-01.svg">
+    <meta name="description">
+    <meta name="keywords">
+    <meta name="twitter:description">
+    <meta property="og:url" content="https://www.protocol.dubai.ae/en/media-listing/news-events/mohammed-bin-rashid-visits-mbrsc-announces-rashid-2-new-emirati-lunar-mission/">
+    <meta property="og:title" content="Mohammed bin Rashid visits MBRSC, announces Rashid 2 new Emirati lunar mission">
+    <meta property="og:description">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+      body {
+        overflow: hidden;
+      }
+      body.dom-loaded {
+        overflow: initial;
+      }
+      body.homePage.dom-animDone {
+        overflow: auto;
+      }
+      body.innerPage.dom-loaded {
+        overflow: auto;
+      }
+      .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 999999;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        transition: all 1s cubic-bezier(0.23, 0.48, 0.26, 0.94) 0.4s;
+      }
+
+      .loader:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        transition: all 1s cubic-bezier(0.23, 0.48, 0.26, 0.94) 0.4s;
+      }
+      .loader .loader-block {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        transform-origin: center;
+
+        transition: all 0.6s cubic-bezier(0.23, 0.48, 0.26, 0.94);
+      }
+
+      .loader .loader-block .loader-img {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 400px;
+        height: auto;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        transition: all 0.6s ease-in-out;
+      }
+      .loader .loader-block .loader-img svg,
+      .loader .loader-block .loader-img img {
+        position: relative;
+        display: block;
+        height: 5.7rem;
+        width: auto;
+      }
+
+      @media only screen and (min-width: 1800px) {
+        .loader .loader-block .loader-img svg,
+        .loader .loader-block .loader-img img {
+          height: 6rem;
+        }
+      }
+      @media only screen and (max-width: 1024px) {
+        .loader .loader-block .loader-img svg,
+        .loader .loader-block .loader-img img {
+          height: 80px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .loader .loader-block .loader-img img {
+          height: auto;
+          max-width: 50vw;
+        }
+      }
+
+      .dom-loaded .loader {
+        pointer-events: none;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      }
+</style>
+     
+
+    <link rel="stylesheet" href="/css/slimselect.css">
+    <link rel="stylesheet" href="/css/innerpage.css">
+<script>
+    (function (d) {
+        var s = d.createElement("script");
+        /* uncomment the following line to override default position*/
+        /* s.setAttribute("data-position", 3);*/
+        /* uncomment the following line to override default size (values: small, large)*/
+        /* s.setAttribute("data-size", "small");*/
+        /* uncomment the following line to override default language (e.g., fr, de, es, he, nl, etc.)*/
+        /* s.setAttribute("data-language", "language");*/
+        /* uncomment the following line to override color set via widget (e.g., #053f67)*/
+        /* s.setAttribute("data-color", "#053e67");*/
+        /* uncomment the following line to override type set via widget (1=person, 2=chair, 3=eye, 4=text)*/
+        /* s.setAttribute("data-type", "1");*/
+        /* s.setAttribute("data-statement_text:", "Our Accessibility Statement");*/
+        /* s.setAttribute("data-statement_url", "http://www.example.com/accessibility")";*/
+        /* uncomment the following line to override support on mobile devices*/
+        /* s.setAttribute("data-mobile", true);*/
+        /* uncomment the following line to set custom trigger action for accessibility menu*/
+        s.setAttribute("data-trigger", "accessibilityWidget")
+        s.setAttribute("data-account", "LWfu1w9loJ");
+        s.setAttribute("src", "https://cdn.userway.org/widget.js");
+        (d.body || d.head).appendChild(s);
+    })(document)
+</script>
+<noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>
+
+
+    
+    
+</head>
+
+<body class="home__page __index innerPage">
+    
+    <div class="aj_loader show" id="aj_loader">
+        <div class="listMode"><div class="mItem" data-mode="list"></div><div class="mItem" data-mode="map"></div></div>
+        <div class="inner_loader">
+            <div class="c_loader"></div>
+        </div>
+    </div>
+    <div class="loader" data-loader>
+        <div class="loader-block">
+            <div class="loader-img">
+                <img src="/media/1ell5gjc/pdd-logo-01.svg" alt="" />
+            </div>
+        </div>
+    </div>
+    
+
+<header id="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logoBox">
+                <a class="navbar-brand cLink"
+                   href="/"
+                   title="logo"
+                   aria-label="logo">
+                    <img src="/media/1ell5gjc/pdd-logo-01.svg"
+                         class="fullLogo"
+                         alt=""
+                         role="presentation"
+                         width="139"
+                         height="91" />
+                </a>
+            </div>
+            <div class="centerBox">
+                
+                <div class="nav_box_wrapper" id="master_menu">
+                    <nav class="navbar-inner">
+                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a href="/en/" class="nav-link scroll  ">
+                                                    <span>Home</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item hasSub">
+                                                <a href="/en/about/" class="nav-link scroll  " aria-label="About">
+                                                    <span>About</span>
+                                                </a>
+                                                <div class="arrowBox">
+                                                    <svg width="13.528" height="7.944" viewBox="0 0 13.528 7.944">
+                                                        <g transform="translate(13.528) rotate(90)">
+                                                            <path d="M1.331,0a1.488,1.488,0,0,1,.59.424Q4.791,3.3,7.665,6.167A.758.758,0,0,1,7.9,6.99a.884.884,0,0,1-.21.328Q4.719,10.3,1.737,13.278a.738.738,0,0,1-1.1.005c-.158-.153-.318-.306-.46-.473a.721.721,0,0,1,.014-.954c.037-.043.078-.084.118-.124L5.153,6.885a1.09,1.09,0,0,0,.151-.16.588.588,0,0,1-.138-.078Q2.717,4.2.272,1.755A.727.727,0,0,1,.158.746,2.237,2.237,0,0,1,1.041,0Z"
+                                                                    transform="translate(0)"
+                                                                    fill="currentColor" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <ul>
+                                                        <li class="nav-item">
+                                                            <a href="/en/about/vision-and-mission/" class="nav-link scroll  " aria-label="Vision And Mission">
+                                                                <span>Vision And Mission</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="/en/about/strategic-goals/" class="nav-link scroll  " aria-label="Strategic Goals">
+                                                                <span>Strategic Goals</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="/en/about/department-responsibilities/" class="nav-link scroll  " aria-label="Department Responsibilities">
+                                                                <span>Department Responsibilities</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="/en/about/department-message/" class="nav-link scroll  " aria-label="Department Message">
+                                                                <span>Department Message</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="/en/about/protocol-history/" class="nav-link scroll  " aria-label="Protocol History">
+                                                                <span>Protocol History</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="/en/about/protocol-activities/" class="nav-link scroll  " aria-label="Protocol Activities">
+                                                                <span>Protocol Activities</span>
+                                                            </a>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item hasSub">
+                                                <a href="/en/uae-dubai/" class="nav-link scroll  " aria-label="UAE &amp; Dubai">
+                                                    <span>UAE &amp; Dubai</span>
+                                                </a>
+                                                <div class="arrowBox">
+                                                    <svg width="13.528" height="7.944" viewBox="0 0 13.528 7.944">
+                                                        <g transform="translate(13.528) rotate(90)">
+                                                            <path d="M1.331,0a1.488,1.488,0,0,1,.59.424Q4.791,3.3,7.665,6.167A.758.758,0,0,1,7.9,6.99a.884.884,0,0,1-.21.328Q4.719,10.3,1.737,13.278a.738.738,0,0,1-1.1.005c-.158-.153-.318-.306-.46-.473a.721.721,0,0,1,.014-.954c.037-.043.078-.084.118-.124L5.153,6.885a1.09,1.09,0,0,0,.151-.16.588.588,0,0,1-.138-.078Q2.717,4.2.272,1.755A.727.727,0,0,1,.158.746,2.237,2.237,0,0,1,1.041,0Z"
+                                                                    transform="translate(0)"
+                                                                    fill="currentColor" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <ul>
+                                                        <li class="nav-item">
+                                                            <a href="/en/uae-dubai/about-uae/" class="nav-link scroll  " aria-label="About UAE">
+                                                                <span>About UAE</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="/en/uae-dubai/about-dubai/" class="nav-link scroll  " aria-label="About Dubai">
+                                                                <span>About Dubai</span>
+                                                            </a>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="/en/diplomatic-directory/" class="nav-link scroll  ">
+                                                    <span>Diplomatic Directory</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="/en/protocols-listing/" class="nav-link scroll  ">
+                                                    <span>Protocols</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="/en/media-listing/news-events/" class="nav-link scroll  ">
+                                                    <span>News</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="/en/contact-us/" class="nav-link scroll  ">
+                                                    <span>Contact Us</span>
+                                                </a>
+                                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="shortMenu">
+                    <ul class="sMenu">
+                        <li class="no_hide">
+                            <div class="searchForm">
+                                <form action="/en/search">
+                                    <div class="inputBox">
+                                        <input type="text" name="query" placeholder="Search " />
+                                        <button type="submit">
+                                            <svg width="20.998" height="21" viewBox="0 0 20.998 21">
+                                                <path d="M14.845,16.616a9.256,9.256,0,1,1,1.723-1.709,1.318,1.318,0,0,1,.26.163q1.871,1.862,3.735,3.73a1.246,1.246,0,0,1-1.611,1.9c-.09-.074-.171-.159-.253-.241l-3.63-3.63c-.074-.074-.152-.145-.225-.215M9.255,16a6.754,6.754,0,1,0-6.76-6.759A6.734,6.734,0,0,0,9.255,16"
+                                                      transform="translate(0 0)"
+                                                      fill="currentColor" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                                <li class="no_hide">
+                                    <a class="lang_switch link_ lang_" href="/ar/media-listing/news-events/mohammed-bin-rashid-visits-mbrsc-announces-rashid-2-new-emirati-lunar-mission/" title="">
+                                        <span>&#x639;</span>
+                                    </a>
+                                </li>
+
+
+                        <li class="no_hide">
+                            <a href="#" id="accessibilityWidget" class="m-link accBtn" aria-label="Accesibility Widget">
+                                <svg width="47" height="47" viewBox="0 0 47 47">
+                                    <path d="M27.2,11.785a4.1,4.1,0,1,1,0,5.8,4.1,4.1,0,0,1,0-5.8"
+                                          transform="translate(-6.602 -2.688)"
+                                          fill="currentColor" />
+                                    <path d="M38.935,22.272a66.2,66.2,0,0,1-24.06,0,1.217,1.217,0,0,0-1.428.959l0,.026a1.223,1.223,0,0,0,.974,1.43l.011,0a68.6,68.6,0,0,0,8.147,1,1.954,1.954,0,0,1,1.815,2.085c0,.034-.006.067-.01.1l-.239,2.052A40.4,40.4,0,0,1,21.9,39.379L20.411,43.37a1.231,1.231,0,1,0,2.305.865l.366-.746c1.194-2.544,2.305-5.148,3.32-7.781a.552.552,0,0,1,1.03,0c1.015,2.633,2.126,5.222,3.32,7.789l.38.813a1.224,1.224,0,0,0,1.1.746,1.2,1.2,0,0,0,.425-.082,1.223,1.223,0,0,0,.755-1.557l-.009-.025L31.914,39.4a40.8,40.8,0,0,1-2.238-9.452l-.231-2.067A1.947,1.947,0,0,1,31.15,25.72l.1-.009a69.032,69.032,0,0,0,8.08-.985A1.29,1.29,0,0,0,40.4,23.481a1.232,1.232,0,0,0-1.47-1.209"
+                                          transform="translate(-3.408 -5.651)"
+                                          fill="currentColor" />
+                                    <path d="M23.5,0A23.5,23.5,0,1,0,47,23.5,23.5,23.5,0,0,0,23.5,0m0,44.762A21.262,21.262,0,1,1,44.762,23.5,21.262,21.262,0,0,1,23.5,44.762"
+                                          fill="currentColor" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="no_hide burger_li">
+                            <button class="menu_trigger"
+                                    data-burger-menu="master_menu"
+                                    aria-label="Burger Menu">
+                                <div class="bInner bmaster">
+                                    <span class="start"></span>
+                                    <span class="med"></span>
+                                </div>
+                                <div class="bInner bcopy">
+                                    <span class="start"></span>
+                                    <span class="med"></span>
+                                </div>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header> 
+    <div class="happyMeter">
+        <a href="/en/load-happiness-meter" class="link fancybox fancybox.iframe" id="happinessMeter" aria-label="">
+            <img src="/images/happyMeter.svg"
+                 class=""
+                 alt=""
+                 aria-label=""
+                 width="50"
+                 height="50" />
+        </a>
+    </div>
+    <main class="">
+            <div class="bannerBG">
+                <div class="img"></div>
+            </div>
+            <section class="innerBanner" data-inView>
+                <div class="container">
+                    <div class="bg"></div>
+                    <div class="titleBox">
+                        <div class="lbox">
+                            <h1>
+                                    <span>Media</span>
+                            </h1>
+                            <div class="breadcrumb_wrap">
+    <ul>
+                <li>
+                    <a href="/en/" class="link" aria-label="Home">
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/en/media-listing/news-events/" class="link" aria-label="News">
+                        <span>News</span>
+                    </a>
+                </li>
+        <li>
+            <a href="/en/media-listing/news-events/mohammed-bin-rashid-visits-mbrsc-announces-rashid-2-new-emirati-lunar-mission/" class="link" aria-label="Mohammed bin Rashid visits MBRSC, announces Rashid 2 new Emirati lunar mission">
+                <span>Mohammed bin Rashid visits MBRSC, announces Rashid 2 new Emirati lunar mission</span>
+            </a>
+        </li>
+    </ul>
+</div>
+                        </div>
+                        <div class="backButton">
+                            <a  href="javascript:void(0)" onclick="history.back()" class="link">
+                                <svg width="25.239" height="22.44" viewBox="0 0 25.239 22.44">
+                                    <path d="M-492.984,146.823c.407.608.783,1.141,1.129,1.694a1.437,1.437,0,0,1-.811,2.177,1.525,1.525,0,0,1-1.691-.579q-1.519-1.886-3.031-3.778c-.124-.155-.253-.306-.369-.466a.713.713,0,0,1,0-.933c1.159-1.457,2.317-2.916,3.5-4.356a1.507,1.507,0,0,1,2.066-.235,1.455,1.455,0,0,1,.293,2.017c-.335.514-.68,1.021-1.02,1.532,0,.006,0,.018.007.075h.33q5.193,0,10.386,0a9.039,9.039,0,0,1,6.63,2.6,8.833,8.833,0,0,1,2.476,9.174,8.9,8.9,0,0,1-6.88,6.494,8.569,8.569,0,0,1-1.766.221c-1.11.036-2.222.022-3.333.013a1.375,1.375,0,0,1-1.311-.819,1.35,1.35,0,0,1,.145-1.458,1.36,1.36,0,0,1,1.153-.57c1.022,0,2.044.008,3.065,0a6.41,6.41,0,0,0,6.315-5.108,6.4,6.4,0,0,0-5.793-7.66q-.445-.029-.892-.03-5.089,0-10.178,0Z"
+                                          transform="translate(497.93 -140.043)"
+                                          fill="currentColor" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <section class="pageSection" data-inView>
+    <div class="container">
+        <div class="newsDetails">
+            <div class="sectionTitleSmall">
+                <h2>
+                    <span>
+                       Mohammed bin Rashid visits MBRSC, announces Rashid 2 new Emirati lunar mission
+                    </span>
+                </h2>
+            </div>
+                <div class="dateBox">26 April 2023</div>
+                <div class="imgBox fin_anim d1">
+                    <picture>
+                    
+                        <img src="/media/ft0dneqa/d9848154-ed99-4690-902c-ff1a97c73f5b.jpg"
+                             loading="lazy"
+                             alt=""
+                             width="1024"
+                             height="525" />
+                    </picture>
+                </div>
+            <div class="contentBox fin_anim d2">
+                <div class="textBox">
+                    <html xmlns="http://www.w3.org/1999/xhtml">
+	<head></head>
+	<body>
+
+<p>His Highness Sheikh Mohammed bin Rashid Al Maktoum, Vice President, Prime Minister and Ruler of Dubai, today announced Rashid 2, a new Emirati lunar mission that will be undertaken by the Mohammed bin Rashid Space Centre (MBRSC).</p>
+
+
+
+<p>His Highness Sheikh Mohammed, accompanied by H.H. Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai and Chairman of Dubai Executive Council, visited the Mohammed bin Rashid Space Centre and met with the team behind the UAE’s first attempt to land a rover on the lunar surface. Stressing the importance of determination in achieving success in the space industry, His Highness Sheikh Mohammed said the UAE will continue to launch new space exploration missions.</p>
+
+
+
+<p>His Highness noted that though the attempt to land the Rashid Rover on the moon was unsuccessful, “we kept our aspirations high.”</p>
+
+
+
+<p>“Emiratis have proved their ability to develop advanced space projects and rapidly create a vibrant national space sector,” he further said. “The UAE built a space sector from scratch within just 10 years. The Rashid Rover mission was driven by the country’s ambitious vision for space exploration,” His Highness added.</p>
+
+
+
+<p>Sheikh Hamdan bin Mohammed said that any space mission has to contend with high levels of risk, which it manages in a scientific and systematic way to advance exploration and experimentation.</p>
+
+
+
+<p>Sheikh Hamdan said the UAE will continue to develop its expertise and build an advanced space sector. Interacting with the MBRSC team, he said, “Sheikh Mohammed bin Rashid once said ‘The biggest risk in life is not taking any risk’.”</p>
+
+
+
+<p>Noting that the UAE is poised to enter a new phase of space exploration, he said, “Today, under the directives and guidance of His Highness Sheikh Mohammed bin Rashid Al Maktoum, we announce the launch of the Rashid 2 project, a new Emirati attempt to reach the moon.”</p>
+
+
+
+<p>His Highness Sheikh Mohammed bin Rashid and H.H. Sheikh Hamdan bin Mohammed met with the national team of the Emirates Lunar Mission (ELM) after the iSpace confirmed the unsuccessful landing of the HAKUTO-R lander on Wednesday 25th April, 2023.</p>
+
+
+
+<p>Through the Emirates Lunar Mission, MBRSC accomplished its ambitious goal of designing and building the world's most compact rover and becoming the first Emirati and Arab rover to reach the lunar orbit before the landing attempt onboard iSpace’s HAKUTO-R lander. These achievements are momentous for a nation's first lunar mission and highlight the UAE's commitment to advancing space exploration.</p>
+
+
+
+<p>The Rashid Rover, integrated into iSpace’s HAKUTO-R lander, successfully lifted off atop a SpaceX Falcon 9 rocket on 11th December at 11:38 UAE time from Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force, Florida. The ELM marked the first Emirati lunar mission, making the UAE the first Arab country to ascend toward the lunar surface.</p>
+
+
+
+<p>The world’s most compact rover, the Rashid Rover was built to traverse and explore the Moon's surface with a unique configuration. Weighing about 10 kilograms, the Rover is around 80 centimetres high, around 53.5 centimetres long, and close to 53.85 centimetres wide.</p>
+
+
+
+<p>MBRSC partnered with 10 international and four UAE-based entities for the Emirates Lunar Mission's science programme. In collaboration with close to 40 scientists and researchers, MBRSC developed the main instruments, the optical cameras, microscopic imager and Langmuir probe on board the Rashid Rover.</p>
+
+
+
+<p>Also accompanying Their Highnesses on the visit to MBRSC were Mohammad bin Abdullah Al Gergawi, Minister of Cabinet Affairs; Talal Humaid Belhoul Al Falasi, Vice President of MBRSC; Hamad Obaid AlMansoori, Chairman of MBRSC; and Salem Al Marri, Director-General of MBRSC, and a number of senior officials of the Centre.</p>
+
+	</body>
+</html>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+    
+<footer>
+    <div class="container">
+        <div class="footerLogo">
+            <a href="#" class="link">
+                <img src="/media/l3gk3dvu/footerimg.svg"
+                     class=""
+                     alt=""
+                     role="presentation"
+                     width="478"
+                     height="49" />
+            </a>
+        </div>
+        <div class="bottomWrap">
+            <div class="footerNav">
+                <ul>
+                    <li>
+                        <a href="/en/terms-conditions" class="link_" aria-label="Terms &amp; Conditions">Terms &amp; Conditions</a>
+                    </li>
+                    <li>
+                        <a href="/en/privacy-policy" class="link_" aria-label="Privacy Policy">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="/en/sitemap" class="link_" aria-label="Site Map">Site Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="copy">
+                    <p>&copy; 2026 - Protocol Department &#x2013; Dubai | All rights reserved</p>
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+</footer>
+
+
+    <script type="module" crossorigin src="/js/slimselect.es.js"></script>
+    <script>
+       function removeDataAttribute(selectId, dataAttributeName) {
+            const selectElement = document.getElementById(selectId);
+            if (selectElement) {
+                // Remove with dataset (preferred method)
+                delete selectElement.dataset[dataAttributeName];
+                selectElement.id = "zcontinent_new";
+                // Alternative: Remove with removeAttribute
+                // selectElement.removeAttribute(`data-${dataAttributeName}`);
+                
+                console.log(`✅ Removed data-${dataAttributeName} from #${selectId}`);
+                return true;
+            } else {
+                console.error(`❌ Select element with ID '${selectId}' not found`);
+                return false;
+            }
+        }
+        removeDataAttribute("zcontinent","select");
+        
+    </script>
+    <script type="module" crossorigin src="/js/innerpage.js"></script>    
+    <script>
+    setTimeout(() => {
+        let elem = document.getElementById('zcontinent_new');
+        let slimS = new window.SlimSelectInit({
+            select: elem,
+            settings: {
+              showSearch: true,
+              searchHighlight: true,
+            },
+            events: {
+            // Primary change event - fires when selection changes
+            afterChange: (newVal) => {
+                var _searchForm = document.getElementById("dirSearch");
+                if(_searchForm){
+                    _searchForm.submit();
+                }
+            },
+            }
+          })
+        elem.parentElement.classList.add('active')
+          if (slimS.render.content.main) {
+            slimS.render.content.main
+              .querySelector('.ss-list')
+              .setAttribute('data-lenis-prevent-wheel', 'true')
+          }
+    },1000);
+        
+    </script>
+<div class="progressWrap">
+    <div class="icon_">
+        <svg x="0px" y="0px" viewBox="0 0 21.8 28" overflow="visible" xml:space="preserve">
+        <line fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="10.9" y1="24.8" x2="10.9" y2="3.7"></line>
+        <polyline fill="none" stroke="#1c1c1c" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="2.7,11.6
+10.9,3.3 19.2,11.6 "></polyline>
+    </svg>
+    </div>
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 597.788;"></path>
+    </svg>
+</div>
+    
+    <noscript>Please ensure Javascript is enabled for purposes of <a href="https://accessibilityserver.org">website accessibility</a></noscript>
+    <script>
+  
+
+        /*const selectElements = document.querySelectorAll('select');
+    selectElements.forEach(select => {
+        select.remove();
+    });*/
+        function scrollProgress()
+        {
+          var progressPath = document.querySelector('.progressWrap path')
+        
+          if (progressPath) {
+            var pathLength = progressPath.getTotalLength()
+            progressPath.style.transition = progressPath.style.WebkitTransition = 'none'
+            progressPath.style.strokeDasharray = pathLength + ' ' + pathLength
+            progressPath.style.strokeDashoffset = pathLength
+            progressPath.getBoundingClientRect()
+            progressPath.style.transition = progressPath.style.WebkitTransition =
+              'stroke-dashoffset 10ms linear'
+            var updateProgress = function () {
+              var scroll = window.scrollY
+        
+              var html = document.documentElement
+        
+              var height = html.clientHeight - html.scrollHeight
+        
+              var progress = pathLength - (scroll * pathLength) / height
+              progressPath.style.strokeDashoffset = progress
+            }
+            updateProgress()
+            document.addEventListener('scroll', updateProgress)
+            var offset = 50
+            var duration = 550
+        
+            document
+              .querySelector('.progressWrap')
+              .addEventListener('click', function (event) {
+                event.preventDefault()
+        
+                if (window.lenis) window.lenis.scrollTo(0)
+                else window.scrollTo(0, 0)
+                return false
+              })
+          }
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(function(){
+                var element = document.getElementById("aj_loader");
+                element.classList.remove("show");
+            },500);
+            scrollProgress();
+            
+        });
+    </script>
+</body>
+</html>

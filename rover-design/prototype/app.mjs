@@ -249,14 +249,16 @@ function renderEvidence() {
     box.append(header,body);container.append(box);
   }
 }
+let refreshMaterialScreen;
 function renderOutput() {
   try { result=simulate(state,catalog,schema); }
   catch (error) {
-    result=null;report('Check the scenario: '+error.message,true);$('export').disabled=true;
+    result=null;refreshMaterialScreen?.();report('Check the scenario: '+error.message,true);$('export').disabled=true;
     $('summary').replaceChildren(el('p','Correct the highlighted input or scenario constraint to calculate results.','stat'));
     $('metrics').replaceChildren();$('notes').textContent='Results unavailable until the scenario is valid.';
     renderEvidence();workbench?.update(state,null);missionReview?.update();finder?.refreshPart();return;
   }
+  refreshMaterialScreen?.();
   report();$('export').disabled=false;renderSummary();renderMetrics();renderEvidence();
   workbench?.update(state,result);if(document.body.dataset.view==='review')missionReview?.update();
   finder?.refreshPart();
@@ -331,6 +333,14 @@ async function init() {
       const select=$('part-'+slot);select.value=id;select.dispatchEvent(new Event('change'));
     }
   });
+  const screen=el('section','Loading cabin material screening…','control-note');
+  $('tool-fire').append(screen);
+  import('../../material-screening.mjs').then(({mountMaterialScreen,roverEnvironment})=>{
+    refreshMaterialScreen=mountMaterialScreen(screen,{
+      from:'rover',fixedFan:true,params:new URLSearchParams(location.search),
+      read:()=>roverEnvironment(state,result),snapshot:()=>state
+    });
+  }).catch(()=>{screen.textContent='The material screening model could not load.';});
   $('lab').hidden=false;showView();window.addEventListener('hashchange',()=>showView(true));
 }
 init().catch(error=>report('Unable to open the lab. '+error.message+'. Serve the rover-design folder over local HTTP to load the JSON files.',true));

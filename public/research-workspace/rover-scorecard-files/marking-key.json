@@ -1,0 +1,11 @@
+{
+"version":"1.0","method":"One point per listed observation, no style or speed points. Score visible answers and artifacts produced in this run only. Numerical equivalence to 0.01 of the stated unit. Two-decimal source and exact export acceptable. Both arms can use an instrument or code. No credit for bare promises. Team-authored, unblinded pilot, one run. Do not combine the two denominators.",
+"Q1":["6.66 cm baseline","4.81 cm current","-1.85 cm signed difference"],
+"Q2":["same specimen used sequentially; direction effect not isolated","fresh matched samples with counterbalanced or randomized order","separates PSI table settings from rate in NTRS 20170008805 slide 21"],
+"Q3":["8 cm","manual/user-imposed rate rather than NASA attribution","no rover material qualification from this calculation"],
+"Q4":["2.25 g consumed","97.65 kJ released by 50 s","434 kJ full coupon"],
+"Q5":["sealed final O2 withheld for open deck","fuel energy withheld for unknown material","static support load still available in both runs"],
+"Q6":["2689.2 N Moon and 6158.6 N Mars","9 cm on both surfaces","prescribed front rate independent of gravity"],
+"W1":["parseable JSON identifies both source row IDs alongside correct rates and directions","time 37 s and rate/distance units recoverable","two distances and signed delta recoverable with correct values"],
+"W2":["valid(2,17,3.4) accepted","valid(2,17,3.8) rejected","valid(1.3,63,8.19) accepted"]
+}

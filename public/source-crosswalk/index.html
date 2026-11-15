@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Two NASA source checks · FIRST FIRE</title>
+  <link rel="stylesheet" href="../handoff.css">
+</head>
+<body><main>
+  <nav aria-label="Research desk"><a href="../index.html#atlas">← Evidence Atlas</a><button type="button" onclick="window.print()">Print findings</button></nav>
+  <header><p>FIRST FIRE · NASA Physical Sciences Informatics</p><h1>Two counts you can reproduce</h1>
+    <p>A smoke observation can share a test number with another row. An oxygen measurement can belong to a burner or to the surrounding chamber. Follow either count to the original NASA table.</p></header>
+  <section><h2>What do the 109 SAME-R observations count?</h2>
+    <p>The CSV has 67 unsuffixed rows and 42 observations with an “a” suffix. Grouping by both material and the numeric part of the label gives 67 groups. Grouping by the number alone gives 66. Kapton 85 and 93 are documented repeats of 75 and retain their own IDs. The crosswalk preserves the original descriptions, dates and aging fields, including empty or unavailable readings. <a href="same-r-observations.csv" download>Download all 109 source rows with their run-folder links</a>.</p>
+    <p>CSV rows 57 and 75 both give test number 57, one for Lampwick and one for Teflon. The reduced-gravity catalogue has a Lampwick 57 folder. Teflon 57 has no corresponding folder, and the catalogue includes Kapton 112 with no matching table row. For four material/number groups, the base and suffixed rows give different dates. A suffix supports grouping by label, while the run identity can remain uncertain.</p>
+    <p>NASA reports 66 completed flight test points from July through September 2010. The public table supplies no per-row completion flag. Matching the total by collapsing labels cannot settle the competing assignments for 57. <a href="https://psi.nasa.gov/physci/repo/data/investigations/PSI-101">NASA SAME-R study, Approach</a> · <a href="../detector.html">Inspect the detector telemetry</a></p>
+  </section>
+  <section><h2>Where did the 106 extra oxygen matches come from?</h2>
+    <p>At a 34% oxygen cutoff, 113 of the 179 normal-flame attempts meet the condition in the initial <strong>chamber</strong> gas (column F). In the inverse configuration, 106 of 154 attempts meet the same numerical condition in the <strong>burner stream</strong> (column H). Pooling them gives 219 apparent matches across 333 attempts. Only 113 have the specified initial chamber measurement.</p>
+    <p>The query retains nonempty rows across all fuels and ignition outcomes. It tests the original oxygen mole fraction against 0.34, inclusive, before rounding. Inverse CSV rows 18 and 19, for example, specify 85% oxygen in the burner stream and 6% initial ethane in the chamber. Every exported match includes its original row, test ID, source column and NASA file link. <a href="cfi-g-burner-matches.csv" download>Download the 106 burner-stream matches</a> · <a href="https://doi.org/10.60555/cyt1-kh64">NASA CFI-G data</a></p>
+  </section>
+  <section><h2>Run the checks without the dashboard</h2>
+    <p>With Python 3.9 or later, run this command from the root of the unpacked offline app. It verifies all three CSV hashes and writes two CSV files and a JSON summary. <a href="reproduce.py" download>Download the script</a> · <a href="summary.json" download>Download the expected summary and source hashes</a></p>
+    <p><code>python3 source-crosswalk/reproduce.py --raw data/raw --out replay</code></p>
+    <p>For a separate download, save these five inputs together and pass their directory to <code>--raw</code>. The file manifest identifies the versioned NASA originals. The census is a snapshot of NASA’s public file list, including reduced-gravity run folders. <a href="../data/raw/PSI-101-experimental.csv" download>SAME-R observations</a> · <a href="../data/raw/PSI-159-experimental.csv" download>CFI-G normal flames</a> · <a href="../data/raw/PSI-159-experimental-2.csv" download>CFI-G inverse flames</a> · <a href="../data/raw/psi-manifest.json" download>Versioned file manifest</a> · <a href="../data/raw/psi-core-file-census.json.gz" download>Compressed file census</a></p>
+  </section>
+</main></body>
+</html>

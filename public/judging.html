@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIRST FIRE · Flame in Freefall</title><meta name="description" content="Can a flame keep spreading in a lunar crew cabin? Follow the flight evidence, test a pressurized rover and inspect a sealed lunar forecast."><meta property="og:title" content="FIRST FIRE · Flame in Freefall"><meta property="og:description" content="NASA plans four fabric burns on the Moon. Compare FIRST FIRE’s timestamped forecast with the evidence from earlier experiments."><meta property="og:image" content="https://first-fire-lunar-lab.vercel.app/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="judging.css"></head>
+<body><a class="skip" href="#main">Skip to investigation</a><header><a class="wordmark" href="/" aria-label="FIRST FIRE home">FIRST FIRE<span>.</span></a><span>TEAM CODE BLOODED &nbsp; / &nbsp; ROUND 2</span><a href="/account/">Account</a></header>
+<main id="main"><div class="intro"><div><p class="eyebrow">Flame in Freefall · Crew habitat fire safety</p><h1>Will a flame keep spreading on the Moon?</h1><p>Start with a pressurized rover. Change its atmosphere, then trace the predicted fire margin back to the experiment that supports it.</p><a class="cta" href="rover-fire-case.html">Open the rover fire case <span aria-hidden="true">→</span></a> <a class="cta" href="fire-lab.html" style="background:#ae411e">Try the gravity fire lab <span aria-hidden="true">→</span></a><p class="new">New to fire science? <a href="start.html">Start here: fire in space, explained in two minutes</a></p></div>
+<figure class="livefig"><div class="live" aria-live="polite"><div class="lpresets" role="group" aria-label="Choose a world"><button type="button" data-w="0">Orbit</button><button type="button" data-w="0.1654" aria-pressed="true">Moon</button><button type="button" data-w="0.3794">Mars</button><button type="button" data-w="1">Earth</button></div>
+<svg id="liveflame" viewBox="0 0 200 200" role="img" aria-label="The flame's shape at the chosen gravity"></svg>
+<p class="livecount"><b id="livecount">4 of 4</b> <span id="livenote">cabin materials keep burning</span></p><ul class="livechips" id="livechips"></ul></div>
+<figcaption>Live FLINT model in Moon-habitat air: 8.2 psia, 34% oxygen, fans off (orbit adds a 10 cm/s breeze). <a href="fire-lab.html">Open the full gravity fire lab</a>. The Moon setting uses NASA measurements from a laboratory that recreated lunar gravity on Earth.</figcaption></figure></div>
+<section aria-labelledby="try"><p class="eyebrow">Try it yourself</p><h2 id="try">Interactive tools built on FLINT</h2><div class="cards">
+<a href="fire-lab.html"><span>GRAVITY FIRE LAB</span><strong>Change gravity. Watch the fire change.</strong><p>Choose orbit, Moon, Mars or Earth, a cabin air and a fan speed, and see which cabin materials keep burning, and why.</p></a>
+<a href="fm2-decoder.html"><span>FM² DAY-ONE DECODER</span><strong>Turn four burns into the Moon’s oxygen limit.</strong><p>Enter FM²’s measured burn lengths; FLINT corrects for the sealed box and returns the lunar limit with its range.</p></a>
+<a href="india.html"><span>LOCAL IMPACT · INDIA</span><strong>From a Moon cabin to an oxygen ward.</strong><p>Why the same physics matters in Indian hospital ICUs, with sources, and in Gaganyaan’s crew cabin.</p></a></div></section>
+<section aria-labelledby="inspect"><p class="eyebrow">Evidence to inspect</p><h2 id="inspect">From flight records to predictions</h2><div class="cards">
+<a href="flint.html"><span>MODEL VALIDATION</span><strong>How close was FLINT under simulated lunar gravity?</strong><p>See how we used three materials to predict the fourth, and why the error depends on which NASA figure we read.</p></a>
+<a href="flint.html#freefall"><span>MEASURED IN ORBIT</span><strong>What extinguishes a freefall flame?</strong><p>Compare FLEX droplets, inspect the CFI-G negative result and filter the scenario atlas by validity.</p></a>
+<a href="forecast-register.html#fm2-v2"><span>FORECAST REGISTER</span><strong>How far will each fabric strip burn?</strong><p>Inspect the conditional FM² length forecast and independently verify its timestamp.</p></a>
+<a href="mission-concept.html"><span>MISSION CONCEPT</span><strong>Which fires should NASA light next?</strong><p>Four follow-up tests on existing hardware, each with FLINT’s prediction and the result that would prove it wrong.</p></a>
+<a href="start.html"><span>START HERE</span><strong>New to combustion science?</strong><p>The whole project in plain words: oxygen limits, why gravity acts like a fan, and every term explained.</p></a></div></section>
+<section aria-labelledby="present"><p class="eyebrow">Presentation kit</p><h2 id="present">See the case in thirty seconds</h2>
+<div class="kit"><a href="master-film.mp4">Play the English-captioned film</a><a href="material-observer.html">Design a material and compare it with flight data</a><a href="lab-film.mp4">Thirty seconds of the live tools (film)</a><a href="round2-deck.pdf">Final Round 2 deck (PDF)</a><a href="start.html">Plain-language explainer</a><a href="master-round2-slides.pdf">Earlier Round 2 slides (PDF)</a><a href="master-round2-slides.pptx" download>Earlier editable deck</a><a href="master-round2.html">Timed run sheet</a><a href="technical-manual.html#flint">Technical manual</a><a href="team-handoff.html#disclosure">SI disclosure</a><a href="index.html#atlas">NASA PSI data desk</a><a href="submission.html">Submission links</a><a href="judging-evidence.html">Evidence for the ten award categories</a><a href="offline.html">Offline downloads and source files</a></div></section>
+</main><footer>FIRST FIRE · Team Code Blooded · Independent challenge project</footer><script src="flint-coefficients.js"></script><script src="flint-solid.js"></script><script>
+(() => {
+  'use strict';
+  const S = globalThis.FLINTSolid; if (!S) return;
+  const M = [['PMMA','Acrylic'],['P213','Cable tape'],['PC','Polycarbonate'],['NOMEX','Nomex fabric']];
+  const $ = id => document.getElementById(id);
+  const fl = (H, W, cx = 100, base = 182) => { const t = base - H; return `M${cx},${t} C${cx + W * .28},${t + H * .32} ${cx + W / 2},${t + H * .55} ${cx + W / 2},${t + H * .74} C${cx + W / 2},${base + 4} ${cx - W / 2},${base + 4} ${cx - W / 2},${t + H * .74} C${cx - W / 2},${t + H * .55} ${cx - W * .28},${t + H * .32} ${cx},${t} Z`; };
+  function show(g) {
+    const fan = g === 0 ? 0.1 : 0, X = 34;
+    if (g === 0) $('liveflame').innerHTML = '<circle cx="100" cy="110" r="62" fill="#1e4fd8" fill-opacity=".14"/><circle cx="100" cy="110" r="50" fill="none" stroke="#1e4fd8" stroke-width="9"/><circle cx="100" cy="110" r="12" fill="#182c29"/>';
+    else { const k = Math.min(1, Math.cbrt(g)), H = 70 + 100 * k, W = 92 - 22 * k; $('liveflame').innerHTML = `<path d="${fl(H, W)}" fill="#e0400c"/><path d="${fl(H * .62, W * .62)}" fill="#ffb020"/><path d="${fl(H * .3, W * .36)}" fill="#fff1c9"/><rect x="94" y="184" width="12" height="16" fill="#182c29"/>`; }
+    let n = 0; $('livechips').innerHTML = M.map(([k, name]) => { const lim = 100 * S.solve(k, g, 8.2, fan).limit, burns = X > lim; if (burns) n++;
+      return `<li class="${burns ? 'b' : ''}">${name}: ${burns ? 'burns' : 'goes out'} (limit ${lim.toFixed(1)}%)</li>`; }).join('');
+    $('livecount').textContent = n + ' of 4'; $('livenote').textContent = n === 1 ? 'cabin material keeps burning' : 'cabin materials keep burning';
+    document.querySelectorAll('[data-w]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.w === g)));
+  }
+  document.querySelectorAll('[data-w]').forEach(b => b.addEventListener('click', () => show(+b.dataset.w)));
+  show(0.1654);
+})();
+</script></body></html>

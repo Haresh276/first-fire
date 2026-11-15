@@ -1,0 +1,36 @@
+{
+  "recordChecks": [
+    true,
+    true,
+    true
+  ],
+  "validatorChecks": [
+    {
+      "rateMmS": 2,
+      "timeS": 17,
+      "travelCm": 3.4,
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "rateMmS": 2,
+      "timeS": 17,
+      "travelCm": 3.8,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "rateMmS": 1.3,
+      "timeS": 63,
+      "travelCm": 8.19,
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ],
+  "workflowPoints": 6,
+  "outOf": 6,
+  "validatorSHA256": "b2a55e56e3ffc68434bbcbb332bc5f2d22de99c861bcf0fb3aa948f10994b287"
+}

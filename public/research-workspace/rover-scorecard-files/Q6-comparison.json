@@ -1,0 +1,248 @@
+{
+  "schema": "first-fire.coupled-trial.v1",
+  "created": "2026-11-15T04:52:38.773Z",
+  "state": {
+    "baseline": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Moon",
+      "time": 50,
+      "volume": 16,
+      "speedMmS": null,
+      "couponMassG": 10
+    },
+    "current": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Mars",
+      "time": 50,
+      "volume": 16,
+      "speedMmS": null,
+      "couponMassG": 10
+    },
+    "level": "beginner",
+    "display": "auto",
+    "question": "At 50 s change only the surface from Moon to Mars. Give both static support forces and both front distances. Explain what determines the change or invariance of the front.",
+    "intentOverride": "auto",
+    "edits": [
+      {
+        "at": "2026-11-15T04:52:38.676Z",
+        "field": "world",
+        "from": "Moon",
+        "to": "Mars"
+      }
+    ],
+    "baselineFrozen": false
+  },
+  "units": {
+    "positionCm": "cm",
+    "chemicalKJ": "kJ",
+    "couponKJ": "kJ",
+    "oxygenPct": "%",
+    "initialO2KPa": "kPa",
+    "supportN": "N"
+  },
+  "baseline": {
+    "settings": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Moon",
+      "time": 50,
+      "volume": 16,
+      "speedMmS": null,
+      "couponMassG": 10
+    },
+    "physicallyModeledInputs": {
+      "planet": "Moon",
+      "fuel": "cellulose",
+      "volume": 16,
+      "pressure": 70,
+      "oxygen": 30,
+      "cutoff": 18,
+      "length": 40,
+      "density": 0.25,
+      "speed": 0.18,
+      "chassisMass": 800,
+      "capacity": 0,
+      "power": 0
+    },
+    "status": "modeled",
+    "modelState": "Prescribed spread",
+    "metrics": {
+      "positionCm": 9,
+      "chemicalKJ": 34.199999999999996,
+      "couponKJ": 152,
+      "oxygenPct": 29.9768249197056,
+      "supportN": 2689.2000000000003,
+      "initialO2KPa": 21
+    },
+    "sources": [
+      {
+        "id": "PSI-98:1:2",
+        "title": "Saffire-I S1 · concurrent flow",
+        "url": "https://doi.org/10.60555/0t15-1z43",
+        "locator": "Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s",
+        "boundary": "S2 used the material remaining after S1. The CSV records the conditions of each burn.",
+        "localUrl": "data/raw/PSI-98-experimental.csv",
+        "atlasUrl": "index.html#atlas?record=PSI-98%3A1%3A2"
+      },
+      {
+        "id": "flow-measurement",
+        "title": "Large-scale spacecraft fire safety experiments, SIBAL results",
+        "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21",
+        "locator": "Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity",
+        "boundary": "The reported front speed supplies a prescribed input to this trial."
+      },
+      {
+        "id": "NBS-TN-1128:table-1",
+        "title": "NBS Technical Note 1128 · fuel chemistry",
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf",
+        "locator": "Table 1 · Cellulose · net heat 15.2 MJ/kg",
+        "boundary": "The energy calculation uses a reference fuel composition. Testing would establish the properties of a particular rover material."
+      },
+      {
+        "id": "moon-env",
+        "title": "Moon Facts",
+        "url": "https://science.nasa.gov/moon/facts/",
+        "locator": "Structure, surface and atmosphere sections, including sunlit/dark temperatures",
+        "boundary": "Surface temperature does not determine radiator sink temperature or cabin gas temperature."
+      }
+    ],
+    "imposedRate": {
+      "kind": "orbital-analogue",
+      "speedMmS": 1.8,
+      "sourceRow": "PSI-98:1:2",
+      "observedDurationS": 420
+    },
+    "boundary": "The orbital study used cotton–fiberglass. Applying its rate to a different material, atmosphere or gravity is an assumption. Ignition, sustained spread and flight qualification need separate measurements.",
+    "roverModelSHA256": "d2a9b0d206fa419d15242d489aa3cb6716cb24283461124f0c6f8be75e0cd8e2"
+  },
+  "current": {
+    "settings": {
+      "material": "cellulose",
+      "flow": "concurrent",
+      "cabin": "sealed",
+      "oxygen": 30,
+      "world": "Mars",
+      "time": 50,
+      "volume": 16,
+      "speedMmS": null,
+      "couponMassG": 10
+    },
+    "physicallyModeledInputs": {
+      "planet": "Mars",
+      "fuel": "cellulose",
+      "volume": 16,
+      "pressure": 70,
+      "oxygen": 30,
+      "cutoff": 18,
+      "length": 40,
+      "density": 0.25,
+      "speed": 0.18,
+      "chassisMass": 800,
+      "capacity": 0,
+      "power": 0
+    },
+    "status": "modeled",
+    "modelState": "Prescribed spread",
+    "metrics": {
+      "positionCm": 9,
+      "chemicalKJ": 34.199999999999996,
+      "couponKJ": 152,
+      "oxygenPct": 29.9768249197056,
+      "supportN": 6158.6,
+      "initialO2KPa": 21
+    },
+    "sources": [
+      {
+        "id": "PSI-98:1:2",
+        "title": "Saffire-I S1 · concurrent flow",
+        "url": "https://doi.org/10.60555/0t15-1z43",
+        "locator": "Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s",
+        "boundary": "S2 used the material remaining after S1. The CSV records the conditions of each burn.",
+        "localUrl": "data/raw/PSI-98-experimental.csv",
+        "atlasUrl": "index.html#atlas?record=PSI-98%3A1%3A2"
+      },
+      {
+        "id": "flow-measurement",
+        "title": "Large-scale spacecraft fire safety experiments, SIBAL results",
+        "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21",
+        "locator": "Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity",
+        "boundary": "The reported front speed supplies a prescribed input to this trial."
+      },
+      {
+        "id": "NBS-TN-1128:table-1",
+        "title": "NBS Technical Note 1128 · fuel chemistry",
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf",
+        "locator": "Table 1 · Cellulose · net heat 15.2 MJ/kg",
+        "boundary": "The energy calculation uses a reference fuel composition. Testing would establish the properties of a particular rover material."
+      },
+      {
+        "id": "mars-env",
+        "title": "Mars Facts",
+        "url": "https://science.nasa.gov/mars/facts/",
+        "locator": "Atmosphere and Surface",
+        "boundary": "No site weather time series or pressure-vessel performance."
+      }
+    ],
+    "imposedRate": {
+      "kind": "orbital-analogue",
+      "speedMmS": 1.8,
+      "sourceRow": "PSI-98:1:2",
+      "observedDurationS": 420
+    },
+    "boundary": "The orbital study used cotton–fiberglass. Applying its rate to a different material, atmosphere or gravity is an assumption. Ignition, sustained spread and flight qualification need separate measurements.",
+    "roverModelSHA256": "d2a9b0d206fa419d15242d489aa3cb6716cb24283461124f0c6f8be75e0cd8e2"
+  },
+  "deltas": {
+    "positionCm": 0,
+    "chemicalKJ": 0,
+    "couponKJ": 0,
+    "oxygenPct": 0,
+    "supportN": 3469.4,
+    "initialO2KPa": 0
+  },
+  "changed": [
+    "world"
+  ],
+  "nextMeasurement": "Test fresh matched specimens in both flow directions and counterbalance the order. The Saffire-I directions were tested in sequence on one specimen.",
+  "effectiveDeviceMode": "standard",
+  "decisionTrace": [
+    {
+      "id": "user",
+      "label": "Reader",
+      "observed": "beginner",
+      "response": "Compare how far the front travels and how much oxygen is left. The cabin calculation starts with the speed you give it."
+    },
+    {
+      "id": "intent",
+      "label": "Question",
+      "observed": "Detected intent · Cabin and rover model",
+      "response": "The question changes a design assumption, a cabin condition or a front rate."
+    },
+    {
+      "id": "state",
+      "label": "Experiment state",
+      "observed": "Current trial at 50 s · baseline available",
+      "response": "Only surface gravity differs from baseline A. Inspect the result, then record the comparison."
+    },
+    {
+      "id": "device",
+      "label": "Device",
+      "observed": "standard · The measured memory, graphics and storage signals do not together qualify for automatic Pro.",
+      "response": "Show the time series."
+    },
+    {
+      "id": "evidence",
+      "label": "Evidence",
+      "observed": "PSI-98:1:2",
+      "response": "Saffire-I S1 supplies the 1.8 mm/s orbital rate. Rover travel and cabin oxygen are calculated for the selected conditions."
+    }
+  ]
+}

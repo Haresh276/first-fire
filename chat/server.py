@@ -5,6 +5,7 @@ import socket
 import sys
 import threading
 from functools import partial
+from pathlib import Path
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
 
@@ -73,12 +74,17 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port",type=int,default=8765)
     parser.add_argument("--model",help="an installed local Ollama tag")
+    parser.add_argument("--site-root", type=Path, default=ROOT/"dist",
+                        help="built site to serve alongside the loopback-only chat API")
     args=parser.parse_args()
+    site_root = args.site_root.resolve()
+    if not (site_root/"index.html").is_file():
+        parser.error("The site root must contain the built index.html.")
     try:
         engine=Engine(OllamaSelector(args.model))
     except (ImportError,OSError) as e:
         sys.exit("The local BGE encoder requires its Python environment and cached weights. Run the setup in chat/README.md. "+str(e))
-    server=ThreadingHTTPServer(("127.0.0.1",args.port),partial(Handler,directory=str(ROOT/"dist")))
+    server=ThreadingHTTPServer(("127.0.0.1",args.port),partial(Handler,directory=str(site_root)))
     server.engine=engine;server.lock=threading.Lock()
     print(f"FIRST FIRE at http://127.0.0.1:{args.port}/#chat | {engine.provider.model} | {len(engine.index.docs)} passages",flush=True)
     try: server.serve_forever()

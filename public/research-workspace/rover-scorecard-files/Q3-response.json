@@ -1,0 +1,139 @@
+{
+  "id": "Q3",
+  "question": "Override the published rate with a user-entered 2.0 mm/s and evaluate at 40 s. What is the modeled distance, whose rate is it, and can this run qualify the material for a rover?",
+  "chat": null,
+  "instrument": {
+    "url": "https://first-fire-lunar-lab.vercel.app/judge-lab.html",
+    "controlActions": [
+      {
+        "method": "fill",
+        "selector": "#question",
+        "value": "Override the published rate with a user-entered 2.0 mm/s and evaluate at 40 s. What is the modeled distance, whose rate is it, and can this run qualify the material for a rover?"
+      },
+      {
+        "method": "click",
+        "selector": "#question-form button",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#rover-settings > summary",
+        "value": null
+      },
+      {
+        "method": "select",
+        "selector": "#speed-mode",
+        "value": "custom"
+      },
+      {
+        "method": "fill",
+        "selector": "#custom-speed",
+        "value": 2
+      },
+      {
+        "method": "press",
+        "selector": "#custom-speed",
+        "value": "Tab"
+      },
+      {
+        "method": "slider",
+        "selector": "#time",
+        "value": 40
+      },
+      {
+        "method": "click",
+        "selector": "#numbers > summary",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#sources > summary",
+        "value": null
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "comparison"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 9,
+        "element": "#metric-body",
+        "label": "Displayed baseline, current and difference",
+        "text": "Flame-front travel\t9 cm\t8 cm\t−1 cm\nHeat from material consumed\t34.2 kJ\t30.4 kJ\t−3.8 kJ\nEnergy in the full coupon\t152 kJ\t152 kJ\t0 kJ\nCabin oxygen at readout\t29.9768%\t29.9794%\t＋0.0026 pp\nInitial oxygen partial pressure\t21 kPa\t21 kPa\t0 kPa\nStatic rover support load\t2,689.2 N\t2,689.2 N\t0 N"
+      },
+      {
+        "step": 11,
+        "element": "#claim",
+        "label": null,
+        "text": "The judge supplied the front speed. The cabin model uses that assumption to calculate the result."
+      },
+      {
+        "step": 12,
+        "element": "#boundary",
+        "label": null,
+        "text": "The imposed front speed is a user assumption. Ignition, sustained spread and flight qualification need separate measurements."
+      },
+      {
+        "step": 13,
+        "element": "#receipt-list",
+        "label": null,
+        "text": "Saffire-I S1 · concurrent flow\nbaseline · PSI-98:1:2 · Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s\nOpen original CSV\nLarge-scale spacecraft fire safety experiments, SIBAL results\nbaseline · flow-measurement · Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity\nNBS Technical Note 1128 · fuel chemistry\nbaseline and current · NBS-TN-1128:table-1 · Table 1 · Cellulose · net heat 15.2 MJ/kg\nMoon Facts\nbaseline and current · moon-env · Structure, surface and atmosphere sections, including sunlit/dark temperatures"
+      },
+      {
+        "step": 14,
+        "element": "#receipt-list a",
+        "label": null,
+        "links": [
+          {
+            "text": "Saffire-I S1 · concurrent flow",
+            "href": "https://doi.org/10.60555/0t15-1z43"
+          },
+          {
+            "text": "Open original CSV",
+            "href": "data/raw/PSI-98-experimental.csv"
+          },
+          {
+            "text": "Large-scale spacecraft fire safety experiments, SIBAL results",
+            "href": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          },
+          {
+            "text": "NBS Technical Note 1128 · fuel chemistry",
+            "href": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf"
+          },
+          {
+            "text": "Moon Facts",
+            "href": "https://science.nasa.gov/moon/facts/"
+          }
+        ]
+      },
+      {
+        "step": 15,
+        "element": "#measurement",
+        "label": null,
+        "text": "Measure front position over time on fresh specimens in the proposed material, atmosphere, gravity and flow."
+      },
+      {
+        "step": 16,
+        "element": "#finding",
+        "label": null,
+        "text": "The trial uses the front speed you entered."
+      },
+      {
+        "step": 17,
+        "element": "#interpretation",
+        "label": null,
+        "text": "Compare how far the front travels and how much oxygen is left. The cabin calculation starts with the speed you give it."
+      },
+      {
+        "step": 18,
+        "filename": "Q3-comparison.json",
+        "sha256": "ac15d75bc745e2cc93e3e1e98fc97f61d62d3ca72d85372b58b429d9be3f5aea",
+        "label": "Original downloaded JSON"
+      }
+    ],
+    "elapsedMs": 243
+  },
+  "pageErrors": []
+}

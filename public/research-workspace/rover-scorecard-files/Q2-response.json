@@ -1,0 +1,170 @@
+{
+  "id": "Q2",
+  "question": "Did reversing the airflow cause the difference seen in the two flight tests? Identify the design limitation, suggest a fair next experiment, and identify the NASA source and locator for the front rates versus the run settings.",
+  "chat": null,
+  "instrument": {
+    "url": "https://first-fire-lunar-lab.vercel.app/index.html#physics?mode=rover&reference=concurrent",
+    "controlActions": [
+      {
+        "method": "fill",
+        "selector": "#question",
+        "value": "Did reversing the airflow cause the difference seen in the two flight tests? Identify the design limitation, suggest a fair next experiment, and identify the NASA source and locator for the front rates versus the run settings."
+      },
+      {
+        "method": "click",
+        "selector": "#question-form button",
+        "value": null
+      },
+      {
+        "method": "check",
+        "selector": "input[name=flow][value=opposed]",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#numbers > summary",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#sources > summary",
+        "value": null
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "comparison"
+      },
+      {
+        "method": "go",
+        "selector": "index.html#physics?mode=rover&reference=concurrent",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#pl-compare",
+        "value": null
+      }
+    ],
+    "evidence": [
+      {
+        "step": 5,
+        "element": "#metric-body",
+        "label": "Displayed baseline, current and difference",
+        "text": "Flame-front travel\t9 cm\t6.5 cm\t−2.5 cm\nHeat from material consumed\t34.2 kJ\t24.7 kJ\t−9.5 kJ\nEnergy in the full coupon\t152 kJ\t152 kJ\t0 kJ\nCabin oxygen at readout\t29.9768%\t29.9833%\t＋0.0064 pp\nInitial oxygen partial pressure\t21 kPa\t21 kPa\t0 kPa\nStatic rover support load\t2,689.2 N\t2,689.2 N\t0 N"
+      },
+      {
+        "step": 7,
+        "element": "#claim",
+        "label": null,
+        "text": "Saffire-I S2 supplies the 1.3 mm/s orbital rate. Rover travel and cabin oxygen are calculated for the selected conditions."
+      },
+      {
+        "step": 8,
+        "element": "#boundary",
+        "label": null,
+        "text": "The orbital study used cotton–fiberglass. Applying its rate to a different material, atmosphere or gravity is an assumption. Ignition, sustained spread and flight qualification need separate measurements."
+      },
+      {
+        "step": 9,
+        "element": "#receipt-list",
+        "label": null,
+        "text": "Saffire-I S1 · concurrent flow\nbaseline · PSI-98:1:2 · Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s\nOpen original CSV\nLarge-scale spacecraft fire safety experiments, SIBAL results\nbaseline · flow-measurement · Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity\nNBS Technical Note 1128 · fuel chemistry\nbaseline and current · NBS-TN-1128:table-1 · Table 1 · Cellulose · net heat 15.2 MJ/kg\nMoon Facts\nbaseline and current · moon-env · Structure, surface and atmosphere sections, including sunlit/dark temperatures\nSaffire-I S2 · opposed flow\ncurrent · PSI-98:1:3 · Original CSV row 3 · SIBAL fabric · 20 cm/s air · about 21.5% O₂ · 70 s\nOpen original CSV\nLarge-scale spacecraft fire safety experiments, SIBAL results\ncurrent · flow-measurement · Slide 21 and Table I on PDF page 29 · 1.3 mm/s in microgravity"
+      },
+      {
+        "step": 10,
+        "element": "#receipt-list a",
+        "label": null,
+        "links": [
+          {
+            "text": "Saffire-I S1 · concurrent flow",
+            "href": "https://doi.org/10.60555/0t15-1z43"
+          },
+          {
+            "text": "Open original CSV",
+            "href": "data/raw/PSI-98-experimental.csv"
+          },
+          {
+            "text": "Large-scale spacecraft fire safety experiments, SIBAL results",
+            "href": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          },
+          {
+            "text": "NBS Technical Note 1128 · fuel chemistry",
+            "href": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf"
+          },
+          {
+            "text": "Moon Facts",
+            "href": "https://science.nasa.gov/moon/facts/"
+          },
+          {
+            "text": "Saffire-I S2 · opposed flow",
+            "href": "https://doi.org/10.60555/0t15-1z43"
+          },
+          {
+            "text": "Open original CSV",
+            "href": "data/raw/PSI-98-experimental.csv"
+          },
+          {
+            "text": "Large-scale spacecraft fire safety experiments, SIBAL results",
+            "href": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "element": "#measurement",
+        "label": null,
+        "text": "Test fresh matched specimens in both flow directions and counterbalance the order. The Saffire-I directions were tested in sequence on one specimen."
+      },
+      {
+        "step": 12,
+        "element": "#finding",
+        "label": null,
+        "text": "The rover fan selects the opposed orbital reference. The cabin model applies its measured speed to the strip."
+      },
+      {
+        "step": 13,
+        "element": "#interpretation",
+        "label": null,
+        "text": "Compare how far the front travels and how much oxygen is left. The cabin calculation starts with the speed you give it."
+      },
+      {
+        "step": 14,
+        "filename": "Q2-comparison.json",
+        "sha256": "27aed023970521d22376a77d1a3946270cc0507c504828b3f10c1bbe5201e943",
+        "label": "Original downloaded JSON"
+      },
+      {
+        "step": 18,
+        "element": "#pl-comparison p:has(strong)",
+        "label": "Native flight-test design limitation and experimental control",
+        "text": "Discriminating test. Repeat both directions on fresh, matched specimens and counterbalance run order. Hold oxygen, pressure, geometry and airflow magnitude fixed. Compare calibrated front position over time and record remaining fuel. This separates a direction effect from possible prior heating or changes to the shared specimen."
+      },
+      {
+        "step": 19,
+        "element": ".pl-reference a[href]",
+        "label": null,
+        "links": [
+          {
+            "text": "S1 · concurrent",
+            "href": "#atlas?record=PSI-98%3A1%3A2"
+          },
+          {
+            "text": "S2 · opposed",
+            "href": "#atlas?record=PSI-98%3A1%3A3"
+          },
+          {
+            "text": "Saffire-I PSI table, rows 2–3 ↗",
+            "href": "https://doi.org/10.60555/0t15-1z43"
+          },
+          {
+            "text": "NASA spread-rate measurements, slide 21 ↗",
+            "href": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          }
+        ]
+      }
+    ],
+    "elapsedMs": 1906
+  },
+  "pageErrors": []
+}

@@ -1,0 +1,50 @@
+{
+  "id": "W1",
+  "question": "Return a reusable machine-readable record for Q1. Include the two NASA row IDs and rates/directions, the common trial time and rate/distance units, both distances and the signed difference. Native JSON downloads and inline JSON are both admissible.",
+  "chat": null,
+  "instrument": {
+    "url": "https://first-fire-lunar-lab.vercel.app/judge-lab.html",
+    "controlActions": [
+      {
+        "method": "fill",
+        "selector": "#question",
+        "value": "Return a reusable machine-readable record for Q1. Include the two NASA row IDs and rates/directions, the common trial time and rate/distance units, both distances and the signed difference. Native JSON downloads and inline JSON are both admissible."
+      },
+      {
+        "method": "click",
+        "selector": "#question-form button",
+        "value": null
+      },
+      {
+        "method": "slider",
+        "selector": "#time",
+        "value": 37
+      },
+      {
+        "method": "click",
+        "selector": "#freeze",
+        "value": null
+      },
+      {
+        "method": "check",
+        "selector": "input[name=flow][value=opposed]",
+        "value": null
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "comparison"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 6,
+        "filename": "W1-comparison.json",
+        "sha256": "352cfe429ac658b22e4b0e0adf413f4818936ca218c157edd57820974f74e480",
+        "label": "Original downloaded JSON"
+      }
+    ],
+    "elapsedMs": 163
+  },
+  "pageErrors": []
+}

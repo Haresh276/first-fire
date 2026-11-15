@@ -21,8 +21,8 @@ REVISION = "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--offline", action="store_true", help="verify the local environment and encoder")
-    parser.add_argument("--model", choices=("qwen3:0.6b", "qwen3.6:35b-a3b", "gemma3:1b"), default="qwen3:0.6b",
-                        help="qwen3:0.6b installs the compact passage selector; qwen3.6:35b-a3b enables source-linked synthesis and arithmetic")
+    parser.add_argument("--model", choices=("qwen3.8:27b", "qwen3:0.6b", "qwen3.6:35b-a3b", "gemma3:1b"), default="qwen3:0.6b",
+                        help="qwen3:0.6b installs the compact passage selector; qwen3.8:27b enables source-linked synthesis and arithmetic")
     args = parser.parse_args()
     envdir = ROOT / ".chat-venv"
     python = envdir / ("Scripts/python.exe" if os.name == "nt" else "bin/python")

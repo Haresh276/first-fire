@@ -4,17 +4,17 @@
   "schema": "first-fire.offline-packs.v1",
   "supplements": {
     "first-fire-reproduction.zip": {
-      "bytes": 5953207,
+      "bytes": 5953228,
       "files": {
         "code-review-files.csv.gz": "a2ae36c631e0e107befa3e442c9fa109e06f5adb47560362316549494d1b4a96",
         "flint/FIRST-FIRE_FLINT-engine.zip": "3fd83d94ad5ad1c6634c2af16f92f16b9f22419dd0ec589b743074b5a270f08a",
         "fresh-chat-audit.zip": "71d6ca158a6ff550f5b9bb95d14112094f37c3e350b9faa4b3955e16fb643b8d",
         "master-round2-slides.pptx": "0d39086ae040835ebf2a042e72e3be1bc7c5da1244af9b0c6240c35ad33317e1"
       },
-      "sha256": "e3e97145f1e4beadbd9314cea83b5f06da8de0d6b2171d3f21f1d15baf876bc8"
+      "sha256": "1a6f86872afb963e0d3feebd24ed3265b9e63145df6bfaa63968f555ff5f346d"
     },
     "first-fire-rover-agencies.zip": {
-      "bytes": 15631490,
+      "bytes": 15623327,
       "files": {
         "rover-workbench/evidence/files/aee-meda-first-weather.pdf": "f49bfd51b0be3922989efac0e025a62cd74b7e239ec6b8b3ead3ccd398c557e1",
         "rover-workbench/evidence/files/aep-02-guaranisat1.pdf": "b4b7521a44df6dec993de1e662328fde505f647e8d888760bbfffa7c2df373fc",
@@ -25,10 +25,10 @@
         "rover-workbench/evidence/files/mbrsc-wheel-traction.pdf": "c704c4dc83a8e72983c5ef9c58878ef07ceff1d917314f5ff12ff42bb102c58e",
         "rover-workbench/evidence/files/tua-performance-2025.pdf": "03dc51664fcdfc72f053fea6fc49acc128d5feff31988102ff38f61f2de8ec99"
       },
-      "sha256": "0c0d0812e5f946ea7cc8d84969db04aed869d354c3cd373d3cd79abd954def0f"
+      "sha256": "6be2140e4a7530fd9a09656b20a0a3cf08af304846e8e94e39f17223d07bcec0"
     },
     "first-fire-rover-engineering.zip": {
-      "bytes": 13808100,
+      "bytes": 13797156,
       "files": {
         "rover-workbench/evidence/files/fire-protection.pdf": "13c1a06a15bceea4b282eccf50129298f56f02d32e5b8533c8bdc9c1dcad8560",
         "rover-workbench/evidence/files/hdpe.pdf": "d05be834943fbd05521906a8b254efb1eeeae9da31f467ec8a1b596254ebd67f",
@@ -39,23 +39,23 @@
         "rover-workbench/evidence/files/thermal.pdf": "6fb6e34bb1b64a75e62e27f79fb4fa3f0aa69168943c1f87b4943ebab51f543b",
         "rover-workbench/evidence/files/tn1128.pdf": "2a57bf6d4c7d473d6bd971cefcec3759b0c8ee80bc5e3a29bf28937dead6f5e9"
       },
-      "sha256": "18aca20210893237546480c0f3c0437cb6d3bf30e3b3ba64a23d1f5ba3656b63"
+      "sha256": "1ab3b76a4ad10266ff36fa034a8342d7713d0024ae9738b4ec5d2f66eb419822"
     },
     "first-fire-rover-experiments.zip": {
-      "bytes": 17536823,
+      "bytes": 17470428,
       "files": {
         "rover-workbench/evidence/files/filter-paper.pdf": "d74df2ce67c4685cf217d5e78a025b7d38ac9915f55950719e0639ddcfa6f0e7",
         "rover-workbench/evidence/files/nasa-03-saffire-iv-v.pdf": "d25b394f43774ee79a3223b53e90571be299c8996d1cff2512c76e3308e107f5",
         "rover-workbench/evidence/files/saffire-i-slides.pdf": "e38ec36f54817aa97e0c01a05f12b212521d6320ce3f4cb7a38bb7c837cfea8d"
       },
-      "sha256": "02093b8280e72aa41317a5e2da50ceb24db9317ed0fd5053a35259fa32371fb6"
+      "sha256": "34907f431050094ca59e986f053edc314a6df7d4c9523e5eab6276f9cc00c522"
     },
     "first-fire-rover-film.zip": {
-      "bytes": 8203602,
+      "bytes": 8203535,
       "files": {
         "rover-workbench/preview/rover-workbench.mp4": "3523e4a6ffe7e24ffb0705546a27a28175e7778d9cf4d839aa60a2cef11539bb"
       },
-      "sha256": "1c5c4c2c570cfc3aa8de38862a71896ccfb4d4bb10f5f320a167a156940c0886"
+      "sha256": "bb4bf8bc41dd59a810b7607f79aeab8df9b4974e27a87fb8523a7969de6488c7"
     }
   }
 }

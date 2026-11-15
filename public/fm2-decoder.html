@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FM² day-one decoder · FIRST FIRE</title><meta name="description" content="Enter FM²'s four measured burn lengths and get the fabric's oxygen limit on the Moon, corrected for the sealed chamber in which the flame's own exhaust chokes it."><meta property="og:title" content="FM² day-one decoder · FIRST FIRE"><meta property="og:description" content="Turn FM²&#39;s four burn lengths into the Moon&#39;s oxygen limit, corrected for the sealed box."><meta property="og:image" content="https://first-fire-lunar-lab.vercel.app/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="judging.css"><link rel="stylesheet" href="start.css"><link rel="stylesheet" href="lab.css"></head>
+<body><a class="skip" href="#main">Skip to the decoder</a><header><a class="wordmark" href="judging.html">FIRST FIRE<span>.</span></a><span>FM² DAY-ONE DECODER &nbsp; / &nbsp; FLINT 1.1</span></header>
+<main id="main">
+<div class="intro" style="grid-template-columns:1fr;padding-bottom:32px"><div><p class="eyebrow">For the day NASA reports FM²</p><h1>Turn four burns into the Moon's oxygen limit</h1><p class="lead">FM² burns four fabric strips in one sealed box on the Moon, at 37, 33, 29 and 25% oxygen. Enter how far each flame travelled. The decoder corrects for the sealed box, where the flame's own CO₂ and steam choke it, and returns the fabric's oxygen limit on the Moon.</p></div></div>
+<section aria-labelledby="dec"><div class="panel">
+<div class="controls" role="group" aria-labelledby="dec"><h2 id="dec" style="margin:0;font-size:1.4rem">Measured burn lengths</h2>
+<div class="presets" aria-label="Example results"><button type="button" data-p="20,14.9,6.4,0">If NASA's expectation holds</button><button type="button" data-p="20,20,12,3.3">More flammable</button><button type="button" data-p="17.8,9.4,1,0">Less flammable</button></div>
+<div class="row2"><label>Burn 1 · 37% O₂ (cm)<input id="b0" type="number" min="0" max="20" step="0.1" value="20"></label><label>Burn 2 · 33% O₂ (cm)<input id="b1" type="number" min="0" max="20" step="0.1" value="14.9"></label></div>
+<div class="row2"><label>Burn 3 · 29% O₂ (cm)<input id="b2" type="number" min="0" max="20" step="0.1" value="6.4"></label><label>Burn 4 · 25% O₂ (cm)<input id="b3" type="number" min="0" max="20" step="0.1" value="0"></label></div>
+<label>Length reading precision <output id="sdo">1.0 cm</output><input id="sd" type="range" min="0.3" max="3" step="0.1" value="1"></label>
+<p class="note">20 cm means the whole strip burned; 0 means no flame spread. The strip is 20 cm long.</p></div>
+<div class="result" aria-live="polite"><p class="eyebrow">Oxygen limit on the Moon</p><p class="big" id="lim">–</p><p class="sub" id="range">–</p>
+<svg class="chart" id="post" viewBox="0 0 600 220" role="img" aria-label="Probability of each oxygen limit given the four burns, with and without the sealed-box correction"></svg>
+<div class="legend"><span><i style="background:#ae411e"></i>With the sealed-box correction (FLINT)</span><span><i style="background:#8aa094"></i>Oxygen bookkeeping only</span></div>
+<p id="naive" class="note"></p><div id="check"></div><p id="sensor"></p>
+<table class="tbl" id="fit"><tr><th>Burn</th><th>Measured</th><th>FLINT best fit</th></tr></table></div>
+</div></section>
+<section aria-labelledby="how"><p class="eyebrow">How it works</p><h2 id="how">What the decoder assumes</h2>
+<ul class="open"><li>FLINT 1.1 simulates each burn in FM²'s sealed 14.4 L chamber at 8.2 psia, treating the strip as aramid-like fabric (Synergy Pro Navy) and the gas as well mixed. Each burn starts in fresh gas.</li>
+<li>For every possible limit from 18% to 36% (in 0.1-point steps) it predicts the four burn lengths, then weighs each limit by how well its lengths match yours. The range shown covers 80% of that weight.</li>
+<li>"Oxygen bookkeeping only" ignores the CO₂ and steam the flame makes. The difference between the two answers is the sealed-box correction.</li>
+<li>FLINT is not reviewed by NASA. Our own predictions for FM² are sealed in the <a href="forecast-register.html">forecast register</a>; this decoder is how we will score them.</li></ul>
+<p class="back"><a href="mission-concept.html">Mission concept: the next four fires</a> · <a href="flint.html">FLINT evidence</a> · <a href="judging.html">Judging route</a></p></section>
+</main><footer>FIRST FIRE · Team Code Blooded · Independent challenge project · <a href="judging.html">Judging route</a></footer>
+<script src="fm2-decoder-data.js"></script>
+<script>
+(() => {
+  'use strict';
+  const D = globalThis.FM2DecoderData, L = D.L, ids = ['b0','b1','b2','b3'];
+  const $ = id => document.getElementById(id);
+  const pct = x => (100 * x).toFixed(1) + '%';
+  function posterior(table, obs, sd) {
+    const logw = L.map((_, i) => obs.reduce((s, o, k) => s - 0.5 * ((o - table[k][i]) / sd) ** 2, 0));
+    const top = Math.max(...logw), w = logw.map(v => Math.exp(v - top)), z = w.reduce((a, b) => a + b, 0);
+    const p = w.map(v => v / z); let c = 0; const cdf = p.map(v => (c += v));
+    const q = t => L[Math.max(0, cdf.findIndex(v => v >= t))];
+    let best = 0; logw.forEach((v, i) => { if (v > logw[best]) best = i; });
+    const chi2 = -2 * logw[best];
+    return {p, q10: q(0.1), q50: q(0.5), q90: q(0.9), best, chi2};
+  }
+  function sensorAt(k, x) {
+    const xs = D.sensor_L, ys = D.sensor_wet[k];
+    let i = xs.findIndex(v => v >= x); if (i <= 0) i = 1;
+    const a = ys[i - 1], b = ys[i];
+    if (a == null || b == null) return null;
+    return a + (b - a) * (x - xs[i - 1]) / (xs[i] - xs[i - 1]);
+  }
+  function draw(a, b) {
+    const svg = $('post'), W = 600, H = 220, x0 = 40, x1 = 585, y0 = 190, y1 = 14;
+    const lo = 0.18, hi = 0.36, X = v => x0 + (v - lo) / (hi - lo) * (x1 - x0);
+    const m = Math.max(...a.p, ...b.p) || 1, Y = v => y0 - v / m * (y0 - y1);
+    const path = p => 'M' + L.map((v, i) => X(v).toFixed(1) + ',' + Y(p[i]).toFixed(1)).join(' L');
+    let ticks = '';
+    for (let t = 18; t <= 36; t += 2) ticks += `<line x1="${X(t/100)}" y1="${y0}" x2="${X(t/100)}" y2="${y0+5}" stroke="#40574e"/><text x="${X(t/100)}" y="${y0+20}" font-size="12" text-anchor="middle" fill="#40574e">${t}%</text>`;
+    svg.innerHTML = `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="#40574e"/>${ticks}` +
+      `<path d="${path(b.p)}" fill="none" stroke="#8aa094" stroke-width="3"/>` +
+      `<path d="${path(a.p)}" fill="none" stroke="#ae411e" stroke-width="4"/>` +
+      `<line x1="${X(a.q50)}" y1="${y1}" x2="${X(a.q50)}" y2="${y0}" stroke="#ae411e" stroke-dasharray="4 5"/>`;
+  }
+  function update() {
+    const obs = ids.map(id => Math.min(20, Math.max(0, parseFloat($(id).value) || 0)));
+    const sd = parseFloat($('sd').value); $('sdo').textContent = sd.toFixed(1) + ' cm';
+    const a = posterior(D.len_vit, obs, sd), b = posterior(D.len_oxygen_only, obs, sd);
+    $('lim').textContent = pct(a.q50);
+    $('range').textContent = '80% range ' + pct(a.q10) + ' to ' + pct(a.q90);
+    $('naive').textContent = 'Without the sealed-box correction the same burns would suggest ' + pct(b.q50) +
+      ', ' + Math.abs(100 * (b.q50 - a.q50)).toFixed(1) + ' points ' + (b.q50 > a.q50 ? 'too high' : 'too low') + '.';
+    const fit = D.len_vit.map(t => t[a.best]);
+    const worst = Math.max(...obs.map((o, k) => Math.abs(o - fit[k])));
+    $('check').innerHTML = a.chi2 > 13.28
+      ? `<div class="warn"><b>No single oxygen limit reproduces these four burns</b> (worst miss ${worst.toFixed(1)} cm). Check the measurements, or the model is missing something: that is a finding too.</div>`
+      : `<div class="okay">One limit reproduces all four burns (worst miss ${worst.toFixed(1)} cm).</div>`;
+    const parts = [0,1,2,3].filter(k => fit[k] > 0.5 && fit[k] < 19.5);
+    const s = parts.map(k => [k, sensorAt(k, L[a.best])]).filter(v => v[1] != null);
+    $('sensor').innerHTML = s.length ? '<b>What the oxygen sensor will show when the flame dies:</b> ' +
+      s.map(([k, v]) => `burn ${k + 1}, about ${v.toFixed(1)}%`).join('; ') + ', against a limit of ' + pct(L[a.best]) + '.' : '';
+    $('fit').innerHTML = '<tr><th>Burn</th><th>Measured</th><th>FLINT best fit</th></tr>' + obs.map((o, k) =>
+      `<tr><td>${k + 1} · ${Math.round(100 * D.starts[k])}% O₂</td><td>${o.toFixed(1)} cm</td><td>${fit[k].toFixed(1)} cm</td></tr>`).join('');
+    draw(a, b);
+  }
+  document.querySelectorAll('[data-p]').forEach(btn => btn.addEventListener('click', () => {
+    btn.dataset.p.split(',').forEach((v, k) => { $(ids[k]).value = v; }); update();
+  }));
+  [...ids, 'sd'].forEach(id => $(id).addEventListener('input', update));
+  const q = new URLSearchParams(location.search);
+  if (q.has('l')) q.get('l').split(',').slice(0, 4).forEach((v, k) => { if (Number.isFinite(+v)) $(ids[k]).value = +v; });
+  update();
+  [...ids, 'sd'].forEach(id => $(id).addEventListener('change', () => { try { history.replaceState(null, '', '?l=' + ids.map(i => $(i).value).join(',')); } catch (e) {} }));
+})();
+</script></body></html>

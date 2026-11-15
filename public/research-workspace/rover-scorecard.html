@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#142d30">
+  <meta name="description" content="Inspect a scored comparison of rover questions, the original answers, NASA sources and live FIRST FIRE controls.">
+  <meta name="ai-assistance" content="AI-assisted interface and evaluation. See the recorded method and original responses.">
+  <title>Rover scorecard · FIRST FIRE</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="rover-scorecard.css">
+  <script defer src="rover-scorecard-data.js"></script>
+  <script defer src="rover-scorecard.js"></script>
+</head>
+<body>
+  <a href="#scoreboard" class="skip">Skip to scores</a>
+  <header class="mast"><div class="shell mast-inner">
+    <a class="brand" href="judge-lab.html">FIRST FIRE<span>.</span></a>
+    <nav aria-label="Scorecard"><a href="#review">Questions</a><a href="#method">Method</a><a href="judge-lab.html#conditions">Open rover lab ↗</a></nav>
+  </div></header>
+  <main id="scoreboard">
+    <section class="intro"><div class="shell intro-inner">
+      <div><p class="kicker">Rover evaluation</p><h1 id="title">Rover answers, side by side</h1>
+        <p class="summary" id="summary">Compare the recorded answers to the same rover questions, inspect the evidence for each point, then try the controls yourself.</p>
+      </div>
+      <dl class="run-meta"><div><dt>Run date</dt><dd id="run-date">—</dd></div><div><dt>Questions</dt><dd id="task-count">—</dd></div></dl>
+    </div></section>
+    <div class="shell">
+      <p id="loading" class="notice" role="status">Opening the recorded evaluation…</p>
+      <noscript><p>This scorecard needs JavaScript to read the results file. <a href="judge-lab.html">Open the rover lab.</a></p></noscript>
+      <div id="results" hidden>
+        <section class="totals" aria-label="Scores by measure" id="totals"></section>
+        <section id="live-replay" class="live-replay" aria-labelledby="replay-title">
+          <p class="kicker">Unscored live demonstration</p><h2 id="replay-title">Can the rover reproduce this file?</h2>
+          <p>Each button passes a saved comparison through FIRST FIRE’s native replay control. ChatGPT’s scored question asked it to validate distance only.</p>
+          <div class="replay-actions" role="group" aria-label="Replay an example file">
+            <button type="button" data-example="genuine">Replay original file</button>
+            <button type="button" data-example="distance">Change distance to 3.8 cm</button>
+            <button type="button" data-example="source">Change source locator</button>
+          </div>
+          <p class="replay-verdict" id="replay-verdict" role="status" aria-live="polite" aria-atomic="true">Choose a file to see the lab’s verdict.</p>
+          <p class="replay-note">In the source test, the baseline citation changes from NASA CSV row 2 to row 3. The recorded travel stays at 3.4 cm.</p>
+          <details id="demo-film" class="demo-film"><summary>Watch the 24-second judge demo</summary>
+            <video controls playsinline preload="none" aria-label="Recorded FIRST FIRE rover trial with captions"><source src="rover-scorecard-files/judge-demo.mp4" type="video/mp4"><track kind="captions" src="rover-scorecard-files/judge-demo.vtt" srclang="en" label="English"></video>
+            <p><a href="rover-scorecard-files/judge-demo.mp4" download>Download the video</a> · <a href="rover-scorecard-files/judge-demo.vtt">Read the captions</a></p>
+          </details>
+          <details id="manual-replay" class="manual-replay"><summary>Download the files or replay manually</summary>
+            <p>Save a file, open the <a href="judge-lab.html#open-file" target="_blank" rel="noopener noreferrer">rover lab</a>, choose <strong>Replay a file</strong> and select your copy.</p>
+            <div class="links">
+              <a download href="rover-scorecard-files/W2-genuine.json">Original file · 3.4 cm</a>
+              <a download href="rover-scorecard-files/W2-altered.json">Edited distance · 3.8 cm</a>
+              <a download href="rover-scorecard-files/source-edit.json">Edited source · 3.4 cm</a>
+            </div>
+          </details>
+        <details id="try-lab" class="try-lab">
+          <summary>Try the rover controls here</summary>
+          <div><p>Set the clock to 37 seconds. Switch from “With airflow” to “Against airflow” and watch the modeled front move from 6.66 to 4.81 cm. Then open “Rover and cabin settings,” choose “Specify a speed,” and let a judge enter their own value. “Source records and assumptions” shows who supplied the new rate. <a href="judge-lab.html#conditions" target="_blank" rel="noopener noreferrer">Open the full lab in another tab ↗</a></p>
+            <div id="live-lab"></div></div>
+        </details>
+        </section>
+        <section id="review" aria-labelledby="review-heading">
+          <div class="row-heading"><div><p class="kicker">Scoring record</p><h2 id="review-heading">Inspect a question</h2></div>
+            <div class="select-wrap"><label for="task-picker">Choose a question</label><select id="task-picker" aria-controls="task"></select></div>
+          </div>
+          <article id="task" aria-label="Selected question"></article>
+          <div class="pager"><button id="back" type="button">← Previous</button><p id="position" role="status" aria-live="polite" aria-atomic="true"></p><button id="next" type="button">Next →</button></div>
+        </section>
+        <section id="method" aria-labelledby="method-heading" class="methods"><p class="kicker">Evaluation record</p><h2 id="method-heading">How the comparison ran</h2>
+          <div id="arms" class="arms"></div>
+          <div class="method-grid"><div id="protocol"></div><div id="limits"></div></div>
+          <div id="downloads" class="links"></div>
+        </section>
+      </div>
+      <footer><a href="judge-lab.html#conditions">Run the rover experiment ↗</a><a href="evidence-guide.html">Inspect the NASA study guide</a></footer>
+    </div>
+  </main>
+</body>
+</html>

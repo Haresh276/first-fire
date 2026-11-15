@@ -1,0 +1,220 @@
+{
+  "id": "Q4",
+  "question": "Change only the material to polyethylene at 50 s with the concurrent rate. What mass has been consumed, what net chemical energy has been released by then, and what is the full coupon's net chemical potential?",
+  "chat": null,
+  "instrument": {
+    "url": "https://first-fire-lunar-lab.vercel.app/index.html#awareness",
+    "controlActions": [
+      {
+        "method": "fill",
+        "selector": "#question",
+        "value": "Change only the material to polyethylene at 50 s with the concurrent rate. What mass has been consumed, what net chemical energy has been released by then, and what is the full coupon's net chemical potential?"
+      },
+      {
+        "method": "click",
+        "selector": "#question-form button",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#rover-settings > summary",
+        "value": null
+      },
+      {
+        "method": "select",
+        "selector": "#material",
+        "value": "polyethylene"
+      },
+      {
+        "method": "click",
+        "selector": "#numbers > summary",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#sources > summary",
+        "value": null
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "comparison"
+      },
+      {
+        "method": "go",
+        "selector": "index.html#physics?mode=rover&reference=concurrent",
+        "value": null
+      },
+      {
+        "method": "select",
+        "selector": "select[name=fuel]",
+        "value": "polyethylene"
+      },
+      {
+        "method": "fill",
+        "selector": "input[name=oxygen]",
+        "value": 30
+      },
+      {
+        "method": "press",
+        "selector": "input[name=oxygen]",
+        "value": "Tab"
+      },
+      {
+        "method": "fill",
+        "selector": "input[name=pressure]",
+        "value": 70
+      },
+      {
+        "method": "press",
+        "selector": "input[name=pressure]",
+        "value": "Tab"
+      },
+      {
+        "method": "fill",
+        "selector": "input[name=volume]",
+        "value": 16
+      },
+      {
+        "method": "press",
+        "selector": "input[name=volume]",
+        "value": "Tab"
+      },
+      {
+        "method": "click",
+        "selector": ".pl-details:has(input[name=density]) > summary",
+        "value": null
+      },
+      {
+        "method": "fill",
+        "selector": "input[name=density]",
+        "value": "0.25"
+      },
+      {
+        "method": "press",
+        "selector": "input[name=density]",
+        "value": "Tab"
+      },
+      {
+        "method": "fill",
+        "selector": "input[name=capacity]",
+        "value": 0
+      },
+      {
+        "method": "press",
+        "selector": "input[name=capacity]",
+        "value": "Tab"
+      },
+      {
+        "method": "slider",
+        "selector": "#pl-time",
+        "value": 50
+      },
+      {
+        "method": "go",
+        "selector": "index.html#awareness",
+        "value": null
+      },
+      {
+        "method": "download",
+        "selector": "button:text-is(\"Download investigation JSON\")",
+        "value": "physics"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 6,
+        "element": "#metric-body",
+        "label": "Displayed baseline, current and difference",
+        "text": "Flame-front travel\t9 cm\t9 cm\t0 cm\nHeat from material consumed\t34.2 kJ\t97.65 kJ\t＋63.45 kJ\nEnergy in the full coupon\t152 kJ\t434 kJ\t＋282 kJ\nCabin oxygen at readout\t29.9768%\t29.9411%\t−0.0358 pp\nInitial oxygen partial pressure\t21 kPa\t21 kPa\t0 kPa\nStatic rover support load\t2,689.2 N\t2,689.2 N\t0 N"
+      },
+      {
+        "step": 8,
+        "element": "#claim",
+        "label": null,
+        "text": "Saffire-I S1 supplies the 1.8 mm/s orbital rate. Rover travel and cabin oxygen are calculated for the selected conditions."
+      },
+      {
+        "step": 9,
+        "element": "#boundary",
+        "label": null,
+        "text": "The orbital study used cotton–fiberglass. Applying its rate to a different material, atmosphere or gravity is an assumption. Ignition, sustained spread and flight qualification need separate measurements."
+      },
+      {
+        "step": 10,
+        "element": "#receipt-list",
+        "label": null,
+        "text": "Saffire-I S1 · concurrent flow\nbaseline and current · PSI-98:1:2 · Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s\nOpen original CSV\nLarge-scale spacecraft fire safety experiments, SIBAL results\nbaseline and current · flow-measurement · Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity\nNBS Technical Note 1128 · fuel chemistry\nbaseline · NBS-TN-1128:table-1 · Table 1 · Cellulose · net heat 15.2 MJ/kg\nMoon Facts\nbaseline and current · moon-env · Structure, surface and atmosphere sections, including sunlit/dark temperatures\nNBS Technical Note 1128 · fuel chemistry\ncurrent · NBS-TN-1128:table-1 · Table 1 · Polyethylene · net heat 43.4 MJ/kg"
+      },
+      {
+        "step": 11,
+        "element": "#receipt-list a",
+        "label": null,
+        "links": [
+          {
+            "text": "Saffire-I S1 · concurrent flow",
+            "href": "https://doi.org/10.60555/0t15-1z43"
+          },
+          {
+            "text": "Open original CSV",
+            "href": "data/raw/PSI-98-experimental.csv"
+          },
+          {
+            "text": "Large-scale spacecraft fire safety experiments, SIBAL results",
+            "href": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          },
+          {
+            "text": "NBS Technical Note 1128 · fuel chemistry",
+            "href": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf"
+          },
+          {
+            "text": "Moon Facts",
+            "href": "https://science.nasa.gov/moon/facts/"
+          },
+          {
+            "text": "NBS Technical Note 1128 · fuel chemistry",
+            "href": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "element": "#measurement",
+        "label": null,
+        "text": "Test fresh matched specimens in both flow directions and counterbalance the order. The Saffire-I directions were tested in sequence on one specimen."
+      },
+      {
+        "step": 13,
+        "element": "#finding",
+        "label": null,
+        "text": "The rover fan selects the concurrent orbital reference. The cabin model applies its measured speed to the strip."
+      },
+      {
+        "step": 14,
+        "element": "#interpretation",
+        "label": null,
+        "text": "Compare how far the front travels and how much oxygen is left. The cabin calculation starts with the speed you give it."
+      },
+      {
+        "step": 15,
+        "filename": "Q4-comparison.json",
+        "sha256": "4ae92b1add909c3ffe9bfacff37b2b172a7bef47e21c4009f4b19cd69f6599ff",
+        "label": "Original downloaded JSON"
+      },
+      {
+        "step": 31,
+        "element": "#pl-fate",
+        "label": "Visible full cabin model readout, UI rounded",
+        "text": "Prescribed spread · 2.3 g consumed · 97.6 kJ combustion + 0 kJ electrical."
+      },
+      {
+        "step": 33,
+        "filename": "Q4-physics.json",
+        "sha256": "861270e0df5613d7a973de70b2c19a60f329465db1d64b75b00d74aeb6364830",
+        "label": "Original downloaded JSON"
+      }
+    ],
+    "elapsedMs": 3075
+  },
+  "pageErrors": []
+}

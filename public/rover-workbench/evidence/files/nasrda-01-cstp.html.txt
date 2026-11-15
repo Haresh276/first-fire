@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Center for Space Transport and Propulsion &#8211; National Space Research and Development Agency</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="alternate" type="application/rss+xml" title="National Space Research and Development Agency &raquo; Feed" href="http://nasrda.gov.ng/feed/" />
+<link rel="alternate" type="application/rss+xml" title="National Space Research and Development Agency &raquo; Comments Feed" href="http://nasrda.gov.ng/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="National Space Research and Development Agency &raquo; Center for Space Transport and Propulsion Comments Feed" href="http://nasrda.gov.ng/center-for-space-transport-and-propulsion/feed/" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/nasrda.gov.ng\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.11"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+		<style type="text/css">
+		</style>
+		<link rel='stylesheet' id='formidable-css' href='http://nasrda.gov.ng/wp-content/plugins/formidable/css/formidableforms1.css?ver=782201' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='http://nasrda.gov.ng/wp-includes/css/dashicons.min.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='admin-bar-css' href='http://nasrda.gov.ng/wp-includes/css/admin-bar.min.css?ver=6.7.11' type='text/css' media='all' />
+<style id='admin-bar-inline-css' type='text/css'>
+
+		@media screen { html { margin-top: 32px !important; } }
+		@media screen and ( max-width: 782px ) { html { margin-top: 46px !important; } }
+	
+@media print { #wpadminbar { display:none; } }
+</style>
+<link rel='stylesheet' id='layerslider-css' href='http://nasrda.gov.ng/wp-content/plugins/LayerSlider/static/layerslider/css/layerslider.css?ver=6.7.1' type='text/css' media='all' />
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='http://nasrda.gov.ng/wp-includes/css/dist/block-library/style.min.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-login-form-block-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/css/blocks/login-form.min.css?ver=10.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-member-block-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-members/css/blocks/member.min.css?ver=10.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-members-block-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-members/css/blocks/members.min.css?ver=10.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-dynamic-members-block-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-members/css/blocks/dynamic-members.min.css?ver=10.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-latest-activities-block-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-activity/css/blocks/latest-activities.min.css?ver=10.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='embedpress_blocks-cgb-style-css-css' href='http://nasrda.gov.ng/wp-content/plugins/embedpress/Gutenberg/dist/blocks.style.build.css?ver=1657252137' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--content-background-color: rgba(255,255,255,0);--wp--preset--color--display-heading: #373a3c;--wp--preset--color--text-color: #373a3c;--wp--preset--color--button-primary: #0275d8;--wp--preset--color--button-secondary: #ffffff;--wp--preset--color--table-striped: #f7f7f7;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--primary-to-primary-hover: linear-gradient(135deg, rgba(2,117,216,1) 0%, rgba(1,70,130,1) 100%);--wp--preset--gradient--secondary-to-secondary-hover: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--text: 16px;--wp--preset--font-size--text-smaller: 16px;--wp--preset--font-size--text-bigger: 16px;--wp--preset--font-size--h-1: 40px;--wp--preset--font-size--h-2: 32px;--wp--preset--font-size--h-3: 28px;--wp--preset--font-size--h-4: 24px;--wp--preset--font-size--h-5: 20px;--wp--preset--font-size--h-6: 16px;--wp--preset--font-size--dh-1: 96px;--wp--preset--font-size--dh-2: 88px;--wp--preset--font-size--dh-3: 72px;--wp--preset--font-size--dh-4: 56px;--wp--preset--font-size--subheading: 20px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='bbp-default-css' href='http://nasrda.gov.ng/wp-content/plugins/bbpress/templates/default/css/bbpress.min.css?ver=2.6.9' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-admin-bar-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/css/admin-bar.min.css?ver=10.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-mentions-css-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-activity/css/mentions.min.css?ver=10.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-parent-css-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/buddypress.css?ver=10.3.0' type='text/css' media='screen' />
+<link rel='stylesheet' id='contact-form-7-css' href='http://nasrda.gov.ng/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.6' type='text/css' media='all' />
+<link rel='stylesheet' id='ctf_styles-css' href='http://nasrda.gov.ng/wp-content/plugins/custom-twitter-feeds/css/ctf-styles.min.css?ver=2.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='dt-animation-css-css' href='http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/css/animations.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='dt-slick-css-css' href='http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/css/slick.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='dt-sc-css-css' href='http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/css/shortcodes.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='embedpress-css' href='http://nasrda.gov.ng/wp-content/plugins/embedpress/assets/css/embedpress.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='events-manager-css' href='http://nasrda.gov.ng/wp-content/plugins/events-manager/includes/css/events_manager.css?ver=5.99912' type='text/css' media='all' />
+<link rel='stylesheet' id='fts-feeds-css' href='http://nasrda.gov.ng/wp-content/plugins/feed-them-social/feeds/css/styles.css?ver=2.9.8.5' type='text/css' media='' />
+<link rel='stylesheet' id='owl-carousel-style-css' href='http://nasrda.gov.ng/wp-content/plugins/post-slider-and-carousel/assets/css/owl.carousel.min.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='psac-public-style-css' href='http://nasrda.gov.ng/wp-content/plugins/post-slider-and-carousel/assets/css/psac-public.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='resmap-css' href='http://nasrda.gov.ng/wp-content/plugins/responsive-maps-plugin/includes/css/resmap.min.css?ver=4.4' type='text/css' media='all' />
+<link rel='stylesheet' id='rs-plugin-settings-css' href='http://nasrda.gov.ng/wp-content/plugins/revslider/public/assets/css/rs6.css?ver=6.1.5' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<link rel='stylesheet' id='eirudo-yt-responsive-css' href='http://nasrda.gov.ng/wp-content/plugins/simple-youtube-responsive/css/youtube-responsive.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wpos-slick-style-css' href='http://nasrda.gov.ng/wp-content/plugins/wp-responsive-recent-post-slider/assets/css/slick.css?ver=3.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wppsac-public-style-css' href='http://nasrda.gov.ng/wp-content/plugins/wp-responsive-recent-post-slider/assets/css/recent-post-style.css?ver=3.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='ye_dynamic-css' href='http://nasrda.gov.ng/wp-content/plugins/youtube-embed/css/main.min.css?ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='swiper-css' href='http://nasrda.gov.ng/wp-content/plugins/bp-member-swipe/assets/css/vendor/swiper-bundle.min.css?ver=6.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='bp-member-swipe-directory-swiper-css' href='http://nasrda.gov.ng/wp-content/plugins/bp-member-swipe/assets/css/directory-swiper.css?ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='grimlock-css' href='http://nasrda.gov.ng/wp-content/plugins/grimlock/assets/css/style.css?ver=1.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='grimlock-animate-css' href='http://nasrda.gov.ng/wp-content/plugins/grimlock-animate/assets/css/style.css?ver=1.1.8' type='text/css' media='all' />
+<link rel='stylesheet' id='grimlock-bbpress-css' href='http://nasrda.gov.ng/wp-content/plugins/grimlock-bbpress/assets/css/style.css?ver=1.1.7' type='text/css' media='all' />
+<link rel='stylesheet' id='grimlock-buddypress-css' href='http://nasrda.gov.ng/wp-content/plugins/grimlock-buddypress/assets/css/style.css?ver=1.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='grimlock-login-css' href='http://nasrda.gov.ng/wp-content/plugins/grimlock-login/assets/css/style.css?ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css' href='http://nasrda.gov.ng/wp-content/plugins/tablepress/css/default.min.css?ver=1.14' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-ui-search-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress-global-search/assets/css/jquery-ui.min.css?ver=1.11.2' type='text/css' media='all' />
+<link rel='stylesheet' id='buddypress-global-search-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress-global-search/assets/css/buddypress-global-search.min.css?ver=1.2.1' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_front-css' href='http://nasrda.gov.ng/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=5.4.7' type='text/css' media='all' />
+<link rel='stylesheet' id='grimlock-author-avatars-css' href='http://nasrda.gov.ng/wp-content/plugins/grimlock-author-avatars/assets/css/style.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bsf-Defaults-css' href='http://nasrda.gov.ng/wp-content/uploads/smile_fonts/Defaults/Defaults.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='ultimate-style-css' href='http://nasrda.gov.ng/wp-content/plugins/Ultimate_VC_Addons/assets/min-css/style.min.css?ver=3.16.22' type='text/css' media='all' />
+<link rel='stylesheet' id='ultimate-animate-css' href='http://nasrda.gov.ng/wp-content/plugins/Ultimate_VC_Addons/assets/min-css/animate.min.css?ver=3.16.22' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/style.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-base-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/base.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-grid-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/grid.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-widget-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/widget.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-layout-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/layout.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-blog-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/blog.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-portfolio-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/portfolio.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-contact-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/contact.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-custom-class-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/custom-class.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prettyphoto-css' href='http://nasrda.gov.ng/wp-content/plugins/js_composer/assets/lib/prettyphoto/css/prettyPhoto.min.css?ver=5.4.7' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-font-awesome-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/font-awesome.min.css?ver=4.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='pe-icon-7-stroke-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/pe-icon-7-stroke.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='stroke-gap-icons-style-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/stroke-gap-icons-style.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='icon-moon-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/icon-moon.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='material-design-iconic-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/material-design-iconic-font.min.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='skin-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/skins/green/style.css?ver=6.7.11' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-customevent-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/tribe-events/custom.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='consultancy-custom-css' href='http://nasrda.gov.ng/wp-content/themes/consultancy/css/custom.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='rt-mediaelement-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress-media/lib/media-element/mediaelementplayer-legacy.min.css?ver=4.6.12' type='text/css' media='all' />
+<link rel='stylesheet' id='rt-mediaelement-wp-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress-media/lib/media-element/wp-mediaelement.min.css?ver=4.6.12' type='text/css' media='all' />
+<link rel='stylesheet' id='rtmedia-main-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress-media/app/assets/css/rtmedia.min.css?ver=4.6.12' type='text/css' media='all' />
+<link rel='stylesheet' id='rtmedia-upload-terms-main-css' href='http://nasrda.gov.ng/wp-content/plugins/buddypress-media/app/assets/css/rtm-upload-terms.min.css?ver=4.6.12' type='text/css' media='all' />
+<link rel='stylesheet' id='kirki-styles-css' href='http://nasrda.gov.ng?action=kirki-styles&#038;ver=4.0' type='text/css' media='all' />
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="fts_clear_cache_script-js-extra">
+/* <![CDATA[ */
+var ftsAjax = {"ajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php"};
+var ftsAjax = {"ajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/feed-them-social/admin/js/admin.js?ver=2.9.8.5" id="fts_clear_cache_script-js"></script>
+<script type="text/javascript" id="layerslider-greensock-js-extra">
+/* <![CDATA[ */
+var LS_Meta = {"v":"6.7.1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/LayerSlider/static/layerslider/js/greensock.js?ver=1.19.0" id="layerslider-greensock-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.kreaturamedia.jquery.js?ver=6.7.1" id="layerslider-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.transitions.js?ver=6.7.1" id="layerslider-transitions-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/plupload/moxie.min.js?ver=1.3.5" id="moxiejs-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/plupload/plupload.min.js?ver=2.1.9" id="plupload-js"></script>
+<script type="text/javascript" id="bp-confirm-js-extra">
+/* <![CDATA[ */
+var BP_Confirm = {"are_you_sure":"Are you sure?"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/js/confirm.min.js?ver=10.3.0" id="bp-confirm-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/js/widget-members.min.js?ver=10.3.0" id="bp-widget-members-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/js/jquery-query.min.js?ver=10.3.0" id="bp-jquery-query-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/js/vendor/jquery-cookie.min.js?ver=10.3.0" id="bp-jquery-cookie-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/js/vendor/jquery-scroll-to.min.js?ver=10.3.0" id="bp-jquery-scroll-to-js"></script>
+<script type="text/javascript" id="bp-legacy-js-js-extra">
+/* <![CDATA[ */
+var BP_DTheme = {"accepted":"Accepted","close":"Close","comments":"comments","leave_group_confirm":"Are you sure you want to leave this group?","mark_as_fav":"Favorite","my_favs":"My Favorites","rejected":"Rejected","remove_fav":"Remove Favorite","show_all":"Show all","show_all_comments":"Show all comments for this thread","show_x_comments":"Show all comments (%d)","unsaved_changes":"Your profile has unsaved changes. If you leave the page, the changes will be lost.","view":"View","store_filter_settings":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-templates/bp-legacy/js/buddypress.min.js?ver=10.3.0" id="bp-legacy-js-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/embedpress/assets/js/pdfobject.min.js?ver=3.4.3" id="embedpress-pdfobject-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/mouse.min.js?ver=1.13.3" id="jquery-ui-mouse-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/sortable.min.js?ver=1.13.3" id="jquery-ui-sortable-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.13.3" id="jquery-ui-datepicker-js"></script>
+<script type="text/javascript" id="jquery-ui-datepicker-js-after">
+/* <![CDATA[ */
+jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/menu.min.js?ver=1.13.3" id="jquery-ui-menu-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/dist/dom-ready.min.js?ver=f77871ff7694fffea381" id="wp-dom-ready-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" id="wp-hooks-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/dist/a11y.min.js?ver=3156534cc54473497e14" id="wp-a11y-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/autocomplete.min.js?ver=1.13.3" id="jquery-ui-autocomplete-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/resizable.min.js?ver=1.13.3" id="jquery-ui-resizable-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/draggable.min.js?ver=1.13.3" id="jquery-ui-draggable-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/controlgroup.min.js?ver=1.13.3" id="jquery-ui-controlgroup-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/checkboxradio.min.js?ver=1.13.3" id="jquery-ui-checkboxradio-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/button.min.js?ver=1.13.3" id="jquery-ui-button-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/dialog.min.js?ver=1.13.3" id="jquery-ui-dialog-js"></script>
+<script type="text/javascript" id="events-manager-js-extra">
+/* <![CDATA[ */
+var EM = {"ajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php","locationajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php?action=locations_search","firstDay":"1","locale":"en","dateFormat":"dd\/mm\/yy","ui_css":"http:\/\/nasrda.gov.ng\/wp-content\/plugins\/events-manager\/includes\/css\/jquery-ui.min.css","show24hours":"","is_ssl":"","bookingInProgress":"Please wait while the booking is being submitted.","tickets_save":"Save Ticket","bookingajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php","bookings_export_save":"Export Bookings","bookings_settings_save":"Save Settings","booking_delete":"Are you sure you want to delete?","booking_offset":"30","bb_full":"Sold Out","bb_book":"Book Now","bb_booking":"Booking...","bb_booked":"Booking Submitted","bb_error":"Booking Error. Try again?","bb_cancel":"Cancel","bb_canceling":"Canceling...","bb_cancelled":"Cancelled","bb_cancel_error":"Cancellation Error. Try again?","txt_search":"Search","txt_searching":"Searching...","txt_loading":"Loading...","event_detach_warning":"Are you sure you want to detach this event? By doing so, this event will be independent of the recurring set of events.","delete_recurrence_warning":"Are you sure you want to delete all recurrences of this event? All events will be moved to trash.","disable_bookings_warning":"Are you sure you want to disable bookings? If you do this and save, you will lose all previous bookings. If you wish to prevent further bookings, reduce the number of spaces available to the amount of bookings you currently have","booking_warning_cancel":"Are you sure you want to cancel your booking?"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/events-manager/includes/js/events-manager.js?ver=5.99912" id="events-manager-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/feed-them-social/feeds/js/powered-by.js?ver=2.9.8.5" id="fts_powered_by_js-js"></script>
+<script type="text/javascript" id="fts-global-js-extra">
+/* <![CDATA[ */
+var fts_twitter_ajax = {"ajax_url":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php"};
+var fts_twitter_ajax = {"ajax_url":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/feed-them-social/feeds/js/fts-global.js?ver=2.9.8.5" id="fts-global-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/revslider/public/assets/js/revolution.tools.min.js?ver=6.0" id="tp-tools-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/revslider/public/assets/js/rs6.min.js?ver=6.1.5" id="revmin-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/Ultimate_VC_Addons/assets/min-js/ultimate-params.min.js?ver=3.16.22" id="ultimate-vc-params-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/Ultimate_VC_Addons/assets/min-js/custom.min.js?ver=3.16.22" id="ultimate-custom-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/Ultimate_VC_Addons/assets/min-js/jquery-appear.min.js?ver=3.16.22" id="ultimate-appear-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/themes/consultancy/framework/js/modernizr.custom.js?ver=6.7.11" id="modernizr-custom-js"></script>
+<meta name="generator" content="Powered by LayerSlider 6.7.1 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Plugin for WordPress." />
+<!-- LayerSlider updates and docs at: https://layerslider.kreaturamedia.com -->
+<link rel="https://api.w.org/" href="http://nasrda.gov.ng/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="http://nasrda.gov.ng/wp-json/wp/v2/pages/10365" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nasrda.gov.ng/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.7.11" />
+<link rel="canonical" href="http://nasrda.gov.ng/center-for-space-transport-and-propulsion/" />
+<link rel='shortlink' href='http://nasrda.gov.ng/?p=10365' />
+
+	<script type="text/javascript">var ajaxurl = 'http://nasrda.gov.ng/wp-admin/admin-ajax.php';</script>
+
+<script>(function(w, d) { w.CollectId = "60e862100ac71735ab58ea60"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script><script type="text/javascript">var CollectChatWordpress = true;</script>
+			<style type="text/css">
+							.rtmedia-activity-container ul.rtm-activity-media-list{
+			overflow: auto;
+			}
+
+			div.rtmedia-activity-container ul.rtm-activity-media-list li.media-type-document,
+			div.rtmedia-activity-container ul.rtm-activity-media-list li.media-type-other{
+			margin-left: 0.6em !important;
+			}
+
+			.rtmedia-activity-container li.media-type-video{
+			height: 240px !important;
+			width: 320px !important;
+			}
+
+			.rtmedia-activity-container li.media-type-video div.rtmedia-item-thumbnail,
+			.rtmedia-activity-container li.media-type-photo a{
+			width: 100% !important;
+			height: 98% !important;
+			}
+
+			.rtmedia-activity-container li.media-type-video div.rtmedia-item-thumbnail video{
+			width: 100% !important;
+			height: 100% !important;
+			}
+
+			.rtmedia-activity-container li.media-type-video div.rtmedia-item-thumbnail .mejs-video,
+			.rtmedia-activity-container li.media-type-video div.rtmedia-item-thumbnail .mejs-video video,
+			.rtmedia-activity-container li.media-type-video div.rtmedia-item-thumbnail .mejs-video .mejs-overlay-play{
+			width: 100% !important;
+			height: 100% !important;
+			}
+
+			.rtmedia-activity-container li.media-type-music{
+			width: 320px !important;
+			}
+
+			.rtmedia-activity-container li.media-type-music .rtmedia-item-thumbnail,
+			.rtmedia-activity-container li.media-type-music .rtmedia-item-thumbnail .mejs-audio,
+			.rtmedia-activity-container li.media-type-music .rtmedia-item-thumbnail audio{
+			width: 100% !important;
+			}
+
+			.rtmedia-activity-container li.media-type-photo{
+			width: 320px !important;
+			height: 240px !important;
+			}
+
+			.rtmedia-activity-container .media-type-photo .rtmedia-item-thumbnail,
+			.rtmedia-activity-container .media-type-photo .rtmedia-item-thumbnail img {
+			width: 100% !important;
+			height: 100% !important;
+			overflow: hidden;
+			}
+						#buddypress ul.activity-list li.activity-item .activity-comments ul li form.ac-form .rtmedia-comment-media-upload,#buddypress ul.activity-list li.activity-item .activity-comments ul li form.ac-form .rtmedia-container {
+					display: none !important
+				}
+					.rtmedia-container ul.rtmedia-list li.rtmedia-list-item div.rtmedia-item-thumbnail {
+		width: 150px;
+		max-height: 150px;
+		}
+		.rtmedia-container ul.rtmedia-list li.rtmedia-list-item div.rtmedia-item-thumbnail img {
+		max-width: 150px;
+		max-height: 150px;
+		}
+		.rtmedia-container .rtmedia-list  .rtmedia-list-item {
+		width: 150px;
+		}
+					</style>
+			<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="http://nasrda.gov.ng/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><meta name="generator" content="Powered by Slider Revolution 6.1.5 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<link rel="icon" href="http://nasrda.gov.ng/wp-content/uploads/2020/01/cropped-NASRDA-logo-transparent-32x32.png" sizes="32x32" />
+<link rel="icon" href="http://nasrda.gov.ng/wp-content/uploads/2020/01/cropped-NASRDA-logo-transparent-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="http://nasrda.gov.ng/wp-content/uploads/2020/01/cropped-NASRDA-logo-transparent-180x180.png" />
+<meta name="msapplication-TileImage" content="http://nasrda.gov.ng/wp-content/uploads/2020/01/cropped-NASRDA-logo-transparent-270x270.png" />
+<script type="text/javascript">function setREVStartSize(t){try{var h,e=document.getElementById(t.c).parentNode.offsetWidth;if(e=0===e||isNaN(e)?window.innerWidth:e,t.tabw=void 0===t.tabw?0:parseInt(t.tabw),t.thumbw=void 0===t.thumbw?0:parseInt(t.thumbw),t.tabh=void 0===t.tabh?0:parseInt(t.tabh),t.thumbh=void 0===t.thumbh?0:parseInt(t.thumbh),t.tabhide=void 0===t.tabhide?0:parseInt(t.tabhide),t.thumbhide=void 0===t.thumbhide?0:parseInt(t.thumbhide),t.mh=void 0===t.mh||""==t.mh||"auto"===t.mh?0:parseInt(t.mh,0),"fullscreen"===t.layout||"fullscreen"===t.l)h=Math.max(t.mh,window.innerHeight);else{for(var i in t.gw=Array.isArray(t.gw)?t.gw:[t.gw],t.rl)void 0!==t.gw[i]&&0!==t.gw[i]||(t.gw[i]=t.gw[i-1]);for(var i in t.gh=void 0===t.el||""===t.el||Array.isArray(t.el)&&0==t.el.length?t.gh:t.el,t.gh=Array.isArray(t.gh)?t.gh:[t.gh],t.rl)void 0!==t.gh[i]&&0!==t.gh[i]||(t.gh[i]=t.gh[i-1]);var r,a=new Array(t.rl.length),n=0;for(var i in t.tabw=t.tabhide>=e?0:t.tabw,t.thumbw=t.thumbhide>=e?0:t.thumbw,t.tabh=t.tabhide>=e?0:t.tabh,t.thumbh=t.thumbhide>=e?0:t.thumbh,t.rl)a[i]=t.rl[i]<window.innerWidth?0:t.rl[i];for(var i in r=a[0],a)r>a[i]&&0<a[i]&&(r=a[i],n=i);var d=e>t.gw[n]+t.tabw+t.thumbw?1:(e-(t.tabw+t.thumbw))/t.gw[n];h=t.gh[n]*d+(t.tabh+t.thumbh)}void 0===window.rs_init_css&&(window.rs_init_css=document.head.appendChild(document.createElement("style"))),document.getElementById(t.c).height=h,window.rs_init_css.innerHTML+="#"+t.c+"_wrapper { height: "+h+"px }"}catch(t){console.log("Failure at Presize of Slider:"+t)}};</script>
+		<style type="text/css" id="wp-custom-css">
+			a {
+
+ color: #ff0000;
+
+}
+
+a:hover {
+
+  color: #00ff00;
+
+}
+
+a:visited {
+
+  color: #ff0000;
+
+}		</style>
+		<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><style type="text/css">/** Mega Menu CSS: fs **/</style>
+</head>
+
+<body class="bp-legacy page-template-default page page-id-10365 admin-bar no-customize-support grimlock grimlock--blogname-displayed grimlock--blogdescription-displayed  grimlock--classic grimlock--navigation-classic-left grimlock--navigation-classic-top grimlock--back-to-top-right grimlock--back-to-top-displayed grimlock--loader-fadein-displayed grimlock--page grimlock-buddypress--members-counts-displayed grimlock-buddypress--friend-icons-add grimlock-buddypress--follow-icons-add grimlock-buddypress--members-items-layout-3-3-3-3-cols-classic grimlock-buddypress--profile-secondary-nav-mobile-text-displayed grimlock-buddypress--profile-nav-mobile-default-state-closed grimlock-buddypress--groups-counts-displayed grimlock-buddypress--groups-items-layout-3-3-3-3-cols-classic layout-wide boxed-header transparent-header sticky-header standard-header header-with-topbar woo-type1 wpb-js-composer js-comp-ver-5.4.7 vc_responsive elementor-default elementor-kit-11200 no-js">
+
+
+<!-- **Wrapper** -->
+<div class="wrapper">
+	<div class="inner-wrapper">
+
+		<!-- **Header Wrapper** -->
+        		<div id="header-wrapper" class="dt-sc-dark-bg">
+            <!-- **Header** -->
+            <header id="header">        	        <div class="top-bar">
+            	        <div class="container"><div class="dt-sc-one-half column first"></span><a href="#"><p><b>National Space Research and Development Agency </b></p></a></div><div><a href="#"><b>Email:</b> <i>contact@nasrda.gov.ng</i>   |  <b>Tel:</b><i> +234 (0) 809 207 9000  </i></a></div></div>	
+                        </div>
+                    </div>
+            	<!-- **Main Header Wrapper** -->
+            	<div id="main-header-wrapper" class="main-header-wrapper">
+
+            		<div class="container">
+
+            			<!-- **Main Header** -->
+            			<div class="main-header"><div id="logo">
+			<a href="http://nasrda.gov.ng/" title="National Space Research and Development Agency">
+				<img class="normal_logo" src="http://nasrda.gov.ng/wp-content/uploads/2020/12/NASRDA_logo.jpg" alt="National Space Research and Development Agency" title="National Space Research and Development Agency" />
+				<img class="darkbg_logo" src="" alt="National Space Research and Development Agency" title="National Space Research and Development Agency" />
+			</a></div>
+            				<div id="menu-wrapper" class="menu-wrapper menu-with-splitter">
+                            	<div class="dt-menu-toggle" id="dt-menu-toggle">
+                                	Menu                                    <span class="dt-menu-toggle-icon"></span>
+                                </div><nav id="main-menu" class="menu-nasrda-container"><ul class="menu"><li id="menu-item-10125" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-depth-0 menu-item-simple-parent "><a href="http://nasrda.gov.ng/">Home</a></li>
+<li id="menu-item-10137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-depth-0 menu-item-megamenu-parent  megamenu-2-columns-group"><a href="#">About Us</a>
+<div class='megamenu-child-container '>
+
+<ul class="sub-menu ">
+	<li id="menu-item-10135" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-depth-1"><a href="#">Who We Are</a>
+	<ul class="sub-menu ">
+		<li id="menu-item-10139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/background/">Background</a></li>
+		<li id="menu-item-10126" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/mandate/">Mandate</a></li>
+		<li id="menu-item-10133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/nasrda-act/">NASRDA Act</a></li>
+	</ul>
+<a class="dt-menu-expand" href="javascript:void(0)">+</a></li>
+	<li id="menu-item-10136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-depth-1"><a href="#">Structure</a>
+	<ul class="sub-menu ">
+		<li id="menu-item-10130" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/organogram/">Organogram</a></li>
+		<li id="menu-item-10134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/management-team/">Management Team</a></li>
+		<li id="menu-item-10131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/departments/">Departments/Units</a></li>
+		<li id="menu-item-10140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/centers/">Centers</a></li>
+		<li id="menu-item-10141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/subsidiaries/">Subsidiary</a></li>
+		<li id="menu-item-11281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-2"><a href="http://nasrda.gov.ng/projects/">Projects, Collaborations &#038; Initiatives</a></li>
+	</ul>
+<a class="dt-menu-expand" href="javascript:void(0)">+</a></li>
+</ul>
+<a class="dt-menu-expand" href="javascript:void(0)">+</a>
+</div>
+<a class="dt-menu-expand" href="javascript:void(0)">+</a></li>
+<li id="menu-item-10168" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-depth-0 menu-item-simple-parent "><a href="#">Space Missions</a>
+
+
+<ul class="sub-menu ">
+	<li id="menu-item-10145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/nigersat-1/">NigeriaSAT – 1</a></li>
+	<li id="menu-item-11164" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/nigeriasat-2/">NigeriaSat–2</a></li>
+	<li id="menu-item-10147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/nigersat-x/">NigeriaSAT – X</a></li>
+	<li id="menu-item-10530" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/nigeria-edusat/">Nigeria EduSAT</a></li>
+</ul>
+<a class="dt-menu-expand" href="javascript:void(0)">+</a></li>
+<li id="menu-item-10138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-depth-0 menu-item-simple-parent "><a href="#">Media</a>
+
+
+<ul class="sub-menu ">
+	<li id="menu-item-11097" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/nasrda-space-tv/">NASRDA SpaceTV</a></li>
+	<li id="menu-item-10127" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/news/">News</a></li>
+	<li id="menu-item-10144" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"></li>
+	<li id="menu-item-10312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"></li>
+	<li id="menu-item-11129" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/resources/">Resources</a></li>
+</ul>
+<a class="dt-menu-expand" href="javascript:void(0)">+</a></li>
+<li id="menu-item-10142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-0 menu-item-simple-parent "><a href="http://nasrda.gov.ng/services/">Licensing &#038; Regulations</a></li>
+<li id="menu-item-10862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-depth-0 menu-item-simple-parent "><a href="https://mail.nasrda.gov.ng/owa">Staff Email</a></li>
+<li id="menu-item-10129" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-depth-0 menu-item-simple-parent "><a href="http://nasrda.gov.ng/contact-us/">Contact Us</a>
+
+
+<ul class="sub-menu ">
+	<li id="menu-item-10143" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-depth-1"><a href="http://nasrda.gov.ng/faqs/">FAQs</a></li>
+</ul>
+<a class="dt-menu-expand" href="javascript:void(0)">+</a></li>
+</ul></nav>            				</div>            			</div>
+            		</div>
+            	</div><!-- **Main Header** -->
+			</header><!-- **Header - End** -->
+		</div><!-- **Header Wrapper - End** -->
+
+		
+        <!-- **Main** -->
+        <div id="main"><section class="main-title-section-wrapper default" style="">	<div class="container">		<div class="main-title-section"><h1>Center for Space Transport and Propulsion</h1>		</div><div class="breadcrumb"><a href="http://nasrda.gov.ng/">Home</a><span class="fa fa-hand-o-right"></span><span class="current">Center for Space Transport and Propulsion</span></div>	</div></section>            <!-- ** Container ** -->
+            <div class="container">    <section id="primary" class="content-full-width">	<!-- #post-10365 -->
+<div id="post-10365" class="post-10365 page type-page status-publish hentry">
+<section class="vc_section"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper"><div class="ult-animation  ult-animate-viewport  ult-no-mobile " data-animate="fadeInLeft" data-animation-delay="0" data-animation-duration="3" data-animation-iteration="1" style="opacity:0;" data-opacity_start_effect="">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<p style="text-align: justify;"><span class="fontstyle0"><strong>Historical Background of CSTP</strong><br />
+</span><span class="fontstyle2">The Centre for Space Transport and Propulsion (CSTP), Epe, Lagos, was established on the19th February, 2003, as one of the six activity Centres of National Space Research and Development Agency (NASRDA), Abuja. Nigeria. It is strategically situated along the Lagos lagoon in Epe, and in close proximity with the Lagos State University (LASU), Epe Engineering campus. The Centre is charged with the responsibility of conducting fundamental Research and Development (R&amp;D) in space transport vehicles and propulsion system. This is to enable NASRDA acquire the launch capabilities of various satellites to Low Earth Orbit (LEO). Geosynchronous Equatorial Orbit (GEO), and interplanetary space, by Nigerian scientists and engineers. CSTP policy, is aimed at complementing NASRDA policy statement at ensuring that Nigeria vigorously pursues the attainment of Space Capabilities as an essential tool for its socioeconomic development and the enhancement of the quality of life of its people. This policy is further explicit in the mandate of the Centre as listed.</span></p>
+<p><strong> <span class="fontstyle0">Strategic Mandate of CSTP</span> </strong></p>
+
+		</div>
+	</div>
+<ul class='dt-sc-fancy-list  black  arrow'>
+<li style="text-align: justify;"><span class="fontstyle0">To acquire and establish adequate high-tech infrastructure in the country, facilitating the acquisition of scientific and technological know-how in aerospace transport and propulsion. </span></li>
+<li style="text-align: justify;"><span class="fontstyle0">To develop the engineering and scientific capability necessary to produce aerospace transport vehicles with rockets and aircrafts in mind. </span></li>
+<li style="text-align: justify;"><span class="fontstyle0">To develop and acquire the technology essential for manufacturing of the necessary components for space vehicles. </span></li>
+<li style="text-align: justify;"><span class="fontstyle0">To develop various types of propellants for rocket engines with attention on solid, liquid, and other forms of high-energy propulsion systems. </span></li>
+<li style="text-align: justify;"><span class="fontstyle0">To acquire and develop the capacity to fabricate and integrate rocket systems for short, and long-range peaceful application missions. </span></li>
+<li style="text-align: justify;"><span class="fontstyle0">To develop and construct rockets that will be needed to launch Nigerian made satellites before the lapse of 25 years road map, i.e., 2030.</span></li>
+</ul><div class="ult-spacer spacer-6af91adb4df78" data-id="6af91adb4df78" data-height="20" data-height-mobile="20" data-height-tab="20" data-height-tab-portrait="" data-height-mobile-landscape="" style="clear:both;display:block;"></div>
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<p style="text-align: justify;"><span class="fontstyle0"><strong>Technical Divisions at CSTP &amp; Activities</strong><br />
+</span><span class="fontstyle2">The major technical divisions and their activities at CSTP are presented in this section. Such activities, range from firmware, and software-based designs to actual flight tests of different rocket sizes. Some of the activities involved in these divisions are highlighted as follows:</span></p>
+<p style="text-align: justify;"><span class="fontstyle0"><strong>1. Propulsion &amp; Engine System (PES)</strong><br />
+</span><span class="fontstyle2">Under PES division, two distinct units exist. These are, Rocket Propellant and Rocket engines. In the former, CSTP has successfully designed, and used sugar-based low energy propellants as fuels for the low altitude rocket flights. The Rocket Engines Systems on the other hand, had in the past designed and constructed various sizes of rocket motors and these have been tested both statically and in flights.</span></p>
+<p style="text-align: justify;"><span class="fontstyle0"><strong>2. Structural Integration Systems (SIS)</strong><br />
+</span><span class="fontstyle2">In this division, airframe design and integration of aerospace vehicle is carried out in the most scientific manner. Currently, this division has been saddled with the responsibility of designing fuselage for today and future rocket launches, using composite materials. Complete structural integration was done for a flight test in April, 2019. All components were designed and integrated at CSTP. The mobile rocket platform on which the rocket is positioned on was also designed locally for that purpose. Final verification and checks were carried out on the launch platform as part of the task by personnel from the safety &amp; quality control division. Part of this division task is to ensure that the desired angle for the rocket launch is maintained before ignition of the rocket motor.</span></p>
+<p style="text-align: justify;"><span class="fontstyle0">In this Division, there is a Recovery and Vibration System unit, whose major task is to design and fabricate the rocket recovery mechanism and ensure the recovery of the rocket structures after a successful launch. The unit also deals with the minimization of vibration effects on the entire rocket.</span></p>
+<p style="text-align: justify;"><span class="fontstyle0"><strong>3. Electronics &amp; Simulation Systems (ESS)</strong><br />
+</span><span class="fontstyle2">This division handles activities that has to do with </span><span class="fontstyle3">Avionics </span><span class="fontstyle2">and </span><span class="fontstyle3">communication </span><span class="fontstyle2">system of any aerospace vehicle. Amongst others, is the feat to manage the ground station located at CSTP office complex.</span></p>
+<p style="text-align: justify;"><span class="fontstyle0"><strong>4. Project Division</strong><br />
+</span><span class="fontstyle2">This division co-ordinates all designs, manufacturing and test activities of the Centre and ensures proper documentation, project requirements, management, and timeline compliance. Under this division, Total quality management (TQM), and Safety units are embedded to handle manufacturing best practices and to ensure quality control in fabrication activities.<br />
+</span></p>
+<p style="text-align: justify;"><span class="fontstyle0"><strong>5. Manufacturing and Launch Services</strong><br />
+</span><span class="fontstyle2">This division includes the workshops and laboratories at the Centre. The division handles all manufacturing activities of the Centre. It also handles the Centre launch activities. All parts of the rockets are fabricated by the Centre technicians and Technologists.</span></p>
+<p style="text-align: justify;"><span class="fontstyle0"><strong>6. Infrastructural Maintenance</strong><br />
+</span><span class="fontstyle2">The Division handles the day to day maintenance activities at the Centre. It also ensures proper running of the Centre facilities.</span></p>
+
+		</div>
+	</div>
+<div class="ult-spacer spacer-6af91adb4e0ce" data-id="6af91adb4e0ce" data-height="20" data-height-mobile="20" data-height-tab="20" data-height-tab-portrait="" data-height-mobile-landscape="" style="clear:both;display:block;"></div></div></div></div></div></div></section>
+</div><!-- #post-10365 -->
+    </section><!-- **Primary - End** -->        </div><!-- **Container - End** -->
+
+        </div><!-- **Main - End** -->        <!-- **Footer** -->
+        <footer id="footer">
+                            <div class="footer-widgets dt-sc-dark-bg">
+                    <div class="container"><div class='column dt-sc-one-fourth first'><aside id="text-3" class="widget widget_text"><h3 class="widgettitle">About Us</h3>			<div class="textwidget"><p style="text-align: justify;">The National Space Research and Development Agency (NASRDA) under the auspices of the Federal Ministry of Science and Technology was established in May 1999 with a board objective to pursue the development and application of space science technology for the socio-economic benefits of the Nation.</p>
+</div>
+		</aside></div><div class='column dt-sc-one-fourth '>
+		<aside id="recent-posts-4" class="widget widget_recent_entries">
+		<h3 class="widgettitle">Recent Posts</h3>
+		<ul>
+											<li>
+					<a href="http://nasrda.gov.ng/blog/2026/11/15/remington-park-casino-slot-machines-and-table-games/">Remington Park Casino Slot Machines and Table Games</a>
+											<span class="post-date">November 15, 2026</span>
+									</li>
+											<li>
+					<a href="http://nasrda.gov.ng/blog/2026/11/15/playsbobet-ye-xuan-li-cha-zhan/">PlaySBOBET yè xuǎn lǐ chā zhàn</a>
+											<span class="post-date">November 15, 2026</span>
+									</li>
+											<li>
+					<a href="http://nasrda.gov.ng/blog/2026/11/15/spin-the-wheel-at-10bet-casino-where-luck-meets-opportunity/">Spin the Wheel at 10Bet Casino: Where Luck Meets Opportunity</a>
+											<span class="post-date">November 15, 2026</span>
+									</li>
+					</ul>
+
+		</aside></div><div class='column dt-sc-one-fourth '><aside id="text-4" class="widget widget_text"><h3 class="widgettitle">Quick Links</h3>			<div class="textwidget"><ul class="quick-links">                        
+    <li> <a title="" href="http://nasrda.gov.ng"> About</a> </li>
+    <li> <a title="" href="/space-museum"> Space Museum </a> </li>
+    <li> <a title="" href="/space-institute">Space Institute </a> </li>
+    <li> <a title="" href="/services"> Services</a> </li>
+<li> <a title="" href="/faqs"> FAQs</a> </li>
+<li> <a title="" href="/contact-us"> Contact Us</a> </li>
+</ul></div>
+		</aside></div><div class='column dt-sc-one-fourth '><aside id="text-6" class="widget widget_text"><h3 class="widgettitle">Contact Us</h3>			<div class="textwidget"><div class='dt-sc-contact-info  '><span class='zmdi zmdi-home zmdi-hc-fw'> </span>Obasanjo Space Centre,
+Umaru Musa Yar'adua Express Way, <br>
+P.M.B. 437, Garki, Abuja, Nigeria</div><div class='dt-sc-hr-invisible-xsmall '> </div><div class='dt-sc-hr-invisible-xsmall '> </div>
+<div class='dt-sc-contact-info  '><span class='zmdi zmdi-time zmdi-hc-fw'> </span>Mon – Fri 9 am to 4 pm<br></div><div class='dt-sc-hr-invisible-xsmall '> </div><div class='dt-sc-contact-info  '><span class='zmdi zmdi-email zmdi-hc-fw'> </span><a href="#"> contact@nasrda.gov.ng</a></div>
+</div>
+		</aside></div>                    </div>
+                </div>
+                        <div class="footer-copyright dt-sc-dark-bg">
+                <div class="container">
+                    <div class="column dt-sc-one-half first ">© 2021 NASRDA. All rights reserved.                    </div>
+
+                                        
+                    <div class="column dt-sc-one-half footer-menu"><ul id="menu-footer-menu" class="menu-links"><li id="menu-item-9386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-9386"><a href="http://nasrda.gov.ng/">Home</a></li>
+<li id="menu-item-9387" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9387"><a href="http://nasrda.gov.ng/mandate/">About</a></li>
+<li id="menu-item-9388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9388"><a href="http://nasrda.gov.ng/services/">Services</a></li>
+</ul>                    </div>
+
+                
+                </div>
+            </div>
+           </footer><!-- **Footer - End** -->
+    </div><!-- **Inner Wrapper - End** -->
+</div><!-- **Wrapper - End** -->
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/hoverintent-js.min.js?ver=2.2.1" id="hoverintent-js-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/admin-bar.min.js?ver=6.7.11" id="admin-bar-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/underscore.min.js?ver=1.13.7" id="underscore-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/backbone.min.js?ver=1.6.0" id="backbone-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress-media/lib/media-element/wp-mediaelement.min.js?ver=4.6.12" id="rt-mediaelement-wp-js"></script>
+<script type="text/javascript" id="rtmedia-main-js-extra">
+/* <![CDATA[ */
+var rtmedia_bp = {"bp_template_pack":"legacy"};
+var RTMedia_Main_JS = {"media_delete_confirmation":"Are you sure you want to delete this media?","rtmedia_ajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php","media_delete_success":"Media file deleted successfully."};
+var rtmedia_main_js_strings = {"rtmedia_albums":"Albums","privacy_update_success":"Privacy updated successfully.","privacy_update_error":"Couldn't change privacy, please try again."};
+var rtmedia_media_size_config = {"photo":{"thumb":{"width":150,"height":150,"crop":1},"medium":{"width":320,"height":240,"crop":1},"large":{"width":800,"height":0,"crop":1}},"video":{"activity_media":{"width":320,"height":240},"single_media":{"width":640,"height":480}},"music":{"activity_media":{"width":320},"single_media":{"width":640}},"featured":{"default":{"width":100,"height":100,"crop":1}}};
+var rtmedia_main = {"rtmedia_ajax_url":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php","rtmedia_media_slug":"media","rtmedia_lightbox_enabled":"1","rtmedia_direct_upload_enabled":"0","rtmedia_gallery_reload_on_upload":"1","rtmedia_empty_activity_msg":"Please enter some content to post.","rtmedia_empty_comment_msg":"Empty comment is not allowed.","rtmedia_media_delete_confirmation":"Are you sure you want to delete this media?","rtmedia_media_comment_delete_confirmation":"Are you sure you want to delete this comment?","rtmedia_album_delete_confirmation":"Are you sure you want to delete this Album?","rtmedia_drop_media_msg":"Drop files here","rtmedia_album_created_msg":" album created successfully.","rtmedia_something_wrong_msg":"Something went wrong. Please try again.","rtmedia_empty_album_name_msg":"Enter an album name.","rtmedia_max_file_msg":"Max file Size Limit: ","rtmedia_allowed_file_formats":"Allowed File Formats","rtmedia_select_all_visible":"Select All Visible","rtmedia_unselect_all_visible":"Unselect All Visible","rtmedia_no_media_selected":"Please select some media.","rtmedia_selected_media_delete_confirmation":"Are you sure you want to delete the selected media?","rtmedia_selected_media_move_confirmation":"Are you sure you want to move the selected media?","rtmedia_waiting_msg":"Waiting","rtmedia_uploaded_msg":"Uploaded","rtmedia_uploading_msg":"Uploading","rtmedia_upload_failed_msg":"Failed","rtmedia_close":"Close","rtmedia_edit":"Edit","rtmedia_delete":"Delete","rtmedia_edit_media":"Edit Media","rtmedia_remove_from_queue":"Remove from queue","rtmedia_add_more_files_msg":"Add more files","rtmedia_file_extension_error_msg":"File not supported","rtmedia_more":"more","rtmedia_less":"less","rtmedia_read_more":"Read more","rtmedia__show_less":"Show less","rtmedia_activity_text_with_attachment":"disable","rtmedia_delete_uploaded_media":"This media is uploaded. Are you sure you want to delete this media?","rtm_wp_version":"6.7.11","rtmedia_masonry_layout":"false","rtmedia_disable_media_in_commented_media":"1","rtmedia_disable_media_in_commented_media_text":"Adding media in Comments is not allowed"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress-media/app/assets/js/rtmedia.min.js?ver=4.6.12" id="rtmedia-main-js"></script>
+<script type="text/javascript" id="rtmedia-backbone-js-extra">
+/* <![CDATA[ */
+var rtmedia_template = {"template_url":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php?action=rtmedia_get_template&template=media-gallery-item"};
+var rtMedia_plupload = {"rtMedia_plupload_config":{"url":"\/center-for-space-transport-and-propulsion\/upload\/","runtimes":"html5,flash,html4","browse_button":"rtMedia-upload-button","container":"rtmedia-upload-container","drop_element":"drag-drop-area","filters":[{"title":"Media Files","extensions":"jpg,jpeg,png,gif,mp4,mp3"}],"max_file_size":"15M","multipart":true,"urlstream_upload":true,"flash_swf_url":"http:\/\/nasrda.gov.ng\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/nasrda.gov.ng\/wp-includes\/js\/plupload\/plupload.silverlight.xap","file_data_name":"rtmedia_file","multi_selection":true,"multipart_params":{"redirect":"no","redirection":"false","action":"wp_handle_upload","_wp_http_referer":"\/center-for-space-transport-and-propulsion\/","mode":"file_upload","rtmedia_upload_nonce":"21e27b3b14"},"max_file_size_msg":"15M"}};
+var rtmedia_media_thumbs = {"photo":"http:\/\/nasrda.gov.ng\/wp-content\/plugins\/buddypress-media\/app\/assets\/admin\/img\/image_thumb.png","video":"http:\/\/nasrda.gov.ng\/wp-content\/plugins\/buddypress-media\/app\/assets\/admin\/img\/video_thumb.png","music":"http:\/\/nasrda.gov.ng\/wp-content\/plugins\/buddypress-media\/app\/assets\/admin\/img\/audio_thumb.png"};
+var rtmedia_edit_media_info_upload = {"title":"Title:","description":"Description:"};
+var rtmedia_bp = {"bp_template_pack":"legacy"};
+var rtmedia_backbone_strings = {"rtm_edit_file_name":"Edit File Name"};
+var rtmedia_exteansions = {"photo":["jpg","jpeg","png","gif"],"video":["mp4"],"music":["mp3"]};
+var rtMedia_update_plupload_comment = {"url":"\/center-for-space-transport-and-propulsion\/upload\/","runtimes":"html5,flash,html4","browse_button":"rtmedia-comment-media-upload","container":"rtmedia-comment-media-upload-container","filters":[{"title":"Media Files","extensions":"jpg,jpeg,png,gif,mp4,mp3"}],"max_file_size":"15M","multipart":"1","urlstream_upload":"1","flash_swf_url":"http:\/\/nasrda.gov.ng\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/nasrda.gov.ng\/wp-includes\/js\/plupload\/plupload.silverlight.xap","file_data_name":"rtmedia_file","multi_selection":"","multipart_params":{"redirect":"no","redirection":"false","action":"wp_handle_upload","_wp_http_referer":"\/center-for-space-transport-and-propulsion\/","mode":"file_upload","rtmedia_upload_nonce":"21e27b3b14"},"max_file_size_msg":"2M"};
+var rtmedia_backbone = {"rMedia_loading_media":"http:\/\/nasrda.gov.ng\/wp-content\/plugins\/buddypress-media\/app\/assets\/admin\/img\/boxspinner.gif","rtmedia_set_featured_image_msg":"Featured media set successfully.","rtmedia_unset_featured_image_msg":"Featured media removed successfully.","rtmedia_no_media_found":"Oops !! There's no media found for the request !!","rtmedia_load_more_or_pagination":"load_more","rtmedia_bp_enable_activity":"1","rtmedia_upload_progress_error_message":"There are some uploads in progress. Do you want to cancel them?","rtmedia_media_disabled_error_message":"Media upload is disabled. Please Enable at least one media type to proceed.","rMedia_loading_file":"http:\/\/nasrda.gov.ng\/wp-admin\/images\/loading.gif"};
+var rtMedia_activity = {"is_album":"","is_edit_allowed":""};
+var rtMedia_update_plupload_config = {"url":"\/center-for-space-transport-and-propulsion\/upload\/","runtimes":"html5,flash,html4","browse_button":"rtmedia-add-media-button-post-update","container":"rtmedia-whts-new-upload-container","drop_element":"whats-new-textarea","filters":[{"title":"Media Files","extensions":"jpg,jpeg,png,gif,mp4,mp3"}],"max_file_size":"15M","multipart":"1","urlstream_upload":"1","flash_swf_url":"http:\/\/nasrda.gov.ng\/wp-includes\/js\/plupload\/plupload.flash.swf","silverlight_xap_url":"http:\/\/nasrda.gov.ng\/wp-includes\/js\/plupload\/plupload.silverlight.xap","file_data_name":"rtmedia_file","multi_selection":"1","multipart_params":{"redirect":"no","redirection":"false","rtmedia_update":"true","action":"wp_handle_upload","_wp_http_referer":"\/center-for-space-transport-and-propulsion\/","mode":"file_upload","rtmedia_upload_nonce":"21e27b3b14"},"max_file_size_msg":"2M"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress-media/app/assets/js/rtMedia.backbone.js?ver=4.6.12" id="rtmedia-backbone-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/js/vendor/jquery.caret.min.js?ver=10.3.0" id="jquery-caret-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-core/js/vendor/jquery.atwho.min.js?ver=10.3.0" id="jquery-atwho-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress/bp-activity/js/mentions.min.js?ver=10.3.0" id="bp-mentions-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/comment-reply.min.js?ver=6.7.11" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script type="text/javascript" id="contact-form-7-js-extra">
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"http:\/\/nasrda.gov.ng\/wp-json\/","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.6" id="contact-form-7-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/js/jquery.tabs.min.js?ver=6.7.11" id="dt-sc-tabs-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/js/jquery.tipTip.minified.js?ver=6.7.11" id="dt-sc-tiptip-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/js/jquery.inview.js?ver=6.7.11" id="dt-sc-inview-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/js/jquery.animateNumber.min.js?ver=6.7.11" id="dt-sc-animatenum-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/js/jquery.donutchart.js?ver=6.7.11" id="dt-sc-donutchart-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/js/slick.min.js?ver=6.7.11" id="dt-sc-slick-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/designthemes-core-features/shortcodes/js/shortcodes.js?ver=6.7.11" id="dt-sc-script-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/embedpress/assets/js/front.js?ver=3.4.3" id="embedpress-front-js"></script>
+<script type="text/javascript" id="rtrar.appLocal-js-extra">
+/* <![CDATA[ */
+var rtafr = {"rules":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/real-time-auto-find-and-replace/assets/js/rtafar.local.js?ver=1.3.7" id="rtrar.appLocal-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/simple-youtube-responsive/js/youtube-responsive.min.js" id="eirudo-yt-responsive-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/grimlock/assets/js/back-to-top-button.js?ver=1.4.3" id="grimlock-back-to-top-button-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/grimlock-animate/assets/js/vendor/jquery.parallax.min.js?ver=2.0.0-alpha" id="parallax.js-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/grimlock-animate/assets/js/vendor/scrollreveal.js?ver=3.4.0" id="scrollreveal-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/grimlock-animate/assets/js/main.js?ver=1.1.8" id="grimlock-animate-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/effect.min.js?ver=1.13.3" id="jquery-effects-core-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/jquery/ui/effect-drop.min.js?ver=1.13.3" id="jquery-effects-drop-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/grimlock-buddypress/assets/js/vendor/hammer.min.js?ver=2.0.7" id="hammerjs-js"></script>
+<script type="text/javascript" id="grimlock-buddypress-js-extra">
+/* <![CDATA[ */
+var grimlock_buddypress = {"priority_nav_dropdown_breakpoint_label":"Menu","notifications_list_empty":"You have no new notification","ajax_url":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/grimlock-buddypress/assets/js/main.js?ver=1.4.2" id="grimlock-buddypress-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/grimlock-login/assets/js/main.js?ver=1.1.6" id="grimlock-login-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/themes/consultancy/framework/js/jquery.ui.totop.min.js?ver=6.7.11" id="ui.totop-js"></script>
+<script type="text/javascript" id="consultancy-jqplugins-js-extra">
+/* <![CDATA[ */
+var dttheme_urls = {"theme_base_url":"http:\/\/nasrda.gov.ng\/wp-content\/themes\/consultancy","framework_base_url":"http:\/\/nasrda.gov.ng\/wp-content\/themes\/consultancy\/framework\/","ajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php","url":"http:\/\/nasrda.gov.ng","stickynav":"enable","stickyele":".main-header-wrapper","isRTL":"","loadingbar":"disable","advOptions":"Show Advanced Options"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/themes/consultancy/framework/js/jquery.plugins.js?ver=6.7.11" id="consultancy-jqplugins-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/themes/consultancy/framework/js/jquery.visualNav.min.js?ver=6.7.11" id="visualNav-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min.js?ver=5.4.7" id="isotope-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/themes/consultancy/framework/js/custom.js?ver=6.7.11" id="consultancy-jqcustom-js"></script>
+<script type="text/javascript" id="buddypress-global-search-js-extra">
+/* <![CDATA[ */
+var BBOSS_GLOBAL_SEARCH = {"nonce":"210b8a48c5","action":"bboss_global_search_ajax","debug":"1","ajaxurl":"http:\/\/nasrda.gov.ng\/wp-admin\/admin-ajax.php","loading_msg":"Loading Suggestions","enable_ajax_search":"yes","per_page":"5"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress-global-search/assets/js/buddypress-global-search.min.js?ver=1.2.1" id="buddypress-global-search-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/real-time-auto-find-and-replace/assets/js/rtafar.app.min.js?ver=1.3.7" id="rtrar.app-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress-media/lib/media-element/mediaelement-and-player.min.js?ver=4.6.12" id="rt-mediaelement-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/buddypress-media/lib/touchswipe/jquery.touchSwipe.min.js?ver=4.6.12" id="rtmedia-touchswipe-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-includes/js/hoverIntent.min.js?ver=1.10.2" id="hoverIntent-js"></script>
+<script type="text/javascript" id="megamenu-js-extra">
+/* <![CDATA[ */
+var megamenu = {"timeout":"300","interval":"100"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/megamenu/js/maxmegamenu.js?ver=2.9.7" id="megamenu-js"></script>
+<script type="text/javascript" src="http://nasrda.gov.ng/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=5.4.7" id="wpb_composer_front_js-js"></script>
+		<div id="wpadminbar" class="nojq nojs">
+							<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">Skip to toolbar</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar">
+				<ul role='menu' id='wp-admin-bar-root-default' class="ab-top-menu"><li role='group' id='wp-admin-bar-wp-logo' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='http://nasrda.gov.ng/wp-admin/user/about.php'><span class="ab-icon" aria-hidden="true"></span><span class="screen-reader-text">About WordPress</span></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-default' class="ab-submenu"><li role='group' id='wp-admin-bar-about'><a class='ab-item' role="menuitem" href='http://nasrda.gov.ng/wp-admin/user/about.php'>About WordPress</a></li><li role='group' id='wp-admin-bar-contribute'><a class='ab-item' role="menuitem" href='http://nasrda.gov.ng/wp-admin/user/contribute.php'>Get Involved</a></li></ul><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-external' class="ab-sub-secondary ab-submenu"><li role='group' id='wp-admin-bar-wporg'><a class='ab-item' role="menuitem" href='https://wordpress.org/'>WordPress.org</a></li><li role='group' id='wp-admin-bar-documentation'><a class='ab-item' role="menuitem" href='https://wordpress.org/documentation/'>Documentation</a></li><li role='group' id='wp-admin-bar-learn'><a class='ab-item' role="menuitem" href='https://learn.wordpress.org/'>Learn WordPress</a></li><li role='group' id='wp-admin-bar-support-forums'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forums/'>Support</a></li><li role='group' id='wp-admin-bar-feedback'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forum/requests-and-feedback'>Feedback</a></li></ul></div></li><li role='group' id='wp-admin-bar-bp-login'><a class='ab-item' role="menuitem" href='http://nasrda.gov.ng/wp-login.php?redirect_to=http%3A%2F%2Fnasrda.gov.ng%2Fcenter-for-space-transport-and-propulsion%2F'>Log In</a></li></ul><ul role='menu' id='wp-admin-bar-top-secondary' class="ab-top-secondary ab-top-menu"><li role='group' id='wp-admin-bar-search' class="admin-bar-search"><div class="ab-item ab-empty-item" tabindex="-1" role="menuitem"><form action="http://nasrda.gov.ng/" method="get" id="adminbarsearch"><input class="adminbar-input" name="s" id="adminbar-search" type="text" value="" maxlength="150" /><label for="adminbar-search" class="screen-reader-text">Search</label><input type="submit" class="adminbar-button" value="Search" /></form></div></li></ul>			</div>
+		</div>
+
+		</body>
+</html>

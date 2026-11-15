@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081319">
+  <meta name="description" content="Use NASA Saffire-I evidence to run a rover fire experiment, change one condition and compare the results.">
+  <meta name="ai-assistance" content="Team Code Blooded used AI assistance for code, testing and research summaries. Original flight data: NASA."><title>Rover fire experiment · FIRST FIRE</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="judge-lab.css">
+  <link rel="stylesheet" href="homepage.css">
+  <script defer src="earth.js"></script>
+  <script defer src="rover-hero.js"></script>
+  <script defer src="intent-router.js"></script>
+  <script defer src="reader-device.js"></script>
+  <script defer src="judge-reader.js"></script>
+  <script defer src="rover-model.js"></script>
+  <script defer src="physics-lab.js"></script>
+  <script defer src="judge-experiment.js"></script>
+  <script defer src="judge-awareness.js"></script>
+  <script defer src="judge-lab.js"></script>
+<link rel="stylesheet" href="tool-directory.css">
+</head>
+<body class="ff-rover-home">
+<a class="skip" href="#main">Skip to experiment</a>
+<header class="mast">
+  <nav class="wrap mast-inner" aria-label="Workspace">
+    <a class="brand" href="index.html#home" aria-label="FIRST FIRE research desk"><span class="brand-mark" aria-hidden="true">///</span> FIRST FIRE<span>.</span></a>
+    <div class="ff-rover-nav"><a href="rover-scorecard.html">Compare with ChatGPT</a>
+    <a href="index.html#home">Research desk</a>
+    <a href="evidence-guide.html">Rank NASA studies <span aria-hidden="true">↗</span></a></div>
+  </nav>
+</header>
+<main id="main" tabindex="-1" class="wrap">
+  <nav class="ff-judge-tools" aria-label="Research tools"><a href="tools.html">Search tools</a><a href="rover-workbench/prototype/index.html#workbench">3D rover workbench</a></nav>
+  <section class="hero ff-hero" aria-labelledby="title">
+    <div class="ff-hero-copy">
+      <span class="ff-kicker">Flame in Freefall</span>
+      <h1 id="title">How far will the <em>flame travel?</em></h1>
+      <p class="ff-deck">NASA measured two flame speeds aboard Cygnus. Try each speed in a model of a sealed rover cabin.</p>
+      <div class="ff-hero-actions">
+        <a class="btn" href="#conditions">Run a rover trial <span aria-hidden="true">→</span></a>
+        <a class="ghost" href="https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21" target="_blank" rel="noopener noreferrer">Read the flight report</a>
+      </div>
+    </div>
+    <figure class="earth-figure">
+      <div class="earth-disc">
+        <img class="earth-poster" src="earth-poster.webp" width="720" height="720" alt="Earth seen from space" fetchpriority="high">
+        <canvas class="earth-surface" aria-hidden="true"></canvas>
+      </div>
+      <figcaption class="earth-credit"><a href="https://svs.gsfc.nasa.gov/3615/" target="_blank" rel="noopener noreferrer">Earth imagery · NASA / SVS</a></figcaption>
+      <button class="earth-toggle" type="button" hidden>Pause rotation</button>
+    </figure>
+  </section>
+  <section class="ff-flight-strip" aria-label="Published Saffire-I flame spread rates">
+    <div><h2>Saffire-I</h2><p>Flame spread in microgravity</p></div>
+    <dl><div><dt>With airflow</dt><dd>1.8 <small>mm/s</small></dd></div>
+      <div><dt>Against airflow</dt><dd>1.3 <small>mm/s</small></dd></div></dl>
+  </section>
+  
+  <p id="startup" role="status">Preparing the rover and cabin models…</p>
+  <noscript><p>Enable JavaScript to change the model, or <a href="https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21">read NASA’s measured flame speeds</a>.</p></noscript>
+  <div id="lab" hidden>
+    <div class="bench">
+      <section class="controls card" aria-labelledby="conditions">
+        <h2 id="conditions">Change a condition</h2>
+        <fieldset class="flow-group">
+          <legend>Published flame direction</legend>
+          <div class="segmented">
+            <label><input type="radio" name="flow" value="concurrent"><span>With airflow</span><small>1.8 mm/s</small></label>
+            <label><input type="radio" name="flow" value="opposed"><span>Against airflow</span><small>1.3 mm/s</small></label>
+          </div>
+        </fieldset>
+        <div class="range">
+          <label for="time">Read the model at <output for="time" id="clock">50 s</output></label>
+          <input id="time" type="range" min="0" max="120" step="1" value="50">
+          <div class="ticks" aria-hidden="true"><span>0 s</span><span>120 s</span></div>
+        </div>
+        <details id="rover-settings">
+          <summary>Rover and cabin settings</summary>
+          <div class="fields">
+            <label>Test material<select id="material"><option value="cellulose">Cellulose</option><option value="polyethylene">Polyethylene</option><option value="unknown">Uncharacterized material</option></select></label>
+            <label>Coupon mass (g)<input id="couponMassG" type="number" required min="4" max="50" step="any" inputmode="decimal"></label>
+            <label>Cabin enclosure<select id="cabin"><option value="sealed">Sealed cabin</option><option value="open">Open rover</option></select></label>
+            <label>Initial oxygen (% by volume)<input id="oxygen" type="number" required min="10" max="40" step="any" inputmode="decimal"></label>
+            <label>Cabin volume (m³)<input id="volume" type="number" required min="1" max="60" step="any" inputmode="decimal"></label>
+            <label>Surface gravity<select id="world"><option value="Moon">Moon</option><option value="Mars">Mars</option></select></label>
+          <label>Flame speed input<select id="speed-mode"><option value="published">Use the selected Saffire-I rate</option><option value="custom">Specify a speed</option></select></label>
+            <label id="custom-speed-field" hidden>Imposed speed (mm/s)<input id="custom-speed" type="number" min="0" max="20" step="any" inputmode="decimal"></label>
+          </div>
+        </details>
+        <p class="warning" id="input-message" hidden></p>
+        <button class="quiet" id="freeze" type="button">Use current settings as baseline</button>
+      </section>
+      <section class="results card" aria-labelledby="metric-title">
+        <p class="overline result-overline">Current rover trial <span id="trial-clock"></span></p>
+        <h2 id="metric-title">Flame-front travel</h2>
+        <div class="readouts">
+          <div><span>Baseline</span><strong id="baseline-value"></strong></div>
+          <div class="current"><span>Current</span><strong id="current-value"></strong></div>
+        </div>
+        <p class="delta"><strong id="delta-value"></strong> <span id="delta-note"></span></p>
+        <p id="finding"></p>
+        <p class="hint" id="interpretation"></p>
+      </section>
+    </div>
+    <section class="record card" aria-labelledby="record-title">
+      <div class="record-head"><h2 id="record-title">Read the comparison</h2><span id="condition-count"></span></div>
+      <div id="trace-panel">
+        <figure class="plot">
+          <figcaption>Modeled flame-front travel over time</figcaption>
+          <div class="legend" aria-hidden="true"><span>Baseline</span><span>Current</span></div>
+          <canvas id="trace" role="img" aria-label="Flame travel over time. Values at each trial’s selected time appear in the comparison table."></canvas>
+          <p id="trace-message" class="hint"></p>
+        </figure>
+      </div>
+      <details id="numbers"><summary>Compare all model outputs</summary><div class="table-wrap"><table><caption>Values at each trial’s selected time</caption><thead><tr><th scope="col">Output</th><th scope="col">Baseline</th><th scope="col">Current</th><th scope="col">Change</th></tr></thead><tbody id="metric-body"></tbody></table></div></details>
+      <details id="sources"><summary>Source records and assumptions</summary><p id="claim"></p><p id="boundary"></p><ul id="receipt-list"></ul><p id="measurement"></p><a href="evidence-guide.html">Rank studies for this question →</a></details>
+      <details id="surrogate"><summary>Check the liquid model’s oxygen estimate</summary><p id="neural-result"></p><button class="quiet" id="neural-run" type="button">Run the liquid model</button></details>
+    </section>
+    <aside class="ff-photo-note">
+      <img src="sibal.png" width="558" height="522" alt="Two edge-on views of flames spreading along SIBAL fabric." loading="lazy">
+      <div><h2>A flame in simulated lunar gravity</h2>
+        <p>In NASA Glenn’s drop-tower tests, the flame spread down the fabric at left and up it at right.</p>
+        <a href="https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/" target="_blank" rel="noopener noreferrer">See the NASA Glenn experiment <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+    <section class="context card" aria-labelledby="context-title">
+      <h2 id="context-title">Guide this investigation</h2>
+      <form id="question-form">
+        <label for="question">What would you like to investigate?</label>
+        <div class="input-action"><input id="question" type="text" maxlength="340" autocomplete="off"><button class="primary" type="submit">Find next step</button></div>
+      </form>
+      <p id="intent-result"></p><a id="intent-action" href="#conditions"></a>
+      <div class="two-fields fields">
+        <label>Explanation depth<select id="level"><option value="beginner">Beginner</option><option value="undergraduate">Undergraduate</option><option value="advanced">Advanced</option></select></label>
+        <label>Device mode<select id="display"><option value="auto">Automatic</option><option value="lite">Lite · numerical readouts</option><option value="standard">Standard · chart</option><option value="pro">Pro · chart and detailed outputs</option></select></label>
+      </div>
+      <div id="reader-profile"></div>
+      <details id="policy-reasons"><summary>How the workspace responds</summary><dl id="layer-list"></dl><label>Choose a different instrument<select id="intent-override"><option value="auto">Automatic from my question</option><option value="trial">Rover and cabin model</option><option value="evidence">Flight evidence</option><option value="detector">Smoke transport</option><option value="matched">Matched experiments</option><option value="forecast">Experiment design</option><option value="archive">Archive counts</option><option value="compass">Habitat conditions</option><option value="rulebook">Transfer of rules</option><option value="referee">Claim verification</option><option value="incident">Spacecraft incident</option><option value="compare">Record comparison</option><option value="prediction">Locked lunar forecast</option></select></label></details>
+      <div class="next"><strong>Next experiment step</strong> <span id="next-step"></span><br><button type="button" class="quiet" id="apply-next">Explore the next step</button></div>
+    </section>
+    <section class="handoff card" aria-labelledby="handoff-title">
+      <h2 id="handoff-title">Reproduce this comparison</h2>
+      <p>Save both trials with their inputs, results, sources and investigation settings.</p>
+      <div class="actions"><button type="button" id="download" class="primary">Download comparison</button><button type="button" class="quiet" id="open-file">Replay a file</button><button type="button" class="text-button" id="reset">Reset experiment</button><input type="file" id="import" accept=".json,application/json" hidden></div>
+      <p role="status" id="file-status"></p>
+    </section>
+    <span class="sr" id="live-summary" role="status" aria-live="polite"></span>
+  </div>
+</main>
+<footer><div class="wrap"><span>FIRST FIRE · Team Code Blooded</span><a href="index.html#sources">Sources and methods</a> <a href="index.html#report/track-fit">Research and credits</a></div></footer>
+</body>
+</html>

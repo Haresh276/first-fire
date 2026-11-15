@@ -1,0 +1,139 @@
+{
+  "id": "Q6",
+  "question": "At 50 s change only the surface from Moon to Mars. Give both static support forces and both front distances. Explain what determines the change or invariance of the front.",
+  "chat": null,
+  "instrument": {
+    "url": "https://first-fire-lunar-lab.vercel.app/index.html#physics?mode=rover",
+    "controlActions": [
+      {
+        "method": "fill",
+        "selector": "#question",
+        "value": "At 50 s change only the surface from Moon to Mars. Give both static support forces and both front distances. Explain what determines the change or invariance of the front."
+      },
+      {
+        "method": "click",
+        "selector": "#question-form button",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#rover-settings > summary",
+        "value": null
+      },
+      {
+        "method": "select",
+        "selector": "#world",
+        "value": "Mars"
+      },
+      {
+        "method": "click",
+        "selector": "#numbers > summary",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#sources > summary",
+        "value": null
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "comparison"
+      },
+      {
+        "method": "go",
+        "selector": "index.html#physics?mode=rover",
+        "value": null
+      }
+    ],
+    "evidence": [
+      {
+        "step": 6,
+        "element": "#metric-body",
+        "label": "Displayed baseline, current and difference",
+        "text": "Flame-front travel\t9 cm\t9 cm\t0 cm\nHeat from material consumed\t34.2 kJ\t34.2 kJ\t0 kJ\nEnergy in the full coupon\t152 kJ\t152 kJ\t0 kJ\nCabin oxygen at readout\t29.9768%\t29.9768%\t0 pp\nInitial oxygen partial pressure\t21 kPa\t21 kPa\t0 kPa\nStatic rover support load\t2,689.2 N\t6,158.6 N\t＋3,469.4 N"
+      },
+      {
+        "step": 8,
+        "element": "#claim",
+        "label": null,
+        "text": "Saffire-I S1 supplies the 1.8 mm/s orbital rate. Rover travel and cabin oxygen are calculated for the selected conditions."
+      },
+      {
+        "step": 9,
+        "element": "#boundary",
+        "label": null,
+        "text": "The orbital study used cotton–fiberglass. Applying its rate to a different material, atmosphere or gravity is an assumption. Ignition, sustained spread and flight qualification need separate measurements."
+      },
+      {
+        "step": 10,
+        "element": "#receipt-list",
+        "label": null,
+        "text": "Saffire-I S1 · concurrent flow\nbaseline and current · PSI-98:1:2 · Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s\nOpen original CSV\nLarge-scale spacecraft fire safety experiments, SIBAL results\nbaseline and current · flow-measurement · Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity\nNBS Technical Note 1128 · fuel chemistry\nbaseline and current · NBS-TN-1128:table-1 · Table 1 · Cellulose · net heat 15.2 MJ/kg\nMoon Facts\nbaseline · moon-env · Structure, surface and atmosphere sections, including sunlit/dark temperatures\nMars Facts\ncurrent · mars-env · Atmosphere and Surface"
+      },
+      {
+        "step": 11,
+        "element": "#receipt-list a",
+        "label": null,
+        "links": [
+          {
+            "text": "Saffire-I S1 · concurrent flow",
+            "href": "https://doi.org/10.60555/0t15-1z43"
+          },
+          {
+            "text": "Open original CSV",
+            "href": "data/raw/PSI-98-experimental.csv"
+          },
+          {
+            "text": "Large-scale spacecraft fire safety experiments, SIBAL results",
+            "href": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          },
+          {
+            "text": "NBS Technical Note 1128 · fuel chemistry",
+            "href": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf"
+          },
+          {
+            "text": "Moon Facts",
+            "href": "https://science.nasa.gov/moon/facts/"
+          },
+          {
+            "text": "Mars Facts",
+            "href": "https://science.nasa.gov/mars/facts/"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "element": "#measurement",
+        "label": null,
+        "text": "Test fresh matched specimens in both flow directions and counterbalance the order. The Saffire-I directions were tested in sequence on one specimen."
+      },
+      {
+        "step": 13,
+        "element": "#finding",
+        "label": null,
+        "text": "The rover fan selects the concurrent orbital reference. The cabin model applies its measured speed to the strip."
+      },
+      {
+        "step": 14,
+        "element": "#interpretation",
+        "label": null,
+        "text": "Compare how far the front travels and how much oxygen is left. The cabin calculation starts with the speed you give it."
+      },
+      {
+        "step": 15,
+        "filename": "Q6-comparison.json",
+        "sha256": "d8027e1f027e6e8fccf88a1431b7301c2996a57c998d061126071e5c695367bd",
+        "label": "Original downloaded JSON"
+      },
+      {
+        "step": 18,
+        "element": ".pl-method details[open] p",
+        "label": "Cabin-physics method shown by the instrument",
+        "text": "The rigid chamber starts at 300 K with oxygen and a nitrogen balance. Each burned fuel unit consumes its stoichiometric oxygen, forming carbon dioxide and water vapor. All gas percentages use the updated total mole count. Released heat is the fuel consumed times its net heat of combustion, plus battery heat limited by available watt-hours. The model omits leaks, condensation, smoke, incomplete combustion, thermal runaway and wall heat transfer.\nSurface gravity changes chassis weight and the displayed buoyant velocity scale. Real flame propagation also depends on flow, material and gravity. The chamber balance uses the front speed you enter. The Mars setting has lower confidence for transferring a surface-fire interpretation. Neither setting has experimental calibration here."
+      }
+    ],
+    "elapsedMs": 870
+  },
+  "pageErrors": []
+}

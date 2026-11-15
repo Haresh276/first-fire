@@ -16,6 +16,7 @@ from .incidents import RECORDS, scoped_reply
 from .synthesis import synthesize
 
 DEFAULT_MODEL = "qwen3.6:35b-a3b"
+SYNTHESIS_MODELS = (DEFAULT_MODEL, "qwen3.8:27b")
 SMALL_MODEL = "qwen3:0.6b"
 VERSION = "4.0"
 NO_EVIDENCE = ("I couldn't establish that from this evidence collection. Give the experiment, "
@@ -67,7 +68,7 @@ class OllamaSelector:
             models=self._request("/api/tags",timeout=3)["models"]
             available={m["name"]:m["digest"] for m in models}
             if not self.explicit_model:
-                self.model=next((tag for tag in (DEFAULT_MODEL,SMALL_MODEL) if tag in available),DEFAULT_MODEL)
+                self.model=next((tag for tag in (*SYNTHESIS_MODELS, SMALL_MODEL) if tag in available),DEFAULT_MODEL)
             self.digest=available.get(self.model)
         except (ProviderError,KeyError):
             self.digest=None
@@ -139,14 +140,19 @@ class Engine:
         return {"ready":ready,"model":self.provider.model,"provider":self.provider.name,"model_digest":self.provider.digest,
                 "retriever":ENCODER+" + BM25 + exact run IDs","encoder_revision":REVISION,
                 "research_passages":len(self.research_records),"research_sha256":self.research_hash,
-                "version":VERSION,"engine_sha256":self.hash,"corpus_sha256":self.corpus_hash,
-                "passages":len(self.index.docs),"rows":len(self.index.rows),"mode":"grounded synthesis" if self.provider.model==DEFAULT_MODEL else "grounded passage selection"}
+                "workspace_context":True,"version":VERSION,"engine_sha256":self.hash,"corpus_sha256":self.corpus_hash,
+                "passages":len(self.index.docs),"rows":len(self.index.rows),"mode":"grounded synthesis" if self.provider.model in SYNTHESIS_MODELS else "grounded passage selection"}
 
-    def research_answer(self, msg, history):
+    def research_answer(self, msg, history, case_id=None):
         started=time.perf_counter()
         retrieve=getattr(self.index,"research_hits",self.index.retrieve)
-        hits,context=retrieve(msg,history)
-        docs=[hit.passage for hit in hits[:15]]
+        # The UI resolves elliptical requests against the current branch. Use only
+        # case IDs that actually occur in the local evidence collection.
+        anchors = [doc for doc in self.index.docs if case_id and doc.topic == case_id
+                   and doc.id.split(":")[-1] in {"record", "reason", "limit", "decision", "fiber", "time", "ground"}]
+        query = f"{anchors[0].title}. {msg}" if anchors else msg
+        hits,context=retrieve(query,history)
+        docs=list(dict.fromkeys([*anchors, *(hit.passage for hit in hits)]))[:15]
         guard=boundary(msg,context,docs)
         # Permit novel scientific wording to reach the model. Its source checks still apply.
         # Hard capability, personal safety, private-data and flight-outcome boundaries remain in force.
@@ -167,7 +173,7 @@ class Engine:
                 result={"status":"abstained","answer":guard.answer,"citations":[]}
                 usage={}; method="scope guard: "+guard.kind
         else:
-            result,usage=synthesize(self.provider,msg,docs,context)
+            result,usage=synthesize(self.provider,msg,docs,context,history=history)
             method="local grounded synthesis"
         result.update(model=self.provider.model,model_digest=self.provider.digest,provider=self.provider.name,
                       method=method,usage=usage,retriever=ENCODER,
@@ -178,8 +184,8 @@ class Engine:
     def answer(self,body):
         started=time.perf_counter()
         msg,history=payload(body)
-        if self.provider.availability() and self.provider.model==DEFAULT_MODEL:
-            return self.research_answer(msg,history)
+        if self.provider.availability() and self.provider.model in SYNTHESIS_MODELS:
+            return self.research_answer(msg,history,body.get("caseId"))
         historical = scoped_reply(msg, history)
         if historical and not POLICY.search(msg):
             # Run the same capability checks for requests that mention a mission.

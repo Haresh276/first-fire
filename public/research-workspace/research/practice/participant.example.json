@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "study_id": "open-dry-run-v1",
+  "time_limit_s": 240,
+  "cases": [
+    {
+      "id": "a",
+      "prompt": "During a wire-insulation overheating review, an engineer proposes using the usual ISS detector as proof every Teflon smoke case will raise an alarm. What did the flight experiment actually find?"
+    },
+    {
+      "id": "b",
+      "prompt": "A two-material suborbital test is cited to argue that the fabric which spread flames more slowly must also have gone out sooner. Did that particular comparison support the argument?"
+    },
+    {
+      "id": "c",
+      "prompt": "A reviewer enters 25% oxygen for a lunar-surface burn into a table of measured outcomes. Is there a finding to enter? Identify the sample and the status of this specific outcome."
+    },
+    {
+      "id": "d",
+      "prompt": "A microgravity droplet video shows a large heptane flame disappear. Someone marks the timestamp as the end of combustion. Which additional observation changes that interpretation?"
+    },
+    {
+      "id": "e",
+      "prompt": "A designer equates a 5 cm wide Saffire fabric test with a 41 cm wide one because the fan speed was the same. Which observed spread rates can they cite, and what else differed?"
+    },
+    {
+      "id": "f",
+      "prompt": "Someone wants to enter one natural lunar airflow speed as a measured input for all upward fabric burns. What evidence can the lunar ignition study supply for that number?"
+    }
+  ]
+}
