@@ -1,0 +1,24 @@
+{
+  "product": "LDEM_80S_80M",
+  "version": "V2.0",
+  "publisher": "NASA LRO Lunar Orbiter Laser Altimeter, NASA Planetary Data System",
+  "productUrl": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/img/ldem_80s_80m.img",
+  "labelUrl": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/img/ldem_80s_80m.lbl",
+  "parentBandSha256": "fbe5e675a7da0223934fa6d53c20deb10d24816ee153f07ac1450466546df369",
+  "fileSha256": "ed7d3829a91f09291be96811cef20d59a3b0341cca6890688a7731dc675d43b7",
+  "centrePixelRowColumnZeroBased": [
+    3610,
+    3800
+  ],
+  "centreLatitudeDeg": -89.50005667674172,
+  "centreLongitudeEastDeg": 0.15117584842490847,
+  "centreElevationM": -715.5,
+  "referenceRadiusM": 1737400.0,
+  "metresPerDN": 0.5,
+  "gridSpacingM": 80,
+  "gridColumns": 65,
+  "gridRows": 65,
+  "spanM": 5120,
+  "coordinates": "x increases with source column; +z decreases source row (projected grid up). Units are projected metres. Local +z is not geographic north everywhere.",
+  "limits": "Bilinear interpolated terrain relative to the centre pixel. Subpixel rocks, local wheel-scale slopes, bearing strength and traction are unresolved."
+}

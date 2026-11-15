@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gravity fire lab · FIRST FIRE</title><meta name="description" content="Change gravity, cabin air and fan speed, and see which spacecraft materials keep burning. Powered by FLINT, calibrated on NASA's Earth tests and checked on NASA's Moon tests."><meta property="og:title" content="Gravity fire lab · FIRST FIRE"><meta property="og:description" content="Change gravity, cabin air and fan speed, and see which spacecraft materials keep burning."><meta property="og:image" content="https://first-fire-lunar-lab.vercel.app/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="judging.css"><link rel="stylesheet" href="start.css"><link rel="stylesheet" href="lab.css"></head>
+<title>Gravity fire lab · FIRST FIRE</title><meta name="description" content="Change gravity, cabin air and fan speed, and see which spacecraft materials keep burning. Explore FLINT estimates and their comparison with NASA laboratory tests under simulated lunar gravity."><meta property="og:title" content="Gravity fire lab · FIRST FIRE"><meta property="og:description" content="Change gravity, cabin air and fan speed, and see which spacecraft materials keep burning."><meta property="og:image" content="https://first-fire-lunar-lab.vercel.app/og-card.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="judging.css"><link rel="stylesheet" href="start.css"><link rel="stylesheet" href="lab.css"></head>
 <body><a class="skip" href="#main">Skip to the lab</a><header><a class="wordmark" href="judging.html">FIRST FIRE<span>.</span></a><span>GRAVITY FIRE LAB &nbsp; / &nbsp; FLINT 1.1</span></header>
 <main id="main">
-<div class="intro" style="grid-template-columns:1fr;padding-bottom:32px"><div><p class="eyebrow">Interactive · runs in your browser</p><h1>Change gravity. Watch the fire change.</h1><p class="lead">Pick a gravity, a cabin air and a fan speed. FLINT, calibrated on NASA's Earth tests and checked against NASA's Moon tests, tells you which of four common spacecraft materials keep burning, and why.</p></div></div>
+<div class="intro" style="grid-template-columns:1fr;padding-bottom:32px"><div><p class="eyebrow">Interactive · runs in your browser</p><h1>Change gravity. Watch the fire change.</h1><p class="lead">Pick a gravity, a cabin air and a fan speed. FLINT estimates which of four materials can keep burning. We checked its estimates against tests that recreated lunar gravity on Earth.</p></div></div>
 <section aria-labelledby="lab"><div class="panel">
 <div class="controls" role="group" aria-labelledby="lab"><h2 id="lab" style="margin:0;font-size:1.4rem">The world and the cabin</h2>
 <div class="presets" aria-label="Gravity"><button type="button" data-g="0">Orbit</button><button type="button" data-g="0.1654">Moon</button><button type="button" data-g="0.3794">Mars</button><button type="button" data-g="1">Earth</button></div>
@@ -18,18 +18,20 @@
 <p style="text-align:center"><span class="badge" id="badge">–</span></p><p class="note" id="badgenote" style="text-align:center"></p></div>
 </div></section>
 <section aria-labelledby="mats"><p class="eyebrow">Four materials found in crew cabins</p><h2 id="mats">Who keeps burning?</h2><div class="grid4" id="cards"></div>
-<p class="note">±1.7 is FLINT's model error, measured by predicting each of NASA's four lunar tests with that material held out. Within that band a result is too close to call. The oxygen limit is the least oxygen a material needs to keep spreading a flame. If the cabin has more oxygen than the limit, the material burns. "Blown off" means the flow outruns the chemistry; "starved" means the flow is too weak to feed the flame faster than it loses heat.</p></section>
+<p class="note">The ±1.7 percentage-point band uses the root mean square error from predicting four measurements made under simulated lunar gravity, one material at a time. Within that band a result is too close to call. The oxygen limit is the least oxygen a material needs to keep spreading a flame. If the cabin has more oxygen than the limit, the material burns. "Blown off" means the flow outruns the chemistry; "starved" means the flow is too weak to feed the flame faster than it loses heat.</p></section>
+<section aria-labelledby="specimen-heading"><h2 id="specimen-heading">Screen a candidate material in this cabin</h2>
+<p id="screen-result"></p><a id="screen-material" href="/material-observer.html">Test a recipe under these conditions</a> · <a href="/material-observer.html">Open the material observer</a></section>
 <section aria-labelledby="curve"><p class="eyebrow">The whole picture</p><h2 id="curve">Oxygen limit at every gravity</h2>
 <svg class="chart" id="chart" viewBox="0 0 900 380" role="img" aria-label="Oxygen limit of each material from orbit to Earth gravity, with the cabin oxygen level and the chosen gravity marked"></svg>
 <div class="legend" id="legend"></div>
-<p class="note">Lines below the dashed cabin-oxygen line burn at that gravity. The steep left side of each curve is where weak flow starves the flame; that is why Nomex and polycarbonate burned less readily on the Moon in NASA's tests, and why FLINT predicts they burn more readily on Mars.</p></section>
+<p class="note">Lines below the dashed cabin-oxygen line burn at that gravity. The steep left side of each curve is where weak flow starves the flame; that may explain why Nomex and polycarbonate burned less readily under simulated lunar gravity in NASA's tests, and why FLINT predicts they burn more readily on Mars.</p></section>
 <section aria-labelledby="limits"><p class="eyebrow">Said plainly</p><h2 id="limits">What this lab can and cannot tell you</h2>
-<ul class="open"><li>FLINT is checked against NASA's four lunar-gravity results at 8.2 psia with no fan (mean error 1.4 points of oxygen). Every other setting is a model extrapolation, and the badge says so.</li>
+<ul class="open"><li>At 8.2 psia with no fan, we used Earth-gravity tests and three simulated lunar-gravity measurements to predict the fourth. On NASA's summary plot the mean absolute error was 1.4 percentage points of oxygen. The individual plots give 2.6 points. Every other setting is a model extrapolation, and the badge says so.</li>
 <li>It covers thin solid materials spreading a flame upward in dry oxygen and nitrogen. It does not cover still air in orbit, thick parts, smouldering or other gases.</li>
 <li>It is a research tool from an independent student team, not a safety certification, and it has not been reviewed by NASA. <a href="flint.html">Inspect the evidence and the Python engine.</a></li></ul>
 <p class="back"><a href="material-lab.html">Material Lab: test your own material</a> · <a href="cabin-fire.html">Cabin Fire Simulator</a> · <a href="start.html">New to fire science? Start here</a> · <a href="fm2-decoder.html">FM² day-one decoder</a> · <a href="judging.html">Judging route</a></p></section>
 </main><footer>FIRST FIRE · Team Code Blooded · Independent challenge project · <a href="judging.html">Judging route</a></footer>
-<script src="flint-coefficients.js"></script><script src="flint-solid.js"></script>
+<script src="flint-coefficients.js"></script><script src="flint-solid.js"></script><script src="material-observer-model.js"></script><script src="material-case-link.js"></script>
 <script>
 (() => {
   'use strict';
@@ -58,7 +60,7 @@
   }
   function badge(g, P, fan) {
     if (g === 0 && fan === 0) return ['extra', 'Not modelled', 'With no gravity and no fan there is no flow at all. FLINT does not cover still air in orbit.'];
-    if (Math.abs(P - 8.2) <= 0.1 && fan === 0 && Math.abs(g - 0.1654) <= 0.01) return ['valid', 'Checked against NASA Moon tests', 'These are the conditions of NASA’s lunar-gravity tests. FLINT matched them to 1.4 points on average.'];
+    if (Math.abs(P - 8.2) <= 0.1 && fan === 0 && Math.abs(g - 0.1654) <= 0.01) return ['valid', 'Checked against simulated lunar gravity', 'NASA recreated lunar gravity on Earth. FLINT’s held-out estimates missed the summary-plot measurements by 1.4 oxygen percentage points on average.'];
     return ['extra', 'Model extrapolation', 'Outside the conditions NASA tested at Moon gravity. Treat the numbers as estimates.'];
   }
   function chart(P, fan, g, X) {
@@ -78,7 +80,9 @@
     $('chart').innerHTML = s;
   }
   function update() {
-    const g = toG(+$('g').value), X = +$('x').value, P = +$('p').value, fan = +$('f').value;
+    const position = +$('g').value;
+    const preset = Object.entries(FLINTCoefficients.g).find(([, value]) => toS(value) === position);
+    const g = preset ? preset[1] : toG(position), X = +$('x').value, P = +$('p').value, fan = +$('f').value;
     $('go').textContent = place(g) + (g > 0 ? ` (${g.toFixed(3)} g)` : ' (0 g)');
     $('xo').textContent = X + '%'; $('po').textContent = P.toFixed(1) + ' psia'; $('fo').textContent = (100 * fan).toFixed(0) + ' cm/s';
     $('where').textContent = place(g) + ' · ' + P.toFixed(1) + ' psia · ' + X + '% oxygen';
@@ -88,18 +92,27 @@
       const r = S.solve(key, g, P, fan), lim = 100 * r.limit, ok = Number.isFinite(lim);
       const margin = ok ? X - lim : NaN; if (ok) modelled++; if (margin > 0) burning++;
       const why = !ok ? 'not modelled here' : r.branch.startsWith('quenching') ? 'limited by starving' : 'limited by blow-off';
-      const close = ok && Math.abs(margin) <= 1.7;
+      const atReference = !!preset && preset[0] === 'moon' && Math.abs(P - 8.2) < 0.00001 && fan === 0;
+      const close = ok && atReference && Math.abs(margin) <= 1.7;
       html += `<div class="mat ${close ? 'close' : margin > 0 ? 'burns' : 'out'}"><svg viewBox="0 0 100 70" aria-hidden="true">${mini(margin)}</svg><b>${name}</b><span class="note">${use}</span>` +
-        `<span class="lim">${ok ? lim.toFixed(1) + '%' : '–'}<small> ±1.7</small></span><span class="note">oxygen limit, ${why}</span>` +
+        `<span class="lim">${ok ? lim.toFixed(1) + '%' : '–'}${atReference && ok ? '<small> ±1.7*</small>' : ''}</span><span class="note">oxygen limit, ${why}</span>` +
         `<span class="verdict">${!ok ? 'Not modelled' : close ? 'Too close to call (' + (margin > 0 ? '+' : '') + margin.toFixed(1) + ' points)' : margin > 0 ? 'Keeps burning, ' + margin.toFixed(1) + ' points over' : 'Goes out, ' + (-margin).toFixed(1) + ' points short'}</span></div>`;
     }
     $('cards').innerHTML = html;
     $('count').textContent = modelled ? `${burning} of 4` : '–';
     $('countnote').textContent = modelled ? (burning === 1 ? 'material keeps burning' : 'materials keep burning') : 'not modelled at these settings';
     const [cls, label, note] = badge(g, P, fan); $('badge').className = 'badge ' + cls; $('badge').textContent = label; $('badgenote').textContent = note;
+    const scenario = {place:preset?.[0], oxygenPct:X, pressurePsia:P, fanCmS:Number((fan * 100).toFixed(4)), composition:{PMMA:100}};
+    MaterialCaseLink.update(scenario, 'gravity-lab');
     chart(P, fan, g, X);
     document.querySelectorAll('[data-g]').forEach(b => b.setAttribute('aria-pressed', String(Math.abs(+b.dataset.g - g) < 0.004)));
-    try { history.replaceState(null, '', `?g=${g.toFixed(4)}&p=${P}&x=${X}&fan=${fan}`); } catch (e) {}
+    const share = new URLSearchParams({g:g.toFixed(4),p:P,x:X,fan});
+    if (MaterialCaseLink.imported && preset && !$('screen-material').hidden) {
+      const link = new URL($('screen-material').href);
+      for (const [key, value] of link.searchParams) if (key !== 'from') share.set(key, value);
+      share.set('observer', '1');
+    }
+    try { history.replaceState(null, '', '?' + share); } catch (e) {}
   }
   $('legend').innerHTML = MATS.map(([, name, , col]) => `<span><i style="background:${col}"></i>${name}</span>`).join('');
   document.querySelectorAll('[data-g]').forEach(b => b.addEventListener('click', () => { $('g').value = toS(+b.dataset.g); update(); }));
@@ -108,6 +121,15 @@
   const q = new URLSearchParams(location.search);
   $('g').value = toS(q.has('g') ? +q.get('g') : 0.1654);
   if (q.has('x')) $('x').value = q.get('x'); if (q.has('p')) $('p').value = q.get('p'); if (q.has('fan')) $('f').value = q.get('fan');
+  const received = MaterialCaseLink.imported;
+  if (received) {
+    $('g').value = toS(FLINTCoefficients.g[received.place]);
+    for (const [id, value] of [['x', received.oxygenPct], ['p', received.pressurePsia], ['f', received.fanCmS / 100]]) {
+      const input = $(id);
+      input.min = Math.min(Number(input.min), value); input.max = Math.max(Number(input.max), value);
+      input.step = 'any'; input.value = value;
+    }
+  }
   update();
 })();
 </script></body></html>

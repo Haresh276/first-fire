@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faf9f5">
+<script>if (!location.hash) location.replace("research-workspace/" + location.search); else if(location.hash === "#judge-lab") location.replace("rover-fire-case.html" + location.search);</script>
+<title>FIRST FIRE · Spacecraft fire research</title><meta name="description" content="Compare NASA fire experiments, inspect their original records, and choose the next measurement.">
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="chat.css"><link rel="stylesheet" href="forecast.css">
+<link rel="stylesheet" href="instruments.css"><link rel="stylesheet" href="mission-desk.css"><link rel="stylesheet" href="atlas-deck.css"><link rel="stylesheet" href="physics-lab.css"><link rel="stylesheet" href="referee-deck.css">
+<link rel="stylesheet" href="advanced.css"><link rel="stylesheet" href="awareness.css"><link rel="stylesheet" href="rover-integration.css"><link rel="stylesheet" href="transfer-lab.css"><link rel="stylesheet" href="design-lab.css">
+<script defer src="spread-scene.js"></script>
+<script defer src="records.js"></script><script defer src="search.js"></script><script defer src="explorer.js"></script><script defer src="study.js"></script><script defer src="forecast-ui.js"></script><script defer src="guide.js"></script><script defer src="vendor/marked.js"></script><script defer src="claim.js"></script><script defer src="acrylic.js"></script><script defer src="workbench.js"></script><script defer src="mission-desk.js"></script><script defer src="atlas-deck.js"></script><script defer src="referee-reviews.js"></script><script defer src="referee-passages.js"></script><script defer src="referee-deck.js"></script><script defer src="science-chat.js"></script><script defer src="research-session.js"></script><script defer src="reader-device.js"></script><script defer src="trial-comparison.js"></script><script defer src="investigation-replay.js"></script><script defer src="awareness.js"></script><script defer src="proof-drawer.js"></script><script defer src="intent-router.js"></script><script defer src="mission-receipts.js"></script><script defer src="evidence-calibration.js"></script><script defer src="source-claim-reviews.js"></script><script defer src="source-claims.js"></script><script defer src="record-facts.js"></script><script defer src="reply-calibration-fit.js"></script><script defer src="reply-calibration.js"></script><script defer src="evidence-desk.js"></script><script defer src="chat-evidence-search.js"></script><script defer src="chat-ui.js"></script><script defer src="benchmark-ui.js"></script><script defer src="case-questions.js"></script><script defer src="tool-directory.js"></script><script defer src="app.js"></script>
+<link rel="stylesheet" href="evidence-desk.css"><link rel="stylesheet" href="master-workbench.css"><link rel="stylesheet" href="vehicle-designer.css"><link rel="stylesheet" href="trial-comparison.css">
+<link rel="stylesheet" href="tool-directory.css">
+<link rel="stylesheet" href="explore-nav.css">
+</head>
+<body><a href="#content" class="skip">Skip to content</a>
+<header class="masthead"><div class="shell mast-inner">
+<div class="mast-identity"><a href="#home" class="mast-brand" aria-label="FIRST FIRE home"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i></span>FIRST FIRE<span class="branddot">.</span></a><a class="mast-judge" href="judging-evidence.html">Judges, start here <span aria-hidden="true">→</span></a></div>
+<nav class="mast-nav" aria-label="Workspace"><a class="ff-discover" href="tools.html">Search tools</a><a href="rover-workbench/prototype/index.html#workbench">3D rover workbench</a><a class="mast-chat" href="#chat" data-nav="chat">Chat</a>
+<details class="mast-explore" id="workspace-explore">
+  <summary>Explore <svg viewBox="0 0 12 12" width="12" height="12" fill="none" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+  <div class="mast-dropdown explore-panel">
+    <a class="explore-judge" href="judging-evidence.html">
+      <strong>Judges, start here <span aria-hidden="true">→</span></strong>
+      <small>Follow a rover detector decision from NASA measurements to the next test.</small>
+    </a>
+    <details class="explore-question" name="explore-questions">
+      <summary>Which flight tests fit my cabin?</summary>
+      <ul>
+        <li><a href="#compass" data-nav="compass">Habitat Compass <small>Rank experiments for my cabin</small></a></li>
+        <li><a href="#transfer-lab" data-nav="transfer-lab">Matched experiments <small>Compare similar flight runs</small></a></li>
+        <li><a href="#flame-tracking" data-nav="flame-tracking">Measure a flame front <small>Track movement in flight images</small></a></li>
+        <li><a href="#atlas" data-nav="atlas">Atlas <small>See where measurements exist</small></a></li>
+        <li><a href="#data" data-nav="data">Data explorer <small>Inspect an original row</small></a></li>
+        <li><a href="#passports" data-nav="passports">Passports <small>Look up what each study measured</small></a></li>
+        <li><a href="#cases" data-nav="cases">Case library <small>Read a worked example</small></a></li>
+      </ul>
+    </details>
+    <details class="explore-question" name="explore-questions">
+      <summary>How does a fire change cabin air?</summary>
+      <ul>
+        <li><a href="flint.html">FLINT engine <small>Inspect the flame-spread model and validation data</small></a></li>
+        <li><a href="rover-fire-case.html">Pressurized rover fire case <small>Trace a cabin design decision to its evidence</small></a></li>
+        <li><a href="#physics" data-nav="physics">Physics Lab <small>Model oxygen use and heat from a burning strip</small></a></li>
+        <li><a href="#physics?mode=rover">Rover cabin physics <small>Open the same model with a rover cabin</small></a></li>
+        <li><a href="#materials-lab?tab=atmosphere" data-nav="materials-lab">Cabin and materials <small>Explore oxygen, pressure and material limits</small></a></li>
+        <li><a href="#master-physics" data-nav="master-physics">Physics and validation <small>Compare the calculations with reference cases</small></a></li>
+      </ul>
+    </details>
+    <details class="explore-question" name="explore-questions">
+      <summary>Why might a smoke detector respond late?</summary>
+      <ul>
+        <li><a href="detector.html">Detector flight evidence <small>Inspect signal and power in ISS records</small></a></li>
+        <li><a href="#transport-lab" data-nav="transport-lab">Tracer transport <small>Model travel time and sensor delay</small></a></li>
+      </ul>
+    </details>
+    <details class="explore-question" name="explore-questions">
+      <summary>What should we build or test next?</summary>
+      <ul>
+        <li><a href="#forecast" data-nav="forecast">FM² forecast <small>Read four predictions for lunar fabric burns</small></a></li>
+        <li><a href="#design-lab" data-nav="design-lab">Experiment design <small>Choose the next oxygen setting to test</small></a></li>
+        <li><a href="#rover-design" data-nav="rover-design">Rover sandbox <small>Compare hardware, mass and energy</small></a></li>
+        <li><a href="#vehicle-designer" data-nav="vehicle-designer">Vehicle designer <small>Place fuel and sensors inside a cabin</small></a></li>
+        <li><a href="forecast-register.html">Register a new forecast <small>Save a prediction before the test</small></a></li>
+      </ul>
+    </details>
+    <details class="explore-question" name="explore-questions">
+      <summary>Can I trust this claim?</summary>
+      <ul>
+        <li><a href="#rulebook" data-nav="rulebook">Rulebook <small>Check what transfers to another gravity level</small></a></li>
+        <li><a href="#referee" data-nav="referee">Referee <small>Check a quotation, claim or number</small></a></li>
+        <li><a href="#study" data-nav="study">Blind test <small>Compare FIRST FIRE with ordinary search</small></a></li>
+        <li><a href="fresh-chat-benchmark.html">Local chat results <small>Inspect the 100 blind questions and remaining errors</small></a></li>
+        <li><a href="judging.html">Judge walkthrough <small>Open the full project presentation</small></a></li>
+        <li><a href="#benchmark" data-nav="benchmark">Chat benchmark <small>Inspect tested replies and errors</small></a></li>
+        <li><a href="#sources" data-nav="sources">Sources &amp; methods <small>Find the data and calculations</small></a></li>
+      </ul>
+    </details>
+    <details class="explore-question" name="explore-questions">
+      <summary>How do I run or teach an investigation?</summary>
+      <ul>
+        <li><a href="#instruments" data-nav="instruments">Start a cabin investigation <small>Choose a Moon, Mars or orbital cabin</small></a></li>
+        <li><a href="#session" data-nav="session">Guided investigation <small>Follow four activities in order</small></a></li>
+        <li><a href="#awareness" data-nav="awareness">Your investigation <small>Keep your own question and evidence</small></a></li>
+        <li><a href="classroom.html">Classroom exercise <small>Match alarm records in English or Telugu</small></a></li>
+        <li><a href="#earth" data-nav="earth">At Home <small>Apply a flight question to an Earth setting</small></a></li>
+        <li><a href="demo.html">Project demonstration <small>Present the six-slide walkthrough</small></a></li>
+        <li><a href="#field-guide" data-nav="field-guide">Field guide &amp; instruments <small>Read the science and open specialist labs</small></a></li>
+        <li><a href="#guide" data-nav="guide">User guide <small>Follow operating instructions</small></a></li>
+        <li><a href="technical-manual.html">Technical manual <small>Inspect how the app works</small></a></li>
+        <li><a href="#home" data-nav="home">Research desk <small>Return to the home screen</small></a></li>
+      </ul>
+    </details>
+  </div>
+</details></nav></div></header>
+<main id="content" class="shell main" tabindex="-1"><p><a href="judging.html">Open the FIRST FIRE judging route</a></p></main>
+<footer><div class="shell foot"><a class="footbrand" href="#home">FIRST FIRE.</a><span>Team Code Blooded · NASA Space Apps 2026</span><a href="#chat">Ask a question</a><a href="#field-guide">Field guide</a><a href="#sources">Sources &amp; methods</a><a href="#guide">User guide</a></div><div class="shell"><small>ICES source note: Fig. 13 and the single-material figures disagree on some lunar limits. <a href="flint.html#validation">Compare both readings.</a></small></div></footer>
+<noscript>This workspace uses JavaScript. Open the <a href="manual.html">user manual</a> or download the <a href="data/tests.csv">NASA records</a>.</noscript></body></html>

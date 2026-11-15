@@ -1,0 +1,86 @@
+{
+  "method": "Read the visible reply of a real signed-out Chromium chat in a clean context for each initially misclassified item. Each question uses its original frozen router with the current downstream evidence gate. Includes citation markers; assessment of substantive numeric assertions is documented in research/answer-verification.md.",
+  "moduleSHA256": {
+    "chat-ui": "5f9895c872b771c61d70729f1c45b0751b2a264de73e83501c1f526d6025c855",
+    "evidence-desk": "a442a600abb0431fdfd549eb0aa535386c8b6277295462b3ea380266cd55e9de",
+    "record-facts": "f679ff77d1529708fc7995ee8caea8331696614ffa470d8b634eeddb517940f2",
+    "source-claims": "54edf3fea1027e4ed03d098c09d36e45170482734e21bc0f02730c62683e980f",
+    "source-claim-reviews": "6baca00e41e1cc5fb126b1626908661e4299d8931422c737c53499963369da3a",
+    "referee-deck": "4d3a10a16311ab55cd505def16ac6a118b72a0e8a8a6fe93c568b9c4cd0d625e",
+    "proof-drawer": "b06b780073cf01a93bdf3ab907fd266fa3fccea36e85b5dd4bdca4600b8217f6"
+  },
+  "rows": [
+    {
+      "bank": "master-route-third.json",
+      "routerSHA256": "dcf3a711647d20f77a76455908aa47d69624aa2fff5e75c9a4ee98bcfa40dec1",
+      "id": "C08",
+      "question": "In the SAME reflight, what differs between run 75 and run 85?",
+      "expected": "compare",
+      "scoredIntent": "record",
+      "renderedIntent": "record",
+      "status": "abstained",
+      "kind": "withheld",
+      "answer": "I don’t have a verified source quotation for that specific question. Open the cited archive or ask about a test identifier and measured endpoint."
+    },
+    {
+      "bank": "master-route-third.json",
+      "routerSHA256": "dcf3a711647d20f77a76455908aa47d69624aa2fff5e75c9a4ee98bcfa40dec1",
+      "id": "C11",
+      "question": "For CFI-G 21088A1 versus 21202, can the two source rows support a comparison?",
+      "expected": "compare",
+      "scoredIntent": "referee",
+      "renderedIntent": "referee",
+      "status": "limited",
+      "kind": "input-needed",
+      "answer": "Provide the exact source words in quotation marks and state the interpretation to test. The Referee can also search its pinned example passages."
+    },
+    {
+      "bank": "master-route-third.json",
+      "routerSHA256": "dcf3a711647d20f77a76455908aa47d69624aa2fff5e75c9a4ee98bcfa40dec1",
+      "id": "C28",
+      "question": "What would the forecast score be if all four fabric burns spread?",
+      "expected": "forecast",
+      "scoredIntent": "abstain",
+      "renderedIntent": "abstain",
+      "status": "abstained",
+      "kind": "withheld",
+      "answer": "I don’t have a source that establishes an answer to that question. Name an experiment, incident or measured quantity, or choose the intended tool."
+    },
+    {
+      "bank": "master-route-third.json",
+      "routerSHA256": "dcf3a711647d20f77a76455908aa47d69624aa2fff5e75c9a4ee98bcfa40dec1",
+      "id": "C32",
+      "question": "If a 25 gram piece of cellulose burns in the sealed pod, how much CO2 does the model predict?",
+      "expected": "physics",
+      "scoredIntent": "abstain",
+      "renderedIntent": "abstain",
+      "status": "abstained",
+      "kind": "withheld",
+      "answer": "I don’t have a source that establishes an answer to that question. Name an experiment, incident or measured quantity, or choose the intended tool."
+    },
+    {
+      "bank": "master-route-third.json",
+      "routerSHA256": "dcf3a711647d20f77a76455908aa47d69624aa2fff5e75c9a4ee98bcfa40dec1",
+      "id": "C36",
+      "question": "Show the time evolution of a closed cabin after the start of a prescribed fire.",
+      "expected": "physics",
+      "scoredIntent": "abstain",
+      "renderedIntent": "abstain",
+      "status": "abstained",
+      "kind": "withheld",
+      "answer": "I don’t have a source that establishes an answer to that question. Name an experiment, incident or measured quantity, or choose the intended tool."
+    },
+    {
+      "bank": "master-route-third.json",
+      "routerSHA256": "dcf3a711647d20f77a76455908aa47d69624aa2fff5e75c9a4ee98bcfa40dec1",
+      "id": "C46",
+      "question": "Is this an exact quote from the original paper: “the specimen did not ignite”?",
+      "expected": "referee",
+      "scoredIntent": "abstain",
+      "renderedIntent": "abstain",
+      "status": "abstained",
+      "kind": "withheld",
+      "answer": "I don’t have a source that establishes an answer to that question. Name an experiment, incident or measured quantity, or choose the intended tool."
+    }
+  ]
+}

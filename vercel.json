@@ -1,0 +1,58 @@
+{
+  "framework": null,
+  "outputDirectory": "public",
+  "buildCommand": null,
+  "installCommand": "npm ci --ignore-scripts --no-audit --no-fund",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/research-workspace/",
+      "permanent": false
+    },
+    {
+      "source": "/rover-scorecard",
+      "destination": "/research-workspace/rover-scorecard.html",
+      "permanent": false
+    },
+    {
+      "source": "/evidence-guide",
+      "destination": "/evidence-guide.html",
+      "permanent": false
+    },
+    {
+      "source": "/rover-scorecard.html",
+      "destination": "/research-workspace/rover-scorecard.html",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/auth/:accountRoute*",
+      "destination": "/api/account-auth?accountRoute=:accountRoute*"
+    },
+    {
+      "source": "/rover-scorecard-files/:file*",
+      "destination": "/research-workspace/rover-scorecard-files/:file*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/account(/.*)?",
+      "headers": [
+        { "key": "Cache-Control", "value": "private, no-store" },
+        { "key": "Content-Security-Policy", "value": "default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; form-action 'self' https://accounts.google.com https://github.com; frame-ancestors 'none'; base-uri 'none'" },
+        { "key": "Referrer-Policy", "value": "same-origin" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    },
+    {
+      "source": "/workspace-worker.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ]
+}

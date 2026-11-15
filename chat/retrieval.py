@@ -50,11 +50,13 @@ RESEARCH_DETAIL = re.compile(
 def context_question(question, history):
     if topics(question):
         return question
-    prior = next((m["content"] for m in reversed(history) if m["role"] == "user"), "")
     q = norm(question)
     refers = REFERENCE.search(q) or (len(terms(q)) <= 8 and RESEARCH_DETAIL.search(q))
-    if prior and refers:
-        return prior[-500:] + " " + question
+    refers = refers or re.search(r"\b(?:more details?|in detail|detailed (?:answer|explanation)|the experiment|that (?:test|study|result))\b", q)
+    if refers:
+        for turn in reversed(history):
+            if topics(turn["content"]):
+                return turn["content"][:700] + " " + question
     return question
 
 

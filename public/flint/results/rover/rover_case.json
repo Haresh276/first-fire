@@ -1,0 +1,345 @@
+{
+ "rover": {
+  "name": "Lunar pressurized rover (13 m3, the size of the JAXA/Toyota Lunar Cruiser concept)",
+  "volume_m3": 13.0,
+  "P_psia": 8.2,
+  "X_O2": 0.34,
+  "gravity": "moon",
+  "fan_m_s": 0.1,
+  "crew": 2
+ },
+ "items": [
+  {
+   "item": "Window and display cover (PMMA, 3 mm)",
+   "material": "PMMA",
+   "loc_fans_on": 0.13378764345916963,
+   "loc_fans_off": 0.12944586040463774,
+   "margin_fans_off_pts": 21.055413959536228,
+   "burns_fans_off": true,
+   "branch_fans_off": "blow-off (CKL)"
+  },
+  {
+   "item": "Cable-bundle and stowage tape (P213)",
+   "material": "P213",
+   "loc_fans_on": 0.1281708576457496,
+   "loc_fans_off": 0.12410912885278354,
+   "margin_fans_off_pts": 21.58908711472165,
+   "burns_fans_off": true,
+   "branch_fans_off": "blow-off (CKL)"
+  },
+  {
+   "item": "Equipment housings (polycarbonate, 2 mm)",
+   "material": "PC",
+   "loc_fans_on": 0.1769716842706352,
+   "loc_fans_off": 0.18932739725083747,
+   "margin_fans_off_pts": 15.067260274916256,
+   "burns_fans_off": true,
+   "branch_fans_off": "quenching (HTL)"
+  },
+  {
+   "item": "Hook-and-loop fasteners (Nomex Velcro)",
+   "material": "NOMEX",
+   "loc_fans_on": 0.23425307941719334,
+   "loc_fans_off": 0.2637052991699156,
+   "margin_fans_off_pts": 7.629470083008444,
+   "burns_fans_off": true,
+   "branch_fans_off": "quenching (HTL)"
+  }
+ ],
+ "trade": [
+  {
+   "atmosphere": "Earth sea level",
+   "P_psia": 14.7,
+   "X_O2": 0.21,
+   "pO2_kPa": 21.284114859,
+   "prebreathe_ratio": 2.7050274676013513,
+   "items_that_burn": 3,
+   "of": 4,
+   "smallest_margin_pts": -0.30679658430587675,
+   "margins": {
+    "PMMA": 10.377312601754605,
+    "P213": 10.768832822328116,
+    "PC": 5.441470410239852,
+    "NOMEX": -0.30679658430587675
+   },
+   "validated_pressure": false
+  },
+  {
+   "atmosphere": "Shuttle EVA preparation",
+   "P_psia": 10.2,
+   "X_O2": 0.265,
+   "pO2_kPa": 18.636528171000002,
+   "prebreathe_ratio": 1.7462835550337839,
+   "items_that_burn": 4,
+   "of": 4,
+   "smallest_margin_pts": 2.195321780483586,
+   "margins": {
+    "PMMA": 14.510029234532007,
+    "P213": 14.983409106190132,
+    "PC": 8.935671678207022,
+    "NOMEX": 2.195321780483586
+   },
+   "validated_pressure": false
+  },
+  {
+   "atmosphere": "NASA exploration atmosphere",
+   "P_psia": 8.2,
+   "X_O2": 0.34,
+   "pO2_kPa": 19.222582516,
+   "prebreathe_ratio": 1.260622462297297,
+   "items_that_burn": 4,
+   "of": 4,
+   "smallest_margin_pts": 7.629470083008444,
+   "margins": {
+    "PMMA": 21.055413959536228,
+    "P213": 21.58908711472165,
+    "PC": 15.067260274916256,
+    "NOMEX": 7.629470083008444
+   },
+   "validated_pressure": true
+  },
+  {
+   "atmosphere": "Upper control band",
+   "P_psia": 8.2,
+   "X_O2": 0.37,
+   "pO2_kPa": 20.918692737999997,
+   "prebreathe_ratio": 1.2033214412837836,
+   "items_that_burn": 4,
+   "of": 4,
+   "smallest_margin_pts": 10.62947008300844,
+   "margins": {
+    "PMMA": 24.055413959536224,
+    "P213": 24.589087114721647,
+    "PC": 18.06726027491625,
+    "NOMEX": 10.62947008300844
+   },
+   "validated_pressure": true
+  },
+  {
+   "atmosphere": "Exploration, lower oxygen",
+   "P_psia": 8.2,
+   "X_O2": 0.3,
+   "pO2_kPa": 16.961102219999997,
+   "prebreathe_ratio": 1.3370238236486482,
+   "items_that_burn": 4,
+   "of": 4,
+   "smallest_margin_pts": 3.6294700830084405,
+   "margins": {
+    "PMMA": 17.055413959536224,
+    "P213": 17.589087114721647,
+    "PC": 11.067260274916253,
+    "NOMEX": 3.6294700830084405
+   },
+   "validated_pressure": true
+  },
+  {
+   "atmosphere": "Low pressure, 30 % oxygen",
+   "P_psia": 7.0,
+   "X_O2": 0.3,
+   "pO2_kPa": 14.4789897,
+   "prebreathe_ratio": 1.1413618006756758,
+   "items_that_burn": 4,
+   "of": 4,
+   "smallest_margin_pts": 1.9842265206406084,
+   "margins": {
+    "PMMA": 16.286362294907182,
+    "P213": 16.86997267450198,
+    "PC": 9.985359384007616,
+    "NOMEX": 1.9842265206406084
+   },
+   "validated_pressure": false
+  }
+ ],
+ "responses": [
+  {
+   "item": "Window and display cover (PMMA, 3 mm)",
+   "material": "PMMA",
+   "co2": {
+    "agent": "CO2",
+    "needed": true,
+    "kg": 26.43241459206198,
+    "final_P_psia": 24.811238708936695,
+    "final_O2": 0.11236843241509736,
+    "final_CO2": 0.6695046105438314,
+    "pO2_kPa": 19.222582516000003,
+    "crew_must_mask": true
+   },
+   "n2": {
+    "agent": "N2",
+    "needed": true,
+    "kg": 32.79872697176353,
+    "final_P_psia": 40.58087240283881,
+    "final_O2": 0.06870231798676087,
+    "final_CO2": 0.0,
+    "pO2_kPa": 19.222582516000003,
+    "crew_must_mask": false
+   },
+   "vent": {
+    "needed": true,
+    "P_psia": 1.007298286031628,
+    "pO2_kPa": 2.361326148959554,
+    "crew_must_be_suited": true
+   },
+   "timeline": {
+    "t_hrr_1kW_s": 4.5,
+    "t_hrr_10kW_s": 14.5,
+    "t_CO2_1pct_s": 46.5,
+    "t_dT_10K_s": 18.0,
+    "peak_hrr_kW": 183.1398886116209,
+    "final_O2": 0.12944719144707298,
+    "final_CO2": 0.14996638785821065,
+    "peak_T_rise_K": 579.8080194533721,
+    "peak_dP_kPa": 119.60787477668916,
+    "limit_used": 0.12944586040463774
+   }
+  },
+  {
+   "item": "Cable-bundle and stowage tape (P213)",
+   "material": "P213",
+   "co2": {
+    "agent": "CO2",
+    "needed": true,
+    "kg": 28.49345531388055,
+    "final_P_psia": 26.106483201252168,
+    "final_O2": 0.1067933960506131,
+    "final_CO2": 0.6859017763217262,
+    "pO2_kPa": 19.222582516000003,
+    "crew_must_mask": true
+   },
+   "n2": {
+    "agent": "N2",
+    "needed": true,
+    "kg": 35.07015636055825,
+    "final_P_psia": 42.82336386520379,
+    "final_O2": 0.06510464728496948,
+    "final_CO2": 0.0,
+    "pO2_kPa": 19.222582516,
+    "crew_must_mask": false
+   },
+   "vent": {
+    "needed": true,
+    "P_psia": 0.8945177444096875,
+    "pO2_kPa": 2.096944043163587,
+    "crew_must_be_suited": true
+   },
+   "timeline": {
+    "t_hrr_1kW_s": 4.0,
+    "t_hrr_10kW_s": 14.5,
+    "t_CO2_1pct_s": 60.0,
+    "t_dT_10K_s": 18.0,
+    "peak_hrr_kW": 47.38709031224462,
+    "final_O2": 0.3179211704705391,
+    "final_CO2": 0.01572566205802065,
+    "peak_T_rise_K": 107.11350071807686,
+    "peak_dP_kPa": 20.99524288022311,
+    "limit_used": 0.12410912885278354
+   }
+  },
+  {
+   "item": "Equipment housings (polycarbonate, 2 mm)",
+   "material": "PC",
+   "co2": {
+    "agent": "CO2",
+    "needed": true,
+    "kg": 10.84454207290786,
+    "final_P_psia": 15.015165388495324,
+    "final_O2": 0.18567894044884622,
+    "final_CO2": 0.4538854692680995,
+    "pO2_kPa": 19.222582516000003,
+    "crew_must_mask": true
+   },
+   "n2": {
+    "agent": "N2",
+    "needed": true,
+    "kg": 13.921945124455304,
+    "final_P_psia": 21.944580058317797,
+    "final_O2": 0.127047316129581,
+    "final_CO2": 0.0,
+    "pO2_kPa": 19.222582516,
+    "crew_must_mask": false
+   },
+   "vent": {
+    "needed": true,
+    "P_psia": 1.6574081346673815,
+    "pO2_kPa": 3.8853249550406557,
+    "crew_must_be_suited": true
+   },
+   "timeline": {
+    "t_hrr_1kW_s": 7.0,
+    "t_hrr_10kW_s": 22.0,
+    "t_CO2_1pct_s": 60.5,
+    "t_dT_10K_s": 24.5,
+    "peak_hrr_kW": 123.06822880104328,
+    "final_O2": 0.18932743911128846,
+    "final_CO2": 0.12237365351367475,
+    "peak_T_rise_K": 426.4129372558448,
+    "peak_dP_kPa": 84.25303846229602,
+    "limit_used": 0.18932739725083747
+   }
+  },
+  {
+   "item": "Hook-and-loop fasteners (Nomex Velcro)",
+   "material": "NOMEX",
+   "co2": {
+    "agent": "CO2",
+    "needed": true,
+    "kg": 3.8128867264529176,
+    "final_P_psia": 10.596178047323248,
+    "final_O2": 0.2631137366273579,
+    "final_CO2": 0.22613606874306522,
+    "pO2_kPa": 19.222582516000003,
+    "crew_must_mask": true
+   },
+   "n2": {
+    "agent": "N2",
+    "needed": true,
+    "kg": 5.050860667015791,
+    "final_P_psia": 13.186512888867828,
+    "final_O2": 0.21142814810075033,
+    "final_CO2": 0.0,
+    "pO2_kPa": 19.222582516,
+    "crew_must_mask": false
+   },
+   "vent": {
+    "needed": true,
+    "P_psia": 4.021090601372855,
+    "pO2_kPa": 9.426310474292897,
+    "crew_must_be_suited": true
+   },
+   "timeline": {
+    "t_hrr_1kW_s": 20.5,
+    "t_hrr_10kW_s": 80.0,
+    "t_CO2_1pct_s": 152.5,
+    "t_dT_10K_s": 54.0,
+    "peak_hrr_kW": 20.800160196765038,
+    "final_O2": 0.274007945593063,
+    "final_CO2": 0.054250661285796545,
+    "peak_T_rise_K": 85.16116178706369,
+    "peak_dP_kPa": 16.79881531257832,
+    "limit_used": 0.2637052991699156
+   }
+  }
+ ],
+ "timeline_sensitivity_t10kW": {
+  "PMMA": {
+   "0.5": 41.5,
+   "1.0": 14.5,
+   "2.0": 5.0
+  },
+  "P213": {
+   "0.5": 47.5,
+   "1.0": 14.5,
+   "2.0": 5.0
+  },
+  "PC": {
+   "0.5": 63.5,
+   "1.0": 22.0,
+   "2.0": 7.5
+  },
+  "NOMEX": {
+   "0.5": 375.0,
+   "1.0": 80.0,
+   "2.0": 23.5
+  }
+ }
+}

@@ -1,0 +1,163 @@
+{
+  "id": "Q5",
+  "question": "First open the crew deck. Then, in a separate run, seal the cabin and select a material of unknown composition. Can you report respectively a sealed-cabin final O2 fraction and a fuel energy? Name a mechanical quantity the rover can still compute in both runs.",
+  "chat": null,
+  "instrument": {
+    "url": "https://first-fire-lunar-lab.vercel.app/judge-lab.html",
+    "controlActions": [
+      {
+        "method": "fill",
+        "selector": "#question",
+        "value": "First open the crew deck. Then, in a separate run, seal the cabin and select a material of unknown composition. Can you report respectively a sealed-cabin final O2 fraction and a fuel energy? Name a mechanical quantity the rover can still compute in both runs."
+      },
+      {
+        "method": "click",
+        "selector": "#question-form button",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#rover-settings > summary",
+        "value": null
+      },
+      {
+        "method": "select",
+        "selector": "#cabin",
+        "value": "open"
+      },
+      {
+        "method": "click",
+        "selector": "#numbers > summary",
+        "value": null
+      },
+      {
+        "method": "click",
+        "selector": "#sources > summary",
+        "value": null
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "open"
+      },
+      {
+        "method": "select",
+        "selector": "#cabin",
+        "value": "sealed"
+      },
+      {
+        "method": "select",
+        "selector": "#material",
+        "value": "unknown"
+      },
+      {
+        "method": "download",
+        "selector": "#download",
+        "value": "unknown"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 6,
+        "element": "#metric-body",
+        "label": "Displayed baseline, current and difference",
+        "text": "Flame-front travel\t9 cm\tWithheld\tWithheld\nHeat from material consumed\t34.2 kJ\tWithheld\tWithheld\nEnergy in the full coupon\t152 kJ\tWithheld\tWithheld\nCabin oxygen at readout\t29.9768%\tWithheld\tWithheld\nInitial oxygen partial pressure\t21 kPa\tWithheld\tWithheld\nStatic rover support load\t2,689.2 N\t2,689.2 N\t0 N"
+      },
+      {
+        "step": 8,
+        "element": "#claim",
+        "label": null,
+        "text": "An open crew deck has no shared atmosphere. The sealed-cabin calculation is unavailable. The rover still computes its surface load."
+      },
+      {
+        "step": 9,
+        "element": "#boundary",
+        "label": null,
+        "text": "Ignition, sustained spread and flight qualification need separate measurements."
+      },
+      {
+        "step": 10,
+        "element": "#receipt-list",
+        "label": null,
+        "text": "Saffire-I S1 · concurrent flow\nbaseline · PSI-98:1:2 · Original CSV row 2 · SIBAL fabric · 20 cm/s air · 21.5–21.7% O₂ · 420 s\nOpen original CSV\nLarge-scale spacecraft fire safety experiments, SIBAL results\nbaseline · flow-measurement · Slide 21 and Table I on PDF page 29 · 1.8 mm/s in microgravity\nNBS Technical Note 1128 · fuel chemistry\nbaseline · NBS-TN-1128:table-1 · Table 1 · Cellulose · net heat 15.2 MJ/kg\nMoon Facts\nbaseline and current · moon-env · Structure, surface and atmosphere sections, including sunlit/dark temperatures"
+      },
+      {
+        "step": 11,
+        "element": "#receipt-list a",
+        "label": null,
+        "links": [
+          {
+            "text": "Saffire-I S1 · concurrent flow",
+            "href": "https://doi.org/10.60555/0t15-1z43"
+          },
+          {
+            "text": "Open original CSV",
+            "href": "data/raw/PSI-98-experimental.csv"
+          },
+          {
+            "text": "Large-scale spacecraft fire safety experiments, SIBAL results",
+            "href": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          },
+          {
+            "text": "NBS Technical Note 1128 · fuel chemistry",
+            "href": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf"
+          },
+          {
+            "text": "Moon Facts",
+            "href": "https://science.nasa.gov/moon/facts/"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "element": "#measurement",
+        "label": null,
+        "text": "Establish the missing condition or choose a case supported by both the design and cabin models."
+      },
+      {
+        "step": 13,
+        "element": "#finding",
+        "label": null,
+        "text": "An open crew deck has no shared atmosphere. The sealed-cabin calculation is unavailable. The rover still computes its surface load."
+      },
+      {
+        "step": 14,
+        "element": "#interpretation",
+        "label": null,
+        "text": "Compare how far the front travels and how much oxygen is left. The cabin calculation starts with the speed you give it."
+      },
+      {
+        "step": 15,
+        "filename": "Q5-open.json",
+        "sha256": "3761b8764716bb0128a13a0981e489adc2940978cbeec55992fd4bb7048ffa21",
+        "label": "Original downloaded JSON"
+      },
+      {
+        "step": 18,
+        "element": "#metric-body",
+        "label": null,
+        "text": "Flame-front travel\t9 cm\tWithheld\tWithheld\nHeat from material consumed\t34.2 kJ\tWithheld\tWithheld\nEnergy in the full coupon\t152 kJ\tWithheld\tWithheld\nCabin oxygen at readout\t29.9768%\tWithheld\tWithheld\nInitial oxygen partial pressure\t21 kPa\t21 kPa\t0 kPa\nStatic rover support load\t2,689.2 N\t2,689.2 N\t0 N"
+      },
+      {
+        "step": 19,
+        "element": "#finding",
+        "label": null,
+        "text": "The rover has a sealed atmosphere. Enter a material with a known chemical formula and heat of combustion to calculate strip consumption and heat."
+      },
+      {
+        "step": 20,
+        "element": "#boundary",
+        "label": null,
+        "text": "Ignition, sustained spread and flight qualification need separate measurements."
+      },
+      {
+        "step": 21,
+        "filename": "Q5-unknown.json",
+        "sha256": "7763eaa6a9b0afdc37de532f5ebcfef9290e904a8532688ff243d74f8b046af9",
+        "label": "Original downloaded JSON"
+      }
+    ],
+    "elapsedMs": 184
+  },
+  "pageErrors": []
+}

@@ -1,0 +1,375 @@
+Q1 — Front distances at 37 s
+
+Quantity
+
+	
+
+S1 baseline
+
+	
+
+S2 current
+
+
+
+
+Airflow direction
+
+	
+
+Concurrent
+
+	
+
+Opposed
+
+
+
+
+Observed orbital front rate
+
+	
+
+1.8 mm/s
+
+	
+
+1.3 mm/s
+
+
+
+
+Modeled front distance
+
+	
+
+6.66 cm
+
+	
+
+4.81 cm
+
+Signed difference (current − baseline):
+
+4.81
+−
+6.66
+=
+−
+1.85
+ cm
+4.81−6.66=
+−1.85 cm
+	​
+
+
+The opposed-flow model predicts 1.85 cm less travel after 37 s.
+
+Q2 — Causality and experimental design
+
+No causal conclusion is justified. Airflow direction changed, but S2 burned the specimen remaining after S1. The sequential design confounds direction with specimen condition and test order.
+
+A fair next experiment would use fresh, identical specimens, comparable atmospheric and airflow conditions, randomized direction order across independent trials, and repeated measurements.
+
+NASA source locators:
+
+Front rates: S2, NASA NTRS 20170008805, slide 21 — concurrent 1.8 mm/s; opposed 1.3 mm/s.
+
+Run settings: S1, NASA PSI-98 experimental table v1, records PSI-98:1:2 and PSI-98:1:3.
+
+The CSV provides experimental settings, not measured front rates.
+
+Q3 — User-entered rate at 40 s
+𝑑
+=
+2.0
+×
+40
+10
+=
+8.0
+ cm
+d=
+10
+2.0×40
+	​
+
+=
+8.0 cm
+	​
+
+
+Rate: 2.0 mm/s, user-entered override, not a NASA observation.
+
+Distance: 8.0 cm, simulated.
+
+Rover qualification: No. This modeled run cannot certify ignition resistance, flammability, or material safety. No rover qualification data is supplied.
+
+Q4 — Polyethylene at 50 s
+
+Using the observed concurrent rate of 1.8 mm/s and the assumed 10 g, 40 cm coupon:
+
+𝑑
+=
+1.8
+×
+50
+10
+=
+9.0
+ cm
+d=
+10
+1.8×50
+	​
+
+=9.0 cm
+𝑚
+=
+10
+ g
+×
+9
+40
+=
+2.25
+ g
+m=10 g×
+40
+9
+	​
+
+=
+2.25 g
+	​
+
+𝐸
+=
+0.00225
+ kg
+×
+43.4
+ MJ/kg
+=
+97.65
+ kJ
+E=0.00225 kg×43.4 MJ/kg=
+97.65 kJ
+	​
+
+
+Full coupon net chemical potential:
+
+𝐸
+f
+u
+l
+l
+=
+0.010
+ kg
+×
+43.4
+ MJ/kg
+=
+434
+ kJ
+E
+full
+	​
+
+=0.010 kg×43.4 MJ/kg=
+434 kJ
+	​
+
+
+These are simulated mass consumption and reference-based chemical energies, not measured flight-part properties.
+
+Q5 — Open deck and unknown fuel
+
+Separate run
+
+	
+
+Requested result
+
+	
+
+Can it be reported?
+
+
+
+
+Open crew deck
+
+	
+
+Sealed-cabin final O2 fraction
+
+	
+
+No. The closed-volume assumption is invalid.
+
+
+
+
+Sealed cabin, unknown material
+
+	
+
+Fuel chemical energy
+
+	
+
+No. Composition and reference heat are unknown.
+
+Both runs can still calculate the static support force on the Moon:
+
+𝐹
+=
+1660
+×
+1.62
+=
+2689.2
+ N
+F=1660×1.62=
+2689.2 N
+	​
+
+
+This mechanical result does not require fuel composition or a sealed cabin.
+
+Q6 — Moon versus Mars at 50 s
+
+Quantity
+
+	
+
+Moon
+
+	
+
+Mars
+
+
+
+
+Local gravitational acceleration
+
+	
+
+1.62 m/s²
+
+	
+
+3.71 m/s²
+
+
+
+
+Simulated static support force
+
+	
+
+2,689.2 N
+
+	
+
+6,158.6 N
+
+
+
+
+Modeled concurrent front distance
+
+	
+
+9.0 cm
+
+	
+
+9.0 cm
+
+Support-force difference:
+
+6158.6
+−
+2689.2
+=
+3469.4
+ N
+6158.6−2689.2=
+3469.4 N
+	​
+
+
+The static support force increases because local gravity increases.
+
+The modeled front distance remains unchanged because the stipulated rate law depends only on rate and elapsed time, not gravity. This is a property of the teaching model, not evidence that real combustion behaves identically on the Moon and Mars.
+
+W1 — Reusable machine-readable JSON
+JSON
+
+{
+  "schema": "rover-fire-q1-v1",
+  "source_settings": "NASA PSI-98 experimental table v1",
+  "source_rates": "NASA NTRS 20170008805, slide 21",
+  "time_s": 37,
+  "rate_unit": "mm/s",
+  "distance_unit": "cm",
+  "baseline": {
+    "row_id": "PSI-98:1:2",
+    "test": "S1",
+    "direction": "concurrent",
+    "rate_mm_s": 1.8,
+    "distance_cm": 6.66
+  },
+  "current": {
+    "row_id": "PSI-98:1:3",
+    "test": "S2",
+    "direction": "opposed",
+    "rate_mm_s": 1.3,
+    "distance_cm": 4.81
+  },
+  "difference": {
+    "definition": "current_minus_baseline",
+    "signed_distance_cm": -1.85
+  },
+  "distance_type": "modeled",
+  "rate_type": "observed_orbital"
+}
+
+W2 — Runnable JavaScript validator
+JavaScript
+
+function valid(rateMmS, timeS, travelCm) {
+  if (
+    !Number.isFinite(rateMmS) ||
+    !Number.isFinite(timeS) ||
+    !Number.isFinite(travelCm)
+  ) {
+    return false;
+  }
+
+  if (rateMmS < 0 || timeS < 0 || travelCm < 0) {
+    return false;
+  }
+
+  const expectedCm = rateMmS * timeS / 10;
+
+  // This validator applies only before strip-end clipping.
+  if (!Number.isFinite(expectedCm) || expectedCm > 40) {
+    return false;
+  }
+
+  return Math.abs(travelCm - expectedCm) <= 0.000001;
+}
+
+// Tests
+console.log(valid(1.8, 37, 6.66)); // true
+console.log(valid(1.3, 37, 4.81)); // true
+console.log(valid(1.8, 37, 6.67)); // false
+
+
+The validator uses the stipulated rate law, rejects nonfinite and negative inputs, excludes distances requiring strip-end clipping, and applies the specified absolute tolerance of 0.000001 cm.

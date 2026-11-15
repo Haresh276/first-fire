@@ -16,6 +16,7 @@
   const names={PMMA:'PMMA cover',P213:'P213 tape',PC:'Polycarbonate housing',NOMEX:'Nomex fasteners'};
   const gravNames={orbit:'Orbit',moon:'Moon',mars:'Mars',earth:'Earth'};
   let cabin={...defaults},items=structuredClone(data.inventory),selected=0,rows=[],doses=null;
+  let candidateSpecimen = MaterialCaseLink.imported;
   let activeTimeline=null,timer=null,repaintScene=()=>{};
   const pins=[];
   const selectedItem=()=>items[selected];
@@ -39,6 +40,7 @@
     $('response').value='none';$('vent-label').hidden=true;
   }
   function pick(index,scroll=false) {
+    candidateSpecimen = null;
     selected=index;resetTimeline();render();
     if(scroll)$('cabin').scrollIntoView({block:'start'});
   }
@@ -223,6 +225,8 @@
   function render() {
     rows=items.map(it=>M.assess(cabin,it));doses=M.responses(cabin,selectedItem());
     renderFocus();renderInventory();renderTrade();renderDoses();evidence();
+    MaterialCaseLink.update({place:cabin.gravity, pressurePsia:cabin.P_psia, oxygenPct:cabin.X_O2*100,
+      fanCmS:cabin.fan_m_s*100, composition:{[unknown(selectedItem()) ? 'OTHER' : selectedItem().material]:100}}, 'rover-case', candidateSpecimen);
   }
   function setPreset(i) {
     const p=reference.trade[i];
@@ -255,6 +259,7 @@
     $('item-name').value='';pick(items.length-1);$('item-status').textContent='Added '+name+'.';
   };
   $('reset-case').onclick=()=>{
+    candidateSpecimen = null;
     cabin={...defaults};items=structuredClone(data.inventory);selected=0;
     syncControls();resetTimeline();render();$('input-status').textContent='Restored the nominal lunar cabin.';
     $('item-status').textContent='';
@@ -283,6 +288,17 @@
     pin.style.left=positions[i][0]+'%';pin.style.top=positions[i][1]+'%';
     $('scene-pins').append(pin);pins.push(pin);
   });
+  const received = MaterialCaseLink.imported;
+  if (received) {
+    cabin = {...cabin, gravity:received.place, P_psia:received.pressurePsia, X_O2:received.oxygenPct/100, fan_m_s:received.fanCmS/100};
+    const pure = Object.keys(received.composition).find(key => received.composition[key] === 100);
+    const match = items.findIndex(item => item.material === pure);
+    if (match >= 0) selected = match;
+    // Preserve an imported case that extends beyond the default form ranges.
+    $('fans').max = Math.max(Number($('fans').max), received.fanCmS);
+    $('oxygen').min = Math.min(Number($('oxygen').min), received.oxygenPct);
+    $('oxygen').max = Math.max(Number($('oxygen').max), received.oxygenPct);
+  }
   syncControls();resetTimeline();render();$('startup').hidden=true;
   import('./rover-fire-scene.mjs').then(({mountCabin})=>{
     repaintScene=mountCabin($('scene'),pins,()=>rows.map(a=>a[1]),pick);

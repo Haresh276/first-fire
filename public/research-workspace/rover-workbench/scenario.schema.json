@@ -1,0 +1,768 @@
+{
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "parts": {
+      "type": "object",
+      "properties": {
+        "cabin": {
+          "type": "string",
+          "enum": [
+            "mobile-hab",
+            "open-deck",
+            "research-pod"
+          ]
+        },
+        "chassis": {
+          "type": "string",
+          "enum": [
+            "ltv-frame",
+            "bench-frame"
+          ]
+        },
+        "wheels": {
+          "type": "string",
+          "enum": [
+            "six-wheel",
+            "four-wheel",
+            "mesh-set",
+            "grouser-set"
+          ]
+        },
+        "power": {
+          "type": "string",
+          "enum": [
+            "solar-pack",
+            "pack-only"
+          ]
+        },
+        "thermal": {
+          "type": "string",
+          "enum": [
+            "radiator",
+            "shade"
+          ]
+        },
+        "lifeSupport": {
+          "type": "string",
+          "enum": [
+            "scrubber",
+            "storage"
+          ]
+        },
+        "access": {
+          "type": "string",
+          "enum": [
+            "lock",
+            "suitport"
+          ]
+        },
+        "detection": {
+          "type": "string",
+          "enum": [
+            "sample",
+            "no-detector"
+          ]
+        },
+        "suppression": {
+          "type": "string",
+          "enum": [
+            "mist",
+            "no-agent"
+          ]
+        },
+        "material": {
+          "type": "string",
+          "enum": [
+            "cellulose",
+            "pe",
+            "unknown"
+          ]
+        },
+        "payload": {
+          "type": "string",
+          "enum": [
+            "apxs",
+            "cargo",
+            "met-suite",
+            "nav-camera",
+            "drill",
+            "regolith-lab"
+          ]
+        }
+      },
+      "required": [
+        "cabin",
+        "chassis",
+        "wheels",
+        "power",
+        "thermal",
+        "lifeSupport",
+        "access",
+        "detection",
+        "suppression",
+        "material",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "conditions": {
+      "type": "object",
+      "properties": {
+        "world": {
+          "title": "Environment",
+          "type": "string",
+          "enum": [
+            "Moon",
+            "Mars",
+            "Earth",
+            "Orbit"
+          ],
+          "default": "Moon",
+          "group": "Environment"
+        },
+        "phase": {
+          "title": "Illumination",
+          "type": "string",
+          "enum": [
+            "day",
+            "night"
+          ],
+          "default": "day",
+          "group": "Environment"
+        },
+        "outsideKPa": {
+          "title": "Exterior pressure",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 120,
+          "default": 0,
+          "unit": "kPa abs",
+          "group": "Environment"
+        },
+        "sinkK": {
+          "title": "Effective external radiative temperature",
+          "type": "number",
+          "minimum": 3,
+          "maximum": 450,
+          "default": 245,
+          "unit": "K",
+          "group": "Environment"
+        },
+        "sunWm2": {
+          "title": "Incident flux when sunlit",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1600,
+          "default": 900,
+          "unit": "W/m²",
+          "group": "Environment"
+        },
+        "hours": {
+          "title": "Time at these conditions",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 72,
+          "default": 4,
+          "unit": "h",
+          "group": "Environment"
+        },
+        "imuMode": {
+          "title": "Accelerometer context",
+          "type": "string",
+          "enum": [
+            "no reading",
+            "stationary supported",
+            "moving or free-falling"
+          ],
+          "default": "no reading",
+          "group": "Environment"
+        },
+        "accelX": {
+          "title": "Specific force X",
+          "type": "number",
+          "minimum": -30,
+          "maximum": 30,
+          "default": 0,
+          "unit": "m/s²",
+          "group": "Environment"
+        },
+        "accelY": {
+          "title": "Specific force Y",
+          "type": "number",
+          "minimum": -30,
+          "maximum": 30,
+          "default": 0,
+          "unit": "m/s²",
+          "group": "Environment"
+        },
+        "accelZ": {
+          "title": "Specific force Z",
+          "type": "number",
+          "minimum": -30,
+          "maximum": 30,
+          "default": 0,
+          "unit": "m/s²",
+          "group": "Environment"
+        },
+        "imuTolerance": {
+          "title": "Assumed norm tolerance",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3,
+          "default": 0.1,
+          "unit": "m/s²",
+          "group": "Environment"
+        },
+        "chassisKg": {
+          "title": "Chassis mass",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 15000,
+          "default": 800,
+          "unit": "kg",
+          "group": "Vehicle and power"
+        },
+        "hardwareKg": {
+          "title": "Other installed dry mass",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 15000,
+          "default": 650,
+          "unit": "kg",
+          "group": "Vehicle and power"
+        },
+        "payloadKg": {
+          "title": "Cargo mass",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5000,
+          "default": 40,
+          "unit": "kg",
+          "group": "Vehicle and power"
+        },
+        "wheels": {
+          "title": "Installed wheel count",
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 12,
+          "default": 6,
+          "unit": "wheels",
+          "group": "Vehicle and power"
+        },
+        "personKg": {
+          "title": "Mass per occupant incl. worn gear",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 200,
+          "default": 85,
+          "unit": "kg/person",
+          "group": "Vehicle and power"
+        },
+        "capacityWh": {
+          "title": "Usable pack capacity",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 200000,
+          "default": 4000,
+          "unit": "Wh",
+          "group": "Vehicle and power"
+        },
+        "startPct": {
+          "title": "Initial state of charge",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 75,
+          "unit": "%",
+          "group": "Vehicle and power"
+        },
+        "loadW": {
+          "title": "Total requested electrical load",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 30000,
+          "default": 500,
+          "unit": "W",
+          "group": "Vehicle and power"
+        },
+        "panelM2": {
+          "title": "Sun-facing projected PV area",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 2,
+          "unit": "m²",
+          "group": "Vehicle and power"
+        },
+        "pvEff": {
+          "title": "Net electrical conversion",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.25,
+          "unit": "fraction",
+          "group": "Vehicle and power"
+        },
+        "radiatorM2": {
+          "title": "Radiating area",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 2,
+          "unit": "m²",
+          "group": "Thermal boundary"
+        },
+        "projectedM2": {
+          "title": "Sun-facing radiator area",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 0.4,
+          "unit": "m²",
+          "group": "Thermal boundary"
+        },
+        "skinK": {
+          "title": "Prescribed radiator temperature",
+          "type": "number",
+          "minimum": 150,
+          "maximum": 450,
+          "default": 295,
+          "unit": "K",
+          "group": "Thermal boundary"
+        },
+        "emissivity": {
+          "title": "Infrared emissivity",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.85,
+          "unit": "fraction",
+          "group": "Thermal boundary"
+        },
+        "absorptivity": {
+          "title": "Solar absorptivity",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.2,
+          "unit": "fraction",
+          "group": "Thermal boundary"
+        },
+        "internalW": {
+          "title": "Heat delivered to radiator",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 30000,
+          "default": 250,
+          "unit": "W",
+          "group": "Thermal boundary"
+        },
+        "volumeM3": {
+          "title": "Free cabin gas volume",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 60,
+          "default": 12,
+          "unit": "m³",
+          "group": "Cabin and crew"
+        },
+        "pressureKPa": {
+          "title": "Cabin absolute pressure",
+          "type": "number",
+          "minimum": 30,
+          "maximum": 110,
+          "default": 70,
+          "unit": "kPa abs",
+          "group": "Cabin and crew"
+        },
+        "oxygenPct": {
+          "title": "Dry cabin oxygen",
+          "type": "number",
+          "minimum": 10,
+          "maximum": 40,
+          "default": 30,
+          "unit": "vol %",
+          "group": "Cabin and crew"
+        },
+        "gasK": {
+          "title": "Cabin gas temperature",
+          "type": "number",
+          "minimum": 260,
+          "maximum": 320,
+          "default": 295,
+          "unit": "K",
+          "group": "Cabin and crew"
+        },
+        "crew": {
+          "title": "Occupants",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6,
+          "default": 2,
+          "unit": "people",
+          "group": "Cabin and crew"
+        },
+        "activity": {
+          "title": "Metabolic reference",
+          "type": "string",
+          "enum": [
+            "sleep",
+            "nominal",
+            "aerobic"
+          ],
+          "default": "nominal",
+          "group": "Cabin and crew"
+        },
+        "scrubGhr": {
+          "title": "CO₂ removal capacity",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3000,
+          "default": 90,
+          "unit": "g/h",
+          "group": "Cabin and crew"
+        },
+        "leakMolHrKPa": {
+          "title": "Assumed outward leak conductance",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.002,
+          "unit": "mol/(h·kPa)",
+          "group": "Cabin and crew"
+        },
+        "lockM3": {
+          "title": "Isolated volume cycled per EVA",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "default": 1.5,
+          "unit": "m³",
+          "group": "Cabin and crew"
+        },
+        "cycles": {
+          "title": "Full airlock cycles",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 24,
+          "default": 1,
+          "unit": "cycles",
+          "group": "Cabin and crew"
+        },
+        "recovery": {
+          "title": "Depress gas recovered",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.75,
+          "unit": "fraction",
+          "group": "Cabin and crew"
+        },
+        "reactedG": {
+          "title": "Prescribed dry coupon mass to react",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 500,
+          "default": 10,
+          "unit": "g",
+          "group": "Material and tracer experiment"
+        },
+        "ignition": {
+          "title": "Assumed ignition / tracer release zone",
+          "type": "string",
+          "enum": [
+            "equipment bay",
+            "crew space"
+          ],
+          "default": "equipment bay",
+          "group": "Material and tracer experiment"
+        },
+        "sensor": {
+          "title": "Detector sampling zone",
+          "type": "string",
+          "enum": [
+            "equipment bay",
+            "crew space"
+          ],
+          "default": "crew space",
+          "group": "Material and tracer experiment"
+        },
+        "sectionM2": {
+          "title": "Assumed return duct cross-section",
+          "type": "number",
+          "minimum": 0.001,
+          "maximum": 1,
+          "default": 0.15,
+          "unit": "m²",
+          "group": "Material and tracer experiment"
+        },
+        "fanFrom": {
+          "title": "Duct flow enters at",
+          "type": "string",
+          "enum": [
+            "end A",
+            "end B"
+          ],
+          "default": "end A",
+          "group": "Material and tracer experiment"
+        },
+        "igniteAt": {
+          "title": "Ignition end of coupon",
+          "type": "string",
+          "enum": [
+            "end A",
+            "end B"
+          ],
+          "default": "end A",
+          "group": "Material and tracer experiment"
+        },
+        "exchangeLs": {
+          "title": "Fan-driven interzone exchange",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 500,
+          "default": 30,
+          "unit": "L/s",
+          "group": "Material and tracer experiment"
+        },
+        "pulseMg": {
+          "title": "Prescribed passive tracer pulse",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10000,
+          "default": 60,
+          "unit": "mg",
+          "group": "Material and tracer experiment"
+        },
+        "thresholdMgM3": {
+          "title": "Tracer threshold",
+          "type": "number",
+          "minimum": 0.001,
+          "maximum": 1000,
+          "default": 2,
+          "unit": "mg/m³",
+          "group": "Material and tracer experiment"
+        },
+        "delayS": {
+          "title": "Assumed sampling delay",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 300,
+          "default": 5,
+          "unit": "s",
+          "group": "Material and tracer experiment"
+        },
+        "windowS": {
+          "title": "Observation window",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 900,
+          "default": 120,
+          "unit": "s",
+          "group": "Material and tracer experiment"
+        },
+        "stockOrigin": {
+          "title": "Proposed stock origin",
+          "type": "string",
+          "enum": [
+            "Earth supplier",
+            "reclaimed stock",
+            "lunar feedstock",
+            "Martian feedstock"
+          ],
+          "default": "Earth supplier",
+          "group": "Material sourcing"
+        },
+        "yieldPct": {
+          "title": "Usable coupon yield",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 80,
+          "unit": "%",
+          "group": "Material sourcing"
+        },
+        "thicknessMm": {
+          "title": "Coupon stock thickness",
+          "type": "number",
+          "minimum": 0.001,
+          "maximum": 50,
+          "default": 0.18,
+          "unit": "mm",
+          "group": "Material sourcing"
+        },
+        "lotId": {
+          "title": "Candidate stock lot or batch",
+          "type": "string",
+          "maxLength": 100,
+          "default": "",
+          "group": "Material sourcing"
+        },
+        "agentKg": {
+          "title": "Usable agent mass",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 20,
+          "default": 2,
+          "unit": "kg",
+          "group": "Suppression inventory"
+        },
+        "agentGps": {
+          "title": "Assumed delivery rate",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000,
+          "default": 40,
+          "unit": "g/s",
+          "group": "Suppression inventory"
+        },
+        "dischargeS": {
+          "title": "Commanded discharge time",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 600,
+          "default": 15,
+          "unit": "s",
+          "group": "Suppression inventory"
+        }
+      },
+      "required": [
+        "world",
+        "phase",
+        "outsideKPa",
+        "sinkK",
+        "sunWm2",
+        "hours",
+        "imuMode",
+        "accelX",
+        "accelY",
+        "accelZ",
+        "imuTolerance",
+        "chassisKg",
+        "hardwareKg",
+        "payloadKg",
+        "wheels",
+        "personKg",
+        "capacityWh",
+        "startPct",
+        "loadW",
+        "panelM2",
+        "pvEff",
+        "radiatorM2",
+        "projectedM2",
+        "skinK",
+        "emissivity",
+        "absorptivity",
+        "internalW",
+        "volumeM3",
+        "pressureKPa",
+        "oxygenPct",
+        "gasK",
+        "crew",
+        "activity",
+        "scrubGhr",
+        "leakMolHrKPa",
+        "lockM3",
+        "cycles",
+        "recovery",
+        "reactedG",
+        "ignition",
+        "sensor",
+        "sectionM2",
+        "fanFrom",
+        "igniteAt",
+        "exchangeLs",
+        "pulseMg",
+        "thresholdMgM3",
+        "delayS",
+        "windowS",
+        "stockOrigin",
+        "yieldPct",
+        "thicknessMm",
+        "lotId",
+        "agentKg",
+        "agentGps",
+        "dischargeS"
+      ],
+      "additionalProperties": false
+    },
+    "customNames": {
+      "type": "object",
+      "properties": {
+        "cabin": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "chassis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "wheels": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "power": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "thermal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "lifeSupport": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "access": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "detection": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "suppression": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "material": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "payload": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version",
+    "name",
+    "parts",
+    "conditions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

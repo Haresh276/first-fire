@@ -1,0 +1,197 @@
+{
+  "system": "FIRST FIRE instrument workspace",
+  "science": {
+    "points": 18,
+    "outOf": 18
+  },
+  "workflow": {
+    "points": 6,
+    "outOf": 6
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "criteria": [
+        {
+          "check": "6.66 cm baseline",
+          "passed": true,
+          "evidence": "6.66 cm",
+          "artifact": "Q1-comparison.json"
+        },
+        {
+          "check": "4.81 cm current",
+          "passed": true,
+          "evidence": "4.81 cm",
+          "artifact": "Q1-comparison.json"
+        },
+        {
+          "check": "-1.85 cm signed difference",
+          "passed": true,
+          "evidence": "-1.85 cm",
+          "artifact": "Q1-comparison.json"
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "criteria": [
+        {
+          "check": "same specimen used sequentially; direction effect not isolated",
+          "passed": true,
+          "evidence": "Test fresh matched specimens in both flow directions and counterbalance the order. The Saffire-I directions were tested in sequence on one specimen. Discriminating test. Repeat both directions on fresh, matched specimens and counterbalance run order. Hold oxygen, pressure, geometry and airflow magnitude fixed. Compare calibrated front position over time and record remaining fuel. This separates a direction effect from possible prior heating or changes to the shared specimen.",
+          "artifact": "Q2-response.json"
+        },
+        {
+          "check": "fresh matched samples with counterbalanced or randomized order",
+          "passed": true,
+          "evidence": "Test fresh matched specimens in both flow directions and counterbalance the order. The Saffire-I directions were tested in sequence on one specimen.",
+          "artifact": "Q2-response.json"
+        },
+        {
+          "check": "separates PSI table settings from rate in NTRS 20170008805 slide 21",
+          "passed": true,
+          "evidence": "Original CSV row 3 · SIBAL fabric · 20 cm/s air · about 21.5% O₂ · 70 s | Slide 21 and Table I on PDF page 29 · 1.3 mm/s in microgravity",
+          "artifact": "Q2-comparison.json"
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "criteria": [
+        {
+          "check": "8 cm",
+          "passed": true,
+          "evidence": "positionCm = 8",
+          "artifact": "Q3-comparison.json"
+        },
+        {
+          "check": "manual/user-imposed rate rather than NASA attribution",
+          "passed": true,
+          "evidence": "The judge supplied the front speed. The cabin model uses that assumption to calculate the result.",
+          "artifact": "Q3-comparison.json"
+        },
+        {
+          "check": "no rover material qualification from this calculation",
+          "passed": true,
+          "evidence": "The imposed front speed is a user assumption. Ignition, sustained spread and flight qualification need separate measurements.",
+          "artifact": "Q3-comparison.json"
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "criteria": [
+        {
+          "check": "2.25 g consumed",
+          "passed": true,
+          "evidence": "2.25 g",
+          "artifact": "Q4-physics.json"
+        },
+        {
+          "check": "97.65 kJ released by 50 s",
+          "passed": true,
+          "evidence": "97.65 kJ",
+          "artifact": "Q4-comparison.json"
+        },
+        {
+          "check": "434 kJ full coupon",
+          "passed": true,
+          "evidence": "434 kJ",
+          "artifact": "Q4-comparison.json"
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "criteria": [
+        {
+          "check": "sealed final O2 withheld for open deck",
+          "passed": true,
+          "evidence": "open-cabin | oxygenPct = null",
+          "artifact": "Q5-open.json"
+        },
+        {
+          "check": "fuel energy withheld for unknown material",
+          "passed": true,
+          "evidence": "unknown-material | chemicalKJ = null | couponKJ = null",
+          "artifact": "Q5-unknown.json"
+        },
+        {
+          "check": "static support load still available in both runs",
+          "passed": true,
+          "evidence": "open deck support 2689.20 N | unknown material support 2689.20 N",
+          "artifact": "Q5-response.json"
+        }
+      ]
+    },
+    {
+      "id": "Q6",
+      "criteria": [
+        {
+          "check": "2689.2 N Moon and 6158.6 N Mars",
+          "passed": true,
+          "evidence": "2689.2 N; 6158.6 N",
+          "artifact": "Q6-comparison.json"
+        },
+        {
+          "check": "9 cm on both surfaces",
+          "passed": true,
+          "evidence": "9 cm; 9 cm",
+          "artifact": "Q6-comparison.json"
+        },
+        {
+          "check": "prescribed front rate independent of gravity",
+          "passed": true,
+          "evidence": "Surface gravity changes chassis weight and the displayed buoyant velocity scale. Real flame propagation also depends on flow, material and gravity. The chamber balance uses the front speed you enter. The Mars setting has lower confidence for transferring a surface-fire interpretation. Neither setting has experimental calibration here.",
+          "artifact": "Q6-response.json"
+        }
+      ]
+    },
+    {
+      "id": "W1",
+      "criteria": [
+        {
+          "check": "parseable JSON identifies both source row IDs alongside correct rates and directions",
+          "passed": true,
+          "evidence": "[('PSI-98:1:2', 1.8, 'concurrent'), ('PSI-98:1:3', 1.3, 'opposed')]",
+          "artifact": "W1-comparison.json"
+        },
+        {
+          "check": "time 37 s and rate/distance units recoverable",
+          "passed": true,
+          "evidence": "37 s; imposedRate.speedMmS; units.positionCm = cm",
+          "artifact": "W1-comparison.json"
+        },
+        {
+          "check": "two distances and signed delta recoverable with correct values",
+          "passed": true,
+          "evidence": "6.66, 4.81, -1.85 cm",
+          "artifact": "W1-comparison.json"
+        }
+      ]
+    },
+    {
+      "id": "W2",
+      "criteria": [
+        {
+          "check": "valid(2,17,3.4) accepted",
+          "passed": true,
+          "evidence": "2 mm/s, 17 s, 3.4 cm. Replay verified. Both trials, their differences, model fingerprint and source records match.",
+          "artifact": "W2-response.json"
+        },
+        {
+          "check": "valid(2,17,3.8) rejected",
+          "passed": true,
+          "evidence": "2 mm/s, 17 s, 3.8 cm. File not applied. Recorded inputs, results or source records differ from this rerun. The current experiment is unchanged.",
+          "artifact": "W2-response.json"
+        },
+        {
+          "check": "valid(1.3,63,8.19) accepted",
+          "passed": true,
+          "evidence": "1.3 mm/s, 63 s, 8.19 cm. Replay verified. Both trials, their differences, model fingerprint and source records match.",
+          "artifact": "W2-response.json"
+        }
+      ]
+    }
+  ]
+}

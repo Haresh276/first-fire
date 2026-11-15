@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1b3830"><title>Read the flight record · FIRST FIRE</title>
+  <link rel="icon" href="icon.svg"><link rel="stylesheet" href="classroom.css">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f7f6f0;color:#19352f;font-family:DM,"Noto Sans Telugu","Kohinoor Telugu",system-ui,sans-serif;line-height:1.52}
+    .wrap{width:min(860px,calc(100% - 32px));margin:auto}.mast{background:#1b3830;color:white;padding:.65rem 0}.mast a{color:white}
+    .bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;min-height:42px}.intro{padding:2.2rem 0 .85rem}
+    .intro h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.1;margin:.2em 0}.te{display:block;color:#486456;line-height:1.65;font-size:.91em;margin-top:.15em}
+    .task-nav{display:flex;gap:1.2rem;flex-wrap:wrap;margin:.7rem 0 1rem}.task-nav a[aria-current]{font-weight:bold;color:#19352f}.card{padding:clamp(1rem,3vw,1.7rem);border:1px solid #cdd7ce;background:#fffef8;border-radius:8px;margin:1rem 0}
+    .card h2{font-size:1.5rem}summary{cursor:pointer;font-weight:bold}table{border-collapse:collapse;font-size:.9rem;min-width:100%}th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid #cdd7ce}
+    .scroll{max-width:100%;overflow:auto;margin:.65rem 0}.source-links{display:flex;gap:.7rem 1.2rem;flex-wrap:wrap}.responses label{display:block;font-weight:bold;margin:1rem 0 .3rem}
+    textarea{width:100%;font:inherit;padding:.5rem;border:1px solid #8b9e92;border-radius:4px}.primary{display:inline-block;background:#1e5144;color:white;font:inherit;font-weight:bold;border:0;border-radius:5px;padding:.65rem 1rem}
+    .subtle,footer{font-size:.9rem}footer{padding:1rem 0 2rem}.session-actions{display:flex;flex-wrap:wrap;gap:.65rem 1.1rem;align-items:center}button{cursor:pointer}
+    [hidden]{display:none!important}@media print{.mast,.task-nav,.session-actions,footer,button,#saved{display:none}.card{break-inside:avoid}.te{color:#222}textarea{min-height:4rem}}
+  </style>
+</head>
+<body>
+  <header class="mast"><div class="wrap bar"><a href="index.html" class="brand">FIRST FIRE</a><span>English · తెలుగు</span></div></header>
+  <main class="wrap">
+    <div class="intro"><p class="kicker">Amaravati · Classroom worksheet</p><h1>Read the flight record</h1><span class="te" lang="te">అంతరిక్ష ప్రయోగ వివరాలను చదవండి</span>
+      <p>Use the materials your instructor assigned. Answer in either language and cite the NASA record. Leave your name off the worksheet.<span class="te" lang="te">అధ్యాపకులు ఇచ్చిన ఆధారాలను వాడండి. ఇంగ్లీషు లేదా తెలుగులో జవాబు రాయండి. NASA రికార్డును ఉదహరించండి. మీ పేరు రాయవద్దు.</span></p>
+    </div>
+    <nav aria-label="Choose a worksheet" class="task-nav"><a href="amaravati-lab.html?case=oxygen" data-case="oxygen">A · Oxygen / ఆక్సిజన్</a><a href="amaravati-lab.html?case=smoke" data-case="smoke">B · Smoke / పొగ</a></nav>
+    <section class="card" id="oxygen">
+      <h2>A · Where was the oxygen?</h2><span class="te" lang="te">ఆక్సిజన్ ఎక్కడ ఉంది?</span>
+      <p class="prompt">In CFI-G trial 21202 A2, a student reads 0.85 in the oxygen column and writes, “The spacecraft cabin contained 85% oxygen.” What did NASA test? Decide whether the note is supported and cite a source field.<span class="te" lang="te">CFI-G ప్రయోగం 21202 A2లో ఆక్సిజన్ కాలమ్‌లో 0.85 చూసిన ఒక విద్యార్థి “వ్యోమనౌక క్యాబిన్‌లో 85% ఆక్సిజన్ ఉంది” అని రాశారు. NASA దేనిని పరీక్షించింది? ఆ వాక్యానికి ఆధారం ఉందో లేదో వివరించండి. మీ జవాబుకు ఆధారమైన కాలమ్‌ను పేర్కొనండి.</span></p>
+      <details class="packet"><summary>Source packet / <span lang="te">మూల ఆధారాలు</span></summary>
+        <p>PSI-159 · CFI-G inverse-flame table, study v1, file v1. Selected fields from one flight row. The investigator’s method describes feeding oxidizer through the burner in an inverse flame.<span class="te" lang="te">PSI-159లోని inverse-flame పట్టిక నుంచి ఒక ప్రయోగానికి సంబంధించిన వివరాలు. పరిశోధకుడి వివరణ ప్రకారం inverse flameలో ఆక్సీకరణ వాయువు బర్నర్ ద్వారా ప్రవేశిస్తుంది.</span></p>
+        <div class="scroll" tabindex="0" aria-label="CFI-G table excerpt"><table><thead><tr><th>Cell</th><th>Original field</th><th>Value</th></tr></thead><tbody>
+          <tr><td>A19</td><td>Flame Type</td><td>Inverse</td></tr><tr><td>C19</td><td>Fuel</td><td>ethane</td></tr><tr><td>D19</td><td>Test</td><td>21202 A2</td></tr><tr><td>E19</td><td>Xf before test</td><td>0.06</td></tr><tr><td>H19</td><td>XO2</td><td>0.85</td></tr>
+        </tbody></table></div>
+        <p class="source-links"><a href="https://psi.nasa.gov/geode-py/ws/studies/PSI-159/download?file=PSI-159_Experimental+table_CFI-G_Inverse+Flames.csv&amp;version=1&amp;studyVersion=1">NASA inverse-flame table</a><a href="https://api.drum.lib.umd.edu/server/api/core/bitstreams/278c77a3-6e86-4dc5-8413-c0381ebe74a9/content#page=62">Kimber, experimental method pp. 20–21 and Table E.6</a></p>
+      </details>
+    </section>
+    <section class="card" id="smoke" hidden>
+      <h2>B · What did the clock measure?</h2><span class="te" lang="te">ఇక్కడ సమయం దేనికి సంబంధించినది?</span>
+      <p class="prompt">A test planner reads 60 seconds in the table for SAME-R Kapton run 75 and writes, “The Shuttle detector sounded after one minute.” What event does the table time? Can the planner use it as the warning time? Name the source field and the additional evidence you would need.<span class="te" lang="te">SAME-R Kapton ప్రయోగం 75 పట్టికలో 60 సెకన్లు చూసి, “ఒక నిమిషం తర్వాత షటిల్ డిటెక్టర్ అలారం మోగింది” అని ఒకరు రాశారు. పట్టికలోని సమయం ఏ ప్రక్రియకు సంబంధించినది? దాన్ని హెచ్చరిక రావడానికి పట్టిన సమయంగా వాడవచ్చా? ఆధారమైన కాలమ్‌ను, ఇంకా కావాల్సిన సమాచారాన్ని పేర్కొనండి.</span></p>
+      <details class="packet"><summary>Source packet / <span lang="te">మూల ఆధారాలు</span></summary>
+        <p>PSI-101 · SAME-R experimental table, study v4, file v1. The experiment heated a material, aged the resulting aerosol and sampled it with instruments.<span class="te" lang="te">ఈ ప్రయోగంలో పదార్థాన్ని వేడి చేసి, ఏర్పడిన పొగ కణాలను కొంతసేపు ఉంచి, పరికరాలతో కొలిచారు.</span></p>
+        <div class="scroll" tabindex="0" aria-label="SAME-R table excerpt"><table><thead><tr><th>Cell</th><th>Original field</th><th>Value</th></tr></thead><tbody>
+          <tr><td>A11</td><td>Sample Type</td><td>Kapton</td></tr><tr><td>B11</td><td>SAME Test #</td><td>75</td></tr><tr><td>G11</td><td>Duration (sec)</td><td>60</td></tr><tr><td>J11</td><td>Net aging time (sec)</td><td>32</td></tr>
+        </tbody></table></div>
+        <p>The run workbook identifies source time (B), test number (D), heating state (R), Shuttle detector power (BK) and its alarm flag (CN).<span class="te" lang="te">ప్రయోగ వర్క్‌బుక్‌లో సమయం (B), ప్రయోగ సంఖ్య (D), వేడి చేసే స్థితి (R), షటిల్ డిటెక్టర్ విద్యుత్ స్థితి (BK), అలారం స్థితి (CN) ఉన్నాయి.</span></p>
+        <p class="source-links"><a href="https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Experimental+table_SAME-R.csv&amp;version=1&amp;studyVersion=4">NASA SAME-R condition table</a><a href="https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_238_18_kapton_run75.xls&amp;version=1&amp;studyVersion=4">NASA run 75 workbook</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/#S4">Meyer et al., experimental procedure</a></p>
+      </details>
+    </section>
+    <form class="card responses" id="response">
+      <h2>Your reading / <span lang="te">మీ జవాబు</span></h2>
+      <label for="decision">What does the record support? / <span lang="te">రికార్డు ఏ విషయాన్ని నిర్ధారిస్తుంది?</span></label><textarea id="decision" rows="3" maxlength="2400"></textarea>
+      <label for="citation">Source and row, cell or figure / <span lang="te">మూలం మరియు వరుస, సెల్ లేదా బొమ్మ</span></label><textarea id="citation" rows="2" maxlength="1200"></textarea>
+      <label for="limit">What else would you need to know? / <span lang="te">ఇంకా ఏ సమాచారం కావాలి?</span></label><textarea id="limit" rows="2" maxlength="2400"></textarea>
+      <p class="subtle">Save your answer on this device and give the file to your instructor. The file contains the three answers, case and random response ID.<span class="te" lang="te">జవాబును ఈ పరికరంలో సేవ్ చేసి ఫైలును అధ్యాపకులకు ఇవ్వండి. ఫైలులో మీ మూడు జవాబులు, ప్రయోగం పేరు, యాదృచ్ఛికంగా ఇచ్చిన జవాబు గుర్తింపు సంఖ్య ఉంటాయి.</span></p>
+      <div class="session-actions"><button type="submit" class="primary">Save response / <span lang="te">జవాబును సేవ్ చేయండి</span></button><button type="button" id="blank">Editable blank worksheet (.txt) / <span lang="te">ఖాళీ అభ్యాసపత్రం</span></button></div><p id="saved" role="status"></p>
+    </form>
+    <footer><a href="amaravati-lab.html" download>Save this activity offline / <span lang="te">ఆఫ్‌లైన్ కాపీ</span></a> · <a href="classroom.html">Further practice with NIST / <span lang="te">మరింత అభ్యాసం</span></a></footer>
+    <noscript>Open the source packet and write your three responses on paper. <span lang="te">మూల ఆధారాలను చదివి, మూడు జవాబులను కాగితంపై రాయండి.</span><style>#smoke[hidden]{display:block!important}.responses button,.task-nav{display:none}</style></noscript>
+  </main>
+  <script>
+    (() => {
+      const fields = ['decision', 'citation', 'limit'];
+      const get = id => document.getElementById(id);
+      const cases = ['oxygen','smoke'];
+      const drafts = new Map(), ids = new Map();
+      let active;
+      function readAnswers() { return Object.fromEntries(fields.map(key => [key, get(key).value.trim()])); }
+      function select(key) {
+        if (active) drafts.set(active, readAnswers());
+        active = cases.includes(key) ? key : 'oxygen';
+        cases.forEach(id => get(id).hidden = id !== active);
+        document.querySelectorAll('[data-case]').forEach(a => {
+          if (a.dataset.case === active) a.setAttribute('aria-current','page');
+          else a.removeAttribute('aria-current');
+        });
+        for (const field of fields) get(field).value = drafts.get(active)?.[field] || '';
+        get('saved').textContent = '';
+      }
+      const fromUrl = () => select(new URLSearchParams(location.search).get('case'));
+      window.addEventListener('popstate', fromUrl);
+      document.querySelectorAll('[data-case]').forEach(a => a.addEventListener('click', event => {
+        event.preventDefault();
+        const url = new URL(location.href);
+        url.searchParams.set('case', a.dataset.case);
+        try { history.pushState(null,'',url); } catch {}
+        select(a.dataset.case);
+      }));
+      function save(text, name, type) {
+        const url = URL.createObjectURL(new Blob([text],{type}));
+        const a = document.createElement('a'); a.href = url; a.download = name;
+        document.body.append(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url),1500);
+      }
+      get('response').addEventListener('submit', event => {
+        event.preventDefault();
+        if (!ids.has(active)) ids.set(active, Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2,'0')).join(''));
+        const response_id = ids.get(active);
+        const value = {format:'first-fire.amaravati-response.v1',case:active,response_id,...readAnswers()};
+        save(JSON.stringify(value,null,2)+'\n','response-'+response_id+'.json','application/json');
+        get('saved').textContent = 'Saved / సేవ్ అయింది · '+response_id;
+      });
+      get('blank').addEventListener('click', () => {
+        const rows = ['FIRST FIRE · Amaravati · English / తెలుగు','Case / ప్రయోగం · '+active,''];
+        const panel = get(active);
+        rows.push(panel.querySelector('.prompt').innerText,'','Source packet / మూల ఆధారాలు');
+        const details = panel.querySelector('details');
+        for (const el of details.children) {
+          if (el.tagName === 'P' && !el.querySelector('a')) rows.push(el.textContent.trim());
+          if (el.querySelector('table')) for (const tr of el.querySelectorAll('tr')) rows.push(Array.from(tr.cells, cell=>cell.textContent).join(' | '));
+        }
+        for (const link of details.querySelectorAll('a')) rows.push(link.textContent+' — '+link.href);
+        for (const field of fields) rows.push('', document.querySelector('label[for="'+field+'"]').textContent, '___________________________________________________');
+        save(rows.join('\n')+'\n','amaravati-'+active+'-worksheet.txt','text/plain;charset=utf-8');
+      });
+      fromUrl();
+    })();
+  </script>
+</body></html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pressurized Rover Fire Case · FIRST FIRE</title>
+<meta name="description" content="Test which cabin items can keep burning on the Moon, compare atmospheres and inspect crew responses with FLINT and NASA combustion data.">
+<link rel="icon" href="icon.svg"><link rel="stylesheet" href="rover-fire-case.css">
+<script defer src="flint-coefficients.js"></script><script defer src="flint-solid.js"></script><script defer src="material-observer-model.js"></script><script defer src="material-case-link.js"></script>
+<script defer src="rover-fire-data.js"></script><script defer src="rover-fire-model.js"></script>
+<script defer src="rover-fire-case.js"></script>
+</head><body>
+<header class="mast"><div class="wrap mast-inner"><a class="brand" href="index.html">FIRST <b>FIRE</b></a><nav aria-label="Project"><a href="flint.html">FLINT engine</a><a href="#evidence">Evidence</a></nav></div></header>
+<main class="wrap"><header class="intro">
+<p class="eyebrow">Crew habitat · Lunar fire safety</p><h1>Pressurized Rover Fire Case</h1>
+<p>Which cabin items keep burning when the fans stop? Choose a material, light it in a sealed cabin, and compare the crew’s response options.</p>
+<p class="notice" style="border-left:5px solid #ae411e;background:#fff6f0;padding:12px 16px"><b>Now second by second:</b> the <a href="cabin-fire.html">Cabin Fire Simulator</a> runs this rover fire live, with the crew's oxygen and CO₂, fans off, CO₂ or nitrogen floods and venting compared side by side, and any material you design in the <a href="material-lab.html">Material Lab</a>.</p>
+</header>
+<noscript><p class="notice">Enable JavaScript to change the cabin and select items. The <a href="flint/results/rover/rover_case.json">complete reference case</a>, <a href="flint/results/rover/rover_trade.png">atmosphere trade</a> and <a href="flint/results/rover/rover_timeline.png">fire timelines</a> are available as files.</p></noscript>
+<div id="startup" role="status">Loading the FLINT reference case…</div>
+<section id="cabin" aria-label="Cabin and selected item" class="hero">
+<div class="viewer"><div class="viewer-title"><span class="eyebrow">Cabin cutaway</span><span id="scene-mode">Select a cabin item</span></div>
+<div id="scene-holder"><canvas id="scene" aria-label="Cutaway of the crew cabin with selectable material locations"></canvas><div id="scene-pins"></div></div>
+<div class="legend"><span><i class="dot burns"></i>Above limit</span><span><i class="dot below"></i>At or below limit</span><span><i class="dot withheld"></i>Not modelled</span></div></div>
+<article class="focus panel"><p class="eyebrow" id="selected-label">Selected item</p><h2 id="selected-title">Cabin inventory</h2>
+<p class="location" id="selected-details"></p><div id="selected-margin"></div><p id="selected-meaning"></p>
+<button type="button" id="ignite" class="primary">Light selected item <span aria-hidden="true">→</span></button>
+<a href="#inventory">Compare the inventory</a></article></section>
+
+<section class="panel" id="conditions"><div class="section-head"><div><p class="eyebrow">Scenario inputs</p><h2>Cabin conditions</h2></div><button type="button" id="reset-case">Restore nominal case</button></div>
+<p>Use a preset or change the oxygen and pressure. The fan setting is compared with fans off. Volume and item dimensions are case assumptions.</p>
+<form id="case-form"><div class="fields">
+<label>Atmosphere<select id="preset"></select></label><label>Gravity<select id="gravity"></select></label>
+<label>Cabin volume (m³)<input name="volume" id="volume" type="number" min="4" max="30" step="any" required></label>
+<label>Pressure (psia)<input id="pressure" type="number" min="0.2" step="any" required></label>
+<label>Oxygen (%)<input id="oxygen" type="number" min="2" max="80" step="any" required></label>
+<label>Fan speed (cm/s; zero is off)<input id="fans" type="number" min="0" max="50" step="any" required></label>
+</div><button type="submit">Apply conditions</button> <span id="input-status" role="status"></span></form>
+</section>
+
+<section id="inventory" class="panel"><p class="eyebrow">Flammability</p><h2>Which items can keep burning?</h2>
+<p>Margin is cabin oxygen minus the material’s limiting oxygen concentration. A positive margin supports sustained burning. Quenching means the flame loses too much heat. Blow-off means the flow is too fast for the reaction.</p>
+<div id="inventory-table"></div>
+<h3>Screen a candidate recipe alongside the inventory</h3><p id="screen-result"></p>
+<p><a id="screen-material" href="/material-observer.html">Compare this cabin and recipe in the material observer</a> · <a href="/material-observer.html">Open the observer</a></p>
+<details><summary>Add an item to the cabin</summary><form id="item-form"><div class="fields">
+<label>Item name<input id="item-name" required maxlength="70"></label><label>Material<select id="item-material"></select></label>
+<label>Exposed area (m²)<input id="item-area" required type="number" step="any" min="0.000001"></label>
+<label>Areal density (kg/m²)<input id="item-density" required type="number" step="any" min="0.000001"></label>
+</div><button type="submit">Add item</button> <span id="item-status" role="status"></span></form></details>
+<p class="note">ICES-2025-392 Fig. 13 and its single-material figures disagree on some lunar limits. FLINT uses Fig. 13 for its main calibration. The lunar centrifuge tests used still air. The Earth duct tests used forced flow; a still-air Earth result and all Mars results are model extrapolations. <a href="flint.html#validation">Inspect both readings in FLINT.</a></p>
+</section>
+
+<section id="trade" class="panel"><p class="eyebrow">Atmosphere trade</p><h2>How much fire margin buys a shorter pre-breathe?</h2>
+<p>Compare the cabin’s candidate atmospheres at the selected gravity with fans off. A lower nitrogen-to-suit pressure ratio indicates less pre-breathe. The bars show each material’s oxygen margin in percentage points.</p>
+<div id="trade-chart"></div><p class="note">The oxygen partial pressure matters for the crew. This calculation compares fire cases and does not establish a breathable operating atmosphere.</p>
+</section>
+
+<section id="ignition" class="panel"><p class="eyebrow">Sealed-cabin scenario</p><h2>After ignition</h2>
+<p id="timeline-context">Light an item to follow heat release, carbon dioxide, temperature and pressure over time.</p>
+<p class="note">Model extrapolation · FLINT assumes a well-mixed cabin, fans off, and an upward-spreading fire starting at the panel’s bottom edge. Spread speed and burning flux are assumptions. The exact seconds have not been measured in rover air.</p>
+<button id="ignite-here" type="button">Light selected item</button><div id="timeline-view" hidden>
+<div id="timeline-thresholds" class="metrics"></div><div id="timeline-charts" class="charts"></div>
+<div class="timeline-tools"><button id="play" type="button">Play timeline</button><label>Elapsed time<input id="time" type="range" min="0" value="0" step="1"></label></div>
+<div id="timeline-reading" class="readout"></div><div id="sensitivity"></div></div>
+</section>
+
+<section id="responses" class="panel"><p class="eyebrow">Crew response</p><h2>What would stop this item?</h2>
+<p>Compare responses to the selected fire. FLINT solves a dose or pressure endpoint. The timeline above shows the sealed-cabin case before intervention.</p>
+<div id="dose-table"></div><div class="fields compact"><label>Try a response<select id="response">
+<option value="none">No intervention</option><option value="fans">Switch fans off</option><option value="co2">Flood with CO₂</option><option value="n2">Flood with nitrogen</option><option value="vent">Vent to a target pressure</option><option value="suit">Suit up</option></select></label>
+<label id="vent-label" hidden>Target pressure (psia)<input id="vent-target" type="number" min="0.2" step="any"></label></div>
+<p id="response-result" role="status" class="notice"></p>
+</section>
+<section id="evidence" class="panel"><p class="eyebrow">NASA experiments</p><h2>What supports this fire case?</h2><div id="evidence-chain"></div>
+<details><summary>Model boundaries and source files</summary><p>FLINT calibrates a thin-solid extinction law. A thick window, local smoke plume or flame spreading against the flow needs different evidence. With orbit fans off, FLINT cannot calculate oxygen transport by diffusion. With orbit fans on, the solid limits are concurrent-flow extrapolations. BASS and Saffire supply the flight observations.</p>
+<p>Gas doses assume instantaneous mixing at fixed cabin volume. The model has no detector, pressure-hull rating or crew physiology model. A vent-while-burning experiment at lunar gravity would test the suppression thresholds.</p></details>
+<p class="source-links"><a href="flint/results/rover/rover_case.json">Reference case JSON</a><a href="flint/results/rover/rover_trade.png">Original trade figure</a><a href="flint/results/rover/rover_timeline.png">Original timeline figure</a><a href="flint/FIRST-FIRE_FLINT-engine.zip">Download FLINT</a></p>
+</section></main><footer class="wrap"><span>FIRST FIRE · Team Code Blooded</span><a href="flint.html">Explore FLINT →</a></footer>
+</body></html>

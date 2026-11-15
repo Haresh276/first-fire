@@ -1,0 +1,200 @@
+/* Shared reply controls also remain available on the full chat route. */
+.ffchat .ffchat-destinations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem .75rem;
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ffchat .ffchat-destinations li { margin: 0; max-width: 100%; }
+.ffchat .ffchat-destinations a {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  min-height: 2.75rem;
+  padding: .25rem .82rem;
+  border: 1px solid #a7b6a9;
+  border-radius: .5rem;
+  background: #f1f6ef;
+  color: #234637;
+  font: 600 .88rem/1.3 var(--body);
+  text-decoration: none;
+}
+.ffchat .ffchat-destinations a:hover { background: #e5efe3; text-decoration: underline; }
+
+.ff-cinema-home .ff-master-chat {
+  color-scheme: dark;
+  --ink: #f1f2ef;
+  --muted: #a6b0b9;
+  --line: #42505c;
+  --surface: #141f28;
+  --green: #acd8df;
+  --chat-line: #394754;
+  --chat-paper: #121c25;
+  --chat-muted: #b1bbc3;
+  --chat-accent: #a7dce5;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  color: var(--ink);
+}
+.ff-cinema-home .ffchat-toolbar { justify-content: flex-end; margin: 0 0 .65rem; }
+.ff-cinema-home .ffchat-desk { border: 0; background: transparent; box-shadow: none; }
+.ff-cinema-home .ffchat-form,
+.ff-cinema-home .ffchat-fresh .ffchat-form { padding: 0; margin: 0; }
+.ff-cinema-home .ffchat-composer {
+  align-items: center;
+  gap: .6rem;
+  min-height: 3.75rem;
+  padding: .48rem .58rem .48rem 1.06rem;
+  background: #111b23;
+  border: 1px solid #48535b;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px #0002;
+}
+.ff-cinema-home .ffchat-composer:focus-within {
+  border-color: #a8c8d0;
+  box-shadow: 0 0 0 2px #7cc0df28;
+}
+.ff-cinema-home .ffchat-composer textarea {
+  flex: 1 1 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 2.6rem;
+  margin: 0;
+  padding: .57rem 0;
+  color: #f4f5f1;
+  caret-color: #d7f4fa;
+  font-size: 1rem;
+  line-height: 1.48;
+}
+.ff-cinema-home .ffchat-composer textarea::placeholder { color: #b7c0c6; }
+.ff-cinema-home .ffchat-send {
+  flex: none;
+  min-height: 2.75rem;
+  color: #121c23;
+  background: #eeeee7;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+.ff-cinema-home .ffchat-send:not(.ffchat-stop) {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 50%;
+}
+.ff-cinema-home .ffchat-send:not(.ffchat-stop)::after { width: 1.15rem; height: 1.15rem; }
+.ff-cinema-home .ffchat-send:hover { background: #fff; }
+.ff-cinema-home .ffchat-stop { border-radius: .65rem; }
+.ff-cinema-home .ffchat-starters { margin: .55rem 0 0; }
+.ff-cinema-home .ffchat-suggestions { display: flex; flex-wrap: wrap; gap: 0 1.3rem; }
+.ff-cinema-home .ffchat-example {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  width: auto;
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: .36rem 0;
+  border: 0;
+  border-radius: .2rem;
+  color: #bbc5cb;
+  background: transparent;
+  font: 400 .91rem/1.4 var(--body);
+}
+.ff-cinema-home .ffchat-example::after {
+  content: '';
+  display: block;
+  flex: none;
+  width: .85rem;
+  height: .85rem;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8h9m-4-4 4 4-4 4' fill='none' stroke='black' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.ff-cinema-home .ffchat-example:hover { color: #fff; background: transparent; text-decoration: underline; }
+.ff-cinema-home .ffchat-exchange { padding: .25rem 0 1.5rem; gap: 1.3rem; }
+.ff-cinema-home .ffchat-exchange:empty { display: none; }
+.ff-cinema-home .ffchat-question p {
+  background: #1c2b36;
+  color: #f4f5f2;
+  border: 1px solid #354755;
+}
+.ff-cinema-home .ffchat-reply { width: 100%; max-width: 68ch; }
+.ff-cinema-home .ffchat-answer-text { color: #e8edf0; overflow-wrap: anywhere; }
+.ff-cinema-home .ffchat-byline { margin-bottom: .5rem; font-size: .94rem; color: #f0f2f1; }
+.ff-cinema-home .ffchat-answer-actions { flex-wrap: wrap; gap: .2rem .8rem; }
+.ff-cinema-home .ffchat :is(.ffchat-quiet, .ffchat-tool, .ffchat-edit, .ffchat-sources summary) { color: #c0cbd2; font-size: .88rem; }
+.ff-cinema-home .ffchat-tool,
+.ff-cinema-home .ffchat-edit,
+.ff-cinema-home .ffchat-quiet,
+.ff-cinema-home .ffchat-sources summary { min-height: 2.75rem; }
+.ff-cinema-home .ffchat-new { background: #1a2631; border-color: #435260; box-shadow: none; }
+.ff-cinema-home .ffchat :is(.ffchat-tool:hover:enabled, .ffchat-tool[aria-expanded="true"], .ffchat-quiet:hover:enabled, .ffchat-sources summary:hover) {
+  background: #263542;
+  color: #fff;
+}
+.ff-cinema-home .ffchat-recent { width: min(20rem, 78vw); border-color: #485865; box-shadow: 0 12px 38px #0007; }
+.ff-cinema-home .ffchat-recent h2 { color: #c4cfd6; }
+.ff-cinema-home .ffchat-history-link { color: #cbd3d7; font-size: .9rem; min-height: 2.75rem; }
+.ff-cinema-home .ffchat-history-link:hover,
+.ff-cinema-home .ffchat-history-link[aria-current] { background: #293946; color: #fff; }
+.ff-cinema-home .ffchat-wait,
+.ff-cinema-home .ffchat-feedback,
+.ff-cinema-home .ffchat-branch,
+.ff-cinema-home .rf-evidence-label { color: #b6c2ca; font-size: .88rem; }
+.ff-cinema-home .ffchat-error { color: #ffc4b5; font-size: .92rem; }
+.ff-cinema-home .ffchat-sources ol { border-color: #51636e; }
+.ff-cinema-home .ffchat-sources li::marker { color: #a1adb5; }
+.ff-cinema-home .ffchat-sources small { font-size: .84rem; }
+.ff-cinema-home .ffchat :is(.ffchat-sources a, .rf-continue, .ff-chat-evidence a, .rf-proof a, .ff-proof a) {
+  color: #b5e0e8;
+  text-decoration: underline;
+}
+.ff-cinema-home .ffchat .ffchat-destinations a,
+.ff-cinema-home .ffchat .ghost {
+  color: #c3e4ea;
+  background: #162834;
+  border-color: #4b6372;
+}
+.ff-cinema-home .ffchat .ffchat-destinations a:hover,
+.ff-cinema-home .ffchat .ghost:hover { color: #fff; background: #263e4b; }
+.ff-cinema-home .ffchat :is(.ff-chat-evidence, .ff-proof, .rf-proof) { border-color: #52636d; font-size: .92rem; }
+.ff-cinema-home .ffchat :is(details.ff-chat-evidence, details.ff-proof, details.rf-proof) {
+  color: #e2e9ec;
+  background: #141f28;
+}
+.ff-cinema-home .ffchat :is(.ff-chat-evidence, .ff-proof, .rf-proof) > summary {
+  color: #cfdee3;
+  font-weight: 600;
+}
+.ff-cinema-home .rf-proof .rf-check {
+  color: #e9eff2;
+  background: #1c2933;
+  border-color: #9db2bd;
+}
+.ff-cinema-home .rf-proof .rf-check[data-state="pass"] { border-color: #7fb6a7; }
+.ff-cinema-home .rf-proof .rf-check[data-state="fail"],
+.ff-cinema-home .rf-proof .note { color: #f8e7e1; background: #322525; border-color: #dba08b; }
+.ff-cinema-home .ffchat :is(.ff-chat-evidence, .ff-proof, .rf-proof) blockquote {
+  color: #e0e7e9; background: #17232d; border-color: #60757f;
+}
+.ff-cinema-home .ffchat :is(.ff-proof, .ff-intent, .ff-chat-evidence) textarea,
+.ff-cinema-home .ffchat :is(.ff-proof, .ff-intent, .ff-chat-evidence) select {
+  color: var(--ink); background: #17232d; border-color: #57636c;
+}
+.ff-cinema-home .ffchat :is(button, a, summary):focus-visible { outline: 2px solid #b2e7f1; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .ff-cinema-home .ffchat-suggestions { gap: 0 1rem; }
+  .ff-cinema-home .ffchat-example { min-height: 2.5rem; }
+  .ff-cinema-home .ffchat-composer { padding-left: .8rem; }
+}
+@media (max-width: 450px) {
+  .ff-cinema-home .ffchat-recent { width: auto; }
+}
+@media (forced-colors: active) {
+  .ff-cinema-home .ffchat-send:not(.ffchat-stop)::after,
+  .ff-cinema-home .ffchat-example::after { forced-color-adjust: none; background: ButtonText; }
+  .ff-cinema-home .ffchat-composer { border-color: ButtonText; }
+}

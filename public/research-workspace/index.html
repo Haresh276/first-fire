@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#070c11">
+<script>if(location.hash==="#judge-lab")location.replace("judge-lab.html"+location.search);</script>
+<title>FIRST FIRE · Spacecraft fire research</title><meta name="description" content="Ask about NASA spacecraft fire experiments, follow the evidence, or find a simulation to try.">
+<script>
+(() => {
+  const duration = 8000;
+  let generation = 0;
+  let state = 'loading';
+  let timer = setTimeout(slow, duration);
+  let diagnostic;
+  document.documentElement.classList.add('ff-waiting-styles');
+  let completeStyles;
+  const stylesheetReady = new Promise(resolve=>{completeStyles=resolve;});
+  const main = () => document.getElementById('content');
+  const announce = message => {
+    const region = document.getElementById('workspace-status');
+    if (region) region.textContent = message;
+  };
+  function show(message, waiting) {
+    if (!main()) {
+      const observer = new MutationObserver(() => {
+        if (main()) {
+          observer.disconnect();
+          if (state === (waiting ? 'loading' : 'failed')) show(message, waiting);
+        }
+      });
+      observer.observe(document.documentElement, {childList:true, subtree:true});
+      return;
+    }
+    diagnostic?.remove();
+    const panel = document.createElement('section');
+    panel.className = 'panel ff-shell-recovery';
+    const heading = document.createElement('h1');
+    heading.textContent = waiting ? 'This view is still loading' : 'This view couldn’t open';
+    const detail = document.createElement('p');
+    detail.textContent = message;
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'btn';
+    retry.textContent = 'Retry loading';
+    retry.addEventListener('click', () => {
+      if (location.protocol !== 'file:' && !navigator.onLine) {
+        detail.textContent = 'You’re offline. Reconnect, then retry this view.';
+        announce(detail.textContent);
+      } else location.reload();
+    });
+    panel.append(heading, detail, retry);
+    diagnostic = panel;
+    if (!waiting) main().replaceChildren(panel);
+    else main().prepend(panel);
+    main().setAttribute('aria-busy', 'false');
+    announce(heading.textContent + '. Retry loading is available.');
+  }
+  function slow() {
+    if(state !== 'loading') return;
+    show('You can keep waiting or retry this view.', true);
+  }
+  function fail(message) {
+    if(state !== 'loading') return;
+    clearTimeout(timer);
+    state='failed';
+    show(message, false);
+  }
+  // Installed before any external assets, including the deferred app scripts.
+  window.FFWorkspace = {
+    stylesheetReady,
+    stylesLoaded() {
+      document.documentElement.classList.remove('ff-waiting-styles');
+      completeStyles();
+    },
+    start(first) {
+      if (first && state === 'failed') return 0;
+      generation += 1;
+      if (!first) {
+        clearTimeout(timer);
+        timer = setTimeout(slow, duration);
+        diagnostic?.remove();
+      }
+      state = 'loading';
+      main().setAttribute('aria-busy', 'true');
+      announce('');
+      return generation;
+    },
+    pending(id) { return id === generation && state === 'loading'; },
+    ready(id, name) {
+      if (!this.pending(id)) return;
+      diagnostic?.remove();
+      state = 'ready';
+      clearTimeout(timer);
+      main().setAttribute('aria-busy', 'false');
+      announce(name + ' loaded.');
+    },
+    fail
+  };
+  document.addEventListener('click', event => {
+    if (!event.target.closest?.('a.skip[href="#content"]')) return;
+    const target = main();
+    if (!target) return;
+    event.preventDefault();
+    target.focus();
+    target.scrollIntoView({block:'start'});
+  });
+})();
+</script>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+.ff-waiting-styles {background:#060a12;color:#ecf1f5;font:16px system-ui,sans-serif}
+.ff-waiting-styles .skip:not(:focus),.ff-waiting-styles .masthead,.ff-waiting-styles footer,.ff-waiting-styles #workspace-status {display:none}
+.ff-waiting-styles body {margin:0}
+.ff-waiting-styles .ff-master-pending {min-height:70svh;padding:6vh 7vw;display:grid;align-content:center;position:relative;overflow:hidden}
+.ff-waiting-styles .ff-cinema-lead {max-width:min(42vw,36rem);position:relative;z-index:1}
+.ff-waiting-styles .ff-cinema-lead h1 {font-size:clamp(2.8rem,7vw,7rem);line-height:.94;margin:.25em 0}
+.ff-waiting-styles .earth-figure {position:absolute;width:min(53vw,75vh);right:-3%;top:5%;margin:0}
+.ff-waiting-styles .earth-poster {width:100%;height:auto}
+.ff-waiting-styles .ff-shell-recovery ~ .ff-master-pending {display:none}
+.ff-waiting-styles .ff-shell-recovery {margin:12vh auto;max-width:36rem;padding:1.5rem}
+.ff-waiting-styles .ff-shell-recovery button {font:inherit;padding:.6rem 1rem}
+</style>
+<link rel="preload" href="workspace.css" as="style">
+<noscript><link rel="stylesheet" href="workspace.css"></noscript>
+<link rel="stylesheet" media="print" href="workspace.css" onload="this.media='all';FFWorkspace.stylesLoaded()" onerror="FFWorkspace.fail('The workspace stylesheet could not load. Check your connection and retry.')">
+<script defer src="workspace-core.js" onerror="FFWorkspace.fail('The research workspace could not load. Check your connection and retry.')"></script>
+<noscript><style>.ff-master-pending, .mast-nav, .ff-shell-current, .ff-shell-footer nav { display: none !important; }</style></noscript>
+</head>
+<body><a href="#content" class="skip">Skip to content</a>
+<header class="masthead ff-shell-header"><div class="shell mast-inner">
+  <div class="ff-shell-identity">
+    <a href="#home" data-nav="home" class="mast-brand" aria-label="FIRST FIRE home"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i></span>FIRST FIRE<span class="branddot">.</span></a>
+    <span class="ff-shell-current"><span class="ff-shell-sr">Current module: </span><span id="ff-current-module">Research desk</span></span>
+  </div>
+  <nav class="mast-nav" aria-label="Workspace">
+    <a href="#physics">Physics lab</a>
+    <a class="mast-chat" data-nav="chat" href="#chat">Chat</a>
+    <a class="ff-account-link" href="/account/">Account</a>
+    <details class="mast-explore" id="workspace-explore">
+     <summary>Explore <svg aria-hidden="true" viewBox="0 0 14 14" width="14" height="14" fill="none"><path d="m3 5 4 4 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg></summary>
+     <div class="mast-dropdown ff-shell-dropdown">
+      <section class="ff-shell-group" aria-labelledby="ff-nav-0">
+       <h2 id="ff-nav-0">Guided Onboarding</h2>
+       <ul>
+        <li><a href="#session" data-nav="session">Guided investigation</a></li>
+        <li><a href="#awareness" data-nav="awareness">Saved investigation</a></li>
+        <li><a href="evidence-guide.html">Choose a NASA investigation</a></li>
+        <li><a href="#cases" data-nav="cases">Case library</a></li>
+        <li><a href="#earth" data-nav="earth">Earth applications</a></li>
+        <li><a href="/account/">Account and sign-in</a></li>
+       </ul>
+      </section>
+      <section class="ff-shell-group" aria-labelledby="ff-nav-1">
+       <h2 id="ff-nav-1">Reference and Data</h2>
+       <ul>
+        <li><a href="tools.html#labs">Research labs and tools</a></li>
+        <li><a href="/material-observer.html">Material observer</a></li>
+        <li><a href="#atlas" data-nav="atlas">Evidence Atlas</a></li>
+        <li><a href="#compass" data-nav="compass">Habitat Compass</a></li>
+        <li><a href="#passports" data-nav="passports">Material passports</a></li>
+        <li><a href="#rulebook" data-nav="rulebook">Rulebook</a></li>
+        <li><a href="#data" data-nav="data">Data explorer</a></li>
+        <li><a href="#referee" data-nav="referee">Evidence referee</a></li>
+        <li><a href="detector.html">Detector signals</a></li>
+       </ul>
+      </section>
+      <section class="ff-shell-group" aria-labelledby="ff-nav-2">
+       <h2 id="ff-nav-2">Simulation Labs</h2>
+       <ul>
+        <li><a href="#forecast" data-nav="forecast" class="ff-shell-featured"><span>FM² forecast</span><small>Inspect four lunar burn forecasts.</small></a></li>
+        <li><a href="#physics" data-nav="physics" class="ff-shell-featured"><span>Physics Lab</span><small>Vary the cabin conditions.</small></a></li>
+        <li><a href="/cabin-fire.html" class="ff-shell-featured"><span>Cabin Fire Simulator</span><small>Does a rover fire put itself out?</small></a></li>
+        <li><a href="/material-lab.html" class="ff-shell-featured"><span>Material Lab</span><small>Invent a material, predict where it burns.</small></a></li>
+        <li><a href="#design-lab" data-nav="design-lab" class="ff-shell-featured"><span>Experiment design</span><small>Choose the next oxygen level.</small></a></li>
+        <li><a href="#transport-lab" data-nav="transport-lab" class="ff-shell-featured"><span>Tracer transport</span><small>Model a sensor’s response.</small></a></li>
+        <li><a href="#transfer-lab" data-nav="transfer-lab">Matched experiments</a></li>
+        <li><a href="#physics?mode=rover" data-nav="physics">Rover sandbox</a></li>
+        <li><a href="judge-lab.html">Rover experiment</a></li>
+        <li><a href="#rover-design" data-nav="rover-design">Rover design lab</a></li>
+        <li><a href="rover-workbench/prototype/index.html#workbench">3D rover workbench</a></li>
+       </ul>
+      </section>
+      <section class="ff-shell-group" aria-labelledby="ff-nav-3">
+       <h2 id="ff-nav-3">Evaluation and Docs</h2>
+       <ul>
+        <li><a href="#study" data-nav="study">Blind test</a></li>
+        <li><a href="#benchmark" data-nav="benchmark">Chat benchmark</a></li>
+
+        <li><a href="technical-manual.html" target="_blank" rel="noopener noreferrer">Technical manual <span aria-hidden="true">↗</span><span class="ff-shell-sr"> (opens in a new tab)</span></a></li>
+       </ul>
+      </section>
+     </div>
+    </details>
+  </nav>
+</div></header>
+<div class="ff-shell-sr" id="workspace-status" role="status" aria-live="polite" aria-atomic="true"></div>
+<main id="content" class="shell main" tabindex="-1" aria-label="Research workspace" aria-live="polite" aria-relevant="additions" aria-busy="true"><noscript><section class="panel ff-shell-recovery">
+  <h1>Flame in Freefall</h1>
+  <p>Enable JavaScript to use research chat and the simulations. You can also <a href="manual.html">read the user guide</a> or <a href="data/tests.csv" download>download the NASA records</a>.</p>
+</section></noscript>
+<section class="ff-shell-skeleton ff-master-pending ff-cinema-home" aria-hidden="true">
+      <div class="ff-cinema-lead">
+        <p class="ff-cinema-topic">Spacecraft fire research</p>
+        <h1 >Flame in <span>Freefall</span></h1>
+        <p class="ff-cinema-description">Ask about a NASA fire experiment or find a lab to test an idea.</p>
+      </div>
+      <div class="ff-cinema-pending-chat"><div class="ff-cinema-pending-input"></div><div class="ff-cinema-pending-prompts"><i></i><i></i></div></div>
+      <figure class="earth-figure ff-cinema-earth">
+        <div class="earth-disc">
+          <img class="earth-poster" src="earth-poster.webp" width="720" height="720" alt="" fetchpriority="high">
+        </div>
+      </figure>
+    </section></main>
+<footer><div class="shell foot ff-shell-footer">
+  <span class="footbrand">FIRST FIRE.</span><span>Team Code Blooded · NASA Space Apps 2026</span>
+  <nav aria-label="Documentation"><a data-nav="guide" href="#guide">User guide</a><a data-nav="sources" href="#sources">Sources and methods</a></nav>
+</div></footer>
+<script id="workspace-recovery">
+(() => {
+  if (!('serviceWorker' in navigator) || !self.isSecureContext ||
+      location.pathname.split('/')[1] !== 'research-workspace') return;
+  const url = new URL(location.href);
+  if (url.searchParams.has('_ff_saved')) {
+    const message = document.createElement('aside');
+    message.setAttribute('aria-label', 'Connection status');
+    message.style.cssText = 'padding:.55rem 1rem;background:#18242d;color:#fff;text-align:center;font:14px system-ui';
+    const retry = document.createElement('a');
+    retry.style.cssText = 'color:#fff;text-decoration:underline';
+    retry.textContent = 'Try the live site';
+    const liveURL = () => {
+      const address = new URL(location.href);
+      address.searchParams.delete('_ff_saved');
+      retry.href = address.href;
+    };
+    liveURL();
+    addEventListener('hashchange', liveURL);
+    message.append('Using the saved research workspace. ', retry);
+    document.body.prepend(message);
+  }
+  const register = () => navigator.serviceWorker.register('/workspace-worker.js', {scope:'/',updateViaCache:'none'}).catch(() => {
+    // Private browsing or a full disk can disable offline storage.
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.requestIdleCallback) requestIdleCallback(register, {timeout:2000});
+    else setTimeout(register, 0);
+  }, {once:true});
+})();
+
+</script>
+</body></html>

@@ -87,6 +87,13 @@ def corpus():
     def primary(topic,key,fact,hints,num):
         add(topic,key,fact,hints,source(topic,num))
 
+    add("saffire", "fiber",
+        "Nomex is a family of heat-resistant fibers. Its meta-aramid polymer gives the fiber its flame resistance. One familiar use is protective clothing for firefighters.",
+        "what is Nomex material fiber definition", {
+            "title": "DuPont · Technical guide for Nomex fiber",
+            "url": "https://www.dupont.com/content/dam/dupont/amer/us/en/personal-protection/public/documents/en/Nomex%28R%29%20Fiber%20Technical%20Guide.pdf",
+            "locator": "Section I, printed p. 1, What is Nomex? and Molecular structure of Nomex fiber."
+        })
     primary("sibal","instrument","LUCI compared SIBAL, a cotton–fiberglass composite fabric, burning downward in simulated lunar gravity with the same material at 1 g. SIBAL flame-base speed and flame-tip speed describe different moving boundaries. Time to visible extinction is a separate endpoint.","what is SIBAL LUCI meaning flame speed duration difference",0)
     primary("saffire","time","In Saffire-II sample 2-7 the 140 s duration belongs to the composite test. The upstream PMMA (acrylic) burned. The downstream Nomex was damaged and blackened but did not ignite. Its reported burn length was zero.","what burned 140 seconds Nomex ignite blackened charred discoloration flame duration",0)
     primary("saffire","ground","Externally heated Nomex HT90-40 can burn under other conditions in 1-g experiments. The orbital sample 2-7 observation cannot certify Nomex as fireproof or safe in every atmosphere.","universal fireproof safe proof on Earth lunar fabric ground externally heated",1)

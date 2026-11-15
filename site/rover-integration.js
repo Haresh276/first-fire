@@ -17,6 +17,7 @@
   const kPaPerPsi = 6.894757293;
 
   function scenarioFromLink(params,data,model) {
+    if(params.has('mix') || params.has('material'))return null;
     if(!['from','example','world','gravity','oxygen','psia'].some(key=>params.has(key)))return null;
     const from=params.get('from')||'link';
     if(!['compass','rulebook','link'].includes(from))throw RangeError('Unknown scenario source.');
@@ -173,7 +174,9 @@
       if(!current)return;
       try{
         sessionStorage.setItem('first-fire.rover-workbench.scenario.v1',JSON.stringify(scenario));
-        location.assign('rover-workbench/prototype/index.html#workbench');
+        const recipeLink=screen.querySelector('a[href]');
+        const query=recipeLink ? new URL(recipeLink.href).search : '';
+        location.assign('rover-workbench/prototype/index.html'+query+'#workbench');
       }catch{
         status.textContent='Your browser could not transfer this design. Open the 3D rover workbench from the navigation.';
       }
@@ -197,11 +200,13 @@
     controls.append(origin,label('Reference scenario',example),label('Design name',name));
     wrap.append(controls,output,status,partsBox,conditionsBox);
     const total=(heading,value)=>{const p=e('div');p.append(e('span',heading),e('strong',value));return p;};
+    let refreshMaterialScreen;
     function calculate() {
       try{current=buildRecord(scenario,data,model,context);}
-      catch(err){current=null;drive.disabled=true;capture.disabled=true;status.textContent='Check the scenario. '+err.message;metrics.replaceChildren();info.replaceChildren();refList.replaceChildren();return;}
+      catch(err){current=null;refreshMaterialScreen?.();drive.disabled=true;capture.disabled=true;status.textContent='Check the scenario. '+err.message;metrics.replaceChildren();info.replaceChildren();refList.replaceChildren();return;}
       status.textContent='';drive.disabled=false;capture.disabled=false;
       const r=current.record.result;
+      refreshMaterialScreen?.();
       metrics.replaceChildren(total('Assembled mass',print(r.mobility.massKg)+' kg'),total('Final stored energy',print(r.power.endWh)+' Wh'),
         total('Coupon energy',r.coupon?print(r.coupon.netChemicalPotentialKJ)+' kJ':'Withheld'));
       info.replaceChildren(e('p',boundary,'small'));
@@ -237,6 +242,19 @@
     example.onchange=()=>{scenario=copy(data.examples[example.value]);context=null;showOrigin();sync();calculate();};
     name.oninput=()=>{scenario.name=name.value;example.value='';calculate();};
     sync();calculate();
+    const screen=e('section','Loading cabin material screening…','panel rd-inputs');
+    output.after(screen);
+    import('./material-screening.mjs').then(({mountMaterialScreen,roverReturn,roverEnvironment})=>{
+      if(!screen.isConnected)return;
+      refreshMaterialScreen=mountMaterialScreen(screen,{
+        from:'rover',fixedFan:true,params:new URLSearchParams(location.hash.split('?')[1] || ''),
+        read:()=>roverEnvironment(scenario,current?.record.result),snapshot:()=>scenario,
+        apply:(environment,saved)=>{
+          const restored=roverReturn(scenario,environment,saved,data,model);
+          scenario=restored.scenario;example.value='';sync();calculate();return restored.message;
+        }
+      });
+    }).catch(()=>{screen.textContent='The material screening model could not load.';});
   }
   globalThis.FFRoverDesign={render,buildRecord,scenarioFromLink};
   if(typeof module!=='undefined'&&module.exports)module.exports={buildRecord,scenarioFromLink};

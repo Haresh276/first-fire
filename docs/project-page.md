@@ -1,111 +1,62 @@
-# FIRST FIRE — project page text for the Space Apps submission
-
-Copy each block into the matching field of the submission form. Global judges see only this page, the demo link and the final project link, so every block below stands on its own. Submit by 21:30 IST; the form closes at 23:59 IST.
-
-## Project name
+## Project Name
 
 FIRST FIRE — A Research Desk for Spacecraft Fire Safety
 
-## High-level summary
+## High-Level Project Summary
 
-NASA is about to light the first fire ever on the Moon: FM² will burn four fabric strips in a sealed chamber on the lunar surface. Nobody knows the result, because every fire test in NASA's Physical Sciences Informatics archive was flown in orbit, with no gravity. FIRST FIRE turns that freefall data into fire-safety answers for the Moon, Mars and pressurized rovers. A browser research desk organises 1,622 source rows from the 15 challenge investigations and checks every claim against its source. FLINT, our open physics engine built on NASA's own extinction model, predicts NASA's four lunar-gravity flammability limits from Earth tests alone to within 1.4 points of oxygen. It also shows that FM²'s oxygen sensor will read about a point high, finds CO₂ a better suppressant than helium in 274 Space Station droplet runs, and shows that a rover cabin fire is a materials problem. Anyone can explore it live: change gravity in our fire lab, invent and test a new cabin material in our Material Lab, or follow a rover fire second by second in our Cabin Fire Simulator. NASA can use our decoder the day FM² reports. We sealed our forecast with a timestamp before the flight. If we're wrong, the Moon will tell us.
+Would a rover's fabric or tape keep burning after the cabin fans stop? FIRST FIRE helps researchers find which NASA experiments can answer questions like this and where a new test is needed. Our dashboard ranks studies on fire prevention, detection and suppression, and links each study to its source. We tested our fire model by hiding one of four simulated Moon-gravity measurements at a time. On NASA's summary plot, its oxygen estimates missed by 1.4 percentage points on average, versus 2.3 for a straight line. The individual plots reverse that ranking. We published both results and recorded four predictions for NASA's planned Moon experiment before its results arrive.
 
-## Link to project demo
+## Link to Project Demo
 
-The 30-second captioned film: https://first-fire-lunar-lab.vercel.app/master-film.mp4
+https://first-fire-lunar-lab.vercel.app/master-film.mp4
 
-The demo must be a video of 30 seconds or less, or at most seven slides. Our Round 2 deck has twelve slides, so link the film.
-
-Alternative: https://first-fire-lunar-lab.vercel.app/lab-film.mp4, a 29.8-second captioned screen film of the live gravity fire lab and the FM² decoder. Pick one: the original film tells the story; this one shows the tools working.
-
-## Link to final project
+## Link to Final Project
 
 https://first-fire-lunar-lab.vercel.app/judging.html
 
-## Detailed project description
+## Detailed Project Description
 
-**What it does.** FIRST FIRE answers one question at the centre of the challenge: will a material that passed NASA's Earth fire test keep burning on the Moon, on Mars or in a pressurized rover? It has three parts.
+FIRST FIRE indexes 1,622 source rows from 15 NASA investigations. Its browser dashboard ranks evidence for a selected fire-safety question, displays original measurements and explains why a similar-looking experiment can fail the comparison. In three space station smoke tests, for example, one detector recorded a signal while a second alarm stayed silent. The second detector's power flag was off in all three runs. Counting those as missed alarms would give an engineer the wrong impression.
 
-- A research desk over the 15 PSI combustion investigations: an Atlas of every record, a Compass that ranks tests by closeness to a chosen habitat, a Rulebook that audits seven fire-safety assumptions for orbit, the Moon and Mars, and passports for each investigation.
-- FLINT, a physics engine that predicts a material's oxygen limit at any gravity, pressure and atmosphere. It reads sealed-chamber burns such as FM² correctly, models droplet flames in freefall from NASA's FLEX runs and works through a pressurized-rover fire case.
-- A sealed forecast of FM²'s four burns, timestamped before the flight, and a day-one decoder that turns FM²'s measured burn lengths into the lunar oxygen limit, corrected for the sealed box.
-- A gravity fire lab that runs FLINT in any browser: choose orbit, Moon, Mars or Earth, a cabin air and a fan speed, and see which cabin materials keep burning.
-- A Material Lab for materials nobody has flown: build one from its atoms or blend two or three by mass, calibrate it on one Earth fire test, and FLINT predicts its oxygen limit in orbit, on the Moon, on Mars and on Earth, ranked against NASA's tested materials.
-- A Cabin Fire Simulator that follows a fire in a lunar rover, a habitat or a station module second by second: oxygen, heat, CO₂, pressure and the oxygen the crew breathes. It shows whether the fire puts itself out before it endangers the crew, and compares fans off, CO₂ and nitrogen floods and venting. With its sealed-cabin chemistry off it reproduces FLINT's Python rover case to the half second.
+The Fire Lab lets a researcher vary cabin conditions and see how much oxygen a flame needs to keep spreading. Our Python model, FLINT, estimates how airflow feeds a flame and how heat escapes. We used Earth-gravity tests for each material and three simulated Moon-gravity measurements to estimate a value shared across materials. We then predicted the fourth, rotating through all four. NASA's summary figure and the individual figures give different results, so we publish the comparison and its sensitivity.
 
-**How it works.** The desk is a static website that runs offline. A small local language model only selects passages from NASA's records; it does not compose numbers. A Referee checks that every quotation exists on the cited page, that the claim follows from it and that each number recomputes, and every rejected claim is published.
+The material observer compares candidate recipes in different cabins, displays NASA’s measured cotton–fiberglass runs and lets a researcher record what a specimen actually did. https://first-fire-lunar-lab.vercel.app/material-observer.html
 
-FLINT is built on the two-limit extinction model in NASA's 2025 lunar flammability paper (ICES-2025-392). A flame dies when the flow blows it off or when it loses heat faster than it makes it. We added the two things that paper lists as open: a flow speed for any gravity and a flame temperature for any atmosphere. Calibrated only on NASA's 1-g tests, FLINT predicts NASA's four lunar-gravity limits, each held out in turn, with a mean error of 1.4 points of oxygen, against 2.3 for a straight-line estimate.
+The Material Lab builds a candidate material from its atoms, or blends two or three by mass, calibrates it on one Earth fire test and estimates the oxygen it needs to keep burning in orbit, on the Moon, on Mars and on Earth, ranked against NASA’s tested materials. https://first-fire-lunar-lab.vercel.app/material-lab.html
 
-**What we found.**
+The Cabin Fire Simulator follows a fire in a lunar rover, a habitat or a station module second by second: oxygen, heat, CO₂, pressure and the oxygen the crew breathes. It shows whether the fire goes out before the crew must mask up, and compares turning the fans off, CO₂ and nitrogen floods and venting. With its sealed-cabin chemistry switched off it reproduces FLINT’s Python rover case to the half second. https://first-fire-lunar-lab.vercel.app/cabin-fire.html
 
-1. **Why some materials resisted.** FLINT explains why polycarbonate and Nomex burned less readily on the Moon: the weak buoyant flow starves them. It predicts they burn more readily on Mars.
-2. **FM² will read high.** In FM²'s sealed chamber the flame's own CO₂ and steam choke it. At extinction the oxygen sensor will read about 27% while the flame felt about 26%, and burns stop sooner than oxygen bookkeeping predicts.
-3. **CO₂ beats helium.** Across 274 FLEX droplet runs, CO₂ raises the oxygen a flame needs more than helium does. Helium can make a heptane fire harder to put out.
-4. **A rover fire is a materials problem.** In a 13 m³ rover at 34% oxygen, every cabin item we modelled keeps burning with the fans off. A CO₂ flood would triple the cabin pressure, and venting works only with the crew suited.
+For NASA's planned Flammability of Materials on the Moon experiment, we timestamped our forecast of whether flames would keep spreading on four fabric strips. The FM² decoder lets researchers explore what different lengths of burned fabric would imply. Students can use our English and Telugu classroom exercise to trace a smoke-alarm reading to a real experiment. The India case identifies measurements needed before applying a spacecraft model to a hospital ward.
 
-**Benefits.** Cabin-material engineers at NASA, ISRO, ESA and JAXA get an evidence trail from each flight record to each prediction, with every result labelled validated, extrapolated or not modelled. The same physics informs fire safety in oxygen-enriched hospital wards, mines, submarines and aircraft. Students get a two-minute explainer with summaries in Hindi, Telugu, Tamil, Spanish, French, Portuguese, Japanese and Chinese. A page on India links the physics to the oxygen-rich ICUs where 122 people died in 29 hospital fires in about 20 months from August 2020.
+## Use of Super Intelligence (SI)
 
-**What makes it creative.** It forecasts an experiment that has not happened yet, sealed and scored, so the project can be proven wrong. It publishes its own failures next to its scores. And it proposes four follow-up fires on existing NASA hardware, each with FLINT's prediction and the result that would falsify it.
+Yes. We used OpenAI ChatGPT and Codex to help locate sources, write and test code, and draft technical explanations. Anthropic Claude assisted with FLINT, tests, figures, the rover case and presentation materials. We used models for passage retrieval, selection and quotation review. The published results distinguish measurements from model output. The demo uses synthetic English narration from macOS speech synthesis, and the rover concept illustration is SI-generated. Our disclosure and credits are at https://first-fire-lunar-lab.vercel.app/team-handoff.html#disclosure
 
-**What we considered.**
+## NASA Data
 
-- FM² has not flown.
-- FLINT is validated on four materials at 8.2 psia and has not been reviewed by NASA.
-- Other pressures, and quiescent flames in orbit, are extrapolations.
-- The CFI-G gas-jet ignition test showed no skill, and we report that negative result.
+NASA's Physical Sciences Informatics archive supplies the original microgravity combustion and smoke-detector data. Our index lists all 15 investigations, their NASA DOIs and the 16 original tables used in FIRST FIRE: https://first-fire-lunar-lab.vercel.app/submission.html#nasa-data
 
-**Tools.** Python (NumPy, SciPy, Matplotlib, pytest) for FLINT; HTML, CSS and JavaScript for the desk; Playwright and Node tests; local open-weight language models in the browser. More than 170 automated tests pass.
+FLEX fuel droplet measurements: https://doi.org/10.60555/mbq8-0451
+SAME-R detector measurements: https://doi.org/10.60555/2np7-jv14
+Saffire-II material tests: https://doi.org/10.60555/2chp-m469
+CFI-G gas ignition tests: https://doi.org/10.60555/cyt1-kh64
+NASA's Earth and simulated lunar-gravity material study, used to test FLINT: https://ntrs.nasa.gov/citations/20250002114
+NASA's planned FM² experiment, used to define the four forecast cases: https://ntrs.nasa.gov/citations/20260001966
+LUCI partial-gravity experiment: https://ntrs.nasa.gov/citations/20250010653
+Saffire-II flight report: https://ntrs.nasa.gov/citations/20170008805
+FLEX flight report: https://ntrs.nasa.gov/citations/20150023456
+NASA flammability standard: https://standards.nasa.gov/standard/NASA/NASA-STD-6001
+NASA exploration-atmospheres assessment: https://ntrs.nasa.gov/citations/20260003925
 
-## Use of SI
+## Space Agency Partner Data and Other References
 
-Paste the disclosure from https://first-fire-lunar-lab.vercel.app/team-handoff.html#disclosure without shortening it. It names each SI tool, what it did, the synthetic film narration and the SI-generated rover illustration.
-
-## NASA data
-
-Fifteen PSI investigations, cited by DOI:
-
-| Investigation | DOI |
-|---|---|
-| BASS | 10.60555/58h4-dy80 |
-| BASS-II | 10.60555/4qc4-de67 |
-| CFI | 10.60555/m6pj-a914 |
-| ACME CFI-G | 10.60555/cyt1-kh64 |
-| ACME E-FIELD Flames | 10.60555/se5a-8c73 |
-| ACME BRE | 10.60555/vb93-3y72 |
-| FLEX | 10.60555/mbq8-0451 |
-| FLEX-2 | 10.60555/byp8-h018 |
-| Saffire-I | 10.60555/0t15-1z43 |
-| Saffire-II | 10.60555/2chp-m469 |
-| Saffire-III | 10.60555/040q-4h36 |
-| SAME | 10.60555/gd4k-8h62 |
-| SAME-R | 10.60555/2np7-jv14 |
-| SLICE | 10.60555/pm12-rg61 |
-| SPICE | 10.60555/9kbh-e962 |
-
-NASA papers:
-
-- ICES-2025-392, lunar-gravity flammability (NTRS 20250002114)
-- The FM² briefing, LPSC 2026 (NTRS 20260001966)
-- The LUCI briefing, ASGSR 2025 (NTRS 20250010653)
-- NASA-STD-6001 Test 1
-
-## Space agency partner and other data
-
-- The JAXA/Toyota Lunar Cruiser pressurized-rover concept, used for the cabin size in the rover fire case.
-- The full list of sources, licences, fonts and libraries is on https://first-fire-lunar-lab.vercel.app/submission.html.
-
-## For the team: how each global award is covered
-
-| Award | The evidence to point to |
-|---|---|
-| Best Use of Science | A forecast sealed before the experiment; FLINT tested on held-out lunar data; four falsifiable follow-up predictions (mission-concept.html) |
-| Best Use of Data | 1,622 rows traced to file, row and checksum; 1,058 normalized observations; FLEX and CFI-G reused for new questions |
-| Best Use of Technology | FLINT physics engine running live in the browser (fire-lab.html, material-lab.html, cabin-fire.html), each validated against the Python engine by automated tests; the FM² decoder; an offline desk with local models and a Referee gate; a benchmark with failures published |
-| Galactic Impact | Fire-safety answers for the first Moon habitats and rovers; a cabin fire simulator that compares crew responses; a material tester for new cabin materials; a decoder NASA can use the day FM² reports |
-| Best Mission Concept | Mission concept page: four follow-up fires on existing NASA hardware, each with its falsifier |
-| Most Inspirational | "If we're wrong, the Moon will tell us": a student forecast of the first fire on the Moon |
-| Best Use of Storytelling | The rule, the doubt, the test, told on the start-here page and in the 30-second film |
-| Global Connection | Evidence from NASA and JAXA in one desk; an explainer with summaries in eight languages; runs offline anywhere |
-| Art & Technology | The gravity fire lab, whose flame changes shape with gravity; the cabin fire simulator's live burning panel; the rover workbench; the deck's flame and Moon art |
-| Local Impact | india.html: Indian hospital ICU fires (sourced), Gaganyaan, and summaries in Hindi, Telugu and Tamil |
+ISRO Gaganyaan crew-module life-support requirements: https://www.isro.gov.in/media_isro/pdf/Tenders/2024/44_Tender_Document1602424.pdf
+JAXA FLARE material flammability experiments: https://iss.jaxa.jp/kiboexp/news/images/2018ams_flare.pdf#page=26
+NIST room smoke-alarm data for the classroom exercise: https://www.nist.gov/el/fire/engineered-fire-safety/data-smoke-alarm-performance
+Study by the smoke-detector investigators: https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/
+India hospital fire and prevention sources: https://first-fire-lunar-lab.vercel.app/india.html
+Engineering references include Cantera (https://cantera.org/) and the NIST Fire Dynamics Simulator (https://pages.nist.gov/fds-smv/).
+Model and software documentation: https://first-fire-lunar-lab.vercel.app/research/chat-models.md
+Source bibliography with direct references to the papers, data, code, models and fonts: https://first-fire-lunar-lab.vercel.app/research/submission.md
+Media credits and SI disclosure: https://first-fire-lunar-lab.vercel.app/team-handoff.html#disclosure
+Code and licensing notice: https://first-fire-lunar-lab.vercel.app/licenses/software.txt

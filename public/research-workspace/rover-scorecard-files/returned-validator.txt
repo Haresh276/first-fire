@@ -1,0 +1,28 @@
+
+function valid(rateMmS, timeS, travelCm) {
+  if (
+    !Number.isFinite(rateMmS) ||
+    !Number.isFinite(timeS) ||
+    !Number.isFinite(travelCm)
+  ) {
+    return false;
+  }
+
+  if (rateMmS < 0 || timeS < 0 || travelCm < 0) {
+    return false;
+  }
+
+  const expectedCm = rateMmS * timeS / 10;
+
+  // This validator applies only before strip-end clipping.
+  if (!Number.isFinite(expectedCm) || expectedCm > 40) {
+    return false;
+  }
+
+  return Math.abs(travelCm - expectedCm) <= 0.000001;
+}
+
+// Tests
+console.log(valid(1.8, 37, 6.66)); // true
+console.log(valid(1.3, 37, 4.81)); // true
+console.log(valid(1.8, 37, 6.67)); // false

@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html xml:lang="eu" lang="eu">
+
+<head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V5CJEH4Z0R"></script>
+<script>
+function marketingTagAnalitica() {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V5CJEH4Z0R');
+}
+</script>
+        <!-- Delete cookie -->
+<script>
+function deleteCookie(cname) {
+	if (readCookie(cname) != null) {
+		document.cookie = cname + "= ;expires=Thu, 01-Jan-70 00:00:01 GMT; Path=/;domain=ciencia.gob.es";
+	}
+}
+</script>
+        <!-- Set cookie -->
+<script>
+function setCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = (exdays == '') ? '' : 'expires=' + d.toUTCString() + ';';
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+</script>
+<script type="text/javascript" async src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+var examinar = 'Aztertu';
+var opcional = 'Aukerakoa';
+//var urlServletAssetDownload = '/gesdamdoc-servlet/?uuid=';
+var urlServletAssetDownload = '/site-aee/InfoGeneralPortal/documento/';
+var site = window.location.href;
+if(site.indexOf('aee') !== -1){
+  urlServletAssetDownload = '/site-aee/InfoGeneral/documento/';
+}
+</script>
+<title>Relaciones internacionales y bilaterales</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Agencia Espacial Española">
+<meta name="description" content="Relaciones internacionales y bilaterales">
+<meta name="keywords" content="Relaciones internacionales y bilaterales">
+<meta name="robots" content="index,
+                             follow"/>
+
+<link rel="icon" type="image/vnd.microsoft.icon" href="/.resources/site-aee/webresources/img/favicon.ico">
+<link rel="canonical" href="https://www.aee.gob.es/"/>
+<link rel="alternate" hreflang="ca" href="https://www.aee.gob.es//ca/Actividades/Bilaterales.html"/>
+<link rel="alternate" hreflang="es" href="https://www.aee.gob.es//Actividades/Bilaterales.html"/>
+<link rel="alternate" hreflang="gl" href="https://www.aee.gob.es//gl/Actividades/Bilaterales.html"/>
+<link rel="alternate" hreflang="va" href="https://www.aee.gob.es//va/Actividades/Bilaterales.html"/>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap-icons~2026-10-28-06-41-36-104~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/newHeader~2026-10-28-06-41-36-345~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap.min~2026-10-28-06-41-36-200~cache.css" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,600&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/leaflet~2026-10-28-06-41-36-293~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-organigrama~2026-10-28-06-41-36-314~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/sumoselect~2026-10-28-06-41-36-367~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/datatables~2026-10-28-06-41-36-253~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap-select~2026-10-28-06-41-36-140~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci~2026-10-28-06-41-36-331~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-navbar~2026-10-28-06-41-36-309~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-print~2026-10-28-06-41-36-327~cache.css" media="print" />
+  <script src="/.resources/site-web/webresources/js/jquery-3.6.0.min~2026-10-28-06-41-35-214~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/bootstrap.min~2026-10-28-06-41-34-908~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/bootstrap-select~2026-10-28-06-41-34-812~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/aacedfa240~2026-10-28-06-41-34-790~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/popper.min~2026-10-28-06-41-35-331~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/leaflet~2026-10-28-06-41-35-294~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/urlParams/index~2026-10-28-06-41-34-784~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/promise/polyfill.min~2026-10-28-06-41-35-676~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/sumoselect~2026-10-28-06-41-35-363~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/table2csv~2026-10-28-06-41-35-367~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables~2026-10-28-06-41-34-976~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/dataTables~2026-10-28-06-41-35-455~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/dataTables.buttons~2026-10-28-06-41-35-423~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.dataTables~2026-10-28-06-41-35-391~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/jszip~2026-10-28-06-41-35-483~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/pdfmake.min~2026-10-28-06-41-35-649~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/vfs_fonts~2026-10-28-06-41-35-670~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.html5.min~2026-10-28-06-41-35-402~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.print.min~2026-10-28-06-41-35-407~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/excelexportjs~2026-10-28-06-41-35-165~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/mci~2026-10-28-06-41-35-323~cache.js" type="text/javascript"></script>
+  <script src="https://insuit.net/i4tservice/insuit-app.js" type="text/javascript"></script>
+<meta name="despliegue" content="">
+</head>
+<body>
+         
+<link href="/.resources/site-aee/webresources/css/bootstrap-icons.css" rel="stylesheet">
+<link href="/.resources/site-aee/webresources/css/newHeader.css" rel="stylesheet">
+
+
+<header >
+    <nav class="navbar navbar-expand-lg">
+
+
+
+
+
+
+                <a class="navbar-brand" href="/eu/"   rel=follow title='Joan orri honetara leiho berean'>
+        <img src="/.imaging/mte/web-mcin-theme/img-cabecera/dam/AEE/No-rastreable/Logos/AEELogoWeb.png/jcr:content/AEELogoWeb2.png" alt="">
+                </a>
+
+<style>
+    header {
+        background-color: #ffffff;
+    }
+</style>        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <p class="txt-menu">Menú</p>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav d-none d-lg-block finderDesktop">
+
+    <li class="nav-item">
+        <a class="nav-link contact" href="/eu/Servicios/AtencionCiudadana.html"   title='Joan orri honetara leiho berean'>Contacto</a>
+    </li>
+    <span> | </span>
+
+
+    <li class="nav-item">
+            <a class="nav-link dropdown" data-toggle="dropdown" href="#">Euskara <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        
+        <ul class="dropdown-menu options">
+            <li class="nav-item-title">
+                    <span>Idioma</span>
+            </li>
+            <ul>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/Actividades/Bilaterales.html" target="_self" rel="follow">Español</a>
+                    
+                        
+                    </li>
+            </ul>
+        </ul>
+    </li>
+  
+
+
+    <span> | </span>
+    <li class="nav-item">
+        <a class="nav-link search dropdown" data-toggle="dropdown" href="#">Bilatu <i class="bi bi-search"></i></a>
+        <ul class="dropdown-menu options">
+            <li class="nav-item-title">
+                <span>¿Qué estás buscando?</span>
+            </li>
+            <li class="nav-item option-form">
+                <form id="ContactForm" action="/eu/BuscadorEspecifico.html" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="text" id="queryStr" name="queryStr" class="form-control border-right-0" title="Buscador" placeholder="Buscar en la AEE" maxlength="" value="" required autocomplete="off" />
+                        <input type="hidden" hidden id="tipo-documento-nav" name="tipoDocumento" value="all" />
+                        <div class="input-group-append">
+                            <button class="btn border-left-0" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="search-button" class="btn btn-standard" type="submit" title="buscar" alt="buscar">Buscar</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+    <style>
+        header {
+            margin-bottom: 80px;
+        }
+        @media (max-width: 992px) {
+            header .franja {
+                top: -92px;
+            }
+        }
+        @media (min-width: 768px) {
+            header {
+                margin-bottom: 90px;
+            }
+        }
+    </style>
+            </ul>
+            <ul class="navbar-nav d-block d-lg-none">
+                <ul class="navbar-nav sub-items">
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Convocatorias.html"   rel=follow title='Joan orri honetara leiho berean'>Convocatorias</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Ciencia.html"   rel=follow title='Joan orri honetara leiho berean'>Ciencia</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Programas.html"   rel=follow title='Joan orri honetara leiho berean'>Programas</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Seguridad.html"   rel=follow title='Joan orri honetara leiho berean'>Seguridad en el espacio</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Aplicaciones.html"   rel=follow title='Joan orri honetara leiho berean'>Usuarios, servicios y aplicaciones</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Servicios/sedeelectronica.html"   title='Joan orri honetara leiho berean'>Sede electrónica</a>
+    </li>
+                </ul>
+    <li class="nav-item item-title">
+
+        <a href=""    class="nav-link idioma contact">Contacto</a>
+
+
+        <a class="nav-link idioma dropdown" data-toggle="dropdown" href="#">Euskara <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="dropdown-menu options">
+            <li class="nav-item">
+                <a class="nav-link" href="/Actividades/Bilaterales.html" target="_self" rel="follow">Español</a>
+            </li>
+        </ul>
+
+        <a class="nav-link" href="#">La Agencia <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/MisionOrganizacion.html"   rel=nofollow aria-label="Misión y Organización" title='Joan orri honetara leiho berean'>
+			Misión y Organización
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/Comunicacion.html"   rel=nofollow aria-label="Comunicación" title='Joan orri honetara leiho berean'>
+			Comunicación
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/EmpleoPublico.html"   rel=nofollow aria-label="Empleo Público" title='Joan orri honetara leiho berean'>
+			Empleo Público
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/EspacioIgualdad.html"   rel=nofollow aria-label="Espacio Igualdad" title='Joan orri honetara leiho berean'>
+			Espacio Igualdad
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/Eventos.html"   rel=follow aria-label="Eventos" title='Joan orri honetara leiho berean'>
+			Eventos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/bdee.html"   rel=follow aria-label="Base de datos del ecosistema espacial" title='Joan orri honetara leiho berean'>
+			Base de datos del ecosistema espacial
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+
+        <li class="nav-item item-title">
+        <a class="nav-link" href="#">Actividades <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/ProgramasPorTematica.html"   aria-label="Programak gaiaren arabera" title='Joan orri honetara leiho berean'>
+			Programak gaiaren arabera
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/ESA.html"   aria-label="Europako Espazio Agentzia (ESA)" title='Joan orri honetara leiho berean'>
+			Europako Espazio Agentzia (ESA)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/EUSPA.html"   aria-label="Programa Espazialerako Europako Batasuneko Agentzia (EUSPA)" title='Joan orri honetara leiho berean'>
+			Programa Espazialerako Europako Batasuneko Agentzia (EUSPA)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/Bilaterales.html"   aria-label="Nazioarteko eta aldebiko harremanak" title='Joan orri honetara leiho berean'>
+			Nazioarteko eta aldebiko harremanak
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/Espacioysociedad.html"   aria-label="Espazioa eta gizartea" title='Joan orri honetara leiho berean'>
+			Espazioa eta gizartea
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/PRTR.html"   rel=follow aria-label="Suspertze, Transformazio eta Erresilientzia Plana (PRTR)" title='Joan orri honetara leiho berean'>
+			Suspertze, Transformazio eta Erresilientzia Plana (PRTR)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/astronautaporundia.html"   rel=follow aria-label="Astronauta egun batez" title='Joan orri honetara leiho berean'>
+			Astronauta egun batez
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/RFI-ESCA.html"   rel=follow aria-label="Request for Information (RFI) ESCA" title='Joan orri honetara leiho berean'>
+			Request for Information (RFI) ESCA
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+
+        <li class="nav-item item-title">
+        <a class="nav-link" href="#">Servicios <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/AtencionCiudadana.html"   aria-label="Herritarrentzako arreta" title='Joan orri honetara leiho berean'>
+			Herritarrentzako arreta
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/Transparencia.html"   aria-label="Gardentasuna" title='Joan orri honetara leiho berean'>
+			Gardentasuna
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/SistemaInternoInformacion.html"   rel=follow aria-label="Informazioaren barne-sistema" title='Joan orri honetara leiho berean'>
+			Informazioaren barne-sistema
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/LuchaContraFraude.html"   rel=follow aria-label="Iruzurraren aurkako borroka (Europako Funtsak)" title='Joan orri honetara leiho berean'>
+			Iruzurraren aurkako borroka (Europako Funtsak)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/PerfilContratante.html"   rel=follow aria-label="Kontratatzailearen profila" title='Joan orri honetara leiho berean'>
+			Kontratatzailearen profila
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/sedeelectronica.html"   rel=follow aria-label="Egoitza elektronikoa" title='Joan orri honetara leiho berean'>
+			Egoitza elektronikoa
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/TablonSede.html"   rel=follow aria-label="Egoitza elektronikoaren taula" title='Joan orri honetara leiho berean'>
+			Egoitza elektronikoaren taula
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+
+        <li class="nav-item item-title">
+        <a class="nav-link" href="#">Destacados <i class="icon"><img src="/.resources/site-aee/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/bdee.html"   rel=follow aria-label="Base de datos del ecosistema espacial" title='Joan orri honetara leiho berean'>
+			Base de datos del ecosistema espacial
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/astronautaporundia.html"   rel=follow aria-label="Astronauta por un día" title='Joan orri honetara leiho berean'>
+			Astronauta por un día
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/RFI-ESCA.html"   rel=follow aria-label="Request for Information (RFI) ESCA" title='Joan orri honetara leiho berean'>
+			Request for Information (RFI) ESCA
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+            </ul>
+            <ul class="navbar-nav d-none d-lg-block">
+                <ul class="navbar-nav sub-items show" >
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Convocatorias.html"   rel=follow title='Joan orri honetara leiho berean'>Convocatorias</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Ciencia.html"   rel=follow title='Joan orri honetara leiho berean'>Ciencia</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Programas.html"   rel=follow title='Joan orri honetara leiho berean'>Programas</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Seguridad.html"   rel=follow title='Joan orri honetara leiho berean'>Seguridad en el espacio</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Aplicaciones.html"   rel=follow title='Joan orri honetara leiho berean'>Usuarios, servicios y aplicaciones</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/eu/Servicios/sedeelectronica.html"   title='Joan orri honetara leiho berean'>Sede electrónica</a>
+    </li>
+                </ul>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">La Agencia <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>La Agencia</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/MisionOrganizacion.html"   rel=nofollow aria-label="Misión y Organización" title='Joan orri honetara leiho berean'>
+			Misión y Organización
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/Comunicacion.html"   rel=nofollow aria-label="Comunicación" title='Joan orri honetara leiho berean'>
+			Comunicación
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/EmpleoPublico.html"   rel=nofollow aria-label="Empleo Público" title='Joan orri honetara leiho berean'>
+			Empleo Público
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/EspacioIgualdad.html"   rel=nofollow aria-label="Espacio Igualdad" title='Joan orri honetara leiho berean'>
+			Espacio Igualdad
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/AgenciaEspacial/Eventos.html"   rel=follow aria-label="Eventos" title='Joan orri honetara leiho berean'>
+			Eventos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/bdee.html"   rel=follow aria-label="Base de datos del ecosistema espacial" title='Joan orri honetara leiho berean'>
+			Base de datos del ecosistema espacial
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Actividades <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Actividades</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/ProgramasPorTematica.html"   aria-label="Programak gaiaren arabera" title='Joan orri honetara leiho berean'>
+			Programak gaiaren arabera
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/ESA.html"   aria-label="Europako Espazio Agentzia (ESA)" title='Joan orri honetara leiho berean'>
+			Europako Espazio Agentzia (ESA)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/EUSPA.html"   aria-label="Programa Espazialerako Europako Batasuneko Agentzia (EUSPA)" title='Joan orri honetara leiho berean'>
+			Programa Espazialerako Europako Batasuneko Agentzia (EUSPA)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/Bilaterales.html"   aria-label="Nazioarteko eta aldebiko harremanak" title='Joan orri honetara leiho berean'>
+			Nazioarteko eta aldebiko harremanak
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/Espacioysociedad.html"   aria-label="Espazioa eta gizartea" title='Joan orri honetara leiho berean'>
+			Espazioa eta gizartea
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Actividades/PRTR.html"   rel=follow aria-label="Suspertze, Transformazio eta Erresilientzia Plana (PRTR)" title='Joan orri honetara leiho berean'>
+			Suspertze, Transformazio eta Erresilientzia Plana (PRTR)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/astronautaporundia.html"   rel=follow aria-label="Astronauta egun batez" title='Joan orri honetara leiho berean'>
+			Astronauta egun batez
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/RFI-ESCA.html"   rel=follow aria-label="Request for Information (RFI) ESCA" title='Joan orri honetara leiho berean'>
+			Request for Information (RFI) ESCA
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Servicios <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Servicios</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/AtencionCiudadana.html"   aria-label="Herritarrentzako arreta" title='Joan orri honetara leiho berean'>
+			Herritarrentzako arreta
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/Transparencia.html"   aria-label="Gardentasuna" title='Joan orri honetara leiho berean'>
+			Gardentasuna
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/SistemaInternoInformacion.html"   rel=follow aria-label="Informazioaren barne-sistema" title='Joan orri honetara leiho berean'>
+			Informazioaren barne-sistema
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/LuchaContraFraude.html"   rel=follow aria-label="Iruzurraren aurkako borroka (Europako Funtsak)" title='Joan orri honetara leiho berean'>
+			Iruzurraren aurkako borroka (Europako Funtsak)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/PerfilContratante.html"   rel=follow aria-label="Kontratatzailearen profila" title='Joan orri honetara leiho berean'>
+			Kontratatzailearen profila
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/sedeelectronica.html"   rel=follow aria-label="Egoitza elektronikoa" title='Joan orri honetara leiho berean'>
+			Egoitza elektronikoa
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Servicios/TablonSede.html"   rel=follow aria-label="Egoitza elektronikoaren taula" title='Joan orri honetara leiho berean'>
+			Egoitza elektronikoaren taula
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Destacados <i class="icon"><img src="/.resources/site-aee/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Destacados</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/bdee.html"   rel=follow aria-label="Base de datos del ecosistema espacial" title='Joan orri honetara leiho berean'>
+			Base de datos del ecosistema espacial
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/astronautaporundia.html"   rel=follow aria-label="Astronauta por un día" title='Joan orri honetara leiho berean'>
+			Astronauta por un día
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/eu/Destacados/RFI-ESCA.html"   rel=follow aria-label="Request for Information (RFI) ESCA" title='Joan orri honetara leiho berean'>
+			Request for Information (RFI) ESCA
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+            </ul>
+        </div>
+    </nav>
+  
+
+
+    <form class="d-lg-none" id="ContactFormResponsive" action="/eu/BuscadorEspecifico.html" enctype="multipart/form-data">
+        <div class="input-group">
+            <input type="text" id="queryStrMovil" name="queryStr" class="form-control border-right-0" title="Buscador" placeholder="Buscar en la AEE" maxlength="" value="" autocomplete="off">
+            <input type="hidden" hidden id="tipo-documento-mobile" name="tipoDocumento" value="all">
+            <div class="input-group-append">
+                <button class="btn border-left-0" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <style>
+        header {
+            margin-bottom: 80px;
+        }
+        @media (max-width: 992px) {
+            header .franja {
+                top: -92px;
+            }
+        }
+        @media (min-width: 768px) {
+            header {
+                margin-bottom: 90px;
+            }
+        }
+    </style>
+    <div class="franja" >
+        <div class="bg-red"></div>
+        <div class="bg-yellow"></div>
+        <div class="bg-red"></div>
+    </div>
+</header>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".navbar-toggler").on("click", function () {
+            $(this).toggleClass("on");
+            $(".icon-bar").toggleClass("on");
+        });
+
+        $(".navbar-nav .options").on("mouseleave", function () {
+            $(".navbar-nav .options").removeClass("show");
+        });
+    });
+</script>
+    
+    
+
+
+
+
+
+
+
+
+
+		<div id="banner-cabecera" role="banner">
+        <div class="image-container">
+        	<img src="/.imaging/default/dam/AEE/No-rastreable/Imagenes-especificas/Actividades/Bilaterales/Bilaterales_N2Cabecera/jcr:content.jpg" title="Relaciones internacionales y bilaterales" alt=""/>
+        </div>
+		        <div class="container-fluid text-box">
+		          
+
+							<div class="col-12 banner-text">
+			        	     	<h1 class="banner-title ">Relaciones internacionales y bilaterales</h1>
+			        				
+			        	    </div>
+
+		          
+		        </div>
+	    </div>
+
+
+
+<div id="wrapper" role="main">
+
+
+
+
+<div id="breadcrumbs" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+          <a class="" href="/eu/">Agencia Espacial Española</a> 
+      > <span class="actualPage">
+      Relaciones internacionales y bilaterales
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="contenidoN2Hoja">
+  <div class="container-fluid  ">
+    <div class="row">
+      <div class="col-sm-12 first-container">
+        <div class="content">
+          <p style="text-align:justify"><strong>La Agencia Espacial Espa&ntilde;ola (AEE) constituye la voz &uacute;nica y la representaci&oacute;n oficial de Espa&ntilde;a en el &aacute;mbito espacial internacional.</strong></p>
+
+<p style="text-align:justify">La AEE tiene el mandato de unificar la postura nacional, aportando coherencia, coordinaci&oacute;n y una visi&oacute;n estrat&eacute;gica integral a la participaci&oacute;n de Espa&ntilde;a en el exterior. Esta labor asegura que los intereses cient&iacute;ficos, industriales y gubernamentales espa&ntilde;oles se defiendan de manera un&iacute;voca, tanto en los grandes foros multilaterales como en la relaci&oacute;n directa con otras potencias espaciales.</p>
+
+<p style="text-align:justify">Nuestra acci&oacute;n exterior se articula a trav&eacute;s de dos ejes fundamentales: la <strong>Colaboraci&oacute;n Multilateral</strong> y la <strong>Cooperaci&oacute;n Bilateral</strong>.</p>
+
+<p style="text-align:justify"><strong>Colaboraci&oacute;n Multilateral</strong></p>
+
+<p style="text-align:justify">La AEE lidera la delegaci&oacute;n espa&ntilde;ola en los principales organismos y foros internacionales m&aacute;s all&aacute; de la Agencia Espacial Europea (ESA) y la Uni&oacute;n Europea, trabajando en estrecha coordinaci&oacute;n con el Ministerio de Asuntos Exteriores, Embajadas y el ICEX.</p>
+
+<ul>
+	<li style="text-align: justify;"><strong>Naciones Unidas (COPUOS):</strong> Participamos activamente en la Comisi&oacute;n sobre la Utilizaci&oacute;n del Espacio Ultraterrestre con Fines Pac&iacute;ficos. Espa&ntilde;a integra grupos de trabajo clave sobre sostenibilidad a largo plazo, aspectos legales de los recursos espaciales y defensa planetaria (detecci&oacute;n y desv&iacute;o de asteroides peligrosos).</li>
+	<li style="text-align: justify;"><strong>Acuerdos Artemis:</strong> En 2023, Espa&ntilde;a se adhiri&oacute; a estos acuerdos, uni&eacute;ndose a m&aacute;s de 50 naciones para establecer los principios que guiar&aacute;n la exploraci&oacute;n civil del espacio en el siglo XXI. En este foro debatimos la sostenibilidad, la transparencia y las mejores pr&aacute;cticas para la exploraci&oacute;n lunar y marciana.</li>
+	<li style="text-align: justify;"><strong>&Aacute;mbito Iberoamericano (RIAE):</strong> En 2025, la AEE formaliz&oacute; su ingreso en la Red Iberoamericana de Agencias Espaciales. A pesar de su reciente creaci&oacute;n (2024), este foro es estrat&eacute;gico para promover proyectos comunes y fortalecer el puente espacial entre Europa y Am&eacute;rica Latina.</li>
+	<li style="text-align: justify;"><strong>Foros de Pol&iacute;tica y Estrategia:</strong> Somos miembros del Instituto Europeo de Pol&iacute;tica Espacial (ESPI) y de la Federaci&oacute;n Astron&aacute;utica Internacional (IAF), participando adem&aacute;s en eventos de referencia mundial como el <em>International Astronautical Congress</em> (IAC), el <em>Space Symposium</em>, las reuniones espaciales del G20 y <em>SpaceTech</em>.</li>
+</ul>
+
+<p style="text-align:justify"></p>
+
+<p style="text-align:justify"><strong>Cooperaci&oacute;n Bilateral</strong></p>
+
+<p style="text-align:justify">La AEE impulsa su acci&oacute;n exterior mediante la <strong>Cooperaci&oacute;n Bilateral</strong>, estableciendo alianzas directas con otras agencias espaciales. Esta v&iacute;a de actuaci&oacute;n es clave para promover la diplomacia espacial, fomentar la participaci&oacute;n de Espa&ntilde;a en grandes proyectos internacionales y facilitar la cooperaci&oacute;n tecnol&oacute;gica entre entidades espa&ntilde;olas y extranjeras.</p>
+
+<p style="text-align:justify">La colaboraci&oacute;n se formaliza mediante los <strong>Programas Bilaterales</strong>, establecidos en 2006 con el objetivo de apoyar el desarrollo del sector espacial nacional. A trav&eacute;s de estos acuerdos, Espa&ntilde;a participa en misiones espaciales de primer nivel en colaboraci&oacute;n directa con otros pa&iacute;ses, asegurando que las empresas espa&ntilde;olas asuman un rol significativo y favoreciendo intereses estrat&eacute;gicos nacionales que trascienden la propia misi&oacute;n espacial.</p>
+
+<p style="text-align:justify"><strong>Alcance y Colaboraciones Internacionales</strong> Estos programas se articulan a trav&eacute;s de acuerdos con agencias de referencia como la <strong>NASA</strong> (EE. UU.) o el <strong>CNES</strong> (Francia). Hasta la fecha, Espa&ntilde;a ha participado exitosamente en misiones junto a NASA, CNES y Roscosmos. Actualmente, la AEE trabaja activamente en establecer los contactos necesarios para ampliar esta red de socios a otras agencias, reforzando as&iacute; el apoyo al sector.</p>
+
+<p style="text-align:justify">La tipolog&iacute;a de las misiones en las que Espa&ntilde;a ha participado es muy diversa, abarcando:</p>
+
+<ul>
+	<li style="text-align: justify;"><strong>Misiones tecnol&oacute;gicas:</strong> Como PRISMA y KARMEN.</li>
+	<li style="text-align: justify;"><strong>Misiones cient&iacute;ficas:</strong> Como WSO.</li>
+	<li style="text-align: justify;"><strong>Misiones de exploraci&oacute;n:</strong> Incluyendo <em>Mars Science Laboratory</em>, <em>InSight</em> y <em>Mars 2020</em>.</li>
+</ul>
+
+<p style="text-align:justify">Asimismo, el marco de cooperaci&oacute;n es flexible y permite plantear colaboraciones en &aacute;mbitos como la Observaci&oacute;n de la Tierra, la Seguridad Espacial, desarrollos tecnol&oacute;gicos concretos o &aacute;reas complementarias como la capacitaci&oacute;n y la educaci&oacute;n espacial.</p>
+
+<p style="text-align:justify"><strong>Valor Estrat&eacute;gico y Diplomacia Espacial</strong> M&aacute;s all&aacute; de los beneficios cient&iacute;ficos intr&iacute;nsecos, los Programas Bilaterales son una herramienta de <strong>diplomacia espacial</strong> que contribuye a las pol&iacute;ticas generales de Espa&ntilde;a. Estas actividades refuerzan la imagen internacional del pa&iacute;s, estrechan lazos institucionales con otras agencias y permiten a nuestra industria trabajar conjuntamente con entidades extranjeras, consolidando alianzas estrat&eacute;gicas e intercambios de inter&eacute;s mutuo.</p>
+
+<p style="text-align:justify"><strong>Colaboraci&oacute;n con la NASA </strong>Un ejemplo destacado de esta actividad es la relaci&oacute;n sostenida con la agencia estadounidense. En este marco, se mantienen operativas las contribuciones espa&ntilde;olas en las misiones:</p>
+
+<ul>
+	<li style="text-align: justify;">Mars 2020: En la que Espa&ntilde;a aport&oacute; la antena de alta ganancia HGAS y el instrumento MEDA, ambos instalados en el rover <em>Perseverance</em>.</li>
+	<li style="text-align: justify;">Mars Science Laboratory: Con la antena de alta ganancia HGAS y el instrumento REMS instalados en el rover <em>Curiosity</em>.</li>
+</ul>
+
+<p style="text-align:justify">El desarrollo de los instrumentos <strong>REMS</strong> y <strong>MEDA</strong> &mdash;sumados al instrumento <strong>TWINS</strong>, cuya misi&oacute;n ya ha finalizado&mdash; ha posicionado a Espa&ntilde;a como la referencia global en la caracterizaci&oacute;n de la superficie de Marte. Esta tecnolog&iacute;a permite medir con precisi&oacute;n condiciones atmosf&eacute;ricas cr&iacute;ticas (<strong>viento, humedad, presi&oacute;n, temperatura</strong>), as&iacute; como niveles de <strong>radiaci&oacute;n</strong>, presencia de <strong>polvo</strong> y <strong>temperatura del suelo</strong>.</p>
+
+        </div>
+      </div>
+      <div class="col-sm-6 third-container">
+        
+      </div>
+      <div class="col-12 fourth-container">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LfBaGopAAAAAHDrhk-yAVE2rh5lJMvx_jVvkz8G"></script>
+
+<input type="hidden" name="g-recaptcha-response-feedback" id="g-recaptcha-response-feedback" />
+
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6LfBaGopAAAAAHDrhk-yAVE2rh5lJMvx_jVvkz8G', {action: 'validate_captcha'}).then(function(token) {
+       document.getElementById('g-recaptcha-response-feedback').value = token;
+    });
+    let timer = setInterval(() => grecaptcha.execute('6LfBaGopAAAAAHDrhk-yAVE2rh5lJMvx_jVvkz8G', {action: 'validate_captcha'}).then(function(token) {
+            document.getElementById('g-recaptcha-response-feedback').value = token;
+    })
+    , 90000);
+});
+</script>
+
+
+<div id="feedback" class="container-fluid">
+	<div class="row">
+	<div class="col-md-6 btnFeedbackLeft">
+		<form id="formulario-info-util" class="feedback" method="post">
+        	<input type="text" class="hidden" id="captcha-invisible">
+			<button class="enviar-formulario">Erabilgarria izan zait</button>
+		</form>
+	</div>
+	<div class="col-md-6 btnFeedback right">
+	<button class="info-error">Akats baten berri eman nahi dut</button></div>
+		<div id="sending-success" class="alert alert-success " role="alert">
+			Inprimakia behar bezala bidali da. Eskerrik asko iruzkinagatik.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				
+			</button>
+		</div>
+	</div>
+</div>
+<div class="content container-fluid">
+	<div class="formularios-feedback row">
+		<div class="col-lg-3 pr-0"></div>
+		<div class="borde col-lg-6 p-0">
+  			<div class="formulario-error">
+				<form id="formulario-de-consulta" class="feedback" method="POST"> 
+					<p class="campoObligatorio"> * Nahitaezko eremua </p>
+					<div class="row field"> 
+						<div class="col-sm-12"> 
+							<div><label for="consulta-feedback"> Kontsulta (250 hitz, gehienez) *</label><br/><label class="limit" limite="">0</label><label>/250</label></div>
+							<textarea id="consulta-feedback" rows="4" cols="50" required="required"></textarea> 
+							<div class="blank-field error"> Eremua nahitaezkoa da  </div> 
+							<div class="format error"> Kontsultak formatu okerra du </div> 
+						</div> 
+					</div> 
+					<div class="row field"> 
+						<div class="col-sm-12"> 
+							<label for="email">E-mail*</label><br/> 
+							<input type="email" id="email" autocomplete="feedback email" required="required"  maxlength="254"/> 
+							<div class="blank-field error"> Eremua nahitaezkoa da  </div> 
+							<div class="format error"> Posta elektronikoak formatu okerra du </div> 
+						</div> 
+					</div> 
+					<div>
+						
+						<div id="consent"><input type="checkbox" /><p> Habiendo sido informado/a del tratamiento del que van a ser objeto mis datos personales, doy libremente mi consentimiento a dicho tratamiento.<p></div>
+					</div>
+					<div class="row field"> 
+						<div class="col-sm-12"> 
+							<input type="text" class="hidden" id="captcha-invisible" onchange="captchaFeedbackError()"> 
+							<button type="button" class="generic-button-2 enviar-formulario disabled">  Bidali  </button> 
+						</div> 
+					</div> 
+						<div class="row field"> 
+							<div id="sending-error" class="col-sm-12 error center alert alert-danger" role="alert"> Inprimakia bidaltzean arazo bat egon da arrazoi honengatik Mesedez, saiatu geroago 
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"> </button>
+						</div> 
+					</div> 
+				</form>
+					
+				</div>
+			</div>
+  		</div>
+		<div class="col-lg-3 pl-0">
+		
+		</div>
+ 	</div>
+</div>
+
+
+
+<script>
+	var urlEmail = '/aee/Actividades/Bilaterales/main/feedback/feedback';
+	
+</script>        
+    </div>       
+
+
+<div id="footer" role="contentinfo">
+	<footer>
+		<div class="links">
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-9">
+				
+<div class="row mb-sm-3">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 La Agencia
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/eu/AgenciaEspacial/MisionOrganizacion.html"   rel=follow aria-label="Misión y organización" title='Joan orri honetara leiho berean'>
+			Misión y organización
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/AgenciaEspacial/Comunicacion.html"   rel=follow aria-label="Comunicación" title='Joan orri honetara leiho berean'>
+			Comunicación
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/EmpleoPublico.html"   rel=follow aria-label="Empleo Público" title='Joan orri honetara leiho berean'>
+			Empleo Público
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/AgenciaEspacial/EspacioIgualdad.html"   rel=follow aria-label="Espacio Igualdad" title='Joan orri honetara leiho berean'>
+			Espacio Igualdad
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/AgenciaEspacial/Eventos.html"   rel=follow aria-label="Eventos" title='Joan orri honetara leiho berean'>
+			Eventos
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Destacados/bdee.html"   rel=follow aria-label="Base de datos del ecosistema espacial" title='Joan orri honetara leiho berean'>
+			Base de datos del ecosistema espacial
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 Actividades
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/eu/Actividades/ProgramasPorTematica.html"   rel=follow aria-label="Programas por área temática" title='Joan orri honetara leiho berean'>
+			Programas por área temática
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Actividades/ESA.html"   rel=follow aria-label="Agencia Espacial Europea (ESA)" title='Joan orri honetara leiho berean'>
+			Agencia Espacial Europea (ESA)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Actividades/EUSPA/QueesEUSPA.html"   rel=follow aria-label="Agencia de la Unión Europea para el Programa Espacial (EUSPA)" title='Joan orri honetara leiho berean'>
+			Agencia de la Unión Europea para el Programa Espacial (EUSPA)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Actividades/Bilaterales.html"   rel=follow aria-label="Relaciones internacionales y bilaterales" title='Joan orri honetara leiho berean'>
+			Relaciones internacionales y bilaterales
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Actividades/Espacioysociedad.html"   rel=follow aria-label="Espacio y sociedad" title='Joan orri honetara leiho berean'>
+			Espacio y sociedad
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Actividades/PRTR.html"   rel=follow aria-label="Plan de Recuperación, Transformación y Resiliencia (PRTR)" title='Joan orri honetara leiho berean'>
+			Plan de Recuperación, Transformación y Resiliencia (PRTR)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Destacados/astronautaporundia.html"   rel=follow aria-label="Astronauta por un día" title='Joan orri honetara leiho berean'>
+			Astronauta por un día
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Destacados/RFI-ESCA.html"   rel=follow aria-label="Request for Information (RFI) ESCA" title='Joan orri honetara leiho berean'>
+			Request for Information (RFI) ESCA
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/eu/InfoGeneral/MapaWeb.html"   rel=follow aria-label="Mapa Web" title='Joan orri honetara leiho berean'>
+			Mapa Web
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/InfoGeneral/Privacidad.html"   rel=follow aria-label="Política de privacidad y protección de datos" title='Joan orri honetara leiho berean'>
+			Política de privacidad y protección de datos
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/InfoGeneral/AvisoLegal.html"   rel=follow aria-label="Aviso legal" title='Joan orri honetara leiho berean'>
+			Aviso legal
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/InfoGeneral/Cookies.html"   rel=follow aria-label="Política de cookies" title='Joan orri honetara leiho berean'>
+			Política de cookies
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/InfoGeneral/Accesibilidad.html"   rel=follow aria-label="Accesibilidad" title='Joan orri honetara leiho berean'>
+			Accesibilidad
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/AtencionCiudadana.html"   rel=follow aria-label="Contacto" title='Joan orri honetara leiho berean'>
+			Contacto
+			
+		</a>
+		</p>
+	</div>
+</div>
+
+<div class="row mb-5">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 Áreas
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/eu/Convocatorias.html"   rel=follow aria-label="Convocatorias" title='Joan orri honetara leiho berean'>
+			Convocatorias
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Ciencia.html"   rel=follow aria-label="Ciencia" title='Joan orri honetara leiho berean'>
+			Ciencia
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Programas.html"   rel=follow aria-label="Programas" title='Joan orri honetara leiho berean'>
+			Programas
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Seguridad.html"   rel=follow aria-label="Seguridad en el espacio" title='Joan orri honetara leiho berean'>
+			Seguridad en el espacio
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Aplicaciones.html"   rel=follow aria-label="Usuarios, servicios y aplicaciones" title='Joan orri honetara leiho berean'>
+			Usuarios, servicios y aplicaciones
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Servicios
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/AtencionCiudadana.html"   rel=follow aria-label="Atención ciudadana" title='Joan orri honetara leiho berean'>
+			Atención ciudadana
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/Transparencia.html"   rel=follow aria-label="Transparencia" title='Joan orri honetara leiho berean'>
+			Transparencia
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/SistemaInternoInformacion.html"   rel=follow aria-label="Sistema interno de información" title='Joan orri honetara leiho berean'>
+			Sistema interno de información
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/LuchaContraFraude.html"   rel=follow aria-label="Lucha contra el fraude (Fondos Europeos)" title='Joan orri honetara leiho berean'>
+			Lucha contra el fraude (Fondos Europeos)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/PerfilContratante.html"   rel=follow aria-label="Perfil del contratante" title='Joan orri honetara leiho berean'>
+			Perfil del contratante
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/sedeelectronica.html"   rel=follow aria-label="Sede electrónica" title='Joan orri honetara leiho berean'>
+			Sede electrónica
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Servicios/TablonSede.html"   rel=follow aria-label="Tablón de la sede electrónica" title='Joan orri honetara leiho berean'>
+			Tablón de la sede electrónica
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Destacados
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/eu/Destacados/bdee.html"   rel=follow aria-label="Base de datos del ecosistema espacial" title='Joan orri honetara leiho berean'>
+			Base de datos del ecosistema espacial
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Destacados/astronautaporundia.html"   rel=follow aria-label="Astronauta por un día" title='Joan orri honetara leiho berean'>
+			Astronauta por un día
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/eu/Destacados/RFI-ESCA.html"   rel=follow aria-label="Request for Information (RFI) ESCA" title='Joan orri honetara leiho berean'>
+			Request for Information (RFI) ESCA
+			
+		</a>
+		</p>
+	</div>
+</div>
+
+<div class="row mb-sm-3">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+</div>
+
+<div class="row mb-5">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+</div>
+<div class="row mb-3">
+	<div class="pieN2Logos">
+		<div id="pieN2LogosMCIN">
+				    
+
+
+
+
+
+				<a class="gobierno" href="/eu/"   rel=follow  title='Joan orri honetara leiho berean'>
+		<img src="/.imaging/mte/web-mcin-theme/img-cabecera/dam/AEE/No-rastreable/Logos/AEE_MCINMDEF_Logoblanco.svg0/jcr:content/Logo_AEE_Ministerios_blanco_2024.png" alt="Logotipo Gobierno de España y MCIN">
+				</a>
+      
+
+		</div>
+		<div id="pieN2LogosExternos">
+		</div>
+	</div>
+</div>				</div>
+					<div id="pieN3RRSS" class="col-3 social">
+
+<p>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://x.com/aee_gob"  target=_blank  rel=nofollow  title='Joan   orrira leiho berrian'>
+				<img src="/dam/jcr:f61e69bd-d103-44d9-af5e-7ae4e99cb048/icono_Xtwitter.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.linkedin.com/company/agencia-espacial-espa%C3%B1ola/"  target=_blank  rel=nofollow  title='Joan   orrira leiho berrian'>
+				<img src="/dam/jcr:b2f83734-c236-4b2a-ae2c-d94c43833daf/linkedin_logo.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.youtube.com/@AgenciaEspacialEspa%C3%B1ola_AEE"  target=_blank  rel=nofollow  title='Joan   orrira leiho berrian'>
+				<img src="/dam/jcr:00bacf88-bc7c-4b49-ad8c-7f7776b08eb1/icono-youtube.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.instagram.com/aee_gob/"  target=_blank  rel=nofollow  title='Joan   orrira leiho berrian'>
+				<img src="/dam/jcr:69568970-75a6-47cd-a956-c64becaf820b/icono-instagram.svg" />
+		</a>
+	
+</p>
+
+					</div>
+			</div>
+				<div class="row">
+					<div id="pieN3copyRight" class="col-md-5 col-xl-6 mb-5 mb-sm-4 mb-md-0">
+
+    <p class="ministerio">Agencia Espacial Española</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<div class="modal fade" id="modalDescargarCentros" tabindex="-1" role="dialog" aria-labelledby="modalDescargarCentrosLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalDescargarCentrosLabel">Deskargatu</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>¿Hautatutako fitxategia deskargatu nahi duzu?</p>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarDescargarCentros" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarDescargarCentros" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalDescargar" tabindex="-1" role="dialog" aria-labelledby="modalDescargarLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalDescargarLabel">Deskargatu</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>¿Hautatutako fitxategia deskargatu nahi duzu?</p>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarDescargar" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarDescargar" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalConfirmar" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalConfirmarLabel">Confirmar baja</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>Va a darse de baja de las siguientes listas de suscripción. Si está seguro pulse en Aceptar</p>
+				<div class="listadoSuscripcion"></div>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarBorrar" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarBorrar" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalFormTitulos" tabindex="-1" role="dialog" aria-labelledby="modalFormTitulosLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalFormTitulosLabel">Información</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>Si usted necesita ampliar el plazo para subsanar la documentación requerida de su expediente deberá aportar, a través de la  <a href="https://universidades.sede.gob.es/login">Subsede Electrónica de la Secretaría General de Universidades (universidades.sede.gob.es)</a>, un documento firmado por el interesado solicitando la prórroga.</p>
+				<p>Para ello, deberá acceder a su expediente desde la sección “Mis expedientes” y anexar el documento en “Aportar documentación”.</p>
+				<p>Si su expediente no estuviera en la sede electrónica, puede aportar la solicitud a través del <a href="https://ciencia.sede.gob.es/pagina?id=Portada-104008">Registro Electrónico General (ciencia.sede.gob.es).</a></p>
+				<p>Tenga en cuenta que se le conceden 35 días hábiles adicionales para subsanar la documentación sin necesidad de que se le responda a esta solicitud.</p>
+				<p>Si su consulta no tuviera relación con esta información de solicitud de ampliación de plazo, podrá detallarla y completarla en el campo de “Contenido de su consulta”.</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footerScripts">
+<div class="container-fluid htmlTxt">
+	<style>
+
+    
+    #footer p.titulo {
+        color: #1D1D1B;
+    }
+
+header .navbar-brand-sec{width: 65px;}
+header .navbar-brand-sec img{align-items: flex-start;}
+
+@media (max-width: 900px) and (min-width: 701px) {
+    header .navbar-brand-sec{
+        margin-left: -30%;
+    }    
+    
+}
+
+@media (max-width: 700px) and (min-width: 591px) {
+    header .navbar-brand-sec{
+        margin-left: -25%;
+    }    
+    
+}
+
+@media (max-width: 590px) and (min-width: 501px) {
+    header .navbar-brand-sec{
+        margin-left: -10%;
+    }    
+    
+}
+@media (max-width: 500px) {
+    header .navbar-brand{
+    width: 60%;
+    }
+    header .navbar-brand img{width:100%; }
+    
+
+    
+    header .navbar-brand-sec{
+    margin-left: 0;
+    }
+    
+    /*header .navbar-brand img, header .navbar-brand-sec img{
+    width: 100%;
+    }*/
+    
+    /*header .navbar-brand img, header .navbar-brand-sec img{
+    height: 49px;
+     
+    
+    }    */
+}
+
+@media (max-width: 500px) and (min-width: 450px) {
+    header .navbar-brand img, header .navbar-brand-sec img {
+        height: 60px;
+    }
+}
+
+@media (max-width: 449px) and (min-width: 400px) {
+    header .navbar-brand img, header .navbar-brand-sec img {
+        height: 50px;
+    }
+}
+
+@media (max-width: 400px) and (min-width: 300px) {
+    header .navbar-brand img, header .navbar-brand-sec img {
+        height: 40px;
+    }
+}
+
+
+#banner-cabecera .image-container {
+    position: relative;
+    padding-top: 28%;
+}
+
+#banner-cabecera .image-container img {
+    position: fixed;
+    top: 186px;
+    z-index: -10 !important;
+    height: 730px;
+}
+#banner-cabecera-n2 .image-container img {
+    position: fixed;
+    top: 186px;
+    z-index: -10 !important;
+    height: 640px;
+}
+
+
+    
+</style>
+<script>
+ function cookiesConfig() {
+     
+ }
+</script>
+</div></div>
+
+</body>
+</html>

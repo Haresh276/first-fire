@@ -1,0 +1,281 @@
+{
+  "lunar-cellulose": {
+    "version": "1.0",
+    "name": "Code Blooded | Lunar field lab",
+    "resultClass": "simulation",
+    "compatibility": "unverified",
+    "sourceIds": [
+      "jaxa-01",
+      "nasa-01",
+      "nasa-02",
+      "thermal-method",
+      "crew-method",
+      "access-method",
+      "fire-method",
+      "mist-method",
+      "material-heat",
+      "stock-cellulose",
+      "csa-01",
+      "materials-method",
+      "moon-env",
+      "psi-saffire",
+      "flow-measurement"
+    ],
+    "mobility": {
+      "massKg": 1660,
+      "idealSupportAccelerationMs2": 1.62,
+      "staticSupportN": 2689.2000000000003,
+      "staticLoadPerWheelN": 448.20000000000005,
+      "specificForceNormMs2": null,
+      "stationaryNormAgrees": null
+    },
+    "power": {
+      "generationW": 450,
+      "demandWh": 2000,
+      "endWh": 2800,
+      "unmetWh": 0,
+      "curtailedWh": 0
+    },
+    "thermal": {
+      "netLongwaveOutW": 382.727308266103,
+      "absorbedSunW": 72.00000000000001,
+      "rejectedMinusLoadW": 60.72730826610302
+    },
+    "air": {
+      "inventoryMol": 342.4704346979318,
+      "initialO2Mol": 102.74113040937954,
+      "initialO2KPa": 21,
+      "metabolicO2G": 283.2,
+      "metabolicCO2G": 331.2,
+      "scrubbedCO2G": 331.2,
+      "unremovedCO2G": 0,
+      "outwardLeakMol": 0.56,
+      "accessLossMol": 10.702201084310369,
+      "replacementMixtureMol": 11.26220108431037,
+      "oxygenSupplyG": 391.31037308872897,
+      "nitrogenSupplyG": 220.84951082310945
+    },
+    "coupon": {
+      "prescribedG": 10,
+      "stoichiometricO2Mol": 0.37004829130201494,
+      "netChemicalPotentialKJ": 152,
+      "inventoryCoversDemand": true
+    },
+    "tracer": {
+      "sourceMgM3": 6.505971059561011,
+      "remoteMgM3": 3.4940289404389895,
+      "atSamplingZoneMgM3": 3.4940289404389895,
+      "tracerAccountedMg": 60,
+      "thresholdTimeWithDelayS": 56.08256237659907
+    },
+    "flow": {
+      "ductSpeedMs": 0.2,
+      "relativeDirection": "concurrent",
+      "spreadRateMmS": null
+    },
+    "suppression": {
+      "deliveredKg": 0.6,
+      "remainingKg": 1.4,
+      "extinction": null
+    },
+    "sourcing": {
+      "origin": "Earth supplier",
+      "netG": 10,
+      "feedG": 12.5,
+      "trimG": 2.5,
+      "thicknessMm": 0.18,
+      "evidenceStatus": "vendor analogue only",
+      "traceability": "lot unknown",
+      "qualification": null
+    },
+    "notes": [
+      "Independent sizing cases. All hybrid interfaces are unverified."
+    ]
+  },
+  "lunar-pe": {
+    "version": "1.0",
+    "name": "Code Blooded | Lunar field lab, PE swap",
+    "resultClass": "simulation",
+    "compatibility": "unverified",
+    "sourceIds": [
+      "jaxa-01",
+      "nasa-01",
+      "nasa-02",
+      "thermal-method",
+      "crew-method",
+      "access-method",
+      "fire-method",
+      "mist-method",
+      "material-heat",
+      "stock-pe",
+      "csa-01",
+      "materials-method",
+      "moon-env",
+      "psi-saffire",
+      "flow-measurement"
+    ],
+    "mobility": {
+      "massKg": 1660,
+      "idealSupportAccelerationMs2": 1.62,
+      "staticSupportN": 2689.2000000000003,
+      "staticLoadPerWheelN": 448.20000000000005,
+      "specificForceNormMs2": null,
+      "stationaryNormAgrees": null
+    },
+    "power": {
+      "generationW": 450,
+      "demandWh": 2000,
+      "endWh": 2800,
+      "unmetWh": 0,
+      "curtailedWh": 0
+    },
+    "thermal": {
+      "netLongwaveOutW": 382.727308266103,
+      "absorbedSunW": 72.00000000000001,
+      "rejectedMinusLoadW": 60.72730826610302
+    },
+    "air": {
+      "inventoryMol": 342.4704346979318,
+      "initialO2Mol": 102.74113040937954,
+      "initialO2KPa": 21,
+      "metabolicO2G": 283.2,
+      "metabolicCO2G": 331.2,
+      "scrubbedCO2G": 331.2,
+      "unremovedCO2G": 0,
+      "outwardLeakMol": 0.56,
+      "accessLossMol": 10.702201084310369,
+      "replacementMixtureMol": 11.26220108431037,
+      "oxygenSupplyG": 391.31037308872897,
+      "nitrogenSupplyG": 220.84951082310945
+    },
+    "coupon": {
+      "prescribedG": 10,
+      "stoichiometricO2Mol": 1.0693662222855922,
+      "netChemicalPotentialKJ": 434,
+      "inventoryCoversDemand": true
+    },
+    "tracer": {
+      "sourceMgM3": 6.505971059561011,
+      "remoteMgM3": 3.4940289404389895,
+      "atSamplingZoneMgM3": 3.4940289404389895,
+      "tracerAccountedMg": 60,
+      "thresholdTimeWithDelayS": 56.08256237659907
+    },
+    "flow": {
+      "ductSpeedMs": 0.2,
+      "relativeDirection": "concurrent",
+      "spreadRateMmS": null
+    },
+    "suppression": {
+      "deliveredKg": 0.6,
+      "remainingKg": 1.4,
+      "extinction": null
+    },
+    "sourcing": {
+      "origin": "Earth supplier",
+      "netG": 10,
+      "feedG": 12.5,
+      "trimG": 2.5,
+      "thicknessMm": 0.18,
+      "evidenceStatus": "vendor analogue only",
+      "traceability": "lot unknown",
+      "qualification": null
+    },
+    "notes": [
+      "Independent sizing cases. All hybrid interfaces are unverified."
+    ]
+  },
+  "mars-night-pe": {
+    "version": "1.0",
+    "name": "Code Blooded | Mars night, PE",
+    "resultClass": "simulation",
+    "compatibility": "unverified",
+    "sourceIds": [
+      "jaxa-01",
+      "nasa-01",
+      "nasa-02",
+      "thermal-method",
+      "crew-method",
+      "access-method",
+      "fire-method",
+      "mist-method",
+      "material-heat",
+      "stock-pe",
+      "csa-01",
+      "materials-method",
+      "mars-env",
+      "psi-saffire",
+      "flow-measurement"
+    ],
+    "mobility": {
+      "massKg": 1660,
+      "idealSupportAccelerationMs2": 3.71,
+      "staticSupportN": 6158.6,
+      "staticLoadPerWheelN": 1026.4333333333334,
+      "specificForceNormMs2": null,
+      "stationaryNormAgrees": null
+    },
+    "power": {
+      "generationW": 0,
+      "demandWh": 2000,
+      "endWh": 1000,
+      "unmetWh": 0,
+      "curtailedWh": 0
+    },
+    "thermal": {
+      "netLongwaveOutW": 617.1295295174459,
+      "absorbedSunW": 0,
+      "rejectedMinusLoadW": 367.1295295174459
+    },
+    "air": {
+      "inventoryMol": 276.6182625403009,
+      "initialO2Mol": 94.05020926370231,
+      "initialO2KPa": 19.2236,
+      "metabolicO2G": 283.2,
+      "metabolicCO2G": 331.2,
+      "scrubbedCO2G": 331.2,
+      "unremovedCO2G": 0,
+      "outwardLeakMol": 0.44723199999999996,
+      "accessLossMol": 17.094167126208195,
+      "replacementMixtureMol": 17.541399126208194,
+      "oxygenSupplyG": 474.03849434173935,
+      "nitrogenSupplyG": 324.3271383802536
+    },
+    "coupon": {
+      "prescribedG": 10,
+      "stoichiometricO2Mol": 1.0693662222855922,
+      "netChemicalPotentialKJ": 434,
+      "inventoryCoversDemand": true
+    },
+    "tracer": {
+      "sourceMgM3": 8.351600230178196,
+      "remoteMgM3": 1.6483997698218034,
+      "atSamplingZoneMgM3": 1.6483997698218034,
+      "tracerAccountedMg": 60,
+      "thresholdTimeWithDelayS": null
+    },
+    "flow": {
+      "ductSpeedMs": 0.06666666666666667,
+      "relativeDirection": "concurrent",
+      "spreadRateMmS": null
+    },
+    "suppression": {
+      "deliveredKg": 0.6,
+      "remainingKg": 1.4,
+      "extinction": null
+    },
+    "sourcing": {
+      "origin": "Earth supplier",
+      "netG": 10,
+      "feedG": 12.5,
+      "trimG": 2.5,
+      "thicknessMm": 0.18,
+      "evidenceStatus": "vendor analogue only",
+      "traceability": "lot unknown",
+      "qualification": null
+    },
+    "notes": [
+      "Independent sizing cases. All hybrid interfaces are unverified."
+    ]
+  }
+}

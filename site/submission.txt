@@ -1,0 +1,50 @@
+Project Name
+FIRST FIRE — A Research Desk for Spacecraft Fire Safety
+
+High-Level Project Summary
+Would a rover's fabric or tape keep burning after the cabin fans stop? FIRST FIRE helps researchers find which NASA experiments can answer questions like this and where a new test is needed. Our dashboard ranks studies on fire prevention, detection and suppression, and links each study to its source. We tested our fire model by hiding one of four simulated Moon-gravity measurements at a time. On NASA's summary plot, its oxygen estimates missed by 1.4 percentage points on average, versus 2.3 for a straight line. The individual plots reverse that ranking. We published both results and recorded four predictions for NASA's planned Moon experiment before its results arrive.
+
+Link to Project Demo
+https://first-fire-lunar-lab.vercel.app/master-film.mp4
+
+Link to Final Project
+https://first-fire-lunar-lab.vercel.app/judging.html
+
+Detailed Project Description
+FIRST FIRE indexes 1,622 source rows from 15 NASA investigations. Its browser dashboard ranks evidence for a selected fire-safety question, displays original measurements and explains why a similar-looking experiment can fail the comparison. In three space station smoke tests, for example, one detector recorded a signal while a second alarm stayed silent. The second detector's power flag was off in all three runs. Counting those as missed alarms would give an engineer the wrong impression.
+
+The Fire Lab lets a researcher vary cabin conditions and see how much oxygen a flame needs to keep spreading. Our Python model, FLINT, estimates how airflow feeds a flame and how heat escapes. We used Earth-gravity tests for each material and three simulated Moon-gravity measurements to estimate a value shared across materials. We then predicted the fourth, rotating through all four. NASA's summary figure and the individual figures give different results, so we publish the comparison and its sensitivity.
+
+The material observer compares candidate recipes in different cabins, displays NASA’s measured cotton–fiberglass runs and lets a researcher record what a specimen actually did. https://first-fire-lunar-lab.vercel.app/material-observer.html
+
+For NASA's planned Flammability of Materials on the Moon experiment, we timestamped our forecast of whether flames would keep spreading on four fabric strips. The FM² decoder lets researchers explore what different lengths of burned fabric would imply. Students can use our English and Telugu classroom exercise to trace a smoke-alarm reading to a real experiment. The India case identifies measurements needed before applying a spacecraft model to a hospital ward.
+
+Use of Super Intelligence (SI)
+Yes. We used OpenAI ChatGPT and Codex to help locate sources, write and test code, and draft technical explanations. Anthropic Claude assisted with FLINT, tests, figures, the rover case and presentation materials. We used models for passage retrieval, selection and quotation review. The published results distinguish measurements from model output. The demo uses synthetic English narration from macOS speech synthesis, and the rover concept illustration is SI-generated. Our disclosure and credits are at https://first-fire-lunar-lab.vercel.app/team-handoff.html#disclosure
+
+NASA Data
+NASA's Physical Sciences Informatics archive supplies the original microgravity combustion and smoke-detector data. Our index lists all 15 investigations, their NASA DOIs and the 16 original tables used in FIRST FIRE: https://first-fire-lunar-lab.vercel.app/submission.html#nasa-data
+
+FLEX fuel droplet measurements: https://doi.org/10.60555/mbq8-0451
+SAME-R detector measurements: https://doi.org/10.60555/2np7-jv14
+Saffire-II material tests: https://doi.org/10.60555/2chp-m469
+CFI-G gas ignition tests: https://doi.org/10.60555/cyt1-kh64
+NASA's Earth and simulated lunar-gravity material study, used to test FLINT: https://ntrs.nasa.gov/citations/20250002114
+NASA's planned FM² experiment, used to define the four forecast cases: https://ntrs.nasa.gov/citations/20260001966
+LUCI partial-gravity experiment: https://ntrs.nasa.gov/citations/20250010653
+Saffire-II flight report: https://ntrs.nasa.gov/citations/20170008805
+FLEX flight report: https://ntrs.nasa.gov/citations/20150023456
+NASA flammability standard: https://standards.nasa.gov/standard/NASA/NASA-STD-6001
+NASA exploration-atmospheres assessment: https://ntrs.nasa.gov/citations/20260003925
+
+Space Agency Partner Data and Other References
+ISRO Gaganyaan crew-module life-support requirements: https://www.isro.gov.in/media_isro/pdf/Tenders/2024/44_Tender_Document1602424.pdf
+JAXA FLARE material flammability experiments: https://iss.jaxa.jp/kiboexp/news/images/2018ams_flare.pdf#page=26
+NIST room smoke-alarm data for the classroom exercise: https://www.nist.gov/el/fire/engineered-fire-safety/data-smoke-alarm-performance
+Study by the smoke-detector investigators: https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/
+India hospital fire and prevention sources: https://first-fire-lunar-lab.vercel.app/india.html
+Engineering references include Cantera (https://cantera.org/) and the NIST Fire Dynamics Simulator (https://pages.nist.gov/fds-smv/).
+Model and software documentation: https://first-fire-lunar-lab.vercel.app/research/chat-models.md
+Source bibliography with direct references to the papers, data, code, models and fonts: https://first-fire-lunar-lab.vercel.app/research/submission.md
+Media credits and SI disclosure: https://first-fire-lunar-lab.vercel.app/team-handoff.html#disclosure
+Code and licensing notice: https://first-fire-lunar-lab.vercel.app/licenses/software.txt

@@ -1,0 +1,138 @@
+{
+  "Q1": [
+    {
+      "criterion": "6.66 cm baseline",
+      "credit": 1,
+      "evidence": "The S1 baseline cell reads 6.66 cm."
+    },
+    {
+      "criterion": "4.81 cm current",
+      "credit": 1,
+      "evidence": "The S2 current cell reads 4.81 cm."
+    },
+    {
+      "criterion": "-1.85 cm signed difference",
+      "credit": 1,
+      "evidence": "It subtracts baseline from current and reports −1.85 cm."
+    }
+  ],
+  "Q2": [
+    {
+      "criterion": "same specimen used sequentially; direction effect not isolated",
+      "credit": 1,
+      "evidence": "Identifies sequential reuse, specimen condition and order as confounders."
+    },
+    {
+      "criterion": "fresh matched samples with counterbalanced or randomized order",
+      "credit": 1,
+      "evidence": "Specifies fresh identical specimens, comparable conditions, randomized order and replication."
+    },
+    {
+      "criterion": "separates PSI table settings from rate in NTRS 20170008805 slide 21",
+      "credit": 1,
+      "evidence": "Identifies NTRS slide 21 for rates and the PSI table plus its two row IDs for run settings."
+    }
+  ],
+  "Q3": [
+    {
+      "criterion": "8 cm",
+      "credit": 1,
+      "evidence": "Reports 8.0 cm simulated at 40 s."
+    },
+    {
+      "criterion": "manual/user-imposed rate rather than NASA attribution",
+      "credit": 1,
+      "evidence": "Labels 2.0 mm/s a user-entered override."
+    },
+    {
+      "criterion": "no rover material qualification from this calculation",
+      "credit": 1,
+      "evidence": "Explicitly withholds rover material certification."
+    }
+  ],
+  "Q4": [
+    {
+      "criterion": "2.25 g consumed",
+      "credit": 1,
+      "evidence": "Calculates 2.25 g from the uniform coupon."
+    },
+    {
+      "criterion": "97.65 kJ released by 50 s",
+      "credit": 1,
+      "evidence": "Multiplies by the reference heat and gives 97.65 kJ."
+    },
+    {
+      "criterion": "434 kJ full coupon",
+      "credit": 1,
+      "evidence": "Calculates 434 kJ for the whole 10 g coupon."
+    }
+  ],
+  "Q5": [
+    {
+      "criterion": "sealed final O2 withheld for open deck",
+      "credit": 1,
+      "evidence": "Withholds closed-cabin oxygen for the open deck."
+    },
+    {
+      "criterion": "fuel energy withheld for unknown material",
+      "credit": 1,
+      "evidence": "Withholds energy for an unknown composition and heat of combustion."
+    },
+    {
+      "criterion": "static support load still available in both runs",
+      "credit": 1,
+      "evidence": "Names static support force and explains that both cases retain it."
+    }
+  ],
+  "Q6": [
+    {
+      "criterion": "2689.2 N Moon and 6158.6 N Mars",
+      "credit": 1,
+      "evidence": "Reports 2,689.2 N and 6,158.6 N."
+    },
+    {
+      "criterion": "9 cm on both surfaces",
+      "credit": 1,
+      "evidence": "Reports 9.0 cm on both surfaces."
+    },
+    {
+      "criterion": "prescribed front rate independent of gravity",
+      "credit": 1,
+      "evidence": "Explains that rate and elapsed time determine travel in this model."
+    }
+  ],
+  "W1": [
+    {
+      "criterion": "parseable JSON identifies both source row IDs alongside correct rates and directions",
+      "credit": 1,
+      "evidence": "Parsed both NASA IDs, speeds and directions from the returned JSON."
+    },
+    {
+      "criterion": "time 37 s and rate/distance units recoverable",
+      "credit": 1,
+      "evidence": "Parsed 37 s, mm/s and cm from the returned JSON."
+    },
+    {
+      "criterion": "two distances and signed delta recoverable with correct values",
+      "credit": 1,
+      "evidence": "Parsed 6.66 cm, 4.81 cm and −1.85 cm in the defined order."
+    }
+  ],
+  "W2": [
+    {
+      "criterion": "valid(2,17,3.4) accepted",
+      "credit": 1,
+      "evidence": "The returned function executed and returned true."
+    },
+    {
+      "criterion": "valid(2,17,3.8) rejected",
+      "credit": 1,
+      "evidence": "The returned function executed and returned false."
+    },
+    {
+      "criterion": "valid(1.3,63,8.19) accepted",
+      "credit": 1,
+      "evidence": "The returned function executed and returned true."
+    }
+  ]
+}

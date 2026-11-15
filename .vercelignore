@@ -1,0 +1,15 @@
+.env*
+.git
+.DS_Store
+node_modules/
+/site/
+/dist/
+/data/
+/docs/
+/research/
+/chat/
+/rover-design/
+/flint-engine/
+/scripts/
+/tests/
+/source-tools/

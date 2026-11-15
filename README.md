@@ -6,16 +6,20 @@
 
 Built for the 2026 NASA Space Apps Challenge *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data* by Team Code Blooded: Haresh G., Samuel Christ and Hanmathgundam Hamsika.
 
+[Material observer](https://first-fire-lunar-lab.vercel.app/material-observer.html) · [Submission fields](https://first-fire-lunar-lab.vercel.app/submission.html) · [Evidence across the ten award categories](https://first-fire-lunar-lab.vercel.app/judging-evidence.html)
+
+The production Vercel application runs from the repository root with the checked-in `public/`, `api/` and `server/` directories. See the [hosting and rebuild instructions](source-tools/README.md) and [sign-in configuration](source-tools/account-setup.md). The standalone judging edition is built separately from `site/` into `dist/`.
+
 ## In sixty seconds
 
-- **The problem.** Spacecraft materials are cleared by one upward-burn test on Earth (NASA-STD-6001 Test 1). At lunar gravity, NASA found that three of five materials burned more easily than on Earth (ICES-2025-392). Moon habitats and rovers are planned at 34% oxygen. All 1,622 fire tests in NASA's PSI archive flew in orbit; none were run at lunar or Martian gravity.
+- **The problem.** Spacecraft materials are cleared by one upward-burn test on Earth (NASA-STD-6001 Test 1). Three of five materials in a NASA laboratory study sustained flame in less oxygen under simulated lunar gravity than the Earth-test trend suggested (ICES-2025-392). Moon habitats and rovers are planned at 34% oxygen. Our index contains 1,622 records from 15 NASA investigations, including measurements made in orbit. It contains no fire measurements from the surface of the Moon or Mars.
 - **What we built.** A browser research desk over the 15 PSI combustion investigations named by the challenge, with a Referee that checks every quote, claim and number before it is shown. Underneath it runs FLINT, an open Python engine built on NASA's two-limit extinction model, which predicts a material's oxygen limit at any gravity, pressure and atmosphere.
 - **Sealed before the flight.** Forecast v1 (14 Nov 2026, 12:57 UTC) and FLINT's forecast v2 (15 Nov 2026, 06:27 UTC) carry DigiCert RFC 3161 timestamps.
 - **Honest limits.** FM² has not flown. FLINT is validated on four materials at 8.2 psia and has not been reviewed by NASA; other pressures are extrapolations. One method, CFI-G gas-jet ignition, showed no skill and is reported as a negative result.
 
 | What we found | The number | Evidence |
 |---|---|---|
-| Earth tests predict NASA's Moon results, each held out | 1.4 points of O₂ mean error; a straight-line estimate gives 2.3 | [flint.html](site/flint.html) |
+| Predicting each of four materials under simulated lunar gravity using Earth-gravity tests and the other three lunar-gravity measurements | Mean absolute oxygen error in percentage points: FLINT 1.4, straight line 2.3 on Figure 13. The individual plots reverse the ranking (2.6 vs. 2.1) | [flint.html](site/flint.html) |
 | FM²'s sealed chamber will read high | At extinction the sensor reads about 27.0% against a flame-equivalent 26.0%; burn 2 stops at 14.9 cm, not 17.5 | [forecast register](site/forecast-register.html) |
 | In freefall, CO₂ beats helium | 274 FLEX droplet runs; heptane dies below 14.1% O₂ in nitrogen, 16.6% with 30% CO₂, 12.9% with 30% helium | [flint.html#freefall](site/flint.html) |
 | A Moon rover fire is a materials problem | All four cabin items burn at 34% O₂ with fans off; a CO₂ flood needs 26 kg and triples the pressure; venting stops Nomex near 4 psia | [rover fire case](site/rover-fire-case.html) |

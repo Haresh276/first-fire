@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#faf9f5"><title>Same-source comparison · FIRST FIRE</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+<style>
+.review{max-width:940px;margin-inline:auto;padding-bottom:4rem}.review .field{display:grid;gap:.35rem;max-width:52rem}.review textarea,.review input:not([type="file"]),.review select{font:inherit;width:100%;padding:.6rem;border:1px solid #8b9b95;border-radius:5px;background:white;color:#20322d}.review input[type="file"]{max-width:100%}.review .actions{flex-wrap:wrap}.review pre,.review .answer{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere}.review .note{font-size:.88rem;overflow-wrap:anywhere}.review details>summary{cursor:pointer;font-weight:bold}.review .stack>button,.review .stack>details{justify-self:start}.review section section{padding:.8rem 0}.review h1{font-family:var(--display,inherit)}.review .field select{max-width:15rem}#grade .field{margin-block:.75rem}
+</style>
+<script defer src="paired-review.js"></script>
+</head><body>
+<a href="#main" class="skip">Skip to comparison</a>
+<header class="masthead"><div class="shell mast-inner"><a href="index.html#home" class="mast-brand">FIRST FIRE<span class="branddot">.</span></a><nav aria-label="Research tools"><a href="index.html#study">Evidence study</a></nav></div></header>
+<main class="shell main review" id="main">
+<div class="breadcrumb"><a href="index.html#study">Evidence study</a><span>/</span>Same-source comparison</div>
+<header class="pagetitle"><h1>Two tools, one fire experiment</h1><p class="sub">Give FIRST FIRE and a general-purpose assistant the same NASA evidence and rover task. Score the responses with the tool names and elapsed times hidden.</p></header>
+<section class="panel stack" aria-labelledby="packet-heading"><h2 id="packet-heading">Shared evidence and task</h2>
+<p id="question"></p><div class="actions"><button type="button" id="packet" class="btn">Download shared source packet</button></div>
+<details><summary>Read the evidence supplied to both tools</summary><pre id="sources"></pre><p class="note" id="packet-id"></p></details>
+</section>
+<section class="section panel stack" id="run" aria-label="Capture two timed responses"></section><p class="note" role="status" id="save-status"></p>
+<section class="section panel stack"><h2>Score the masked responses</h2><p>Use a separate assessor. Read both anonymous responses against the shared packet and mark each criterion before opening the analyst mapping.</p><div class="stack" id="assessor"></div><div class="stack" id="grade"></div></section>
+<section class="section panel stack"><h2>Compare the results</h2><p>The facilitator can join the assessor’s scores with the private method and time record.</p><div class="stack" id="analyst"></div><div class="stack" id="results" aria-live="polite"></div></section>
+</main>
+</body></html>

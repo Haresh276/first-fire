@@ -1,0 +1,164 @@
+{
+  "sources": {
+    "apollo1:mission": {
+      "id": "apollo1:mission",
+      "title": "NASA · Apollo 1",
+      "url": "https://www.nasa.gov/mission/apollo-1/",
+      "locator": "Mission overview, Crew and Apollo Pad Fire"
+    },
+    "apollo1:board": {
+      "id": "apollo1:board",
+      "title": "Apollo 204 Review Board report",
+      "url": "https://www.nasa.gov/missions/apollo/apollo-1/report-of-the-apollo-204-review-board/",
+      "locator": "Fire chronology and Board findings on ignition, cabin atmosphere and crew escape"
+    },
+    "apollo1:aftermath": {
+      "id": "apollo1:aftermath",
+      "title": "NASA History · The Apollo 1 fire and its aftermath",
+      "url": "https://www.nasa.gov/history/55-years-ago-the-apollo-1-fire-and-its-aftermath/",
+      "locator": "Investigation and changes to the Apollo command module"
+    },
+    "apollo13:mission": {
+      "id": "apollo13:mission",
+      "title": "NASA · Apollo 13",
+      "url": "https://www.nasa.gov/mission/apollo-13/",
+      "locator": "Crew, mission overview and return to Earth"
+    },
+    "apollo13:incident": {
+      "id": "apollo13:incident",
+      "title": "NASA · Mission Control, Houston, April 13, 1970",
+      "url": "https://www.nasa.gov/image-article/mission-control-houston-april-13-1970/",
+      "locator": "Service module oxygen tank failure and crew response"
+    }
+  },
+  "records": [
+    {
+      "id": "apollo1",
+      "name": "Apollo 1",
+      "match": "\\b(?:apollo[ -]?(?:0?1|i|one|204)|as[ -]?204|apollo (?:launch[- ]pad |pad |capsule |cabin |spacecraft |command module )?(?:fire|tragedy)|(?:fire aboard|fire on|fire in) (?:the )?apollo(?![ -]?(?:[0-9]|i+\\b|one\\b|thirteen\\b)))\\b|\\b(?:which apollo (?:crew|mission|spacecraft|capsule|flight) (?:caught fire|had (?:a|the) (?:cabin )?fire)|apollo(?:'s|’s) (?:cabin |pad )?fire)\\b",
+      "facts": {
+        "overview": [
+          {
+            "text": "On January 27, 1967, a fire swept through Apollo 1’s command module during a countdown rehearsal at Launch Complex 34 in Cape Kennedy, Florida. The spacecraft was still on the ground. All three astronauts died: Gus Grissom, Ed White and Roger Chaffee.",
+            "source": "apollo1:mission"
+          },
+          {
+            "text": "The cabin’s pressurized pure oxygen and flammable materials let the fire spread rapidly. Rising pressure held the inward-opening hatch shut. Investigators considered an electrical arc the most likely ignition source, but could not identify exactly what started the fire.",
+            "source": "apollo1:board"
+          }
+        ],
+        "crew": [
+          {
+            "text": "Gus Grissom, Ed White and Roger Chaffee were inside Apollo 1. All three died in the fire during the ground test on January 27, 1967.",
+            "source": "apollo1:mission"
+          }
+        ],
+        "cause": [
+          {
+            "text": "The Apollo 204 Review Board identified an electrical arc as the most likely ignition source. Several wires showed evidence of arcing, but the board could not establish which one, if any, started the fire. Once flames took hold, combustible cabin materials burned rapidly in the pressurized pure oxygen.",
+            "source": "apollo1:board"
+          }
+        ],
+        "escape": [
+          {
+            "text": "Apollo 1’s inner hatch opened inward. As the fire heated the cabin gas, pressure inside rose and held the hatch shut. Smoke and heat slowed the pad crew as they removed the hatches from outside. They reached the astronauts about five minutes after the first fire call, too late to save them.",
+            "source": "apollo1:board"
+          }
+        ],
+        "changes": [
+          {
+            "text": "After Apollo 1, engineers gave the command module a single hatch that opened outward quickly, protected wiring bundles and removed or replaced flammable cabin materials. NASA also introduced more flame-resistant spacesuits.",
+            "source": "apollo1:aftermath"
+          }
+        ],
+        "atmosphere": [
+          {
+            "text": "During the Apollo 1 ground test, the sealed cabin held 100% oxygen at 16.7 psia (pounds per square inch absolute). Those conditions allowed combustible cabin materials to burn rapidly once ignited.",
+            "source": "apollo1:board"
+          }
+        ],
+        "setting": [
+          {
+            "text": "The Apollo 1 fire happened on January 27, 1967, during a preflight ground test at Launch Complex 34 in Cape Kennedy, Florida. The rocket had not launched.",
+            "source": "apollo1:mission"
+          }
+        ],
+        "comparison": [
+          {
+            "text": "Apollo 1 was a ground-test cabin fire on January 27, 1967. All three astronauts died.",
+            "source": "apollo1:mission"
+          }
+        ]
+      }
+    },
+    {
+      "id": "apollo13",
+      "name": "Apollo 13",
+      "match": "\\bapollo[ -]?(?:13|xiii|thirteen)\\b",
+      "facts": {
+        "overview": [
+          {
+            "text": "On April 13, 1970, an oxygen tank exploded in Apollo 13’s service module while the crew was on its way to the Moon. The crew abandoned the landing and used the lunar module as a shelter for the return flight.",
+            "source": "apollo13:incident"
+          },
+          {
+            "text": "Jim Lovell, Jack Swigert and Fred Haise all returned alive, splashing down in the Pacific on April 17.",
+            "source": "apollo13:mission"
+          }
+        ],
+        "crew": [
+          {
+            "text": "Apollo 13 carried Jim Lovell, Jack Swigert and Fred Haise. All three survived and returned to Earth on April 17, 1970.",
+            "source": "apollo13:mission"
+          }
+        ],
+        "cause": [
+          {
+            "text": "An electrical fault in one of Apollo 13’s service module oxygen tanks led to an explosion. The spacecraft lost its normal oxygen and electrical supplies. The crew shut down the command module and used the lunar module to sustain them on the way home.",
+            "source": "apollo13:incident"
+          }
+        ],
+        "escape": [
+          {
+            "text": "The Apollo 13 crew shut down the command module to conserve its batteries and moved into the lunar module for the trip home. They used the command module again for reentry and all three survived.",
+            "source": "apollo13:incident"
+          }
+        ],
+        "setting": [
+          {
+            "text": "Apollo 13’s oxygen tank exploded on April 13, 1970, in the service module as the spacecraft was traveling toward the Moon.",
+            "source": "apollo13:incident"
+          }
+        ],
+        "comparison": [
+          {
+            "text": "Apollo 13 suffered an oxygen tank explosion during the trip to the Moon in April 1970. Its three astronauts made it home.",
+            "source": "apollo13:mission"
+          }
+        ]
+      }
+    }
+  ],
+  "intents": {
+    "changes": "\\b(?:what (?:did (?:nasa|engineers|they) )?chang(?:e|ed)|what (?:was|did they) (?:redesign|improve)|what (?:improvements|lessons)|design changes?|redesign(?:ed|s)?|lessons? (?:did|learned|from)|safety (?:changes|improvements)|aftermath)\\b|\\b(?:what|how) (?:did (?:nasa|engineers) (?:learn|improve|change))\\b",
+    "escape": "\\b(?:escap(?:e|ed)|evacuat(?:e|ed)|rescu(?:e|ed)|get (?:them )?out|open (?:the |their )?(?:inner )?hatch|hatch (?:open|stuck|shut)|return (?:home|to earth)|get (?:back|home)|make it home)\\b|\\bhow (?:did )?(?:the crew|they) survive\\b|\\b(?:hatch|door) (?:wouldn.t|couldn.t|would not|could not) open\\b",
+    "crew": "\\b(?:who (?:was (?:inside|on[ -]?board|aboard)|were (?:they|the (?:crew|astronauts))|died|lost|survived|perished|was killed|flew)|names of (?:the )?(?:crew|astronauts)|crew members|how many (?:people|astronauts|crew)|(?:anyone|anybody|everyone|they|crew|astronauts) (?:die|survive|perish)(?:d)?|any survivors|was (?:anyone|anybody) (?:killed|hurt))\\b|\\b(?:who was the crew|crew (?:of|on|aboard)|how many (?:died|survived)|did (?:they|the crew) (?:make it|live))\\b|\\b(?:who|which astronauts?) (?:was |were )?(?:killed|aboard|on board)\\b|\\b(?:what happened to (?:the )?(?:crew|astronauts)|who (?:was aboard|was on board)|who was in (?:the )?(?:capsule|cabin)|did (?:the )?(?:astronauts|crew|they) (?:make it|die|live|survive))\\b|\\bwho (?:were|was) (?:aboard|inside|in|on|the[\\s-]+(?:crew|astronauts))\\b|\\bwho (?:were|was) (?:the )?(?:crew|astronauts|people)\\b",
+    "atmosphere": "\\b(?:how much oxygen|(?:what|which) (?:cabin |oxygen )?(?:pressure|atmosphere|gas)|oxygen (?:percentage|concentration|level)|(?:pure|100%) oxygen)\\b|\\b(?:what was (?:its|the (?:cabin )?) ?pressure|how (?:high|pressuri[sz]ed) was the (?:pressure|cabin))\\b",
+    "cause": "\\b(?:caus(?:e|es|ed)|what (?:actually |really )?(?:started|ignited|sparked|lit|triggered)|why did (?:it|the (?:fire|tank|accident)|mission) (?:happen|start|spread|explode|catch fire)|ignition source|electrical arc|which wire|spread (?:so |that )?(?:fast|quickly|rapidly))\\b|\\b(?:why|how) did (?:the |that )?(?:cabin |pad )?fire (?:happen|start|spread)\\b|\\bwhat (?:did (?:the )?(?:investigators|board) (?:find|conclude)|caused (?:this|that))\\b|\\b(?:how (?:did )?(?:it|that|this|the (?:fire|accident|explosion)) (?:start(?:ed)?|happen(?:ed)?|spread)|why did .{0,28}catch fire|what went wrong|what (?:went|was) wrong)\\b|\\b(?:what (?:actually |exactly |really )?(?:ignited|sparked|set off|triggered)(?: it| the fire)?|how (?:did )?(?:the |that )?(?:accident|fire|explosion) (?:start|happen)|(?:exact|probable|possible) (?:cause|ignition source)|(?:investigators|board) (?:determine|establish|conclude|find)|why (?:it|the fire) (?:started|spread))\\b|\\b(?:what (?:do|did) (?:we|investigators) know|what is known|what['’]s known) about (?:the )?(?:cause|ignition)\\b",
+    "setting": "\\b(?:when|where) (?:did (?:it|that|this|the (?:fire|test|accident|explosion)) (?:start|happen|occur|take place)|(?:did (?:the )?|was |were )?(?:the )?(?:accident|fire|spacecraft|explosion|test)\\b|(?:was|did) (?:it|that|this)\\b)|\\b(?:what (?:day|date|year)|in (?:space|orbit)|on (?:the )?(?:ground|launch pad|pad)|already launched|before launch)\\b|^(?:(?:and|so) )?(?:when|where)[ ?.!]*$|\\b(?:when|where) (?:did (?:the )?(?:fire|accident|explosion) (?:happen|occur)|was (?:the )?(?:ground test|disaster|explosion|accident|fire))\\b|\\b(?:the (?:date|location|year) of (?:the |that )?(?:fire|accident|incident|disaster)|was (?:that|this|it) a ground fire|which apollo (?:mission|crew|spacecraft|capsule|flight) caught fire)\\b"
+  },
+  "overview": "^(?:(?:please|can|could|you|do|me|give|tell|does|say|which|caught|explain|describe|summari[sz]e|summary|overview|know|about|more|the|a|an|and|of|that|this|what|was|is|happened|happen|actually|really|exactly|on|during|at|in|to|from|with|involving|aboard|nasa|mission|fire|cabin|pad|test|accident|disaster|incident|explosion|exploded|tragedy|again)\\b[\\s,.?!'’-]*)*$",
+  "followup": "^(?:(?:and|then|so|but|ok(?:ay)?|tell|me|more|what|were|when|how|where|which|who|why|did|does|was|are|is|had|any|at|the|a|an|in|on|of|to|from|or|all|after|afterwards|that|this|they|them|their|there|it|its|happen(?:ed)?|cause[ds]?|start(?:ed)?|spark(?:ed)?|ignit(?:e|ed|ion)|fire|accident|incident|mission|tank|explosion|board|investigators|found|find|conclude|knew|known|s|know|do|we|determine|establish|probable|likely|exact|readings?|electrical|arc|wire|source|cabin|hatch|door|crew|members|astronauts|inside|aboard|onboard|people|names|anyone|anybody|everyone|die[ds]?|killed|lost|lives|perish(?:ed)?|survive[ds]?|survivors|get|out|could|couldn|t|can|not|trapped|escape[ds]?|rescue[ds]?|open(?:ed)?|stuck|shut|ground|launch|pad|space|orbit|before|already|day|date|year|atmosphere|pressure|pure|oxygen|concentration|quickly|rapidly|fast|spread|much|many|time|long|change[ds]?|redesign(?:ed)?|engineers|nasa|learn(?:ed)?|lessons|return|home|back|earth|exactly|really|actually)\\b[\\s,.?!'’-]*)+$",
+  "unknown": "\\b(?:accidents?|incidents?|disasters?|traged(?:y|ies)|mishaps?|apollo|soyuz|mir|challenger|columbia|skylab|gemini|hindenburg)\\b",
+  "compare": "\\b(?:compar(?:e|ing|ison)|differ(?:ent|ence)|same|both|versus|vs|or|confus(?:e|ed|ing)|mix(?:ed|ing)? up)\\b",
+  "messages": {
+    "unknown": "I don’t have a source for that incident in this collection. The mission history here covers the Apollo 1 ground-test fire and the Apollo 13 oxygen tank explosion. Which incident would you like to look at?",
+    "ambiguous": "Which Apollo accident do you mean: the Apollo 1 fire during a ground test, or the Apollo 13 oxygen tank explosion in flight?",
+    "unsupported": "The {name} record here doesn’t establish that detail. I can look up the incident, the crew or what investigators found about its cause.",
+    "mixed": "I don’t have a source that establishes that comparison. Ask about either case individually to see its documented conditions."
+  },
+  "research": "\\b(?:sibal|luci|saffire|flex|cfi[ -]?g|same[ -]?r|ices|fm[ -]?2|psi[ -]?\\d+|nomex|p213|brier|cygnus|bass|first fire|experiment)\\b",
+  "unknown_named": "\\b(?:apollo[ -]?(?:[0-9]+|[ivxl]+|one|thirteen|eleven|twelve|seven|eight|nine|ten)|soyuz|mir|challenger|columbia|gemini|skylab|hindenburg)\\b",
+  "reference": "\\b(?:it|its|they|them|their|there|the (?:cabin|crew|astronauts|hatch|accident|incident|fire|investigators)|this (?:incident|mission)|that (?:event|accident|incident|mission|fire)|and what|tell me more)\\b|^(?:(?:and |so |then )*(?:when|where|who (?:died|survived|was (?:aboard|on[ -]?board|inside))|what changed|any survivors))[ .?!]*$|\\b(?:the (?:pressure|atmosphere|oxygen concentration|source|cause)|what did (?:nasa|engineers|investigators) (?:learn|change|find)|why did (?:the )?fire spread|any survivors)\\b|\\b(?:the (?:probable|likely|possible|exact) (?:cause|ignition source)|what did (?:the )?(?:investigators|board) (?:determine|establish|find|conclude)|was that a ground fire)\\b|\\bthe (?:ignition source|hatch|cabin atmosphere|board(?:'s|’s) findings|crew members)\\b",
+  "compare_reference": "\\b(?:was (?:it|that|this)|wasn['’]?t (?:it|that)|same as|differ(?:ent|ence) (?:from|between)|compar(?:e|ed) (?:it|that) to)\\b"
+}

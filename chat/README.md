@@ -4,11 +4,11 @@
 
 | Mode | Ollama tag | What it does |
 | --- | --- | --- |
-| Research synthesis | `qwen3.6:35b-a3b` | Writes an answer using retrieved NASA records and project documents. It can compare records and request calculations that FIRST FIRE evaluates independently. |
+| Research synthesis | `qwen3.8:27b` | Writes an answer using retrieved NASA records and project documents. It can compare records and request calculations that FIRST FIRE evaluates independently. |
 | Compact selection | `qwen3:0.6b` | Selects existing attributed passages. The application displays their archived text. This is the smaller installation and the setup script’s default. |
 | Alternate selection | `gemma3:1b` | Uses the same structured passage-selection interface with a different local model. |
 
-All three use a pinned local BGE encoder. The judge-facing static site uses its browser archive and research tools. Running the Python service on your own machine enables the installed Ollama model.
+These modes use a pinned local BGE encoder. The engine also accepts `qwen3.6:35b-a3b` for research synthesis. The archived synthesis benchmark used that model. The separate hosted-workspace interface looks for `qwen3.8:27b` when run on loopback. The judge-facing static site uses its browser archive and research tools. Running the Python service on your own machine enables the installed Ollama model.
 
 ## Start the service
 
@@ -17,10 +17,12 @@ Install Python 3.11 or 3.12 and start Ollama. The terminal command `OLLAMA_NO_CL
 For research synthesis, run these commands from the project directory.
 
 ```sh
-python3.12 scripts/setup_chat.py --model qwen3.6:35b-a3b
+python3.12 scripts/setup_chat.py --model qwen3.8:27b
 python3 scripts/build.py
-.chat-venv/bin/python -m chat.server --model qwen3.6:35b-a3b
+.chat-venv/bin/python -m chat.server --model qwen3.8:27b
 ```
+
+To serve the account-enabled release’s research interface locally, pass `--site-root public` to the server and open `/research-workspace/#home`. The Python service supports research chat and static pages. The Vercel Function handles account sign-in on the hosted release.
 
 For compact selection, substitute `qwen3:0.6b` in the setup and server commands. On Windows use `.chat-venv\Scripts\python.exe` for the server. Initial setup downloads the dependencies, BGE weights and the requested Ollama model. The larger model requires considerably more storage and memory. For an existing installation, use `--offline --model <tag>` with the setup script to check the installed files.
 
@@ -50,7 +52,7 @@ The local providers use structured outputs and the pinned BGE encoder. Model wei
 
 The [results browser](../site/fresh-chat-benchmark.html) shows the question, expected answer, citations and specific reason for each verdict. On a built site open `dist/fresh-chat-benchmark.html`. Download its audit ZIP and extract the nested archive for the series you want to inspect.
 
-With the service running on loopback and Chromium installed, capture new answers using the questions-only file:
+For this benchmark route, start the service with `--model qwen3.6:35b-a3b` and install Chromium. Capture new answers using the questions-only file:
 
 ```sh
 node scripts/run_local_chat_exam.cjs questions.json new-visible.jsonl http://127.0.0.1:8765

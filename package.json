@@ -1,0 +1,7 @@
+{
+  "name": "first-fire-lunar-lab",
+  "private": true,
+  "dependencies": {
+    "@auth/core": "0.41.3"
+  }
+}

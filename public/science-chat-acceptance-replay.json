@@ -1,0 +1,383 @@
+{
+  "scope": "Static chat as displayed in Chrome; same-tab follow-ups within each question only",
+  "bankSHA256": "17d28426456833bcb410f0342fd50a2000668d6b4171f937e196008c998d8339",
+  "localChatUISHA256": "7048edda23edc343bfe345b8fc4cb7ef1e799d66abd9148c163726c8441e8701",
+  "n": 24,
+  "passed": 24,
+  "cases": [
+    {
+      "id": "A01",
+      "previous": null,
+      "question": "How many records belong to the FLEX study?",
+      "expected": {
+        "kind": "number",
+        "value": 274,
+        "unit": "rows"
+      },
+      "displayed": "274 normalized observation rows match.\n\nSelection: FLEX. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A02",
+      "previous": null,
+      "question": "How many Kapton records does PSI-101 contain?",
+      "expected": {
+        "kind": "number",
+        "value": 29,
+        "unit": "rows"
+      },
+      "displayed": "29 normalized observation rows match.\n\nSelection: SAME-R · kapton (exact material label). [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-101-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A03",
+      "previous": null,
+      "question": "In PSI-101, how many observations use Kapton?",
+      "expected": {
+        "kind": "number",
+        "value": 29,
+        "unit": "rows"
+      },
+      "displayed": "29 normalized observation rows match.\n\nSelection: SAME-R · kapton (exact material label). [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-101-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A04",
+      "previous": null,
+      "question": "Count the inverse flame records for PSI-159.",
+      "expected": {
+        "kind": "number",
+        "value": 154,
+        "unit": "rows"
+      },
+      "displayed": "154 normalized observation rows match.\n\nSelection: CFI-G · inverse. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-159-experimental-2.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A05",
+      "previous": null,
+      "question": "How many normal-flame records belong to PSI-159?",
+      "expected": {
+        "kind": "number",
+        "value": 179,
+        "unit": "rows"
+      },
+      "displayed": "179 normalized observation rows match.\n\nSelection: CFI-G · normal. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-159-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A06",
+      "previous": null,
+      "question": "How many FLEX burn durations exceed ten seconds?",
+      "expected": {
+        "kind": "number",
+        "value": 131,
+        "unit": "rows"
+      },
+      "displayed": "131 normalized observation rows match.\n\nSelection: FLEX · burn duration > 10 s. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A07",
+      "previous": null,
+      "question": "How many FLEX heptane rows exceed three millimeters initial diameter?",
+      "expected": {
+        "kind": "number",
+        "value": 50,
+        "unit": "rows"
+      },
+      "displayed": "50 normalized observation rows match.\n\nSelection: FLEX · heptane (exact material label) · initial droplet diameter > 3 mm. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A08",
+      "previous": null,
+      "question": "Count the FLEX rows with burn duration below 12 seconds.",
+      "expected": {
+        "kind": "number",
+        "value": 168,
+        "unit": "rows"
+      },
+      "displayed": "168 normalized observation rows match.\n\nSelection: FLEX · burn duration < 12 s. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A09",
+      "previous": null,
+      "question": "How many methanol observations in FLEX have an initial diameter above 0.3 cm?",
+      "expected": {
+        "kind": "number",
+        "value": 83,
+        "unit": "rows"
+      },
+      "displayed": "83 normalized observation rows match.\n\nSelection: FLEX · methanol (exact material label) · initial droplet diameter > 3 mm. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A10",
+      "previous": null,
+      "question": "Count the FLEX records with exactly 4 mm initial diameter.",
+      "expected": {
+        "kind": "number",
+        "value": 1,
+        "unit": "rows"
+      },
+      "displayed": "1 normalized observation row matches.\n\nSelection: FLEX · initial droplet diameter = 4 mm. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A11",
+      "previous": null,
+      "question": "Median initial diameter for heptane in FLEX?",
+      "expected": {
+        "kind": "number",
+        "value": 2.92,
+        "unit": "mm"
+      },
+      "displayed": "Median initial droplet diameter is 2.92 mm across 108 of 117 matching rows (9 missing).\n\nSelection: FLEX · heptane (exact material label). [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A12",
+      "previous": null,
+      "question": "How many PSI-69 observations have missing initial diameter?",
+      "expected": {
+        "kind": "number",
+        "value": 12,
+        "unit": "rows"
+      },
+      "displayed": "12 normalized observation rows match.\n\nSelection: FLEX · initial droplet diameter missing. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A13",
+      "previous": null,
+      "question": "Count PSI-101 rows with reported smoke heating time.",
+      "expected": {
+        "kind": "number",
+        "value": 68,
+        "unit": "rows"
+      },
+      "displayed": "68 normalized observation rows match.\n\nSelection: SAME-R · smoke heating time reported. [1]",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-101-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A14",
+      "previous": "Count heptane records in FLEX.",
+      "question": "How many of those have a reported burn duration?",
+      "expected": {
+        "kind": "number",
+        "value": 112,
+        "unit": "rows"
+      },
+      "displayed": "112 normalized observation rows match.\n\nSelection: FLEX · heptane (exact material label) · burn duration reported. [1]\n\nThis calculation starts with the 117 matching rows in your previous result.",
+      "status": "answered",
+      "evidenceKind": "archive-calculation",
+      "sourceIds": [
+        "data/raw/PSI-69-experimental.csv"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A15",
+      "previous": null,
+      "question": "What fraction of the four lunar FM² fabric tests actually sustained spread, based on measurements?",
+      "expected": {
+        "kind": "no_lunar_rate"
+      },
+      "displayed": "The 2026-11-14 release records 0 verified lunar burn outcomes out of 4 planned FM² tests. [1] With zero resolved tests, the observed success fraction is undefined. There is no measured success percentage to report. [1]\n\nNASA’s experiment design specifies the planned starting atmospheres. The published predictions can be compared with official outcomes once those outcomes are recorded. [2]",
+      "status": "limited",
+      "evidenceKind": "lunar-outcome",
+      "sourceIds": [
+        "fm2-outcomes",
+        "lpsc-slides"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A16",
+      "previous": null,
+      "question": "How many FM2 lunar burns have published observed outcomes in this release?",
+      "expected": {
+        "kind": "no_lunar_count"
+      },
+      "displayed": "The 2026-11-14 release records 0 verified lunar burn outcomes out of 4 planned FM² tests. [1] With zero resolved tests, the observed success fraction is undefined. There is no measured success percentage to report. [1]\n\nNASA’s experiment design specifies the planned starting atmospheres. The published predictions can be compared with official outcomes once those outcomes are recorded. [2]",
+      "status": "limited",
+      "evidenceKind": "lunar-outcome",
+      "sourceIds": [
+        "fm2-outcomes",
+        "lpsc-slides"
+      ],
+      "pass": true
+    },
+    {
+      "id": "A17",
+      "previous": null,
+      "question": "How many kryptonite records does PSI-101 contain?",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "I could not bind every requested condition to an archive field. Specify an investigation, material and measurement, with units for numerical filters. Try “How many FLEX heptane rows have a reported burn duration?” or “Compare mean burn duration for methanol and heptane in FLEX.”",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    },
+    {
+      "id": "A18",
+      "previous": null,
+      "question": "How many FLEX burn durations exceed one fortnight?",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "One of the numerical conditions is incomplete. Give a field, comparison and value, for example “absolute pressure below 12 psia”.",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    },
+    {
+      "id": "A19",
+      "previous": null,
+      "question": "How many FLEX rows have a predicted probability of ignition greater than 80%?",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "This request needs a different measurement, inference or assumption. The row calculator can describe recorded conditions and outcomes. Try “How many FLEX heptane rows have a reported burn duration?” or “Compare mean burn duration for methanol and heptane in FLEX.”",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    },
+    {
+      "id": "A20",
+      "previous": null,
+      "question": "Count FLEX records where smoke is almost detectable.",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "I could not bind every requested condition to an archive field. Specify an investigation, material and measurement, with units for numerical filters. Try “How many FLEX heptane rows have a reported burn duration?” or “Compare mean burn duration for methanol and heptane in FLEX.”",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    },
+    {
+      "id": "A21",
+      "previous": null,
+      "question": "How many measured cabin alarm times below ten seconds does CFI-G contain?",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "Identify the measurement for each numerical filter, such as “initial ambient oxygen above 21%”.",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    },
+    {
+      "id": "A22",
+      "previous": null,
+      "question": "Count PSI-69 runs with initial diameter loosely around 3 mm.",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "I could not bind every requested condition to an archive field. Specify an investigation, material and measurement, with units for numerical filters. Try “How many FLEX heptane rows have a reported burn duration?” or “Compare mean burn duration for methanol and heptane in FLEX.”",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    },
+    {
+      "id": "A23",
+      "previous": null,
+      "question": "How many FLEX runs had both methanol and a crewed lunar ignition?",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "This request needs a different measurement, inference or assumption. The row calculator can describe recorded conditions and outcomes. Try “How many FLEX heptane rows have a reported burn duration?” or “Compare mean burn duration for methanol and heptane in FLEX.”",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    },
+    {
+      "id": "A24",
+      "previous": null,
+      "question": "How many FLEX burn durations exceed minus five kelvin?",
+      "expected": {
+        "kind": "withhold"
+      },
+      "displayed": "One of the numerical conditions is incomplete. Give a field, comparison and value, for example “absolute pressure below 12 psia”.",
+      "status": "abstained",
+      "evidenceKind": "archive-clarification",
+      "sourceIds": [],
+      "pass": true
+    }
+  ]
+}

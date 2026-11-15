@@ -1,0 +1,842 @@
+{
+  "version": 1,
+  "plan_sha256": "a6950b3099c2c05a8575c1a52a4db4ea068520d25deffbce6801267500853498",
+  "inputs": {
+    "PSI-101-experimental.csv": "87164b7dc9168a4273c159f7a9f23699afbd06ad97b77974377e79b9bf8a3bef",
+    "psi-core-file-census.json.gz": "1a4fe79db869951e3fceb7092adf47711cfd6018c6c14ae5e38a7b5c13eb46c3"
+  },
+  "source": "NASA SAME-R / PSI-101 v4",
+  "worksheet": "Original (cut and paste)",
+  "columns": {
+    "time": "B",
+    "test": "D",
+    "heater": "R",
+    "optical": "W",
+    "self_test": "CO"
+  },
+  "ledger": [
+    {
+      "number": 50,
+      "material": "Teflon",
+      "table_row": 73,
+      "date": "20-Jul",
+      "heater_ratio": 1.452,
+      "description": "B.L. High RT/R0",
+      "filename": "PSI-101_Analyzed Data_2010_201_12_teflon_run50.xls",
+      "file_version": 1,
+      "bytes": 6471168,
+      "folder": "Reduced Gravity/Teflon/Run 050",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_201_12_teflon_run50.xls&version=1&studyVersion=4",
+      "sha256": "931a03ebe843153b891cdd99a3540e123e84be2ede14fcd2f43e0f02e388278b",
+      "heater_start_row": 2286,
+      "preheat_rows": [
+        2257,
+        2285
+      ],
+      "baseline_n": 29,
+      "trace_n": 301,
+      "baseline_v": -0.183411,
+      "peak_row": 2416,
+      "minimum_v": -3.54614,
+      "peak_time_s": 131,
+      "observed_drop_v": 3.362729,
+      "predicted_v": {
+        "heater": 1.088698075,
+        "material_mean": 1.6491715,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 51,
+      "material": "Kapton",
+      "table_row": 2,
+      "date": "21-Jul",
+      "heater_ratio": 1.38,
+      "description": "B.L. new formula",
+      "excluded": "0 matching analyzed base-run workbooks in the file census."
+    },
+    {
+      "number": 52,
+      "material": "Pyrell",
+      "table_row": 91,
+      "date": "22-Jul",
+      "heater_ratio": 1.22,
+      "description": "Baseline",
+      "filename": "PSI-101_Analyzed Data_2010_202_13_pyrell_run52.xls",
+      "file_version": 1,
+      "bytes": 5827072,
+      "folder": "Reduced Gravity/Pyrell/Run 052",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_202_13_pyrell_run52.xls&version=1&studyVersion=4",
+      "sha256": "c1f5557de63c57e253d6fbac5d1a8e0acc8f28d29f8ea786265e1379a1bcb7be",
+      "heater_start_row": 119,
+      "preheat_rows": [
+        89,
+        118
+      ],
+      "baseline_n": 30,
+      "trace_n": 302,
+      "baseline_v": -0.184021,
+      "peak_row": 401,
+      "minimum_v": -6.25671,
+      "peak_time_s": 281,
+      "observed_drop_v": 6.072689,
+      "predicted_v": {
+        "heater": 6.64503931,
+        "material_mean": 6.076454,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 54,
+      "material": "Lampwick",
+      "table_row": 54,
+      "date": "29-Jul",
+      "heater_ratio": 1.245,
+      "description": "Baseline",
+      "filename": "PSI-101_Analyzed Data_2010_210_10_lampwick_run54.xls",
+      "file_version": 1,
+      "bytes": 7128576,
+      "folder": "Reduced Gravity/Cotton Lamp wick/Run 054",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_210_10_lampwick_run54.xls&version=1&studyVersion=4",
+      "sha256": "2a67d2ac9c62ac2c99ff98b3f00bfe355faed48049a74b4e41affb2c7bda7ed5",
+      "heater_start_row": 649,
+      "preheat_rows": [
+        619,
+        648
+      ],
+      "baseline_n": 30,
+      "trace_n": 300,
+      "baseline_v": -0.190735,
+      "peak_row": 904,
+      "minimum_v": -6.26495,
+      "peak_time_s": 256,
+      "observed_drop_v": 6.074215,
+      "predicted_v": {
+        "heater": 6.046295642,
+        "material_mean": 6.0724395,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 55,
+      "material": "Lampwick",
+      "table_row": 55,
+      "date": "29-Jul",
+      "heater_ratio": 1.245,
+      "description": "High RT/R0 test aging",
+      "filename": "PSI-101_Analyzed Data_2010_210_10_lampwick_run55.xls",
+      "file_version": 1,
+      "bytes": 2990080,
+      "folder": "Reduced Gravity/Cotton Lamp wick/Run 055",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_210_10_lampwick_run55.xls&version=1&studyVersion=4",
+      "sha256": "d8a1ecee339b901388095bfb18d82785b98e772f14b2d1c2a5e1f93cb425f0e9",
+      "heater_start_row": 399,
+      "preheat_rows": [
+        369,
+        398
+      ],
+      "baseline_n": 30,
+      "trace_n": 302,
+      "baseline_v": -0.183411,
+      "peak_row": 616,
+      "minimum_v": -6.25824,
+      "peak_time_s": 216,
+      "observed_drop_v": 6.074829,
+      "predicted_v": {
+        "heater": 6.046295642,
+        "material_mean": 6.0724395,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 56,
+      "material": "Teflon",
+      "table_row": 74,
+      "date": "29-Jul",
+      "heater_ratio": 1.445,
+      "description": "Baseline",
+      "filename": "PSI-101_Analyzed Data_2010_210_10_teflon_run56.xls",
+      "file_version": 1,
+      "bytes": 4087296,
+      "folder": "Reduced Gravity/Teflon/Run 056",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_210_10_teflon_run56.xls&version=1&studyVersion=4",
+      "sha256": "80990e9e177598e3ebe6dd2ce8af13b2ff7b6f7860bf17bb3e1dfac48f8ac211",
+      "heater_start_row": 173,
+      "preheat_rows": [
+        143,
+        172
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.1976015,
+      "peak_row": 357,
+      "minimum_v": -1.44043,
+      "peak_time_s": 185,
+      "observed_drop_v": 1.2428285,
+      "predicted_v": {
+        "heater": 1.256346302,
+        "material_mean": 1.6491715,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 57,
+      "material": "Lampwick",
+      "table_row": 57,
+      "date": "29-Jul",
+      "heater_ratio": 1.253,
+      "description": "High RT/R0 reburn sample",
+      "excluded": "Base ID has conflicting material assignments in the condition table."
+    },
+    {
+      "number": 57,
+      "material": "Teflon",
+      "table_row": 75,
+      "date": "29-Jul",
+      "heater_ratio": 1.253,
+      "description": "High RT/R0 reburn sample",
+      "excluded": "Base ID has conflicting material assignments in the condition table."
+    },
+    {
+      "number": 58,
+      "material": "Teflon",
+      "table_row": 76,
+      "date": "30-Jul",
+      "heater_ratio": 1.445,
+      "description": "Baseline aging",
+      "filename": "PSI-101_Analyzed Data_2010_211_12_teflon_run58.xls",
+      "file_version": 1,
+      "bytes": 6683648,
+      "folder": "Reduced Gravity/Teflon/Run 058",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_211_12_teflon_run58.xls&version=1&studyVersion=4",
+      "sha256": "f21f30fb3082a010857a3b4654f04f590d7dd52278427229eddf2c6e07d9117a",
+      "heater_start_row": 44,
+      "preheat_rows": [
+        14,
+        43
+      ],
+      "baseline_n": 30,
+      "trace_n": 300,
+      "baseline_v": -0.1829525,
+      "peak_row": 173,
+      "minimum_v": -1.25519,
+      "peak_time_s": 129,
+      "observed_drop_v": 1.0722375,
+      "predicted_v": {
+        "heater": 1.256346302,
+        "material_mean": 1.6491715,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 59,
+      "material": "Silicone",
+      "table_row": 33,
+      "date": "30-Jul",
+      "heater_ratio": 1.327,
+      "description": "baseline aged",
+      "filename": "PSI-101_Analyzed Data_2010_211_13_silcon_run59.xls",
+      "file_version": 1,
+      "bytes": 6681600,
+      "folder": "Reduced Gravity/Silicone/Run 059",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_211_13_silcon_run59.xls&version=1&studyVersion=4",
+      "sha256": "85ab0073a038c5faf3aee4d4e00787bb81f918710b98f6c8b5a46643329c5018",
+      "heater_start_row": 125,
+      "preheat_rows": [
+        95,
+        124
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.18325799999999998,
+      "peak_row": 293,
+      "minimum_v": -6.25641,
+      "peak_time_s": 168,
+      "observed_drop_v": 6.073152,
+      "predicted_v": {
+        "heater": 4.082416413,
+        "material_mean": 6.0768105,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 60,
+      "material": "Silicone",
+      "table_row": 35,
+      "date": "30-Jul",
+      "heater_ratio": 1.35,
+      "description": "Htemp ageing",
+      "filename": "PSI-101_Analyzed Data_2010_211_14_silicon_run60.xls",
+      "file_version": 1,
+      "bytes": 5135360,
+      "folder": "Reduced Gravity/Silicone/Run 060",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_211_14_silicon_run60.xls&version=1&studyVersion=4",
+      "sha256": "3336c06ce158965039414e7b89e35d9230ddcaff370f225e84d2ab1e739a51a6",
+      "heater_start_row": 84,
+      "preheat_rows": [
+        54,
+        83
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.1939395,
+      "peak_row": 301,
+      "minimum_v": -6.26526,
+      "peak_time_s": 217,
+      "observed_drop_v": 6.0713205,
+      "predicted_v": {
+        "heater": 3.531572238,
+        "material_mean": 6.0768105,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 61,
+      "material": "Kapton",
+      "table_row": 4,
+      "date": "2-Aug",
+      "heater_ratio": 1.38,
+      "description": "Baseline Aging",
+      "filename": "PSI-101_Analyzed Data_2010_214_10_kapton_run61.xls",
+      "file_version": 1,
+      "bytes": 6652416,
+      "folder": "Reduced Gravity/Kapton/Run 061",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_214_10_kapton_run61.xls&version=1&studyVersion=4",
+      "sha256": "7cefc112ba9589095d8afb065c230955b9ceecc0573590801b437c9cb271a17e",
+      "heater_start_row": 224,
+      "preheat_rows": [
+        194,
+        223
+      ],
+      "baseline_n": 30,
+      "trace_n": 300,
+      "baseline_v": -0.184937,
+      "peak_row": 382,
+      "minimum_v": -0.739746,
+      "peak_time_s": 158,
+      "observed_drop_v": 0.554809,
+      "predicted_v": {
+        "heater": 2.813079837,
+        "material_mean": 0.65441225,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 62,
+      "material": "Kapton",
+      "table_row": 6,
+      "date": "2-Aug",
+      "heater_ratio": 1.48,
+      "description": "High Temp aging",
+      "filename": "PSI-101_Analyzed Data_2010_214_10_kapton_run62.xls",
+      "file_version": 1,
+      "bytes": 6525440,
+      "folder": "Reduced Gravity/Kapton/Run 062",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_214_10_kapton_run62.xls&version=1&studyVersion=4",
+      "sha256": "7ffd26a7e180f7c042292badc9f201aa1840a0aa3f38e5b051283d9120935c8f",
+      "heater_start_row": 183,
+      "preheat_rows": [
+        152,
+        182
+      ],
+      "baseline_n": 31,
+      "trace_n": 302,
+      "baseline_v": -0.183411,
+      "peak_row": 344,
+      "minimum_v": -6.25397,
+      "peak_time_s": 160,
+      "observed_drop_v": 6.070559,
+      "predicted_v": {
+        "heater": 0.418105167,
+        "material_mean": 0.65441225,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 63,
+      "material": "Pyrell",
+      "table_row": 92,
+      "date": "23-Aug",
+      "heater_ratio": 1.22,
+      "description": "Baseline Aging",
+      "filename": "PSI-101_Analyzed Data_2010_235_9_pyrell_run63.xls",
+      "file_version": 1,
+      "bytes": 6210560,
+      "folder": "Reduced Gravity/Pyrell/Run 063",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_235_9_pyrell_run63.xls&version=1&studyVersion=4",
+      "sha256": "c2838f658ebbb68fbf36bcc97a79e1a9f54f1ff78bb9ec9bf82e1cc0b3b50ccc",
+      "excluded": "Heater onset missing in the matched test records."
+    },
+    {
+      "number": 64,
+      "material": "Pyrell",
+      "table_row": 94,
+      "date": "23-Aug",
+      "heater_ratio": 1.23,
+      "description": "High Temp aging",
+      "filename": "PSI-101_Analyzed Data_2010_235_11_pyrell_run64.xls",
+      "file_version": 1,
+      "bytes": 6659072,
+      "folder": "Reduced Gravity/Pyrell/Run 064",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_235_11_pyrell_run64.xls&version=1&studyVersion=4",
+      "sha256": "93800b3a74b0b37cbbc205e951778be61c60eb1226004f664f03f3c8bb72f4a6",
+      "heater_start_row": 164,
+      "preheat_rows": [
+        134,
+        163
+      ],
+      "baseline_n": 30,
+      "trace_n": 302,
+      "baseline_v": -0.185547,
+      "peak_row": 355,
+      "minimum_v": -6.25946,
+      "peak_time_s": 190,
+      "observed_drop_v": 6.073913,
+      "predicted_v": {
+        "heater": 6.405541843,
+        "material_mean": 6.076454,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 65,
+      "material": "Silicone",
+      "table_row": 37,
+      "date": "23-Aug",
+      "heater_ratio": 1.327,
+      "description": "Baseline long aging",
+      "filename": "PSI-101_Analyzed Data_2010_235_10_silicone_run65.xls",
+      "file_version": 1,
+      "bytes": 7300096,
+      "folder": "Reduced Gravity/Silicone/Run 065",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_235_10_silicone_run65.xls&version=1&studyVersion=4",
+      "sha256": "ef776a7a853479f5e517d05c5b432a35642d1c7a9a3def73ac2ec703f68171ed",
+      "heater_start_row": 144,
+      "preheat_rows": [
+        113,
+        143
+      ],
+      "baseline_n": 31,
+      "trace_n": 301,
+      "baseline_v": -0.191345,
+      "peak_row": 420,
+      "minimum_v": -6.25702,
+      "peak_time_s": 276,
+      "observed_drop_v": 6.065675,
+      "predicted_v": {
+        "heater": 4.082416413,
+        "material_mean": 6.0768105,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 66,
+      "material": "Silicone",
+      "table_row": 39,
+      "date": "23-Aug",
+      "heater_ratio": 1.36,
+      "description": "High T aging",
+      "filename": "PSI-101_Analyzed Data_2010_235_10_silicone_run66.xls",
+      "file_version": 1,
+      "bytes": 6486016,
+      "folder": "Reduced Gravity/Silicone/Run 066",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_235_10_silicone_run66.xls&version=1&studyVersion=4",
+      "sha256": "90d517de900c4d19fe72f9891899934732e0d057646aaf3201cc257b8d9194b8",
+      "heater_start_row": 124,
+      "preheat_rows": [
+        94,
+        123
+      ],
+      "baseline_n": 30,
+      "trace_n": 302,
+      "baseline_v": -0.1849365,
+      "peak_row": 369,
+      "minimum_v": -6.26404,
+      "peak_time_s": 244,
+      "observed_drop_v": 6.0791035,
+      "predicted_v": {
+        "heater": 3.292074771,
+        "material_mean": 6.0768105,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 72,
+      "material": "Silicone",
+      "table_row": 42,
+      "date": "25-Aug",
+      "heater_ratio": 1.327,
+      "description": "Baseline STS det",
+      "filename": "PSI-101_Analyzed Data_2010_237_14_silcone_run72.xls",
+      "file_version": 1,
+      "bytes": 5757440,
+      "folder": "Reduced Gravity/Silicone/Run 072",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_237_14_silcone_run72.xls&version=1&studyVersion=4",
+      "sha256": "1fd825cbdd7e527c3b7c88405f71c846c97e586cadfda27b64ee629802979730",
+      "heater_start_row": 188,
+      "preheat_rows": [
+        158,
+        187
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.1856995,
+      "peak_row": 353,
+      "minimum_v": -6.26709,
+      "peak_time_s": 164,
+      "observed_drop_v": 6.0813905,
+      "predicted_v": {
+        "heater": 4.082416413,
+        "material_mean": 6.0768105,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 87,
+      "material": "Pyrell",
+      "table_row": 103,
+      "date": "30-Aug",
+      "heater_ratio": 1.22,
+      "description": "Baseline STS det",
+      "filename": "PSI-101_Analyzed Data_2010_242_13_pyrell_run87.xls",
+      "file_version": 1,
+      "bytes": 5726720,
+      "folder": "Reduced Gravity/Pyrell/Run 087",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_242_13_pyrell_run87.xls&version=1&studyVersion=4",
+      "sha256": "59179010fdc58380e9c4c3cf6878db833713d209f3c94b15e482f468f1c3a103",
+      "heater_start_row": 141,
+      "preheat_rows": [
+        112,
+        140
+      ],
+      "baseline_n": 29,
+      "trace_n": 302,
+      "baseline_v": -0.185242,
+      "peak_row": 292,
+      "minimum_v": -6.25702,
+      "peak_time_s": 150,
+      "observed_drop_v": 6.071778,
+      "predicted_v": {
+        "heater": 6.64503931,
+        "material_mean": 6.076454,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 88,
+      "material": "Lampwick",
+      "table_row": 65,
+      "date": "30-Aug",
+      "heater_ratio": 1.245,
+      "description": "Baseline STS det",
+      "filename": "PSI-101_Analyzed Data_2010_242_14_lampwick_run88.xls",
+      "file_version": 1,
+      "bytes": 8515584,
+      "folder": "Reduced Gravity/Cotton Lamp wick/Run 088",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_242_14_lampwick_run88.xls&version=1&studyVersion=4",
+      "sha256": "f5825ced1364c10018a5e7abc55ad9afb3492d0af560646f64ae2c78fe98f0cc",
+      "excluded": "Optical coverage -30 to 299 s, largest gap 4 s."
+    },
+    {
+      "number": 89,
+      "material": "Teflon",
+      "table_row": 85,
+      "date": "30-Aug",
+      "heater_ratio": 1.445,
+      "description": "Baseline STS det",
+      "filename": "PSI-101_Analyzed Data_2010_242_15_teflon_run89.xls",
+      "file_version": 1,
+      "bytes": 5803008,
+      "folder": "Reduced Gravity/Teflon/Run 089",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_242_15_teflon_run89.xls&version=1&studyVersion=4",
+      "sha256": "170cfec34f5109351e55e8d49e19f40db9460dbb1abe42e6c8f0c08490879646",
+      "heater_start_row": 157,
+      "preheat_rows": [
+        127,
+        156
+      ],
+      "baseline_n": 30,
+      "trace_n": 302,
+      "baseline_v": -0.1878355,
+      "peak_row": 326,
+      "minimum_v": -1.19385,
+      "peak_time_s": 168,
+      "observed_drop_v": 1.0060145,
+      "predicted_v": {
+        "heater": 1.256346302,
+        "material_mean": 1.6491715,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 90,
+      "material": "Kapton",
+      "table_row": 17,
+      "date": "30-Aug",
+      "heater_ratio": 1.43,
+      "description": "Mid Temp aging reburn 85",
+      "filename": "PSI-101_Analyzed Data_2010_242_15_kapton_run90.xls",
+      "file_version": 1,
+      "bytes": 6123008,
+      "folder": "Reduced Gravity/Kapton/Run 090",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_242_15_kapton_run90.xls&version=1&studyVersion=4",
+      "sha256": "128b80433815b49f0c1734b01b620cf6bc801f0d005e31c77d0129e565bd47c1",
+      "heater_start_row": 43,
+      "preheat_rows": [
+        13,
+        42
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.184631,
+      "peak_row": 170,
+      "minimum_v": -0.216064,
+      "peak_time_s": 128,
+      "observed_drop_v": 0.031433,
+      "predicted_v": {
+        "heater": 1.615592502,
+        "material_mean": 0.65441225,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      },
+      "overlap": "This condition lists a reburn of training run 85."
+    },
+    {
+      "number": 91,
+      "material": "Silicone",
+      "table_row": 45,
+      "date": "7-Sep",
+      "heater_ratio": 1.327,
+      "description": "Baseline STS det",
+      "filename": "PSI-101_Analyzed Data_2010_250_12_silicone_run91.xls",
+      "file_version": 1,
+      "bytes": 5535744,
+      "folder": "Reduced Gravity/Silicone/Run 091",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_250_12_silicone_run91.xls&version=1&studyVersion=4",
+      "sha256": "9c96ad7c2785aed60fc580e623d43bc8e0e8069f18857f5420f3e8d629850c5c",
+      "heater_start_row": 75,
+      "preheat_rows": [
+        45,
+        74
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.184021,
+      "peak_row": 285,
+      "minimum_v": -6.24634,
+      "peak_time_s": 210,
+      "observed_drop_v": 6.062319,
+      "predicted_v": {
+        "heater": 4.082416413,
+        "material_mean": 6.0768105,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    },
+    {
+      "number": 92,
+      "material": "Kapton",
+      "table_row": 19,
+      "date": "7-Sep",
+      "heater_ratio": 1.38,
+      "description": "Baseline STS det",
+      "filename": "PSI-101_Analyzed Data_2010_250_16_kapton_run92.xls",
+      "file_version": 1,
+      "bytes": 5737472,
+      "folder": "Reduced Gravity/Kapton/Run 092",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_250_16_kapton_run92.xls&version=1&studyVersion=4",
+      "sha256": "8483b6080c4ea1a5cc20db412d319b6706373659466daf3cacfa4bba7b42b210",
+      "heater_start_row": 156,
+      "preheat_rows": [
+        126,
+        155
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.184021,
+      "peak_row": 283,
+      "minimum_v": -2.73895,
+      "peak_time_s": 126,
+      "observed_drop_v": 2.554929,
+      "predicted_v": {
+        "heater": 2.813079837,
+        "material_mean": 0.65441225,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      },
+      "overlap": "The earlier FIRST FIRE detector power case already inspected the optical trace."
+    },
+    {
+      "number": 93,
+      "material": "Kapton",
+      "table_row": 20,
+      "date": "7-Sep",
+      "heater_ratio": 1.43,
+      "description": "Mid Temp aging run 75 repeat",
+      "filename": "PSI-101_Analyzed Data_2010_250_13_kapton_run93.xls",
+      "file_version": 1,
+      "bytes": 6305792,
+      "folder": "Reduced Gravity/Kapton/Run 093",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_250_13_kapton_run93.xls&version=1&studyVersion=4",
+      "sha256": "34ee218a0cb5941fb32c270f2e1b9eac2ed772cc263e8d29d53a7aeb53b792e4",
+      "heater_start_row": 221,
+      "preheat_rows": [
+        191,
+        220
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.214233,
+      "peak_row": 360,
+      "minimum_v": -0.811768,
+      "peak_time_s": 139,
+      "observed_drop_v": 0.597535,
+      "predicted_v": {
+        "heater": 1.615592502,
+        "material_mean": 0.65441225,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      },
+      "overlap": "The earlier FIRST FIRE detector power case already inspected the optical trace."
+    },
+    {
+      "number": 94,
+      "material": "Kapton",
+      "table_row": 22,
+      "date": "7-Sep",
+      "heater_ratio": 1.45,
+      "description": "Mid Temp aging run mid high",
+      "filename": "PSI-101_Analyzed Data_2010_250_13_kapton_run94.xls",
+      "file_version": 1,
+      "bytes": 6554112,
+      "folder": "Reduced Gravity/Kapton/Run 094",
+      "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_250_13_kapton_run94.xls&version=1&studyVersion=4",
+      "sha256": "48a7bffcd47fc3cd51587454ad073417fc86a15dc839a65074d8ee16f0500e6e",
+      "heater_start_row": 422,
+      "preheat_rows": [
+        392,
+        421
+      ],
+      "baseline_n": 30,
+      "trace_n": 301,
+      "baseline_v": -0.1835635,
+      "peak_row": 586,
+      "minimum_v": -0.929565,
+      "peak_time_s": 164,
+      "observed_drop_v": 0.7460015,
+      "predicted_v": {
+        "heater": 1.136597568,
+        "material_mean": 0.65441225,
+        "pooled_mean": 3.5777610357142855,
+        "pooled_median": 4.11773875
+      }
+    }
+  ],
+  "results": {
+    "primary": {
+      "n": 18,
+      "mae_v": {
+        "heater": 1.435369505,
+        "material_mean": 0.500229236,
+        "pooled_mean": 2.412208738,
+        "pooled_median": 2.232216167
+      }
+    },
+    "by_material": {
+      "Kapton": {
+        "n": 3,
+        "mae_v": {
+          "heater": 2.767106913,
+          "material_mean": 1.869113083,
+          "pooled_mean": 2.782503179,
+          "pooled_median": 2.96249575
+        }
+      },
+      "Lampwick": {
+        "n": 2,
+        "mae_v": {
+          "heater": 0.028226358,
+          "material_mean": 0.0020825,
+          "pooled_mean": 2.496760964,
+          "pooled_median": 1.95678325
+        }
+      },
+      "Pyrell": {
+        "n": 3,
+        "mae_v": {
+          "heater": 0.492413488,
+          "material_mean": 0.003660667,
+          "pooled_mean": 2.495032298,
+          "pooled_median": 1.955054583
+        }
+      },
+      "Silicone": {
+        "n": 6,
+        "mae_v": {
+          "heater": 2.21327464,
+          "material_mean": 0.006941417,
+          "pooled_mean": 2.494399048,
+          "pooled_median": 1.954421333
+        }
+      },
+      "Teflon": {
+        "n": 4,
+        "mae_v": {
+          "heater": 0.680497333,
+          "material_mean": 0.834997875,
+          "pooled_mean": 1.906808661,
+          "pooled_median": 2.446786375
+        }
+      }
+    },
+    "earlier": {
+      "n": 14,
+      "mae_v": {
+        "heater": 1.617325666,
+        "material_mean": 0.589300893,
+        "pooled_mean": 2.35983402,
+        "pooled_median": 2.128415
+      }
+    },
+    "later": {
+      "n": 4,
+      "mae_v": {
+        "heater": 0.798522942,
+        "material_mean": 0.188478437,
+        "pooled_mean": 2.59552025,
+        "pooled_median": 2.59552025
+      }
+    },
+    "equal_material_mae_v": {
+      "heater": 1.236303746,
+      "material_mean": 0.543359108,
+      "pooled_mean": 2.43510083,
+      "pooled_median": 2.255108258
+    },
+    "including_overlap": {
+      "n": 21,
+      "mae_v": {
+        "heater": 1.366524711,
+        "material_mean": 0.551642833,
+        "pooled_mean": 2.427102066,
+        "pooled_median": 2.349962393
+      }
+    }
+  }
+}

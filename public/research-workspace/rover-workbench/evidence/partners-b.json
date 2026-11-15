@@ -1,0 +1,365 @@
+[
+  {
+    "id": "ases-01",
+    "agency": "ASES",
+    "title": "Agence Sénégalaise d’Études Spatiales — agency mandate",
+    "url": "https://aps.sn/wp-content/uploads/2024/02/MAGAZINE-APS-n6.pdf",
+    "locator": "PDF p. 36, ASES back-cover notice citing decree 2023-754",
+    "role": "engineering reference only",
+    "evidenceClass": "engineering reference",
+    "quantities": [],
+    "conditions": "Senegalese agency notice published in the national press agency magazine in 2024.",
+    "supports": "Establishes ASES’s policy, research and training mandate. It identifies the institution represented in the partner roster.",
+    "limits": "No rover hardware, cabin specification or fire experiment is described.",
+    "localFile": "evidence/files/ases-mandate-aps.pdf"
+  },
+  {
+    "id": "ases-02",
+    "agency": "ASES",
+    "title": "SENSAT — GAINDESAT-1A",
+    "url": "https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1a",
+    "locator": "Fiche technique and Comment ça fonctionne, including Balises au sol, Collecte en orbite and Transmission",
+    "role": "engineering reference only",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "Senegal’s SENSAT programme describes an Earth-orbiting CubeSat launched on 16 August 2024 to collect and relay environmental data from ground stations.",
+    "supports": "Documents national experience with telemetry and orbital data collection. The source is a SENSAT programme record.",
+    "limits": "Orbital satellite data cannot establish a planetary rover’s mass, wheels, atmosphere or fire response. No applicable public ASES rover specification was identified in the reviewed sources.",
+    "localFile": "evidence/files/ases-gaindesat.html.txt"
+  },
+  {
+    "id": "aee-01",
+    "agency": "AEE",
+    "title": "Agencia Espacial Española — Relaciones internacionales y bilaterales",
+    "url": "https://www.aee.gob.es/eu/Actividades/Bilaterales.html",
+    "locator": "Programas bilaterales, paragraph headed Colaboración con la NASA",
+    "role": "national contribution attribution",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "AEE attributes the HGAS antennas and the MEDA and REMS weather instruments on NASA’s Perseverance and Curiosity to Spain.",
+    "supports": "Establishes Spain’s contribution to flown Mars rovers. CAB (CSIC–INTA) led MEDA as detailed in aee-02.",
+    "limits": "The agency record attributes a national contribution. It supplies no complete rover or fire-system design.",
+    "localFile": "evidence/files/aee-spanish-contributions.html.txt"
+  },
+  {
+    "id": "aee-02",
+    "agency": "AEE",
+    "title": "CAB (CSIC–INTA) — MEDA envía el primer informe meteorológico desde el cráter Jezero en Marte",
+    "url": "https://cab.inta-csic.es/wp-content/uploads/2021/04/np_2021_04_06_parte_meteorologico_meda.pdf",
+    "locator": "PDF pp. 1–3, instrument description, first reading, and sols 43–44",
+    "role": "rover weather-instrument measurement",
+    "evidenceClass": "measurement",
+    "quantities": [
+      {
+        "quantity": "Approximate MEDA instrument suite mass",
+        "value": 5.5,
+        "unit": "kg"
+      },
+      {
+        "quantity": "Jezero maximum reported for sols 43–44",
+        "value": -22,
+        "unit": "°C"
+      },
+      {
+        "quantity": "Jezero minimum reported for sols 43–44",
+        "value": -83,
+        "unit": "°C"
+      },
+      {
+        "quantity": "Approximate measured wind gust for sols 43–44",
+        "value": 35.4,
+        "unit": "km/h"
+      }
+    ],
+    "conditions": "The CAB-led suite flew on NASA’s Perseverance. Weather observations cover Jezero crater on 3–4 April 2021, ahead of the Ingenuity flight.",
+    "supports": "Constrains an exposed Mars environmental sensor payload and provides an example of time- and site-specific weather data.",
+    "limits": "The reported weather is local and outside the rover. A cabin temperature, ventilation rate, fire threshold or qualification range cannot be inferred.",
+    "localFile": "evidence/files/aee-meda-first-weather.pdf"
+  },
+  {
+    "id": "tua-01",
+    "agency": "TUA",
+    "title": "Türkiye Uzay Ajansı — 2025 Performans Programı",
+    "url": "https://cdn.tua.gov.tr/679399ed1cd1a.pdf",
+    "locator": "Printed p. 16 (PDF p. 20), performance indicator 2 for the lunar soft-landing project, explanatory paragraph",
+    "role": "engineering reference only",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "TUA describes the AYAP-2 soft-landing phase and preliminary work, including student teams, on a planned mobile rover.",
+    "supports": "Establishes a planned lunar surface mobility activity in the second phase and the maturity of the public evidence.",
+    "limits": "Programme completion percentages are administrative indicators. The document gives no measured rover mass, payload, speed or cabin values.",
+    "localFile": "evidence/files/tua-performance-2025.pdf"
+  },
+  {
+    "id": "tua-02",
+    "agency": "TUA",
+    "title": "Türkiye Uzay Ajansı — Türkiye’nin Ay Yolculuğunda Geri Sayım Başladı",
+    "url": "https://tua.gov.tr/tr/haberler/turkiye-nin-ay-yolculugunda-geri-sayim-basladi",
+    "locator": "16 September 2026 announcement, paragraphs on integration, environmental testing and lunar orbit",
+    "role": "engineering reference only",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "The first Turkish deep-space spacecraft had completed assembly and integration and entered the system-level environmental test phase.",
+    "supports": "Separates current phase-one spacecraft testing from the second-phase rover proposal in tua-01.",
+    "limits": "The orbital spacecraft’s test programme and mass supply no ground mobility or cabin fire data for a rover.",
+    "localFile": "evidence/files/tua-ayap-environmental-tests.html.txt"
+  },
+  {
+    "id": "tua-03",
+    "agency": "TUA",
+    "title": "Turkish Space Agency — AYAP-1",
+    "url": "https://tua.gov.tr/en/project/ayap-1-3",
+    "locator": "Projects → Ongoing Projects → AYAP-1, programme objective",
+    "role": "engineering reference only",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "TUA frames lunar surface mobility as an objective of the overall Lunar Research Programme.",
+    "supports": "Provides an English-language agency pointer to the programme. The detailed performance plan identifies the rover with its second phase.",
+    "limits": "The page title alone does not establish phase-one rover hardware or surface operations.",
+    "localFile": "evidence/files/tua-ayap-plan.html.txt"
+  },
+  {
+    "id": "mbrsc-01",
+    "agency": "MBRSC",
+    "title": "MBRSC team — The Rashid rover: to guide the way for the next generation lunar missions and solar system exploration",
+    "url": "https://presentations.copernicus.org/EGU21/EGU21-12950_presentation.pdf",
+    "locator": "EGU 2021, first PDF page, rover specifications table, Mobility row",
+    "role": "historical rover design specification",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "Preflight wheel count",
+        "value": 4,
+        "unit": "wheels"
+      },
+      {
+        "quantity": "Preflight maximum speed",
+        "value": 10,
+        "unit": "cm/s"
+      },
+      {
+        "quantity": "Preflight obstacle height",
+        "value": 10,
+        "unit": "cm"
+      },
+      {
+        "quantity": "Preflight slope capability",
+        "value": 20,
+        "unit": "degrees"
+      }
+    ],
+    "conditions": "MBRSC’s mission engineers presented the Rashid-1 preflight design in 2021. The differential drive was intended to operate during lunar daylight.",
+    "supports": "Supplies engineering targets for comparison with a small, uncrewed, exposed rover.",
+    "limits": "This preflight configuration differs from the later dimensional summary in mbrsc-02. No successful surface operation confirmed these design targets.",
+    "localFile": "evidence/files/mbrsc-rashid1-preflight.pdf"
+  },
+  {
+    "id": "mbrsc-02",
+    "agency": "MBRSC",
+    "title": "Protocol Department of Dubai — Rashid 1 landing outcome and Rashid 2 announcement",
+    "url": "https://www.protocol.dubai.ae/en/media-listing/news-events/mohammed-bin-rashid-visits-mbrsc-announces-rashid-2-new-emirati-lunar-mission/",
+    "locator": "26 April 2023, paragraphs on HAKUTO-R, the first Emirates Lunar Mission and the dimensions of the first rover",
+    "role": "flown uncrewed rover geometry",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "Approximate Rashid-1 mass",
+        "value": 10,
+        "unit": "kg"
+      },
+      {
+        "quantity": "Approximate Rashid-1 height",
+        "value": 80,
+        "unit": "cm"
+      },
+      {
+        "quantity": "Approximate Rashid-1 length",
+        "value": 53.5,
+        "unit": "cm"
+      },
+      {
+        "quantity": "Approximate Rashid-1 width",
+        "value": 53.85,
+        "unit": "cm"
+      }
+    ],
+    "conditions": "MBRSC built the first Rashid rover. Its HAKUTO-R carrier reached lunar orbit and the landing attempt on 25 April 2023 failed.",
+    "supports": "Provides a government summary of approximate flight-vehicle dimensions and mission outcome.",
+    "limits": "The dimensions refer to Rashid 1. Its lunar wheel performance, internal temperatures and survival time were never measured on the surface.",
+    "localFile": "evidence/files/mbrsc-rashid1-flight.html.txt"
+  },
+  {
+    "id": "mbrsc-03",
+    "agency": "MBRSC",
+    "title": "Hurrell et al. — Traction Performance Evaluation for a Rashid-1 Rover Wheel",
+    "url": "https://link.springer.com/article/10.1007/s11214-025-01164-8",
+    "locator": "PDF pp. 4–6, §2.1 Single-Wheel Experiment, figures 1–3; §§3–4 for experiment versus simulation",
+    "role": "engineering reference only",
+    "evidenceClass": "experiment",
+    "quantities": [
+      {
+        "quantity": "Experimental wheel radius",
+        "value": 100,
+        "unit": "mm"
+      },
+      {
+        "quantity": "Experimental wheel width",
+        "value": 80,
+        "unit": "mm"
+      },
+      {
+        "quantity": "Experimental grouser height",
+        "value": 20,
+        "unit": "mm"
+      },
+      {
+        "quantity": "Final flight wheel grouser height",
+        "value": 15,
+        "unit": "mm"
+      },
+      {
+        "quantity": "Earth validation load",
+        "value": 24.5,
+        "unit": "N"
+      },
+      {
+        "quantity": "Minimum controlled slip",
+        "value": 10,
+        "unit": "%"
+      },
+      {
+        "quantity": "Maximum controlled slip",
+        "value": 50,
+        "unit": "%"
+      }
+    ],
+    "conditions": "The authors measured traction, sinkage and tracks using a rigid test wheel on a terrestrial rig, with loosely packed simulant at about 25% relative density. The flight wheel had an open structure and shorter grousers.",
+    "supports": "Provides a component-level test method with declared loads, wheel geometry and slip conditions suitable for planning a validation experiment.",
+    "limits": "Predicted performance at lunar gravity came from simulation. The ground wheel differed from flight hardware. These results supply no cabin fire data.",
+    "localFile": "evidence/files/mbrsc-wheel-traction.pdf"
+  },
+  {
+    "id": "mbrsc-04",
+    "agency": "MBRSC",
+    "title": "Firefly Aerospace — Blue Ghost Mission 2 manifest",
+    "url": "https://fireflyspace.com/missions/blue-ghost-mission-2/",
+    "locator": "Mission Summary and Rashid Rover 2 payload section",
+    "role": "engineering reference only",
+    "evidenceClass": "mission description",
+    "quantities": [],
+    "conditions": "Firefly lists MBRSC’s Rashid Rover 2 on an upcoming lunar far-side delivery targeted no earlier than 2027 in the manifest reviewed in November 2026.",
+    "supports": "Identifies a planned wheel-material exposure experiment on the Moon’s far side.",
+    "limits": "The announced test objective provides no measured durability or abrasion result.",
+    "localFile": "evidence/files/mbrsc-rashid2-manifest.html.txt"
+  },
+  {
+    "id": "kasa-01",
+    "agency": "KASA",
+    "title": "Korea AeroSpace Administration — 원격 제어를 넘어 ‘자율 주행’을 위한 우주탐사 모빌리티에 AI 도입 추진",
+    "url": "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=427",
+    "locator": "24 June 2026 press release no. 427, second and third body paragraphs, including ‘달의 낮 기간(14일 이내)’",
+    "role": "planned lunar rover operating concept",
+    "evidenceClass": "mission description",
+    "quantities": [
+      {
+        "quantity": "Upper bound on the described lunar daytime operating period",
+        "value": 14,
+        "unit": "Earth days"
+      }
+    ],
+    "conditions": "KASA described its planned 2032 landing mission at an expert meeting on autonomous navigation and payload support.",
+    "supports": "Documents a daylight mission concept and trade-offs between route energy and hazard avoidance.",
+    "limits": "The quoted interval is a planning window. It supplies no measured battery endurance, night survival or flight-qualified specification.",
+    "localFile": null
+  },
+  {
+    "id": "kasa-02",
+    "agency": "KASA",
+    "title": "Wang, Kim and Han — Experimental Analysis of Lunar Rover Wheel’s Mobility Performance Depending on Soil Condition and Wheel Configuration",
+    "url": "https://kscejournal.or.kr/jksce/XmlViewer/f406872",
+    "locator": "§§3.1–3.4 (tables 2–4), §4.1 (figures 5–6), §4.2 (wheel comparisons)",
+    "role": "engineering reference only",
+    "evidenceClass": "experiment",
+    "quantities": [
+      {
+        "quantity": "Terrestrial rig vertical wheel load",
+        "value": 6,
+        "unit": "kgf"
+      },
+      {
+        "quantity": "Translation speed",
+        "value": 10,
+        "unit": "mm/s"
+      },
+      {
+        "quantity": "Minimum imposed slip ratio",
+        "value": 0.1,
+        "unit": "dimensionless"
+      },
+      {
+        "quantity": "Maximum imposed slip ratio",
+        "value": 0.4,
+        "unit": "dimensionless"
+      },
+      {
+        "quantity": "Grouser height in the cross-soil comparison",
+        "value": 15,
+        "unit": "mm"
+      }
+    ],
+    "conditions": "The KICT researchers used a single-wheel terrestrial rig with KLS-1 Korean lunar simulant and Jumunjin sand. They compared drawbar pull, torque and sinkage under controlled slip.",
+    "supports": "Provides an engineering test matrix showing that the same wheel responds differently to soil and grouser geometry.",
+    "limits": "Research published in 2017 predates KASA. It is not a KASA-run test or a measurement of the planned national flight rover.",
+    "localFile": "evidence/files/kasa-wheel-test.html.txt"
+  },
+  {
+    "id": "uksa-01",
+    "agency": "UKSA",
+    "title": "UK Space Agency — Mission to explore life on Mars one step closer as UK team to replace Russian components for Mars Rover",
+    "url": "https://www.gov.uk/government/news/mission-to-explore-life-on-mars-one-step-closer-as-uk-team-to-replace-russian-components-for-mars-rover",
+    "locator": "23 November 2023, paragraphs on Airbus Stevenage, Enfys and the drill sampling depth",
+    "role": "planned Mars rover sampling specification",
+    "evidenceClass": "specification",
+    "quantities": [
+      {
+        "quantity": "Approximate intended maximum subsurface sampling depth",
+        "value": 2,
+        "unit": "m"
+      }
+    ],
+    "conditions": "Airbus built Rosalind Franklin in Stevenage for ESA’s mission. UKSA funded the Aberystwyth-led Enfys instrument to select sampling targets. The drill depth is an overall rover system capability.",
+    "supports": "Supports a sampling-tool reach requirement and documents the roles of UKSA, Airbus and the instrument team.",
+    "limits": "The depth is a design capability. The source does not report a drilling operation on Mars or attribute construction of the drill to the UK team.",
+    "localFile": "evidence/files/uksa-rosalind-franklin.html.txt"
+  },
+  {
+    "id": "uksa-02",
+    "agency": "UKSA",
+    "title": "UK Space Agency — Airbus Defence and Space opens state-of-the-art Mars Yard",
+    "url": "https://www.gov.uk/government/news/airbus-defence-and-space-opens-state-of-the-art-mars-yard",
+    "locator": "27 March 2014 announcement, paragraph containing Colin Paynter’s statement on the enlarged facility",
+    "role": "engineering reference only",
+    "evidenceClass": "engineering reference",
+    "quantities": [
+      {
+        "quantity": "Test arena length",
+        "value": 30,
+        "unit": "m"
+      },
+      {
+        "quantity": "Test arena width",
+        "value": 13,
+        "unit": "m"
+      },
+      {
+        "quantity": "Specially selected sand in the test arena",
+        "value": 300,
+        "unit": "tonnes"
+      }
+    ],
+    "conditions": "UKSA describes the Airbus ground-test facility in Stevenage where the ExoMars team could evaluate autonomous navigation in an enclosed analogue.",
+    "supports": "Offers a dimensional reference for a terrain and navigation test course.",
+    "limits": "The ground facility dimensions do not give a rover’s maximum climb angle or performance on Mars. Mission dates forecast in this historical announcement are obsolete.",
+    "localFile": "evidence/files/uksa-mars-yard.html.txt"
+  }
+]

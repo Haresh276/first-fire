@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr" translate="no" class="notranslate">
+<head>
+    <meta charset="utf-8"><meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="bRIT65Ph1iMF6Cz5kx9goIA41afN7mflrHUKnbRx">
+    <meta name="presence" content="https://sensat.mesrisenegal.sn/public/presence">
+    <title>GAINDESAT-1A — Nos satellites — SENSAT</title>
+    <meta name="description" content="Nanosatellite de type CubeSat 1U conçu par des ingénieurs sénégalais avec le CSUM et l’UCAD, GAINDESAT-1A collecte et transmet des données environnementales au...">
+    <meta name="keywords" content="SENSAT Sénégal, programme spatial sénégalais, GAINDESAT-1A, GAINDESAT-1B, satellite sénégalais, spatial africain, nanosatellite, observation de la Terre, innovation spatiale, MESRI Sénégal">
+    <link rel="canonical" href="https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1a">
+    <link rel="alternate" hreflang="fr" href="https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1a">
+    <link rel="alternate" hreflang="en" href="https://sensat.mesrisenegal.sn/public/en/our-satellites/gaindesat-1a">
+    <link rel="alternate" hreflang="x-default" href="https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1a">
+        
+    <meta property="og:site_name" content="SENSAT">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GAINDESAT-1A — Nos satellites — SENSAT">
+    <meta property="og:description" content="Nanosatellite de type CubeSat 1U conçu par des ingénieurs sénégalais avec le CSUM et l’UCAD, GAINDESAT-1A collecte et transmet des données environnementales au...">
+    <meta property="og:url" content="https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1a">
+    <meta property="og:image" content="https://sensat.mesrisenegal.sn/public/assets/img/covers/gaindesat-1a.jpg?v=tob302">
+    <meta property="og:locale" content="fr_SN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GAINDESAT-1A — Nos satellites — SENSAT">
+    <meta name="twitter:description" content="Nanosatellite de type CubeSat 1U conçu par des ingénieurs sénégalais avec le CSUM et l’UCAD, GAINDESAT-1A collecte et transmet des données environnementales au...">
+    <meta name="twitter:image" content="https://sensat.mesrisenegal.sn/public/assets/img/covers/gaindesat-1a.jpg?v=tob302">
+        <meta name="theme-color" content="#020a18">
+    <link rel="icon" href="https://sensat.mesrisenegal.sn/public/favicon.ico" sizes="any">
+    <link rel="icon" href="https://sensat.mesrisenegal.sn/public/favicon.png" type="image/png" sizes="64x64">
+    <link rel="icon" href="https://sensat.mesrisenegal.sn/public/assets/img/logos/icon-192.png?v=tob4wb" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://sensat.mesrisenegal.sn/public/apple-touch-icon.png">
+    <link rel="preload" href="https://sensat.mesrisenegal.sn/public/vendor/fonts/space-grotesk-latin-700-normal.woff2?v=tob159" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://sensat.mesrisenegal.sn/public/vendor/bootstrap/bootstrap.min.css?v=tob159">
+    <link rel="stylesheet" href="https://sensat.mesrisenegal.sn/public/vendor/bootstrap-icons/bootstrap-icons.min.css?v=tob159">
+    <link rel="stylesheet" href="https://sensat.mesrisenegal.sn/public/vendor/aos/aos.css?v=tob159">
+    <link rel="stylesheet" href="https://sensat.mesrisenegal.sn/public/assets/css/site.css?v=toea47">
+        <script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" type="application/ld+json">{"\u003C?php $__contextArgs = [];\nif (context()-\u003Ehas($__contextArgs[0])) :\nif (isset($value)) { $__contextPrevious[] = $value; }\n$value = context()-\u003Eget($__contextArgs[0]); ?\u003E":"https://schema.org","@type":"GovernmentOrganization","name":"SENSAT — Programme spatial du Sénégal","alternateName":"SENSAT","url":"https://sensat.mesrisenegal.sn/public","logo":"https://sensat.mesrisenegal.sn/public/assets/img/logos/icon-512.png","slogan":"Le Sénégal à la conquête de l’espace","parentOrganization":{"@type":"GovernmentOrganization","name":"Ministère de l’Enseignement supérieur, de la Recherche et de l’Innovation (MESRI)"},"address":{"@type":"PostalAddress","streetAddress":"Cité du Savoir, Diamniadio — Dakar, Sénégal","addressCountry":"SN"},"email":null,"telephone":null,"sameAs":[]}</script>
+    <script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" type="application/ld+json">{"\u003C?php $__contextArgs = [];\nif (context()-\u003Ehas($__contextArgs[0])) :\nif (isset($value)) { $__contextPrevious[] = $value; }\n$value = context()-\u003Eget($__contextArgs[0]); ?\u003E":"https://schema.org","@type":"Product","name":"GAINDESAT-1A","description":"Nanosatellite de type CubeSat 1U conçu par des ingénieurs sénégalais avec le CSUM et l’UCAD, GAINDESAT-1A collecte et transmet des données environnementales au service de la gestion de l’eau, de l’agriculture et du climat.","image":"https://sensat.mesrisenegal.sn/public/assets/img/covers/gaindesat-1a.jpg","brand":{"@type":"Organization","name":"SENSAT"}}</script>
+    </head>
+<body class="">
+<div class="loader" id="pageLoader" role="status" aria-live="polite">
+    <div class="loader-stage">
+        <div class="loader-orbit"><span class="loader-sat"><svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><g transform="rotate(-18 32 32)"><rect x="2" y="25" width="17" height="14" rx="1" fill="#1c2f73" stroke="#c9d3e3" stroke-width="1.4"/><path d="M7.7 25v14M13.3 25v14M2 32h17" stroke="#6f8fd0" stroke-width="1"/><rect x="45" y="25" width="17" height="14" rx="1" fill="#1c2f73" stroke="#c9d3e3" stroke-width="1.4"/><path d="M50.7 25v14M56.3 25v14M45 32h17" stroke="#6f8fd0" stroke-width="1"/><path d="M19 32h4M41 32h4" stroke="#c9d3e3" stroke-width="2"/><rect x="23" y="22" width="18" height="20" rx="2" fill="#13265a" stroke="#e4e9f2" stroke-width="2"/><path d="M29 22v20M35 22v20M23 32h18" stroke="#5a7cc9" stroke-width="1"/><path d="M32 22V12" stroke="#fff" stroke-width="1.6"/><circle cx="32" cy="11" r="2.2" fill="#00b25a"/></g></svg></span></div>
+        <div class="loader-logo loader-globe">
+            <svg class="globe-grid" viewBox="0 0 200 200" aria-hidden="true">
+                <defs><clipPath id="gclip"><circle cx="100" cy="100" r="99"/></clipPath></defs>
+                <g clip-path="url(#gclip)" fill="none" stroke="#7fa9dc" stroke-width="1">
+                    <ellipse cx="100" cy="100" rx="99" ry="30" opacity=".35"/><ellipse cx="100" cy="100" rx="99" ry="62" opacity=".25"/>
+                    <line x1="0" y1="100" x2="200" y2="100" opacity=".4"/><line x1="10" y1="55" x2="190" y2="55" opacity=".25"/><line x1="10" y1="145" x2="190" y2="145" opacity=".25"/>
+                    <g class="meridians"><ellipse cx="100" cy="100" rx="25" ry="99"/><ellipse cx="100" cy="100" rx="60" ry="99"/><ellipse cx="100" cy="100" rx="88" ry="99"/></g>
+                </g>
+            </svg>
+            <img src="https://sensat.mesrisenegal.sn/public/assets/img/logos/mesri.png?v=tob4ns" alt="MESRI — République du Sénégal" width="140" height="91">
+        </div>
+        <div class="loader-orbit loader-orbit-front"><span class="loader-sat"><svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><g transform="rotate(-18 32 32)"><rect x="2" y="25" width="17" height="14" rx="1" fill="#1c2f73" stroke="#c9d3e3" stroke-width="1.4"/><path d="M7.7 25v14M13.3 25v14M2 32h17" stroke="#6f8fd0" stroke-width="1"/><rect x="45" y="25" width="17" height="14" rx="1" fill="#1c2f73" stroke="#c9d3e3" stroke-width="1.4"/><path d="M50.7 25v14M56.3 25v14M45 32h17" stroke="#6f8fd0" stroke-width="1"/><path d="M19 32h4M41 32h4" stroke="#c9d3e3" stroke-width="2"/><rect x="23" y="22" width="18" height="20" rx="2" fill="#13265a" stroke="#e4e9f2" stroke-width="2"/><path d="M29 22v20M35 22v20M23 32h18" stroke="#5a7cc9" stroke-width="1"/><path d="M32 22V12" stroke="#fff" stroke-width="1.6"/><circle cx="32" cy="11" r="2.2" fill="#00b25a"/></g></svg></span></div>
+    </div>
+    <div class="loader-text">SENSAT<small>Le Sénégal à la conquête de l’espace</small></div>
+    <div class="loader-bar"></div>
+    <span class="visually-hidden">Chargement…</span>
+</div>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3">
+(function () {
+    var el = document.getElementById('pageLoader'), t0 = Date.now(), done = false, keep = null;
+    try { keep = JSON.parse(sessionStorage.getItem('sensat-lang') || 'null'); sessionStorage.removeItem('sensat-lang'); } catch (e) {}
+    if (keep && Date.now() - keep.t < 15000) {
+        // changement de langue : pas d'écran de chargement, même position dans la page
+        el.remove(); done = true;
+        document.documentElement.classList.add('lang-swap');
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var go = function () {
+            var secs = document.querySelectorAll('main > section'), s = secs[keep.i];
+            var y = s ? s.getBoundingClientRect().top + scrollY + keep.f * s.offsetHeight : keep.r * (document.documentElement.scrollHeight - innerHeight);
+            window.scrollTo(0, Math.max(0, Math.round(y)));
+            document.documentElement.classList.remove('lang-swap');
+            window.dispatchEvent(new Event('scroll'));
+            if (window.AOS) { AOS.refreshHard(); }
+        };
+        window.__sensatRestore = go;
+        document.addEventListener('DOMContentLoaded', function () { requestAnimationFrame(go); });
+        window.addEventListener('load', function () { setTimeout(go, 60); setTimeout(function () { window.dispatchEvent(new Event('scroll')); }, 400); });
+    }
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('[data-lang-switch]');
+        if (!a || a.classList.contains('active')) return;
+        var max = document.documentElement.scrollHeight - innerHeight, idx = -1, frac = 0;
+        document.querySelectorAll('main > section').forEach(function (sec, i) {
+            var r = sec.getBoundingClientRect();
+            if (idx < 0 && r.bottom > 0) { idx = i; frac = r.height ? Math.min(1, Math.max(0, -r.top / r.height)) : 0; }
+        });
+        try { sessionStorage.setItem('sensat-lang', JSON.stringify({ i: idx, f: frac, r: max > 0 ? scrollY / max : 0, t: Date.now() })); } catch (err) {}
+        document.body.classList.add('lang-leaving');
+    });
+    function hide() { if (done) return; done = true; setTimeout(function () { el.classList.add('is-done'); setTimeout(function () { el.remove(); }, 700); }, Math.max(0, 500 - (Date.now() - t0))); }
+    window.addEventListener('load', hide);
+    setTimeout(hide, 5000);
+    window.addEventListener('pageshow', function (e) { if (e.persisted) hide(); });
+})();
+</script>
+<a href="#contenu" class="skip-link">Aller au contenu</a>
+
+<header class="site-header">
+    <div class="flag-bar"></div>
+    <div class="util-bar">
+        <div class="container-xxl d-flex align-items-center gap-3">
+            <span class="util-gov d-none d-md-inline">République du Sénégal <span class="mx-2 opacity-50">·</span> Ministère de l’Enseignement supérieur, de la Recherche et de l’Innovation</span>
+            <div class="ms-auto d-flex align-items-center gap-2">
+                <button class="util-btn" type="button" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search me-1"></i><span class="d-none d-sm-inline">Rechercher</span></button>
+                <div class="lang-switch" role="group" aria-label="Langue / Language">
+                    <a href="https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1a" class="active" hreflang="fr" lang="fr" data-lang-switch>FR</a>
+                    <a href="https://sensat.mesrisenegal.sn/public/en/our-satellites/gaindesat-1a" class="" hreflang="en" lang="en" data-lang-switch>EN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-xl" aria-label="Navigation principale">
+        <div class="container-xxl">
+            <a class="brand" href="https://sensat.mesrisenegal.sn/public" aria-label="SENSAT — Accueil">
+                <img src="https://sensat.mesrisenegal.sn/public/assets/img/logos/sensat-logo.png?v=tob4wb" alt="SENSAT" class="brand-logo" width="94" height="70">
+            </a>
+            <button class="navbar-toggler ms-auto order-xl-last" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse site-nav" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-xl-center">
+                                            <li class="nav-item">
+                            <a class="nav-link " href="https://sensat.mesrisenegal.sn/public"  >Accueil</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link " href="https://sensat.mesrisenegal.sn/public/a-propos"  >À propos</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link " href="https://sensat.mesrisenegal.sn/public/nos-missions"  >Nos missions</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link " href="https://sensat.mesrisenegal.sn/public/nos-satellites"  >Nos satellites</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link " href="https://sensat.mesrisenegal.sn/public/nos-activites"  >Nos activités</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link " href="https://sensat.mesrisenegal.sn/public/recherche-innovation"  >Recherche &amp; Innovation</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main id="contenu">
+    <section class="page-hero pb-5">
+    <div class="starfield"></div>
+    <div class="container-xxl position-relative">
+        <nav aria-label="Fil d’Ariane"><ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="https://sensat.mesrisenegal.sn/public">Accueil</a></li>
+            <li class="breadcrumb-item"><a href="https://sensat.mesrisenegal.sn/public/nos-satellites">Nos satellites</a></li>
+            <li class="breadcrumb-item active" aria-current="page">GAINDESAT-1A</li>
+        </ol></nav>
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5" data-aos="fade-up">
+                <span class="badge-status operational">En orbite</span>
+                <h1 class="display-3 fw-bold mt-3" style="max-width:none">GAINDESAT-1A</h1>
+                <p class="lead">Premier nanosatellite sénégalais, lancé le 16 août 2024.</p>
+                <p class="text-white-50"><i class="bi bi-rocket-takeoff me-2 text-warning"></i>Lancé le 16 août 2024</p>                <div class="spec-chips"><span>Type · <b>CubeSat 1U</b></span><span>Masse · <b>environ 1 kg</b></span><span>Dimensions · <b>10 × 10 × 10 cm</b></span><span>Lancement · <b>16 août 2024</b></span></div>
+                <a href="#fiche" class="btn btn-sun">Fiche technique <i class="bi bi-arrow-down ms-1"></i></a>
+            </div>
+            <div class="col-lg-7" data-aos="zoom-in">
+                <div class="viewer-3d" data-viewer data-model="1U" data-name="GAINDESAT-1A" data-textures="https://sensat.mesrisenegal.sn/public/assets/img/textures/" data-parts='{"solar":"Panneau solaire","board":"Carte \u00e9lectronique","sensor":"Capteur \/ cam\u00e9ra","antenna":"Antenne de communication","wing":"Aile solaire d\u00e9ployable"}'>
+                    <div class="viewer-tools">
+                        <button type="button" data-act="specs" title="Caractéristiques" aria-label="Caractéristiques"><i class="bi bi-info-lg"></i></button>
+                        <button type="button" data-act="rotate" class="active" title="Rotation automatique" aria-label="Rotation automatique"><i class="bi bi-arrow-repeat"></i></button>
+                        <button type="button" data-act="reset" title="Recentrer" aria-label="Recentrer"><i class="bi bi-bullseye"></i></button>
+                    </div>
+                    <dl class="spec-panel">
+                        <dt>Type</dt><dd>CubeSat 1U</dd><dt>Masse</dt><dd>environ 1 kg</dd><dt>Dimensions</dt><dd>10 × 10 × 10 cm</dd><dt>Lancement</dt><dd>16 août 2024</dd><dt>Lanceur</dt><dd>Falcon 9 (Vandenberg, États-Unis)</dd><dt>Orbite</dt><dd>basse, héliosynchrone</dd><dt>Partenaires</dt><dd>CSUM et UCAD</dd><dt>Mission</dt><dd>collecte et transmission de données environnementales</dd>                    </dl>
+                    <span class="viewer-hint"><i class="bi bi-hand-index me-1"></i>Faites pivoter le satellite · molette pour zoomer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container-xxl">
+        <div class="row g-5">
+            <div class="col-lg-7" data-aos="fade-up">
+                <span class="eyebrow">La mission</span>
+                <div class="prose-page"><p>Lancé le <strong>16 août 2024</strong> depuis la base de Vandenberg (Californie) à bord d’une fusée Falcon 9, GAINDESAT-1A est le <strong>premier satellite de l’histoire du Sénégal</strong>. Il marque la première phase du programme SENSAT.</p><p>Sa mission : <strong>collecter et transmettre des données environnementales</strong> issues de balises installées au sol — niveaux d’eau, paramètres hydrologiques et climatiques — vers un centre de réception situé au Sénégal, où elles sont traitées au profit des services de l’État.</p><p>Au-delà de la mission scientifique, GAINDESAT-1A a permis à une équipe d’ingénieurs et de techniciens sénégalais de maîtriser l’ensemble du cycle de vie d’un satellite : conception, intégration, tests, lancement et opérations.</p></div>
+            </div>
+            <div class="col-lg-5" id="fiche" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-x p-4">
+                    <h2 class="h4 mb-3"><i class="bi bi-clipboard-data me-2 text-primary"></i>Fiche technique</h2>
+                    <table class="spec-table">
+                        <tr><th scope="row">Type</th><td>CubeSat 1U</td></tr><tr><th scope="row">Masse</th><td>environ 1 kg</td></tr><tr><th scope="row">Dimensions</th><td>10 × 10 × 10 cm</td></tr><tr><th scope="row">Lancement</th><td>16 août 2024</td></tr><tr><th scope="row">Lanceur</th><td>Falcon 9 (Vandenberg, États-Unis)</td></tr><tr><th scope="row">Orbite</th><td>basse, héliosynchrone</td></tr><tr><th scope="row">Partenaires</th><td>CSUM et UCAD</td></tr><tr><th scope="row">Mission</th><td>collecte et transmission de données environnementales</td></tr>                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dark" aria-labelledby="how-title">
+    <div class="starfield"></div>
+    <div class="container-xxl position-relative">
+        <div class="text-center mb-5" data-aos="fade-up"><span class="eyebrow">GAINDESAT-1A</span><h2 id="how-title" class="section-title">Comment ça fonctionne</h2></div>
+        <div class="flow">
+                            <div class="flow-step" data-aos="fade-up" data-aos-delay="0"><div class="flow-ico"><i class="bi bi-thermometer-half"></i></div><h3 class="h5">Balises au sol</h3><p class="small mb-0" style="color:#a9bddb">Des capteurs mesurent niveaux d’eau, pluviométrie et paramètres climatiques.</p></div>
+                            <div class="flow-step" data-aos="fade-up" data-aos-delay="120"><div class="flow-ico"><i class="bi bi-reception-4"></i></div><h3 class="h5">Collecte en orbite</h3><p class="small mb-0" style="color:#a9bddb">Le nanosatellite recueille les données lors de son survol.</p></div>
+                            <div class="flow-step" data-aos="fade-up" data-aos-delay="240"><div class="flow-ico"><i class="bi bi-broadcast"></i></div><h3 class="h5">Transmission</h3><p class="small mb-0" style="color:#a9bddb">Les données sont relayées vers la station de réception au Sénégal.</p></div>
+                            <div class="flow-step" data-aos="fade-up" data-aos-delay="360"><div class="flow-ico"><i class="bi bi-cpu"></i></div><h3 class="h5">Traitement</h3><p class="small mb-0" style="color:#a9bddb">Le centre de traitement les valorise pour la prise de décision.</p></div>
+                    </div>
+    </div>
+</section>
+
+<section class="section ">
+    <div class="container-xxl">
+        <div class="row g-5">
+                                        <div class="col-lg-6" data-aos="fade-up">
+                    <span class="eyebrow">Objectifs scientifiques</span>
+                    <ul class="check-list"><li>Collecter des données hydrologiques et climatiques.</li><li>Surveiller les ressources en eau.</li><li>Contribuer au suivi de la qualité des sols et de la couverture végétale.</li><li>Transmettre les données vers un centre de réception au Sénégal.</li><li>Renforcer les capacités nationales de traitement des données spatiales.</li></ul>
+                </div>
+                                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <span class="eyebrow">Impacts attendus</span>
+                    <div class="row g-3">
+                                                    <div class="col-sm-6"><div class="impact-tile"><i class="bi bi-droplet-half"></i><p class="fw-semibold mt-2 mb-0">Amélioration de la gestion des ressources en eau.</p></div></div>
+                                                    <div class="col-sm-6"><div class="impact-tile"><i class="bi bi-flower1"></i><p class="fw-semibold mt-2 mb-0">Soutien à la planification agricole.</p></div></div>
+                                                    <div class="col-sm-6"><div class="impact-tile"><i class="bi bi-basket"></i><p class="fw-semibold mt-2 mb-0">Contribution à la sécurité alimentaire.</p></div></div>
+                                                    <div class="col-sm-6"><div class="impact-tile"><i class="bi bi-tree"></i><p class="fw-semibold mt-2 mb-0">Lutte contre la désertification.</p></div></div>
+                                                    <div class="col-sm-6"><div class="impact-tile"><i class="bi bi-shield-exclamation"></i><p class="fw-semibold mt-2 mb-0">Prévention des catastrophes naturelles.</p></div></div>
+                                            </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+
+
+<section class="section pt-0 pt-5">
+    <div class="container-xxl">
+        <h2 class="h3 mb-4">Autres satellites</h2>
+        <div class="row g-4">
+                            <div class="col-md-6"><article class="sat-card" style="min-height:340px"><div class="sat-bg" style="background-image:url('https://sensat.mesrisenegal.sn/public/assets/img/covers/gaindesat-1b.jpg?v=tob302')"></div><div class="sat-body"><span class="badge-status development">En développement</span><h3 class="mt-2">GAINDESAT-1B</h3><a href="https://sensat.mesrisenegal.sn/public/nos-satellites/gaindesat-1b" class="btn btn-sun btn-sm mt-2">Voir le satellite</a></div></article></div>
+                    </div>
+    </div>
+</section>
+
+<section class="section section-paper" id="constellation" aria-labelledby="const-title">
+    <div class="container-xxl">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <span class="perspective-tag" style="color:var(--blue-2);border-color:var(--blue-2)"><i class="bi bi-hourglass-split"></i> Perspective de développement</span>
+                <h2 id="const-title" class="section-title mt-3">Vers une constellation de satellites sénégalais</h2>
+                <p class="lead-muted">À terme, le Sénégal ambitionne de développer une constellation composée de plusieurs microsatellites.</p>
+                <ul class="check-list mt-3">
+                    <li>Répondre aux besoins nationaux en imagerie satellitaire.</li><li>Renforcer l’observation de la Terre.</li><li>Développer des services spatiaux adaptés aux besoins du Sénégal.</li><li>Positionner le pays comme fournisseur régional de services satellitaires.</li>                </ul>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="mission-visual"><img src="https://sensat.mesrisenegal.sn/public/assets/img/covers/constellation.jpg" alt="Vers une constellation de satellites sénégalais — illustration" loading="lazy"><span class="tag">Perspective de développement</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3">window.__sensatRestore && window.__sensatRestore();</script>
+
+
+<footer class="site-footer site-footer-min">
+    <div class="container-xxl">
+        <div class="footer-bottom d-flex justify-content-center text-center">
+            <span>© 2026 SENSAT — MESRI, République du Sénégal. Tous droits réservés.</span>
+        </div>
+    </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Haut de page"><i class="bi bi-arrow-up"></i></button>
+
+<div class="modal fade" id="searchModal" tabindex="-1" aria-label="Rechercher" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 overflow-hidden">
+            <form action="https://sensat.mesrisenegal.sn/public/rechercher" method="get" class="d-flex align-items-center p-2">
+                <i class="bi bi-search fs-5 mx-3 text-secondary"></i>
+                <input type="search" name="q" class="form-control form-control-lg border-0 shadow-none" placeholder="Rechercher une actualité, un document…" minlength="2" required aria-label="Rechercher">
+                <button class="btn btn-space ms-2">Rechercher</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+            <button type="button" class="btn-close btn-close-white ms-auto mb-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            <img src="" alt="" class="img-fluid rounded-4">
+            <p class="lb-caption text-white text-center mt-2"></p>
+        </div>
+    </div>
+</div>
+
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" src="https://sensat.mesrisenegal.sn/public/vendor/bootstrap/bootstrap.bundle.min.js?v=tob159" defer></script>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" src="https://sensat.mesrisenegal.sn/public/vendor/aos/aos.js?v=tob159" defer></script>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" src="https://sensat.mesrisenegal.sn/public/vendor/gsap/gsap.min.js?v=tob159" defer></script>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" src="https://sensat.mesrisenegal.sn/public/vendor/gsap/ScrollTrigger.min.js?v=tob159" defer></script>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" src="https://sensat.mesrisenegal.sn/public/assets/js/site.js?v=tobvyk" defer></script>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" type="importmap">{"imports": {"three": "https://sensat.mesrisenegal.sn/public/vendor/three/three.module.min.js?v=tob159", "three/addons/": "https://sensat.mesrisenegal.sn/public/vendor/three/addons/", "sensat/earth": "https://sensat.mesrisenegal.sn/public/assets/js/earth.js?v=tobst5"}}</script>
+<script nonce="9T/GThbpCz3V6Bz0FHvFTTJ3" type="module" src="https://sensat.mesrisenegal.sn/public/assets/js/satellite-viewer.js?v=tobwix"></script>
+</body>
+</html>

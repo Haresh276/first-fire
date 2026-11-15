@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Open the 3D rover workbench · FIRST FIRE</title>
+  <link rel="canonical" href="https://first-fire-lunar-lab.vercel.app/rover-workbench/prototype/">
+  <script>
+    const destination = new URL(location.href);
+    const directory = destination.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+    destination.pathname = directory + (destination.protocol === 'file:' ? '/prototype/index.html' : '/prototype/');
+    location.replace(destination.href);
+  </script>
+</head>
+<body>
+  <main>
+    <h1>3D rover workbench</h1>
+    <p><a href="prototype/index.html">Open the rover workbench</a> to assemble a vehicle, plan a traverse and compare engineering evidence.</p>
+  </main>
+</body>
+</html>

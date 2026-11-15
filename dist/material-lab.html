@@ -4,7 +4,8 @@
 <body><a class="skip" href="#main">Skip to the lab</a><header><a class="wordmark" href="judging.html">FIRST FIRE<span>.</span></a><span>MATERIAL LAB &nbsp; / &nbsp; FLINT 1.1</span></header>
 <main id="main">
 <div class="intro" style="grid-template-columns:1fr;padding-bottom:28px"><div><p class="eyebrow">Material tester · runs in your browser</p><h1>Invent a material. Find out where it burns.</h1><p class="lead">Spacecraft materials are approved with fire tests on Earth. The challenge asks whether a material that passes on Earth will keep burning in orbit, on the Moon or on Mars. Build a material from its chemistry, or blend existing ones, give it one Earth test, and FLINT predicts the least oxygen it needs on each world.</p>
-<ol class="purpose"><li><b>1 · Make it</b>Pick a known material, type its atoms, or blend two or three by mass.</li><li><b>2 · Test it on Earth</b>Enter one measured oxygen limit. FLINT calibrates on it, as it did on NASA's tests.</li><li><b>3 · Predict</b>Read its limit on four worlds, where it sits among NASA's materials, and send it into a cabin fire.</li></ol></div></div>
+<ol class="purpose"><li><b>1 · Make it</b>Pick a known material, type its atoms, or blend two or three by mass.</li><li><b>2 · Test it on Earth</b>Enter one measured oxygen limit. FLINT calibrates on it, as it did on NASA's tests.</li><li><b>3 · Predict</b>Read its limit on four worlds, where it sits among NASA's materials, and send it into a cabin fire.</li></ol>
+<p class="new" style="margin-top:12px">Already burned a real specimen? Record the result next to the model in the <a href="material-observer.html">material observer</a>.</p></div></div>
 
 <section aria-labelledby="mk"><div class="panel">
 <div class="controls" role="group" aria-labelledby="mk"><h2 id="mk" style="margin:0;font-size:1.4rem">1 · Make it</h2>
@@ -54,10 +55,10 @@
 <section aria-labelledby="how"><p class="eyebrow">Said plainly</p><h2 id="how">How the prediction works, and its limits</h2>
 <ul class="open"><li><b>Chemistry to flame temperature.</b> From the atoms FLINT works out how much oxygen the material needs, its heat of combustion (Huggett's 13.1 MJ per kg of oxygen, unless you measured it) and its flame temperature in any oxygen level, with NIST-JANAF gas data.</li>
 <li><b>Two ways to die.</b> NASA's model (ICES-2025-392) says a flame dies when the flow blows it off or when it loses heat faster than it makes it. FLINT adds a flow speed for any gravity and pressure.</li>
-<li><b>One Earth test calibrates it.</b> The blow-off constant is set so FLINT reproduces your test exactly, the way FLINT was calibrated on NASA's 1-g tests and then predicted NASA's four lunar limits to within 1.4 points of oxygen on average.</li>
+<li><b>One Earth test calibrates it.</b> The blow-off constant is set so FLINT reproduces your test exactly, the way FLINT was calibrated on NASA's 1-g tests before predicting NASA's four simulated-lunar-gravity limits, each held out (mean error 1.4 points of oxygen on NASA's summary figure, 2.6 on the individual plots).</li>
 <li><b>Without a test it is an estimate.</b> The flame chemistry is borrowed from acrylic, polycarbonate or Nomex. Pyrolysis temperatures for the non-NASA presets are typical values; replace them with your own.</li>
 <li><b>What it does not cover.</b> Thin solids spreading a flame upward in oxygen and nitrogen. Not thick parts, dripping, smouldering, fluorine or chlorine chemistry, or still air in orbit. It has not been reviewed by NASA and it is not a safety certification. <a href="flint.html">Inspect the evidence and the Python engine.</a></li></ul>
-<p class="back"><a href="cabin-fire.html">Cabin Fire Simulator</a> · <a href="fire-lab.html">Gravity Fire Lab</a> · <a href="fm2-decoder.html">FM² decoder</a> · <a href="judging.html">Judging route</a></p></section>
+<p class="back"><a href="material-observer.html">Material observer: record what a real specimen did</a> · <a href="cabin-fire.html">Cabin Fire Simulator</a> · <a href="fire-lab.html">Gravity Fire Lab</a> · <a href="fm2-decoder.html">FM² decoder</a> · <a href="judging.html">Judging route</a></p></section>
 </main><footer>FIRST FIRE · Team Code Blooded · Independent challenge project · <a href="judging.html">Judging route</a></footer>
 <div class="toast" id="toast" role="status"></div>
 <script src="flint-coefficients.js"></script><script src="flint-thermo.js"></script><script src="flint-solid.js"></script><script src="flint-custom.js"></script>
@@ -190,7 +191,7 @@
     }
     F.register('CUSTOM', b);
     const kinName = {PMMA: 'acrylic', PC: 'polycarbonate', NOMEX: 'Nomex'}[spec.kin];
-    const B = {nasa: ['valid', "Calibrated on NASA's Earth tests", "Blow-off constant fitted to NASA's four 1-g tests (ICES-2025-392). FLINT then predicted NASA's lunar limits to within 1.4 points of oxygen on average."],
+    const B = {nasa: ['valid', "Calibrated on NASA's Earth tests", "Blow-off constant fitted to NASA's four 1-g tests (ICES-2025-392). Holding each material out in turn, FLINT predicted NASA's simulated-lunar-gravity limits with a mean error of 1.4 points of oxygen on NASA's summary figure (2.6 on the individual plots)."],
       tested: ['cal', 'Calibrated on your Earth test', 'FLINT reproduces your test exactly; the flame chemistry is ' + (spec.Ea != null ? 'mass-weighted from the blend' : 'like ' + kinName + "'s") + '.'],
       borrowed: ['extra', 'Estimate · no Earth test yet', 'The flame chemistry is borrowed from ' + kinName + '. Add one Earth test to turn this estimate into a calibrated prediction.'],
       blend: ['extra', 'Blend estimate · no Earth test yet', 'Atoms, heat and pyrolysis temperature mixed by mass; flame chemistry mass-weighted. Test the blend on Earth to calibrate it.']}[b.status];

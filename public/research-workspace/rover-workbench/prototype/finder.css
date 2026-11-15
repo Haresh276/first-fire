@@ -1,0 +1,41 @@
+#workbench-finder {
+  display:block; margin:0 0 14px; padding:10px 14px;
+  border:1px solid var(--line); border-radius:6px; background:#eff3e9;
+}
+.finder-form {display:flex; align-items:center; gap:12px; margin:0;}
+.finder-form label {font-size:.92rem; font-weight:650; white-space:nowrap;}
+.finder-form input {
+  flex:1; min-width:0; height:40px; padding:7px 11px; border:1px solid #96a69a;
+  border-radius:4px; background:white; color:var(--ink); font-size:1rem;
+}
+.finder-form button {min-height:40px;}
+.finder-heading {display:flex; align-items:center; justify-content:space-between; gap:12px;}
+.finder-heading p,#finder-list small,#part-preview small {color:var(--muted); font-size:.82rem;}
+.finder-heading button {background:transparent; border:0; text-decoration:underline; text-underline-offset:3px;}
+#finder-matches {margin-top:8px; border-top:1px solid var(--line);}
+#finder-list {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:4px; padding:0; margin:0; list-style:none;}
+#finder-list a {display:flex; flex-direction:column; justify-content:center; min-height:50px; padding:7px 10px; border-radius:3px; background:#fff; color:var(--ink); text-decoration:none; font-weight:600;}
+#finder-list a:hover,#finder-list a:focus-visible {background:#e2eadc;}
+#finder-list small {font-weight:400;}
+#finder-more {margin:9px 0 1px;}
+#part-preview {padding:16px; margin:0 0 18px; border-left:4px solid var(--accent); background:#edf2e8;}
+#part-preview h3 {margin:.3em 0;}
+#part-preview p {margin:.45em 0 1em;}
+@media (max-width:700px) {
+  #views {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); overflow:visible; gap:0 4px;}
+  #views a {display:flex; justify-content:center; align-items:center; padding:7px 2px; min-height:44px; text-align:center; font-size:.86rem;}
+  #views a[aria-current] {background:#e5ecdf;}
+  #workbench-finder {padding:9px 10px;}
+  .finder-form {display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 7px;}
+  .finder-form label {grid-column:1 / -1;}
+  .finder-form button,.finder-form input,.finder-heading button,#finder-more {min-height:44px;}
+  #finder-list {grid-template-columns:1fr;}
+}
+.site-return {display:flex; align-items:center; gap:14px;}
+.brand .site-return a {font-size:.82rem; color:#e2ebe5; text-underline-offset:3px;}
+@media (max-width:700px) {
+  .brand {flex-wrap:wrap; justify-content:space-between; gap:0 12px; padding-block:4px;}
+  .brand .site-return {order:4; width:100%; gap:20px;}
+  .brand .site-return a {display:inline-flex; align-items:center; min-height:44px;}
+  .brand .top-doc {margin-left:auto;}
+}

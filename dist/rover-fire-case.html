@@ -4,7 +4,7 @@
 <title>Pressurized Rover Fire Case · FIRST FIRE</title>
 <meta name="description" content="Test which cabin items can keep burning on the Moon, compare atmospheres and inspect crew responses with FLINT and NASA combustion data.">
 <link rel="icon" href="icon.svg"><link rel="stylesheet" href="rover-fire-case.css">
-<script defer src="flint-coefficients.js"></script><script defer src="flint-solid.js"></script>
+<script defer src="flint-coefficients.js"></script><script defer src="flint-solid.js"></script><script defer src="material-observer-model.js"></script><script defer src="material-case-link.js"></script>
 <script defer src="rover-fire-data.js"></script><script defer src="rover-fire-model.js"></script>
 <script defer src="rover-fire-case.js"></script>
 </head><body>
@@ -39,6 +39,8 @@
 <section id="inventory" class="panel"><p class="eyebrow">Flammability</p><h2>Which items can keep burning?</h2>
 <p>Margin is cabin oxygen minus the material’s limiting oxygen concentration. A positive margin supports sustained burning. Quenching means the flame loses too much heat. Blow-off means the flow is too fast for the reaction.</p>
 <div id="inventory-table"></div>
+<h3>Screen a candidate recipe alongside the inventory</h3><p id="screen-result"></p>
+<p><a id="screen-material" href="/material-observer.html">Compare this cabin and recipe in the material observer</a> · <a href="/material-observer.html">Open the observer</a></p>
 <details><summary>Add an item to the cabin</summary><form id="item-form"><div class="fields">
 <label>Item name<input id="item-name" required maxlength="70"></label><label>Material<select id="item-material"></select></label>
 <label>Exposed area (m²)<input id="item-area" required type="number" step="any" min="0.000001"></label>

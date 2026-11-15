@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f6f0"><title>Match the alarm readings · FIRST FIRE</title>
+  <link rel="icon" href="icon.svg"><link rel="stylesheet" href="classroom.css">
+  <script src="classroom-data.js" defer></script><script src="classroom.js" defer></script>
+</head>
+<body>
+<header class="mast"><div class="wrap bar"><a class="brand" href="index.html">FIRST FIRE</a><a href="index.html" data-t="desk">Research desk</a>
+  <label class="language"><span data-t="language">Language</span> <select id="language"><option lang="en" value="en">English</option><option lang="te" value="te">తెలుగు</option></select></label>
+</div></header>
+<main class="wrap">
+  <div class="intro"><p class="kicker" data-t="eyebrow">Classroom · NIST room fire experiments</p><h1 data-t="title">Match the alarm readings</h1>
+    <p data-t="intro">A smoke alarm sounded during a polyurethane foam fire. Find the raw record that matches both measurements in NIST’s summary.</p></div>
+  <noscript>This exercise needs JavaScript. <span lang="te">ఈ అభ్యాసానికి జావాస్క్రిప్ట్ అవసరం.</span></noscript>
+  <div class="toolbar"><fieldset class="runs"><legend data-t="chooseRun">Choose a repeat run</legend>
+    <button type="button" data-run="1" data-t="run1">Run 1</button><button type="button" data-run="2" data-t="run2">Run 2</button>
+  </fieldset><a id="case-link" data-t="share">Link to this case</a></div>
+  <div class="work">
+    <aside class="card summary"><p class="kicker">NIST TN 1947 · I01-6</p><h2 data-t="summary">Workbook summary</h2><p class="ref" id="summary-locator"></p>
+      <dl><dt data-t="alarm">Reported alarm time</dt><dd id="alarm"></dd><dt data-t="obsc">Beam obscuration</dt><dd id="summary-obsc"></dd><dt data-t="mic">MIC current</dt><dd id="summary-mic"></dd></dl>
+      <p class="small" data-t="measures">Obscuration measures how much smoke reduces the light beam per foot. MIC is the measuring ionization chamber current.</p>
+    </aside>
+    <section class="card explorer"><h2 data-t="inspect">Inspect the two channels</h2><p data-t="inspectHelp">Move the cursor or enter a raw counter. Check both channels at the precision printed in the raw file.</p>
+      <div class="chart-label"><strong data-t="obsc">Beam obscuration</strong><span>%/ft</span></div><canvas id="obsc-chart" height="78" aria-hidden="true"></canvas>
+      <div class="chart-label"><strong data-t="mic">MIC current</strong><span>pA</span></div><canvas id="mic-chart" height="78" aria-hidden="true"></canvas>
+      <p class="small plot-note" id="plot-note"></p>
+      <div class="controls"><label for="counter" data-t="counter">Raw counter (s)</label><input id="counter" type="number" step="1" inputmode="numeric">
+        <input id="scrub" type="range" step="1"></div>
+      <div class="readout" aria-live="off"><span id="raw-obsc"></span><span id="raw-mic"></span></div><p class="small ref" id="raw-locator"></p>
+      <button type="button" class="primary" id="check" data-t="check">Check this row</button><p id="feedback" role="status"></p>
+    </section>
+  </div>
+  <section class="card interpretation" id="interpretation" hidden><h2 data-t="meaning">What does the offset tell us?</h2><p id="found"></p>
+    <form id="reason-form"><fieldset><legend data-t="chooseReason">Choose the conclusion these records support.</legend>
+      <label><input type="radio" name="reason" value="physical"><span data-t="physical">Smoke took this many seconds to reach the alarm.</span></label>
+      <label><input type="radio" name="reason" value="alignment"><span data-t="alignment">The summary and the raw trace align at this offset for this run. The cause still needs clock documentation.</span></label>
+      <label><input type="radio" name="reason" value="universal"><span data-t="universal">Apply the same offset to every NIST or spacecraft detector.</span></label>
+    </fieldset><button class="primary" data-t="checkReason">Check my explanation</button></form><p id="reason-feedback" role="status"></p>
+  </section>
+  <section class="card record"><h2 data-t="evidence">Your practice record</h2><p data-t="practice">Only choices you submit in this tab enter the record. Practice scores do not measure classroom impact.</p>
+    <p id="progress" class="score" aria-live="polite"></p><button type="button" id="download" data-t="download">Download anonymous evidence JSON</button>
+    <details><summary data-t="peer">Compare with a classmate’s record</summary><p data-t="peerHelp">After you finish this run, open another exported record. Compare first attempts on the same data. The file is read on this device.</p>
+      <label class="file-button" id="import-label"><span data-t="upload">Open practice JSON</span><input id="peer-file" type="file" accept="application/json,.json"></label>
+      <p id="peer-status" role="status"></p></details>
+  </section>
+  <section class="card next"><h2 data-t="next">Take the question to orbit</h2><p data-t="nextHelp">Here you checked two clocks. In the NASA SAME-R case, inspect whether a detector had power before interpreting its alarm flag.</p><a href="detector.html" data-t="detector">Open the NASA detector case →</a></section>
+  <details class="card sources"><summary data-t="sources">Sources, precision and file fingerprints</summary>
+    <p data-t="precision">For the counter match, both readings must agree within half of the raw file’s last displayed digit. This compares two printed records. It is a different question from instrument measurement uncertainty.</p>
+    <p id="source-files"></p><dl id="hashes"></dl>
+    <p class="links"><a href="https://www.nist.gov/el/fire/engineered-fire-safety/data-smoke-alarm-performance" data-t="dictionary">NIST data dictionary</a> <a href="https://www.nist.gov/system/files/documents/2016/12/15/roomdata.zip" data-t="zip">Raw room files (ZIP)</a> <a href="https://www.nist.gov/system/files/documents/2016/12/14/summary_nistsmokebox_roomresults.xlsx" data-t="book">Summary workbook (XLSX)</a></p>
+  </details>
+</main>
+</body></html>

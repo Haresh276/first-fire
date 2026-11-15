@@ -1,0 +1,76 @@
+[hidden]{display:none!important}
+/* Shared styles for the Material Lab and the Cabin Fire Simulator (on top of judging, start and lab css). */
+.purpose{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 0;padding:0;list-style:none}
+.purpose li{background:#fff;border:1px solid #c6cfc7;padding:14px 16px;font-size:.95rem}
+.purpose b{display:block;font:700 .74rem/1.4 DM,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#ae411e;margin-bottom:4px}
+.q{border-left:5px solid #ae411e;background:#fff6f0;padding:12px 16px;margin:16px 0 0;font-size:1.02rem}
+.q b{color:#6d2a12}
+.controls h3{margin:6px 0 0;font:700 .78rem/1.3 DM,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#164d40}
+.controls select,.controls input[type=text]{width:100%;padding:8px 10px;font:inherit;border:1px solid #9fb0a6;background:#fff}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.check{display:flex!important;grid-template-columns:none;align-items:center;gap:8px;font-weight:700}
+.check input{width:18px;height:18px;accent-color:#164d40}
+.chem{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.86rem;color:#40574e;background:#fff;border:1px solid #c6cfc7;padding:10px 12px}
+.chem b{color:#17352f}
+.formula{font:700 1.5rem/1.1 DM,system-ui,sans-serif;letter-spacing:-.02em;color:#17352f}
+.worlds{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.world{border:1px solid #c6cfc7;padding:10px 10px 12px;display:grid;gap:3px;align-content:start;background:#fbfcfa}
+.world h4{margin:0;font:700 .74rem/1.3 DM,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#40574e}
+.world .lim{font:700 1.6rem/1.05 DM,system-ui,sans-serif;letter-spacing:-.04em}
+.world .v{font:700 .7rem/1.35 DM,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.world .br{font-size:.76rem;color:#40574e}
+.world.burns{border-top:5px solid #ae411e}.world.burns .v{color:#ae411e}
+.world.close{border-top:5px solid #c08a00}.world.close .v{color:#8a6200}
+.world.out{border-top:5px solid #164d40}.world.out .v{color:#164d40}
+.world.nm{border-top:5px solid #9fb0a6}.world.nm .v{color:#5c6f66}
+.meter{position:relative;height:8px;background:#e9ede4;margin-top:4px}
+.meter i{position:absolute;top:-3px;width:3px;height:14px}
+.actions2{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.actions2 a,.actions2 button,.actions2 label.btn{font:700 .84rem/1.2 DM,system-ui,sans-serif;padding:9px 12px;border:1px solid #164d40;background:#fff;color:#164d40;cursor:pointer;text-decoration:none;display:inline-block}
+.actions2 .primary{background:#ae411e;border-color:#ae411e;color:#fff}
+.actions2 a:hover,.actions2 button:hover,.actions2 label.btn:hover{filter:brightness(.95)}
+.saved{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.saved article{background:#fff;border:1px solid #c6cfc7;padding:12px 14px;display:grid;gap:6px}
+.saved article b{font-size:1rem}.saved article small{color:#40574e}
+.saved .tiny{display:flex;flex-wrap:wrap;gap:6px}
+.saved .tiny button,.saved .tiny a{font:700 .74rem/1.2 DM,sans-serif;padding:6px 9px;border:1px solid #9fb0a6;background:#fff;color:#164d40;cursor:pointer;text-decoration:none}
+.rank{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:10px}
+.rank th,.rank td{padding:7px 9px;border-top:1px solid #c6cfc7;text-align:left}
+.rank td.n{text-align:right;font-variant-numeric:tabular-nums}
+.rank tr.me td{background:#fff6f0;font-weight:700}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#17352f;color:#fff;padding:10px 16px;font-weight:700;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.on{opacity:1}
+/* Cabin fire simulator */
+.gauges{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0}
+.gauge{background:#fbfcfa;border:1px solid #c6cfc7;padding:8px 9px}
+.gauge small{display:block;font:700 .66rem/1.3 DM,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#40574e}
+.gauge b{font:700 1.25rem/1.15 DM,system-ui,sans-serif;letter-spacing:-.03em}
+.gauge.alarm{border-color:#ae411e;background:#fff6f0}.gauge.alarm b{color:#ae411e}
+.scrub{display:flex;align-items:center;gap:10px;margin:8px 0}
+.scrub input{flex:1;accent-color:#ae411e}
+.scrub button{font:700 .84rem/1 DM,sans-serif;padding:8px 12px;border:1px solid #ae411e;background:#ae411e;color:#fff;cursor:pointer;min-width:74px}
+.scrub output{font:700 .95rem/1 DM,sans-serif;min-width:64px;text-align:right;font-variant-numeric:tabular-nums}
+.cabinview{display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center}
+.cabinview svg{width:100%;height:auto;display:block}
+.verdict{font:700 1.25rem/1.3 DM,system-ui,sans-serif;letter-spacing:-.01em;margin:6px 0 4px}
+.verdict.bad{color:#ae411e}.verdict.ok{color:#164d40}.verdict.mid{color:#8a6200}
+.charts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.charts figure{margin:0;background:#fff;border:1px solid #c6cfc7;padding:10px 10px 4px}
+.charts figcaption{font:700 .78rem/1.3 DM,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#40574e}
+.charts svg{width:100%;height:auto;display:block}
+.timeline{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:4px;font-size:.92rem}
+.timeline li{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:5px 0;border-top:1px solid #e1e6e0}
+.timeline li span{font-weight:700;font-variant-numeric:tabular-nums;color:#40574e}
+.timeline li.bad{color:#6d2a12}.timeline li.good{color:#164d40}
+.cmp{width:100%;border-collapse:collapse;font-size:.9rem}
+.cmp th,.cmp td{padding:8px 9px;border-top:1px solid #c6cfc7;text-align:left;vertical-align:top}
+.cmp th{font:700 .72rem/1.3 DM,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#40574e}
+.cmp tr.best td{background:#eef5ef}
+.cmp td b{display:block}
+.cmp .pill{display:inline-block;font:700 .68rem/1.3 DM,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;margin:2px 4px 0 0}
+.pill.r{background:#f3d9cc;color:#6d2a12}.pill.g{background:#d9e4dc;color:#17352f}.pill.a{background:#f5e6bf;color:#5a4100}
+.resp{display:grid;gap:8px;background:#fff;border:1px solid #c6cfc7;padding:12px}
+.resp .row2{align-items:end}
+@media(max-width:900px){.purpose{grid-template-columns:1fr}.worlds{grid-template-columns:repeat(2,1fr)}.charts{grid-template-columns:1fr}.gauges{grid-template-columns:repeat(3,1fr)}.cabinview{grid-template-columns:1fr}.row4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.gauges{grid-template-columns:repeat(2,1fr)}.cmp{font-size:.82rem}}

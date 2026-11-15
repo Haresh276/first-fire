@@ -1,0 +1,113 @@
+{
+  "schema": "first-fire.investigation.v1",
+  "question": "",
+  "readerLevel": "undergraduate",
+  "device": {
+    "preference": "auto",
+    "effectiveTier": "pro"
+  },
+  "selectedReference": {
+    "selectionOrigin": "catalogue preview",
+    "direction": "concurrent",
+    "sourceRow": "PSI-98:1:2",
+    "measuredSpeedMmS": 1.8,
+    "sourceURL": "https://doi.org/10.60555/0t15-1z43",
+    "publicationURL": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21",
+    "locator": "NASA Saffire-I results, slide 21",
+    "transferLimit": "Flight rates were measured in orbit on SIBAL fabric at 20 cm/s forced flow. A rover run uses an imposed input."
+  },
+  "trialComparison": null,
+  "results": {
+    "physics": {
+      "questionAtCapture": "",
+      "title": "Rover and cabin physics",
+      "summary": "9 cm of prescribed travel at 50 s; 29.941% wet O₂.",
+      "record": {
+        "kind": "simulated",
+        "inputs": {
+          "planet": "Moon",
+          "fuel": "polyethylene",
+          "volume": 16,
+          "pressure": 70,
+          "oxygen": 30,
+          "cutoff": 18,
+          "length": 40,
+          "density": 0.25,
+          "speed": 0.18,
+          "chassisMass": 800,
+          "capacity": 0,
+          "power": 0
+        },
+        "parts": {
+          "cabin": {
+            "key": "custom",
+            "name": ""
+          },
+          "chassis": {
+            "key": "ltv",
+            "name": ""
+          },
+          "pack": {
+            "key": "custom",
+            "name": ""
+          }
+        },
+        "designName": "Cabin trial",
+        "reference": "concurrent",
+        "seconds": 50,
+        "outputs": {
+          "time": 50,
+          "oxygen": 29.941066597375922,
+          "co2": 0.03571721371156273,
+          "water": 0.03571721371156273,
+          "burned": 2.25,
+          "position": 9,
+          "chemical": 97.64999999999999,
+          "electrical": 0,
+          "energy": 97.64999999999999,
+          "state": "Prescribed spread",
+          "chassisWeightN": 1296,
+          "idealFlameK": 3016.3190404590296
+        },
+        "units": {
+          "position": "cm",
+          "oxygen": "wet vol%",
+          "co2": "wet vol%",
+          "water": "wet vol%",
+          "burned": "g",
+          "chemical": "kJ",
+          "electrical": "kJ",
+          "energy": "kJ"
+        },
+        "liquidStatus": "outside training domain",
+        "liquid": null,
+        "sources": [
+          {
+            "title": "Fuel thermochemistry",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf"
+          },
+          {
+            "title": "Saffire-I experimental conditions",
+            "doi": "10.60555/0t15-1z43",
+            "url": "https://doi.org/10.60555/0t15-1z43",
+            "row": "PSI-98:1:2"
+          },
+          {
+            "title": "Saffire-I front rates, PDF page 21",
+            "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21"
+          }
+        ],
+        "boundary": "The front speed is imposed. Source and rover differ in gravity, fuel and atmosphere. The liquid model approximates the solver."
+      }
+    }
+  },
+  "lastTool": "physics",
+  "decision": "",
+  "nextAction": {
+    "tool": "physics",
+    "action": "Change one cabin condition",
+    "reason": "Your latest trial stopped at Prescribed spread. Vary one input and inspect the change in front travel and wet oxygen.",
+    "url": "#physics?mode=rover"
+  },
+  "signedForecastSHA256": "9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3"
+}
