@@ -1,0 +1,59 @@
+{
+  "id": "FIRST-FIRE-FM2-v2-physics",
+  "team": "Code Blooded",
+  "status": "Prospective conditional model forecast; no measured outcome.",
+  "design": {
+    "material": "Synergy Pro Navy",
+    "pressure_psia": 8.2,
+    "pressure_tolerance_psi": 0.3,
+    "chamber_litres": 14.4,
+    "length_cm": 20,
+    "gravity": "lunar surface",
+    "gas": "O2/N2",
+    "orientation": "bottom ignition, upward spread",
+    "source": "https://ntrs.nasa.gov/citations/20260001966",
+    "locator": "March 2026 presentation, PDF pages 5–6, 10–11 and 14"
+  },
+  "fuel_chemistry_assumption": "aramid-like",
+  "assumed_flame_equivalent_limit_o2_pct": 26.0,
+  "model": "FLINT 1.1 sealed chamber with combustion products. Each burn starts in fresh gas.",
+  "predictions": [
+    {
+      "burn": 1,
+      "starting_o2_pct": 37.0,
+      "conditional_burn_length_cm": 20.0
+    },
+    {
+      "burn": 2,
+      "starting_o2_pct": 33.0,
+      "conditional_burn_length_cm": 14.9
+    },
+    {
+      "burn": 3,
+      "starting_o2_pct": 29.0,
+      "conditional_burn_length_cm": 6.4
+    },
+    {
+      "burn": 4,
+      "starting_o2_pct": 25.0,
+      "conditional_burn_length_cm": 0.0
+    }
+  ],
+  "reported_length_precision_cm": 0.1,
+  "probabilities": "See sealed v1; no revision to binary probabilities or comparator.",
+  "resolution": {
+    "yes": "The official burn record reports self-sustained flame spread beyond the igniter-influenced region.",
+    "no": "A nominal ignition attempt produced no ignition, or the official record reports no such spread after power ended.",
+    "pending": "No attributable official result available. Retain the source, test identifier, actual conditions, and outcome rationale for each resolution.",
+    "void": "Insufficient telemetry, changed material or geometry, invalid initial conditions, hardware fault, abort, or ambiguous classification.",
+    "missing_policy": "Score only resolved tests on matched indices. Report coverage. A full four-burn score requires four resolved tests."
+  },
+  "length_scoring": "For valid burns with attributable measured sustained travel, report signed and absolute error in cm and number available. Reference lengths are point scenarios at the mean limit.",
+  "comparison": "Report v1 and v2 side by side for the same qualifying official lengths. Do not select the better forecast after seeing outcomes.",
+  "provenance": {
+    "file": "flint-engine/results/core/results.json",
+    "sha256": "9a5b37005ce66ec0b66abd03ed9901b9fa55a243ed157acc397949e345f3897d",
+    "selector": "fm2.sim_aramid_L26[*].{X0,L,burned_cm}",
+    "v1_sha256": "9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3"
+  }
+}
