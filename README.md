@@ -4,6 +4,15 @@ A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall ch
 
 [Technical manual](site/technical-manual.html) · [Download technical manual (PDF)](dist/first-fire-technical-manual.pdf)
 
+## Run a research investigation
+
+Start the [guided research session](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#session), enter your question, and download the evidence record at any step. The same workflow runs in the offline edition.
+
+1. [Match real FLEX flight runs](dist/index.html#transfer-lab). Set common eligibility conditions and size tolerance before revealing paired differences. Test whether any comparison survives a same-day requirement.
+2. [Challenge a remote sensor reading](dist/index.html#transport-lab). Inspect transport, sensor lag and mass conservation; compare against published room repeat times, or fit one sensor trace and score a second run against a single-compartment baseline.
+3. [Plan an FM² oxygen test](dist/index.html#design-lab). Choose the objective and specimen budget, enter a hypothetical reading, and recompute the next test. This never edits the signed forecast.
+4. [Question the archive](dist/index.html#chat). Ask for a count or a measured quantity and inspect the supporting source rows. [Chat evaluations and original failures](research/science-chat-audit.md) and [methods](research/advanced-methods.md).
+
 ## Explore the deck
 
 - **The Gap.** The [Atlas](dist/index.html#atlas) includes 1,622 nonempty source rows from 15 challenge investigations and 16 tables. The [Compass](dist/index.html#compass) ranks the comparable observations with usable measurements.
@@ -47,7 +56,9 @@ Run these commands from the directory containing this file. Build and data check
 ```sh
 python3 scripts/build.py
 python3 -m unittest discover -s tests -p '*_test.py'
-node --test tests/study.test.cjs tests/forecast-ui.test.cjs
+node --test tests/*.test.cjs
+node scripts/evaluate_science_chat.cjs
+# With Playwright and Chromium installed: node tests/advanced_browser.cjs
 node scripts/benchmark_search.cjs
 python3 scripts/verify_quotes.py
 ```

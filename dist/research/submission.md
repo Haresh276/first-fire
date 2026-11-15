@@ -14,6 +14,8 @@ The links above open the packaged project. The public release is available at [F
 
 FIRST FIRE compares 1,622 NASA source rows across 15 investigations with the conditions of a proposed habitat. Its seven-rule evidence audit explains where an extrapolation fails. The team fixed a forecast for four planned lunar FM² burns before any recorded result. A signed timestamp, a scoring rule and the source records are public. Researchers can explore sealed-compartment scenarios in the Physics Lab, inspect a liquid-network model's measured approximation error, and test an altered quote in the Referee. The six detailed case studies trace specific observations back to the original publications.
 
+The [guided investigation](#session) collects matched flight evidence, a two-zone tracer scenario, an adaptive lunar experiment design and an archive question into one downloadable research record.
+
 ## Detailed description
 
 FIRST FIRE helps students and aerospace researchers decide what earlier experiments can tell them about a specific scenario. A user can search a question in plain language, select a mission atmosphere, compare observations, inspect a case and export a research brief. The brief preserves the evidence, the limit of the comparison and the next measurement the user needs.

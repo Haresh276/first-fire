@@ -27,7 +27,8 @@ const views=[
  ['#forecast','The Oracle','Forecast & Next Fire','Inspect the four locked predictions and design a follow-up burn.'],
  ['#earth','At Home','Earth applications','Explore crew cabins, hospitals, mines and aircraft.']
 ];
-root.innerHTML='<section class="hero mission-hero"><div class="herocopy"><span class="eyebrow">Flammability of Materials on the Moon</span><h1>Will the flame <em>keep spreading?</em></h1><p>Four planned burns. One unknown oxygen limit. Explore NASA’s experiments and inspect the forecast before lunar results arrive.</p><div class="heroactions">'+linkbtn('#forecast','Open the forecast →','btn')+linkbtn('#physics','Enter the Physics Lab')+'</div></div><figure class="heroimage"><img src="lunar-concept.jpg" alt="NASA concept rendering of a lunar lander on the Moon’s surface."><figcaption class="captionbar">'+out('https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=6','Lunar mission concept · NASA')+'</figcaption></figure></section>'+
+root.innerHTML='<section class="hero mission-hero"><div class="herocopy"><span class="eyebrow">Flammability of Materials on the Moon</span><h1>Will the flame <em>keep spreading?</em></h1><p>Four planned burns. One unknown oxygen limit. Explore NASA’s experiments and inspect the forecast before lunar results arrive.</p><div class="heroactions">'+linkbtn('#session','Run the investigation →','btn')+linkbtn('#forecast','Open the fixed forecast')+'</div></div><figure class="heroimage"><img src="lunar-concept.jpg" alt="NASA concept rendering of a lunar lander on the Moon’s surface."><figcaption class="captionbar">'+out('https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=6','Lunar mission concept · NASA')+'</figcaption></figure></section>'+
+'<div class="ff-research-row">'+[['#transfer-lab','Match flight experiments','Pair real droplet runs and reveal their outcomes.'],['#design-lab','Design the next burn','Update a forecast and choose the next oxygen setting.'],['#transport-lab','Follow a tracer release','Change the airflow and inspect the delay at a remote sensor.']].map(([href,title,desc])=>'<a href="'+href+'"><strong>'+title+' ↗</strong><span>'+desc+'</span></a>').join('')+'</div>'+
 '<nav aria-label="Research views" class="mission-views">'+views.map(([url,category,title,body])=>'<a class="panel" href="'+url+'"><span class="eyebrow">'+category+'</span><h2>'+title+'</h2><p>'+body+'</p></a>').join('')+'</nav>'+
 '<div class="section actions">'+linkbtn('#physics?mode=rover','Build a rover')+linkbtn('#referee','Run the Referee')+linkbtn('#chat','Ask FIRST FIRE')+linkbtn('first-fire-demo.mp4','Watch the 30-second demo')+'</div>'+
 '<section class="section"><div class="sectionhead"><div><span class="eyebrow">Case library</span><h2>Where comparisons go wrong</h2></div>'+linkbtn('#cases','All six cases →','inlinebtn')+'</div>'+cards(cases.filter(c=>['sibal','saffire','flex'].includes(c.id)))+'</section>'+
@@ -217,6 +218,10 @@ async function searchPage(q){
  box.innerHTML='<div class="sectionhead"><div><span class="eyebrow">'+(semantic?'Semantic + keyword retrieval':'Keyword retrieval')+'</span><h2>'+esc(items.length?'Evidence matches':'No close matches')+'</h2></div></div>'+(items.length?'<div class="panel">'+items.map(d=>'<div class="result"><span class="tag">'+esc(d.type)+'</span><h3><a href="'+attr(d.url)+'">'+esc(d.title)+'</a></h3><p>'+esc(d.lead)+'</p></div>').join('')+'</div>':'<p>Try a material, investigation name or a shorter question.</p>')+'<p class="statusline" style="margin-top:10px">A related result may not answer your question. Open its source and check the material, conditions and measured endpoint.</p>';
 }
 const reports={
+ 'transport-fit':['Fit a sensor trace','Estimate exchange and sensor lag on one run and compare both models on a second run.'],
+ 'science-chat-audit':['Independent archive chat evaluation','Sixty-four questions, the displayed replies, original scores and failures.'],
+ 'advanced-methods':['Research instruments','Matching experiments, measuring sensor delay, updating a threshold and independently evaluating archive queries.'],
+ 'science-chat':['Archive calculations in chat','Supported operations, source receipts and measured benchmark results.'],
  'code-review':['Source code audit','Repository-level readings, validation gaps and the changes made to FIRST FIRE.'],
  'referee-replay':['Evidence checks on 100 archived chat answers','What the evidence gate changed and where it still misses the question.'],
  'challenge-projects':['Challenge project review','Public repositories, Word documents, and the comparisons they prompted in FIRST FIRE.'],
@@ -265,6 +270,10 @@ async function route(first=false){
  const raw=location.hash.slice(1),breakAt=raw.indexOf('?'),path=(breakAt<0?raw:raw.slice(0,breakAt)).split('/'),p=new URLSearchParams(breakAt<0?'':raw.slice(breakAt+1)),key=path[0]||'home';
  const bundles=[];
  if(['atlas','compass','passports','data','coverage'].includes(key))bundles.push('observation-rows.js');
+ if(key==='transfer-lab')bundles.push('observation-rows.js','transfer-lab.js');
+ if(key==='archive-audit')bundles.push('archive-audit-data.js','archive-audit.js');
+ if(key==='design-lab')bundles.push('design-lab.js');
+ if(key==='transport-lab')bundles.push('transport-lab.js','transport-fit.js');
  if(key==='code-review')bundles.push('code-review-readings.js','code-review.js');
  if(['physics','rover'].includes(key))bundles.push('cabin-liquid-weights.js','physics-lab.js');
  if(bundles.length){
@@ -274,6 +283,11 @@ async function route(first=false){
   if(visit!==navigation)return;
  }
  if(key==='atlas'||key==='compass'){if(key==='compass')p.set('mode','rank');window.renderDeckAtlas(root,p);}
+ else if(key==='archive-audit')window.FFArchiveAudit.render(root);
+ else if(key==='session')window.FFResearchSession.render(root);
+ else if(key==='transfer-lab')window.FFTransferLab.render(root,p);
+ else if(key==='design-lab')window.FFDesignLab.render(root);
+ else if(key==='transport-lab')disposeForecast=window.FFTransportLab.render(root);
  else if(key==='code-review')window.renderCodeReview(root,p);
  else if(key==='passports')window.renderPassports(root,p);
  else if(key==='rulebook')window.FFMissionDesk.rulebook(root);
@@ -292,6 +306,7 @@ async function route(first=false){
  const active=['case','designs'].includes(key)?'cases':['report','code-review'].includes(key)?'sources':key==='acrylic'?'cases':key==='coverage'?'data':key==='search'?'home':key;
  document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  closeMenu();
+ window.FFResearchSession.guide();
  const title=root.querySelector('h1')?.textContent||'Research desk';document.title=(key==='home'?'Research desk':title)+' · FIRST FIRE';
  if(!first){root.focus({preventScroll:true});window.scrollTo(0,0);}
 }

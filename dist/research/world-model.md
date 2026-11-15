@@ -29,7 +29,9 @@ The on-device estimator predicts oxygen percentage over the same 120-second traj
 
 These errors measure agreement with the sealed-chamber equations. Surface-specific fire validation needs independently measured burns. Runtime speedup has not been benchmarked. To reproduce the parameters and scores from the repository root, run `node scripts/train_cabin_liquid.cjs`. Run `node --test tests/physics-lab.test.cjs` for conservation, boundary conditions, temperature fit bounds, and surrogate range checks. [Liquid time-constant networks](https://arxiv.org/abs/2006.04439).
 
-## Proposed validation with measured sensor traces
+## Validation with sensor traces
+
+The new [transport lab](#transport-lab) implements a prescribed finite tracer pulse in two connected compartments, a remote sensor, and a fit-and-repeat check against published whole-room mixing times. [Equations and measured errors](advanced-methods.md). Further validation requires independent concentration time series.
 
 Start with a question the measurements can constrain: given a prescribed release of tracer gas into a ventilated chamber, what concentration should a remote sensor read, and how long should it take to respond? A model of transport can address that question without claiming to predict ignition, flame spread or whether a cabin is safe. It matters for the archive: outlet concentration can rise when flow falls even if the material does not produce more gas. NASA has modeled the vehicle response using measurements from Saffire V. [NASA vehicle-modeling paper](https://ntrs.nasa.gov/api/citations/20240008602/downloads/ICES-2024-310.pdf)
 

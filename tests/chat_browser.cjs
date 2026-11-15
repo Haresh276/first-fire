@@ -1,7 +1,8 @@
 /*
   Browser regression for the built FIRST FIRE chat. Requires a running local chat service and
   Playwright with Chromium. From first-fire, run: node tests/chat_browser.cjs
-  Optional variables: CHROMIUM_EXECUTABLE, FIRST_FIRE_CHAT_URL, FIRST_FIRE_CHAT_SCREENSHOT.
+  For deterministic archive checks alone use --archive and serve the built site on loopback.
+  Optional variables: CHROMIUM_EXECUTABLE, FIRST_FIRE_CHAT_URL, FIRST_FIRE_CHAT_DIST, FIRST_FIRE_CHAT_SCREENSHOT.
   Use a clean browser context for each origin. Chats contain only authored test questions.
 */
 'use strict';
@@ -20,7 +21,7 @@ function playwright() {
   }
 }
 
-const dist = path.resolve(__dirname, '../dist');
+const dist = process.env.FIRST_FIRE_CHAT_DIST || path.resolve(__dirname, '../dist');
 const live = new URL(process.env.FIRST_FIRE_CHAT_URL || 'http://127.0.0.1:8765/');
 assert(['127.0.0.1', 'localhost', '[::1]'].includes(live.hostname), 'Choose a loopback URL for local model tests.');
 const frozen = JSON.parse(fs.readFileSync(path.join(dist, 'data/chat-benchmark.json'), 'utf8'));
@@ -282,6 +283,122 @@ async function incidentChecks(page, capture) {
   await waitForTurns(page,6);
 }
 
+async function archiveOutcomeChecks(page, entry) {
+  const question='How many FLEX heptane rows have a reported burn duration?';
+  await page.goto(new URL('#chat?q='+encodeURIComponent(question),entry).href);
+  const input=page.getByRole('textbox',{name:'Your question'});
+  await page.waitForFunction(q=>document.querySelector('#ffchat-question')?.value===q,question);
+  await waitForTurns(page,0);
+  await page.evaluate(()=>{
+    window.archiveEvents=[];
+    document.addEventListener('ff-research-result',e=>window.archiveEvents.push(e.detail));
+  });
+  await input.press('Enter');
+  const replies=page.locator('.ffchat-reply');
+  await replies.nth(0).getByText(/112 normalized observation rows match/).waitFor();
+  assert.equal(await page.evaluate(()=>window.archiveEvents.at(-1).record.analysis.n),112);
+  await send(page,'What about methanol?');
+  await replies.nth(1).getByText(/156 normalized observation rows match/).waitFor();
+  assert.equal(await page.evaluate(()=>window.archiveEvents.at(-1).record.analysis.n),156);
+  const download=page.waitForEvent('download');
+  await replies.nth(1).getByRole('button',{name:'Download calculation'}).click();
+  const receipt=JSON.parse(fs.readFileSync(await (await download).path(),'utf8'));
+  assert.equal(receipt.rows.length,156);
+  assert.equal(receipt.result.plan.category.material[0],'methanol');
+  assert.equal(receipt.sources[0].hash.length,64);
+  const observations=[
+    'What share of FM² burns have already succeeded on the Moon? Answer with a number.',
+    'How many of the FM2 lunar burns were actually completed?',
+    'What percentage have succeeded so far?'
+  ];
+  for(const [i,q] of observations.entries()){
+    await send(page,q);
+    const reply=replies.nth(i+2);
+    await reply.getByText(/0 verified lunar burn outcomes out of 4/).waitFor();
+    assert.match(await reply.innerText(),/observed success fraction is undefined/);
+    const hrefs=await reply.locator('.ffchat-sources a').evaluateAll(links=>links.map(a=>a.getAttribute('href')));
+    assert(hrefs.includes('#forecast'));
+    assert(hrefs.some(href=>new URL(href,'https://example.test').hostname.endsWith('.nasa.gov')));
+    assert.deepEqual(await page.evaluate(()=>window.archiveEvents.at(-1)),{tool:'chat',invalid:true});
+  }
+  await send(page,'What is the forecast chance of sustained spread in FM² at 25% starting oxygen?');
+  await replies.nth(5).getByText(/25.25%/).waitFor();
+  assert.doesNotMatch(await replies.nth(5).innerText(),/undefined/);
+
+  const regression=JSON.parse(fs.readFileSync(path.join(__dirname,'chat','science-unseen-v1.json'),'utf8'));
+  const exposed=new Set(['S04','S06','S07','S09','S10','S27','S28']);
+  for(const item of regression.filter(r=>exposed.has(r.id))){
+    const next=await replies.count();
+    await send(page,item.question);
+    await replies.nth(next).getByText(new RegExp(item.expected.value+' normalized observation rows match')).waitFor();
+    const evidence=await page.evaluate(()=>window.archiveEvents.at(-1).record);
+    assert.equal(evidence.question,item.question);
+    assert.equal(evidence.analysis.value,item.expected.value);
+    assert(evidence.sources.length>0);
+  }
+  const count=await replies.count();
+  await send(page,'What about heptane?');
+  const later=replies.nth(count);
+  await later.getByRole('button',{name:'Download calculation'}).waitFor();
+  const getReceipt=page.waitForEvent('download');
+  await later.getByRole('button',{name:'Download calculation'}).click();
+  const derived=JSON.parse(fs.readFileSync(await (await getReceipt).path(),'utf8'));
+  assert.equal(derived.question,'What about heptane?');
+  assert.equal(derived.previous_question,regression.find(r=>r.id==='S28').question);
+  assert.deepEqual(derived.result.plan.predicates,[{field:'initial_diameter_mm',op:'>',a:4}]);
+  const directDownload=page.waitForEvent('download');
+  await replies.nth(count-1).getByRole('button',{name:'Download calculation'}).click();
+  const direct=JSON.parse(fs.readFileSync(await (await directDownload).path(),'utf8'));
+  assert.equal(direct.question,derived.previous_question);
+  assert.match(direct.calculation_input,/above 4 mm/);
+  const rejected=[
+    'How many runs belonging to PSI-999 use Teflon?',
+    'How many SAME-R records use unverifiedium?',
+    'How many FLEX runs with burn duration within a whisker of four seconds?',
+    'Count FLEX rows whose initial diameter exceeds four watts.',
+    'How many CFI-G records have both normal flame and inverse flame?',
+    'How many FLEX rows have pressure exceeding one hundred kPa?',
+    'How many SAME-R runs use "normal flame"?'
+  ];
+  for(const q of rejected){
+    const next=await replies.count();
+    await send(page,q);
+    await replies.nth(next).getByText('Archive calculation needs clarification',{exact:true}).waitFor();
+    assert.equal(await replies.nth(next).getByRole('button',{name:'Download calculation'}).count(),0);
+    assert.equal(await page.evaluate(()=>window.archiveEvents.at(-1).invalid),true);
+  }
+  const ask=async q=>{
+    const index=await replies.count();
+    await send(page,q);
+    await waitForTurns(page,index+1);
+    return {reply:replies.nth(index),event:await page.evaluate(()=>window.archiveEvents.at(-1))};
+  };
+  const study=await ask('How many records belong to the FLEX study?');
+  assert.equal(study.event.record.analysis.n,274);
+  assert.equal((await ask('Count heptane records in FLEX.')).event.record.analysis.n,117);
+  const scoped=await ask('How many of those have a reported burn duration?');
+  assert.equal(scoped.event.record.analysis.n,112);
+  assert.equal(scoped.event.record.analysis.base,117);
+  const receiptDownload=page.waitForEvent('download');
+  await scoped.reply.getByRole('button',{name:'Download calculation'}).click();
+  const scopeReceipt=JSON.parse(fs.readFileSync(await (await receiptDownload).path(),'utf8'));
+  assert.equal(scopeReceipt.previous_selection.count,117);
+  assert(scopeReceipt.rows.every(r=>scopeReceipt.previous_selection.row_ids.includes(r.id) && r.material.toLowerCase()==='heptane'));
+  const subset=await ask('Count FLEX heptane records with burn duration above ten seconds.');
+  const narrow=await ask('What percentage of those have a reported burn duration?');
+  assert(subset.event.record.analysis.n>0 && subset.event.record.analysis.n<112);
+  assert.equal(narrow.event.record.analysis.base,subset.event.record.analysis.n);
+  assert.equal(narrow.event.record.analysis.value,100);
+  const pronoun=await ask('How many records does it contain?');
+  assert.equal(pronoun.event.record.analysis.n,subset.event.record.analysis.n);
+  await ask(observations[0]);
+  for(const q of ['How many of those have a reported burn duration?','How many records does it contain?','How many records belong to the Foobar study?']){
+    const unknown=await ask(q);
+    assert.equal(unknown.event.invalid,true,q);
+    assert.match(await unknown.reply.innerText(),/Archive calculation needs clarification/,q);
+  }
+}
+
 async function main() {
   const {chromium}=playwright();
   const macChrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -295,6 +412,12 @@ async function main() {
         const errors=[];page.on('pageerror',e=>errors.push(e.message));
         page.setDefaultTimeout(15000);
         await page.goto(new URL('#chat',entry).href);
+        if(process.argv.includes('--archive')){
+          await archiveOutcomeChecks(page,entry);
+          assert.deepEqual(errors,[]);
+          console.log('Passed archive computation and observed outcome checks on '+new URL(entry).protocol);
+          continue;
+        }
         await chat(page,isLive);
         await benchmark(page);
         await waitForTurns(page,0);
@@ -302,6 +425,8 @@ async function main() {
         await page.evaluate(()=>document.fonts.ready);
         if (isLive) await page.screenshot({path:screenshot});
         await incidentChecks(page,isLive);
+        await page.reload();
+        await archiveOutcomeChecks(page,entry);
         assert.deepEqual(errors,[]);
         console.log('Passed '+(isLive?'local HTTP transformer':'offline file')+' chat and benchmark checks.');
       } finally {await context.close();}

@@ -68,6 +68,20 @@ def check(dist):
                      'research/code-review.md', 'code-review-readings.js', 'code-review.js', 'code-review-readings.csv',
                      'code-review-files.csv.gz', 'code-review-repositories.csv', 'code-review-supplement.csv'):
         assert required in actual, required
+    for required in ('transfer-lab.js','transfer-lab.css','transport-lab.js','transport-fit.js','design-lab.js',
+                     'design-lab.css','advanced.css','science-chat.js','research-session.js','science-chat-holdout.json','science-chat-browser-audit.json','science-chat-acceptance.json','science-chat-regression.json','archive-audit-data.js','archive-audit.js',
+                     'research/advanced-methods.md','research/science-chat.md','research/science-chat-audit.md','research/transport-fit.md'):
+        assert required in actual,required
+    evaluation=json.loads((dist/'science-chat-holdout.json').read_text())
+    assert evaluation['recordsSHA256']==actual['data/tests.csv']
+    assert len(set(c['id'] for c in evaluation['cases']))==evaluation['count']==40
+    assert sum(c['pass'] for c in evaluation['cases'])==evaluation['strictPass']
+    for filename,bank in [('science-chat-regression.json','science-unseen-v1.json'),('science-chat-acceptance.json','science-acceptance-v1.json'),('science-chat-acceptance-replay.json','science-acceptance-v1.json')]:
+        run=json.loads((dist/filename).read_text())
+        assert run['n']==len(run['cases'])==len(set(c['id'] for c in run['cases']))
+        assert sum(c['pass'] for c in run['cases'])==run['passed']
+        assert hashlib.sha256((ROOT/'tests/chat'/bank).read_bytes()).hexdigest()==run['bankSHA256']
+    assert json.loads((dist/'science-chat-acceptance-replay.json').read_text())['localChatUISHA256']==actual['chat-ui.js'], 'Repeat the release chat replay for this build.'
     lock='forecast-lock/fm2-v1.json'
     assert actual[lock]=='9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3', 'The signed forecast bytes must match v1.'
     frozen=json.loads((dist/lock).read_text())

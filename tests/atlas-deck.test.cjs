@@ -4,7 +4,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
 const crypto=require('node:crypto');
-const {indexArchive,scopeOf}=require('../site/atlas-deck.js');
+const {indexArchive,scopeOf,investigationResult}=require('../site/atlas-deck.js');
 const project=path.resolve(__dirname,'..');
 const data={window:{}};
 for (const bundle of ['records.js','observation-rows.js']) {
@@ -49,6 +49,21 @@ test('source exclusions retain their literal meaning and stay reachable',()=>{
 const {compareRecords}=require('../site/atlas-deck.js');
 const row=id=>rows.find(r=>r.id===id);
 const dimension=(comparison,id)=>comparison.fields.find(f=>f.id===id);
+test('investigation records preserve source identity and distinguish a burner feed from a chamber measurement',()=>{
+  const original=row('PSI-159:2:2'),result=investigationResult(original),saved=result.record;
+  assert.equal(result.tool,'atlas');
+  assert.equal(saved.id,'PSI-159:2:2');
+  assert.equal(saved.sourceRow,2);
+  assert.equal(saved.doi,original.study.doi);
+  assert.equal(saved.sourceFile,original.table.file);
+  assert.equal(saved.sourceURL,original.table.url);
+  assert.equal(saved.conditions['Chamber O₂'],null);
+  assert.match(saved.conditions['Burner O₂'],/21% at burner inlet/);
+  assert.match(saved.endpoint,/Burn time 0 s/);
+  const settings=investigationResult(row('PSI-107:1:2')).record;
+  assert.equal(settings.endpoint,null);
+  assert.match(settings.boundary,/Burner setting.*no individual normalized observation/);
+});
 test('a normal and inverse flame carry oxygen at different physical locations',()=>{
   const result=compareRecords(row('PSI-159:1:2'),row('PSI-159:2:2'));
   assert.match(result.interpretation,/burner feed/);

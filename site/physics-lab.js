@@ -202,7 +202,7 @@
     const roverMode=params?.get?.('mode')==='rover' || params?.mode==='rover';
     const d=physics.defaults;
     root.innerHTML='<div class="pl"><div class="breadcrumb"><a href="#home">Research desk</a><span>/</span>Physics Lab</div>'+
-      '<header class="pagetitle"><span class="eyebrow">Physics Lab</span><h1>Inside a sealed cabin</h1><p class="sub">Give a burning strip a fuel, a starting atmosphere and a spread speed. Follow the oxygen it consumes and the heat it releases.</p></header>'+
+      '<header class="pagetitle"><span class="eyebrow">Physics Lab</span><h1>Inside a sealed cabin</h1><p class="sub">Give a burning strip a fuel, a starting atmosphere and a spread speed. Follow the oxygen it consumes and the heat it releases.</p><div class="actions"><a class="ghost" href="#transport-lab">Model a remote sensor →</a></div></header>'+
       '<form id="pl-form"><div class="pl-grid">'+
       '<section class="panel pl-inputs"><h2>Test conditions</h2><div class="pl-fields">'+
       select('planet','Surface',{Moon:'Moon',Mars:'Mars'},'Moon')+
@@ -245,6 +245,25 @@
     const control=name=>form.elements.namedItem(name);
     const model=window.FFCabinLiquid;
     let current=null,scenario=null,predicted=null;
+    let reference=null;
+    const desk=window.FFAwareness;
+    const lite=desk?.tier?.()==='lite';
+    const explanation=document.createElement('p');
+    explanation.className='pl-aside';
+    const back=document.createElement('a');
+    back.href='#awareness';
+    back.textContent='Review this investigation →';
+    get('trace-title').after(explanation,back);
+    get('chart').hidden=lite;
+    function publish(record) {
+      document.dispatchEvent(new CustomEvent('ff-research-result',{detail:record?{
+        tool:'physics',title:'Rover and cabin physics',
+        summary:fmt(record.outputs.position,2)+' cm of prescribed travel at '+record.seconds+' s; '+fmt(record.outputs.oxygen,3)+'% wet O₂.',record
+      }:{tool:'physics',invalid:true}}));
+    }
+    function selectedParts(){
+      return Object.fromEntries(Object.keys(parts).map(k=>[k,{key:control(k).value,name:control(k+'Name').value.slice(0,46)}]));
+    }
     function read() {
       const s={planet:control('planet').value,fuel:control('fuel').value};
       for(const k of Object.keys(physics.ranges))s[k]=control(k).valueAsNumber;
@@ -266,7 +285,21 @@
       get('estimate').textContent=predicted?fmt(predicted[index])+'% O₂':'Outside training range';
       get('network-result').textContent=predicted?'At '+sample.time+' s the simulator gives '+fmt(sample.oxygen)+'%. The absolute difference is '+fmt(Math.abs(predicted[index]-sample.oxygen),3)+' percentage points.':'The solver is available for this scenario. Network coverage requires 4–30 m³, 50–105 kPa, 21–37% O₂, a 15–20% cutoff, 20–60 cm of strip, 0.5–5 g/cm and 0.03–0.65 cm/s.';
       get('liquid-key').hidden=!predicted;
-      chart(get('chart'),current.trace,predicted,sample.time);
+      if(!lite)chart(get('chart'),current.trace,predicted,sample.time);
+      const basis=reference?'The '+reference+' Saffire-I speed is imposed on this strip. ':'The strip speed is a user assumption. ';
+      const level=desk?.level?.();
+      const detail=level==='beginner'?'The strip uses oxygen as it burns. Move the clock to see how much remains.':
+        level==='advanced'?'The ideal gas inventory is pV/(RT). Wet mole fractions use the changing total after the stoichiometric reaction.':
+        'At an imposed speed, available fuel and the assumed oxygen cutoff bound the distance. The oxygen reading includes product water vapor.';
+      explanation.textContent=basis+detail;
+      const sources=[{title:'Fuel thermochemistry',url:'https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf'}];
+      if(reference)sources.push({title:'Saffire-I experimental conditions',doi:'10.60555/0t15-1z43',url:'https://doi.org/10.60555/0t15-1z43',row:reference==='concurrent'?'PSI-98:1:2':'PSI-98:1:3'},
+        {title:'Saffire-I front rates, PDF page 21',url:'https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf#page=21'});
+      publish({kind:'simulated',inputs:{...scenario},parts:selectedParts(),designName:control('designName').value.slice(0,60),
+        reference,seconds:sample.time,outputs:{...sample,chassisWeightN:current.chassisWeight,idealFlameK:current.flame.kelvin},
+        units:{position:'cm',oxygen:'wet vol%',co2:'wet vol%',water:'wet vol%',burned:'g',chemical:'kJ',electrical:'kJ',energy:'kJ'},
+        liquid:predicted?{oxygenPercent:predicted[index],errorPercentagePoints:Math.abs(sample.oxygen-predicted[index]),training:'synthetic cabin runs'}:null,
+        sources,boundary:'The front speed is imposed. Source and rover differ in gravity, fuel and atmosphere. The liquid model approximates the solver.'});
     }
     function compare() {
       const section=get('comparison'), show=get('compare').getAttribute('aria-expanded')==='true';
@@ -309,7 +342,7 @@
       get('save').disabled=!!err;get('compare').disabled=!!err;
       get('live-data').hidden=!!err;
       if(err){
-        current=null;compare();
+        current=null;compare();publish(null);
         for(const id of ['temp','temp-source','estimate','network-result','rover-result','match'])get(id).textContent='Complete the test conditions to calculate.';
         return;
       }
@@ -337,13 +370,14 @@
     form.addEventListener('submit',e=>e.preventDefault());
     form.addEventListener('input',evt=>{
       if(evt.target===clock){inspect();return;}
-      if(evt.target.name.endsWith('Name'))return;
+      if(evt.target.name.endsWith('Name')){inspect();return;}
+      if(evt.target.name==='speed')reference=null;
       if(evt.target.name==='volume')control('cabin').value='custom';
       if(evt.target.name==='chassisMass')control('chassis').value='custom';
       if(['capacity','power'].includes(evt.target.name))control('pack').value='custom';
       applyPreset(evt);calculate();
     });
-    get('reset').onclick=()=>{form.reset();writeTrial(d);clock.value=120;get('store').textContent='';calculate();};
+    get('reset').onclick=()=>{reference=null;form.reset();writeTrial(d);clock.value=120;get('store').textContent='';calculate();};
     get('save').onclick=()=>{
       if(!current)return;
       const name=control('designName').value.trim() || 'Cabin trial';
@@ -358,6 +392,7 @@
         const saved=JSON.parse(raw);
         if(saved.version!==1 || !saved.scenario || physics.validate(saved.scenario) || typeof saved.name!=='string' ||
           !Object.entries(parts).every(([key,values])=>Object.hasOwn(values,saved.components?.[key])))throw Error('invalid');
+        reference=null;
         writeTrial(saved.scenario);
         for(const k of Object.keys(parts)){
           control(k).value=saved.components[k];
@@ -367,8 +402,26 @@
         get('store').textContent='Loaded “'+control('designName').value+'”.';
       }catch{get('store').textContent='The saved design could not be opened.';}
     };
+    const previous=desk?.previous?.('physics');
+    if(previous?.inputs && !physics.validate(previous.inputs)){
+      writeTrial(previous.inputs);
+      for(const [k,options] of Object.entries(parts)){
+        const part=previous.parts?.[k];
+        if(part && Object.hasOwn(options,part.key)){
+          control(k).value=part.key;
+          control(k+'Name').value=String(part.name||'').slice(0,46);
+        }
+      }
+      if(typeof previous.designName==='string')control('designName').value=previous.designName.slice(0,60);
+      if(Number.isInteger(previous.seconds) && previous.seconds>=0 && previous.seconds<=physics.horizon && previous.seconds%physics.interval===0)clock.value=previous.seconds;
+      if(Object.hasOwn(physics.saffireSpeeds,previous.reference) && previous.inputs.speed===physics.saffireSpeeds[previous.reference]/10)reference=previous.reference;
+    }
+    const requested=params?.get?.('reference');
+    if(Object.hasOwn(physics.saffireSpeeds,requested)){
+      reference=requested;control('speed').value=physics.saffireSpeeds[requested]/10;
+    }
     calculate();
-    const observer=typeof ResizeObserver==='function'?new ResizeObserver(()=>{if(current)chart(get('chart'),current.trace,predicted,Number(clock.value));}):null;
+    const observer=!lite && typeof ResizeObserver==='function'?new ResizeObserver(()=>{if(current)chart(get('chart'),current.trace,predicted,Number(clock.value));}):null;
     observer?.observe(get('live-data'));
     if(roverMode)requestAnimationFrame(()=>get('rover')?.scrollIntoView({block:'start'}));
     window.addEventListener('hashchange',()=>observer?.disconnect(),{once:true});

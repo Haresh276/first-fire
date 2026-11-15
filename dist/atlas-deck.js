@@ -129,6 +129,11 @@
     r.headers.forEach((h,i)=>{dl.append(e('dt',h.trim()),e('dd',r.cells[i]?.trim() || '—'));});
     const links=e('div',null,'atlas-links');
     links.append(makeLink('Dataset DOI','https://doi.org/'+r.study.doi),makeLink('NASA source CSV',r.table.url),downloadLink(r.table),makeLink('Investigation passport',linkStudy('passports',r.study.accession)),makeLink('Link to this row','#atlas?record='+encodeURIComponent(r.id)));
+    links.prepend(action('Use this record in investigation',()=>{
+      document.dispatchEvent(new CustomEvent('ff-research-result',{detail:investigationResult(r)}));
+      d.close();
+      location.hash='#awareness';
+    },'btn'));
     d.append(dl,links);root.append(d);
     d.addEventListener('close',()=>{d.remove();if(trigger?.isConnected)trigger.focus();},{once:true});
     d.addEventListener('click',event=>{if(event.target===d){const b=d.getBoundingClientRect();if(event.clientX<b.left||event.clientX>b.right||event.clientY<b.top||event.clientY>b.bottom)d.close();}});
@@ -174,6 +179,20 @@
     };
   }
   const comparisonLabels={material:'Fuel or specimen',geometry:'Geometry or dimensions',ambient:'Chamber O₂',burner:'Burner O₂',pressure:'Absolute pressure',flow:'Flow or instrument setting',platform:'Platform and gravity regime',endpoint:'Recorded outcome or timing',type:'Record type'};
+  function investigationResult(row){
+    const {endpoint,type,...fields}=conditionValues(row);
+    const conditions=Object.fromEntries(Object.entries(fields).map(([key,value])=>[comparisonLabels[key],value?.text??null]));
+    const boundary=row.obs
+      ? [row.obs.quality_notes, 'The observation describes this specimen, setting and recorded endpoint. Transfer to a different atmosphere or gravity needs separate evidence.'].filter(Boolean).join(' ')
+      : row.kind+'. This source row has no individual normalized observation. It cannot establish what happened to an individual specimen.';
+    const record={
+      kind:'archived evidence',id:row.id,accession:row.study.accession,sourceRow:row.csvRow,
+      sourceFile:row.table.file,sourceURL:row.table.url,doi:row.study.doi,conditions,
+      endpoint:endpoint?.text??null,boundary,recordType:type.text,tableSHA256:row.table.sha256
+    };
+    const summary=row.obs ? [type.text,conditions['Fuel or specimen'],record.endpoint??'Endpoint unavailable in this row'].filter(Boolean).join(' · ') : boundary;
+    return {tool:'atlas',title:row.study.name+' · '+row.id,summary,record};
+  }
   function compareRecords(a,b){
     const left=conditionValues(a),right=conditionValues(b);
     const fields=Object.keys(comparisonLabels).map(id=>{
@@ -369,5 +388,5 @@
     window.renderDeckAtlas=renderAtlas;
     window.renderPassports=renderPassports;
   }
-  if(typeof module!=='undefined' && module.exports)module.exports={indexArchive,scopeOf,compareRecords};
+  if(typeof module!=='undefined' && module.exports)module.exports={indexArchive,scopeOf,compareRecords,investigationResult};
 })();

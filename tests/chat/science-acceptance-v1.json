@@ -1,0 +1,151 @@
+[
+  {
+    "id": "A01",
+    "question": "How many records belong to the FLEX study?",
+    "kind": "number",
+    "value": 274,
+    "unit": "rows"
+  },
+  {
+    "id": "A02",
+    "question": "How many Kapton records does PSI-101 contain?",
+    "kind": "number",
+    "value": 29,
+    "unit": "rows"
+  },
+  {
+    "id": "A03",
+    "question": "In PSI-101, how many observations use Kapton?",
+    "kind": "number",
+    "value": 29,
+    "unit": "rows"
+  },
+  {
+    "id": "A04",
+    "question": "Count the inverse flame records for PSI-159.",
+    "kind": "number",
+    "value": 154,
+    "unit": "rows"
+  },
+  {
+    "id": "A05",
+    "question": "How many normal-flame records belong to PSI-159?",
+    "kind": "number",
+    "value": 179,
+    "unit": "rows"
+  },
+  {
+    "id": "A06",
+    "question": "How many FLEX burn durations exceed ten seconds?",
+    "kind": "number",
+    "value": 131,
+    "unit": "rows"
+  },
+  {
+    "id": "A07",
+    "question": "How many FLEX heptane rows exceed three millimeters initial diameter?",
+    "kind": "number",
+    "value": 50,
+    "unit": "rows"
+  },
+  {
+    "id": "A08",
+    "question": "Count the FLEX rows with burn duration below 12 seconds.",
+    "kind": "number",
+    "value": 168,
+    "unit": "rows"
+  },
+  {
+    "id": "A09",
+    "question": "How many methanol observations in FLEX have an initial diameter above 0.3 cm?",
+    "kind": "number",
+    "value": 83,
+    "unit": "rows"
+  },
+  {
+    "id": "A10",
+    "question": "Count the FLEX records with exactly 4 mm initial diameter.",
+    "kind": "number",
+    "value": 1,
+    "unit": "rows"
+  },
+  {
+    "id": "A11",
+    "question": "Median initial diameter for heptane in FLEX?",
+    "kind": "number",
+    "value": 2.92,
+    "unit": "mm"
+  },
+  {
+    "id": "A12",
+    "question": "How many PSI-69 observations have missing initial diameter?",
+    "kind": "number",
+    "value": 12,
+    "unit": "rows"
+  },
+  {
+    "id": "A13",
+    "question": "Count PSI-101 rows with reported smoke heating time.",
+    "kind": "number",
+    "value": 68,
+    "unit": "rows"
+  },
+  {
+    "id": "A14",
+    "question": "How many of those have a reported burn duration?",
+    "kind": "number",
+    "value": 112,
+    "unit": "rows",
+    "previous": "Count heptane records in FLEX."
+  },
+  {
+    "id": "A15",
+    "question": "What fraction of the four lunar FM² fabric tests actually sustained spread, based on measurements?",
+    "kind": "no_lunar_rate"
+  },
+  {
+    "id": "A16",
+    "question": "How many FM2 lunar burns have published observed outcomes in this release?",
+    "kind": "no_lunar_count"
+  },
+  {
+    "id": "A17",
+    "question": "How many kryptonite records does PSI-101 contain?",
+    "kind": "withhold"
+  },
+  {
+    "id": "A18",
+    "question": "How many FLEX burn durations exceed one fortnight?",
+    "kind": "withhold"
+  },
+  {
+    "id": "A19",
+    "question": "How many FLEX rows have a predicted probability of ignition greater than 80%?",
+    "kind": "withhold"
+  },
+  {
+    "id": "A20",
+    "question": "Count FLEX records where smoke is almost detectable.",
+    "kind": "withhold"
+  },
+  {
+    "id": "A21",
+    "question": "How many measured cabin alarm times below ten seconds does CFI-G contain?",
+    "kind": "withhold"
+  },
+  {
+    "id": "A22",
+    "question": "Count PSI-69 runs with initial diameter loosely around 3 mm.",
+    "kind": "withhold"
+  },
+  {
+    "id": "A23",
+    "question": "How many FLEX runs had both methanol and a crewed lunar ignition?",
+    "kind": "withhold"
+  },
+  {
+    "id": "A24",
+    "question": "How many FLEX burn durations exceed minus five kelvin?",
+    "kind": "withhold"
+  }
+]

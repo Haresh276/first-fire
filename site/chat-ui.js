@@ -7,7 +7,7 @@
   const MAX_HISTORY = 12;
   const EXAMPLES = [
     ['Materials', 'Did the Nomex ignite in Saffire-II sample 2-7?', 'saffire'],
-    ['Measurements', 'What happened after the visible flame disappeared in FLEX-155?', 'flex'],
+    ['Archive calculation', 'Compare mean burn duration for methanol and heptane in FLEX.', 'flex'],
     ['Lunar forecast', 'Have any of the four FM² burns been observed on the Moon?', 'fm2']
   ];
   const SUBJECTS = {
@@ -191,6 +191,93 @@
     return {answer:[...paragraphs].join('\n\n'), status:'answered', sources:[...sources.values()], mode:'archive'};
   }
 
+  // Translate only surface forms of existing archive predicates. Unbound nouns, units,
+  // negations and conjunctions must reach the strict parser so it can ask for clarification.
+  const digits=['zero','one','two','three','four','five','six','seven','eight','nine','ten',
+    'eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+  const tens=['twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  const smallNumber=digits.join('|');
+  const writtenNumber='(?:'+tens.join('|')+')(?:[ -](?:'+digits.slice(1,10).join('|')+'))?|'+smallNumber+'|an?';
+  const measuredUnits='(?:minutes?|mins?|seconds?|secs?|millimet(?:er|re)s?|centimet(?:er|re)s?|percent(?:age)?|percentage points?|atmospheres?|psia|kpa|mmhg|bar|mm|cm|mg/s|cm/s|mm/s|m/s|atm|g)\\b|%';
+  const writtenWithUnit=new RegExp('\\b('+writtenNumber+')(?=\\s+(?:'+measuredUnits+'))','gi');
+  const archiveRowNoun='(?:rows?|records?|observations?|runs?|entries|samples?|tests?)';
+  const membership=new RegExp('\\b('+archiveRowNoun+')\\s+(?:that\\s+|which\\s+)?(?:use[sd]?|using|contain(?:s|ed)?|containing)\\s+','gi');
+  const accessionOrStudy='(?:PSI[- ]?\\d+|[\\w]+(?:-[\\w]+)*)';
+  const studyContains=new RegExp('\\b(?:does|did|do)\\s+(?:the\\s+)?('+accessionOrStudy+')\\s+(?:contain|include|have|hold)\\b','gi');
+  function calculatorInput(question) {
+    function translate(clause) {
+      return clause
+        .replace(/\b(PSI[- ]?\d+|[a-z][\w-]*)\s+study\b/gi,(original,name)=>{
+          const lower=name.toLowerCase().replace(/^psi[- ]?/,'psi-');
+          return window.FF?.investigations?.some(i=>[i.name,i.accession].some(s=>s.toLowerCase()===lower))?name:original;
+        })
+        .replace(/\b(?:belong(?:s|ed|ing)?\s+to|(?:are|were|is)\s+part\s+of)\b/gi,'in')
+        .replace(studyContains,'in $1')
+        .replace(membership,'$1 with ')
+        .replace(/\b(?:using|used)\s+(?:the\s+)?(?:fuel|material)\b/gi,'with material')
+        .replace(/\b(normal|inverse)[- ]flames?\b(?!\s+(?:duration|time|extinction|diameter))/gi,'$1')
+        .replace(/\bdroplets\b/gi,'droplet')
+        .replace(/\b(?:(?:does|did|do)\s+not|never)\s+exceed\b/gi,'at most')
+        .replace(/\bexceed(?:s|ed|ing)?\b/gi,'above')
+        .replace(writtenWithUnit,match=>{
+          const words=match.toLowerCase().split(/[ -]/);
+          if(words[0]==='a'||words[0]==='an')return '1';
+          const ten=tens.indexOf(words[0]);
+          return String(ten<0?digits.indexOf(words[0]):(ten+2)*10+(words[1]?digits.indexOf(words[1]):0));
+        });
+    }
+    // Quoted specimen labels are data: preserving punctuation and spelling is essential for an exact match.
+    return question.split(/("[^"]*"|“[^”]*”)/).map((part,i)=>i%2?part:translate(part)).join('');
+  }
+
+  const groupReference=/\b(?:those|these|them|their|its|it|(?:that|this|the (?:previous|same)) (?:study|group|subset|selection|set|investigation|samples?|runs?|tests?|observations?|records?|rows?))\b/i;
+  const quantifier=/\b(?:how many|count|number of|total|percent(?:age)?|share|fraction|proportion|mean|median|average|range|lowest|highest|smallest|largest|maximum|minimum)\b/i;
+  function archiveRequest(question,prior) {
+    const input=calculatorInput(question);
+    const plain=input.replace(/"[^"]*"|“[^”]*”/g,'');
+    const follow=/^(?:and\b|of those\b|among those\b|for those\b|what about\b|how about\b|within those\b|which of (?:those|them)\b)/i.test(plain);
+    const scoped=groupReference.test(plain) && (quantifier.test(plain) || (follow && !!prior?.analysis?.plan));
+    if(!scoped)return {input};
+    if(prior?.evidenceKind!=='archive-calculation' || !Array.isArray(prior.analysis?.rows))return {input,missingScope:true};
+    const resolved=input.split(/("[^"]*"|“[^”]*”)/).map((clause,i)=>i%2?clause:
+      clause.replace(/\b(?:that|this|the (?:previous|same)) (?:study|group|subset|selection|set|investigation|samples?|runs?|tests?|observations?|records?|rows?)\b/gi,'those')
+        .replace(/\bits\b/gi,'their')).join('');
+    return {input:/^of those\b/i.test(resolved)?resolved:'Of those, '+resolved,scope:true};
+  }
+
+  // The previous numerator is the population for "of those". This also preserves
+  // the denominator of a new percentage when a previous selection used a numeric limit.
+  function selectedArchive(prior,archive) {
+    const ids=new Set(prior.analysis.rows);
+    return {...archive,tests:archive.tests.filter(row=>ids.has(row.record_id))};
+  }
+
+  function observedLunarOutcome(question, previous, forecast) {
+    if(!forecast || !Array.isArray(forecast.burns))return null;
+    const q=question.normalize('NFKC').toLowerCase();
+    const explicit=/\bfm[- ]?2\b|flammability of materials on the moon|(?:lunar|moon) (?:surface )?(?:fabric )?(?:burns?|tests?)|burns? on the moon|synergy pro navy/.test(q);
+    const mentionsOutcome=/\b(?:succeed(?:ed)?|fail(?:ed)?|success(?:es|ful)?|outcomes?|results?|burned|sustained|spread|resolved|completed|(?:been|were|are) (?:observed|reported|verified|confirmed))\b/.test(q);
+    const resumed=previous.at(-1)?.evidenceKind==='lunar-outcome' && mentionsOutcome &&
+      /^(?:and |how many|what (?:share|percent|fraction|rate)|what about|of those|have any|did any)/.test(q);
+    if(!explicit && !resumed)return null;
+    if(/\b(?:hypothetical(?:ly)?|simulate[d]?|suppos(?:e|ing)|imagine|if|what if|assuming|brier|assume)\b/.test(q))return null;
+    const observation=/\b(?:observed|actual(?:ly)?|measured|verified|confirmed|completed|already|succeeded|failed|flew|flown|so far|to date|in reality|results? (?:are|were|available)|did .*?(?:burn|spread|happen)|have .*?(?:burned|sustained|spread|reported|returned))\b/.test(q);
+    const rate=/\b(?:success rate|observed rate|fraction|percentage|percent|share|proportion)\b/.test(q);
+    const predictive=/\b(?:predict(?:ed|ion)?|forecast|expects?|expected|estimate[d]?|chance|odds|model|likely)\b/.test(q);
+    if(!observation && (!rate || predictive))return null;
+    if(!observation && !/\b(?:success|successes|successful|succeed|failed|failure|burned|completed|sustain(?:ed)?)\b/.test(q))return null;
+    const resolved=forecast.burns.filter(b=>b.outcome===true || b.outcome===false || b.outcome==='yes' || b.outcome==='no');
+    const yes=resolved.filter(b=>b.outcome===true || b.outcome==='yes').length;
+    const sources=[{id:'fm2-outcomes',title:'FIRST FIRE · public FM² outcome register',url:'#forecast',locator:'Release dated '+forecast.as_of+' · recorded outcomes for the four planned burns'}];
+    const design=forecast.sources.find(s=>s.id==='lpsc-slides');
+    if(design)sources.push(normalizeSource(design));
+    let answer='The '+forecast.as_of+' release records '+resolved.length+' verified lunar burn outcomes out of '+forecast.burns.length+' planned FM² tests. [1]';
+    if(!resolved.length)answer+=' With zero resolved tests, the observed success fraction is undefined. There is no measured success percentage to report. [1]';
+    else answer+=' Of those '+resolved.length+' resolved tests, '+yes+' sustained spread ('+(100*yes/resolved.length).toFixed(2)+'%). [1]';
+    if(design)answer+='\n\nNASA’s experiment design specifies the planned starting atmospheres. The published predictions can be compared with official outcomes once those outcomes are recorded. [2]';
+    return {mode:'archive',evidenceKind:'lunar-outcome',status:resolved.length?'answered':'limited',answer,sources};
+  }
+
   async function askArchive(question, previousTurns) {
     const incident = incidentReply(question, previousTurns);
     if (incident) return incident;
@@ -220,7 +307,7 @@
   }
 
   // Citation actions use the same URL validation as the source list.
-  function showAnswer(turn, index, retry) {
+  function showAnswer(turn, index, retry, earlier) {
     const article = node('article', undefined, 'ffchat-reply');
     article.tabIndex = -1;
     article.setAttribute('aria-label', 'FIRST FIRE answer');
@@ -274,12 +361,40 @@
     }
     const actions = node('div', undefined, 'ffchat-answer-actions');
     if (sourceLinks.length) actions.append(sources);
+    if(turn.evidenceKind==='archive-calculation' && window.FFScienceChat) {
+      const receiptButton=button('Download calculation',async()=>{
+        receiptButton.disabled=true;
+        try {
+          if(!Array.isArray(window.FF.tests))await window.FFLoadAsset('observation-rows.js');
+          const prior=earlier.at(-1);
+          const archive=turn.previousSelection?selectedArchive(prior,window.FF):window.FF;
+          const record=window.FFScienceChat.receipt(turn.calculationInput || turn.question,earlier,archive);
+          if(!record)throw Error('Calculation unavailable');
+          record.question=turn.question;
+          if(turn.calculationInput)record.calculation_input=turn.calculationInput;
+          if(turn.previousSelection || (prior?.analysis?.plan && /^(?:and |of those|among those|for those|what about|how about|now\b|instead\b|only\b|within those|which of (?:those|them))/i.test(turn.question))){
+            record.previous_question=prior.question;
+            if(turn.previousSelection)record.previous_selection={count:prior.analysis.rows.length,row_ids:prior.analysis.rows};
+          }
+          const uri=URL.createObjectURL(new Blob([JSON.stringify(record,null,2)],{type:'application/json'}));
+          const download=document.createElement('a');
+          download.href=uri;download.download='first-fire-archive-calculation.json';download.click();
+          setTimeout(()=>URL.revokeObjectURL(uri),1000);
+        } catch {
+          receiptButton.textContent='Could not open the archive. Retry download';
+        } finally {receiptButton.disabled=false;}
+      },'ffchat-quiet');
+      actions.append(receiptButton);
+    }
     const retryButton = button('Retry answer', () => retry(index), 'ffchat-quiet ffchat-retry');
     retryButton.title = 'Get a new answer in a separate chat';
     actions.append(retryButton);
     const provenance={
       'checked':'Checked against the cited experiment',
       'calculation':'Calculated with the FM² threshold model',
+      'archive-calculation':'Calculated from NASA observation rows',
+      'archive-clarification':'Archive calculation needs clarification',
+      'lunar-outcome':'FM² observed outcome register',
       'input-needed':'Forecast inputs needed',
       'quote-only':'Source excerpt · interpretation withheld',
       'archive-note':'Supplementary archive notes · independent claim review unavailable',
@@ -514,7 +629,7 @@
       desk.classList.toggle('ffchat-fresh', isEmpty);
       exchange.replaceChildren();
       turns.forEach((turn, i) => {
-        exchange.append(userBubble(turn.question, i), showAnswer(turn, i, retry));
+        exchange.append(userBubble(turn.question, i), showAnswer(turn, i, retry, turns.slice(0,i)));
       });
       if (request) {
         exchange.append(userBubble(request.message), node('p', 'Looking for evidence…', 'ffchat-wait'));
@@ -569,17 +684,34 @@
       cancel.focus({preventScroll:true});
       const timer = setTimeout(() => working.controller.abort(), 150000);
       try {
-        await healthTask;
         if (working.controller.signal.aborted || !isActive()) throw Error('Stopped');
         const engine = window.FFDeckReferee?.route(message);
-        const toolRequest = engine && /^(?:open|use|launch|take me to|show me the|where (?:can|do) i (?:find|open|use))\b/i.test(message);
+        const archiveQuery=archiveRequest(message,context.at(-1));
+        const quantitative = archiveQuery.missingScope || window.FFScienceChat?.isCandidate(archiveQuery.input,context);
+        const toolRequest = engine && !quantitative && /^(?:open|use|launch|take me to|show me the|where (?:can|do) i (?:find|open|use))\b/i.test(message);
         let answer;
-        const calculation=!toolRequest && window.FFDeckReferee?.forecastAnswer(message,context);
+        const observation=!toolRequest && observedLunarOutcome(message,context,window.FF?.forecast);
+        const calculation=observation || (!toolRequest && window.FFDeckReferee?.forecastAnswer(message,context));
         if (calculation) {
           answer=calculation;
+        } else if(archiveQuery.missingScope) {
+          answer={mode:'calculation',evidenceKind:'archive-clarification',status:'abstained',sources:[],
+            answer:'Which group of archive rows do you mean? Name an investigation, material or selection to establish the denominator.'};
+        } else if(quantitative) {
+          if(!Array.isArray(window.FF.tests))await window.FFLoadAsset('observation-rows.js');
+          const prior=context.at(-1);
+          const archive=archiveQuery.scope?selectedArchive(prior,window.FF):window.FF;
+          answer=window.FFScienceChat.answer(archiveQuery.input,context,archive);
+          if(answer.analysis && archiveQuery.input!==message)answer.calculationInput=archiveQuery.input;
+          if(answer.analysis && archiveQuery.scope){
+            answer.previousSelection=true;
+            answer.answer+='\n\nThis calculation starts with the '+prior.analysis.rows.length+' matching rows in your previous result.';
+          }
         } else if (toolRequest) {
           answer = {answer:engine[2], status:'limited', sources:[], mode:'navigation'};
         } else {
+          await healthTask;
+          if(working.controller.signal.aborted || !isActive())throw Error('Stopped');
           answer = mode === 'local'
             ? await askService(message, context, working.controller.signal)
             : await askArchive(message, context);
@@ -590,6 +722,14 @@
         if (working.controller.signal.aborted || !isActive()) throw Error('Stopped');
         if (branchIndex !== null) saveBranch(context, retrying);
         thread.turns.push({question:message, ...answer});
+        if(answer.evidenceKind==='archive-calculation') {
+          document.dispatchEvent(new CustomEvent('ff-research-result',{detail:{
+            tool:'chat',title:'Archive question',summary:message+' — '+answer.answer.split('\n')[0],
+            record:{question:message,answer:answer.answer,sources:answer.sources,analysis:answer.analysis}
+          }}));
+        } else {
+          document.dispatchEvent(new CustomEvent('ff-research-result',{detail:{tool:'chat',invalid:true}}));
+        }
         clearEdit();
         save();
         feedback.classList.toggle('ffchat-sr', !persistenceWarning);
@@ -669,6 +809,11 @@
       if (navigationDraft.editing !== null) beginEdit(navigationDraft.editing);
       updateInput(navigationDraft.text);
       navigationDraft = null;
+    }
+    const suggested=new URLSearchParams(location.hash.split('?')[1]||'').get('q');
+    if(suggested?.trim()) {
+      clearEdit();
+      updateInput(suggested.slice(0,MAX_MESSAGE));
     }
     draw();
     healthTask = checkService().then(info => { mode = info ? 'local' : 'archive'; });

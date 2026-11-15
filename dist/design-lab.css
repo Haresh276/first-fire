@@ -1,0 +1,51 @@
+.dl{--dl-forest:#182f2b;--dl-mint:#77d4b9;max-width:1240px;margin:auto}
+.dl-heading{display:flex;gap:24px;align-items:end;justify-content:space-between;margin:12px 0 28px}
+.dl-heading h1{font-size:clamp(44px,5.7vw,78px);margin:0 0 12px}
+.dl-heading p{max-width:71ch;color:var(--muted);font-size:clamp(1rem,1.3vw,1.1rem)}
+.dl-signed{white-space:nowrap;font-weight:650;font-size:.85rem}
+.dl-main{display:grid;grid-template-columns:minmax(0,1.33fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.dl h2{font-size:clamp(26px,2.5vw,36px)}
+.dl h3{font-size:22px}
+.dl .panel{min-width:0;padding:clamp(18px,2.4vw,30px)}
+.dl-density{min-width:0;padding:clamp(18px,2.4vw,30px);color:#f2f5e9;background:var(--dl-forest);border-radius:8px}
+.dl-metrics{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin:15px 0 12px}
+.dl-metrics span,.dl-metrics b{display:block}
+.dl-metrics span{color:#c1d4cd;font-size:.8rem}
+.dl-metrics b{font:700 clamp(26px,3vw,40px)/1.15 var(--display)}
+.dl-metrics small,.dl-next small{padding-left:4px;font:500 .85rem var(--body)}
+.dl-density canvas{display:block;width:100%;height:244px}
+.dl-key{display:flex;flex-wrap:wrap;gap:12px 18px;color:#d2dfd9;font-size:.74rem;margin-top:8px}
+.dl-key span:before{display:inline-block;content:"";width:16px;vertical-align:middle;border-top:2px dashed #cedbd3;margin-right:6px}
+.dl-key span:nth-child(2):before{border-top:3px solid var(--dl-mint)}
+.dl-key span:nth-child(3):before{border-top:2px dotted #ffae75}
+.dl-next{font:700 clamp(48px,6vw,72px)/1.12 var(--display);color:var(--teal);margin:13px 0 5px}
+.dl #dl-pick>p{margin:12px 0}
+.dl-branches{border-top:1px solid var(--line);margin-top:24px}
+.dl-branches>div{display:grid;grid-template-columns:1fr auto;gap:2px 6px;padding:12px 0;border-bottom:1px solid var(--line)}
+.dl-branches span{color:var(--muted);font-size:.8rem}
+.dl-branches b{grid-column:1/-1;font-size:.91rem;color:var(--teal)}
+.dl-controls,.dl-lower,.dl-candidates,.dl-repro{margin-top:18px}
+.dl-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:14px;margin:18px 0}
+.dl label{display:grid;align-content:start;gap:5px;font-size:.84rem;font-weight:700}
+.dl select,.dl input[type=number]{width:100%;min-width:0;border:1px solid #91a19b;background:var(--surface);border-radius:4px;padding:8px;font:400 .95rem var(--body)}
+.dl summary{font-weight:650;color:var(--teal)}
+.dl details p,.dl-repro>p,.dl-trial>p,.dl-burns>p,.dl-candidates>p{margin:10px 0;color:var(--muted);font-size:.91rem}
+.dl [hidden]{display:none!important}
+.dl #dl-alert:not(:empty){margin-top:10px;color:#942f1b}
+.dl #dl-predict{font-size:.9rem}
+.dl-actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.dl-primary{background:var(--dl-forest);border:1px solid var(--dl-forest);color:white;padding:10px 14px;border-radius:5px;font-weight:650}
+.dl-link{border:0;padding:5px 0;background:none;color:var(--teal);font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.dl button:disabled{opacity:.55}
+.dl-history,.dl #dl-history:not(:empty){margin-top:16px}
+.dl #dl-history ol{max-height:190px;overflow:auto;padding-left:1.7rem;margin:5px 0}
+.dl #dl-history li{border-bottom:1px solid var(--line);padding:5px 0}
+.dl #dl-history li span{float:right;font-size:.83rem;color:var(--muted)}
+.dl table{table-layout:auto;width:100%;font-size:.89rem}
+.dl th,.dl td{padding:8px 7px;text-align:left}
+.dl #dl-ranking{max-height:325px;overflow:auto}
+.dl #dl-ranking thead{position:sticky;top:0;background:var(--surface)}
+.dl meter{width:min(100%,16rem);accent-color:var(--teal);height:12px;min-width:20px}
+.dl #dl-session{min-height:1em;color:var(--teal);font-size:.83rem}
+@media(max-width:760px){.dl-main{grid-template-columns:1fr}.dl-heading{align-items:start;flex-direction:column;gap:8px}.dl-heading h1{font-size:clamp(38px,7vw,54px)}.dl .dl-lower{gap:18px}.dl-signed{white-space:normal}.dl table{font-size:.8rem}}
+@media(max-width:420px){.dl .panel,.dl-density{padding:16px}.dl-fields{grid-template-columns:1fr 1fr}.dl-fields label:first-child{grid-column:1/-1}.dl th,.dl td{padding:7px 3px}.dl-branches>div{grid-template-columns:1fr}.dl-actions>button{font-size:.85rem}.dl-metrics b{font-size:27px}}

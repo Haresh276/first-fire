@@ -66,6 +66,19 @@ def build():
         manual=(SITE/'manual.html').read_text(encoding='utf-8')
         article=re.search('(<article.*?</article>)',manual,flags=re.S)
         if not article:raise ValueError('The manual needs an article element')
+        audits=[]
+        for identifier,filename,title,description in (
+            ('calculator','science-chat-holdout.json','First calculator test · 40 questions','First evaluation of the frozen archive calculator. The full chat may answer a question that the calculator declines.'),
+            ('initial-interface','science-chat-browser-audit.json','First browser replay · 40 questions','The visible response needed to answer the question or explicitly withhold an unsupported numerical result.'),
+            ('replay','science-chat-regression.json','Updated chat · 40 exposed questions','These questions were available during repairs. Compare each response with the original calculator and browser replies.'),
+            ('acceptance','science-chat-acceptance.json','Updated chat · 24 new questions','The 24 prompts and reference answers were sealed separately before the UI adapter was frozen. Each prompt was entered in the static chat interface. These questions focus on the revised query handling.'),
+            ('corrected','science-chat-acceptance-replay.json','Released chat · replay of 24 questions','After the first attempt, repairs addressed the two failures. This replay checks the same 24 questions on the release.')):
+            if (stage/filename).is_file():
+                cases_for_run=read_json(stage/filename)['cases']
+                if identifier=='initial-interface':
+                    cases_for_run=[dict(row,**{'pass':row['pass_visible']}) for row in cases_for_run]
+                audits.append(dict(id=identifier,file=filename,title=title,description=description,cases=cases_for_run))
+        (stage/'archive-audit-data.js').write_text('window.FFArchiveAudits='+packed(audits)+';\n',encoding='utf-8')
         (stage/'guide.js').write_text('window.FFGuide='+packed(article[1])+';\n',encoding='utf-8')
         modeldir=DATA/'model'; weights=(modeldir/'model.safetensors').read_bytes()
         if hsh(weights)!='f95ffde02ad06f63ae38eb9d400038cd5ccaf8411ec3cb650c6025113f96cbb8':raise ValueError('Model checksum mismatch')
