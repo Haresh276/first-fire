@@ -31,7 +31,7 @@ def package_for(name):
     if name in REPRODUCTION_FILES:
         return REPRODUCTION
     p = PurePosixPath(name)
-    if name == "rover-workbench/preview/rover-workbench.mp4":
+    if name in ("rover-workbench/preview/rover-workbench.mp4", "live-site-film.mp4"):
         return FILM
     if p.parent.as_posix() == "rover-workbench/evidence/files" and p.suffix.lower() == ".pdf":
         if p.name in EXPERIMENT_PDFS:

@@ -38,6 +38,7 @@ class OfflineEditionTest(unittest.TestCase):
             'rover-workbench/evidence/files/standard6001.pdf': ENGINEERING,
             'rover-workbench/evidence/files/mbrsc-wheel-traction.pdf': AGENCIES,
             'rover-workbench/preview/rover-workbench.mp4': FILM,
+            'live-site-film.mp4': FILM,
         }
         self.digests = {}
         for name in [*self.expected, 'model.js']:

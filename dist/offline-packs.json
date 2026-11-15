@@ -51,11 +51,12 @@
       "sha256": "02093b8280e72aa41317a5e2da50ceb24db9317ed0fd5053a35259fa32371fb6"
     },
     "first-fire-rover-film.zip": {
-      "bytes": 8203602,
+      "bytes": 13307426,
       "files": {
+        "live-site-film.mp4": "b14c53b5a5bf58df1937239a77dbcd9c2b53da859016de0ecbfae175e78de703",
         "rover-workbench/preview/rover-workbench.mp4": "3523e4a6ffe7e24ffb0705546a27a28175e7778d9cf4d839aa60a2cef11539bb"
       },
-      "sha256": "1c5c4c2c570cfc3aa8de38862a71896ccfb4d4bb10f5f320a167a156940c0886"
+      "sha256": "dca37f8500147a78e99187b5f4cfa4fe6a011825ff12431ebbcd931e8b843646"
     }
   }
 }

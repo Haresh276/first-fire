@@ -76,7 +76,7 @@ def verify_offline_packs(dist, actual):
                     assert set(members) == REPRODUCTION_FILES, 'Incomplete reproduction supplement'
                 else:
                     assert all((p.startswith('rover-workbench/evidence/files/') and p.endswith('.pdf')) or
-                               p == 'rover-workbench/preview/rover-workbench.mp4' for p in members)
+                               p in ('rover-workbench/preview/rover-workbench.mp4', 'live-site-film.mp4') for p in members)
                 assert all(package_for(p) == name for p in members), 'Unexpected offline pack member'
             assert installed.keys().isdisjoint(members), f'File paths overlap at {name}'
             assert archive.testzip() is None, f'ZIP CRC mismatch: {name}'
