@@ -4,7 +4,7 @@
   const chapters=[['Combustion, heat transfer and gravity',3],['Oxygen, pressure and material screening',6],['The investigations, including FM²',8],['How low gravity is produced',12],['Probability and scoring',13],['Data engineering and retrieval',15],['Reading sources and citations',17],['Cabin chemistry and liquid networks',20],['Atmosphere and material design',22],['Moon and Mars',24],['Glossary and misconceptions',26],['Original build map',31],['Citations and source-status key',32],['Claims and corrections',37]];
   const instruments=[
     ['Cabin and materials','See what changes when you choose a different material, oxygen level or suit pressure.','#materials-lab?tab=atmosphere'],
-    ['Vehicle designer','Assemble parts, load the interior and export a reproducible vehicle scenario.','#vehicle-designer'],
+    ['Pressurized Rover Fire Case','Compare cabin materials, fire timelines and response options.','rover-fire-case.html'],
     ['Physics and validation','Inspect temperature, pressure, life support, references and model errors.','#master-physics'],
     ['Research chat','Ask your own question. Inspect its scope, checks and supporting evidence.','#chat'],
     ['Fixed FM² forecast','Read the four predictions, probability model and signed timestamp.','#forecast'],
@@ -15,17 +15,19 @@
     ['Research record','Collect a matched comparison, tracer run, forecast decision and archive calculation.','#session']
   ];
   const rehearsal=[
-    [25,'Haresh','What will sustain spread?','Open with the four planned FM² burns. Define the outcome as spread continuing after the igniter switches off.','#forecast'],
-    [50,'Haresh','When does the Earth test transfer?','Compare the five tested materials. Explain why the conservative margin and the measured lunar difference have different meanings.','#materials-lab?tab=margins'],
-    [35,'Haresh','What is in the archive?','Distinguish the 1,622 source rows in the challenge Atlas from the 1,058 normalized observations used for numerical queries.','#atlas'],
-    [40,'Haresh','Where is the gap?','Open the Moon column. A planned chamber condition is distinct from a measured flight record.','#atlas'],
-    [195,'Samuel','Investigate a habitat','Visit Atlas → Compass → Rulebook → Referee → Physics. Quote a row, inspect joint coverage, test the planted quotation and compare two cabin volumes.','#compass'],
-    [90,'Haresh','Make a forecast that can lose','Show all four probabilities and the sealed record. Score hypothetical outcomes and explain the comparator.','#forecast'],
-    [45,'Samuel','Inspect an error','Show the original 604-row answer to the heptane follow-up and the corrected 112. Explain the denominator.','#archive-audit'],
-    [45,'Hamsika','Apply the evidence on Earth','Use the oxygen-ward example to separate a physical analogy from the measurements required at a hospital.','#earth'],
-    [45,'Samuel','What still needs evidence?','Show the physics validation and held-out errors. Identify a real measurement that could change a decision.','#master-physics'],
-    [45,'Haresh','Round 1 feedback','Use actual feedback the team received. If none is available, open the session record and show the decision it supports.','#session'],
-    [30,'Haresh','Close','Return to the signed forecast and the rule for scoring published outcomes. State the team’s confirmed contributions.','#forecast']
+    [25, "Haresh", "What will sustain spread?", "Define sustained spread after the igniter shuts off. Introduce the four planned FM² fabric burns.", "#forecast"],
+    [50, "Haresh", "When does the Earth test transfer?", "Separate flaming and smouldering cotton. ICES Fig. 13 and the single-material figures disagree on some lunar values.", "#materials-lab?tab=margins"],
+    [35, "Haresh", "What is in the archive?", "Distinguish the challenge Atlas source rows from normalized observations used in numerical queries.", "#atlas"],
+    [40, "Haresh", "Where is the gap?", "Open one orbit row and the empty Moon column. Identify the partial-gravity tests performed on Earth.", "#atlas"],
+    [195, "Samuel", "Investigate a habitat", "Atlas (35 s), Compass (35 s), Rulebook (30 s), Referee (45 s), then the rover fire case (50 s). Select an item and compare its fan-on and fan-off oxygen limits.", "#atlas"],
+    [60, "Haresh", "Make a forecast that can lose", "Show the sealed v1 record and its four probabilities. Score a hypothetical outcome against the comparator.", "#forecast"],
+    [60, "Haresh", "FLINT, the engine", "Trace the fitted Earth points and held-out lunar limits. Compare mean errors and explain how combustion products change the FM² oxygen reading.", "flint.html"],
+    [45, "Samuel", "Why a rover: the hardest fire case", "Show why lunar buoyancy can sustain a cabin fire with fans off. Compare a gas flood with suited venting, including the crew effects and pressure extrapolation.", "rover-fire-case.html"],
+    [40, "Samuel", "Inspect an error", "Show the planted quotation and its original source. Open the saved benchmark to inspect a failure.", "#referee"],
+    [40, "Hamsika", "Apply the evidence on Earth", "Use the oxygen-ward case to distinguish a physical analogy from the measurements that a hospital would need.", "#earth"],
+    [30, "Haresh", "What still needs evidence?", "Identify the missing lunar spread measurement. The blind pilot, independent sign-offs and official FM² outcomes are pending.", "#master-physics"],
+    [40, "Haresh", "Round 1 feedback", "Use recorded judge feedback if available. Otherwise show the matched FLEX comparison and the effect of requiring the same test day.", "#transfer-lab"],
+    [30, "Haresh", "Close", "Credit the team’s confirmed contributions and return to the signed forecast and scoring rule.", "#forecast"]
   ];
   const quiz=[
   [
@@ -241,10 +243,10 @@
       const acts=el('div',null,'actions');[['Fixed forecast','#forecast'],['Atlas','#atlas'],['Test the quotation','#referee'],['Narrated 30-second film','master-film.mp4']].forEach(([t,h])=>acts.append(a(t,h,'ghost')));quick.append(acts);body.append(quick);
       const stage=el('section',null,'run-summary stack'),controls=el('div',null,'actions'),title=el('h2'),script=el('p'),badge=el('span',null,'eyebrow'),instrument=a('Open this instrument ↗','#forecast','ghost'),elapsed=el('p');elapsed.setAttribute('aria-label','Rehearsal clock');
       let idx=0,started=null,offset=0;const total=()=>offset+(started===null?0:(performance.now()-started)/1000);
-      function tick(){const seconds=total(),start=rehearsal.slice(0,idx).reduce((n,r)=>n+r[0],0);elapsed.textContent='Elapsed '+clock(seconds)+' · planned segment '+clock(start)+'–'+clock(start+rehearsal[idx][0])+' · complete run 10:45';}
+      function tick(){const seconds=total(),start=rehearsal.slice(0,idx).reduce((n,r)=>n+r[0],0);elapsed.textContent='Elapsed '+clock(seconds)+' · planned segment '+clock(start)+'–'+clock(start+rehearsal[idx][0])+' · complete run '+clock(rehearsal.reduce((sum,row)=>sum+row[0],0));}
       function show(){const [,speaker,t,copy,url]=rehearsal[idx];badge.textContent=speaker+' · '+(idx+1)+' of '+rehearsal.length;title.textContent=t;script.textContent=copy;instrument.href=url;instrument.target='_blank';instrument.rel='noopener';prev.disabled=idx===0;next.disabled=idx===rehearsal.length-1;tick();}
       const prev=btn('Previous',()=>{idx--;show();}),next=btn('Next',()=>{idx++;show();}),play=btn('Start timer',()=>{if(started===null){started=performance.now();timer=setInterval(tick,250);play.textContent='Pause timer';}else{offset=total();started=null;clearInterval(timer);play.textContent='Resume timer';}tick();});
-      controls.append(prev,next,play,instrument);stage.append(badge,title,script,elapsed,controls);body.append(stage,a('Print the full Round 2 run sheet','master-round2.pdf'),a('Download the 11-slide Round 2 presentation (PDF)','master-round2-slides.pdf'),a('Edit the Round 2 presentation (PowerPoint)','master-round2-slides.pptx'),a('Open the six-slide project demonstration','demo.html'));show();
+      controls.append(prev,next,play,instrument);stage.append(badge,title,script,elapsed,controls);body.append(stage,a('Print the full Round 2 run sheet','master-round2.pdf'),a('Download the 13-slide Round 2 presentation (PDF)','master-round2-slides.pdf'),a('Edit the Round 2 presentation (PowerPoint)','master-round2-slides.pptx'),a('Open the six-slide project demonstration','demo.html'));show();
     }else if(selected==='handoff'){
       const panel=el('section',null,'panel stack');panel.append(el('h2','Submission materials'));for(const [t,h] of [['One-page judge brief','judge-brief.pdf'],['Download FIRST FIRE for offline use','offline.html'],['Public project summary and data sources','#report/submission'],['Implementation and remaining evidence','#report/master-requirements'],['Download the 15-investigation NASA data pack','challenge-data-pack.zip'],['Prepare the forecast DOI deposition','forecast-deposition.zip'],['Team review log and pilot instructions','team-handoff.html'],['SI disclosure and credits','team-handoff.html'],['Original project challenge',sources.challenge],['Prepare new NASA tables or verify official outcomes','#report/intake'],['Fixed forecast and timestamp','#forecast']])panel.append(a(t,h));body.append(panel);
     }else {
