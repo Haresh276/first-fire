@@ -19,6 +19,13 @@
 .earth-layout nav a{color:var(--ink);text-decoration:none;padding:.7rem;border-bottom:1px solid var(--line)}
 .earth-layout nav a[aria-current]{color:var(--teal);font-weight:700;border-left:3px solid var(--teal);background:#e8eee5}
 .earth-layout article p{max-width:70ch}
+.wire-control {max-width:23rem}
+.wire-result {display:grid;grid-template-columns:minmax(9em,.4fr) 1.6fr;border-block:1px solid var(--line);padding-block:16px;gap:20px;align-items:start}
+.wire-setting {display:grid;gap:4px;border-left:3px solid var(--teal);padding-left:12px}
+.wire-setting strong {font:700 clamp(2.4rem,4vw,3.5rem)/1 var(--display);color:var(--teal)}
+.wire-setting span,.wire-sources {font-size:.875rem}
+.wire-description h3 {margin-bottom:8px}
+@media(max-width:640px){.wire-result{grid-template-columns:1fr;gap:16px}}
 .fm-lock code {overflow-wrap:anywhere;white-space:normal;font-size:.8rem}.fm-lock pre{overflow:auto;padding:10px;background:#edf1ea;font-size:.79rem}
 @media(max-width:920px){.rule-layout{grid-template-columns:1fr}.mission-views{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.mission-hero,.earth-layout{grid-template-columns:minmax(0,1fr)}.mission-hero .heroimage{min-height:195px}.mission-hero .heroimage img{object-position:50% 55%}.earth-layout nav{grid-template-columns:1fr 1fr}.mission-views{gap:8px}.mission-views p{font-size:.84rem}}

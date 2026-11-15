@@ -49,3 +49,8 @@
 .dl #dl-session{min-height:1em;color:var(--teal);font-size:.83rem}
 @media(max-width:760px){.dl-main{grid-template-columns:1fr}.dl-heading{align-items:start;flex-direction:column;gap:8px}.dl-heading h1{font-size:clamp(38px,7vw,54px)}.dl .dl-lower{gap:18px}.dl-signed{white-space:normal}.dl table{font-size:.8rem}}
 @media(max-width:420px){.dl .panel,.dl-density{padding:16px}.dl-fields{grid-template-columns:1fr 1fr}.dl-fields label:first-child{grid-column:1/-1}.dl th,.dl td{padding:7px 3px}.dl-branches>div{grid-template-columns:1fr}.dl-actions>button{font-size:.85rem}.dl-metrics b{font-size:27px}}
+.dl #dl-request-fields{margin:14px 0;padding:12px;border:1px solid var(--line);border-radius:5px}
+.dl-request-grid textarea,.dl-request-grid input[type=text]{width:100%;min-width:0;box-sizing:border-box;background:var(--surface);border:1px solid #91a19b;border-radius:4px;padding:8px;font:400 .94rem var(--body);color:inherit}
+.dl-request-grid textarea{resize:vertical}
+.dl #dl-request-status{font-weight:650;color:var(--teal)}
+@media(max-width:580px){.dl .dl-request-grid{grid-template-columns:1fr}}

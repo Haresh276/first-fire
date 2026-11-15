@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from offline_edition import FILENAME as OFFLINE_EDITION, package_offline_site
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA, SITE, DIST = ROOT/'data', ROOT/'site', ROOT/'dist'
@@ -93,6 +94,7 @@ def build():
             shutil.copy2(modeldir/name,stage/'licenses'/('model-'+name))
         if (ROOT/'LICENSE').exists():shutil.copy2(ROOT/'LICENSE',stage/'licenses'/'software.txt')
         evidence={p.relative_to(stage).as_posix():hsh(p.read_bytes()) for p in sorted(stage.rglob('*')) if p.is_file()}
+        evidence[OFFLINE_EDITION] = package_offline_site(stage, evidence)
         (stage/'checksums.json').write_text(json.dumps(evidence,indent=2)+'\n')
         # Preserve last working build until staging is complete.
         old=Path(temp)/'previous'

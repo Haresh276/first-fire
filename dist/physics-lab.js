@@ -243,11 +243,24 @@
       '<li>The experimental network uses recurrent, input-gated continuous-time cells and a fitted readout. <a href="https://arxiv.org/abs/2006.04439" target="_blank" rel="noopener">Hasani et al., Liquid Time-constant Networks</a></li></ul></details></section></div>';
     const get=id=>root.querySelector('#pl-'+id), form=get('form'), clock=get('time');
     const control=name=>form.elements.namedItem(name);
-    const model=window.FFCabinLiquid;
     let current=null,scenario=null,predicted=null;
     let reference=null;
     const desk=window.FFAwareness;
     const lite=desk?.tier?.()==='lite';
+    let model=lite?null:window.FFCabinLiquid;
+    if(lite){
+      const runNetwork=document.createElement('button');
+      runNetwork.type='button';runNetwork.className='ghost';runNetwork.textContent='Run liquid model on this device';
+      get('evaluation').after(runNetwork);
+      runNetwork.onclick=async()=>{
+        runNetwork.disabled=true;
+        try{
+          await window.FFLoadAsset('cabin-liquid-weights.js');
+          if(!runNetwork.isConnected)return;
+          model=window.FFCabinLiquid;showEvaluation();calculate();runNetwork.hidden=true;
+        }catch{runNetwork.disabled=false;runNetwork.textContent='Retry liquid model';}
+      };
+    }
     const explanation=document.createElement('p');
     explanation.className='pl-aside';
     const back=document.createElement('a');
@@ -282,8 +295,8 @@
       get('front').textContent=fmt(sample.position,1);
       get('char').style.width=(100*sample.position/scenario.length)+'%';
       get('fate').textContent=sample.state+' · '+fmt(sample.burned,1)+' g consumed · '+fmt(sample.chemical,1)+' kJ combustion + '+fmt(sample.electrical,1)+' kJ electrical.';
-      get('estimate').textContent=predicted?fmt(predicted[index])+'% O₂':'Outside training range';
-      get('network-result').textContent=predicted?'At '+sample.time+' s the simulator gives '+fmt(sample.oxygen)+'%. The absolute difference is '+fmt(Math.abs(predicted[index]-sample.oxygen),3)+' percentage points.':'The solver is available for this scenario. Network coverage requires 4–30 m³, 50–105 kPa, 21–37% O₂, a 15–20% cutoff, 20–60 cm of strip, 0.5–5 g/cm and 0.03–0.65 cm/s.';
+      get('estimate').textContent=predicted?fmt(predicted[index])+'% O₂':model?'Outside training range':'Available on demand';
+      get('network-result').textContent=predicted?'At '+sample.time+' s the simulator gives '+fmt(sample.oxygen)+'%. The absolute difference is '+fmt(Math.abs(predicted[index]-sample.oxygen),3)+' percentage points.':model?'The solver is available for this scenario. Network coverage requires 4–30 m³, 50–105 kPa, 21–37% O₂, a 15–20% cutoff, 20–60 cm of strip, 0.5–5 g/cm and 0.03–0.65 cm/s.':'Lite mode runs the physics solver. Enable the liquid model to compare its estimate at the same time.';
       get('liquid-key').hidden=!predicted;
       if(!lite)chart(get('chart'),current.trace,predicted,sample.time);
       const basis=reference?'The '+reference+' Saffire-I speed is imposed on this strip. ':'The strip speed is a user assumption. ';
@@ -298,6 +311,7 @@
       publish({kind:'simulated',inputs:{...scenario},parts:selectedParts(),designName:control('designName').value.slice(0,60),
         reference,seconds:sample.time,outputs:{...sample,chassisWeightN:current.chassisWeight,idealFlameK:current.flame.kelvin},
         units:{position:'cm',oxygen:'wet vol%',co2:'wet vol%',water:'wet vol%',burned:'g',chemical:'kJ',electrical:'kJ',energy:'kJ'},
+        liquidStatus:predicted?'evaluated':model?'outside training domain':'deferred in Lite mode',
         liquid:predicted?{oxygenPercent:predicted[index],errorPercentagePoints:Math.abs(sample.oxygen-predicted[index]),training:'synthetic cabin runs'}:null,
         sources,boundary:'The front speed is imposed. Source and rover differ in gravity, fuel and atmosphere. The liquid model approximates the solver.'});
     }
@@ -356,10 +370,12 @@
         'chassis weight '+fmt(current.chassisWeight,0)+' N · buoyant velocity scale '+fmt(current.buoyancy,2)+' m/s (assumed 0.2 m length and 50% density contrast).';
       inspect();
     }
-    if(model){
+    function showEvaluation(){
+      if(!model)return;
       const m=model.benchmark;
       get('evaluation').textContent=m.trainRuns+' synthetic runs trained the readout. On '+m.testRuns+' separate simulator runs ('+fmt(m.points,0)+' time points), mean absolute O₂ error was '+fmt(m.mae,3)+' percentage points. The 95th percentile was '+fmt(m.p95,3)+' and the worst was '+fmt(m.worst,3)+'. Holding O₂ constant gave '+fmt(m.constantMae,3)+' mean error. Flight validation is pending.';
     }
+    showEvaluation();
     function applyPreset(evt){
       const key=evt.target.name;
       if(!Object.hasOwn(parts,key))return;

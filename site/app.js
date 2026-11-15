@@ -27,10 +27,10 @@ const views=[
  ['#forecast','The Oracle','Forecast & Next Fire','Inspect the four locked predictions and design a follow-up burn.'],
  ['#earth','At Home','Earth applications','Explore crew cabins, hospitals, mines and aircraft.']
 ];
-root.innerHTML='<section class="hero mission-hero"><div class="herocopy"><span class="eyebrow">Flammability of Materials on the Moon</span><h1>Will the flame <em>keep spreading?</em></h1><p>Four planned burns. One unknown oxygen limit. Explore NASA’s experiments and inspect the forecast before lunar results arrive.</p><div class="heroactions">'+linkbtn('#session','Run the investigation →','btn')+linkbtn('#forecast','Open the fixed forecast')+'</div></div><figure class="heroimage"><img src="lunar-concept.jpg" alt="NASA concept rendering of a lunar lander on the Moon’s surface."><figcaption class="captionbar">'+out('https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=6','Lunar mission concept · NASA')+'</figcaption></figure></section>'+
-'<div class="ff-research-row">'+[['#transfer-lab','Match flight experiments','Pair real droplet runs and reveal their outcomes.'],['#design-lab','Design the next burn','Update a forecast and choose the next oxygen setting.'],['#transport-lab','Follow a tracer release','Change the airflow and inspect the delay at a remote sensor.']].map(([href,title,desc])=>'<a href="'+href+'"><strong>'+title+' ↗</strong><span>'+desc+'</span></a>').join('')+'</div>'+
+root.innerHTML='<section class="hero mission-hero"><div class="herocopy"><span class="eyebrow">Spacecraft fire research</span><h1>Which fire test <em>should fly next?</em></h1><p>Does more oxygen make fuel burn longer in orbit? Match NASA flight experiments, change one condition and see which runs still support an answer.</p><div class="heroactions">'+linkbtn('#transfer-lab?view=sensitivity','Compare the flight runs →','btn')+linkbtn('demo.html','See the six-slide demo')+'</div></div><figure class="heroimage"><img src="lunar-concept.jpg" alt="NASA concept rendering of a lunar lander on the Moon’s surface."><figcaption class="captionbar">'+out('https://ntrs.nasa.gov/api/citations/20260001966/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conf%202026%20v2.pdf#page=6','Lunar mission concept · NASA')+'</figcaption></figure></section>'+
+'<div class="ff-research-row">'+[['detector.html','Did the detector miss the smoke?','Inspect two instrument channels from the same NASA test.'],['#design-lab','Plan a lunar experiment','Choose an oxygen setting and write a test request for the lab.'],['classroom.html','Compare two alarm clocks','Match a NIST alarm record to its sensor readings in English or Telugu.']].map(([href,title,desc])=>'<a href="'+href+'"><strong>'+title+' ↗</strong><span>'+desc+'</span></a>').join('')+'</div>'+
 '<nav aria-label="Research views" class="mission-views">'+views.map(([url,category,title,body])=>'<a class="panel" href="'+url+'"><span class="eyebrow">'+category+'</span><h2>'+title+'</h2><p>'+body+'</p></a>').join('')+'</nav>'+
-'<div class="section actions">'+linkbtn('#physics?mode=rover','Build a rover')+linkbtn('#referee','Run the Referee')+linkbtn('#chat','Ask FIRST FIRE')+linkbtn('first-fire-demo.mp4','Watch the 30-second demo')+'</div>'+
+'<div class="section actions">'+linkbtn('#physics?mode=rover','Build a rover')+linkbtn('#awareness','Your investigation')+linkbtn('#session','Guided investigation')+linkbtn('#transport-lab','Follow a tracer release')+linkbtn('#referee','Run the Referee')+linkbtn('#chat','Ask FIRST FIRE')+linkbtn('first-fire-demo.mp4','Watch the 30-second demo')+(location.protocol==='file:'?'':linkbtn('first-fire-offline.zip','Download the offline edition'))+'</div>'+
 '<section class="section"><div class="sectionhead"><div><span class="eyebrow">Case library</span><h2>Where comparisons go wrong</h2></div>'+linkbtn('#cases','All six cases →','inlinebtn')+'</div>'+cards(cases.filter(c=>['sibal','saffire','flex'].includes(c.id)))+'</section>'+
 '<section class="section panel searchstrip"><div><h2>Find evidence</h2><p>Search cases and investigations by question.</p></div>'+searchForm()+'</section>'+
 '<section class="section"><div class="toolsgrid">'+[['#chat','Ask the research desk','Ask a question, inspect its sources, and follow up in the same conversation.'],['#benchmark','Inspect the chat benchmark','Explore a hundred questions, the answers returned and which checks failed.'],['#claim','Check a research claim','Bring a statement, compare its conditions with a source and identify what remains open.'],['#acrylic','Try the acrylic exercise','See how changing from a rod to a panel changes what a study can tell you.'],['#coverage','Explore archive coverage','Find the measured conditions for a material phase and see what is missing.'],['#data?mode=rank','Compare mission conditions','See which observations match your material, atmosphere and gravity.'],['#forecast','Explore the FM² forecast','Change the oxygen threshold and compare model assumptions.'],['#study','Run a blind evaluation','Use a practice pack or enter a facilitator-led research session.']].map(([url,title,body])=>'<a class="panel toolcard" href="'+url+'"><h3>'+title+' ↗</h3><p>'+body+'</p></a>').join('')+'</div></section>';bindSearch();}
@@ -198,6 +198,10 @@ function renderCase(id,view='evidence'){
  root.innerHTML=crumb('Cases / '+c.short)+head(c.title,c.question,c.short+' / '+cardLabel[id])+
  '<nav class="tabs" aria-label="Case sections">'+[['evidence','Evidence'],['designs','Six design options'],['brief','My research brief']].map(([v,l])=>'<a href="#case/'+id+(v==='evidence'?'':'/'+v)+'" '+(view===v?'aria-current="page"':'')+'>'+l+'</a>').join('')+'</nav><div id="casebody"></div>';
  const body=root.querySelector('#casebody');
+ if(view==='evidence' && (id==='same'||id==='flex')){
+   const action=id==='same'?['detector.html','Inspect the detector power and smoke readings →']:['#transfer-lab?view=sensitivity','Compare matched flight runs →'];
+   body.insertAdjacentHTML('beforebegin','<div class="actions case-lab-action">'+linkbtn(action[0],action[1],'btn')+'</div>');
+ }
  if(view==='evidence'){
  body.innerHTML='<div class="record"><div class="stack"><div class="panel"><span class="eyebrow">'+(id==='fm2'?'Planned experiment':'Observed record')+'</span><p>'+esc(c.record)+'</p></div><div class="panel" id="comparison"></div><div class="callout"><span class="eyebrow">Research decision</span><h3>'+esc(c.decision)+'</h3><p style="margin-top:9px">'+esc(c.reason)+'</p></div><div class="panel"><h3>What limits this conclusion?</h3><p>'+esc(c.limit)+'</p><h3 style="margin-top:21px">What to test next</h3><p>'+esc(c.next)+'</p></div></div><aside class="aside"><div class="panel"><span class="eyebrow">Source file</span><h3>Read the evidence</h3><p class="footnote">Source checked · '+esc(c.human_review)+'</p>'+sourceList(c.sources)+'</div><a class="panel toolcard" href="#case/'+id+'/designs"><span class="eyebrow">Ranked first</span><h3>'+esc(c.options[0].name)+' ↗</h3><p>'+esc(c.options[0].mechanism)+'</p></a></aside></div>';compare(c);
  }else if(view==='designs'){
@@ -275,7 +279,10 @@ async function route(first=false){
  if(key==='design-lab')bundles.push('design-lab.js');
  if(key==='transport-lab')bundles.push('transport-lab.js','transport-fit.js');
  if(key==='code-review')bundles.push('code-review-readings.js','code-review.js');
- if(['physics','rover'].includes(key))bundles.push('cabin-liquid-weights.js','physics-lab.js');
+ if(['physics','rover'].includes(key)){
+  if(window.FFAwareness?.tier?.()!=='lite')bundles.push('cabin-liquid-weights.js');
+  bundles.push('physics-lab.js');
+ }
  if(bundles.length){
   root.innerHTML='<p role="status">Opening the research tool…</p>';
   try{for(const asset of bundles)await loadScript(asset);}
@@ -285,6 +292,7 @@ async function route(first=false){
  if(key==='atlas'||key==='compass'){if(key==='compass')p.set('mode','rank');window.renderDeckAtlas(root,p);}
  else if(key==='archive-audit')window.FFArchiveAudit.render(root);
  else if(key==='session')window.FFResearchSession.render(root);
+ else if(key==='awareness')window.FFAwareness.render(root);
  else if(key==='transfer-lab')window.FFTransferLab.render(root,p);
  else if(key==='design-lab')window.FFDesignLab.render(root);
  else if(key==='transport-lab')disposeForecast=window.FFTransportLab.render(root);
@@ -307,6 +315,7 @@ async function route(first=false){
  document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  closeMenu();
  window.FFResearchSession.guide();
+ window.FFAwareness.guide(key);
  const title=root.querySelector('h1')?.textContent||'Research desk';document.title=(key==='home'?'Research desk':title)+' · FIRST FIRE';
  if(!first){root.focus({preventScroll:true});window.scrollTo(0,0);}
 }

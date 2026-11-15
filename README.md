@@ -4,13 +4,17 @@ A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall ch
 
 [Technical manual](site/technical-manual.html) · [Download technical manual (PDF)](dist/first-fire-technical-manual.pdf)
 
+Open the [six-slide project demonstration](dist/demo.html) to follow a flight comparison from the original measurements to the next test. The [FLEX sensitivity view](dist/index.html#transfer-lab?view=sensitivity) lets you change the droplet matching rule before revealing burn durations. In the [SAME-R detector case](dist/detector.html), inspect optical readings and instrument power in four NASA flight workbooks. The [English and Telugu classroom exercise](dist/classroom.html) asks two readers to match a NIST alarm report to the original sensor record and exchange evidence. Results from independent participants have yet to be collected.
+
+The [competition research brief](research/first-fire-2026-11-15/decision-brief.md) connects the judge demonstrations to NASA measurements, past winners, industry tools and the public repository audit.
+
 ## Run a research investigation
 
 Start the [guided research session](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#session), enter your question, and download the evidence record at any step. The same workflow runs in the offline edition.
 
 1. [Match real FLEX flight runs](dist/index.html#transfer-lab). Set common eligibility conditions and size tolerance before revealing paired differences. Test whether any comparison survives a same-day requirement.
 2. [Challenge a remote sensor reading](dist/index.html#transport-lab). Inspect transport, sensor lag and mass conservation; compare against published room repeat times, or fit one sensor trace and score a second run against a single-compartment baseline.
-3. [Plan an FM² oxygen test](dist/index.html#design-lab). Choose the objective and specimen budget, enter a hypothetical reading, and recompute the next test. This never edits the signed forecast.
+3. [Plan an FM² oxygen test](dist/index.html#design-lab). Choose an objective and specimen budget, try a hypothetical result, and export a payload test request with the camera endpoint, oxygen measurements and matched Earth comparison.
 4. [Question the archive](dist/index.html#chat). Ask for a count or a measured quantity and inspect the supporting source rows. [Chat evaluations and original failures](research/science-chat-audit.md) and [methods](research/advanced-methods.md).
 
 ## Explore the deck

@@ -60,3 +60,20 @@ test('masked export includes verified locators and omits outcomes until reveal, 
   const opened=api.exportRecord(records,study,protocol,r,'time',true);
   assert.equal(opened.observed.n,3);assert.ok(opened.day_sensitivity.length>0);assert.ok(opened.pairs[0].A.observed.ending);
 });
+
+test('diameter-by-date sensitivity exposes paired source IDs and keeps empty cells distinct from zero differences',()=>{
+  const sweep=api.diameterSensitivity(records,protocol,'time',true);
+  assert.equal(sweep.length,10);
+  const anyDay=Array.from(sweep).filter(cell=>!cell.same_day);
+  assert.deepEqual(anyDay.map(cell=>cell.diameter_mm),[0.05,0.1,0.2,0.35,0.7]);
+  assert.deepEqual(anyDay.map(cell=>cell.matched_pairs),[1,3,3,3,3]);
+  assert.deepEqual(anyDay.map(cell=>Number(cell.mean_b_minus_a.toFixed(1))),[-3.3,1.6,1.6,1.6,2.2]);
+  assert.deepEqual(Array.from(anyDay[0].sources,x=>[x.A.test,x.B.test]),[['66','6']]);
+  assert.equal(anyDay[0].sources[0].A.id,'PSI-69:1:67');
+  assert.deepEqual(Array.from(anyDay[4].sources,x=>[x.A.test,x.B.test]),[['65','202'],['66','33'],['67','34']]);
+  assert.ok(sweep.filter(cell=>cell.same_day).every(cell=>cell.matched_pairs===0 && cell.mean_b_minus_a===null));
+  const masked=api.diameterSensitivity(records,protocol,'time',false);
+  assert.ok(masked.every(cell=>!('mean_b_minus_a' in cell) && !('usable_endpoint_pairs' in cell)));
+  const lunar=api.diameterSensitivity(records,{...protocol,gravity:0.165},'diameter',true);
+  assert.ok(lunar.every(cell=>cell.sources.length===0 && cell.usable_endpoint_pairs===0 && cell.mean_b_minus_a===null));
+});

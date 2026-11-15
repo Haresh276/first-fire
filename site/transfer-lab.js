@@ -149,6 +149,29 @@
     ];
     return variants.map(([label,delta])=>({label,settings:delta,pairs:match(records,{...p,...delta}).pairs.length}));
   }
+  function diameterSensitivity(records,protocol,kind,unmasked) {
+    const source = run => ({id:run.id,test:run.test,row:Number(run.row.source_row)});
+    const rows = [];
+    for (const diameter of [0.05,0.10,0.20,0.35,0.70]) {
+      for (const sameDay of [false,true]) {
+        const {pairs} = match(records,{...protocol,diameter,sameDay});
+        const cell = {diameter_mm:diameter,same_day:sameDay,matched_pairs:pairs.length,
+          sources:pairs.map(({a,b})=>({A:source(a),B:source(b)}))};
+        if (unmasked) {
+          const {n,average} = measure(pairs,kind);
+          cell.usable_endpoint_pairs=n;
+          cell.mean_b_minus_a=average;
+        }
+        rows.push(cell);
+      }
+    }
+    return rows;
+  }
+  function sensitivityLink(protocol,kind,unmasked) {
+    const query=new URLSearchParams({...protocol,view:'sensitivity',endpoint:kind});
+    if(unmasked)query.set('reveal','1');
+    return '#transfer-lab?'+query;
+  }
   function followUp(result,p) {
     const {counts,low,high,pairs}=result,held=heldVariable(p.exposure);
     if(!counts.gravity)return 'All FLEX records in this archive are orbital. Run the same fuel and gas mixture at the selected gravity in both exposure groups. Measure initial droplet diameter and the termination category for each burn.';
@@ -201,11 +224,13 @@
   function render(root,params=new URLSearchParams()) {
     const data=window.FF,study=data.investigations.find(s=>s.accession===accession);
     const records=prepare(data.tests);
-    let p=settingsFrom(params),selected=0,unmasked=false,kind='time';
+    const showSweep=params.get('view')==='sensitivity';
+    let p=settingsFrom(params),selected=0,unmasked=showSweep && params.get('reveal')==='1',kind='time';
+    if(showSweep && Object.hasOwn(outcomes,params.get('endpoint')))kind=params.get('endpoint');
     const saved=window.FFResearchSession?.active?.()
       ?window.FFResearchSession.previous('transfer-lab')?.record
       :window.FFAwareness?.previous?.('transfer-lab');
-    if(saved?.settings && !Object.keys(defaults).some(key=>params.has(key))) {
+    if(!showSweep && saved?.settings && !Object.keys(defaults).some(key=>params.has(key))) {
       try {
         const restored=Object.fromEntries(Object.keys(defaults).map(key=>[key,saved.settings[key]]));
         checked(restored);
@@ -245,7 +270,11 @@
     const submit=E('button','Apply protocol','btn');submit.type='submit';
     form.append(exposure,values,heldField,fuel,g,extra,submit,msg);
     const source=E('p',null,'tl-source');source.append(link('NASA FLEX · PSI-69','https://doi.org/'+study.doi),' · ',link('Methods and hardware',sourceReport));
-    side.append(sideTitle,form,source);bench.append(side,workspace);panel.append(crumb,head,bench);root.replaceChildren(panel);
+    const sweepPanel=E('section',null,'tl-card tl-sweep');
+    side.append(sideTitle,form,source);bench.append(side,workspace);panel.append(crumb,head);
+    if(showSweep)panel.append(sweepPanel);
+    else head.append(link('Compare five droplet-size tolerances',sensitivityLink(p,kind,unmasked),'tl-sweep-entry'));
+    panel.append(bench);root.replaceChildren(panel);
     function updateLabels(){
       const oxy=fields.exposure.c.value==='oxygen';
       fields.low.name.textContent='A · '+(oxy?'oxygen (%)':'pressure (psia)');
@@ -274,8 +303,59 @@
       p=proposed;result=match(records,p);selected=0;unmasked=false;msg.textContent='Protocol applied.';draw();
     };
     function receiptLink(x){return link('FLEX-'+x.test+' · row '+x.row.source_row,'#atlas?record='+encodeURIComponent(x.id));}
+    function showSensitivity(cells){
+      const h=title('How sensitive is the FLEX comparison?');
+      h.tabIndex=-1;
+      const unit=outcomes[kind].unit;
+      const table=E('table',null,'tl-grid');
+      const caption=E('caption',p.fuel+' · '+fmt(p.low)+' vs '+fmt(p.high)+' '+units[p.exposure]+' · '+fmt(p.held)+' '+units[heldVariable(p.exposure)]+' · '+fmt(p.gravity,3)+' g');
+      const header=E('thead'),labels=E('tr');
+      for(const label of ['Size gap','Any test day','Same UTC date']){
+        const th=E('th',label);th.scope='col';labels.append(th);
+      }
+      header.append(labels);const body=E('tbody');
+      for(let i=0;i<cells.length;i+=2){
+        const tr=E('tr'),gap=E('th',cells[i].diameter_mm.toFixed(2)+' mm');gap.scope='row';tr.append(gap);
+        for(const cell of cells.slice(i,i+2)){
+          const n=cell.matched_pairs,td=E('td'),active=p.diameter===cell.diameter_mm && p.sameDay===cell.same_day;
+          const pick=button(n+' '+(n===1?'pair':'pairs'),()=>{
+            p={...p,diameter:cell.diameter_mm,sameDay:cell.same_day};
+            result=match(records,p);selected=0;showInputs();msg.textContent='Selected matrix rule applied.';
+            draw();sweepPanel.querySelector('[aria-pressed="true"]').focus({preventScroll:true});
+          },'tl-pick');
+          pick.setAttribute('aria-pressed',String(active));
+          pick.setAttribute('aria-label','Inspect '+pick.textContent+' at '+cell.diameter_mm.toFixed(2)+' mm, '+(cell.same_day?'same UTC date':'any test day'));
+          td.append(pick);
+          if(unmasked && n){
+            td.append(E('strong',cell.usable_endpoint_pairs?signed(cell.mean_b_minus_a)+' '+unit:'Endpoint unavailable','tl-grid-mean'));
+            if(cell.usable_endpoint_pairs!==n)td.append(E('span',cell.usable_endpoint_pairs+' of '+n+' with endpoint','tl-grid-note'));
+          }
+          if(n){
+            const sources=E('div',null,'tl-row-links');
+            for(const {A,B} of cell.sources){
+              const pair=link(A.test+' ↔ '+B.test,'#atlas?'+new URLSearchParams({left:A.id,right:B.id}));
+              pair.setAttribute('aria-label','Compare FLEX tests '+A.test+' and '+B.test+', source rows '+A.row+' and '+B.row);sources.append(pair);
+            }
+            if(n>4){const more=E('details');more.append(E('summary','Open '+n+' run pairs'),sources);td.append(more);}
+            else td.append(sources);
+          }
+          tr.append(td);
+        }
+        body.append(tr);
+      }
+      table.append(caption,header,body);
+      const note=E('p',unmasked?'Means show the difference in '+outcomes[kind].name.toLowerCase()+' (setting B minus A) among pairs with both measurements. These archived differences cannot establish a causal effect.':'The counts and NASA test IDs use pre-ignition conditions only. Reveal the endpoint to compare the means.');
+      const actions=E('div',null,'actions');
+      actions.append(button(unmasked?'Mask outcomes':'Reveal outcomes across rules',()=>{
+        unmasked=!unmasked;draw();sweepPanel.querySelector('h2').focus({preventScroll:true});
+      },'btn'),link('Link to this comparison',sensitivityLink(p,kind,unmasked),'ghost'));
+      sweepPanel.replaceChildren(h,E('p','Vary the allowed gap in initial droplet diameter. Select a pair count to apply the rule, or open two test IDs to inspect the NASA rows.'),actions,table,note);
+    }
     function draw() {
       workspace.replaceChildren();
+      const sweep=showSweep?diameterSensitivity(records,p,kind,unmasked):null;
+      if(sweep)showSensitivity(sweep);
+      else head.querySelector('.tl-sweep-entry').href=sensitivityLink(p,kind,unmasked);
       const banner=E('section',null,'tl-summary');
       const heading=E('div',null,'tl-heading');
       heading.append(E('span','FLEX · '+p.fuel+' · '+fmt(p.gravity,3)+' g'),title(fmt(p.low)+' → '+fmt(p.high)+' '+units[p.exposure]));
@@ -366,9 +446,10 @@
       const actions=E('div',null,'actions');
       actions.append(button('Download study JSON',()=>{
         const payload=exportRecord(records,study,p,result,kind,unmasked);
+        if(sweep)payload.diameter_sensitivity=sweep;
         const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)+'\n'],{type:'application/json'}));
         const a=link('Download',url);a.download='first-fire-FLEX-matched-study.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1200);
-      }), link('Link to this protocol','#transfer-lab?'+new URLSearchParams(Object.entries(p).map(([k,v])=>[k,String(v)])),'ghost'));
+      }), link('Link to this protocol',showSweep?sensitivityLink(p,kind,unmasked):'#transfer-lab?'+new URLSearchParams(p),'ghost'));
       end.append(methods,actions);workspace.append(end);
       const observed=unmasked?measure(result.pairs,kind):null;
       const summary=result.pairs.length+' matched pairs at '+fmt(p.low)+' and '+fmt(p.high)+' '+units[p.exposure]+'. '+
@@ -376,6 +457,7 @@
       document.dispatchEvent(new CustomEvent('ff-research-result',{detail:{
         tool:'transfer-lab',title:'FLEX matched comparisons',summary,
         record:{settings:{...p},outcomes_revealed:unmasked,endpoint:unmasked?kind:null,observed,
+          ...(sweep?{diameter_sensitivity:sweep}:{}),
           matched_source_ids:result.pairs.map(({a,b})=>[a.id,b.id]),counts:result.counts,table_sha256:study.tables[0].sha256,
           doi:study.doi,table_url:study.tables[0].url,source_rows_count_header_as_one:true,
           scope:'Orbital FLEX droplets. Controlled archival differences are descriptive. Observation days may share conditions.',next_measurement:followUp(result,p)}
@@ -383,5 +465,5 @@
     }
     draw();
   }
-  window.FFTransferLab={render,prepare,match,assign,measure,byDate,changes,exportRecord,settingsFrom,defaults,checked};
+  window.FFTransferLab={render,prepare,match,assign,measure,byDate,changes,diameterSensitivity,exportRecord,settingsFrom,defaults,checked};
 })();

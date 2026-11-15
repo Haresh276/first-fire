@@ -112,8 +112,60 @@
       best:pick.total > 1e-12 ? pick : null,
       forecasts:planned.map(oxygen => ({oxygen, prior:prior.below(oxygen), posterior:posterior.below(oxygen)}))};
   }
-  function scenarioRecord(settings, history, model) {
+  const interview = 'https://www.nasa.gov/podcasts/houston-we-have-a-podcast/moon-material-flammability/';
+  const requestFields = {
+    geometry:'Specimen dimensions, mounting and airflow',
+    camera:'Camera view, endpoint and frame clock',
+    oxygenChannel:'Oxygen sensor, calibration and time alignment',
+    earthComparator:'Earth counterpart, matching conditions and reference'
+  };
+  function requestInputs(raw={}) {
+    if (!raw || typeof raw!=='object' || Array.isArray(raw)) throw Error('The test request fields must be an object.');
+    const fields={};
+    for(const key of [...Object.keys(requestFields),'earthSupply','disposition','extinctionOxygen','receipt']) {
+      if(raw[key]!==undefined && (typeof raw[key]!=='string'||raw[key].length>480)) throw Error('Invalid test request field: '+key);
+      fields[key]=raw[key]??'';
+    }
+    fields.disposition ||= 'pending';
+    if(!['','existing','new'].includes(fields.earthSupply) || !['pending','extinction','unable'].includes(fields.disposition)) throw Error('Unsupported test request status.');
+    return fields;
+  }
+  function payloadRequest(settings,model,oxygen,raw={}) {
+    const fields=requestInputs(raw);
+    const candidate=model?.choices?.find(c=>c.oxygen===oxygen);
+    const missing=Object.entries(requestFields).filter(([key])=>!fields[key].trim()).map(([,label])=>label);
+    if(!fields.earthSupply) missing.push('Earth comparator specimen allocation');
+    if(!candidate) missing.push('A reachable first test under valid model assumptions');
+    const extinction=/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(fields.extinctionOxygen.trim())?Number(fields.extinctionOxygen):null;
+    const assessmentErrors=[];
+    if(fields.disposition==='extinction' && (extinction===null || !bounded(extinction,0,100))) assessmentErrors.push('Enter a finite flame-out oxygen percentage from 0 to 100.');
+    if(fields.disposition!=='pending' && !fields.receipt.trim()) assessmentErrors.push('Identify the source frames and oxygen trace, or explain why assessment is unavailable.');
+    const extra=fields.earthSupply==='new'?settings.horizon:fields.earthSupply==='existing'?0:null;
+    const next={};
+    for (const key of ['yes','no']) {
+      const branch=candidate?.branches[key];
+      const second=branch?.oxygen??null;
+      next[key]={meaning:key==='yes'?'Nominal sustained spread after igniter cutoff':'Nominal absence of sustained spread after igniter cutoff',
+        chance_under_model:branch?.chance??null, next_oxygen_pct:second};
+    }
+    return {
+      inputs:fields, planning_status:missing.length?'draft':'specified_for_lab_review', missing_planning_inputs:missing,
+      material:'Synergy Pro Navy fabric',target_gravity_earth_g:0.165, initial_pressure_psia:8.2,
+      pressure_tolerance_psi:0.3,chamber_litres:14.4,balance_gas:'nitrogen',spread_direction:'upward',
+      selected_start_oxygen_pct:candidate?.oxygen??null,model_recommended_start_oxygen_pct:model?.best?.oxygen??null,
+      objective:settings.objective==='limit'?'Locate the shared sustained-spread oxygen limit':'Reduce expected Brier risk for sustained spread at '+settings.target+'% starting oxygen',
+      budget:{target_gravity_specimens:settings.horizon,new_earth_specimens:extra,total_new_specimens:extra===null?null:settings.horizon+extra},
+      comparator:'Matched Earth-gravity test at the same initial oxygen, pressure, material, geometry, ignition, flow and endpoint.',
+      branches:next,unable_to_assess_policy:'Withhold the yes/no update when ignition hardware, conditions or evidence cannot be evaluated. A replacement consumes another specimen.',
+      illustrative_readout:{state:assessmentErrors.length?'incomplete':fields.disposition,
+        oxygen_at_flameout_pct:fields.disposition==='extinction'&&!assessmentErrors.length?extinction:null,
+        receipt_or_reason:fields.disposition==='pending'?null:fields.receipt.trim()||null,issues:assessmentErrors},
+      sources:[nasa,interview],signed_reference:'forecast-lock/fm2-v1.json'
+    };
+  }
+  function scenarioRecord(settings, history, model, oxygen=model.best?.oxygen??null, inputs={}) {
     return {schema, kind:'hypothetical', assumptions:{...settings}, history:history.map(x=>({...x})),
+      test_request:payloadRequest(settings,model,oxygen,inputs),
       design_source:nasa, design_locator:'March 2026, PDF pp. 5–6, 10–11 and 14', method_source:method,
       material:'Synergy Pro Navy', pressure_psia:8.2, chamber_litres:14.4,
       endpoint:'Self-sustained flame spread after igniter power ends', threshold_grid:{minimum:0,maximum:100,width:binWidth,placement:'midpoints',prior:'Normal density, normalized across bins'},
@@ -126,9 +178,10 @@
     if (!raw || raw.schema !== schema || raw.kind !== 'hypothetical') throw Error('Choose a FIRST FIRE hypothetical FM² design JSON record.');
     const settings = Object.fromEntries(Object.keys(defaultSettings).map(k => [k, raw.assumptions?.[k]]));
     validate(settings, raw.history);
-    return {settings, history:raw.history.map(r => ({oxygen:r.oxygen, result:r.result}))};
+    return {settings, history:raw.history.map(r => ({oxygen:r.oxygen, result:r.result})),
+      request:requestInputs(raw.test_request?.inputs),selected:raw.test_request?.selected_start_oxygen_pct??null};
   }
-  const numeric = {analyze, defaultSettings, scenarioRecord, importRecord, summarize, planned};
+  const numeric = {analyze, defaultSettings, scenarioRecord, importRecord, payloadRequest, summarize, planned};
   if (typeof module !== 'undefined' && module.exports) module.exports = numeric;
   if (typeof window === 'undefined') return;
   const number = (n, digits = 1) => Number(n.toFixed(digits)).toString();
@@ -173,13 +226,13 @@
     canvas.setAttribute('aria-label','Prior and updated density. Median '+oxygenText(summary.median)+'. Central 80% interval '+number(summary.interval80[0],2)+' to '+number(summary.interval80[1],2)+'% oxygen.');
   }
   function render(root) {
-    let settings={...defaultSettings},history=[],selected=null,model=null,initialMessage='';
+    let settings={...defaultSettings},history=[],selected=null,model=null,initialMessage='',request=requestInputs();
     const guide=window.FFResearchSession;
     const guided=guide?.active?.()===true;
     try {
       const saved=guided?guide.previous('design-lab')?.record:
         (window.FFAwareness?.previous?.('design-lab') || JSON.parse(localStorage.getItem(storageKey)));
-      if(saved) ({settings,history}=importRecord(saved));
+      if(saved) ({settings,history,request,selected}=importRecord(saved));
     } catch {initialMessage='This browser could not restore the prior session.';}
     root.innerHTML='<div class="dl"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="#home">Research desk</a><span>/</span><a href="#forecast">FM² forecast</a></nav>'+
       '<header class="dl-heading"><div><h1>Experiment design lab</h1><p>Which oxygen setting would teach us the most about sustained spread? Try hypothetical burns on the same Synergy Pro Navy fabric at 8.2 psia, then plan the next specimen.</p></div>'+
@@ -201,7 +254,16 @@
       '<div id="dl-history"></div><button type="button" class="dl-link" id="dl-undo">Undo last trial</button></section>'+
       '<section class="panel dl-burns"><h2>Four planned burns</h2><p>Chances of sustained spread under the shared limit. Each hypothetical observation can update all four burns.</p><div id="dl-burn-values"></div></section></div>'+
       '<section class="panel dl-candidates"><h2>Compare achievable designs</h2><p id="dl-utility-explanation"></p><div id="dl-ranking"></div></section>'+
-      '<section class="panel dl-repro"><h2>Research record</h2><p>Export assumptions, hypothetical results, candidate scores and conditional second tests. Importing a record recalculates the results from its inputs.</p><div class="dl-actions">'+
+      '<section class="panel dl-repro"><h2>Payload lab test request</h2><p>Prepare a hypothetical follow-up for a payload engineer. The selected trial setting above determines the requested starting oxygen. The lab compares an upward burn of Synergy Pro Navy in a 14.4 L chamber at 8.2 ± 0.3 psia, nitrogen balance, with a matched Earth-gravity test.</p><p id="dl-request-plan"></p><p id="dl-request-branches"></p>'+
+      '<details id="dl-request-fields"><summary>Edit specimen, camera and comparator details</summary><div class="dl-fields dl-request-grid">'+
+      Object.entries(requestFields).map(([key,label])=>'<label>'+label+'<textarea rows="2" maxlength="480" data-request="'+key+'"></textarea></label>').join('')+
+      '<label>Earth comparator specimens<select data-request="earthSupply">'+selectOptions([['','Choose allocation'],['existing','Use documented existing Earth runs'],['new','Allocate one new Earth specimen per target specimen']])+'</select></label></div>'+
+      '<h3>Rehearse the readout</h3><p>Practice recording an endpoint for this oxygen setting. These entries stay outside the model history and flight-outcome fields. Sample exhaustion, commanded shutdown or a missing oxygen trace cannot supply oxygen at natural flame-out.</p>'+
+      '<div class="dl-fields dl-request-grid"><label>Flame-out readout<select data-request="disposition">'+selectOptions([['pending','Awaiting a run'],['extinction','Illustrative natural flame-out'],['unable','Unable to assess']])+'</select></label>'+
+      '<label id="dl-extinction-label">Illustrative O₂ at flame-out (% by volume)<input type="text" inputmode="decimal" maxlength="24" data-request="extinctionOxygen"></label>'+
+      '<label id="dl-receipt-label">Camera frame, oxygen trace and time, or reason assessment failed<textarea rows="2" maxlength="480" data-request="receipt"></textarea></label></div></details>'+
+      '<p id="dl-request-status" role="status"></p><p><a href="'+nasa+'" target="_blank" rel="noopener">NASA FM² design</a> · <a href="'+interview+'" target="_blank" rel="noopener">Investigators on Sierra Lobo hardware and matched Earth tests</a></p>'+
+      '<p>Download the request in the design JSON or reopen it here to continue editing offline.</p><div class="dl-actions">'+
       '<button type="button" class="ghost" id="dl-export">Export design JSON</button><button type="button" class="ghost" id="dl-import">Import design JSON</button><input id="dl-file" type="file" accept=".json,application/json" hidden><button type="button" class="dl-link" id="dl-reset">Reset scenario</button></div><p id="dl-session" role="status"></p>'+
       '<details><summary>Model, scope and sources</summary><p>The limit is shared across runs on matched specimens. The prior assigns weights to 0.05-point bins from 0 to 100% using a normal density. The plotted 80% interval spans the 10th and 90th percentiles. The expected gain in bits is the entropy of the possible reading minus its assumed error entropy.</p>'+
       '<p>Reading error is an illustrative chance of reversing a yes/no classification, independent across specimens given the limit. It covers observation error only. Material variability, ignition failure and changes in flow require separate models. Use only nominal, interpretable burns in this exercise.</p>'+
@@ -211,6 +273,25 @@
     const get=id=>root.querySelector('#dl-'+id);
     const fields=[...root.querySelectorAll('[data-dl]')];
     const message=get('session');
+    const requestControls=[...root.querySelectorAll('[data-request]')];
+    function fillRequest() {
+      for(const field of requestControls) field.value=request[field.dataset.request];
+    }
+    function clearReadout() {
+      request.disposition='pending';request.extinctionOxygen='';request.receipt='';
+      fillRequest();
+    }
+    function renderRequest() {
+      const r=payloadRequest(settings,model,selected,request),budget=r.budget;
+      const start=r.selected_start_oxygen_pct===null?'Starting oxygen unavailable':oxygenText(r.selected_start_oxygen_pct)+' starting oxygen';
+      const count=budget.new_earth_specimens===null?'Earth allocation pending':budget.new_earth_specimens+' new Earth specimens, '+budget.total_new_specimens+' new specimens total';
+      get('request-plan').textContent=start+' · Target '+r.target_gravity_earth_g+' g · '+budget.target_gravity_specimens+' target specimen'+(budget.target_gravity_specimens===1?'':'s')+' · '+count+'. Objective: '+r.objective+'.';
+      const follow=key=>r.branches[key].next_oxygen_pct===null?'no second setting assigned':oxygenText(r.branches[key].next_oxygen_pct);
+      get('request-branches').textContent=(settings.horizon===2?'If spread sustains: '+follow('yes')+'. If it does not: '+follow('no')+'. ':'One specimen is available at target gravity. ')+r.unable_to_assess_policy;
+      get('extinction-label').hidden=request.disposition!=='extinction';
+      get('receipt-label').hidden=request.disposition==='pending';
+      get('request-status').textContent=(r.missing_planning_inputs.length?'Draft. Open planning fields: '+r.missing_planning_inputs.join(', ')+'.':'Planning fields complete for lab review.')+' '+r.illustrative_readout.issues.join(' ');
+    }
     const units=()=>settings.objective==='limit'?'bits':'Brier risk';
     const utility=x=>settings.objective==='limit'?number(x,3):number(x,4);
     function fillControls(){
@@ -223,7 +304,7 @@
     function save(){
       // A guided design is already captured in this tab by emitResult().
       if(!model||guided)return;
-      try{localStorage.setItem(storageKey,JSON.stringify({schema,kind:'hypothetical',assumptions:settings,history}));}
+      try{localStorage.setItem(storageKey,JSON.stringify({schema,kind:'hypothetical',assumptions:settings,history,test_request:{inputs:request,selected_start_oxygen_pct:selected}}));}
       catch{message.textContent='Browser storage is unavailable. Export the record to keep this scenario.';}
     }
     function displayHistory(){
@@ -241,6 +322,7 @@
       get('undo').hidden=history.length===0;
     }
     function choose(x) {
+      if(selected!==null && selected!==x) clearReadout();
       selected=x;
       get('trial-setting').value=String(x);
       const row=model?.choices?.find(r=>r.oxygen===x);
@@ -250,14 +332,13 @@
       const ready=!!model && !model.conflict;
       const recommended=ready && model.best;
       const summary=ready ? 'After '+history.length+' hypothetical trial'+(history.length===1?'':'s')+', the median oxygen limit is '+number(model.summary.median,2)+'%.'+(recommended?' The next design starts at '+oxygenText(recommended.oxygen)+'.':' No reachable setting offers measurable gain.') : 'This hypothetical design has no current estimate.';
-      const record={schema,kind:'hypothetical',assumptions:{...settings},history:history.map(r=>({...r})),official_outcomes:[null,null,null,null],state:model?.conflict?'conflicting_hypotheses':ready?'modeled':'invalid',median:ready?model.summary.median:null,interval80:ready?model.summary.interval80:null,recommendation:recommended?{oxygen:recommended.oxygen,utility:recommended.total,units:units()}:null,scope:'Scenario for nominal tests of matched fabric using a shared limit and symmetric reading error.'};
+      const record={schema,kind:'hypothetical',test_request:payloadRequest(settings,model,selected,request),assumptions:{...settings},history:history.map(r=>({...r})),official_outcomes:[null,null,null,null],state:model?.conflict?'conflicting_hypotheses':ready?'modeled':'invalid',median:ready?model.summary.median:null,interval80:ready?model.summary.interval80:null,recommendation:recommended?{oxygen:recommended.oxygen,utility:recommended.total,units:units()}:null,scope:'Scenario for nominal tests of matched fabric using a shared limit and symmetric reading error.'};
       document.dispatchEvent(new CustomEvent('ff-research-result',{detail:{tool:'design-lab',title:'FM² experiment design',summary,record,valid:ready,invalid:!ready}}));
     }
     function redraw(pickRecommended=false) {
       get('target-label').hidden=settings.objective!=='burn';
       get('alert').textContent='';
       try{model=analyze(settings,history);}catch(error){model=null;get('alert').textContent=error.message;}
-      emitResult();
       const ready=!!model&&!model.conflict;
       get('density').hidden=!ready;get('export').disabled=!model;
       get('yes').disabled=get('no').disabled=!ready||history.length>=40;
@@ -266,7 +347,7 @@
       displayHistory();
       if(!ready){
         const unclear=model?.conflict?'These outcomes conflict under a zero-error threshold. Undo a trial or allow reading error to examine both observations.':'Complete the design constraints to recalculate this scenario.';
-        get('pick').textContent=unclear;get('metrics').textContent='No current estimate.';get('predict').textContent='';get('tree').replaceChildren();get('burn-values').replaceChildren();get('ranking').replaceChildren();get('trial-setting').replaceChildren();return;
+        get('pick').textContent=unclear;get('metrics').textContent='No current estimate.';get('predict').textContent='';get('tree').replaceChildren();get('burn-values').replaceChildren();get('ranking').replaceChildren();get('trial-setting').replaceChildren();renderRequest();emitResult();return;
       }
       const summary=model.summary;
       get('metrics').innerHTML='<div><span>Median limit</span><b>'+number(summary.median,2)+'<small>% O₂</small></b></div><div><span>Central 80% interval</span><b>'+number(summary.interval80[0],2)+'–'+number(summary.interval80[1],2)+'<small>%</small></b></div>';
@@ -280,8 +361,8 @@
         return '<div><strong>'+label+'</strong><span>'+percent(b.chance)+' of readings</span><b>'+follow+'</b></div>';
       }).join('')+'</div>':'';
       get('trial-setting').innerHTML=selectOptions(model.choices.map(c=>[c.oxygen,oxygenText(c.oxygen)+(c===best?' · recommended':'')]));
-      if(pickRecommended||!model.choices.some(r=>r.oxygen===selected))selected=best?.oxygen??model.choices[0].oxygen;
-      choose(selected);
+      const nextSelected=pickRecommended||!model.choices.some(r=>r.oxygen===selected)?best?.oxygen??model.choices[0].oxygen:selected;
+      choose(nextSelected);renderRequest();emitResult();
       get('burn-values').innerHTML='<table><thead><tr><th>Burn / O₂</th><th>Prior</th><th>Updated</th></tr></thead><tbody>'+model.forecasts.map((b,i)=>'<tr><th>'+ (i+1)+' · '+oxygenText(b.oxygen)+'</th><td>'+percent(b.prior)+'</td><td><b>'+percent(b.posterior)+'</b></td></tr>').join('')+'</tbody></table>';
       const ranked=model.choices.slice().sort((a,b)=>b.total-a.total||b.utility-a.utility||a.oxygen-b.oxygen);
       const highest=ranked[0].total;
@@ -290,7 +371,7 @@
     }
     function setResult(result) {
       if(!model||model.conflict||!model.choices.some(r=>r.oxygen===selected)||history.length>=40)return;
-      const last=selected;history.push({oxygen:last,result});redraw(true);save();
+      const last=selected;history.push({oxygen:last,result});clearReadout();redraw(true);save();
       message.textContent='Added hypothetical trial '+history.length+' at '+oxygenText(last)+'.';
     }
     for(const f of fields){
@@ -299,13 +380,24 @@
         redraw(true);save();
       });
     }
-    get('trial-setting').onchange=e=>choose(Number(e.target.value));
+    get('trial-setting').onchange=e=>{choose(Number(e.target.value));renderRequest();emitResult();save();};
+    for(const field of requestControls) {
+      field.addEventListener(field.tagName==='SELECT'?'change':'input',()=>{
+        const key=field.dataset.request;
+        if(key==='disposition'&&field.value!==request.disposition) {
+          request.extinctionOxygen='';request.receipt='';
+        }
+        request[key]=field.value;
+        if(key==='disposition')fillRequest();
+        renderRequest();emitResult();save();
+      });
+    }
     get('yes').onclick=()=>setResult('yes');get('no').onclick=()=>setResult('no');
-    get('undo').onclick=()=>{history.pop();redraw(true);save();message.textContent='Last hypothetical trial removed.';};
-    get('reset').onclick=()=>{settings={...defaultSettings};history=[];fillControls();redraw(true);save();message.textContent='Default design restored.';};
+    get('undo').onclick=()=>{history.pop();clearReadout();redraw(true);save();message.textContent='Last hypothetical trial removed.';};
+    get('reset').onclick=()=>{settings={...defaultSettings};history=[];request=requestInputs();selected=null;fillControls();fillRequest();redraw(true);save();message.textContent='Default design restored.';};
     get('export').onclick=()=>{
       if(!model)return;
-      const url=URL.createObjectURL(new Blob([JSON.stringify(scenarioRecord(settings,history,model),null,2)+'\n'],{type:'application/json'}));
+      const url=URL.createObjectURL(new Blob([JSON.stringify(scenarioRecord(settings,history,model,selected,request),null,2)+'\n'],{type:'application/json'}));
       const a=document.createElement('a');a.href=url;a.download='first-fire-fm2-design.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
     };
     const file=get('file');get('import').onclick=()=>file.click();
@@ -315,10 +407,10 @@
         if(chosen.size>500000)throw Error('Choose a design record under 500 KB.');
         const data=importRecord(JSON.parse(await chosen.text()));
         if(!root.contains(message))return;
-        settings=data.settings;history=data.history;fillControls();redraw(true);save();message.textContent='Design imported and recalculated.';
+        settings=data.settings;history=data.history;request=data.request;selected=data.selected;fillControls();fillRequest();redraw(false);save();message.textContent='Design imported and recalculated.';
       }catch(e){message.textContent=e instanceof SyntaxError?'The selected file does not contain valid JSON.':e.message;}
     };
-    fillControls();redraw(true);message.textContent=initialMessage;
+    fillControls();fillRequest();redraw(false);message.textContent=initialMessage;
     if(document.fonts?.ready)document.fonts.ready.then(()=>{if(root.contains(message)&&model&&!model.conflict)densityPlot(get('density'),model,settings);});
   }
   window.FFDesignLab={render,...numeric};

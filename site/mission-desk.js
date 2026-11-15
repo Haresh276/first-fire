@@ -29,6 +29,7 @@
   ];
   const applications = [
     {id:'crew',title:'Gaganyaan',tag:'Crew cabin',question:'What must match before comparing two cabin atmospheres?',body:'ISRO’s crew-module pressure control system regulates total pressure and oxygen partial pressure. A material comparison also needs oxygen fraction, ignition conditions and ventilation at the specimen.',test:'Recover both pressure and oxygen fraction for each source row. Record the flow and specimen type before drawing a comparison.',source:['ISRO · ECLSS requirements, introduction','https://www.isro.gov.in/media_isro/pdf/Tenders/2024/44_Tender_Document1602424.pdf'],route:'#compass',action:'Compare habitat conditions'},
+    {id:'wire',title:'Wire insulation'},
     {id:'ward',title:'Hospital oxygen wards',tag:'Oxygen enrichment',question:'What transfers from a spacecraft fabric test to a hospital?',body:'Medical oxygen supports combustion. In a published surgical incident, oxygen delivery, an electric scalpel and a burning drape came together locally. A spacecraft chamber average cannot supply the oxygen concentration at that drape.',test:'Use a measured local gas concentration and the actual fabric and ignition geometry. A clinical safety decision belongs to the applicable medical guidance.',source:['WHO · Medical oxygen fire risk','https://www.who.int/publications/m/item/medical-oxygen-fire-risk-mitigation-measures'],extra:['Original incident report','https://pubmed.ncbi.nlm.nih.gov/22656688/'],route:'#case/ices',action:'Compare material evidence'},
     {id:'mine',title:'Mines',tag:'Smoke transport',question:'Would the same detector give the same warning underground?',body:'NIOSH reports that mine ventilation can carry smoke and toxic gases downstream. A detector threshold measured with a laboratory smoke source cannot establish how long it takes that smoke to reach a sensor in a mine.',test:'Measure the ventilation path, velocity, source and sensor response separately.',source:['NIOSH · Mining fires and explosions','https://www.cdc.gov/niosh/mining/topics/fires-explosions.html'],route:'#case/same',action:'Inspect the detector experiment'},
     {id:'aircraft',title:'Aircraft',tag:'Material configuration',question:'Does a coupon result apply to a finished cabin panel?',body:'FAA test methods distinguish material, orientation, heat release, smoke and the assembled article. Saffire-II shows why a burn duration recorded for a composite specimen needs a component-level interpretation.',test:'Match the cabin material assembly and the measured endpoint to the applicable aircraft test.',source:['FAA · Material test criteria, Appendix A','https://www.fire.tc.faa.gov/pdf/TC-17-46.pdf'],route:'#case/saffire',action:'Inspect the composite test'},
@@ -36,9 +37,57 @@
   ];
   const esc = value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
   const link = ([name,url])=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(name)+' ↗</a>';
+  const wireSetups = [
+    {
+      id:'centrifuge', label:'Rotating chamber', metric:'52 rpm', condition:'55 mm from the rotation axis',
+      method:'During the aircraft’s near-weightless phase, rotation produced 0.166 g at the wire. Tracer particles in Figure 9 show hot gases circulating around the shaft.',
+      result:'During flame spread on the copper wire, chamber pressure kept rising (Figure 7b). The authors propose that recirculating gases warmed the flame region and helped spread persist.'
+    },
+    {
+      id:'parabola', label:'Nonrotating chamber', metric:'0 rpm', condition:'Aircraft trajectory supplies 0.166 g',
+      method:'The aircraft flew a lunar-gravity parabola with the chamber stationary. The hot plume rose toward the shaft, which drew heat from the gas.',
+      result:'Chamber pressure stayed relatively steady as the flame spread along the copper wire (Figure 7a). The two pressure traces show how the apparatus changed conditions around the wire.'
+    },
+    {
+      id:'test4', label:'NASA wire test', metric:'15°', condition:'Wire angle from vertical',
+      method:'NASA-STD-6001B, Change 3, Test 4 specifies five equivalent wire specimens. Each is ignited at the bottom in the worst anticipated atmosphere.',
+      result:'Test 4 records burn length and whether burning debris ignites paper. Those measurements are needed to assess a wire under this protocol. The aircraft study measured flame spread in a laboratory chamber.'
+    }
+  ];
+  function wireComparison(article,params) {
+    const paper = ['Konno et al. (2026) · Table 1 and Figures 7, 9, 14','https://doi.org/10.1016/j.combustflame.2026.114800'];
+    const jaxa = ['JAXA · apparatus and findings','https://humans-in-space.jaxa.jp/kibouser/pickout/74526.html'];
+    const standard = ['NASA-STD-6001B · section 7.4','https://standards.nasa.gov/sites/default/files/standards/NASA/B-w/CHANGE-3/3/2025_06_25_NASA-STD-6001B_w_Change_3_FINAL_Admin-Change-FINAL.pdf#page=31'];
+    article.innerHTML = `
+      <header><span class="eyebrow">JAXA and Hokkaido University · 2026</span><h2>Does matching lunar gravity reproduce a wire fire?</h2></header>
+      <p>At the same nominal 0.166 g, flame spread was easier to sustain in a rotating chamber than in the nonrotating aircraft test. The researchers tested 0.5 mm copper and nichrome cores with 0.15 mm of low-density polyethylene insulation.</p>
+      <label class="field wire-control">Compare the test setup
+        <select aria-controls="wire-result">${wireSetups.map(setup=>'<option value="'+setup.id+'">'+setup.label+'</option>').join('')}</select>
+      </label>
+      <div class="wire-result" id="wire-result" aria-live="polite" aria-atomic="true"></div>
+      <div class="note"><strong>What would transfer to a lunar habitat?</strong><p>Record how gravity was produced, where the wire sat and how hot gas moved before using an extinction result. The lunar-gravity runs were too few to establish a nichrome-wire flammability limit. A fabric or cable bundle would need its own geometry and test.</p></div>
+      <p class="wire-sources">${link(paper)} · ${link(jaxa)} · ${link(standard)}</p>`;
+    const select = article.querySelector('select');
+    const output = article.querySelector('#wire-result');
+    const initial = wireSetups.find(setup=>setup.id===params.get('setup')) || wireSetups[0];
+    function show(setup) {
+      output.innerHTML = `<div class="wire-setting"><strong>${setup.metric}</strong><span>${setup.condition}</span></div>
+        <div class="wire-description"><h3>${setup.label}</h3><p>${setup.method}</p><p>${setup.result}</p></div>`;
+    }
+    select.value = initial.id;
+    show(initial);
+    select.onchange = () => {
+      const setup = wireSetups[select.selectedIndex];
+      show(setup);
+      const query = new URLSearchParams(params);
+      query.set('setup',setup.id);
+      history.replaceState(history.state,'','#earth?'+query);
+    };
+  }
   function rulebook(root) {
     root.innerHTML='<div class="breadcrumb"><a href="#home">Research desk</a> / The Audit</div><header class="pagetitle"><span class="eyebrow">The Audit</span><h1>Rulebook</h1><p class="sub">Which fire-safety assumptions survive a change in gravity? Select a finding to inspect the evidence and the next measurement.</p></header><div class="actions"><a class="ghost" href="#passports">Investigation passports →</a><a class="ghost" href="#referee">Open the Referee →</a></div><div class="section rule-layout"><div class="panel tablewrap"><table class="rules"><caption>Evidence for seven research questions</caption><thead><tr><th>Research question</th><th>Orbit</th><th>Moon gravity</th><th>Mars gravity</th></tr></thead><tbody></tbody></table></div><section class="panel stack" id="rule-reading" aria-live="polite"></section></div>';
     const tbody=root.querySelector('tbody'), reading=root.querySelector('#rule-reading');
+    root.querySelector('.actions').insertAdjacentHTML('beforeend','<a class="ghost" href="#earth?case=wire">Compare lunar-gravity wire tests →</a>');
     const regimes=['Orbit','Moon gravity','Mars gravity'];
     rules.forEach((rule,i)=>{
       const tr=tbody.insertRow(), th=document.createElement('th'); th.scope='row'; th.textContent=rule.q;tr.append(th);
@@ -56,7 +105,13 @@
   }
   function earth(root,p) {
     const item=applications.find(x=>x.id===p.get('case'))||applications[0];
-    root.innerHTML='<div class="breadcrumb"><a href="#home">Research desk</a> / At Home</div><header class="pagetitle"><span class="eyebrow">At Home</span><h1>Fire research on Earth</h1><p class="sub">Follow a spacecraft result into a crew cabin, a ward or a confined space. See which measurement you would need before using it there.</p></header><div class="earth-layout"><nav aria-label="Applications">'+applications.map(x=>'<a href="#earth?case='+x.id+'" '+(x===item?'aria-current="page"':'')+'>'+x.title+'</a>').join('')+'</nav><article class="panel stack"><div><span class="eyebrow">'+item.tag+'</span><h2>'+item.question+'</h2></div><p>'+item.body+'</p><div class="note"><strong>What to measure</strong><p>'+item.test+'</p></div><p>'+link(item.source)+(item.extra?' · '+link(item.extra):'')+'</p><div class="actions"><a class="btn" href="'+item.route+'">'+item.action+' →</a></div></article></div>';
+    root.innerHTML='<div class="breadcrumb"><a href="#home">Research desk</a> / At Home</div><header class="pagetitle"><span class="eyebrow">At Home</span><h1>Fire research on Earth</h1><p class="sub">Follow a spacecraft result into a crew cabin, a ward or a confined space. See which measurement you would need before using it there.</p></header><div class="earth-layout"><nav aria-label="Applications">'+applications.map(x=>'<a href="#earth?case='+x.id+'" '+(x===item?'aria-current="page"':'')+'>'+x.title+'</a>').join('')+'</nav><article class="panel stack"></article></div>';
+    const article = root.querySelector('article');
+    if (item.id==='wire') {
+      wireComparison(article,p);
+      return;
+    }
+    article.innerHTML='<div><span class="eyebrow">'+item.tag+'</span><h2>'+item.question+'</h2></div><p>'+item.body+'</p><div class="note"><strong>What to measure</strong><p>'+item.test+'</p></div><p>'+link(item.source)+(item.extra?' · '+link(item.extra):'')+'</p><div class="actions"><a class="btn" href="'+item.route+'">'+item.action+' →</a></div>';
   }
-  window.FFMissionDesk={rulebook,earth};
+  window.FFMissionDesk={rulebook,earth,rules};
 })();

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#142d36">
+  <title>Was the detector powered? · FIRST FIRE</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="detector-case.css">
+  <script defer src="detector-telemetry.js"></script>
+  <script defer src="detector-case.js"></script>
+</head>
+<body>
+  <header class="mast"><div class="wrap"><a href="index.html" class="brand">FIRST FIRE</a><a href="index.html#session">Return to research desk <span aria-hidden="true">↗</span></a></div></header>
+  <main class="wrap">
+    <div class="intro"><p class="kicker">SAME-R / Detector investigation</p><h1>Was the detector powered?</h1>
+      <p>NASA heated Kapton aboard the International Space Station to generate smoke. Two instruments recorded different things. Can an alarm flag of zero tell you how the Shuttle detector responded?</p></div>
+    <noscript>This investigation needs JavaScript to read the bundled telemetry. The original workbooks are available from <a href="https://psi.nasa.gov/physci/repo/data/investigations/PSI-101">NASA PSI-101</a>.</noscript>
+    <section class="board" aria-label="Detector case">
+      <div class="setup">
+        <p class="kicker">Flight conditions</p><label class="run-label" for="run">Select a Kapton run</label>
+        <select id="run"><option value="75">Run 75 · 26 Aug 2010</option><option value="85">Run 85 · 30 Aug 2010</option><option value="93">Run 93 · 7 Sep 2010</option><option value="92">Run 92 · 7 Sep 2010</option></select>
+        <p id="condition-note"></p><dl class="conditions" id="conditions"></dl>
+        <form id="prediction">
+          <fieldset><legend>Was Shuttle detector power on in any records for this run?</legend>
+            <label><input type="radio" name="call" value="on"> Yes, during part or all of the run</label>
+            <label><input type="radio" name="call" value="off"> No, it stayed off</label>
+            <label><input type="radio" name="call" value="unsure"> I need the power readings</label>
+          </fieldset>
+          <button class="primary" id="reveal" type="submit">Reveal both channels</button>
+        </form>
+        <div id="review" hidden><p class="kicker">Your prediction</p><p id="call-note"></p><button class="plain" id="retry" type="button">Reset this prediction</button></div>
+      </div>
+      <div class="display" id="display">
+        <div id="prompt"><p class="kicker">Before the reveal</p><h2>Two instruments. Two questions.</h2>
+          <div class="signal"><span class="sig-mark iss" aria-hidden="true">∿</span><div><h3>ISS light scattering</h3><p>How far did the optical reading move from its pre-heating baseline?</p></div></div>
+          <div class="signal"><span class="sig-mark sts" aria-hidden="true">⏻</span><div><h3>Shuttle detector power</h3><p>Was the detector powered when the telemetry reported its alarm flag?</p></div></div>
+          <p class="tail">Choose a prediction to inspect the recorded measurements.</p>
+        </div>
+        <div id="result" hidden>
+          <p class="kicker">Flight telemetry</p><h2 id="finding" tabindex="-1"></h2><p id="explanation"></p>
+          <div class="signal-numbers"><div><span>Power on / matching rows</span><strong id="power-n"></strong></div><div><span>Alarm flag on / matching rows</span><strong id="alarm-n"></strong></div></div>
+          <h3>ISS light-scattering channel</h3><p class="chart-lead">Voltage drop from the median of the 30 seconds before heating</p>
+          <svg id="plot" viewBox="0 0 610 215" role="img" aria-labelledby="plot-title plot-desc"></svg>
+          <p id="peak"></p>
+          <details id="family"><summary>Compare the three repeat runs</summary>
+            <table class="repeat-table"><caption>Kapton repeats at Rt/R0 = 1.43</caption><thead><tr><th scope="col">Run</th><th scope="col">Peak drop (V)</th><th scope="col">Time (s)</th><th scope="col">Power-on rows / total</th></tr></thead><tbody id="repeats"></tbody></table>
+            <p id="repeat-note"></p>
+          </details>
+          <details id="receipt"><summary>Inspect source cells and timestamps</summary>
+            <p id="method"></p>
+            <div id="scrubber"><label for="sample">Inspect a recorded sample</label><input id="sample" type="range" min="0" value="0" step="1"><output id="reading" for="sample"></output></div>
+            <p><a id="book" href="#">Open original NASA workbook (.xls)</a> · <a id="table" href="#">Open run conditions (.csv)</a></p>
+            <p class="checksum">Workbook SHA-256 <code id="sha"></code></p>
+          </details>
+          <button type="button" class="primary" id="download">Download evidence record (.json)</button><p id="download-status" role="status"></p>
+        </div>
+      </div>
+    </section>
+    <footer>Source · <a href="https://doi.org/10.60555/2np7-jv14">NASA Physical Sciences Informatics, SAME-R v4</a>. Archived laboratory detector channels aboard the ISS.</footer>
+  </main>
+</body></html>

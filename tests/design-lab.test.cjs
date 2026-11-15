@@ -59,3 +59,30 @@ test('restricted ranges and unlikely histories yield finite predictions or negli
   const p=analyze({...defaults,error:2},Array(40).fill(result(40,'no')));
   assert.ok(Number.isFinite(p.summary.mean));assert.ok(p.choices.every(c=>c.total>=0&&Number.isFinite(c.total)));
 });
+
+test('builds a specimen-budgeted lab request for the chosen setting and recomputes imported results',()=>{
+  const m=analyze(defaults);
+  const draft=scenarioRecord(defaults,[],m).test_request;
+  assert.equal(draft.planning_status,'draft');assert.equal(draft.missing_planning_inputs.length,5);
+  assert.equal(draft.budget.total_new_specimens,null);
+  assert.equal(draft.branches.yes.next_oxygen_pct,25);assert.equal(draft.branches.no.next_oxygen_pct,27);
+  const fields={geometry:'60 mm; lot A; upward; fixture G1',camera:'Frames 40–45; align to igniter cutoff',oxygenChannel:'O2 channel A; align using common clock',
+    earthComparator:'Matched ground chamber and lot; record flow for each run',earthSupply:'new',disposition:'extinction',extinctionOxygen:'24.4',receipt:'Rehearsal clock 13 s; frames 40–45'};
+  const full=scenarioRecord(defaults,[],m,24,fields);
+  assert.deepEqual(full.test_request.budget,{target_gravity_specimens:2,new_earth_specimens:2,total_new_specimens:4});
+  assert.equal(full.test_request.selected_start_oxygen_pct,24);
+  assert.equal(full.test_request.model_recommended_start_oxygen_pct,26);
+  assert.equal(full.test_request.planning_status,'specified_for_lab_review');assert.equal(full.test_request.illustrative_readout.oxygen_at_flameout_pct,24.4);
+  assert.equal(full.test_request.branches.no.next_oxygen_pct,m.choices.find(c=>c.oxygen===24).branches.no.oxygen);
+  assert.deepEqual(full.official_outcomes,[null,null,null,null]);
+  const restored=importRecord(JSON.parse(JSON.stringify(full)));assert.equal(restored.selected,24);assert.equal(restored.request.geometry,fields.geometry);
+  for(const value of ['','NaN','101','0xa']){
+    const bad=scenarioRecord(defaults,[],m,24,{...fields,extinctionOxygen:value}).test_request;
+    assert.equal(bad.illustrative_readout.state,'incomplete');assert.equal(bad.illustrative_readout.oxygen_at_flameout_pct,null);
+  }
+  const unable=scenarioRecord(defaults,[],m,24,{...fields,disposition:'unable',receipt:'O2 trace cut out before extinction'}).test_request;
+  assert.equal(unable.illustrative_readout.state,'unable');assert.equal(unable.illustrative_readout.oxygen_at_flameout_pct,null);
+  const single={...defaults,horizon:1};const one=scenarioRecord(single,[],analyze(single),25,{...fields,earthSupply:'existing'}).test_request;
+  assert.equal(one.budget.total_new_specimens,1);assert.equal(one.branches.yes.next_oxygen_pct,null);
+  assert.equal(importRecord({schema:full.schema,kind:full.kind,assumptions:defaults,history:[]}).request.disposition,'pending');
+});
