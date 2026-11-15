@@ -6,15 +6,16 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from chat.engine import Engine, NO_EVIDENCE
+from chat.engine import Engine, NO_EVIDENCE, OllamaSelector
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("bank", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--model", default="qwen3:0.6b", help="installed local selection model")
     args = parser.parse_args()
-    engine = Engine()
+    engine = Engine(OllamaSelector(args.model))
     health = engine.health()
     if not health["ready"]:
         raise RuntimeError("Local model unavailable")

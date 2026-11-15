@@ -2,9 +2,12 @@
 (() => {
   'use strict';
   const text=(tag,value)=>{const e=document.createElement(tag);if(value!==undefined)e.textContent=value;return e;};
-  const safe=raw=>typeof raw==='string' && (/^https:\/\//i.test(raw)||/^#(?:[a-z][\w/-]*)(?:\?[^\s]*)?$/i.test(raw)||/^(?:data\/tests\.csv|data\/raw\/[\w.-]+\.csv|forecast-lock\/fm2-v1\.(?:json|tsr))$/.test(raw))?raw:null;
+  const safe=raw=>typeof raw==='string' && (/^https:\/\//i.test(raw)||/^#(?:[a-z][\w/-]*)(?:\?[^\s]*)?$/i.test(raw)||/^(?:data\/tests\.csv|data\/raw\/[\w.-]+\.csv|forecast-lock\/(?:fm2|pmma)-v1\.(?:json|tsr)|first-fire-field-guide\.pdf#page=[1-9]\d{0,3})$/.test(raw))?raw:null;
   const same=(a,b)=>a && b && a.split('#')[0].replace('?attachment=true','')===b.split('#')[0].replace('?attachment=true','');
-  const seal='9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3';
+  const seals={
+    fm2:{title:'Team Code Blooded · FM² forecast v1',sha:'9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3',locator:'Four preregistered probabilities and scoring rules'},
+    pmma:{title:'Team Code Blooded · opposed-PMMA registration v1',sha:'79f0c1a253004730e9449a0a8e9b78c1f6b6fcb8bbec3d5184c253f55eea86ec',locator:'Opposed-flow acrylic event definition, eligibility and scoring rules'},
+  };
   function resolve(source,context={},ff=globalThis.FF){
     if(!source||!safe(source.url))return null;
     let title=source.title||'Source',locator=source.locator||'',hash='',doi='',original=source.url,binding='No pinned file fingerprint for this source.';
@@ -24,9 +27,13 @@
       doi=study.doi;title=study.title||study.name;
       if(table){hash=table.sha256;original=table.url;binding='NASA source table SHA-256';if(!locator)locator=table.name;}
       else if(!locator)locator='NASA PSI investigation '+study.accession;
-    }else if(/^#forecast$|^#report\/forecast$|forecast-lock\/fm2-v1/.test(source.url)){
-      title='Team Code Blooded · FM² forecast v1';original='forecast-lock/fm2-v1.json';hash=seal;
-      binding='RFC 3161 timestamped forecast file SHA-256';locator=locator||'Four preregistered probabilities and scoring rules';
+    }else if(/^forecast-lock\/(?:fm2|pmma)-v1\.(?:json|tsr)$/.test(source.url) || source.id==='fm2-lock'&&source.url==='#forecast'){
+      const key=source.url.includes('pmma-v1')?'pmma':'fm2', registered=seals[key];
+      title=registered.title;original='forecast-lock/'+key+'-v1.json';hash=registered.sha;
+      binding='RFC 3161 timestamped forecast file SHA-256';locator=locator||registered.locator;
+    }else if(/^first-fire-field-guide\.pdf#page=/.test(source.url)){
+      hash='824379564920f0f81ab4a7da2f998a44452e9c2cbd94e8f6d615a133d4d34575';
+      binding='Released FIRST FIRE field guide PDF SHA-256';locator=locator||'PDF viewer page '+source.url.split('#page=')[1];
     }
     const checks=context.checks?Object.entries(context.checks).map(([k,c])=>k+' '+c.state).join(' · '):
       (hash?'Pinned artifact located. A specific interpretation has no recorded check here.':'Source link available. No independent claim review is attached here.');
@@ -44,7 +51,8 @@
     line('Checks',proof.checks);
     const a=text('a',proof.doi?'Open NASA source table or investigation':'Open original');a.href=proof.original;if(/^https:/.test(proof.original)){a.target='_blank';a.rel='noopener noreferrer';}
     line('Original',a);
-    if(proof.hash===seal){const signature=text('a','Download the signed timestamp');signature.href='forecast-lock/fm2-v1.tsr';signature.download='fm2-v1.tsr';box.append(signature,' · ');}
+    const model=Object.keys(seals).find(model=>seals[model].sha===proof.hash);
+    if(model){const signature=text('a','Download the signed timestamp');signature.href='forecast-lock/'+model+'-v1.tsr';signature.download=model+'-v1.tsr';box.append(signature,' · ');}
     const copy=text('button','Copy citation');copy.type='button';copy.className='ghost';
     const feedback=text('span','');feedback.setAttribute('role','status');
     copy.onclick=async()=>{

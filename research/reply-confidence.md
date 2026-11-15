@@ -1,10 +1,24 @@
 # How to read reply confidence
 
-Open **Evidence checks** under a chat reply to see its estimated chance of passing an answer review. A reviewer checks whether the reply answers the actual question, uses supporting sources and handles its limits correctly. A refusal can pass a question about a missing measurement and fail a question that the archive can answer. A forecast reply can contain two percentages. The probability of sustained spread belongs to the physical model. Reply confidence describes how reliably the chat answers the research question.
+The stronger local chat grades confidence against the **whole visible reply**. Correctness requires answering the actual question, providing the necessary evidence and stating limits or refusing when appropriate. For a lunar question this percentage refers to answer quality. The physical probability of sustained flame spread has its own forecast and interpretation.
 
-## How the estimate is made
+### When a percentage appears
 
-The local evidence gate first checks the proposed answer and decides what to display. The confidence estimator then reads the final text, its citations and the completed evidence checks. The answer and the evidence decision stay the same at every confidence level. A verified passage can still address the wrong experiment.
+The local model must match the model fingerprint used for testing. The reply's decision path needs at least 12 examples in the semantic training split. Its confidence band must also have at least 10 training and 8 validation examples, with observed validation accuracy within 10 percentage points of mean confidence. A displayed value rounds to the nearest 5 percentage points. For example, a displayed 65% means the estimate for a full-answer benchmark pass rounded to 65%. Readers can still inspect citations and evidence checks if the sample is too small. Archive-only chats have their own evidence checks. They receive no local-model probability.
+
+The test retains each local response's full numerical estimate before revealing its grade, including predictions suppressed in the interface. Benchmark reports should show accuracy, confidence, errors and the number of percentages visible to users. Report Wilson intervals for the fraction correct and sample sizes per band. A confidence score cannot establish that a claim about spacecraft fire safety is physically sound.
+
+### How the stronger calibration is trained
+
+The exposed original 100 questions contain machine-graded answers. Bank A adds 100 semantically graded answers, which can accept correct alternative wording and sources and reject incorrect extras. Each bank was split by difficulty into 70% training and 30% validation using a fixed hash of question ID. The two grading methods have separate intercepts and share nine regularized predictors. The live model uses the semantic-grading intercept. An exposed question only gets its earlier verdict when its answer and evidence are unchanged. The fresh test enters neither fitting nor the validation rules for displaying a percentage.
+
+The nine signals cover verified synthesis, checked arithmetic, a decision to withhold, coverage of the user's terms and record IDs, a requested calculation without an arithmetic receipt, multi-part wording, a specific correction of a premise, and the fraction of generated claim blocks backed by source references. A verified calculation can use an irrelevant source, and repeating an ID can still identify the wrong record. Both kinds of mistake are scored against the complete response.
+
+To reproduce the fit, run `node scripts/fit_strong_chat_confidence.cjs fit A-questions.json original-strong.jsonl A-strong.jsonl A-strong-grades.json` with the two original capture receipts alongside the JSONL files. The development artifacts record split memberships, grading and source fingerprints, reliability bins, Brier score, log loss, mean prediction minus observed pass frequency, and numeric UI coverage. The controller never refits when a user asks a question.
+
+## The earlier 0.6B calibration
+
+In that release the local evidence gate first checks the proposed answer and decides what to display. The confidence estimator then reads the final text, its citations and the completed evidence checks. The answer and the evidence decision stay the same at every confidence level. A verified passage can still address the wrong experiment.
 
 The estimator uses a logistic regression with eight inputs. Four identify a quantitative receipt, an independently reviewed interpretation, a quotation-only response or a withheld answer. The other four record an explained scope limit, the fraction of distinct question terms reused in the answer, wording that requests a comparison or multiple answers, and the number of sources up to three. These are imperfect signals. For example, repeating a material name improves word overlap without establishing that an experiment used it. None of the inputs read answer keys, question IDs, difficulty labels or the old confidence number.
 

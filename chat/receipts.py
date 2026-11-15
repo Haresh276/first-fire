@@ -14,7 +14,8 @@ SCOPE_NOTES = {
 def compiled_registry():
     passages, rows = corpus()
     documents = {}
-    for passage in [*passages, *fundamentals(), *(row_doc(row) for row in rows)]:
+    from .research_index import extended_registry
+    for passage in [*extended_registry(), *passages, *fundamentals(), *(row_doc(row) for row in rows)]:
         if passage.id in documents:
             raise ValueError("Repeated passage ID " + passage.id)
         documents[passage.id] = {"title": passage.title, "url": passage.url,

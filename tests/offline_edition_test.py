@@ -24,6 +24,7 @@ class OfflineEditionTest(unittest.TestCase):
             'rover-workbench/evidence/files/saffire-i.csv': FILENAME,
             'rover-workbench/evidence/methods.json': FILENAME,
             'rover-workbench/preview/workbench.png': FILENAME,
+            'fresh-chat-audit.zip': 'first-fire-chat-audit-pack.zip',
             'rover-workbench/evidence/files/filter-paper.pdf': EXPERIMENTS,
             'rover-workbench/evidence/files/standard6001.pdf': ENGINEERING,
             'rover-workbench/evidence/files/mbrsc-wheel-traction.pdf': AGENCIES,

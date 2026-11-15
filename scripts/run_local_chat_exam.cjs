@@ -23,13 +23,15 @@ async function main() {
     if (!response.ok) throw Error('Missing script ' + name);
     return [name, sha(Buffer.from(await response.arrayBuffer()))];
   })));
-  const fingerprint = sha(JSON.stringify([sha(bytes),health,sha(index),assets]));
+  const registry = await fetch(origin + '/chat-passages.js');
+  const registrySHA256 = registry.ok ? sha(Buffer.from(await registry.arrayBuffer())) : null;
+  const fingerprint = sha(JSON.stringify([sha(bytes),health,sha(index),assets,registrySHA256]));
   const meta = output + '.meta.json';
   if (fs.existsSync(meta)) {
     if (JSON.parse(fs.readFileSync(meta)).fingerprint !== fingerprint) throw Error('Cannot resume against different inputs or model');
   } else {
     if (fs.existsSync(output)) throw Error('Missing receipt for existing run');
-    fs.writeFileSync(meta, JSON.stringify({started:new Date().toISOString(),fingerprint,bankSHA256:sha(bytes),health,assets},null,2)+'\n');
+    fs.writeFileSync(meta, JSON.stringify({started:new Date().toISOString(),fingerprint,bankSHA256:sha(bytes),health,assets,registrySHA256},null,2)+'\n');
   }
   const done = new Set((fs.existsSync(output)?fs.readFileSync(output,'utf8'):'').split('\n').filter(Boolean).map(line=>JSON.parse(line).id));
   const browser = await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE||undefined});

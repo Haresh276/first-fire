@@ -13,9 +13,11 @@ from .retrieval import ENCODER, REVISION, Index, topics
 from .scope import Boundary, boundary, scope_limit, missing_answer_quantity
 from .receipts import VERSION as RECEIPT_VERSION, SCOPE_NOTES
 from .incidents import RECORDS, scoped_reply
+from .synthesis import synthesize
 
-DEFAULT_MODEL = "qwen3:0.6b"
-VERSION = "3.0"
+DEFAULT_MODEL = "qwen3.6:35b-a3b"
+SMALL_MODEL = "qwen3:0.6b"
+VERSION = "4.0"
 NO_EVIDENCE = ("I couldn't establish that from this evidence collection. Give the experiment, "
                "material or run ID and the quantity you want to compare. A claim about another "
                "facility or material needs a matching source.")
@@ -41,7 +43,8 @@ class Selector(Protocol):
 class OllamaSelector:
     name="Ollama (local)"
     def __init__(self,model=None):
-        self.model=model or os.getenv("FIRST_FIRE_CHAT_MODEL",DEFAULT_MODEL)
+        self.explicit_model=model or os.getenv("FIRST_FIRE_CHAT_MODEL")
+        self.model=self.explicit_model or DEFAULT_MODEL
         if not re.fullmatch(r"[a-zA-Z0-9_.:/-]+",self.model) or "cloud" in self.model.lower():
             raise ValueError("Choose an installed local Ollama model tag.")
         self.client=build_opener(ProxyHandler({}))
@@ -62,7 +65,10 @@ class OllamaSelector:
             return True
         try:
             models=self._request("/api/tags",timeout=3)["models"]
-            self.digest=next((m["digest"] for m in models if m["name"]==self.model),None)
+            available={m["name"]:m["digest"] for m in models}
+            if not self.explicit_model:
+                self.model=next((tag for tag in (DEFAULT_MODEL,SMALL_MODEL) if tag in available),DEFAULT_MODEL)
+            self.digest=available.get(self.model)
         except (ProviderError,KeyError):
             self.digest=None
         self._checked=time.monotonic()
@@ -122,19 +128,58 @@ class Engine:
         self.provider=provider or OllamaSelector()
         self.index=Index()
         self.corpus_hash=hashlib.sha256(json.dumps([[p.__dict__ for p in self.index.docs],RECORDS],sort_keys=True).encode()).hexdigest()
+        from .research_index import extended_registry
+        self.research_records = extended_registry()
+        self.research_hash = hashlib.sha256(json.dumps([p.__dict__ for p in self.research_records],sort_keys=True).encode()).hexdigest()
         self.hash=hashlib.sha256(b"".join((Path(__file__).parent/n).read_bytes() for n in
-                                         ["corpus.py","retrieval.py","scope.py","incidents.py","engine.py","server.py","receipts.py"])).hexdigest()
+                                         ["corpus.py","retrieval.py","scope.py","incidents.py","engine.py","server.py","receipts.py","synthesis.py","research_index.py"])).hexdigest()
 
     def health(self):
         ready=self.provider.availability()
         return {"ready":ready,"model":self.provider.model,"provider":self.provider.name,"model_digest":self.provider.digest,
                 "retriever":ENCODER+" + BM25 + exact run IDs","encoder_revision":REVISION,
+                "research_passages":len(self.research_records),"research_sha256":self.research_hash,
                 "version":VERSION,"engine_sha256":self.hash,"corpus_sha256":self.corpus_hash,
-                "passages":len(self.index.docs),"rows":len(self.index.rows),"mode":"grounded passage selection"}
+                "passages":len(self.index.docs),"rows":len(self.index.rows),"mode":"grounded synthesis" if self.provider.model==DEFAULT_MODEL else "grounded passage selection"}
+
+    def research_answer(self, msg, history):
+        started=time.perf_counter()
+        retrieve=getattr(self.index,"research_hits",self.index.retrieve)
+        hits,context=retrieve(msg,history)
+        docs=[hit.passage for hit in hits[:15]]
+        guard=boundary(msg,context,docs)
+        # Permit novel scientific wording to reach the model. Its source checks still apply.
+        # Hard capability, personal safety, private-data and flight-outcome boundaries remain in force.
+        hard=guard and guard.kind in {"clinical request","missing user data","certification","unobserved mission result","missing instrument measurement","unavailable physics solver"}
+        if POLICY.search(msg):
+            result={"status":"abstained","citations":[],"answer":"I can check a research claim against the archive. I cannot fabricate observations or citations, override the evidence checks, or disclose private configuration."}
+            usage={}; method="instruction guard"
+        elif hard:
+            if guard.kind=="unobserved mission result":
+                pending=next((p for p in self.index.docs if p.id=="fm2:date"),None)
+                if pending:
+                    result={"status":"limited","answer":pending.text+" [1]","citations":[pending.cite()],
+                            "passage_receipt":{"version":RECEIPT_VERSION,"ids":[pending.id]}}
+                else:
+                    result={"status":"abstained","answer":guard.answer,"citations":[]}
+                usage={}; method="scope guard: "+guard.kind
+            else:
+                result={"status":"abstained","answer":guard.answer,"citations":[]}
+                usage={}; method="scope guard: "+guard.kind
+        else:
+            result,usage=synthesize(self.provider,msg,docs,context)
+            method="local grounded synthesis"
+        result.update(model=self.provider.model,model_digest=self.provider.digest,provider=self.provider.name,
+                      method=method,usage=usage,retriever=ENCODER,
+                      retrieved=[dict(h.passage.cite(),rank=i,score=round(h.score,5)) for i,h in enumerate(hits[:15],1)],
+                      elapsed_ms=round(1000*(time.perf_counter()-started),1))
+        return result
 
     def answer(self,body):
         started=time.perf_counter()
         msg,history=payload(body)
+        if self.provider.availability() and self.provider.model==DEFAULT_MODEL:
+            return self.research_answer(msg,history)
         historical = scoped_reply(msg, history)
         if historical and not POLICY.search(msg):
             # Run the same capability checks for requests that mention a mission.

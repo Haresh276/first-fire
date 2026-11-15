@@ -203,3 +203,9 @@ class Index:
                 other=next((x for x in hits if x.passage.topic==t),None)
                 if other: chosen.append(other)
         return chosen[:8],q
+
+    def research_hits(self, question, history=()):
+        from .research_index import ResearchIndex
+        if not hasattr(self, 'research'):
+            self.research = ResearchIndex()
+        return self.research.find(self, question, history)

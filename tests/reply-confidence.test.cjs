@@ -7,18 +7,18 @@ const {fit,metrics}=require('../scripts/fit_reply_confidence.cjs');
 global.window=global;
 require('../site/evidence-desk.js');
 
-test('every final reply, including a blocked proposal, gets a benchmark pass estimate',async()=>{
+test('a refused proposal on the archive path cannot inherit local-model confidence',async()=>{
   global.FF={};
   const question='What is the measured value?';
   const answer=await FFEvidenceDesk.gate(question,{answer:'4000',evidenceKind:'unknown',sources:[],status:'answered'});
   assert.equal(answer.status,'abstained');
   assert.doesNotMatch(answer.answer,/4000/);
   assert.equal(answer.verification.confidence.value,null);
-  assert.deepEqual(answer.verification.calibration,confidence.predict(question,answer,model));
-  assert(answer.verification.calibration.probability>0 && answer.verification.calibration.probability<1);
+  assert.equal(answer.verification.calibration.probability,null);
+  assert.equal(answer.verification.calibration.reason,'archive-only');
   const input={answer:'Which material and endpoint?',status:'limited',evidenceKind:'input-needed',sources:[]};
   const followup=await FFEvidenceDesk.gate('What about the other one?',input,[answer]);
-  assert.equal(followup.verification.calibration.model,model.version);
+  assert.equal(followup.verification.calibration.showPercentage,false);
 });
 
 test('inference uses final-reply features and ignores benchmark labels and old confidence',()=>{

@@ -43,7 +43,7 @@ def summarize(runs,bank,config):
         if p is None and 'probabilitySource' in config:
             p=read(runs/config['probabilitySource'])[key]
         if type(p) not in (float,int) or not 0<=p<=1:raise ValueError('Missing pregrade probability for '+key)
-        row={'id':key,'level':q['level'],'question':q['message'],'reference':refs[key],'probability':p}
+        row={'id':key,'level':q['level'],'question':q['message'],'reference':refs[key],'probability':p,'showPercentage':cal.get('showPercentage',True)}
         for track in records:
             prediction=records[track][key];g=grades[track,key]
             row[track]={'answer':prediction['displayed'],'citations':prediction.get('turn',prediction)['sources'],

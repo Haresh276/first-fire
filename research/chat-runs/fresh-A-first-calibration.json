@@ -1,0 +1,2642 @@
+{
+  "description": "Bank A first cold run. Previous numbers were evidence-factor scores where available. Current numbers predicted complete answer correctness and were frozen at 79/100 development prevalence. The selector has no calibrated probability.",
+  "hashes": {
+    "key": "26c96d277a3e403956e5bec860a057aa94ac9a1aedeeb294fac6fd878702bf22",
+    "grades": "e4259fdd1038460180404e94ddd85318bb790dbaec99087b9c78e2e9d20df2bc",
+    "previous": "84031a62105576332588d67a9a0e2afe058a4e89f21a4a9cb8b67ff693e8a6a9",
+    "current": "40e1faa439ef0f829c517aa73e83ec64725657dc43ed352d6ee1e8b953d8f926",
+    "selector": "bcbbbd0f1cbfb19ac6a09ea97d4308e392fe93dc766dc6f9be2132370406b492"
+  },
+  "tracks": {
+    "previous": {
+      "n": 100,
+      "passed": 3,
+      "numericCoverage": 28,
+      "metrics": {
+        "n": 28,
+        "passed": 3,
+        "accuracy": 0.10714285714285714,
+        "accuracy95": [
+          0.03711836682929999,
+          0.27195851548672156
+        ],
+        "meanProbability": 0.28081249999999996,
+        "brier": 0.11526096651785715,
+        "logLoss": 0.40003622091272506,
+        "constantBrier": 0.5619571428571432,
+        "ece": 0.1736696428571428,
+        "maxGap": 0.17366964285714281,
+        "eachPopulatedBinWithinTenPoints": false,
+        "reliability": [
+          {
+            "lower": 0,
+            "upper": 0.5,
+            "n": 28,
+            "passed": 3,
+            "meanProbability": 0.28081249999999996,
+            "accuracy": 0.10714285714285714,
+            "accuracy95": [
+              0.03711836682929999,
+              0.27195851548672156
+            ],
+            "gap": 0.17366964285714281
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.8,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 1,
+            "n": 0,
+            "passed": 0,
+            "meanProbability": null,
+            "accuracy": null,
+            "accuracy95": null,
+            "gap": null
+          }
+        ]
+      },
+      "rows": [
+        {
+          "id": "F001",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "The response withholds a standard, sourced explanation of fan-driven oxygen transport.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F002",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "An oxidizer is the available answer; the response asks for a different question.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F003",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Requests inputs for a habitat tool instead of giving lunar acceleration.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F004",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains despite the NASA explanation of terrestrial buoyancy.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F005",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "The NASA archive identifies sample 2-5's material, but the answer asks for an identifier already supplied.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F006",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "Quotes the test pressure rather than naming the gas.",
+          "code": "partial"
+        },
+        {
+          "id": "F007",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains instead of telling the reader that the igniter sits at the bottom.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F008",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "The quoted pressure does not supply the requested length.",
+          "code": "partial"
+        },
+        {
+          "id": "F009",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains despite NASA's Burning Rate Emulator description.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F010",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "The sourced lunar-module shelter is omitted.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F011",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "The flight study is identifiable, but the response asks the user to name an experiment.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F012",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Does not identify the liquid methanol droplet.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F013",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Requests numeric filters rather than defining opposed flow.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F014",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.35,
+          "reason": "Distinguishes the LUCI sample's simulated gravity from the real lunar surface with the flight source.",
+          "code": "pass"
+        },
+        {
+          "id": "F015",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.35,
+          "reason": "Names PMMA and links the exact PSI-99 row 9 for test 2-8.",
+          "code": "pass"
+        },
+        {
+          "id": "F016",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Withholds the meaning of heating time.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F017",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains even though the PSI-22 study provides the requested field.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F018",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains instead of defining the image-plane contour speed.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F019",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains despite the sourced soot-emission definition.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F020",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Opens a rules-selection discussion instead of explaining upstream propagation.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F021",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains instead of explaining the change in oxygen transport.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F022",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Requests two row identifiers to answer a one-row gas-composition question.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F023",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "The cool-flame quotation does not describe the requested run, its disruption or its duration.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F024",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Abstains although the prompt gives the SAME-R run ID.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F025",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "The review board supports the explanation, which the response withholds.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F026",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Neither event is explained despite available NASA accounts.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F027",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "The SAME study supports an answer; the response abstains.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F028",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Asks for two identifiers although only the second Saffire-I specimen record was requested.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F029",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Withholds the Saffire-III S2 row's speed and direction.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F030",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Requests a statistical denominator for a single qualitative duration.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F031",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.35,
+          "reason": "Original B1 row supports 100 micrometres thickness and 2 cm width.",
+          "code": "pass"
+        },
+        {
+          "id": "F032",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Does not supply the available independent diagnostics.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F033",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Asks for a data exclusion rather than answering the registered scoring rule.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F034",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines to calculate the available 7.9 psia lower bound.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F035",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Withholds the identifiable mapped S2C2 camera product.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F036",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Asks for more filters instead of retrieving the already identified row.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F037",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Asks for a second row to compare instead of identifying the vehicle.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F038",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Withholds the design and outcome counts available in the register.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F039",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Withholds the applicable data-structure explanation and gives no source.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F040",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "Defines normal/inverse burner direction without addressing run 21130 N5 or its zero.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F041",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "A quotation about Nomex ignition in sample 2-7 does not provide durations for samples 2-8 or 2-5.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F042",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "The prompt specifies both runs and does not require a denominator. The reply gives neither aging time nor the 223 s difference.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F043",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "The quotation concerns post-visible cool flames in a different run. It does not correct the fuel or report the duration difference.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F044",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "Cites O15a and gives the initial 17.1% only. It omits 16.7% final and the 0.4 percentage-point drop.",
+          "code": "partial"
+        },
+        {
+          "id": "F045",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Requests identifiers already provided. It omits the 17% to 21% oxygen change and the two liquid fuel blend ratios.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F046",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines an answer supported by PSI-98: two burns used the same specimen, with the second burn on its remainder.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F047",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "Cites B1 but reports film and initial oxygen; it never identifies the fan display as uncalibrated or answers the plotting question.",
+          "code": "incorrect"
+        },
+        {
+          "id": "F048",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "Identifies the correct original FLEX record and 23% oxygen but omits the nitrogen and carbon dioxide needed to reproduce the diluent.",
+          "code": "partial"
+        },
+        {
+          "id": "F049",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines an answer obtainable from the burn-4 design conditions: 25% of 8.2 psia gives 2.05 psia.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F050",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines to compare two published scoring rules. Neither the FM² no nor the opposed-PMMA void label appears.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F051",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Refuses the calculable single-burn Brier contributions, 0.04 for spreading and 0.64 for failure.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F052",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Refuses an answer available in the blind-study protocol. It gives no evidence that distinguishes completed participant trials from a planned assignment.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F053",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines an answer supported by the frame measurement: 3.5 px/s, with a validated spatial scale needed to express it in mm/s.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F054",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Starts a habitat ranking workflow although both speeds were given. It never computes the relative change in LUCI flame-base speed.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F055",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Refuses the accession lookup. The relevant catalog entries give PSI-26 for BASS and PSI-25 for BASS-II.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F056",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines a calculation fully determined by the supplied values: 18 kPa in each atmosphere.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F057",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "Cites a longer LUCI comparison but substitutes its 45-second difference and never rejects the claimed exact extinction outside the aircraft window.",
+          "code": "partial"
+        },
+        {
+          "id": "F058",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "Cites the right run but shows only Silicone. It does not identify 1923 seconds as aging or say that heater duration is unreported.",
+          "code": "incorrect"
+        },
+        {
+          "id": "F059",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.17149999999999996,
+          "reason": "Quotes a cool-flame interpretation from another run, giving no evidence about the duration or diameter for 138.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F060",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "Confirms 900 s and the correct source row, but never addresses the missing material or whether that duration can be assigned to PMMA.",
+          "code": "partial"
+        },
+        {
+          "id": "F061",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Refuses a resolvable duplicate identifier. The PSI source rows and material fields distinguish Lampwick from Teflon.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F062",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Asks for more identifiers without explaining that both identified 30 cm/s records lack extinction pressure.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F063",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines a documented comparison. It omits both the differing support and gas conditions and the different strength of post-visible cool-flame evidence.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F064",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "Gives the correct LUCI speeds and source but leaves both requested percentage reductions and the comparison for the reader to calculate.",
+          "code": "partial"
+        },
+        {
+          "id": "F065",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Refuses a comparison supported by the two BASS-II rows, omitting the flagged 40.4% reading and the 20.5% comparator.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F066",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Requests two row identifiers despite a study-level question. It omits the liquid study's missing outcome labels and the gas study's distinct ignition/termination fields.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F067",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Refuses the registered scoring scenario. It does not classify a 5.2 mm crossing at 9 s as yes and a first crossing at 11 s as no.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F068",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Refuses to classify the incomplete powered-wire observation. The registered protocol rules out a definite no when post-igniter coverage is missing.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F069",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Declines to use the specified shared-normal-threshold model, omitting the two requested model probabilities.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F070",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Asks for two archive row identifiers rather than assessing contour agreement, metric calibration or the visible-to-physical front relationship.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F071",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "The Apollo 204 Board gives a qualified answer about probable arcing and an unidentified wire, which this refusal omits.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F072",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "A Test 1 standard is available. The refusal gives none of the specimen, burn-length or debris criteria.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F073",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "The cited first row identifies Pyrell but supplies neither the missing alarm endpoints nor the 559 versus 31 second aging confound.",
+          "code": "partial"
+        },
+        {
+          "id": "F074",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Duration is already specified; the reply asks for a quantity and gives no rule for excluding missing durations and reporting coverage.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F075",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "The quote says higher oxygen but identifies no second material and gives no P213 comparison.",
+          "code": "partial"
+        },
+        {
+          "id": "F076",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "Both recorded burner oxygen percentages are identified and linked; neither burn duration nor the 15 s difference is reported.",
+          "code": "partial"
+        },
+        {
+          "id": "F077",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "The cited SAME result is relevant to alarms but never contrasts a morphology image with a measured detector signal and threshold.",
+          "code": "partial"
+        },
+        {
+          "id": "F078",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "A detector fraction for Kapton and Teflon supplies no information about an onboard Saffire-I eyewitness.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F079",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "The question already supplies the energy and mass needed for 15.2 kJ/g; requesting a full simulation leaves the result and evidentiary status unanswered.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F080",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "It establishes zero observed outcomes but does not explain why a budget year and mission target are mutable planning evidence rather than an actual burn date.",
+          "code": "partial"
+        },
+        {
+          "id": "F081",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "It returns the 24.08–27.92% prior probability interval, a different quantity from the 25–29% outcome-implied bracket.",
+          "code": "incorrect"
+        },
+        {
+          "id": "F082",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The mean, standard deviation and joint event are already specified. The request for a single oxygen setting leaves the joint probability unanswered.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F083",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The stored scoring rule would score burns 2 and 4 only; the refusal supplies no comparison or denominator policy.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F084",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It distinguishes predictions from missing official outcomes but omits the post-heater sustained-spread criterion and run conditions needed to assign success.",
+          "code": "partial"
+        },
+        {
+          "id": "F085",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The acrylic protocol specifies all-four preregistration and first-attempt rules. The refusal gives none of them.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F086",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The acrylic protocol gives a gravity acceptance bound. The refusal misses that 0.05 g requires voiding this run.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F087",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The project countercheck exists; the refusal supplies neither the predicted and measured rates nor the gas-to-solid transfer limit.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F088",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The requested comparison is between named surrogate-model errors, not an unspecified set of archive rows.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F089",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "Withholding a number is appropriate, but it does not explain that matched soot predictions and measured lunar soot values are missing or that methane oxygen is a different observable.",
+          "code": "partial"
+        },
+        {
+          "id": "F090",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "Both instrument IDs were already provided. It fails to retrieve their 1.69 and 1.86 mm diameters, difference and different logged events.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F091",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.13474999999999998,
+          "reason": "The gas-direction definition gives no changed measured input for N1 versus P1 and no causal conclusion for the pair.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F092",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "A missed-alarm fraction addresses detector performance but gives neither the source heating/aging interpretation nor the evidence needed for habitat arrival time.",
+          "code": "partial"
+        },
+        {
+          "id": "F093",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.24499999999999997,
+          "reason": "The historical fraction is relevant to Teflon misses, but it gives no next test or measurement for independently establishing aerosol presence.",
+          "code": "partial"
+        },
+        {
+          "id": "F094",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The materials and Table 2 are specified. Asking for a population misses that 1.4 and 2.3 are modeled margins.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F095",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.35,
+          "reason": "A verdict on an Earth oxygen limit does not explain fan-driven versus gravity-driven flow or give comparable test inputs.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F096",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "Asking which oxygen field was intended does not answer the stated ignition-versus-extinction mismatch or repair it.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F097",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The measurement protocol can record pixel position and time while physical speed is missing. The refusal gives no way to obtain scale or a second frame.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F098",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The nominal setup and the table reading can be compared with their units and qualifiers. The reply never explains why they cannot demonstrate pressure evolution.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F099",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The study protocol supports a paired timed task design. The refusal neither distinguishes chat accuracy from time savings nor specifies what to collect.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F100",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.17149999999999996,
+          "reason": "A single FLEX cool-flame quote neither addresses the other experiment nor explains why common units do not justify pooling, or how to group eligible events.",
+          "code": "partial"
+        }
+      ]
+    },
+    "current": {
+      "n": 100,
+      "passed": 30,
+      "numericCoverage": 100,
+      "metrics": {
+        "n": 100,
+        "passed": 30,
+        "accuracy": 0.3,
+        "accuracy95": [
+          0.2189488529493276,
+          0.3958485463334666
+        ],
+        "meanProbability": 0.7670914600000003,
+        "brier": 0.4057747495910001,
+        "logLoss": 1.1106993731403108,
+        "constantBrier": 0.4500999999999995,
+        "ece": 0.46709146,
+        "maxGap": 0.48954360000000013,
+        "eachPopulatedBinWithinTenPoints": false,
+        "reliability": [
+          {
+            "lower": 0,
+            "upper": 0.5,
+            "n": 18,
+            "passed": 0,
+            "meanProbability": 0.4462548333333333,
+            "accuracy": 0,
+            "accuracy95": [
+              0,
+              0.17587922364665765
+            ],
+            "gap": 0.4462548333333333
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.8,
+            "n": 15,
+            "passed": 4,
+            "meanProbability": 0.7562102666666668,
+            "accuracy": 0.26666666666666666,
+            "accuracy95": [
+              0.10897453325692374,
+              0.5195043405598057
+            ],
+            "gap": 0.48954360000000013
+          },
+          {
+            "lower": 0.8,
+            "upper": 1,
+            "n": 67,
+            "passed": 26,
+            "meanProbability": 0.8557224626865673,
+            "accuracy": 0.3880597014925373,
+            "accuracy95": [
+              0.28049048016711003,
+              0.5077691032787037
+            ],
+            "gap": 0.46766276119402994
+          }
+        ]
+      },
+      "rows": [
+        {
+          "id": "F001",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.80171,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Explains diffusion and forced cabin airflow, with the NASA fire-protection and candle sources.",
+          "code": "pass"
+        },
+        {
+          "id": "F002",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.8727,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The first sentence specifically identifies oxygen as the oxidizer and cites the NASA fire-protection brief.",
+          "code": "pass"
+        },
+        {
+          "id": "F003",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.857046,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Directly reports the Moon's approximately one-sixth Earth gravity and cites NASA Glenn.",
+          "code": "pass"
+        },
+        {
+          "id": "F004",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.836159,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The cited third paragraph identifies hot gas rising on Earth through buoyancy, the mechanism requested.",
+          "code": "pass"
+        },
+        {
+          "id": "F005",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.805508,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The exact 2-5 row identifies SIBAL, but a second paragraph describes Nomex/PMMA damage without distinguishing it from the requested specimen; its own citation locates that damage at 2-7.",
+          "code": "overclaim"
+        },
+        {
+          "id": "F006",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.847971,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Describes oxygen concentrations and model behavior but never names nitrogen as the balance gas.",
+          "code": "partial"
+        },
+        {
+          "id": "F007",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.859969,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Describes LUCI rather than locating the FM² wire on the fabric.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F008",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.805508,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "States that the strips measure 2 × 20 cm, with a NASA specimen-design citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F009",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.875424,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Identifies the gas burner used to emulate solid fuels and cites PSI-20.",
+          "code": "pass"
+        },
+        {
+          "id": "F010",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The sourced lunar-module shelter is omitted.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F011",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.754485,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Names SAME and explains that spacecraft materials were heated to generate smoke, with the flight paper.",
+          "code": "pass"
+        },
+        {
+          "id": "F012",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.844211,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Discusses heptane droplets in runs 120 and 155 without identifying what form the methanol samples took.",
+          "code": "partial"
+        },
+        {
+          "id": "F013",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.453275,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Requests numeric filters rather than defining opposed flow.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F014",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.842576,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Explicitly calls the gravity simulated in the LUCI experiment, answering whether it was on the lunar surface.",
+          "code": "pass"
+        },
+        {
+          "id": "F015",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.885827,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Correctly identifies PMMA in 2-8 but ends by attributing Nomex damage to “this test” after giving the 2-8 record; that damage belongs to 2-7.",
+          "code": "overclaim"
+        },
+        {
+          "id": "F016",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.812937,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Distinguishes various endpoints, but “smoke heating duration” never explains that the heater acted on the source material.",
+          "code": "partial"
+        },
+        {
+          "id": "F017",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.885827,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Identifies the electric field and cites PSI-22.",
+          "code": "pass"
+        },
+        {
+          "id": "F018",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.884569,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Explains why the scale is uncertain but never identifies the measured motion as the tracked luminous contour's image-plane speed.",
+          "code": "partial"
+        },
+        {
+          "id": "F019",
+          "level": "beginner",
+          "correct": true,
+          "probability": 0.847971,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Identifies onset of soot emission with the SPICE/PSI-107 citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F020",
+          "level": "beginner",
+          "correct": false,
+          "probability": 0.865665,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives upstream/downstream stories for other specimens without defining upstream relative to the flow.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F021",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.774861,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Connects multidirectional diffusion in a quiet cabin with forced ventilation changing flame shape, using NASA sources.",
+          "code": "pass"
+        },
+        {
+          "id": "F022",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.820146,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Quotes the identified PSI-39 row with 17% oxygen and 83% nitrogen.",
+          "code": "pass"
+        },
+        {
+          "id": "F023",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.830266,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Provides FLEX-155 and -120 evidence instead of run 92's disruption at 21.7 s.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F024",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.88696,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Cites run 113 row 110, states 2 cm/s inlet and 31 s smoke aging, and distinguishes it from the contextual run 56.",
+          "code": "pass"
+        },
+        {
+          "id": "F025",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The review board supports the explanation, which the response withholds.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F026",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Neither event is explained despite available NASA accounts.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F027",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.86102,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Explains material and particle-size dependence, including missed and strong responses in the flight paper.",
+          "code": "pass"
+        },
+        {
+          "id": "F028",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.795909,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Retrieves Saffire-III and a parabolic test instead of Saffire-I S2's 0.37 × 40.6 × 94 cm dimensions.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F029",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.777754,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives the 20 cm/s first flight, not the opposed 30 cm/s record on Saffire-III.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F030",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Requests a statistical denominator for a single qualitative duration.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F031",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.812937,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives both dimensions in the matched B1 row and labels the separate rod study.",
+          "code": "pass"
+        },
+        {
+          "id": "F032",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.851325,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives several post-visible diagnostic observations, their physical interpretation and the NASA report locator.",
+          "code": "pass"
+        },
+        {
+          "id": "F033",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Asks for a data exclusion rather than answering the registered scoring rule.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F034",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.89585,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Repeats 8.2 ± 0.3 psia but never computes the requested lower endpoint.",
+          "code": "partial"
+        },
+        {
+          "id": "F035",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.781139,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Discusses row and slide measurements used in a scenario rather than the time-stamped camera archive.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F036",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.4497,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Asks for more filters instead of retrieving the already identified row.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F037",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.891273,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Directly identifies the uncrewed Cygnus vehicle for Saffire-I, with its NASA PSI citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F038",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.883887,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Explicitly reports zero completed outcomes and four planned specimens with the design and project review.",
+          "code": "pass"
+        },
+        {
+          "id": "F039",
+          "level": "intermediate",
+          "correct": false,
+          "probability": 0.857511,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Describes FLEX-1 droplet runs and CSV labels, not FLEX-2's grouped fuel conditions or missing run linkage.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F040",
+          "level": "intermediate",
+          "correct": true,
+          "probability": 0.812937,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives the identified row's 0 s and two explicit no-hot-ignition fields with the PSI citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F041",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.900516,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives both correctly cited durations, 600 and 145 s, but never calculates the requested 455 s difference.",
+          "code": "partial"
+        },
+        {
+          "id": "F042",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.472587,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The prompt specifies both runs and does not require a denominator. The reply gives neither aging time nor the 223 s difference.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F043",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.770177,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Discusses FLEX-155 and 120 instead of 273 and 274. Neither the heptane correction nor the 4.1 s comparison appears.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F044",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.858305,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Correctly cites O15a's 17.1% initial and 16.7% final readings but does not give the requested drop of 0.4 percentage points.",
+          "code": "partial"
+        },
+        {
+          "id": "F045",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.789983,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Uses the gas-phase CFI-G study, not the requested liquid CFI runs. The cited gas burner settings cannot answer the blend question.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F046",
+          "level": "applied",
+          "correct": true,
+          "probability": 0.862271,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Identifies the second burn on the remaining fabric, explicitly describes two burns on one specimen and explains why their durations are dependent.",
+          "code": "pass"
+        },
+        {
+          "id": "F047",
+          "level": "applied",
+          "correct": true,
+          "probability": 0.886588,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Explains that the BASS-II fan readings lack a velocity calibration and therefore cannot be plotted directly in cm/s, with the PSI-25 source.",
+          "code": "pass"
+        },
+        {
+          "id": "F048",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.777754,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives the actual 52% nitrogen and 25% carbon dioxide with the correct row. It does not say that 23% oxygen alone leaves their split undetermined.",
+          "code": "partial"
+        },
+        {
+          "id": "F049",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.878819,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Cites the planned apparatus and supplies the partial-pressure rule, but gives other atmospheres as examples and never computes 2.05 psia for burn 4.",
+          "code": "partial"
+        },
+        {
+          "id": "F050",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.870179,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Correctly states that nominal FM² nonignition scores no, but omits the void label under the distinct acrylic registration and cites no acrylic protocol.",
+          "code": "partial"
+        },
+        {
+          "id": "F051",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.855268,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Cites and defines the Brier score but only gives unrelated four-burn examples; it does not calculate 0.04 versus 0.64.",
+          "code": "partial"
+        },
+        {
+          "id": "F052",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.888919,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Cites the protocol, allocation and rubric, but never identifies completed participant trial records or explicitly states that the released pilot has none.",
+          "code": "partial"
+        },
+        {
+          "id": "F053",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Declines to compute 49 pixels divided by 14 seconds or explain the missing spatial calibration.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F054",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Starts a habitat ranking workflow although both speeds were given. It never computes the relative change in LUCI flame-base speed.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F055",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.847971,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Gives and cites PSI-25 for BASS-II, but never supplies PSI-26 for BASS.",
+          "code": "partial"
+        },
+        {
+          "id": "F056",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.885128,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "States the correct formula and cites it but calculates two other examples. The requested atmospheres each give 18 kPa, a zero difference.",
+          "code": "partial"
+        },
+        {
+          "id": "F057",
+          "level": "applied",
+          "correct": true,
+          "probability": 0.865665,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Limits the 20-second run to early spread and directs the researcher to the longer LUCI observation for extinction; the proposed 40-second endpoint cannot be measured in that window.",
+          "code": "pass"
+        },
+        {
+          "id": "F058",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.820146,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Identifies 1923 seconds as aging and cites run 65a. The omitted heating field is not explicitly identified as missing, and discussion of other runs cannot fill it.",
+          "code": "partial"
+        },
+        {
+          "id": "F059",
+          "level": "applied",
+          "correct": false,
+          "probability": 0.847971,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Refers to FLEX-155 and 120, not 138. It never identifies the missing duration and initial diameter needed for the quotient.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F060",
+          "level": "applied",
+          "correct": true,
+          "probability": 0.83391,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Cites 2-9, labels the material field blank and the duration 900 seconds. Those observations directly establish that the table cannot attribute this duration to PMMA.",
+          "code": "pass"
+        },
+        {
+          "id": "F061",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.866431,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Discusses alarm threshold fractions instead of the duplicate run identifiers. It omits the row 57 Lampwick and row 75 Teflon disambiguation.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F062",
+          "level": "advanced",
+          "correct": true,
+          "probability": 0.899013,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Correctly gives the two flow directions and 30 cm/s, and explicitly says the CSV omits pressure and endpoint, ruling out an extinction-pressure comparison.",
+          "code": "pass"
+        },
+        {
+          "id": "F063",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.866859,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Identifies 120's fiber support and both runs' gas and pressure differences. It never says 155 had positive post-visible evidence while 120 lacked a definitive diagnostic.",
+          "code": "partial"
+        },
+        {
+          "id": "F064",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.863653,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The four cited speeds are correct, but neither approximate reduction, 61% versus 40%, nor the verdict that the tip slowed more is supplied.",
+          "code": "partial"
+        },
+        {
+          "id": "F065",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.458219,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Refuses a comparison supported by the two BASS-II rows, omitting the flagged 40.4% reading and the 20.5% comparator.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F066",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.859243,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Correctly distinguishes the liquid and gas datasets and the missing PSI-39 row label, but never says that PSI-159 ignition/termination alone cannot establish a cool flame or justify pooling.",
+          "code": "partial"
+        },
+        {
+          "id": "F067",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.458219,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Refuses both classifications rather than applying the registered 5 mm, 10-second rule.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F068",
+          "level": "advanced",
+          "correct": true,
+          "probability": 0.759795,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Explains that powered-wire glow does not resolve post-igniter spread and that an unclassifiable or sensor-fault event is void. It distinguishes a valid observed negative.",
+          "code": "pass"
+        },
+        {
+          "id": "F069",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.902076,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Cites the right normal-CDF rule and parameters but reports only the four planned atmospheres. It never computes 84.13% and 15.87% at the two requested levels.",
+          "code": "partial"
+        },
+        {
+          "id": "F070",
+          "level": "advanced",
+          "correct": true,
+          "probability": 0.875424,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Distinguishes threshold sensitivity from specimen-plane scale and links projected light to a separately defined material front. It explains why the result remains in pixels per second.",
+          "code": "pass"
+        },
+        {
+          "id": "F071",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The Apollo 204 Board gives a qualified answer about probable arcing and an unidentified wire, which this refusal omits.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F072",
+          "level": "advanced",
+          "correct": true,
+          "probability": 0.880293,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It cites Test 1 sections, gives at least five specimens plus burn-length and flaming-debris criteria, and limits the five-second finding.",
+          "code": "pass"
+        },
+        {
+          "id": "F073",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.809445,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It identifies source inlet velocity, absent alarm time and 559 s for 107a, but never retrieves run 113 or its 31 s aging time.",
+          "code": "partial"
+        },
+        {
+          "id": "F074",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.431906,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Duration is already specified; the reply asks for a quantity and gives no rule for excluding missing durations and reporting coverage.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F075",
+          "level": "advanced",
+          "correct": true,
+          "probability": 0.787831,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Both examples and directions are given with a page locator and the different Earth comparators. Its final reservation is compatible with rejecting a universal correction.",
+          "code": "pass"
+        },
+        {
+          "id": "F076",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.862674,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It cites N1 at 55 s and 50% burner oxygen but substitutes a different A1/A2 pair for P1, so the 40 s, 30%, and 15 s difference are missing.",
+          "code": "partial"
+        },
+        {
+          "id": "F077",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.850611,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It identifies the appropriate signal-versus-threshold experiment but does not state what the unaged micrograph can establish or reject the proposed inference.",
+          "code": "partial"
+        },
+        {
+          "id": "F078",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.818877,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The reply discusses SAME detectors and never identifies the uncrewed Cygnus test vehicle or answers whether a witness existed.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F079",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.80978,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It correctly identifies a prescribed worked scenario and supplies the mass/energy inputs but never performs the requested 15.2 kJ/g division.",
+          "code": "partial"
+        },
+        {
+          "id": "F080",
+          "level": "advanced",
+          "correct": false,
+          "probability": 0.69914,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It establishes zero observed outcomes but does not explain why a budget year and mission target are mutable planning evidence rather than an actual burn date.",
+          "code": "partial"
+        },
+        {
+          "id": "F081",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.62897,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It returns the 24.08–27.92% prior probability interval, a different quantity from the 25–29% outcome-implied bracket.",
+          "code": "incorrect"
+        },
+        {
+          "id": "F082",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.461093,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The mean, standard deviation and joint event are already specified. The request for a single oxygen setting leaves the joint probability unanswered.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F083",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.802581,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It states the correct general common-index rule but does not identify burns 2 and 4 at 33% and 25%, report 2/4, or apply that rule to the scenario.",
+          "code": "partial"
+        },
+        {
+          "id": "F084",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.678955,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It distinguishes predictions from missing official outcomes but omits the post-heater sustained-spread criterion and run conditions needed to assign success.",
+          "code": "partial"
+        },
+        {
+          "id": "F085",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.86102,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It describes the FM² lunar design instead of the separate acrylic eligibility protocol and answers neither retroactive inclusion nor replacement of a void specimen.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F086",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.857511,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "LUCI fabric spread and habitat ranking do not apply the acrylic replication limit below 0.03 g or decide this run is void.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F087",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.770177,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Actual LUCI base and tip speeds do not furnish the requested SIBAL concurrent-flow held-out prediction of about 1.30 versus 1.8 mm/s or scope the methane result.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F088",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.442564,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The requested comparison is between named surrogate-model errors, not an unspecified set of archive rows.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F089",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.857511,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It discusses why simulator agreement cannot establish measured fire validity, but never identifies the absent measured lunar soot observations or answers whether a soot error is calculable.",
+          "code": "partial"
+        },
+        {
+          "id": "F090",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.824315,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Both diameters and disruption/extinction classifications are correctly sourced, but the requested derived difference of 0.17 mm larger in 20CAL10 is absent.",
+          "code": "partial"
+        },
+        {
+          "id": "F091",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.796224,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It shows the 2.982 mg/s value at N1, then switches to run 21202. It never compares P1's roughly 1.83 mg/s or identifies the confound for the requested pair.",
+          "code": "partial"
+        },
+        {
+          "id": "F092",
+          "level": "challenge",
+          "correct": true,
+          "probability": 0.873422,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It identifies heating as a source setting and net aging as an experimental condition, explicitly rejects a lunar time-to-alarm, and calls for matched detector thresholds and transport under ventilation.",
+          "code": "pass"
+        },
+        {
+          "id": "F093",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.851848,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The size dependence and cabin limit are sourced, but it proposes no matched aerosol amount/size measurement alongside detector signals to distinguish absent smoke from a missed signal.",
+          "code": "partial"
+        },
+        {
+          "id": "F094",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.467583,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The materials and Table 2 are specified. Asking for a population misses that 1.4 and 2.3 are modeled margins.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F095",
+          "level": "challenge",
+          "correct": true,
+          "probability": 0.86913,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It distinguishes gravity-driven natural convection from forced ventilation, then identifies flow/direction, specimen geometry and material, oxygen, gravity and tracked front position as comparison evidence.",
+          "code": "pass"
+        },
+        {
+          "id": "F096",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.482193,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "Asking which oxygen field was intended does not answer the stated ignition-versus-extinction mismatch or repair it.",
+          "code": "false_abstention"
+        },
+        {
+          "id": "F097",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.878377,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It substitutes Saffire scenario speeds and a human study for the requested pixel-coordinate, elapsed-time and physical-scale record.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F098",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.888748,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It converts 2.0 atm correctly and distinguishes the nominal setup from PSI's approximate initial value, but never identifies the need for same-run measurements at different times to establish a transient.",
+          "code": "partial"
+        },
+        {
+          "id": "F099",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.864799,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "It describes assigning participants both methods and common scoring, but never states what paired elapsed times to record and subtract. An equal time limit is not an observed duration.",
+          "code": "partial"
+        },
+        {
+          "id": "F100",
+          "level": "challenge",
+          "correct": false,
+          "probability": 0.802418,
+          "model": "reply-pass-v1-2acff8cea0e2",
+          "reason": "The FLEX discussion gives useful optical and droplet caveats but omits the Saffire fabric time definition and how to separate incompatible endpoint groups.",
+          "code": "partial"
+        }
+      ]
+    },
+    "selector": {
+      "n": 100,
+      "passed": 38,
+      "numericCoverage": 0,
+      "metrics": null,
+      "rows": [
+        {
+          "id": "F001",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Explains diffusion and forced cabin airflow, with the NASA fire-protection and candle sources.",
+          "code": "pass"
+        },
+        {
+          "id": "F002",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "The first sentence specifically identifies oxygen as the oxidizer and cites the NASA fire-protection brief.",
+          "code": "pass"
+        },
+        {
+          "id": "F003",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Directly reports the Moon's approximately one-sixth Earth gravity and cites NASA Glenn.",
+          "code": "pass"
+        },
+        {
+          "id": "F004",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "The cited third paragraph identifies hot gas rising on Earth through buoyancy, the mechanism requested.",
+          "code": "pass"
+        },
+        {
+          "id": "F005",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "The exact 2-5 row identifies SIBAL, but a second paragraph describes Nomex/PMMA damage without distinguishing it from the requested specimen; its own citation locates that damage at 2-7.",
+          "code": "overclaim"
+        },
+        {
+          "id": "F006",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Describes oxygen concentrations and model behavior but never names nitrogen as the balance gas.",
+          "code": "partial"
+        },
+        {
+          "id": "F007",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Describes LUCI rather than locating the FM² wire on the fabric.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F008",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "States that the strips measure 2 × 20 cm, with a NASA specimen-design citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F009",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Identifies the gas burner used to emulate solid fuels and cites PSI-20.",
+          "code": "pass"
+        },
+        {
+          "id": "F010",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Identifies the lunar module as shelter and cites NASA's account.",
+          "code": "pass"
+        },
+        {
+          "id": "F011",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Names SAME and explains that spacecraft materials were heated to generate smoke, with the flight paper.",
+          "code": "pass"
+        },
+        {
+          "id": "F012",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Discusses heptane droplets in runs 120 and 155 without identifying what form the methanol samples took.",
+          "code": "partial"
+        },
+        {
+          "id": "F013",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Uses the term opposed repeatedly but never explains the gas and front move in opposite directions.",
+          "code": "partial"
+        },
+        {
+          "id": "F014",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Explicitly calls the gravity simulated in the LUCI experiment, answering whether it was on the lunar surface.",
+          "code": "pass"
+        },
+        {
+          "id": "F015",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Correctly identifies PMMA in 2-8 but ends by attributing Nomex damage to “this test” after giving the 2-8 record; that damage belongs to 2-7.",
+          "code": "overclaim"
+        },
+        {
+          "id": "F016",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Distinguishes various endpoints, but “smoke heating duration” never explains that the heater acted on the source material.",
+          "code": "partial"
+        },
+        {
+          "id": "F017",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Identifies the electric field and cites PSI-22.",
+          "code": "pass"
+        },
+        {
+          "id": "F018",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Explains why the scale is uncertain but never identifies the measured motion as the tracked luminous contour's image-plane speed.",
+          "code": "partial"
+        },
+        {
+          "id": "F019",
+          "level": "beginner",
+          "correct": true,
+          "probability": null,
+          "reason": "Identifies onset of soot emission with the SPICE/PSI-107 citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F020",
+          "level": "beginner",
+          "correct": false,
+          "probability": null,
+          "reason": "Gives upstream/downstream stories for other specimens without defining upstream relative to the flow.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F021",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Connects multidirectional diffusion in a quiet cabin with forced ventilation changing flame shape, using NASA sources.",
+          "code": "pass"
+        },
+        {
+          "id": "F022",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Quotes the identified PSI-39 row with 17% oxygen and 83% nitrogen.",
+          "code": "pass"
+        },
+        {
+          "id": "F023",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Provides FLEX-155 and -120 evidence instead of run 92's disruption at 21.7 s.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F024",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Cites run 113 row 110, states 2 cm/s inlet and 31 s smoke aging, and distinguishes it from the contextual run 56.",
+          "code": "pass"
+        },
+        {
+          "id": "F025",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Explains how rising pressure held the inward-opening hatch closed and cites the review board.",
+          "code": "pass"
+        },
+        {
+          "id": "F026",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Explains the Apollo 1 ground test but omits Apollo 13 entirely.",
+          "code": "partial"
+        },
+        {
+          "id": "F027",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Explains material and particle-size dependence, including missed and strong responses in the flight paper.",
+          "code": "pass"
+        },
+        {
+          "id": "F028",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Retrieves Saffire-III and a parabolic test instead of Saffire-I S2's 0.37 × 40.6 × 94 cm dimensions.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F029",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Gives the 20 cm/s first flight, not the opposed 30 cm/s record on Saffire-III.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F030",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "The exact 2-4 row explicitly says insignificant, no numeric duration; the other sample is identified separately.",
+          "code": "pass"
+        },
+        {
+          "id": "F031",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Gives both dimensions in the matched B1 row and labels the separate rod study.",
+          "code": "pass"
+        },
+        {
+          "id": "F032",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Gives several post-visible diagnostic observations, their physical interpretation and the NASA report locator.",
+          "code": "pass"
+        },
+        {
+          "id": "F033",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Imports FM²'s nominal failed-ignition “no” rule; the opposed acrylic registration instead prescribes void.",
+          "code": "incorrect"
+        },
+        {
+          "id": "F034",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Repeats 8.2 ± 0.3 psia but never computes the requested lower endpoint.",
+          "code": "partial"
+        },
+        {
+          "id": "F035",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Discusses row and slide measurements used in a scenario rather than the time-stamped camera archive.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F036",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Cites run 21216 A4, row 45, with 36 s, ethane and its correct position surrounding the oxidizer burner.",
+          "code": "pass"
+        },
+        {
+          "id": "F037",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Directly identifies the uncrewed Cygnus vehicle for Saffire-I, with its NASA PSI citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F038",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Explicitly reports zero completed outcomes and four planned specimens with the design and project review.",
+          "code": "pass"
+        },
+        {
+          "id": "F039",
+          "level": "intermediate",
+          "correct": false,
+          "probability": null,
+          "reason": "Describes FLEX-1 droplet runs and CSV labels, not FLEX-2's grouped fuel conditions or missing run linkage.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F040",
+          "level": "intermediate",
+          "correct": true,
+          "probability": null,
+          "reason": "Gives the identified row's 0 s and two explicit no-hot-ignition fields with the PSI citation.",
+          "code": "pass"
+        },
+        {
+          "id": "F041",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Gives both correctly cited durations, 600 and 145 s, but never calculates the requested 455 s difference.",
+          "code": "partial"
+        },
+        {
+          "id": "F042",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "The cited 51a record supplies 261 s, but run 51's 38 s aging and the 223 s difference are missing.",
+          "code": "partial"
+        },
+        {
+          "id": "F043",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Discusses FLEX-155 and 120 instead of 273 and 274. Neither the heptane correction nor the 4.1 s comparison appears.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F044",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Correctly cites O15a's 17.1% initial and 16.7% final readings but does not give the requested drop of 0.4 percentage points.",
+          "code": "partial"
+        },
+        {
+          "id": "F045",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Uses the gas-phase CFI-G study, not the requested liquid CFI runs. The cited gas burner settings cannot answer the blend question.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F046",
+          "level": "applied",
+          "correct": true,
+          "probability": null,
+          "reason": "Identifies the second burn on the remaining fabric, explicitly describes two burns on one specimen and explains why their durations are dependent.",
+          "code": "pass"
+        },
+        {
+          "id": "F047",
+          "level": "applied",
+          "correct": true,
+          "probability": null,
+          "reason": "Explains that the BASS-II fan readings lack a velocity calibration and therefore cannot be plotted directly in cm/s, with the PSI-25 source.",
+          "code": "pass"
+        },
+        {
+          "id": "F048",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Gives the actual 52% nitrogen and 25% carbon dioxide with the correct row. It does not say that 23% oxygen alone leaves their split undetermined.",
+          "code": "partial"
+        },
+        {
+          "id": "F049",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Cites the planned apparatus and supplies the partial-pressure rule, but gives other atmospheres as examples and never computes 2.05 psia for burn 4.",
+          "code": "partial"
+        },
+        {
+          "id": "F050",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Correctly states that nominal FM² nonignition scores no, but omits the void label under the distinct acrylic registration and cites no acrylic protocol.",
+          "code": "partial"
+        },
+        {
+          "id": "F051",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Cites and defines the Brier score but only gives unrelated four-burn examples; it does not calculate 0.04 versus 0.64.",
+          "code": "partial"
+        },
+        {
+          "id": "F052",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Cites the protocol, allocation and rubric, but never identifies completed participant trial records or explicitly states that the released pilot has none.",
+          "code": "partial"
+        },
+        {
+          "id": "F053",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Correctly gives 3.50 px/s and cites the frames. A pre-flight checkerboard and a physical-front definition do not explain the need for a validated flight-plane scale before reporting mm/s.",
+          "code": "partial"
+        },
+        {
+          "id": "F054",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Cites the correct 0.9 versus 1.5 mm/s speeds but does not compute 40% slower, 0.6 times the ground speed, or the absolute difference.",
+          "code": "partial"
+        },
+        {
+          "id": "F055",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Gives and cites PSI-25 for BASS-II, but never supplies PSI-26 for BASS.",
+          "code": "partial"
+        },
+        {
+          "id": "F056",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "States the correct formula and cites it but calculates two other examples. The requested atmospheres each give 18 kPa, a zero difference.",
+          "code": "partial"
+        },
+        {
+          "id": "F057",
+          "level": "applied",
+          "correct": true,
+          "probability": null,
+          "reason": "Limits the 20-second run to early spread and directs the researcher to the longer LUCI observation for extinction; the proposed 40-second endpoint cannot be measured in that window.",
+          "code": "pass"
+        },
+        {
+          "id": "F058",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Identifies 1923 seconds as aging and cites run 65a. The omitted heating field is not explicitly identified as missing, and discussion of other runs cannot fill it.",
+          "code": "partial"
+        },
+        {
+          "id": "F059",
+          "level": "applied",
+          "correct": false,
+          "probability": null,
+          "reason": "Refers to FLEX-155 and 120, not 138. It never identifies the missing duration and initial diameter needed for the quotient.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F060",
+          "level": "applied",
+          "correct": true,
+          "probability": null,
+          "reason": "Cites 2-9, labels the material field blank and the duration 900 seconds. Those observations directly establish that the table cannot attribute this duration to PMMA.",
+          "code": "pass"
+        },
+        {
+          "id": "F061",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Discusses alarm threshold fractions instead of the duplicate run identifiers. It omits the row 57 Lampwick and row 75 Teflon disambiguation.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F062",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "Correctly gives the two flow directions and 30 cm/s, and explicitly says the CSV omits pressure and endpoint, ruling out an extinction-pressure comparison.",
+          "code": "pass"
+        },
+        {
+          "id": "F063",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Identifies 120's fiber support and both runs' gas and pressure differences. It never says 155 had positive post-visible evidence while 120 lacked a definitive diagnostic.",
+          "code": "partial"
+        },
+        {
+          "id": "F064",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "The four cited speeds are correct, but neither approximate reduction, 61% versus 40%, nor the verdict that the tip slowed more is supplied.",
+          "code": "partial"
+        },
+        {
+          "id": "F065",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "Juxtaposes the 40.4% and 20.5% final values at the same start and explicitly flags T28b's unusually large change for flight-record review.",
+          "code": "pass"
+        },
+        {
+          "id": "F066",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Correctly distinguishes the liquid and gas datasets and the missing PSI-39 row label, but never says that PSI-159 ignition/termination alone cannot establish a cool flame or justify pooling.",
+          "code": "partial"
+        },
+        {
+          "id": "F067",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Discusses historical PMMA and Nomex studies instead of the proposed registration. Neither the 5 mm within 10 s criterion nor either event label appears.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F068",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "Explains that powered-wire glow does not resolve post-igniter spread and that an unclassifiable or sensor-fault event is void. It distinguishes a valid observed negative.",
+          "code": "pass"
+        },
+        {
+          "id": "F069",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "Cites the right normal-CDF rule and parameters but reports only the four planned atmospheres. It never computes 84.13% and 15.87% at the two requested levels.",
+          "code": "partial"
+        },
+        {
+          "id": "F070",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "Distinguishes threshold sensitivity from specimen-plane scale and links projected light to a separately defined material front. It explains why the result remains in pixels per second.",
+          "code": "pass"
+        },
+        {
+          "id": "F071",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "The board citation supports probable electrical arcing and expressly leaves the initiating wire unidentified. The FM² paragraph is extraneous.",
+          "code": "pass"
+        },
+        {
+          "id": "F072",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "It cites Test 1 sections, gives at least five specimens plus burn-length and flaming-debris criteria, and limits the five-second finding.",
+          "code": "pass"
+        },
+        {
+          "id": "F073",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "It identifies source inlet velocity, absent alarm time and 559 s for 107a, but never retrieves run 113 or its 31 s aging time.",
+          "code": "partial"
+        },
+        {
+          "id": "F074",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "The FLEX passages document visible burning in 155/120 but never state how missing durations affect the average or denominator.",
+          "code": "partial"
+        },
+        {
+          "id": "F075",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "It names polycarbonate and Nomex Velcro, contrasts the direction against WSTF with P213, and cites the relevant paper pages.",
+          "code": "pass"
+        },
+        {
+          "id": "F076",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "It cites N1 at 55 s and 50% burner oxygen but substitutes a different A1/A2 pair for P1, so the 40 s, 30%, and 15 s difference are missing.",
+          "code": "partial"
+        },
+        {
+          "id": "F077",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "It identifies the appropriate signal-versus-threshold experiment but does not state what the unaged micrograph can establish or reject the proposed inference.",
+          "code": "partial"
+        },
+        {
+          "id": "F078",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "The reply discusses SAME detectors and never identifies the uncrewed Cygnus test vehicle or answers whether a witness existed.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F079",
+          "level": "advanced",
+          "correct": false,
+          "probability": null,
+          "reason": "It correctly identifies a prescribed worked scenario and supplies the mass/energy inputs but never performs the requested 15.2 kJ/g division.",
+          "code": "partial"
+        },
+        {
+          "id": "F080",
+          "level": "advanced",
+          "correct": true,
+          "probability": null,
+          "reason": "It distinguishes a budget plan from a launch commitment and an actual burn, gives the unresolved flight status, and requires an official traceable outcome.",
+          "code": "pass"
+        },
+        {
+          "id": "F081",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It recognizes one shared limit and gives the starting settings, but never derives the 25–29% binary-outcome bracket or explains the limit is not identified exactly.",
+          "code": "partial"
+        },
+        {
+          "id": "F082",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It gives the one-burn CDF and 25.25% marginal value but never shows why all four reduce to L below 25% or why multiplying is invalid.",
+          "code": "partial"
+        },
+        {
+          "id": "F083",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It states the correct general common-index rule but does not identify burns 2 and 4 at 33% and 25%, report 2/4, or apply that rule to the scenario.",
+          "code": "partial"
+        },
+        {
+          "id": "F084",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The modeled travel and NASA geometry are sourced but the reply never specifies observed post-igniter spread in an attributable nominal run as the success requirement.",
+          "code": "partial"
+        },
+        {
+          "id": "F085",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It describes the FM² lunar design instead of the separate acrylic eligibility protocol and answers neither retroactive inclusion nor replacement of a void specimen.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F086",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "LUCI fabric spread and habitat ranking do not apply the acrylic replication limit below 0.03 g or decide this run is void.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F087",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "Actual LUCI base and tip speeds do not furnish the requested SIBAL concurrent-flow held-out prediction of about 1.30 versus 1.8 mm/s or scope the methane result.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F088",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It correctly names the structured lookup promotion comparator and the drop decision but omits both held-out MAEs of about 0.1385 and 0.000704 percentage points.",
+          "code": "partial"
+        },
+        {
+          "id": "F089",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It discusses why simulator agreement cannot establish measured fire validity, but never identifies the absent measured lunar soot observations or answers whether a soot error is calculable.",
+          "code": "partial"
+        },
+        {
+          "id": "F090",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The correct two rows and event labels are shown, but the reply leaves the reader to calculate the specifically requested 0.17 mm difference.",
+          "code": "partial"
+        },
+        {
+          "id": "F091",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The 2.982 mg/s N1 value is sourced, but the cited second pair is 21202. The P1 flow and the actual concentration/flow confound are missing.",
+          "code": "partial"
+        },
+        {
+          "id": "F092",
+          "level": "challenge",
+          "correct": true,
+          "probability": null,
+          "reason": "It identifies heating as a source setting and net aging as an experimental condition, explicitly rejects a lunar time-to-alarm, and calls for matched detector thresholds and transport under ventilation.",
+          "code": "pass"
+        },
+        {
+          "id": "F093",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "The size dependence and cabin limit are sourced, but it proposes no matched aerosol amount/size measurement alongside detector signals to distinguish absent smoke from a missed signal.",
+          "code": "partial"
+        },
+        {
+          "id": "F094",
+          "level": "challenge",
+          "correct": true,
+          "probability": null,
+          "reason": "It explains directly that both Table 2 numbers are worst-case extrapolated adjustments, so their stated arithmetic difference cannot represent a measured material difference.",
+          "code": "pass"
+        },
+        {
+          "id": "F095",
+          "level": "challenge",
+          "correct": true,
+          "probability": null,
+          "reason": "It distinguishes gravity-driven natural convection from forced ventilation, then identifies flow/direction, specimen geometry and material, oxygen, gravity and tracked front position as comparison evidence.",
+          "code": "pass"
+        },
+        {
+          "id": "F096",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It gives examples of incompatible duration and spread measurements but never specifies a common ignition/extinction outcome and timing for the proposed comparison.",
+          "code": "partial"
+        },
+        {
+          "id": "F097",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It substitutes Saffire scenario speeds and a human study for the requested pixel-coordinate, elapsed-time and physical-scale record.",
+          "code": "off_topic"
+        },
+        {
+          "id": "F098",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It converts 2.0 atm correctly and distinguishes the nominal setup from PSI's approximate initial value, but never identifies the need for same-run measurements at different times to establish a transient.",
+          "code": "partial"
+        },
+        {
+          "id": "F099",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It describes assigning participants both methods and common scoring, but never states what paired elapsed times to record and subtract. An equal time limit is not an observed duration.",
+          "code": "partial"
+        },
+        {
+          "id": "F100",
+          "level": "challenge",
+          "correct": false,
+          "probability": null,
+          "reason": "It explains a FLEX endpoint and matched droplet conditions but never distinguishes Saffire solid-fabric duration or gives the within-endpoint analysis and handling of nonextinction events.",
+          "code": "partial"
+        }
+      ]
+    }
+  }
+}

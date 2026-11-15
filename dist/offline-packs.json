@@ -3,6 +3,13 @@
   "folder": "FIRST-FIRE",
   "schema": "first-fire.offline-packs.v1",
   "supplements": {
+    "first-fire-chat-audit-pack.zip": {
+      "bytes": 1090987,
+      "files": {
+        "fresh-chat-audit.zip": "71d6ca158a6ff550f5b9bb95d14112094f37c3e350b9faa4b3955e16fb643b8d"
+      },
+      "sha256": "9fe2b7755c3c9cda93803a04a574284cdf2c89309e5007a1404ba73bbf410241"
+    },
     "first-fire-rover-agencies.zip": {
       "bytes": 15623327,
       "files": {

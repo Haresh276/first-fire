@@ -1,0 +1,1140 @@
+{
+  "description": "Same untouched B answers and semantic judgments under both fits. The stronger fit is the recorded before-grading estimate. The earlier 0.6B-era estimator is replayed on the identical final turns and was fitted for another model/rubric.",
+  "traceSHA256": "da656e0b9cf52914fec2727f3954ba36a918323a54bd63127c12b9bd72f8a308",
+  "gradesSHA256": "b09c66fa26de7fec8d913c2dc4c6520d1d809159571e5c3ef7b040b8b684431c",
+  "mappingSHA256": "c33fc2ade40deef03f888a51aa4d7270ef4ac42f932af6dbe3dd0d4623ddf7d3",
+  "model": "reply-v2-d392a5fac78a",
+  "oldModel": "reply-pass-v1-2acff8cea0e2",
+  "comparisonPrevalence": 0.38571428571428573,
+  "numericUI": 0,
+  "current": {
+    "n": 100,
+    "passed": 44,
+    "accuracy": 0.44,
+    "accuracy95": [
+      0.34672026630160796,
+      0.5377189534832302
+    ],
+    "meanProbability": 0.35582263999999997,
+    "brier": 0.13663210488470004,
+    "logLoss": 0.40984670622633784,
+    "constantBrier": 0.24934693877551037,
+    "ece": 0.08417736000000002,
+    "maxGap": 0.15085100000000007,
+    "eachPopulatedBinWithinTenPoints": false,
+    "reliability": [
+      {
+        "lower": 0,
+        "upper": 0.5,
+        "n": 49,
+        "passed": 7,
+        "meanProbability": 0.12807479591836737,
+        "accuracy": 0.14285714285714285,
+        "accuracy95": [
+          0.0709642372040676,
+          0.26667706223914406
+        ],
+        "gap": 0.014782346938775476
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.8,
+        "n": 51,
+        "passed": 37,
+        "meanProbability": 0.5746391960784313,
+        "accuracy": 0.7254901960784313,
+        "accuracy95": [
+          0.5905334923922092,
+          0.8288572476535512
+        ],
+        "gap": 0.15085100000000007
+      },
+      {
+        "lower": 0.8,
+        "upper": 1,
+        "n": 0,
+        "passed": 0,
+        "meanProbability": null,
+        "accuracy": null,
+        "accuracy95": null,
+        "gap": null
+      }
+    ],
+    "calibrationInTheLarge": -0.08417736000000003,
+    "highConfidenceMisses": []
+  },
+  "previous": {
+    "n": 100,
+    "passed": 44,
+    "accuracy": 0.44,
+    "accuracy95": [
+      0.34672026630160796,
+      0.5377189534832302
+    ],
+    "meanProbability": 0.6780480699999996,
+    "brier": 0.19871022985923006,
+    "logLoss": 0.5965853952806844,
+    "constantBrier": 0.24934693877551037,
+    "ece": 0.23804807000000003,
+    "maxGap": 0.423963487179487,
+    "eachPopulatedBinWithinTenPoints": false,
+    "reliability": [
+      {
+        "lower": 0,
+        "upper": 0.5,
+        "n": 39,
+        "passed": 0,
+        "meanProbability": 0.423963487179487,
+        "accuracy": 0,
+        "accuracy95": [
+          0,
+          0.08966685370757144
+        ],
+        "gap": 0.423963487179487
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.8,
+        "n": 9,
+        "passed": 4,
+        "meanProbability": 0.7428145555555555,
+        "accuracy": 0.4444444444444444,
+        "accuracy95": [
+          0.18877852109766452,
+          0.733348706504507
+        ],
+        "gap": 0.2983701111111111
+      },
+      {
+        "lower": 0.8,
+        "upper": 1,
+        "n": 52,
+        "passed": 40,
+        "meanProbability": 0.8574019230769233,
+        "accuracy": 0.7692307692307693,
+        "accuracy95": [
+          0.6386621744190016,
+          0.8627573907450726
+        ],
+        "gap": 0.08817115384615404
+      }
+    ],
+    "calibrationInTheLarge": 0.23804806999999956,
+    "highConfidenceMisses": [
+      "G019",
+      "G029",
+      "G041",
+      "G048",
+      "G055",
+      "G056",
+      "G057",
+      "G063",
+      "G070",
+      "G073",
+      "G077",
+      "G097"
+    ]
+  },
+  "rows": [
+    {
+      "id": "G001",
+      "level": "beginner",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "8a64d61ad359d979f52e2f1d95e516ce0c2eba848bc8578d09b30a61bf0262d2"
+    },
+    {
+      "id": "G002",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.590249,
+      "previousProbability": 0.846817,
+      "percentageDisplayed": false,
+      "decision": "87223287a248a2a4740d34c79edc6de9dad5b93fdf50ffe8ff4ce6f298308e62"
+    },
+    {
+      "id": "G003",
+      "level": "beginner",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.056785,
+      "previousProbability": 0.462491,
+      "percentageDisplayed": false,
+      "decision": "fbcd10b78c71e6092a6e01bfa33d3bf593252929920c33fb6ed1b1f0972c847f"
+    },
+    {
+      "id": "G004",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.577932,
+      "previousProbability": 0.836964,
+      "percentageDisplayed": false,
+      "decision": "b877c05eb29658ac6a5ab7186ee6ed7eabd7b6afcc3467179d70d54b8a1f7542"
+    },
+    {
+      "id": "G005",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.621714,
+      "previousProbability": 0.818826,
+      "percentageDisplayed": false,
+      "decision": "5a441b04246712a84ccb9951aa2dd3b37330f4159cb954312e8d5091c39918e1"
+    },
+    {
+      "id": "G006",
+      "level": "beginner",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.332269,
+      "percentageDisplayed": false,
+      "decision": "1d8be1f9238046d15c62534991ec3868a28240fe4111207ad40306a444752cbb"
+    },
+    {
+      "id": "G007",
+      "level": "beginner",
+      "correct": false,
+      "code": "partial",
+      "newProbability": 0.531468,
+      "previousProbability": 0.795909,
+      "percentageDisplayed": false,
+      "decision": "dc94e4547f045d9ea98727ec124f78e8d744841bdf6c13f23e93fb9685c13c9b"
+    },
+    {
+      "id": "G008",
+      "level": "beginner",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "3f733030fb094a2698d01a3f4f2055658e2a4b83461d48c5e874cd3c5dc97cd0"
+    },
+    {
+      "id": "G009",
+      "level": "beginner",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.066496,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "6d6688bfd3935f28af60c7ffdb26f74c4fcdf7122f21b5b442c17b878adec850"
+    },
+    {
+      "id": "G010",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.574217,
+      "previousProbability": 0.83391,
+      "percentageDisplayed": false,
+      "decision": "bcba266512f5173a00acdcd806af919c367edf4ec3a1c057e63d6ee77c7e49ce"
+    },
+    {
+      "id": "G011",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.549883,
+      "previousProbability": 0.865665,
+      "percentageDisplayed": false,
+      "decision": "aaa80343396ebb8f75a3d7d8d9822681d22fe4d54439ddebe04e491f001fc7eb"
+    },
+    {
+      "id": "G012",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.574217,
+      "previousProbability": 0.83391,
+      "percentageDisplayed": false,
+      "decision": "abcef30d22b83e9a248775b275cd890797c9786ef8e2ff8ae8bb9dfd76325094"
+    },
+    {
+      "id": "G013",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.505867,
+      "previousProbability": 0.73404,
+      "percentageDisplayed": false,
+      "decision": "fc5ddaba23c00cd5a581e449e4a190a9b5d6c0c7b7b41e0968414bc636921fbf"
+    },
+    {
+      "id": "G014",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.621714,
+      "previousProbability": 0.908572,
+      "percentageDisplayed": false,
+      "decision": "d9eb21ff26ffb9cd38931aaec1b6206f7e087614bbd96f4bd2738ca80c590dc3"
+    },
+    {
+      "id": "G015",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.574217,
+      "previousProbability": 0.83391,
+      "percentageDisplayed": false,
+      "decision": "cd1605d03586207ef2e90a60fba070d0e5e26c987d392a7c34ec7b13a3706fd7"
+    },
+    {
+      "id": "G016",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.549883,
+      "previousProbability": 0.820146,
+      "percentageDisplayed": false,
+      "decision": "255e08f60f56f910fcc754cf335b059fae9f248ab630cde85626a2730fcbf2d0"
+    },
+    {
+      "id": "G017",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.598196,
+      "previousProbability": 0.852957,
+      "percentageDisplayed": false,
+      "decision": "b9aa6bc7cd17afac22ed7707b1f787ff7126ca0c8421af5f00b642431ce1ed47"
+    },
+    {
+      "id": "G018",
+      "level": "beginner",
+      "correct": false,
+      "code": "incorrect",
+      "newProbability": 0.387673,
+      "previousProbability": 0.713819,
+      "percentageDisplayed": false,
+      "decision": "5e0a16c4efc8324ef0176e5f44d504e49f490a68b2a046e9babf7e0b9d6453cc"
+    },
+    {
+      "id": "G019",
+      "level": "beginner",
+      "correct": false,
+      "code": "incorrect",
+      "newProbability": 0.53516,
+      "previousProbability": 0.850611,
+      "percentageDisplayed": false,
+      "decision": "9b86d76574b813ef96718ed8ea2b2599a0d6be69f789e0851d90a5ed63f24eb3"
+    },
+    {
+      "id": "G020",
+      "level": "beginner",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.598196,
+      "previousProbability": 0.796414,
+      "percentageDisplayed": false,
+      "decision": "03975b6b701d0ef762c6413ea73bd96ca43e92ceb023285aa2b20b6a7c352a8a"
+    },
+    {
+      "id": "G021",
+      "level": "intermediate",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.057135,
+      "previousProbability": 0.4497,
+      "percentageDisplayed": false,
+      "decision": "8d9150babdaf8d7f7b579153fd2aa985c223f4e07974dd24b2e6e31ba40c5f54"
+    },
+    {
+      "id": "G022",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.652751,
+      "previousProbability": 0.846817,
+      "percentageDisplayed": false,
+      "decision": "2f43dd45147f262ae25b6cf2848a2cd1a3a47f4eab0d4c94b59b76355f7e3418"
+    },
+    {
+      "id": "G023",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.57076,
+      "previousProbability": 0.836964,
+      "percentageDisplayed": false,
+      "decision": "09637fcb62747f82ba8ee9bdd3cdcf45929943468b5fcbb474d9273167b6695c"
+    },
+    {
+      "id": "G024",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.592635,
+      "previousProbability": 0.901116,
+      "percentageDisplayed": false,
+      "decision": "ca4f7488b3bbe22423fc06a32a9bdd771a7c9e803d3ddd6cf42d3cbb8fe6c551"
+    },
+    {
+      "id": "G025",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.633598,
+      "previousProbability": 0.901816,
+      "percentageDisplayed": false,
+      "decision": "30351472e605d6b21f2a591622230e3ccb4ebd3fd4919d48062ba821d7cda1d7"
+    },
+    {
+      "id": "G026",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.596033,
+      "previousProbability": 0.894619,
+      "percentageDisplayed": false,
+      "decision": "c381bfcac0f94717264d9fc6760f8dd6d4f03f7952e32614fa44bbe6957bb2d3"
+    },
+    {
+      "id": "G027",
+      "level": "intermediate",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "78e03ee20d67dda675ee3ec4dc921945b073079604d91da3c1e54a6ad412d5bf"
+    },
+    {
+      "id": "G028",
+      "level": "intermediate",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.054284,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "d7ef3f750e88424bd224f11031aa7eadb47874f2d1441471a64b3cf3025a7442"
+    },
+    {
+      "id": "G029",
+      "level": "intermediate",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.517084,
+      "previousProbability": 0.84563,
+      "percentageDisplayed": false,
+      "decision": "9f7c2c7f85582f964f5e6139110f0e54d657974950d87f7edd41b34109a18b51"
+    },
+    {
+      "id": "G030",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.564519,
+      "previousProbability": 0.875424,
+      "percentageDisplayed": false,
+      "decision": "372da627de8f56dce4cbff40b850f789ce37cf2bea0edb9d02bcc8d0ac78a6be"
+    },
+    {
+      "id": "G031",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.51727,
+      "previousProbability": 0.80171,
+      "percentageDisplayed": false,
+      "decision": "1eef3f9c58bf3f778e75c810adf4aef7d2a5ae2268abab71018e958508f7d86d"
+    },
+    {
+      "id": "G032",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.571392,
+      "previousProbability": 0.757153,
+      "percentageDisplayed": false,
+      "decision": "097255c2ec99b5868e9503de153b4fab585c5aaa8a88aaa5bbd7055dd174feec"
+    },
+    {
+      "id": "G033",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.577236,
+      "previousProbability": 0.885827,
+      "percentageDisplayed": false,
+      "decision": "5f7c59e1aa20e55ba25ef8acd11f4657033d44a0e1f147bdb75a36dbf5c80c4d"
+    },
+    {
+      "id": "G034",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.562087,
+      "previousProbability": 0.830242,
+      "percentageDisplayed": false,
+      "decision": "22e8c9cde5cae424908dfc49fa3ae564c4f07a96ccbe8592d6dfe87a799b082d"
+    },
+    {
+      "id": "G035",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.301718,
+      "previousProbability": 0.679201,
+      "percentageDisplayed": false,
+      "decision": "1e9e7eda53f77688cee7523cd2a088c0dad187a359da816d46c27e6789ad2f49"
+    },
+    {
+      "id": "G036",
+      "level": "intermediate",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "d8eb38e85802ce8860f30420119367b4d7fc67136e4eac1ac99d7005e547a3e6"
+    },
+    {
+      "id": "G037",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.606092,
+      "previousProbability": 0.858891,
+      "percentageDisplayed": false,
+      "decision": "34dc3695177ea354febd241c0bb637e4e156bd9105098bed55953ee63e55f4c3"
+    },
+    {
+      "id": "G038",
+      "level": "intermediate",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.541039,
+      "previousProbability": 0.818852,
+      "percentageDisplayed": false,
+      "decision": "3cae471529da9aefadf67b45fe188fb6fca3591c3c267308b56a34cf564676ca"
+    },
+    {
+      "id": "G039",
+      "level": "intermediate",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.055784,
+      "previousProbability": 0.455662,
+      "percentageDisplayed": false,
+      "decision": "1663465ab161b3ecc58916a4bb96297dff452af5e27c158e11365804de63b1c8"
+    },
+    {
+      "id": "G040",
+      "level": "intermediate",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.068993,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "c5101ad082b5a403153c2c4351edd9aea40025a91f267f91842e8e89291c857a"
+    },
+    {
+      "id": "G041",
+      "level": "applied",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.581053,
+      "previousProbability": 0.831033,
+      "percentageDisplayed": false,
+      "decision": "3fffbce95cfb5990bbb0521b45f465f11026a525aa52052b5a471aef1454a1a0"
+    },
+    {
+      "id": "G042",
+      "level": "applied",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.535805,
+      "previousProbability": 0.811171,
+      "percentageDisplayed": false,
+      "decision": "6b094462cff9bf6ba53b09a05bd8304ed53cbafe6fed2d6b69802249be1f9b0e"
+    },
+    {
+      "id": "G043",
+      "level": "applied",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.611393,
+      "previousProbability": 0.812937,
+      "percentageDisplayed": false,
+      "decision": "b1ced703cb89a9415a4a8c24ae239c337540198fb7add127767a0e4a1ce774b9"
+    },
+    {
+      "id": "G044",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "4f6bbdf4712532b327558ddd8c9023ceca85841513cce7c83601d291ea6e8afe"
+    },
+    {
+      "id": "G045",
+      "level": "applied",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.593666,
+      "previousProbability": 0.82885,
+      "percentageDisplayed": false,
+      "decision": "95c4881f81b0f60f2738e8dd0685ef4a2a609c05e4ed2f0e2bea764c894e6de3"
+    },
+    {
+      "id": "G046",
+      "level": "applied",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.618447,
+      "previousProbability": 0.855525,
+      "percentageDisplayed": false,
+      "decision": "790115dd39e50640a9043c66b93c134cc941621a416e0aec7cda96a9f6386d53"
+    },
+    {
+      "id": "G047",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "1f97681516cc95e0264f712f944277ef6c8129f123e7dc14f7c1bbe1437e6a40"
+    },
+    {
+      "id": "G048",
+      "level": "applied",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.570822,
+      "previousProbability": 0.862271,
+      "percentageDisplayed": false,
+      "decision": "d60cc122339dd8e86d2cf7547e331ca8c478f6b2a0dfb31f9ed5e76137205a64"
+    },
+    {
+      "id": "G049",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.066496,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "0df130a57b21e547cb7546a1f97c172ce0c31a2c7cdb767b84069dff8e9d91b0"
+    },
+    {
+      "id": "G050",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.054284,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "6ccb433054cefafcae71bcd1481be5fe7bc7732b3ab463dbd7aa88b5e397b319"
+    },
+    {
+      "id": "G051",
+      "level": "applied",
+      "correct": false,
+      "code": "incorrect",
+      "newProbability": 0.564519,
+      "previousProbability": 0.69381,
+      "percentageDisplayed": false,
+      "decision": "af9b0f24b0a1a500c3a6d2b1367706b2012bb3896034cc28112737a3c634b3f7"
+    },
+    {
+      "id": "G052",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "8a548fc49b3d97cea34ebdcfc5a28cb3c95f70d933b87af5690c31ca6a86a12d"
+    },
+    {
+      "id": "G053",
+      "level": "applied",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.556441,
+      "previousProbability": 0.84056,
+      "percentageDisplayed": false,
+      "decision": "da10187c4c7088b78495046da0891db18cc618587f29fd8234e0ef439e5755d3"
+    },
+    {
+      "id": "G054",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.049387,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "4f5e085437f8ac7d6882e577706c36fb3a5b2226cf5f317060de58de3a82e5b1"
+    },
+    {
+      "id": "G055",
+      "level": "applied",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.549063,
+      "previousProbability": 0.887553,
+      "percentageDisplayed": false,
+      "decision": "d8a9cfaad40d405388f73446cd3dd58a87421bc6908f55ff28bc8e5d687dd8b1"
+    },
+    {
+      "id": "G056",
+      "level": "applied",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.596033,
+      "previousProbability": 0.894619,
+      "percentageDisplayed": false,
+      "decision": "49c4f52edf83a84bc36cc516b22503886b4eae53bad11de8a7d160fe8292bbd8"
+    },
+    {
+      "id": "G057",
+      "level": "applied",
+      "correct": false,
+      "code": "incorrect",
+      "newProbability": 0.49513,
+      "previousProbability": 0.854157,
+      "percentageDisplayed": false,
+      "decision": "b4cd8cb0143b66284db34f6aa8830e6b94266dec2137aa09f677c16a3f48c1a3"
+    },
+    {
+      "id": "G058",
+      "level": "applied",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.586257,
+      "previousProbability": 0.888919,
+      "percentageDisplayed": false,
+      "decision": "7955d88a04041fca70a628fb4a3098907b94506832e3fd3691ace02e62c13099"
+    },
+    {
+      "id": "G059",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "4afacef2abdbd5087fab15bab482d89d1290a6ca0fd6e01593ac542645828df5"
+    },
+    {
+      "id": "G060",
+      "level": "applied",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.068695,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "81b074dc7fb04742477f1971a13ecb7c47c10e5d7b3465a3bd09d75529230b05"
+    },
+    {
+      "id": "G061",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.593007,
+      "previousProbability": 0.875348,
+      "percentageDisplayed": false,
+      "decision": "61244e1199b08b2f81d6dad0f23088680fb0dfbe2f3f7014a95f49b75d9e6f0d"
+    },
+    {
+      "id": "G062",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.526948,
+      "previousProbability": 0.802313,
+      "percentageDisplayed": false,
+      "decision": "6da603bc7c59c3399bb1940142c8889e836a088d6766bfedeb2fce1ffc8d7bae"
+    },
+    {
+      "id": "G063",
+      "level": "advanced",
+      "correct": false,
+      "code": "partial",
+      "newProbability": 0.57566,
+      "previousProbability": 0.871164,
+      "percentageDisplayed": false,
+      "decision": "6d68cabe6ecaa7fe5452b3adb29b6ebddfc8fbc34d57e3da027eaa924577900e"
+    },
+    {
+      "id": "G064",
+      "level": "advanced",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.064572,
+      "previousProbability": 0.458219,
+      "percentageDisplayed": false,
+      "decision": "a8674019606e34e8775b41f748198ec720df6bd4909777403135fd2388c8eae2"
+    },
+    {
+      "id": "G065",
+      "level": "advanced",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "400952610a990e3d503c292333c62d2713e7950c6eb8af29162940e5d7e74e3e"
+    },
+    {
+      "id": "G066",
+      "level": "advanced",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "d46b3a0cf87497375b1ddfa656636642cd6281a33f7e54990de6637f736eadc4"
+    },
+    {
+      "id": "G067",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.574217,
+      "previousProbability": 0.880072,
+      "percentageDisplayed": false,
+      "decision": "a1a7cfe62983da1b23f888991d0fe5f0193fd8d735cd451c4c9785c500b44459"
+    },
+    {
+      "id": "G068",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.6131,
+      "previousProbability": 0.841068,
+      "percentageDisplayed": false,
+      "decision": "0445e4e3a6d2e3db926ae2d3f33411ad902beea736ff90450874702683576ee6"
+    },
+    {
+      "id": "G069",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.575019,
+      "previousProbability": 0.851888,
+      "percentageDisplayed": false,
+      "decision": "bde8f558244462830ddbdb905a7311736b62b189dc213472dd70be768c28011a"
+    },
+    {
+      "id": "G070",
+      "level": "advanced",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.550695,
+      "previousProbability": 0.84056,
+      "percentageDisplayed": false,
+      "decision": "9b1ee546d547d3ba92bb6f5ae058992f6eb1f735c9ece91e767e413327482843"
+    },
+    {
+      "id": "G071",
+      "level": "advanced",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.054073,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "0b16f4a023ed8983adcc237f99af97231eb6b2019e84902cd7024e772374c1fa"
+    },
+    {
+      "id": "G072",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.466679,
+      "previousProbability": 0.885088,
+      "percentageDisplayed": false,
+      "decision": "724dcb8dc70ff6b3b06afa5faa6842f3fed15338f37c13259d1fd88a70bed914"
+    },
+    {
+      "id": "G073",
+      "level": "advanced",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.560348,
+      "previousProbability": 0.8727,
+      "percentageDisplayed": false,
+      "decision": "426ef3fb2b1d41e6d0f8fdbe1afe63287983dd1c66b2a08e11cc48f8b001f5b2"
+    },
+    {
+      "id": "G074",
+      "level": "advanced",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.062712,
+      "previousProbability": 0.332269,
+      "percentageDisplayed": false,
+      "decision": "f9a8f347fcce4beae600a3a062dcbca85c6797dac93980283639829b5d9f2edd"
+    },
+    {
+      "id": "G075",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.438322,
+      "previousProbability": 0.868601,
+      "percentageDisplayed": false,
+      "decision": "4ca90c97779a76f12234123a28f54a30d63c6733dcbbdd809f6e321087fba3d3"
+    },
+    {
+      "id": "G076",
+      "level": "advanced",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.049387,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "74fb61cf6e58ccdbb3039c601e1e264906d4dca2fe77a07b5d00826d152c70a9"
+    },
+    {
+      "id": "G077",
+      "level": "advanced",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.594561,
+      "previousProbability": 0.845343,
+      "percentageDisplayed": false,
+      "decision": "e2d94fae041dd17bc02f990e9784d6d8c0aeab35fef966324991679586783889"
+    },
+    {
+      "id": "G078",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.498619,
+      "previousProbability": 0.854525,
+      "percentageDisplayed": false,
+      "decision": "ba36b82322bdb14e6c4fad58ff9c426402dd7dccb73320332b07b39633650cc9"
+    },
+    {
+      "id": "G079",
+      "level": "advanced",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.583052,
+      "previousProbability": 0.905381,
+      "percentageDisplayed": false,
+      "decision": "8b0e80ecf3e020e2353ab2d9617dcb23b8b07266812bb58ca436ffa82c42d392"
+    },
+    {
+      "id": "G080",
+      "level": "advanced",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.053653,
+      "previousProbability": 0.441593,
+      "percentageDisplayed": false,
+      "decision": "66feb41f7e8fcc29ac343e892524d44ea53975a8ed0b93968364403562b1d902"
+    },
+    {
+      "id": "G081",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.053905,
+      "previousProbability": 0.341948,
+      "percentageDisplayed": false,
+      "decision": "06a46509490e966261245d6769ebc4f76d8d0f949f78d13bdecd48dd2ddaaeda"
+    },
+    {
+      "id": "G082",
+      "level": "challenge",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.448998,
+      "previousProbability": 0.83391,
+      "percentageDisplayed": false,
+      "decision": "e582cbfa9e20fd38d4304d59b4724fae653f5d35edce2901173f5d4d6ea89984"
+    },
+    {
+      "id": "G083",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.044727,
+      "previousProbability": 0.458219,
+      "percentageDisplayed": false,
+      "decision": "b313d3322eb3e2b68f65aecf2bfeb75e55818758e9e64e6b84b681e156b6c2ea"
+    },
+    {
+      "id": "G084",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "5928e6a17371c4423a1823c1bfe144638ed855ded6bca990da12ec92e7e6d3cf"
+    },
+    {
+      "id": "G085",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.052412,
+      "previousProbability": 0.332269,
+      "percentageDisplayed": false,
+      "decision": "6615e50272f1cf4995a51072684c32c92e43bb60649aa3ecb78db2c032f35287"
+    },
+    {
+      "id": "G086",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.060324,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "76775ae60382c2489230e31755d4862b5de9724e95b9364e937f9ba71feba616"
+    },
+    {
+      "id": "G087",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.062712,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "0e23bb0976b78f03a121f12b592b043d3040d3b97d19794fe01b40be6779db96"
+    },
+    {
+      "id": "G088",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.049387,
+      "previousProbability": 0.458219,
+      "percentageDisplayed": false,
+      "decision": "6024cca6cd45c8eb3a26c9a6dc4307adea8c35bba35cd52e135e673aedc3cc19"
+    },
+    {
+      "id": "G089",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.049387,
+      "previousProbability": 0.458219,
+      "percentageDisplayed": false,
+      "decision": "d32fac362e68ace1330e82a678ecfdc9791ff0c1febe2014bc3adfff09dff745"
+    },
+    {
+      "id": "G090",
+      "level": "challenge",
+      "correct": false,
+      "code": "partial",
+      "newProbability": 0.127852,
+      "previousProbability": 0.760369,
+      "percentageDisplayed": false,
+      "decision": "fb139b07f79a6c757990c05f3c71acaa931657eb84f184d8270c53a85c7c5151"
+    },
+    {
+      "id": "G091",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.06846,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "ed44481f2c3ddb4c59fdee71f7bba5e5897aab1ed28ff4edff0b023be30af584"
+    },
+    {
+      "id": "G092",
+      "level": "challenge",
+      "correct": false,
+      "code": "incorrect",
+      "newProbability": 0.560348,
+      "previousProbability": 0.754616,
+      "percentageDisplayed": false,
+      "decision": "e9bb35b2ec1bb6189e86a972e50236695f5efb165b489771b3dbcba8674a0ab8"
+    },
+    {
+      "id": "G093",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.049387,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "50ed274e20dd8dc2fe6be0af181d63679813f1db60fe1610e875eebab83628f0"
+    },
+    {
+      "id": "G094",
+      "level": "challenge",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.593192,
+      "previousProbability": 0.899946,
+      "percentageDisplayed": false,
+      "decision": "7ebb79104dc492156b149f977d7e9c850e46daa2c00cbe94ad5f81c59eea335d"
+    },
+    {
+      "id": "G095",
+      "level": "challenge",
+      "correct": false,
+      "code": "false_abstention",
+      "newProbability": 0.049387,
+      "previousProbability": 0.431906,
+      "percentageDisplayed": false,
+      "decision": "090eb0b8561b56b2de23400f1e5bfe9d7a8893cf1e8934c13468a80562ec2186"
+    },
+    {
+      "id": "G096",
+      "level": "challenge",
+      "correct": false,
+      "code": "partial",
+      "newProbability": 0.052412,
+      "previousProbability": 0.332269,
+      "percentageDisplayed": false,
+      "decision": "1238fa3afabdbf1a5834a7b83003345a20e5bc3c81c97b4dd6418d710bc26705"
+    },
+    {
+      "id": "G097",
+      "level": "challenge",
+      "correct": false,
+      "code": "overclaim",
+      "newProbability": 0.537544,
+      "previousProbability": 0.875348,
+      "percentageDisplayed": false,
+      "decision": "6b3bc705067f322a67718c0cd4cf52cf53d0b645a4a74a9f00df016ab4301d82"
+    },
+    {
+      "id": "G098",
+      "level": "challenge",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.453705,
+      "previousProbability": 0.896807,
+      "percentageDisplayed": false,
+      "decision": "1600c5ed1a59eb47dda1671f47b865c28f6ce450a7d2b732c6bc07972123ab7c"
+    },
+    {
+      "id": "G099",
+      "level": "challenge",
+      "correct": true,
+      "code": "pass",
+      "newProbability": 0.486928,
+      "previousProbability": 0.917047,
+      "percentageDisplayed": false,
+      "decision": "6c7b5ea78ed49a349371f5f1a5fa831e77de2d7a7595c474e0ada6bc83f3b773"
+    },
+    {
+      "id": "G100",
+      "level": "challenge",
+      "correct": false,
+      "code": "citation",
+      "newProbability": 0.065861,
+      "previousProbability": 0.42358,
+      "percentageDisplayed": false,
+      "decision": "97e4fb44ecf2903b05a74768b67f0932b77b707396c3130dbd36853e29b5c603"
+    }
+  ]
+}

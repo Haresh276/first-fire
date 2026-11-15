@@ -8,6 +8,8 @@ A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall ch
 
 Open the [six-slide project demonstration](dist/demo.html) to follow a flight comparison from the original measurements to the next test. The [FLEX sensitivity view](dist/index.html#transfer-lab?view=sensitivity) lets you change the droplet matching rule before revealing burn durations. In the [SAME-R detector case](dist/detector.html), inspect optical readings and instrument power in four NASA flight workbooks. The [English and Telugu classroom exercise](dist/classroom.html) asks two readers to match a NIST alarm report to the original sensor record and exchange evidence. Results from independent participants have yet to be collected.
 
+[Inspect the fresh local chat benchmarks](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/fresh-chat-benchmark.html) to compare model answers, calibrations and individual failures. [Local chat setup](chat/README.md) includes both tested model sizes.
+
 ## Master document edition
 
 [Download the offline app and optional primary-source reference packs](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/offline.html).

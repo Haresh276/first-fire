@@ -1,10 +1,10 @@
 {
   "engineSHA256": {
-    "chat-ui.js": "817a7fc0ed93c3d344498ca0c89d33f6e88ea3320955b94710ab884c202b3e53",
+    "chat-ui.js": "583eb45f232bad2adcdc77e3bb0a64d40ca5174c36a76186eab12dce735acb22",
     "science-chat.js": "11cc63be3026b2f63649b4a750ce197910bcd82b4aabc25c3039173dc9fda4a0",
     "intent-router.js": "8e5752199536a990b775618ae899905f1264afde350e245c96c3aa9c750428d0",
-    "evidence-desk.js": "dd64c0bb4e301b8efc2011e05b38fcffd6ee9562d239cab1bd3250d937160e1a",
-    "proof-drawer.js": "b06b780073cf01a93bdf3ab907fd266fa3fccea36e85b5dd4bdca4600b8217f6",
+    "evidence-desk.js": "ef67ef165ddfe0a4650fbdb8f5fb65b97fff72a9afe2e1188962416aabd1be4f",
+    "proof-drawer.js": "3830f345aaa24e4b8d2b0ebc5e664003721783e157647af0ad944bef2ea047f2",
     "record-facts.js": "f679ff77d1529708fc7995ee8caea8331696614ffa470d8b634eeddb517940f2",
     "source-claims.js": "54edf3fea1027e4ed03d098c09d36e45170482734e21bc0f02730c62683e980f",
     "source-claim-reviews.js": "6baca00e41e1cc5fb126b1626908661e4299d8931422c737c53499963369da3a",
@@ -13,7 +13,7 @@
   },
   "scope": "Static chat as displayed in Chrome; same-tab follow-ups within each question only",
   "bankSHA256": "b556e445ff26e3ccbf72b410a44a80f23ee5586534b74051af1a23f89c687c87",
-  "localChatUISHA256": "817a7fc0ed93c3d344498ca0c89d33f6e88ea3320955b94710ab884c202b3e53",
+  "localChatUISHA256": "583eb45f232bad2adcdc77e3bb0a64d40ca5174c36a76186eab12dce735acb22",
   "n": 40,
   "passed": 40,
   "cases": [

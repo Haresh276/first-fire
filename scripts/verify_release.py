@@ -53,7 +53,7 @@ def verify_offline_packs(dist, actual):
                 members = record['files']
                 assert members and set(names) == {'FIRST-FIRE/'+p for p in members}
                 assert all((p.startswith('rover-workbench/evidence/files/') and p.endswith('.pdf')) or
-                           p == 'rover-workbench/preview/rover-workbench.mp4' for p in members)
+                           p == 'rover-workbench/preview/rover-workbench.mp4' or (name == 'first-fire-chat-audit-pack.zip' and p == 'fresh-chat-audit.zip') for p in members)
             assert installed.keys().isdisjoint(members), f'File paths overlap at {name}'
             assert archive.testzip() is None, f'ZIP CRC mismatch: {name}'
             for relative, digest in members.items():
@@ -129,7 +129,7 @@ def check(dist):
     snapshots = ROOT / "tests/chat/snapshots"
     archived = dict(actual)
     for asset, filename in {"chat-ui.js": "ui-v2.js.gz", "intent-router.js": "intent-v3.js.gz",
-                            "evidence-desk.js": "evidence-desk-v1.js.gz"}.items():
+                            "evidence-desk.js": "evidence-desk-v1.js.gz", "proof-drawer.js": "proof-drawer-v1.js.gz"}.items():
         archived[asset] = hashlib.sha256(gzip.decompress((snapshots/filename).read_bytes())).hexdigest()
     for name, bank in [('master-science-24.json','science-acceptance-v1.json'),('master-science-40.json','science-unseen-v1.json')]:
         latest=json.loads((dist/name).read_text())
@@ -178,6 +178,11 @@ def check(dist):
     current=json.loads((dist/'data/forecast.json').read_text())
     for saved, burn in zip(frozen['predictions'], current['burns'], strict=True):
         assert (saved['starting_o2_pct'], saved['p_sustain']) == (burn['oxygen_pct'], burn['p_sustain'])
+    try:
+        from .verify_chat_release import verify_chat_release
+    except ImportError:
+        from verify_chat_release import verify_chat_release
+    verify_chat_release(dist)
     print(f'Verified {len(actual)} file hashes, {len(tables)} original NASA tables, {len(rows)} unique observations and offline page assets. No assessor key in site.')
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
