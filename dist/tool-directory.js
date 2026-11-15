@@ -47,10 +47,15 @@
   function record(q,replace) {
     const url=new URL(location.href);
     q ? url.searchParams.set('q',q) : url.searchParams.delete('q');
-    if(url.href!==location.href && location.protocol!=='file:') history[replace?'replaceState':'pushState'](null,'',url);
+    if(url.href!==location.href && location.protocol!=='file:') {
+      try { history[replace?'replaceState':'pushState'](null,'',url); } catch { /* Keep filtering when the browser throttles history updates. */ }
+    }
   }
   input.addEventListener('input',()=>{const q=input.value.trim();record(q,draft);draft=true;render(q);});
   directory.querySelector('form').addEventListener('submit',event=>{event.preventDefault();const q=input.value.trim();record(q,draft);draft=false;render(q);});
-  addEventListener('popstate',()=>{draft=false;restore();}); addEventListener('pageshow',()=>{draft=false;restore();});
-  restore();
+  addEventListener('popstate',()=>{draft=false;restore();});
+  addEventListener('pageshow',event=>{if(event.persisted){draft=false;restore();}});
+  // Someone may already have typed while the external script was downloading.
+  // Preserve their edit; otherwise the shared URL supplies the initial query.
+  if(input.value){const q=input.value.trim();record(q,true);render(q);} else restore();
 })();
