@@ -25,9 +25,10 @@ const sums = JSON.parse(fs.readFileSync(path.join(dist,'checksums.json'),'utf8')
     assert.match(await p.locator('#solid-limit').innerText(),/%/);
     await p.goto(new URL('submission.html',base).href);
     const links = await p.locator('main a[href]').evaluateAll(as=>as.map(a=>a.href));
-    const paths = [...new Set(links.map(u=>new URL(u)).map(u=>{
-      assert.equal(u.origin,base.origin); return decodeURIComponent(u.pathname.replace(/^\//,''));
-    }))];
+    const urls = links.map(u=>new URL(u));
+    // External PSI DOI accessibility is checked independently; never compare external bytes to our local manifest.
+    const paths = [...new Set(urls.filter(u=>u.origin===base.origin)
+      .map(u=>decodeURIComponent(u.pathname.replace(/^\//,''))))];
     for (const file of [...new Set([...paths,'forecast-lock/fm2-v2.json','forecast-lock/fm2-v2.tsr','master-round2-slides.pptx'])]) {
       const url = new URL(file,base);
       const r = await context.request.get(url.href,{timeout:45000});
