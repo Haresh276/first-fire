@@ -16,7 +16,7 @@
       (result.velocity * 100).toFixed(1) + ' cm/s' : 'In quiescent orbit, oxygen transport by diffusion falls outside FLINT.';
     const atReference = Math.abs(pressure * c.psia - c.Pref) < 1e-6;
     const validity = !valid ? 'Read the BASS and Saffire flight evidence below.' :
-      atReference && fan === 0 && (gravity === 'moon' || gravity === 'earth')
+      atReference && fan === 0 && gravity === 'moon'
         ? 'Validated at ' + (c.Pref / c.psia).toFixed(1) + ' psia · pressure of the ICES calibration.'
         : 'Model extrapolation · gravity, pressure or fan setting outside the lunar validation.';
     document.querySelector('#solid-validity').textContent = validity;
