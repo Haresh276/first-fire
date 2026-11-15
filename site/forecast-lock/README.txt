@@ -27,3 +27,12 @@ This edition has no DOI. To deposit, the team can upload the JSON and TSR as
 separate files to a repository under its account, complete the repository's
 required metadata, and add the assigned DOI to the project. Keep this version
 intact when later outcomes or revised forecasts are released.
+
+Separate conditional PMMA forecast
+pmma-v1.json records a prospective FIRST FIRE prediction for a proposed
+independent replication with thin acrylic in opposed microgravity flow.
+Its SHA-256 is 79f0c1a253004730e9449a0a8e9b78c1f6b6fcb8bbec3d5184c253f55eea86ec.
+The DigiCert RFC 3161 receipt is dated 2026-11-15 05:18:00 UTC.
+openssl ts -verify -data pmma-v1.json -in pmma-v1.tsr -CAfile /etc/ssl/cert.pem
+A future independent laboratory must preregister the named trials
+before data collection. The four outcomes remain pending.

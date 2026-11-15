@@ -14,3 +14,16 @@ test('validate loaded forecast types, bounds and unique trial IDs',()=>{
   for(const lines of ['A,,0','A,1.1,0','A,0,0\nA,1,1','A,Infinity,0'])assert.throws(()=>trials(lines));
   assert.throws(()=>validate({...doc,trials:[{id:'a',probability:'0.4',comparator:0.5}]}));
 });
+test('locked PMMA odds reproduce the flow boundary and resolve only future observations',()=>{
+  const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+  const body=fs.readFileSync(path.join(__dirname,'../site/forecast-lock/pmma-v1.json'));
+  const forecast=validate(JSON.parse(body)),materials=require('../site/master-materials.js');
+  assert.equal(crypto.createHash('sha256').update(body).digest('hex'),'79f0c1a253004730e9449a0a8e9b78c1f6b6fcb8bbec3d5184c253f55eea86ec');
+  const limit=materials.boundary('pmma',10);
+  assert.equal(limit,forecast.model.oxygenLimitVolumePct);
+  for(const trial of forecast.trials){
+    assert.equal(trial.probability,Number((1/(1+Math.exp(limit-trial.oxygenVolumePct))).toFixed(6)));
+    assert.equal(trial.comparator,0.5);
+  }
+  assert.equal(score(forecast.trials,forecast.trials.map(()=>'pending')).modelBrier,null);
+});

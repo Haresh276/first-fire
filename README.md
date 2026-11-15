@@ -10,6 +10,8 @@ Open the [six-slide project demonstration](dist/demo.html) to follow a flight co
 
 ## Master document edition
 
+[Download the offline app and optional primary-source reference packs](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/offline.html).
+
 Open the [field guide and instruments](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#field-guide), [vehicle designer](dist/index.html#vehicle-designer), [cabin model validation](research/master-physics.md) or [judge walkthrough](dist/index.html#field-guide?tab=judges). The [implementation record](research/master-requirements.md) maps each feature to the master document, its acceptance evidence and the remaining team work. The [38-page science reader](site/first-fire-field-guide.pdf) covers FM², combustion, low gravity and the glossary. The [review log and deposition package](dist/team-handoff.html) support participant and team verification.
 
 Use the new atmosphere and material tools to select a fuel and a cabin pressure. Inspect the original NASA or JAXA measurement before transferring it to a proposed vehicle. The [physics report](research/master-physics.md) compares the model with prescribed NIST burners, a Cantera reference and SIBAL flight measurements. [Research chat verification](research/answer-verification.md) separates numeric replays, general routing, recorded prose answers and confidence calibration.

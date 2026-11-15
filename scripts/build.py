@@ -15,10 +15,10 @@ from pathlib import Path
 
 try:
     from .compact_observations import compact_script
-    from .offline_edition import FILENAME as OFFLINE_EDITION, package_offline_site
+    from .offline_edition import package_offline_site
 except ImportError:
     from compact_observations import compact_script
-    from offline_edition import FILENAME as OFFLINE_EDITION, package_offline_site
+    from offline_edition import package_offline_site
 
 if __package__:
     from .rover_workbench import copy_rover_workbench
@@ -74,7 +74,7 @@ def build_rover_bundle(stage):
 def build():
     for script in ('build_data.py','forecast.py','verify_quotes.py','build_referee_passages.py'):
         subprocess.run([sys.executable,str(ROOT/'scripts'/script)],check=True)
-    for required in ('app.js','chat-ui.js','chat.css','benchmark-ui.js','search.js','explorer.js','study.js','claim.js','acrylic.js','forecast-ui.js','forecast.css','spread-scene.js','workbench.js','manual.html','first-fire-user-manual.pdf','demo.html'):
+    for required in ('app.js','chat-ui.js','chat.css','benchmark-ui.js','search.js','explorer.js','study.js','claim.js','acrylic.js','forecast-ui.js','forecast.css','spread-scene.js','workbench.js','manual.html','offline.html','first-fire-user-manual.pdf','demo.html'):
         if not (SITE/required).is_file(): raise SystemExit(f'Missing site/{required}')
     cases=read_json(DATA/'cases.json'); studies=read_json(DATA/'investigations.json')
     assert len({c['id'] for c in cases})==7 and all(len(c['options'])==6 for c in cases)
@@ -142,7 +142,7 @@ def build():
             shutil.copy2(modeldir/name,stage/'licenses'/('model-'+name))
         if (ROOT/'LICENSE').exists():shutil.copy2(ROOT/'LICENSE',stage/'licenses'/'software.txt')
         evidence={p.relative_to(stage).as_posix():hsh(p.read_bytes()) for p in sorted(stage.rglob('*')) if p.is_file()}
-        evidence[OFFLINE_EDITION] = package_offline_site(stage, evidence)
+        evidence.update(package_offline_site(stage, evidence))
         (stage/'checksums.json').write_text(json.dumps(evidence,indent=2)+'\n')
         # Preserve last working build until staging is complete.
         old=Path(temp)/'previous'

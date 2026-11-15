@@ -6,6 +6,11 @@ import json
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+from zipfile import ZipFile
+if __package__:
+    from .offline_edition import FILENAME, OPTIONAL, PACK_INDEX, LIMIT
+else:
+    from offline_edition import FILENAME, OPTIONAL, PACK_INDEX, LIMIT
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -19,6 +24,43 @@ class Links(HTMLParser):
             u=d.get(attr)
             if u and not urlsplit(u).scheme and not u.startswith(('#','//')):
                 self.assets.append(u)
+
+def verify_offline_packs(dist, actual):
+    index = json.loads((dist/PACK_INDEX).read_text())
+    assert index['schema'] == 'first-fire.offline-packs.v1' and index['core'] == FILENAME and index['folder'] == 'FIRST-FIRE'
+    supplements = index['supplements']
+    assert set(supplements) == set(OPTIONAL)
+    catalog = {name: sha for name, sha in actual.items() if name not in {*LIMIT, 'model.js'}}
+    installed = {}
+    for name in (FILENAME, *OPTIONAL):
+        source = dist/name
+        assert source.is_file() and source.stat().st_size < LIMIT[name], f'Missing or oversize {name}'
+        with ZipFile(source) as archive:
+            names = archive.namelist()
+            assert len(names) == len(set(names)), f'Duplicate paths in {name}'
+            if name == FILENAME:
+                members = json.loads(archive.read('FIRST-FIRE/checksums.json'))
+                assert set(names) == {'FIRST-FIRE/'+p for p in [*members, 'checksums.json']}
+                assert all(p in members for p in ['offline.html', PACK_INDEX, 'rover-workbench/prototype/index.html',
+                          'rover-workbench/prototype/scene/vendor/three.module.min.js', 'rover-workbench/parts.json',
+                          'data/tests.csv', 'challenge-data-pack.zip', 'forecast-lock/fm2-v1.json', 'master-physics.js'])
+                assert all(p in members for p in catalog if p.startswith(('data/', 'flight-frames/', 'rover-workbench/prototype/',
+                           'rover-workbench/terrain/', 'rover-workbench/examples/'))), 'Runtime or science files missing from core'
+            else:
+                record = supplements[name]
+                assert record['sha256'] == actual[name] and record['bytes'] == source.stat().st_size
+                members = record['files']
+                assert members and set(names) == {'FIRST-FIRE/'+p for p in members}
+                assert all((p.startswith('rover-workbench/evidence/files/') and p.endswith('.pdf')) or
+                           p == 'rover-workbench/preview/rover-workbench.mp4' for p in members)
+            assert installed.keys().isdisjoint(members), f'File paths overlap at {name}'
+            assert archive.testzip() is None, f'ZIP CRC mismatch: {name}'
+            for relative, digest in members.items():
+                assert relative in catalog and digest == catalog[relative]
+                assert hashlib.sha256(archive.read('FIRST-FIRE/'+relative)).hexdigest() == digest, relative
+            installed.update(members)
+    assert installed == catalog, 'Combined offline packs do not cover the distributed site'
+
 
 def check(dist):
     assert dist.is_dir(), 'Missing dist. Build the project first.'
@@ -117,13 +159,7 @@ def check(dist):
             assert deposit.read(name)==(dist/'forecast-lock'/name).read_bytes()
     for name in ('field-guide.js','first-fire-field-guide.pdf','master-round2.pdf','master-round2-slides.pdf','master-round2-slides.pptx','master-film.mp4','master-film.vtt','master-worksheet.pdf','judge-brief.pdf','forecast-register.html','master-materials.js','vehicle-designer.js','master-fds-data.js','master-physics.js','front-tracking.js','flight-frames-ui.js','saffire-frames.js','front-example.json','research/video-measurement.md','research/intake.md','research/master-requirements.md','research/answer-verification.md'):
         assert name in actual, name
-    if (dist/'first-fire-offline.zip').exists():
-        with ZipFile(dist/'first-fire-offline.zip') as bundle:
-            offline=json.loads(bundle.read('FIRST-FIRE/checksums.json'))
-            expected={n:h for n,h in actual.items() if n not in ('first-fire-offline.zip','model.js')}
-            assert offline==expected, 'Offline edition manifest differs from its source files'
-            assert set(bundle.namelist())=={'FIRST-FIRE/'+n for n in [*expected,'checksums.json']}
-            assert all(hashlib.sha256(bundle.read('FIRST-FIRE/'+f)).hexdigest()==sha for f,sha in offline.items()), 'Offline ZIP content mismatch'
+    verify_offline_packs(dist, actual)
     lock='forecast-lock/fm2-v1.json'
     assert actual[lock]=='9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3', 'The signed forecast bytes must match v1.'
     frozen=json.loads((dist/lock).read_text())

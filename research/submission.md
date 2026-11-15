@@ -20,7 +20,7 @@
 
 ## Final project
 
-[FIRST FIRE dashboard](../dist/index.html) · [Public project URL for the submission form](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/) · [Download the offline edition](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/first-fire-offline.zip) · [Project source](https://github.com/Haresh276/first-fire)
+[FIRST FIRE dashboard](../dist/index.html) · [Public project URL for the submission form](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/) · [Download the offline edition](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/offline.html) · [Project source](https://github.com/Haresh276/first-fire)
 
 ## High-level project summary
 

@@ -1,0 +1,57 @@
+{
+  "schema": "first-fire.material-forecast.v1",
+  "id": "first-fire-pmma-opposed-flow-v1",
+  "createdUTC": "2026-11-15T05:17:46+00:00",
+  "material": "Unfilled clear PMMA sheet, 0.125 mm nominal thickness, opposed flow in microgravity",
+  "source": "Takahashi and Maruta (2018), section 3.1 and Figure 3, DOI 10.2322/tastj.16.28. The limiting curve used here was digitized from the thin-PMMA panel on slide 26 of the JAXA FLARE presentation.",
+  "sourceURLs": [
+    "https://doi.org/10.2322/tastj.16.28",
+    "https://iss.jaxa.jp/kiboexp/news/images/2018ams_flare.pdf#page=26"
+  ],
+  "attribution": "Prospective FIRST FIRE software-model prediction prepared with Codex. Team adoption and a scheduled independent experiment have not been documented.",
+  "event": "After confirmed edge ignition and removal of external heat, the continuous visible flame front advances at least 5.0 mm upstream from its igniter-off position within 10.0 seconds. Use the centerline, calibrated in the specimen plane. The protocol defines this endpoint for a future replication.",
+  "design": {
+    "geometry": "Free-standing 50 × 100 mm unfilled sheet, thickness 0.125 ± 0.005 mm, starting at 293 ± 5 K. Front travels along the long axis. No backing and no continuing external heat.",
+    "atmosphere": "Dry oxygen with nitrogen balance, 101.3 ± 2 kPa. Each target O2 volume fraction within ±0.25 percentage point for the scoring window.",
+    "flow": "Uniform opposed flow of 10.0 ± 0.5 cm/s measured upstream of the specimen. Acceleration magnitude under 0.03 Earth g during the 10-second scoring window.",
+    "firstEligibleStudy": "Use the first public, independently timestamped protocol that explicitly adopts this forecast ID and all four trial IDs after the forecast timestamp and before specimens are ignited. Use the first attempted specimen for each ID. Earlier flight results cannot resolve this record.",
+    "evidence": "Each scored attempt requires an attributable lab release with a dated run ID, recorded apparatus settings, heat-off time, calibrated scale and image sequence. Read displacement at native resolution and retain a locator.",
+    "outcomes": "Yes when the defined distance is reached in time. No when a complete valid window or documented extinction makes failure determinate. Void for failed initial ignition, protocol deviations, censoring or missing calibration. An unreported attempt stays pending. No retry substitution.",
+    "registration": "Independent forecast of a proposed replication. No scheduled NASA, JAXA or FM² burn is asserted."
+  },
+  "model": {
+    "curve": "FIRST FIRE log-flow interpolation of the digitized published limiting curve at 10 cm/s, from site/materials-data.js and site/master-materials.js boundary(\"pmma\",10). It is a prediction of a limiting oxygen fraction.",
+    "oxygenLimitVolumePct": 14.711827597728032,
+    "assumedLogisticScalePercentagePoints": 1.0,
+    "probabilityRule": "1/(1 + exp(-(target oxygen percent - oxygenLimitVolumePct)/1.0)), rounded to six decimals.",
+    "interpretation": "The 1.0-point logistic scale and transfer to the 5-mm endpoint are modeling assumptions. The resulting probabilities have no measured calibration for this protocol.",
+    "baseline": "0.5 on each trial, a fixed uninformative comparator. It represents no space agency forecast."
+  },
+  "trials": [
+    {
+      "id": "PMMA-O13",
+      "oxygenVolumePct": 13,
+      "probability": 0.152927,
+      "comparator": 0.5
+    },
+    {
+      "id": "PMMA-O14",
+      "oxygenVolumePct": 14,
+      "probability": 0.329195,
+      "comparator": 0.5
+    },
+    {
+      "id": "PMMA-O15",
+      "oxygenVolumePct": 15,
+      "probability": 0.571549,
+      "comparator": 0.5
+    },
+    {
+      "id": "PMMA-O16",
+      "oxygenVolumePct": 16,
+      "probability": 0.783838,
+      "comparator": 0.5
+    }
+  ],
+  "scoring": "Mean squared probability error (Brier), on the same resolved yes/no trial IDs for model and comparator. Publish all pending and void IDs. No score is defined until at least one qualifying observation resolves."
+}

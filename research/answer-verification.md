@@ -34,7 +34,7 @@ The first implementation of the stronger prose gate passed 18/100 and 4/24. It f
 
 **Calibration missed the acceptance target.** On the separate legacy 24, the 14 low-scored replies averaged 0.267 and 10 passed the strict rubric. The single medium reply scored 0.55 and passed. Nine replies had no score, including three appropriate abstentions. Refitting one logistic intercept on the 100 development outcomes also missed the ten-percentage-point tolerance on the 24. For the refitted medium group, five of six passed against a 0.646 mean. For the low group, six of nine passed against a 0.458 mean. Treat the factors as an explanation of evidence coverage. They do not establish the probability that a scientific answer is correct.
 
-[Recorded 124-answer calibration](../evidence-calibration.json) · [First routing score](../master-route-first.json) · [Exposed routing replay](../master-route-replay.json) · [Second independent routing score](../master-route-generalization.json) · [Third independent routing score](../master-route-third.json) · [40 archive questions](../master-science-40.json) · [24 archive questions](../master-science-24.json)
+[Recorded 124-answer calibration](../dist/evidence-calibration.json) · [First routing score](../dist/master-route-first.json) · [Exposed routing replay](../dist/master-route-replay.json) · [Second independent routing score](../dist/master-route-generalization.json) · [Third independent routing score](../dist/master-route-third.json) · [40 archive questions](../dist/master-science-40.json) · [24 archive questions](../dist/master-science-24.json)
 
 ### What people saw when the route was wrong
 
@@ -42,7 +42,7 @@ For each of the nine first-bank errors, nine second-bank errors and six third-ba
 
 **Zero of these 24 replies supplied a quantitative result.** Twenty withheld the answer or asked for clarification. Four delivered off-task qualitative content. In I09 chat suggested a detector test instead of comparing the two specified runs. I47 returned the observed Nomex result without checking the submitted quotation. B11 described the Saffire specimen without comparing BASS-II. B12 quoted cool-flame behavior without comparing fields in the two FLEX runs. All six third-bank misses withheld the requested finding or asked for clarification, including a CFI-G comparison that incorrectly requested an exact quotation. These observations cover this finite set of routing failures and the specific signed-out browser path.
 
-[First two sets, 18 replies and fingerprints](../master-route-error-answers.json) · [Third set, six replies and fingerprints](../master-route-third-answers.json)
+[First two sets, 18 replies and fingerprints](../dist/master-route-error-answers.json) · [Third set, six replies and fingerprints](../dist/master-route-third-answers.json)
 
 ## Reproduce
 
