@@ -8,9 +8,9 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from zipfile import ZipFile
 if __package__:
-    from .offline_edition import FILENAME, OPTIONAL, PACK_INDEX, LIMIT
+    from .offline_edition import FILENAME, OPTIONAL, PACK_INDEX, LIMIT, REPRODUCTION, REPRODUCTION_FILES, package_for
 else:
-    from offline_edition import FILENAME, OPTIONAL, PACK_INDEX, LIMIT
+    from offline_edition import FILENAME, OPTIONAL, PACK_INDEX, LIMIT, REPRODUCTION, REPRODUCTION_FILES, package_for
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -43,16 +43,22 @@ def verify_offline_packs(dist, actual):
                 assert set(names) == {'FIRST-FIRE/'+p for p in [*members, 'checksums.json']}
                 assert all(p in members for p in ['offline.html', PACK_INDEX, 'rover-workbench/prototype/index.html',
                           'rover-workbench/prototype/scene/vendor/three.module.min.js', 'rover-workbench/parts.json',
-                          'data/tests.csv', 'challenge-data-pack.zip', 'forecast-lock/fm2-v1.json', 'master-physics.js'])
-                assert all(p in members for p in catalog if p.startswith(('data/', 'flight-frames/', 'rover-workbench/prototype/',
+                          'data/tests.csv', 'challenge-data-pack.zip', 'forecast-lock/fm2-v1.json', 'master-physics.js',
+                          'master-film.mp4', 'master-film.vtt', 'master-round2-slides.pdf', 'master-round2.html',
+                          'flint.html', 'flint-page.js', 'flint-solid.js', 'flint-coefficients.js', 'rover-fire-case.html'])
+                assert all(p in members for p in catalog if p.startswith(('data/', 'flint/results/', 'rover-fire-', 'flight-frames/', 'rover-workbench/prototype/',
                            'rover-workbench/terrain/', 'rover-workbench/examples/'))), 'Runtime or science files missing from core'
             else:
                 record = supplements[name]
                 assert record['sha256'] == actual[name] and record['bytes'] == source.stat().st_size
                 members = record['files']
                 assert members and set(names) == {'FIRST-FIRE/'+p for p in members}
-                assert all((p.startswith('rover-workbench/evidence/files/') and p.endswith('.pdf')) or
-                           p == 'rover-workbench/preview/rover-workbench.mp4' for p in members)
+                if name == REPRODUCTION:
+                    assert set(members) == REPRODUCTION_FILES, 'Incomplete reproduction supplement'
+                else:
+                    assert all((p.startswith('rover-workbench/evidence/files/') and p.endswith('.pdf')) or
+                               p == 'rover-workbench/preview/rover-workbench.mp4' for p in members)
+                assert all(package_for(p) == name for p in members), 'Unexpected offline pack member'
             assert installed.keys().isdisjoint(members), f'File paths overlap at {name}'
             assert archive.testzip() is None, f'ZIP CRC mismatch: {name}'
             for relative, digest in members.items():

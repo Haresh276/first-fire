@@ -12,7 +12,13 @@ EXPERIMENTS = "first-fire-rover-experiments.zip"
 ENGINEERING = "first-fire-rover-engineering.zip"
 AGENCIES = "first-fire-rover-agencies.zip"
 FILM = "first-fire-rover-film.zip"
-OPTIONAL = (EXPERIMENTS, ENGINEERING, AGENCIES, FILM)
+REPRODUCTION = "first-fire-reproduction.zip"
+REPRODUCTION_FILES = frozenset({
+    "flint/FIRST-FIRE_FLINT-engine.zip",
+    "master-round2-slides.pptx",
+    "code-review-files.csv.gz",
+})
+OPTIONAL = (EXPERIMENTS, ENGINEERING, AGENCIES, FILM, REPRODUCTION)
 LIMIT = {FILENAME: 23*1024**2, **{name: 20*1024**2 for name in OPTIONAL}}
 EXPERIMENT_PDFS = {"filter-paper.pdf", "saffire-i-slides.pdf", "nasa-03-saffire-iv-v.pdf"}
 AGENCY_PDFS = {"aee-meda-first-weather.pdf", "aep-02-guaranisat1.pdf", "ases-mandate-aps.pdf",
@@ -21,6 +27,8 @@ AGENCY_PDFS = {"aee-meda-first-weather.pdf", "aep-02-guaranisat1.pdf", "ases-man
 
 
 def package_for(name):
+    if name in REPRODUCTION_FILES:
+        return REPRODUCTION
     p = PurePosixPath(name)
     if name == "rover-workbench/preview/rover-workbench.mp4":
         return FILM

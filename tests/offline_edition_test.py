@@ -9,7 +9,7 @@ from unittest.mock import patch
 from zipfile import ZipFile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
-from offline_edition import AGENCIES, ENGINEERING, EXPERIMENTS, FILM, FILENAME, LIMIT, OPTIONAL, PACK_INDEX, package_offline_site
+from offline_edition import AGENCIES, ENGINEERING, EXPERIMENTS, FILM, FILENAME, LIMIT, OPTIONAL, PACK_INDEX, REPRODUCTION, package_offline_site
 
 
 class OfflineEditionTest(unittest.TestCase):
@@ -19,6 +19,15 @@ class OfflineEditionTest(unittest.TestCase):
         self.root = Path(self.tmp.name)
         self.expected = {
             'data/raw/measurements.csv': FILENAME,
+            'flint/results/core/fig/flint_validation.png': FILENAME,
+            'flint/results/micro/atlas_solids.csv': FILENAME,
+            'flint.html': FILENAME,
+            'rover-fire-case.html': FILENAME,
+            'master-film.mp4': FILENAME,
+            'master-round2-slides.pdf': FILENAME,
+            'flint/FIRST-FIRE_FLINT-engine.zip': REPRODUCTION,
+            'master-round2-slides.pptx': REPRODUCTION,
+            'code-review-files.csv.gz': REPRODUCTION,
             'rover-workbench/prototype/scene/drive.mjs': FILENAME,
             'rover-workbench/terrain/reference.geojson': FILENAME,
             'rover-workbench/evidence/files/saffire-i.csv': FILENAME,

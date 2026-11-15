@@ -13,24 +13,25 @@
 <main id="offline-content" class="offline-wrap">
 <a href="index.html#field-guide">FIRST FIRE · Field guide</a>
 <h1>Use FIRST FIRE offline</h1>
-<p>Take the scientific archive, research chat and drivable 3D rover into a classroom without internet. Download the core once. Add the original rover documents and preview film if you want to open those files offline.</p>
+<p>Download the core to explore the FLINT results, run the material calculator and examine the pressurized rover fire case offline. Add the source package and supporting documents to reproduce the analysis.</p>
 <h2>Download the core</h2>
-<p>The core includes the 20 original PSI CSV tables, 1,058 normalized observations, forecast and timestamp, flight-frame example, physics and engineering models, local rover terrain, telemetry and parts, field guide, classroom material and judge films. Existing optional model downloads and the original publishers’ websites still require internet when first accessed. The bundled archive chat works immediately.</p>
-<p><a class="btn" href="first-fire-offline.zip" data-pack download>Download core ZIP · about 22 MiB</a></p>
+<p>The core includes the 20 original PSI CSV tables, 1,058 normalized observations, forecast and timestamp, flight-frame example, FLINT reports and scenario atlas, rover fire case, field guide, classroom material, judging slide PDF and subtitled film. Existing optional model downloads and the original publishers’ websites still require internet when first accessed. The bundled archive chat works immediately.</p>
+<p><a class="btn" href="first-fire-offline.zip" data-pack download>Download core ZIP · under 23 MiB</a></p>
 <p><button class="ghost" type="button" data-ff-offline-combine disabled>Download complete offline edition</button></p><p data-ff-offline-status role="status" aria-live="polite"></p>
-<h2>Optional rover packs</h2>
+<h2>Optional downloads</h2>
+<div class="offline-row"><div><strong>Reproduce the results</strong><p>The supplied Python engine ZIP, editable Round 2 PowerPoint and the full file census for the repository review. Extract this pack alongside the core to use these downloads offline.</p></div><a href="first-fire-reproduction.zip" data-pack download>Download reproduction pack</a></div>
 <div class="offline-row"><div><strong>Fire experiment papers</strong><p>Three original PDFs covering Saffire-I, Saffire-IV/V and the filter-paper experiment.</p></div><a href="first-fire-rover-experiments.zip" data-pack download>Download · 17 MiB</a></div>
 <div class="offline-row"><div><strong>Engineering references</strong><p>The rover’s remaining technical PDFs, including atmosphere, metabolism, thermal control, materials and fire protection.</p></div><a href="first-fire-rover-engineering.zip" data-pack download>Download · 13 MiB</a></div>
 <div class="offline-row"><div><strong>Partner agency documents</strong><p>Eight archived PDFs supporting the international programme and rover references.</p></div><a href="first-fire-rover-agencies.zip" data-pack download>Download · 15 MiB</a></div>
-<div class="offline-row"><div><strong>Rover preview film</strong><p>The workbench MP4 walkthrough. The drivable simulator and its poster image are in the core.</p></div><a href="first-fire-rover-film.zip" data-pack download>Download · 8 MiB</a></div>
-<h2>Install and drive</h2>
+<div class="offline-row"><div><strong>Rover preview film</strong><p>The workbench MP4 walkthrough. The off-route vehicle workbench and its poster image are in the core.</p></div><a href="first-fire-rover-film.zip" data-pack download>Download · 8 MiB</a></div>
+<h2>Open the offline judging route</h2>
 <ol><li>Extract the core ZIP into an empty directory. For each optional ZIP, extract into that <strong>same parent directory</strong>, merging the included <code>FIRST-FIRE</code> folder. The complete edition puts everything in this folder in one extraction.</li>
 <li>Open a terminal in the extracted <code>FIRST-FIRE</code> folder and start a local server. Python 3 is required for this command.<pre>python3 -m http.server 8000 --bind 127.0.0.1</pre>On Windows, use <code>py -3 -m http.server 8000 --bind 127.0.0.1</code>.</li>
-<li>Visit <a href="http://127.0.0.1:8000/">the local FIRST FIRE site</a>. To drive immediately, open the <a href="http://127.0.0.1:8000/rover-workbench/prototype/index.html#workbench">local 3D rover</a>, choose <strong>Drive</strong>, focus the scene and use the controls. Keep the terminal open while using the site.</li></ol>
+<li>Visit <a href="http://127.0.0.1:8000/">the local FIRST FIRE site</a>. Open the <a href="http://127.0.0.1:8000/judging.html">local judging route</a> to compare fire margins, atmospheres and suppression responses. Keep the terminal open while using the site.</li></ol>
 <details><summary>Extract several packs from the command line</summary><p>Place only the downloaded FIRST FIRE packs in one new directory. Run the command there. It merges each archive into the same folder.</p><p>macOS or Linux</p><pre>for file in first-fire-*.zip; do unzip -o "$file" -d .; done</pre><p>Windows PowerShell</p><pre>Get-ChildItem first-fire-*.zip | ForEach-Object { Expand-Archive -LiteralPath $_.FullName -DestinationPath . -Force }</pre></details>
-<p>To inspect file integrity, open the <a href="offline-packs.json">pack inventory</a> for supplement hashes and archived paths. <code>checksums.json</code> identifies the downloaded ZIPs on the hosted site and the extracted core files in your installation. Use the <a href="https://first-fire-lunar-lab.christsamuel26.chatgpt.site/offline.html">public downloads page</a> to obtain additional packs later.</p>
+<p>To inspect file integrity, open the <a href="offline-packs.json">pack inventory</a> for supplement hashes and archived paths. <code>checksums.json</code> identifies the downloaded ZIPs on the hosted site and the extracted core files in your installation. Use the <a href="https://first-fire-lunar-lab.vercel.app/offline.html">public downloads page</a> to obtain additional packs later.</p>
 </main><script>
 if(location.protocol==='file:'||['localhost','127.0.0.1','[::1]'].includes(location.hostname)){
-  for(const a of document.querySelectorAll('a[data-pack]'))a.href=new URL(a.getAttribute('href'),'https://first-fire-lunar-lab.christsamuel26.chatgpt.site/').href;
+  for(const a of document.querySelectorAll('a[data-pack]'))a.href=new URL(a.getAttribute('href'),'https://first-fire-lunar-lab.vercel.app/').href;
 }
 </script></body></html>

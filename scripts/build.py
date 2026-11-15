@@ -72,7 +72,7 @@ def build_rover_bundle(stage):
     (stage / 'rover-model.js').write_text(bundle, encoding='utf-8')
 
 def build():
-    for script in ('build_data.py','forecast.py','verify_quotes.py','build_referee_passages.py'):
+    for script in ('build_data.py','forecast.py','verify_quotes.py','build_referee_passages.py','build_flint_page.py'):
         subprocess.run([sys.executable,str(ROOT/'scripts'/script)],check=True)
     for required in ('app.js','chat-ui.js','chat.css','benchmark-ui.js','search.js','explorer.js','study.js','claim.js','acrylic.js','forecast-ui.js','forecast.css','spread-scene.js','workbench.js','manual.html','offline.html','first-fire-user-manual.pdf','demo.html'):
         if not (SITE/required).is_file(): raise SystemExit(f'Missing site/{required}')
