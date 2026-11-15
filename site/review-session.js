@@ -106,7 +106,7 @@ if(typeof document!=='undefined') {
       event.preventDefault();
       const role=el('role').value.trim(),before=el('first-answer').value.trim();
       if(!before||!role){el('start-status').textContent='Enter your role and first response to begin.';return;}
-      base={schema:'first-fire.specialist-review.v1',session:id,protocol:'2026-11-15.1',sourceManifest:'review-release-2026-11-15.1.json',reviewId:crypto.randomUUID?.()||[...crypto.getRandomValues(new Uint8Array(12))].map(v=>v.toString(16).padStart(2,'0')).join(''),started:new Date().toISOString(),participant:el('kind').value,role,before};
+      base={schema:'first-fire.specialist-review.v1',session:id,protocol:'2026-11-15.1',sourceManifest:'review-release-2026-11-15.chat1.json',reviewId:crypto.randomUUID?.()||[...crypto.getRandomValues(new Uint8Array(12))].map(v=>v.toString(16).padStart(2,'0')).join(''),started:new Date().toISOString(),participant:el('kind').value,role,before};
       if(id==='technology')base.toolOrder=crypto.getRandomValues(new Uint8Array(1))[0]%2?'research chat, then ordinary search':'ordinary search, then research chat';
       persist();reveal();el('task-heading').focus();
     });

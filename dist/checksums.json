@@ -92,6 +92,7 @@
   "evidence-guide.css": "a3c128c985bb9eca18fe571b6e355c8dece4804b1abc7356cf80fd15c77e864b",
   "evidence-guide.html": "1bb1e9d92fbaee58f2e161b7a397aa20b2bd43d16eebc61df02a1f0dc9dade0b",
   "evidence-guide.js": "b404ae1bc5edb5e5c3ce0d7e1fa7579c841ff8ce3bada531f41af776794d92c4",
+  "explore-nav.css": "0ca1846e288099de5524ae41fb2767af8bf92ca1cadf5e7e9c97f285825bda85",
   "explorer.js": "c34caae7f1b53070092b3b31e5ed066f45ed127ad159548a6eff1b5a8444efe7",
   "field-guide.js": "0d1afae56ad7dc93cc295436721b281fe2cc519e9ee008e174c9b34fa99556c0",
   "first-fire-demo.mp4": "a5cadb09e686fc77419145ed0a9cd40c42ae7f8dc00bb93510d860c8bfdd8604",
@@ -169,7 +170,7 @@
   "guide.js": "7a01d38d2686369d5515d7990e86113010016298dba48e3c44d92e7812a64439",
   "handoff.css": "3671e13f0076830fad6c5af36c64d4d398c59f015287922594bbac0ba22866d4",
   "icon.svg": "4ce9ab3bf97d9aeed5177ef2a51001d31423576db083db2d1e0c8d96fcbf5a5d",
-  "index.html": "2d440150c6922fc32099c8f5d5583b149ec67ce813b27c47a26bc78fb6050dab",
+  "index.html": "20f7cf971ad8729e7f118e473f3b77a066581fe71351218e451c5157b1dfee8f",
   "instruments.css": "d69d9dfbda663c1b4df9282a6fd0d11e9562ede6c3215ba1a4e87143311070cb",
   "instruments.js": "2f6eaad37dcec4f851b2541b45b2e095db48ad56b1043c86513e17e203b81530",
   "intent-router.js": "8e5752199536a990b775618ae899905f1264afde350e245c96c3aa9c750428d0",
@@ -265,9 +266,11 @@
   "research-session.js": "aabf2eb9ea883af7c859cb5575f4cb97708f00f08cb95130938934b415c039cc",
   "review-detector-observations.csv": "2ef419b2549b5a570e6e565b02acf6e1abc5bbd3000013d1ac1ba700675fa938",
   "review-release-2026-11-15.1.json": "3cd1cb01481fac10804de770d0995db6e593187b231b7660179455e521c1674e",
-  "review-release.json": "3cd1cb01481fac10804de770d0995db6e593187b231b7660179455e521c1674e",
+  "review-release-2026-11-15.2.json": "1bf487937d011d0fcad40512a9ba646f2b43a918c45aad4bde7de761f4085268",
+  "review-release-2026-11-15.chat1.json": "6d42c2313ce8ba3eae299fcd22ddd292a49f08f4367506b40ee9c64bf3b48c41",
+  "review-release.json": "6d42c2313ce8ba3eae299fcd22ddd292a49f08f4367506b40ee9c64bf3b48c41",
   "review-session.html": "bd4b90c7e735ca5697e3e1dcae807104ae1d23de2549e8344be4daa260a6e60c",
-  "review-session.js": "7fef78e05145d538cea549ebb8678d5fe8608bb7352f29ed6e4645e36634ebf8",
+  "review-session.js": "6eaa24b121b9e8470d8473de5dd5a79c14486a70de6195eaea8a6e5a40b7a831",
   "robots.txt": "949bbd5c93c609da91a1c06f6e87e5b728f190668fcb7943153c249d707bf0d4",
   "rover-concept.png": "2fc32a1897089e850f42cc6aac8fa8209141aae8a3f154357206feeb2c746d0c",
   "rover-fire-case.css": "69ac0e21b83087625ac64c9de8848d587f85d7f793694613d77beca5b709f99a",
@@ -447,5 +450,5 @@
   "first-fire-rover-film.zip": "bb4bf8bc41dd59a810b7607f79aeab8df9b4974e27a87fb8523a7969de6488c7",
   "first-fire-reproduction.zip": "1a6f86872afb963e0d3feebd24ed3265b9e63145df6bfaa63968f555ff5f346d",
   "offline-packs.json": "ee47d75a559333819e1c3414e38fe4dfdc001fa556cb9ab089e3a44bddc97410",
-  "first-fire-offline.zip": "d18d1593e2dfde937ac9a83b5f8337d36840e28346c71d5782ddea38bde79d0d"
+  "first-fire-offline.zip": "00fb218f3a6056147521677fac16b4f5b9d8cf2b891a0bc55f7c4135f4e00ca2"
 }
