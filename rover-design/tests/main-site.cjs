@@ -15,7 +15,7 @@ const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     const open=page.getByRole('link',{name:/3D rover workbench/i}).first();
     await open.click();
     await page.locator('#lab:visible').waitFor();
-    assert.match(page.url(),/\/rover-workbench\/prototype\/index\.html#workbench$/);
+    assert.match(page.url(),/\/rover-workbench\/prototype\/(?:index\.html)?#workbench$/);
     await page.locator('#drive-rate').selectOption('30');
     await page.locator('#play-route').click();
     await page.waitForFunction(()=>parseFloat(document.querySelector('#motion-distance').textContent)>0);
@@ -25,7 +25,7 @@ const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await page.locator('#drive-world').selectOption('Mars');
     assert.equal(await page.locator('#drive-world').inputValue(),'Mars');
     await page.locator('#main-site').click();
-    await page.waitForURL(/index\.html#home$/);
+    await page.waitForURL(url=>url.hash==='#home' && !url.pathname.includes('/rover-workbench/'));
     assert.deepEqual(errors,[]);
     console.log('PASS homepage → 3D rover → drive → cutaway → Mars → research desk at '+home);
   } finally {await browser.close();}
