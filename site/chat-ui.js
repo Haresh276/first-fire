@@ -46,6 +46,7 @@
 
   function sourceURL(raw) {
     if (typeof raw !== 'string') return null;
+    if(raw==='data/tests.csv')return raw;
     if (/^#(?:case\/[\w-]+(?:\/[\w-]+)?|data(?:\?[^\s]*)?|report\/[\w-]+|physics(?:\?mode=rover)?|referee(?:\?view=errors)?|atlas|compass|passports|rulebook|earth|forecast|sources|acrylic|study|guide|benchmark)$/.test(raw)) return raw;
     try {
       const parsed = new URL(raw);
@@ -307,7 +308,7 @@
   }
 
   // Citation actions use the same URL validation as the source list.
-  function showAnswer(turn, index, retry, earlier) {
+  function showAnswer(turn, index, retry, earlier, correct) {
     const article = node('article', undefined, 'ffchat-reply');
     article.tabIndex = -1;
     article.setAttribute('aria-label', 'FIRST FIRE answer');
@@ -334,6 +335,8 @@
         const item = node('li');
         item.append(anchor);
         if (source.locator) item.append(node('small', source.locator));
+        const proof=window.FFProofDrawer?.drawer(source,turn.verification);
+        if(proof)item.append(proof);
         list.append(item);
         sourceLinks.push(anchor);
       }
@@ -393,6 +396,7 @@
       'checked':'Checked against the cited experiment',
       'calculation':'Calculated with the FM² threshold model',
       'archive-calculation':'Calculated from NASA observation rows',
+      'tool-calculation':'Reproduced by the research tool',
       'archive-clarification':'Archive calculation needs clarification',
       'lunar-outcome':'FM² observed outcome register',
       'input-needed':'Forecast inputs needed',
@@ -402,14 +406,31 @@
       'withheld':'Insufficient verified evidence'
     }[turn.evidenceKind];
     article.append(byline);
+    if(turn.intent){
+      const hint=node('div',undefined,'ff-intent');
+      hint.append(node('strong',turn.intent.label));
+      const toggle=button('Not what I meant',()=>{choices.hidden=!choices.hidden;toggle.setAttribute('aria-expanded',String(!choices.hidden));if(!choices.hidden)choices.querySelector('button')?.focus();},'ffchat-quiet');
+      toggle.setAttribute('aria-expanded','false');
+      const choices=node('div',undefined,'actions');choices.hidden=true;
+      for(const [type,[label]] of Object.entries(window.FFIntentRouter.routes)){
+        if(type!==turn.intent.type)choices.append(button(label,()=>correct(index,type),'ghost'));
+      }
+      hint.append(toggle,choices);article.append(hint);
+    }
     if(provenance) article.append(node('p',provenance,'rf-evidence-label'));
     article.append(body, actions);
+    if(turn.verification){
+      const drawer=window.FFEvidenceDesk.panel(turn);const depth=window.FFReaderDevice?.readingNote?.(turn);
+      if(depth instanceof Node)drawer.append(depth);
+      article.append(drawer);
+    }
     for (const review of turn.reviewIds || (turn.reviewId ? [turn.reviewId] : [])) {
       const proof = window.FFDeckReferee?.proof(review);
       if (proof) article.append(proof);
     }
-    const engine = window.FFDeckReferee?.route(turn.question);
-    if (engine) article.append(link('Open '+engine[0]+' →', engine[1], 'rf-continue'));
+    const route=turn.intent;
+    if(route && !['archive','incident','abstain'].includes(route.type))article.append(link('Open '+route.label+' →',route.href,'rf-continue'));
+    else if(!route){const engine=window.FFDeckReferee?.route(turn.question);if(engine)article.append(link('Open '+engine[0]+' →',engine[1],'rf-continue'));}
     return article;
   }
 
@@ -629,7 +650,7 @@
       desk.classList.toggle('ffchat-fresh', isEmpty);
       exchange.replaceChildren();
       turns.forEach((turn, i) => {
-        exchange.append(userBubble(turn.question, i), showAnswer(turn, i, retry, turns.slice(0,i)));
+        exchange.append(userBubble(turn.question, i), showAnswer(turn, i, retry, turns.slice(0,i),(idx,type)=>sendMessage(thread.turns[idx].question,idx,true,type)));
       });
       if (request) {
         exchange.append(userBubble(request.message), node('p', 'Looking for evidence…', 'ffchat-wait'));
@@ -664,7 +685,7 @@
       thread = fork;
     }
 
-    async function sendMessage(raw, branchIndex = editing, retrying = false) {
+    async function sendMessage(raw, branchIndex = editing, retrying = false, chosenIntent=null) {
       if (request || !isActive()) return;
       const message = raw.trim();
       if (!message || message.length > MAX_MESSAGE) {
@@ -688,16 +709,34 @@
         const engine = window.FFDeckReferee?.route(message);
         const archiveQuery=archiveRequest(message,context.at(-1));
         const quantitative = archiveQuery.missingScope || window.FFScienceChat?.isCandidate(archiveQuery.input,context);
+        const router=window.FFIntentRouter, verifier=window.FFEvidenceDesk;
+        let intent=router.detect(message,context);
+        if(intent.refs?.ids.length && !Array.isArray(window.FF.tests)){
+          await window.FFLoadAsset('observation-rows.js');intent=router.detect(message,context);
+        }
+        if(quantitative && !['forecast','compare','physics','compass','referee','incident'].includes(intent.type) && !intent.boundary)intent=router.intent('archive');
+        if(chosenIntent && intent.type!==chosenIntent){
+          const params=['compass','physics'].includes(chosenIntent)?router.inputFields(message.normalize('NFKC').toLowerCase(),chosenIntent):{};
+          intent=router.intent(chosenIntent,params,{corrected:true});
+        }
         const toolRequest = engine && !quantitative && /^(?:open|use|launch|take me to|show me the|where (?:can|do) i (?:find|open|use))\b/i.test(message);
         let answer;
-        const observation=!toolRequest && observedLunarOutcome(message,context,window.FF?.forecast);
-        const calculation=observation || (!toolRequest && window.FFDeckReferee?.forecastAnswer(message,context));
+        const observation=(!chosenIntent||chosenIntent==='abstain')&&!toolRequest && observedLunarOutcome(message,context,window.FF?.forecast);
+        const forecastInput=intent.type==='forecast'&&!/fm[- ]?2|synergy|lunar burn/i.test(message.normalize('NFKC'))&&!context.at(-1)?.calculation?'FM2 '+message:message;
+        const calculation=observation || (intent.type==='forecast'&&!toolRequest && (verifier.toolAnswer(intent,message,window.FF)||window.FFDeckReferee?.forecastAnswer(forecastInput,context)));
         if (calculation) {
           answer=calculation;
-        } else if(archiveQuery.missingScope) {
+          if(observation)intent=router.intent('abstain',{}, {boundary:'observations'});
+          else if(forecastInput!==message)answer.forecastInput=forecastInput;
+        } else if(['compare','compass','rulebook','physics','referee'].includes(intent.type) || intent.type==='record'&&intent.params.record && /^(?:open|inspect|show|read|find|list|look up|pull up|give me the row)\b/i.test(message)){
+          if(['compare','compass','record'].includes(intent.type)&&!Array.isArray(window.FF.tests))await window.FFLoadAsset('observation-rows.js');
+          if(intent.type==='physics'&&!window.FFPhysics)await window.FFLoadAsset('physics-lab.js');
+          if(intent.type==='referee')answer=await verifier.checkSubmitted(message,intent);
+          else answer=verifier.toolAnswer(intent,message,window.FF)||verifier.clarify('Choose the source row in the Atlas.');
+        } else if(intent.type==='archive'&&archiveQuery.missingScope) {
           answer={mode:'calculation',evidenceKind:'archive-clarification',status:'abstained',sources:[],
             answer:'Which group of archive rows do you mean? Name an investigation, material or selection to establish the denominator.'};
-        } else if(quantitative) {
+        } else if(intent.type==='archive'&&quantitative) {
           if(!Array.isArray(window.FF.tests))await window.FFLoadAsset('observation-rows.js');
           const prior=context.at(-1);
           const archive=archiveQuery.scope?selectedArchive(prior,window.FF):window.FF;
@@ -707,6 +746,10 @@
             answer.previousSelection=true;
             answer.answer+='\n\nThis calculation starts with the '+prior.analysis.rows.length+' matching rows in your previous result.';
           }
+        } else if(intent.type==='abstain'&&!toolRequest) {
+          answer=verifier.decline('I don’t have a source that establishes an answer to that question. Name an experiment, incident or measured quantity, or choose the intended tool.');
+        } else if(chosenIntent && intent.corrected) {
+          answer=verifier.clarify('This question needs more information for '+intent.label+'. Edit the question or open the selected tool.');
         } else if (toolRequest) {
           answer = {answer:engine[2], status:'limited', sources:[], mode:'navigation'};
         } else {
@@ -719,6 +762,9 @@
             answer = await window.FFDeckReferee.checkedReply(message, answer);
           }
         }
+        answer=await verifier.gate(message,answer,context,intent);
+        const {type,label,href,params}=intent;answer.intent={type,label,href,params};
+        verifier.remember(message,answer);
         if (working.controller.signal.aborted || !isActive()) throw Error('Stopped');
         if (branchIndex !== null) saveBranch(context, retrying);
         thread.turns.push({question:message, ...answer});

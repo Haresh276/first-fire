@@ -2,17 +2,19 @@
 (() => {
   'use strict';
   const key = 'first-fire.investigation-desk.v1';
-  const levels = {beginner:'Beginner', undergraduate:'Undergraduate', advanced:'Advanced'};
+  const trials=typeof window==='undefined'?require('./trial-comparison.js'):window.FFTrialComparison;
+  const levels = {beginner:'Start here', undergraduate:'UG · Undergraduate', advanced:'PG · Postgraduate'};
   const display = {auto:'Automatic', lite:'Lite', standard:'Standard', pro:'Pro'};
   const tools = {
     atlas:{name:'Atlas evidence', kind:'Archived observation', url:'#atlas'},
+    'rover-design':{name:'Modular rover designer', kind:'Engineering simulation', url:'#rover-design'},
     physics:{name:'Rover and cabin', kind:'Simulation', url:'#physics?mode=rover'},
     'transfer-lab':{name:'Matched FLEX experiments', kind:'Archive comparison', url:'#transfer-lab'},
     'transport-lab':{name:'Tracer transport', kind:'Simulation', url:'#transport-lab'},
     'design-lab':{name:'FM² experiment design', kind:'Hypothetical result', url:'#design-lab'},
     chat:{name:'Archive question', kind:'Archive calculation', url:'#chat'}
   };
-  const initial = () => ({version:1, active:false, question:'', level:'undergraduate', display:'auto', reference:'concurrent', referenceOrigin:'catalogue preview', notes:'', records:{}, lastTool:null});
+  const initial = () => ({version:1, active:false, question:'', level:'undergraduate', display:'auto', reference:'concurrent', referenceOrigin:'catalogue preview', notes:'', trialComparison:null, records:{}, lastTool:null});
   const saffire = {
     concurrent:{burn:'S1', row:'PSI-98:1:2', speed:1.8, flow:'with the airflow'},
     opposed:{burn:'S2', row:'PSI-98:1:3', speed:1.3, flow:'against the airflow'}
@@ -25,14 +27,8 @@
     undergraduate:'Trace a source row, select an imposed flame-front speed and change a cabin condition. Save the assumptions alongside the calculated oxygen, energy and flame travel.',
     advanced:'Track the accession, measured endpoint and source conditions separately from model inputs. Inspect the imposed propagation law, oxygen budget and synthetic-surrogate residual before transferring a result.'
   };
-  function automatic(nav) {
-    const ram = Number(nav?.deviceMemory), cores = Number(nav?.hardwareConcurrency);
-    if (nav?.connection?.saveData || (ram > 0 && ram <= 2) || (cores > 0 && cores <= 2))
-      return {tier:'lite', reason:'The browser reports data saving or limited processing capacity.'};
-    if (ram >= 8 && cores >= 8)
-      return {tier:'pro', reason:'The browser reports at least 8 GB of memory and eight logical cores.'};
-    return {tier:'standard', reason:'The browser reports typical capacity or does not expose enough hardware information.'};
-  }
+  const deviceTools=typeof window!=='undefined'?window.FFReaderDevice:require('./reader-device.js');
+  const automatic=(nav,signals=deviceTools.signals?.())=>deviceTools.chooseTier(nav,signals);
   function freshInvestigation(state) {
     return {...initial(),active:true,level:state.level,display:state.display};
   }
@@ -43,7 +39,7 @@
     for (const [name,item] of Object.entries(raw.records)) {
       if (Object.hasOwn(tools,name) && item?.record && typeof item.summary === 'string') records[name]=item;
     }
-    return {...fresh, records, active:raw.active === true, level:Object.hasOwn(levels,raw.level)?raw.level:fresh.level,
+    return {...fresh, records, trialComparison:trials.restore(raw.trialComparison), active:raw.active === true, level:Object.hasOwn(levels,raw.level)?raw.level:fresh.level,
       display:Object.hasOwn(display,raw.display)?raw.display:fresh.display, reference:Object.hasOwn(saffire,raw.reference)?raw.reference:fresh.reference,
       referenceOrigin:['source selector','Atlas pin'].includes(raw.referenceOrigin)?raw.referenceOrigin:'catalogue preview',
       question:typeof raw.question==='string'?raw.question.slice(0,480):'', notes:typeof raw.notes==='string'?raw.notes.slice(0,1600):'',
@@ -58,7 +54,7 @@
       return true;
     }
     if (!detail.record || typeof detail.record!=='object' || typeof detail.summary!=='string') return false;
-    if (!state.active && !['physics','atlas'].includes(detail.tool)) return false;
+    if (!state.active && !['physics','atlas','rover-design'].includes(detail.tool)) return false;
     if (detail.tool==='atlas') {
       const direction=Object.keys(saffire).find(name=>saffire[name].row===detail.record.id);
       if(direction) {state.reference=direction;state.referenceOrigin='Atlas pin';}
@@ -76,6 +72,8 @@
     const physics = state.records.physics?.record;
     const pinnedReference=state.lastTool==='atlas' && Object.keys(saffire).find(name=>saffire[name].row===record?.id);
     const suggestion=(tool,action,reason,url=tools[tool].url)=>({tool,action,reason,url});
+    if (/airlock|suitport|wheel|solar panel|radiator|crew consumption|crew oxygen|rover parts|modular rover|hybrid rover|assemble.*rover|custom rover|chassis load|rover design|crew access/.test(question) || (!question && state.lastTool==='rover-design'))
+      return suggestion('rover-design','Open the modular rover designer','Change a part or mission condition and inspect the resulting mass, power, thermal and atmosphere budgets.');
     if (/smoke|tracer|sensor|detector|mixing|ventilat|leak/.test(question) && !/rover|chassis/.test(question))
       return suggestion('transport-lab','Test tracer transport','Vary the exchange between compartments and compare the remote sensor signal.');
     if (/next burn|lunar test|threshold|forecast|fm[²2]|probabilit/.test(question))
@@ -100,6 +98,7 @@
       device:{preference:state.display,effectiveTier:effective},selectedReference:{selectionOrigin:state.referenceOrigin,direction:state.reference,sourceRow:ref.row,
       measuredSpeedMmS:ref.speed,sourceURL:study,publicationURL:publication,locator:'NASA Saffire-I results, slide 21',
       transferLimit:'Flight rates were measured in orbit on SIBAL fabric at 20 cm/s forced flow. A rover run uses an imposed input.'},
+      trialComparison:trials.exportComparison(state.trialComparison),
       results:state.records,lastTool:state.lastTool,decision:state.notes,nextAction:recommendation(state),signedForecastSHA256:signed};
   }
   const core={initial,automatic,restore,capture,recommendation,exportState,freshInvestigation};
@@ -110,6 +109,8 @@
   function save() {try {sessionStorage.setItem(key,JSON.stringify(state));persisted=true;} catch {persisted=false;}}
   const tier=()=>state.display==='auto'?automatic(navigator).tier:state.display;
   const level=()=>state.level;
+  function setTier(value){if(!Object.hasOwn(display,value))return;state.display=value;save();deviceTools.onModeChange();}
+  function setLevel(value){if(!Object.hasOwn(levels,value))return;state.level=value;save();}
   const E=(tag,text,cls)=>{const e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e;};
   function link(text,href,cls='inlinebtn') {const a=E('a',text,cls);a.href=href;return a;}
   function field(text,control) {const box=E('label',text,'field');box.append(control);return box;}
@@ -204,15 +205,16 @@
     sourceBox.append(E('p','Choose a rate from the two published Saffire-I runs. Other pinned Atlas rows keep their own conditions and endpoints.','small'),field('Measured spread direction',source),provenance);showSource();left.append(sourceBox);
     const preferences=section('Reading and device preferences');preferences.classList.add('aw-preferences');
     const reader=select(levels,level()), device=select(display,state.display), mode=E('p',null,'small');
-    reader.onchange=()=>{state.level=reader.value;save();explanation.textContent=descriptions[level()];showSource();};
+    reader.onchange=()=>{setLevel(reader.value);explanation.textContent=descriptions[level()];showSource();};
     function updateDevice() {
       const t=tier();wrap.dataset.tier=t;
       const reason=state.display==='auto'?' '+automatic(navigator).reason:' You selected this mode.';
       const output={lite:'Table readouts and collapsed records reduce drawing.',standard:'The rover plots the scenario and source records open on demand.',pro:'The rover plots the scenario and the latest record opens with its full numerical inputs.'};
       mode.textContent=display[t]+' mode. '+output[t]+reason;
     }
-    device.onchange=()=>{state.display=device.value;save();updateDevice();drawRecords();};
-    preferences.append(field('Explanation level',reader),field('Device mode',device),mode);updateDevice();right.append(preferences);
+    device.onchange=()=>{setTier(device.value);updateDevice();drawRecords();};
+    preferences.append(field('Explanation level',reader),field('Device mode',device),mode,deviceTools.devicePanel(false));updateDevice();right.append(preferences);
+    deviceTools.measure().then(()=>{if(wrap.isConnected){updateDevice();drawRecords();}});
     const results=section('Investigation record'),list=E('div',null,'aw-list');
     function drawRecords() {
       const rows=Object.entries(state.records);
@@ -221,6 +223,10 @@
       if(!rows.length)list.append(E('p','Pin an Atlas row or run a lab to collect its inputs, outcome and evidence here.'));
     }
     drawRecords();results.append(list);left.append(results);
+    left.append(trials.panel({current:state.records.physics,comparison:state.trialComparison,
+      onChange:value=>{state.trialComparison=value;save();},
+      onReopen:entry=>{state.records.physics=entry;state.lastTool='physics';save();location.hash='#physics?mode=rover';}}));
+    right.append(window.FFInvestigationReplay.panel());
     const decision=section('Research decision'),notes=E('textarea');notes.rows=3;notes.maxLength=1600;notes.value=state.notes;
     notes.placeholder='What changed, and which measurement would you need next?';
     notes.oninput=()=>{state.notes=notes.value;save();};
@@ -248,5 +254,5 @@
     document.getElementById('content').before(rail);
   }
   document.addEventListener('ff-research-result',event=>{if(capture(state,event.detail))save();});
-  window.FFAwareness={render,guide,tier,level,active:()=>state.active,previous:tool=>state.active&&Object.hasOwn(state.records,tool)?state.records[tool].record:null};
+  window.FFAwareness={render,guide,tier,level,setLevel,setTier,preference:()=>state.display,active:()=>state.active,previous:tool=>state.active&&Object.hasOwn(state.records,tool)?state.records[tool].record:null};
 })();

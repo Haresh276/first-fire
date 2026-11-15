@@ -305,6 +305,9 @@
       stopClock();root.replaceChildren();
       const shell=el('section',undefined,'panel stack');shell.classList.add('ff-study');
       shell.append(el('p','Evidence study','eyebrow'),el('h2','Find the evidence'));
+      const pair=el('a','Compare FIRST FIRE with a general-purpose assistant →','inlinebtn');
+      pair.href='paired-review.html';
+      shell.append(pair);
       const nav=el('div',undefined,'actions');for(const [id,name] of [['participant','Participant'],['grade','Assessor'],['analysis','Analyst']]){
         const b=button(name,()=>{tab=id;paint();},id===tab?'btn':'btn ghost');b.setAttribute('aria-pressed',String(id===tab));nav.append(b);
       }

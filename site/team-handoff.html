@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Team handoff · FIRST FIRE</title><link rel="stylesheet" href="handoff.css"><script defer src="team-handoff.js"></script>
+<style>
+#team-credits details {border-top:1px solid #bec9bf;padding:.75rem 0}
+#team-credits summary {font-weight:700;cursor:pointer}
+#team-credits summary:focus-visible,.credit-scroll:focus-visible {outline:3px solid #bc551f;outline-offset:2px}
+.credit-scroll {overflow:auto;max-width:100%}
+.credit-matrix {min-width:34rem;font-size:.92em}
+.credit-matrix caption {text-align:left;padding-bottom:.45rem;font-weight:600}
+.credit-matrix th,.credit-matrix td {vertical-align:top}
+.credit-matrix tbody th {width:39%}
+.credit-matrix small {display:block;font-weight:400}
+.credit-ledger {padding-left:1.4em}
+.credit-ledger li {padding:.25em 0}
+@media print {#team-credits {break-inside:auto}.credit-scroll {overflow:visible}.credit-matrix {min-width:0}.credit-matrix thead {display:table-header-group}.credit-matrix tr,.credit-ledger li {break-inside:avoid}}
+</style></head><body><main>
+<nav><a href="index.html#field-guide">Field guide</a><button onclick="print()">Print</button></nav><header><p>Team Code Blooded · Submission and evidence</p><h1>Team handoff</h1><p>Collect actual review evidence, pilot records and rehearsal feedback here. Entries stay in this tab until you export them.</p></header>
+<section><h2>One minute with the project</h2><div class="actions"><a href="index.html#forecast">1. Inspect the fixed forecast</a><a href="index.html#atlas">2. Open the Moon column</a><a href="index.html#referee">3. Test the planted quotation</a></div></section><section><h2>Project description</h2><p>FIRST FIRE helps a researcher decide which spacecraft fire experiments can support a new test. Its challenge Atlas indexes 1,622 source rows from 15 NASA investigations. The research chat can perform calculations on 1,058 normalized observations and identify the supporting rows. The materials, atmosphere and vehicle tools let a researcher change a cabin design and see how far its conditions lie from a recorded test. The team fixed four FM² predictions with a signed timestamp. A researcher can inspect model assumptions, enter hypothetical results and see which experiment would reduce uncertainty. Published evaluations include incorrect answers and the evidence behind each correction.</p>
+<div class="actions"><a href="index.html#atlas">NASA data and DOIs</a><a href="index.html#sources">Sources and methods</a><a href="master-film.mp4">English-captioned narrated demo</a><a href="judge-brief.pdf">One-page judge brief</a><a href="index.html#field-guide?tab=judges">Round 2 rehearsal</a></div></section>
+<section id="team-credits" aria-labelledby="credit-title">
+  <h2 id="credit-title">Team roles and contribution evidence</h2>
+  <p>The team’s master document credits Samuel Christ (IIT Madras) with the research desk, architecture and benchmarks, and Haresh G. (SRM University AP) with the concept, forecast assumptions, data pack and Round 1 deck. It assigns Hanmathgundam Hamsika (VIT-AP University) the source reviews, participant pilot and impact presentation.</p>
+  <details open>
+    <summary>CRediT contributions by role</summary>
+    <p>“Lead” and “Support” reproduce the team’s role assignments on pages 85–86. A dash means the master assigns no role. Case sign-offs and the pilot require dated records from the people who performed them. <a href="https://credit.niso.org/">Contributor Roles Taxonomy</a> · <a href="index.html#report/signoff">Review register</a></p>
+    <div class="credit-scroll" tabindex="0" role="region" aria-label="Contribution table, scroll horizontally on small screens">
+      <table class="credit-matrix">
+        <caption>Responsibilities recorded by Team Code Blooded</caption>
+        <thead><tr><th scope="col">Role and work</th><th scope="col">Samuel</th><th scope="col">Haresh</th><th scope="col">Hamsika</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Conceptualization<small>Lunar forecast and four research views</small></th><td>Support</td><td>Lead</td><td>Support</td></tr>
+          <tr><th scope="row">Methodology<small>Forecast, normalization, checks and benchmarks</small></th><td>Lead</td><td>Support</td><td>—</td></tr>
+          <tr><th scope="row">Software<small>Research desk, chat, build and tests</small></th><td>Lead</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Data curation<small>PSI retrieval, checksums and normalized rows</small></th><td>Lead, archive</td><td>Lead, data pack</td><td>Support</td></tr>
+          <tr><th scope="row">Investigation<small>NASA papers, six cases and repository review</small></th><td>Lead</td><td>Support</td><td>Support</td></tr>
+          <tr><th scope="row">Formal analysis<small>Forecast scores, sensitivity and cabin checks</small></th><td>Lead</td><td>Support</td><td>—</td></tr>
+          <tr><th scope="row">Validation<small>Benchmark evidence, independent case checks and pilot</small></th><td>Lead, benchmarks</td><td>Support, cases 1–3 <em>(pending)</em></td><td>Lead, cases 4–6 and pilot <em>(pending)</em></td></tr>
+          <tr><th scope="row">Visualization<small>Round 1 presentation and site graphics</small></th><td>Lead, site</td><td>Lead, deck</td><td>—</td></tr>
+          <tr><th scope="row">Writing – original draft<small>Master document, learner’s guide, manuals and notes</small></th><td>Lead, manuals</td><td>Lead, planning documents</td><td>Support</td></tr>
+          <tr><th scope="row">Writing – review and editing<small>Checking published claims against source material</small></th><td>Support</td><td>Support</td><td>Lead</td></tr>
+          <tr><th scope="row">Project administration<small>Team page, repository and competition entry</small></th><td>Lead</td><td>Support</td><td>—</td></tr>
+          <tr><th scope="row">Resources<small>Equipment, accounts and hosting</small></th><td>Lead</td><td>Support</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  <details>
+    <summary>Five commits recorded in the master</summary>
+    <p>Git records all five changes under <strong>samuelmorningstar23</strong>, identified by the master as Samuel Christ. The following times are India Standard Time on 14 November 2026. The links open the exact revisions and require repository access.</p>
+    <ol class="credit-ledger">
+      <li><time datetime="2026-11-14T14:55:08+05:30">14:55</time> · <a href="https://github.com/Haresh276/first-fire/commit/d0692a0b61037df4c5cc0ee1a579e179440be662">d0692a0</a> · Added the research dashboard, local chat, data and benchmarks (239 files).</li>
+      <li><time datetime="2026-11-14T15:13:46+05:30">15:13</time> · <a href="https://github.com/Haresh276/first-fire/commit/5c59f4ecc51edc240b04d63a097b6679f3cbbf55">5c59f4e</a> · Enabled reader-written case questions and added the technical manual (21 files).</li>
+      <li><time datetime="2026-11-14T15:39:28+05:30">15:39</time> · <a href="https://github.com/Haresh276/first-fire/commit/5a5652a04319dceb176986e1e32384c3a837d10b">5a5652a</a> · Illustrated FM² threshold outcomes, expanded the manual and started a fresh chat on reload (27 files).</li>
+      <li><time datetime="2026-11-14T18:50:18+05:30">18:50</time> · <a href="https://github.com/Haresh276/first-fire/commit/09c87937a2eed61e3fcf444557038cae8c6d18fc">09c8793</a> · Delivered the Atlas, Compass, Rulebook, Passports, Physics Lab, Rover Sandbox, Referee and At Home, the signed forecast and the comparative project review (98 files).</li>
+      <li><time datetime="2026-11-14T19:05:11+05:30">19:05</time> · <a href="https://github.com/Haresh276/first-fire/commit/4cb1a9adf2a7a2655b26289b243bc44e2e5016de">4cb1a9a</a> · Published the challenge repository review and tested joint coverage and numerical grounding (32 files).</li>
+    </ol>
+  </details>
+  <details>
+    <summary>Team work outside Git</summary>
+    <p>The master records Haresh’s concept and plans on 1–13 November and the original 12-slide deck on 14 November at 15:30 IST. Slide 6 gives the assumptions used for the fixed forecast. It also credits Haresh with the original PSI pack on 14 November and the master document that evening. <a href="forecast-lock/fm2-v1.json">Read the forecast record</a></p>
+    <p>The release reconstructs the 15-investigation pack from the repository’s versioned NASA archive. It includes 16 original CSVs, 1,622 nonempty source rows, an inventory and checksums. The earlier team ZIP and its independent retrieval history remain unverified here. <a href="challenge-data-pack.zip" download>Download the reconstructed data pack</a></p>
+    <p>Hamsika’s assigned case and Earth-source reviews and participant pilot await signed entries and scored sessions. The Round 2 deck includes her assigned impact section. A presentation or rehearsal date can be recorded after she delivers it. <a href="master-round2-slides.pdf#page=8">Impact slide</a></p>
+  </details>
+</section>
+<section><h2>SI disclosure and credit</h2><p>The team’s master credits Claude (Anthropic) for planning, the learner and master documents, the original deck and the data-pack scripts. Codex (OpenAI) assisted with software implementation, source research, test generation and technical writing. The optional chat selector uses Qwen3 locally or SmolLM2 in WebGPU. The Referee uses Gemma and MobileBERT. Model2Vec supplies browser search embeddings. BGE-small supplies the local service’s embeddings. Small models support passage selection and semantic retrieval. Scientific calculations use explicit equations or reproducible archive queries. Each benchmark names the system it evaluates. NASA and partner publications supply the experimental evidence.</p><p>The Rover Sandbox identifies its generated concept art. The master-edition film uses NASA imagery, captures of the real interface and a visibly credited synthetic English voice. For an official entry credit the contributors who performed each task, the original investigators, software licences and the assets used.</p>
+<div class="actions"><a href="index.html#report/chat-models">Models and provider design</a><a href="index.html#report/code-review">Repository research</a><a href="index.html#benchmark">Evaluation</a><a href="licenses/software.txt">Software licence</a></div></section>
+<section><h2>Record a review</h2><p>Open the case and original paper. Check the location, conditions, endpoint, decision and limitation. The team can use exported entries to record actual sign-off in its release log.</p><form id="log"><label>Review type<select name="kind"><option>Case evidence</option><option>Earth application source</option><option>Round 1 feedback</option><option>Rehearsal</option><option>Native-language review</option><option>Device acceptance</option><option>Team contribution</option></select></label><label>Case, setting or artifact<input required name="item" maxlength="180"></label><label>Reviewer or participant alias<input required name="reviewer" maxlength="80"></label><label>Source URL, page or record ID<input required name="source" maxlength="400"></label><label>Finding, correction or observed result<textarea rows="3" required name="finding" maxlength="1200"></textarea></label><button>Add entry</button></form><p role="status" id="msg"></p><div id="entries"></div><button id="export">Download review log</button></section>
+<section><h2>Blind pilot</h2><p>The master protocol calls for six new participants and two eight-minute tasks each. Use the masked assessment tools, keep the answer key with the assessor, and report the number of correct decisions, critical errors and times by method. Report actual participation and incomplete attempts.</p><a href="index.html#study">Open evaluation lab</a> · <a href="index.html#report/evaluation">Read the protocol</a></section>
+<section><h2>Forecast deposition</h2><p>The downloadable package contains the original signed bytes, timestamp response and draft deposition metadata. An authorized team member can review the creator list, make a deposit and record the DOI issued by the repository.</p><a href="forecast-deposition.zip">Download the deposition package</a> · <a href="forecast-lock/fm2-v1.json">Read the signed forecast</a></section><section><h2>Competition release checklist</h2><p>Open each item after the work is done. Enter the person who checked it and the result or link they verified. These private confirmations stay in this tab and can be exported for the team.</p><p id="checks-state" role="status"></p><div id="checks"></div><button id="save-checklist">Export checklist</button></section></main></body></html>

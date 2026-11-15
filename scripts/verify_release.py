@@ -59,7 +59,7 @@ def check(dist):
     assert len(chat_run['rows'])==100 and len({x['id'] for x in chat_run['rows']})==100
     assert all(isinstance(x['pass'],bool) and x['expected'] and x['question'] for x in chat_run['rows'])
     assert not (dist/'chat').exists() and not (dist/'tests').exists(), 'Static site must not expose local model service or evaluator inputs.'
-    for required in ('chat-ui.js','chat.css','benchmark-ui.js','data/chat-benchmark.json','research/chat-models.md','research/chat-benchmark.md','research/world-model.md','manual.html','first-fire-user-manual.pdf','demo.html','first-fire-demo.pdf','model.js','claim.js','acrylic.js','guide.js','workbench.js','records.js','explorer.js','forecast-ui.js','study.js','research/evaluation.md','research/search.md'):
+    for required in ('chat-ui.js','chat.css','benchmark-ui.js','data/chat-benchmark.json','research/chat-models.md','research/chat-benchmark.md','research/world-model.md','manual.html','first-fire-user-manual.pdf','demo.html','first-fire-demo.pdf','search-vectors.js','claim.js','acrylic.js','guide.js','workbench.js','records.js','explorer.js','forecast-ui.js','study.js','research/evaluation.md','research/search.md'):
         assert required in actual,required
     for required in ('atlas-deck.js', 'mission-desk.js', 'observation-rows.js', 'physics-lab.js',
                      'cabin-liquid-weights.js', 'referee-deck.js', 'referee-passages.js', 'referee-reviews.js',
@@ -81,7 +81,49 @@ def check(dist):
         assert run['n']==len(run['cases'])==len(set(c['id'] for c in run['cases']))
         assert sum(c['pass'] for c in run['cases'])==run['passed']
         assert hashlib.sha256((ROOT/'tests/chat'/bank).read_bytes()).hexdigest()==run['bankSHA256']
-    assert json.loads((dist/'science-chat-acceptance-replay.json').read_text())['localChatUISHA256']==actual['chat-ui.js'], 'Repeat the release chat replay for this build.'
+    for name, bank in [('master-science-24.json','science-acceptance-v1.json'),('master-science-40.json','science-unseen-v1.json')]:
+        latest=json.loads((dist/name).read_text())
+        assert latest['localChatUISHA256']==actual['chat-ui.js'], 'Repeat release chat replay: '+name
+        assert latest['engineSHA256'] and all(actual.get(file)==digest for file,digest in latest['engineSHA256'].items()), 'Chat engine changed since '+name
+        assert latest['bankSHA256']==hashlib.sha256((ROOT/'tests/chat'/bank).read_bytes()).hexdigest()
+        assert latest['passed']==sum(row['pass'] for row in latest['cases'])
+    for name, bank in [('master-route-first','master-route-60'),('master-route-replay','master-route-60'),('master-route-generalization','master-route-generalization'),('master-route-third','master-route-third')]:
+        report=json.loads((dist/(name+'.json')).read_text())
+        assert report['bankSHA256']==hashlib.sha256((ROOT/'tests/chat'/(bank+'.json')).read_bytes()).hexdigest()
+        assert len(report['cases'])==report['count']==60 and sum(row['pass'] for row in report['cases'])==report['correct']
+        if name=='master-route-third':
+            assert report['routerSHA256']==actual['intent-router.js'], 'Rerun '+name
+        else:
+            import gzip
+            revision='1' if name=='master-route-first' else '2'
+            snapshot=ROOT/'tests/chat/snapshots'/('intent-v'+revision+'.js.gz')
+            assert report['routerSHA256']==hashlib.sha256(gzip.decompress(snapshot.read_bytes())).hexdigest()
+    from zipfile import ZipFile
+    with ZipFile(dist/'challenge-data-pack.zip') as core:
+        study_summary = json.loads(core.read('archive-summary.json'))
+        assert (study_summary['study_count'], study_summary['table_count'], study_summary['source_records']) == (15, 16, 1622)
+        entries = study_summary['release_additions']
+        assert (entries['listed_file_entries'], entries['listed_video_entries']) == (8285, 566)
+        verified = set()
+        for line in core.read('SHA256SUMS.txt').decode().splitlines():
+            digest, name = line.split('  ', 1)
+            assert name not in verified and hashlib.sha256(core.read(name)).hexdigest() == digest, name
+            verified.add(name)
+        assert verified == set(core.namelist()) - {'SHA256SUMS.txt'}
+        for name in (n for n in verified if n.startswith('tables/')):
+            assert core.read(name) == (dist/'data/raw'/Path(name).name).read_bytes()
+    with ZipFile(dist/'forecast-deposition.zip') as deposit:
+        for name in ('fm2-v1.json','fm2-v1.tsr'):
+            assert deposit.read(name)==(dist/'forecast-lock'/name).read_bytes()
+    for name in ('field-guide.js','first-fire-field-guide.pdf','master-round2.pdf','master-round2-slides.pdf','master-round2-slides.pptx','master-film.mp4','master-film.vtt','master-worksheet.pdf','judge-brief.pdf','forecast-register.html','master-materials.js','vehicle-designer.js','master-fds-data.js','master-physics.js','front-tracking.js','flight-frames-ui.js','saffire-frames.js','front-example.json','research/video-measurement.md','research/intake.md','research/master-requirements.md','research/answer-verification.md'):
+        assert name in actual, name
+    if (dist/'first-fire-offline.zip').exists():
+        with ZipFile(dist/'first-fire-offline.zip') as bundle:
+            offline=json.loads(bundle.read('FIRST-FIRE/checksums.json'))
+            expected={n:h for n,h in actual.items() if n not in ('first-fire-offline.zip','model.js')}
+            assert offline==expected, 'Offline edition manifest differs from its source files'
+            assert set(bundle.namelist())=={'FIRST-FIRE/'+n for n in [*expected,'checksums.json']}
+            assert all(hashlib.sha256(bundle.read('FIRST-FIRE/'+f)).hexdigest()==sha for f,sha in offline.items()), 'Offline ZIP content mismatch'
     lock='forecast-lock/fm2-v1.json'
     assert actual[lock]=='9f565bc7195936bde5faff67841c5e1e6537581bc4fc560018838fbf996a8fa3', 'The signed forecast bytes must match v1.'
     frozen=json.loads((dist/lock).read_text())

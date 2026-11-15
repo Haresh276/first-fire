@@ -1,0 +1,5 @@
+Revision         : FDS-6.11.1-release
+Revision Date    : 2026-07
+Background Pressure (Pa)     101325.00
+Ambient Temperature (C)          26.85
+STOP: FDS completed successfully (CHID: ff_high_refined)

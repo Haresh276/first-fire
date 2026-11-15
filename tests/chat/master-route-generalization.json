@@ -1,0 +1,302 @@
+[
+  {
+    "id": "B01",
+    "expected": "record",
+    "question": "Open the notebook entry for FLEX-155."
+  },
+  {
+    "id": "B02",
+    "expected": "record",
+    "question": "Find the archived fields for test 21202b-C2H4-1."
+  },
+  {
+    "id": "B03",
+    "expected": "record",
+    "question": "Which row documents the Nomex specimen in Saffire-II sample 2-7?"
+  },
+  {
+    "id": "B04",
+    "expected": "record",
+    "question": "I need the source row for SIBAL in Saffire-I."
+  },
+  {
+    "id": "B05",
+    "expected": "record",
+    "question": "Bring up run 56 of the SAME reflight and its citation."
+  },
+  {
+    "id": "B06",
+    "expected": "record",
+    "question": "Where is the original record for a BASS-II acrylic run?"
+  },
+  {
+    "id": "B07",
+    "expected": "compare",
+    "question": "Compare these two Saffire-II specimens, sample 2-6 and sample 2-7."
+  },
+  {
+    "id": "B08",
+    "expected": "compare",
+    "question": "For FLEX-155 versus FLEX-156, what changed besides the test identifier?"
+  },
+  {
+    "id": "B09",
+    "expected": "compare",
+    "question": "Which settings match between SAME reflight run 51 and run 101?"
+  },
+  {
+    "id": "B10",
+    "expected": "compare",
+    "question": "Line up the opposed and concurrent Saffire-I runs. Which fields differ?"
+  },
+  {
+    "id": "B11",
+    "expected": "compare",
+    "question": "Could you contrast the BASS-II PMMA and Saffire-II PMMA records?"
+  },
+  {
+    "id": "B12",
+    "expected": "compare",
+    "question": "Are the fields actually comparable between FLEX-155 and FLEX-156?"
+  },
+  {
+    "id": "B13",
+    "expected": "compass",
+    "question": "Find the nearest archive evidence for a solid in my lunar habitat at 57 kPa."
+  },
+  {
+    "id": "B14",
+    "expected": "compass",
+    "question": "Which records match our Mars cabin at 32 percent oxygen and 55 kPa?"
+  },
+  {
+    "id": "B15",
+    "expected": "compass",
+    "question": "I am planning a lunar rover atmosphere. Rank the tests by similarity."
+  },
+  {
+    "id": "B16",
+    "expected": "compass",
+    "question": "My habitat runs at 0.16 g and 34% oxygen. How many trials also match its 56.5 kPa?"
+  },
+  {
+    "id": "B17",
+    "expected": "compass",
+    "question": "For a spacecraft cabin at 60 kPa and 30 percent oxygen, show joint coverage."
+  },
+  {
+    "id": "B18",
+    "expected": "compass",
+    "question": "Which experiments come closest to a habitat operating on the Moon?"
+  },
+  {
+    "id": "B19",
+    "expected": "rulebook",
+    "question": "Does passing the terrestrial flammability screen imply a pass in lunar gravity?"
+  },
+  {
+    "id": "B20",
+    "expected": "rulebook",
+    "question": "Can we assume an invisible flame has stopped reacting?"
+  },
+  {
+    "id": "B21",
+    "expected": "rulebook",
+    "question": "Is it a valid rule of thumb that detector signal predicts time to alarm?"
+  },
+  {
+    "id": "B22",
+    "expected": "rulebook",
+    "question": "Does equal oxygen partial pressure mean two materials burn the same way?"
+  },
+  {
+    "id": "B23",
+    "expected": "rulebook",
+    "question": "Can we assume switching the flow direction leaves flame spread unchanged?"
+  },
+  {
+    "id": "B24",
+    "expected": "rulebook",
+    "question": "Does a strong silicone smoke response guarantee sensitivity to Teflon?"
+  },
+  {
+    "id": "B25",
+    "expected": "forecast",
+    "question": "In the team's FM² forecast, what is the chance for burn three?"
+  },
+  {
+    "id": "B26",
+    "expected": "forecast",
+    "question": "Show the four locked probabilities for lunar fabric spread."
+  },
+  {
+    "id": "B27",
+    "expected": "forecast",
+    "question": "If the fourth FM2 burn sustains, how do we score the forecast?"
+  },
+  {
+    "id": "B28",
+    "expected": "forecast",
+    "question": "Which assumptions put the threshold at 26% for the lunar forecast?"
+  },
+  {
+    "id": "B29",
+    "expected": "forecast",
+    "question": "What comparator probabilities did the team adopt for FM²?"
+  },
+  {
+    "id": "B30",
+    "expected": "forecast",
+    "question": "Can you show the Brier score for a hypothetical set of lunar burn outcomes?"
+  },
+  {
+    "id": "B31",
+    "expected": "physics",
+    "question": "If cellulose burns in a sealed 8 cubic metre cabin, simulate the change in oxygen."
+  },
+  {
+    "id": "B32",
+    "expected": "physics",
+    "question": "Run the physics model with 4 m³ instead of 12 m³."
+  },
+  {
+    "id": "B33",
+    "expected": "physics",
+    "question": "What happens to cabin pressure if a 60 gram strip burns?"
+  },
+  {
+    "id": "B34",
+    "expected": "physics",
+    "question": "Model a scrubber failure with two people in a closed cabin."
+  },
+  {
+    "id": "B35",
+    "expected": "physics",
+    "question": "In the lab, how does halving cabin volume alter oxygen depletion?"
+  },
+  {
+    "id": "B36",
+    "expected": "physics",
+    "question": "If polyethylene burns inside the rover, show the model inputs."
+  },
+  {
+    "id": "B37",
+    "expected": "incident",
+    "question": "Was the Apollo 1 fire on the pad or in flight?"
+  },
+  {
+    "id": "B38",
+    "expected": "incident",
+    "question": "What made escape difficult for Grissom, White and Chaffee?"
+  },
+  {
+    "id": "B39",
+    "expected": "incident",
+    "question": "What happened during the Mir oxygen generator fire?"
+  },
+  {
+    "id": "B40",
+    "expected": "incident",
+    "question": "Why did the Apollo 1 command-module fire spread so rapidly?"
+  },
+  {
+    "id": "B41",
+    "expected": "incident",
+    "question": "Show the official source about the Mir fire accident."
+  },
+  {
+    "id": "B42",
+    "expected": "incident",
+    "question": "How did the Apollo fire change hatch design?"
+  },
+  {
+    "id": "B43",
+    "expected": "referee",
+    "question": "Verify the quotation “did not ignite” against its source."
+  },
+  {
+    "id": "B44",
+    "expected": "referee",
+    "question": "Audit this claim and its citation before I use it in my report."
+  },
+  {
+    "id": "B45",
+    "expected": "referee",
+    "question": "Check whether this quotation matches the cited NASA page, word for word."
+  },
+  {
+    "id": "B46",
+    "expected": "referee",
+    "question": "Use the Referee to test a source passage for a missing negation."
+  },
+  {
+    "id": "B47",
+    "expected": "referee",
+    "question": "Can you authenticate this alleged quote against the original paper?"
+  },
+  {
+    "id": "B48",
+    "expected": "referee",
+    "question": "I want to check a claim's interpretation and its page receipt."
+  },
+  {
+    "id": "B49",
+    "expected": "abstain",
+    "question": "Who won yesterday's cricket match?"
+  },
+  {
+    "id": "B50",
+    "expected": "abstain",
+    "question": "Give me the actual measured FM² burn lengths on the lunar surface."
+  },
+  {
+    "id": "B51",
+    "expected": "abstain",
+    "question": "Who will win the next Formula One race?"
+  },
+  {
+    "id": "B52",
+    "expected": "abstain",
+    "question": "Tell me the flight-observed result of the four Moon burns."
+  },
+  {
+    "id": "B53",
+    "expected": "abstain",
+    "question": "Give the price of a return ticket to Houston."
+  },
+  {
+    "id": "B54",
+    "expected": "abstain",
+    "question": "Which stock will double this week?"
+  },
+  {
+    "id": "B55",
+    "expected": "archive",
+    "question": "Count the observations for which ambient oxygen is recorded."
+  },
+  {
+    "id": "B56",
+    "expected": "archive",
+    "question": "What is the median droplet diameter across the archived FLEX rows?"
+  },
+  {
+    "id": "B57",
+    "expected": "archive",
+    "question": "How many observations from BASS-II use PMMA?"
+  },
+  {
+    "id": "B58",
+    "expected": "archive",
+    "question": "Calculate the maximum test pressure in the normalized records."
+  },
+  {
+    "id": "B59",
+    "expected": "archive",
+    "question": "Within FLEX, how many records identify heptane as the fuel?"
+  },
+  {
+    "id": "B60",
+    "expected": "archive",
+    "question": "What fraction of the archive has a measured initial pressure?"
+  }
+]

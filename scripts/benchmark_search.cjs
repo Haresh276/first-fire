@@ -38,29 +38,14 @@ const negatives = [
   'the and an'
 ];
 function engine(withModel) {
-  const built = ['records.js','model.js','search.js'].every(name => fs.existsSync(path.join(ROOT,'docs',name)));
-  const window = {};
+  const window = {FF:{cases:json('data/cases.json'),investigations:json('data/investigations.json')}};
   const context = vm.createContext({window,atob,document:{
     createElement:()=>({remove(){}}),head:{append:script=>script.onerror()}
   }});
-  if (built) {
-    vm.runInContext(read('docs/records.js').toString(),context);
-    if (withModel) vm.runInContext(read('docs/model.js').toString(),context);
-  } else {
-    window.FF = {cases:json('data/cases.json'),investigations:json('data/investigations.json')};
-    if (withModel) {
-      const tensor=read('data/model/model.safetensors');
-      const len=Number(tensor.readBigUInt64LE());
-      const metadata=JSON.parse(tensor.subarray(8,8+len)).embeddings;
-      const vocab=json('data/model/tokenizer.json').model.vocab;
-      const weights=tensor.subarray(8+len);
-      if(metadata.dtype!=='F32'||metadata.shape[0]*metadata.shape[1]*4!==weights.length) throw Error('Unexpected model shape');
-      window.FFModel={dim:metadata.shape[1],vocab,weights:weights.toString('base64')};
-    }
-  }
-  const source=read(built?'docs/search.js':'site/search.js');
+  if(withModel)vm.runInContext(read('site/search-vectors.js').toString(),context);
+  const source=read('site/search.js');
   vm.runInContext(source.toString(),context);
-  return {search:window.FFSearch.search,source:built?'docs':'source-equivalent',sourceHash:hash(source),
+  return {search:window.FFSearch.search,source:'source-equivalent',sourceHash:hash(source),
     corpusHash:hash(JSON.stringify([window.FF.cases,window.FF.investigations])),docs:window.FF.cases.length+window.FF.investigations.length};
 }
 async function main(){

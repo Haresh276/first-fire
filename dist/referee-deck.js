@@ -255,44 +255,10 @@
       sources:[{id:'forecast:formula',title:'FIRST FIRE forecast method',url:'#report/forecast',locator:'Reproduce the illustrative model · normal threshold CDF'},
       {id:source.id,title:source.title,url:source.url,locator:source.locator}]};
   }
-  const themes={
-    beginner:['Why does the igniter switch off?','Did the Nomex ignite in Saffire-II sample 2-7?'],
-    technical:['How do I compare tests at a target habitat?','Which sampled limits support the FM² forecast?'],
-    data:['Which runs support a claim about detector thresholds?','What is the Brier score for the FM² forecast?']
-  };
-  let reader='standard';
   function preferences(owner){
-    const box=el('details',undefined,'rf-preferences');
-    box.append(el('summary','Reading preferences'));
-    const pick=el('select');
-    for(const [v,t] of [['standard','Standard'],['beginner','Introductory'],['technical','Engineering'],['data','Data and evaluation']]){const o=el('option',t);o.value=v;pick.append(o);}
-    pick.value=reader;
-    const examples=el('div',undefined,'rf-prompts');
-    const refresh=()=>{
-      reader=pick.value;examples.replaceChildren();
-      if(reader==='standard')return;
-      examples.append(el('span','Try a question'));
-      for(const question of themes[reader])examples.append(button(question,()=>owner(question),'rf-inline'));
-    };
-    const file=el('input');file.type='file';file.accept='.txt,.md,text/plain,text/markdown';
-    const message=el('p','','footnote');message.setAttribute('role','status');
-    file.onchange=async()=>{
-      const uploaded=file.files[0];if(!uploaded)return;
-      if(uploaded.size>500000){message.textContent='Choose a text file smaller than 500 KB.';file.value='';return;}
-      try{
-        if(!/\.(?:txt|md)$/i.test(uploaded.name)){message.textContent='Use a plain-text or Markdown résumé.';return;}
-        const contents=(await uploaded.text()).toLowerCase();
-        if(!contents.trim()){message.textContent='No readable text found.';return;}
-        const data=(contents.match(/\b(?:statistics|data science|machine learning|bayesian|econometrics|regression)\b/g)||[]).length;
-        const engineering=(contents.match(/\b(?:engineering|physics|mechanical|spacecraft|thermodynamics|combustion)\b/g)||[]).length;
-        pick.value=data>engineering?'data':engineering?'technical':'beginner';refresh();
-        message.textContent='Reading level suggested from the file. You can change it above.';
-      }catch{message.textContent='Could not read that file.';}finally{file.value='';}
-    };
-    pick.onchange=()=>{refresh();message.textContent='';};
-    box.append(field('Answer detail',pick),field('Suggest a level from a résumé (.txt or .md)',file),
-      el('p','Only the selected level is kept for this page session. The file stays on the device.','footnote'),message,examples);
-    refresh();return box;
+    const panel=window.FFReaderDevice.preferences(owner);
+    panel.append(window.FFReaderDevice.devicePanel());
+    return panel;
   }
   const faq=[
     ['nomex',/\bnomex\b.*\bignit|\bignit\w*\b.*\bnomex\b/i],
@@ -313,7 +279,7 @@
   function withheld(answer,reason='I don’t have a source that verifies an answer to that question. Try an experiment name and the measurement you need.') {
     return {mode:answer.mode,model:answer.model,answer:reason,status:'abstained',sources:[],evidenceKind:'withheld'};
   }
-  function archivedReading(message,answer) {
+  async function archivedReading(message,answer) {
     const collection=archive(), all=globalThis.FFRefereePassages||[], paragraphs=[],sources=[];
     function append(text,source) {
       if(!text||!source||paragraphs.some(p=>p.text===text))return;
@@ -357,8 +323,18 @@
       }
     }
     const isMission=sources.some(s=>s.id?.startsWith('apollo'));
+    // The optional WebGPU model can choose the lead only from independently reconstructed evidence.
+    // It cannot introduce text or drop associated source conditions from the response.
+    const readerModel=globalThis.FFReaderDevice;
+    let selected=null;
+    if(readerModel?.isModelReady()){
+      const candidates=paragraphs.map((p,i)=>({id:String(i+1),text:p.text}));
+      selected=await readerModel.selectEvidence(message,candidates);
+      const index=candidates.findIndex(c=>c.id===selected);
+      if(index>0)paragraphs.unshift(paragraphs.splice(index,1)[0]);
+    }
     const body=paragraphs.map(({text,index})=>text+' ['+(index+1)+']').join('\n\n');
-    return {...answer,status:'limited',evidenceKind:isMission?'mission-note':'archive-note',answer:body,sources};
+    return {...answer,status:'limited',evidenceKind:isMission?'mission-note':'archive-note',answer:body,sources,...(selected?{selection:{provider:'WebLLM',model:'SmolLM2-360M-Instruct-q4f32_1-MLC',leadSource:sources[paragraphs[0].index].id}}:{})};
   }
   function withinQuestion(item,q) {
     if(/\b(?:next|why|safer?|certify|minutes?|kilowatts?|temperature|compare|percentage points|what if|how fast|pressure|velocity at|melt|alarm time|cause|caused)\b/i.test(q))return false;
@@ -410,7 +386,7 @@
       }
     }
     let text=item.claim+' [1]';
-    if(reader==='technical'||reader==='data')text+='\n\nSource language: “'+item.quote+'” [1]';
+    if(globalThis.FFAwareness?.level?.()==='advanced')text+='\n\nSource language: “'+item.quote+'” [1]';
     return {...answer,answer:text,evidenceKind:'checked',sources:[source],reviewId:item.id};
   }
   function proof(id){
@@ -462,7 +438,11 @@
     }
     root.append(header,nav);
     if(!receipts()||!archive()?.evidence){root.append(el('p','This copy is missing the source receipts or independent review file.'));return;}
-    if(errors){const log=el('section',undefined,'section panel stack');root.append(log);publicErrors(log).catch(()=>log.replaceChildren(el('p','Could not verify the public fixtures in this browser.')));return;}
+    if(errors){
+      const log=el('section',undefined,'section panel stack');root.append(log);
+      if(globalThis.FFEvidenceDesk)root.append(globalThis.FFEvidenceDesk.auditPanel());
+      publicErrors(log).catch(()=>log.replaceChildren(el('p','Could not verify the public fixtures in this browser.')));return;
+    }
     const layout=el('div',undefined,'rf-layout section'), form=el('form',undefined,'panel stack'), aside=el('aside',undefined,'panel stack');
     const selector=el('select');
     const known=casesFor();
@@ -480,6 +460,7 @@
       const why=info.limited?'Light mode is preferred on this device. Saved reviews work without downloading weights.':'Saved reviews work offline. Enable the model to test an edited claim against the exact excerpt.';
       const hardware=[info.ram?info.ram+' GB approximate memory':'memory unreported',info.webGPU?'WebGPU interface present':'WebGPU interface unavailable',info.free!==null?Math.floor(info.free/1e6)+' MB available storage':'storage unreported'];
       dev.textContent=why+' '+hardware.join(' · ')+'.';
+      if(globalThis.FFAwareness?.tier?.()==='lite'){live.disabled=true;dev.textContent+=' Lite uses saved reviews. Select Standard or Pro for a new model review.';}
       if(!info.wasm||location.protocol==='file:'){live.disabled=true;dev.textContent+=' Live inference requires WebAssembly and an HTTP(S) site.';}
     });
     let revision=0;
@@ -521,7 +502,14 @@
       el('h3','What a pass means'),el('p','The source contains the quoted words. A second model supports the submitted interpretation. Registered calculations must agree on quantities and units. A claim outside the measured conditions still needs new evidence.'),
       el('p','Saved verdicts use Gemma 3 1B on the pinned page. New on-device verdicts use MobileBERT on your excerpt. These classifiers can disagree or miss a false claim.','footnote'),link('Inspect the public error log →','#referee?view=errors'));
     layout.append(form,aside);root.append(layout);restore();
+    const chatDraft=params?.get?.('draft')==='1'&&globalThis.FFEvidenceDesk?.getDraft();
+    if(chatDraft){
+      const entry=known.find(r=>r.anchor===chatDraft.key);
+      if(entry){selector.value=entry.id;restore();}
+      quote.value=chatDraft.quote;claim.value=chatDraft.claim;
+      notice.textContent=entry?'Quotation and interpretation brought over from chat.':'Choose the intended source, then enter or edit the quotation and interpretation.';
+    }
   }
   globalThis.renderDeckReferee=renderDeckReferee;
-  globalThis.FFDeckReferee={route,preferences,deviceInfo,forecastAnswer,checkedReply,proof,evaluate,wordPieces,quantitative};
+  globalThis.FFDeckReferee={route,preferences,deviceInfo,forecastAnswer,checkedReply,proof,evaluate,wordPieces,quantitative,exactMatch};
 })();

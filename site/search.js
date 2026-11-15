@@ -22,23 +22,24 @@
     return docs;
   }
   function loadModel(){
-    if(window.FFModel) return Promise.resolve(window.FFModel);
-    if(!modelPromise) modelPromise=new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='model.js';s.onload=()=>resolve(window.FFModel);s.onerror=()=>{s.remove();modelPromise=null;reject(Error('Model unavailable'));};document.head.append(s);});
+    if(window.FFSearchVectors) return Promise.resolve(window.FFSearchVectors);
+    if(!modelPromise) modelPromise=new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='search-vectors.js';s.onload=()=>resolve(window.FFSearchVectors);s.onerror=()=>{s.remove();modelPromise=null;reject(Error('Model unavailable'));};document.head.append(s);});
     return modelPromise;
   }
-  let matrix;
+  let matrix, scales;
+  function bytes(encoded){return Uint8Array.from(atob(encoded),ch=>ch.charCodeAt(0)).buffer;}
   function encode(txt,model){
-    if(!matrix){const b=atob(model.weights);const buf=new Uint8Array(b.length);for(let i=0;i<b.length;i++)buf[i]=b.charCodeAt(i);matrix=new Float32Array(buf.buffer);}
+    if(!matrix){matrix=new Int8Array(bytes(model.weights));scales=new Float32Array(bytes(model.scales));}
     const v=new Float64Array(model.dim), ids=[];
     for(const w of words(txt).flatMap(w=>w.split('-'))){let start=0,parts=[];while(start<w.length){let end=w.length,id;while(end>start){const token=(start?'##':'')+w.slice(start,end);if(Object.hasOwn(model.vocab,token)){id=model.vocab[token];break;}end--;}if(id===undefined){parts=[];break;}parts.push(id);start=end;}ids.push(...parts);}
-    for(const id of ids)for(let j=0;j<v.length;j++)v[j]+=matrix[id*v.length+j];
+    for(const id of ids)for(let j=0;j<v.length;j++)v[j]+=matrix[id*v.length+j]*scales[id];
     let norm=Math.sqrt(v.reduce((v,x)=>v+x*x,0));if(norm)for(let i=0;i<v.length;i++)v[i]/=norm;return v;
   }
   async function search(query){
     const rows=corpus(), keys=[...new Set(terms(query))];if(!keys.length)return {items:[],semantic:false};
     let model;
     const device=window.navigator;
-    const lite=device?.connection?.saveData || (device?.deviceMemory>0 && device.deviceMemory<=2);
+    const lite=window.FFAwareness ? window.FFAwareness.tier()==='lite' : device?.connection?.saveData || (device?.deviceMemory>0 && device.deviceMemory<=2);
     if(!lite){try{model=await loadModel();}catch{model=null;}}
     const avg=rows.reduce((n,d)=>n+d.tokens.length,0)/rows.length;
     const queryVec=model?encode(query,model):null;

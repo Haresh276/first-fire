@@ -11,9 +11,12 @@ FILENAME = "first-fire-offline.zip"
 def package_offline_site(directory, digests):
     target = directory / FILENAME
     # The extracted edition has its own manifest. The hosted manifest also covers the ZIP.
-    manifest = (json.dumps(digests, indent=2) + "\n").encode()
+    # Active semantic search uses search-vectors.js. The legacy float table is
+    # preserved in the public archive, but no current offline route requests it.
+    offline = {name: sha for name, sha in digests.items() if name != "model.js"}
+    manifest = (json.dumps(offline, indent=2) + "\n").encode()
     with ZipFile(target, "w") as archive:
-        for name in [*sorted(digests), "checksums.json"]:
+        for name in [*sorted(offline), "checksums.json"]:
             entry = ZipInfo("FIRST-FIRE/" + name, date_time=(2026, 1, 1, 0, 0, 0))
             entry.external_attr = 0o100644 << 16
             data = manifest if name == "checksums.json" else (directory / name).read_bytes()

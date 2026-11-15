@@ -1,12 +1,22 @@
 # FIRST FIRE — project submission
 
-**Team** Code Blooded  
-**Challenge** Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data  
+**Team** Code Blooded
+
+**Challenge** Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data
+
 **Project title** FIRST FIRE — A Research Desk for Spacecraft Fire Safety
+
+## A minute with the evidence
+
+1. [Inspect the four sealed FM² forecasts and their timestamp](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#forecast).
+2. [Open the Moon column in the Atlas](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#atlas). Distinguish planned settings from observations.
+3. [Test the planted quotation in the Referee](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#referee) and open the source page.
 
 ## Project demonstration
 
 [Six-slide judge demonstration](../dist/demo.html) · [Public demonstration URL for the submission form](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/demo.html) · [Six-slide PDF](../dist/first-fire-demo.pdf)
+
+[Narrated 30-second film, with English captions](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/master-film.mp4) · [Round 2 team kit](../dist/index.html#field-guide?tab=judges) · [One-page judge handout](../dist/judge-brief.pdf)
 
 ## Final project
 
@@ -14,7 +24,7 @@
 
 ## High-level project summary
 
-FIRST FIRE helps aerospace researchers and engineering students decide which NASA fire experiments can answer a proposed question. It ranks flight observations by test conditions and traces each conclusion to its source. In NASA’s FLEX methanol data, tightening one diameter tolerance reverses the average burn-time difference and requiring the same test day leaves no comparable pair. In NASA’s SAME-R smoke data, interpreting the Shuttle alarm depends on its power flag, which stayed off throughout three repeat runs. A user can reproduce each finding, export the evidence, and identify the next experiment.
+NASA designed FM² to burn four fabric strips in a sealed chamber on the Moon. FIRST FIRE uses the existing flight archive to show what a researcher can learn before those burns take place. Its Atlas links 1,622 source rows from 15 NASA investigations to their original tables. Researchers can compare two experiments, see whether a single record matches a proposed cabin, check a quotation, and model a fire in a pressurized rover. The Moon-surface column in this archive has no measured fire outcomes. Team Code Blooded fixed four probabilities of sustained spread with a signed timestamp. A predeclared Brier score will compare those probabilities with a stated comparator when official outcomes become available.
 
 ## Detailed project description
 
@@ -32,7 +42,9 @@ Other cases include Saffire-II, where an acrylic strip burned next to discolored
 
 ## Use of Super Intelligence (SI) and AI
 
-OpenAI Codex assisted with source discovery, drafting, software implementation, test generation and verification. The project uses Model2Vec/potion-base-2M embeddings and lexical search to retrieve evidence from a local archive. The optional local chat service can use an instruction model to select sourced passages. The archive calculator computes table answers from explicit fields and filters. The FLEX matches and detector figures are calculated from the cited NASA measurements. FIRST FIRE’s simulations and model-generated values are labeled separately. The SIBAL photograph in the demonstration is credited to NASA Glenn. The charts in the demonstration plot the recorded data or their stated differences. Human scientific sign-off is pending. [Model selection and evaluation](https://github.com/Haresh276/first-fire/blob/main/research/chat-models.md) · [Model2Vec](https://github.com/MinishLab/model2vec) · [NASA Glenn SIBAL image source](https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/)
+The team’s master document credits Claude (Anthropic) for planning, the learner and master guides, the initial slide deck and the data-pack scripts. The master film carries a synthetic voice credit. OpenAI Codex assisted with source discovery, drafting, software implementation, test generation and verification. The project uses Model2Vec/potion-base-2M embeddings and lexical search to retrieve evidence from a local archive. The optional local chat service can use an instruction model to select sourced passages. The archive calculator computes table answers from explicit fields and filters. The FLEX matches and detector figures are calculated from the cited NASA measurements. FIRST FIRE’s simulations and model-generated values are labeled separately. The SIBAL photograph in the demonstration is credited to NASA Glenn. The charts in the demonstration plot the recorded data or their stated differences. Human scientific sign-off is pending. [Model selection and evaluation](https://github.com/Haresh276/first-fire/blob/main/research/chat-models.md) · [Model2Vec](https://github.com/MinishLab/model2vec) · [NASA Glenn SIBAL image source](https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/)
+
+The current gated prose replay and the browser’s row-calculation tests measure different tasks. The release publishes both rates, the separate routing trials, and the failed confidence calibration. [Current measurements](answer-verification.md) · [Master acceptance record](master-requirements.md)
 
 ## NASA data and resources
 
@@ -42,7 +54,29 @@ OpenAI Codex assisted with source discovery, drafting, software implementation, 
 - [Saffire-II, PSI-99](https://psi.nasa.gov/physci/repo/data/investigations/PSI-99) · [Flight report and Table I](https://ntrs.nasa.gov/citations/20170008805) · [NASA LUCI partial-gravity study](https://ntrs.nasa.gov/citations/20250010653) · [NASA FM² science requirements](https://ntrs.nasa.gov/citations/20260001966)
 - [NASA CFI-G data](https://doi.org/10.60555/cyt1-kh64) · [NASA materials standard](https://standards.nasa.gov/standard/NASA/NASA-STD-6001) · [NASA’s corrected ICES report](https://ntrs.nasa.gov/citations/20250002114) · [Exploration atmospheres engineering assessment](https://ntrs.nasa.gov/citations/20260003925)
 
+### Fifteen investigations in the challenge Atlas
+
+| Investigation | PSI accession | NASA data DOI |
+| --- | --- | --- |
+| BASS-II | PSI-25 | [10.60555/4qc4-de67](https://doi.org/10.60555/4qc4-de67) |
+| BASS | PSI-26 | [10.60555/58h4-dy80](https://doi.org/10.60555/58h4-dy80) |
+| Saffire-I | PSI-98 | [10.60555/0t15-1z43](https://doi.org/10.60555/0t15-1z43) |
+| Saffire-II | PSI-99 | [10.60555/2chp-m469](https://doi.org/10.60555/2chp-m469) |
+| Saffire-III | PSI-100 | [10.60555/040q-4h36](https://doi.org/10.60555/040q-4h36) |
+| SAME | PSI-102 | [10.60555/gd4k-8h62](https://doi.org/10.60555/gd4k-8h62) |
+| SAME-R | PSI-101 | [10.60555/2np7-jv14](https://doi.org/10.60555/2np7-jv14) |
+| FLEX | PSI-69 | [10.60555/mbq8-0451](https://doi.org/10.60555/mbq8-0451) |
+| FLEX-2 | PSI-68 | [10.60555/byp8-h018](https://doi.org/10.60555/byp8-h018) |
+| BRE | PSI-20 | [10.60555/vb93-3y72](https://doi.org/10.60555/vb93-3y72) |
+| CFI | PSI-39 | [10.60555/m6pj-a914](https://doi.org/10.60555/m6pj-a914) |
+| CFI-G | PSI-159 | [10.60555/cyt1-kh64](https://doi.org/10.60555/cyt1-kh64) |
+| E-FIELD Flames | PSI-22 | [10.60555/se5a-8c73](https://doi.org/10.60555/se5a-8c73) |
+| SPICE | PSI-107 | [10.60555/9kbh-e962](https://doi.org/10.60555/9kbh-e962) |
+| SLICE | PSI-106 | [10.60555/pm12-rg61](https://doi.org/10.60555/pm12-rg61) |
+
 ## Other references and tools
+
+- [ISRO Gaganyaan crew-module ECLSS requirements](https://www.isro.gov.in/media_isro/pdf/Tenders/2024/44_Tender_Document1602424.pdf) · [JAXA FLARE slide 26, measured points and predicted boundaries](https://iss.jaxa.jp/kiboexp/news/images/2018ams_flare.pdf#page=26) · [NASA reduced-gravity five-material study](https://ntrs.nasa.gov/citations/20250006779) · [Cantera equilibrium solver](https://cantera.org/) · [NIST Fire Dynamics Simulator](https://pages.nist.gov/fds-smv/)
 
 - [NIST room smoke-alarm experiments and data dictionary](https://www.nist.gov/el/fire/engineered-fire-safety/data-smoke-alarm-performance) · [Room time series](https://www.nist.gov/system/files/documents/2016/12/15/roomdata.zip) · [Summary workbook](https://www.nist.gov/system/files/documents/2016/12/14/summary_nistsmokebox_roomresults.xlsx)
 

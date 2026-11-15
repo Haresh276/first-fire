@@ -1,0 +1,10 @@
+.ff-proof,.ff-chat-evidence,.ff-intent{font:inherit;color:var(--ink,#28382f)}
+.ff-proof{margin:.45rem 0 .7rem;font-size:.86rem;max-width:100%;overflow-wrap:anywhere}
+.ff-proof summary,.ff-chat-evidence summary,.ff-intent summary{cursor:pointer;color:var(--green,#20594a);font-weight:650}
+.ff-proof dl,.ff-chat-evidence dl{margin:.6rem 0;display:grid;grid-template-columns:minmax(3.7rem,max-content) minmax(0,1fr);gap:.35rem .65rem}
+.ff-proof dd,.ff-chat-evidence dd{margin:0}.ff-proof dt,.ff-chat-evidence dt{font-weight:700}
+.ff-proof textarea{width:100%}
+.ff-intent,.ff-chat-evidence{font-size:.85rem;line-height:1.5;max-width:100%;overflow-wrap:anywhere}
+.ff-intent{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin:.6rem 0}.ff-intent .ffchat-quiet{padding:3px 6px}
+.ff-intent select{width:auto;max-width:100%}.ff-chat-evidence{border-left:2px solid #a4b8aa;padding-left:.75rem;margin:.7rem 0}
+.ff-chat-evidence p{margin:.5rem 0}.ff-error-item{padding:.6rem 0;border-bottom:1px solid #c6d2c8}.ff-proof button{font-size:.84rem;padding:.3rem .65rem}

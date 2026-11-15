@@ -1,0 +1,14 @@
+&HEAD CHID='ff_low', TITLE='FIRST FIRE closed 8 m3 enclosure; specified methane burner, low release' /
+&MESH IJK=16,16,16, XB=0.,2.,0.,2.,0.,2. /
+&TIME T_END=45. /
+&MISC TMPA=26.85, HUMIDITY=0. /
+&DUMP DT_DEVC=1., DT_HRR=1. /
+&REAC FUEL='METHANE', HEAT_OF_COMBUSTION=50000., CO_YIELD=0., SOOT_YIELD=0. /
+&SURF ID='burner', HRRPUA=50., RAMP_Q='pulse', COLOR='ORANGE' /
+&VENT XB=.75,1.25,.75,1.25,0.,0., SURF_ID='burner' /
+&RAMP ID='pulse', T=0., F=0. /
+&RAMP ID='pulse', T=2., F=1. /
+&RAMP ID='pulse', T=20., F=1. /
+&RAMP ID='pulse', T=22., F=0. /
+&DEVC ID='room_O2', QUANTITY='VOLUME FRACTION', SPEC_ID='OXYGEN', SPATIAL_STATISTIC='VOLUME MEAN', XB=0.,2.,0.,2.,0.,2. /
+&TAIL /

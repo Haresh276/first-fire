@@ -1,0 +1,49 @@
+{
+  "seed": 4071,
+  "torch": "2.6.0",
+  "partitions": {
+    "train": 640,
+    "validation": 96,
+    "test": 160
+  },
+  "run_seeds": {
+    "train": 664118,
+    "validation": 286021,
+    "test": 920372
+  },
+  "steps_per_run": 60,
+  "interval_s": 2,
+  "liquid": {
+    "mae_pp": 0.13848797976970673,
+    "p95_pp": 0.5484022498130798,
+    "worst_pp": 3.0804214477539062,
+    "training_parameters": 1513,
+    "selected_epoch": 43,
+    "validation_mae_pp": 0.1346171498298645
+  },
+  "plain_rnn": {
+    "mae_pp": 0.16605010628700256,
+    "p95_pp": 0.5240275263786316,
+    "worst_pp": 2.4841251373291016,
+    "training_parameters": 793,
+    "selected_epoch": 39,
+    "validation_mae_pp": 0.16693837940692902
+  },
+  "structured_lookup": {
+    "mae_pp": 0.0007036336244168059,
+    "p95_pp": 0.001726744454123441,
+    "worst_pp": 0.0018672907103365333
+  },
+  "nearest_curves": {
+    "mae_pp": 0.19315267413339046,
+    "p95_pp": 0.5877322994244489,
+    "worst_pp": 3.869297251053931
+  },
+  "table_shape": [
+    2,
+    17,
+    37
+  ],
+  "decision": "drop",
+  "gate": "Liquid held-out MAE must be strictly below the stoichiometry-informed lookup MAE."
+}

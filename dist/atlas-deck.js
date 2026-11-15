@@ -385,6 +385,7 @@
     root.replaceChildren(header('The Audit','Investigation passports','Check what each investigation measured, what its records support and where the original tables live.'),atlasNav('Passports'),nav,article);
   }
   if(typeof window!=='undefined'){
+    window.FFAtlasEvidence={archive,compareRecords,investigationResult};
     window.renderDeckAtlas=renderAtlas;
     window.renderPassports=renderPassports;
   }

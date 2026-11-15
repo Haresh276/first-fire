@@ -14,8 +14,11 @@
     if(!(dt>0 && dt<=0.2 && Math.abs(1/dt-Math.round(1/dt))<1e-8))throw new RangeError('Invalid time step');
     const stepsPerSecond=Math.round(1/dt);
     const q=s.exchange/1000,vent=s.vent/1000,rate=1000*s.release/s.pulse;
-    let a=0,b=0,sensor=0,removed=0,peak=0,peakTime=0,cross=null;
-    const points=[{t:0,a:0,b:0,sensor:0,injected:0,removed:0,residual:0}];
+    const initialRemote=s.initialRemoteMgM3??0;
+    if(!Number.isFinite(initialRemote)||initialRemote<0)throw new RangeError('Invalid initial remote concentration');
+    const initialMass=initialRemote*s.remoteVolume;
+    let a=0,b=initialMass,sensor=s.lag===0?initialRemote:0,removed=0,peak=sensor,peakTime=0,cross=sensor>=s.threshold?0:null;
+    const points=[{t:0,a:0,b:initialRemote,sensor,injected:0,removed:0,residual:0}];
     for(let i=0;i<horizon*stepsPerSecond;i++){
       const sourceOn=i<s.pulse*stepsPerSecond, prevSensor=sensor;
       const ca=a/s.sourceVolume,cb=b/s.remoteVolume, exchange=q*(ca-cb)*dt,exhaust=vent*cb*dt;
@@ -26,7 +29,7 @@
       if(cross===null && sensor>=s.threshold)cross=t-dt+dt*(s.threshold-prevSensor)/(sensor-prevSensor);
       if((i+1)%stepsPerSecond===0){
         const injected=1000*s.release*Math.min(t/s.pulse,1);
-        points.push({t,a:a/s.sourceVolume,b:remote,sensor,injected,removed,residual:injected-a-b-removed});
+        points.push({t,a:a/s.sourceVolume,b:remote,sensor,injected,removed,residual:initialMass+injected-a-b-removed});
       }
     }
     return {points,peak,peakTime,cross,final:points.at(-1)};

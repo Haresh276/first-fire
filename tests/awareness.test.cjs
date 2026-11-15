@@ -5,7 +5,8 @@ const desk = require('../site/awareness.js');
 const row = id => ({tool:'atlas',title:'Flight record',summary:'Archived conditions',record:{id,accession:id.split(':')[0],conditions:{'Airflow':'20 cm/s'},sourceRow:Number(id.split(':')[2]),kind:'archived evidence'}});
 test('device detection uses offline capabilities, remains usable without APIs and obeys overrides', () => {
   assert.equal(desk.automatic({}).tier,'standard');
-  assert.equal(desk.automatic({deviceMemory:8,hardwareConcurrency:8}).tier,'pro');
+  assert.equal(desk.automatic({deviceMemory:8,hardwareConcurrency:8}).tier,'standard');
+  assert.equal(desk.automatic({deviceMemory:8,hardwareConcurrency:8},{checked:true,adapter:true,free:900_000_000}).tier,'pro');
   assert.equal(desk.automatic({deviceMemory:8,hardwareConcurrency:8,connection:{saveData:true}}).tier,'lite');
   assert.equal(desk.automatic({hardwareConcurrency:2}).tier,'lite');
   for(const mode of ['lite','standard','pro']){

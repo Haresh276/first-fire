@@ -8,7 +8,11 @@ A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall ch
 
 Open the [six-slide project demonstration](dist/demo.html) to follow a flight comparison from the original measurements to the next test. The [FLEX sensitivity view](dist/index.html#transfer-lab?view=sensitivity) lets you change the droplet matching rule before revealing burn durations. In the [SAME-R detector case](dist/detector.html), inspect optical readings and instrument power in four NASA flight workbooks. The [English and Telugu classroom exercise](dist/classroom.html) asks two readers to match a NIST alarm report to the original sensor record and exchange evidence. Results from independent participants have yet to be collected.
 
-The [competition research brief](research/first-fire-2026-11-15/decision-brief.md) connects the judge demonstrations to NASA measurements, past winners, industry tools and the public repository audit.
+## Master document edition
+
+Open the [field guide and instruments](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#field-guide), [vehicle designer](dist/index.html#vehicle-designer), [cabin model validation](research/master-physics.md) or [judge walkthrough](dist/index.html#field-guide?tab=judges). The [implementation record](research/master-requirements.md) maps each feature to the master document, its acceptance evidence and the remaining team work. The [38-page science reader](site/first-fire-field-guide.pdf) covers FM², combustion, low gravity and the glossary. The [review log and deposition package](dist/team-handoff.html) support participant and team verification.
+
+Use the new atmosphere and material tools to select a fuel and a cabin pressure. Inspect the original NASA or JAXA measurement before transferring it to a proposed vehicle. The [physics report](research/master-physics.md) compares the model with prescribed NIST burners, a Cantera reference and SIBAL flight measurements. [Research chat verification](research/answer-verification.md) separates numeric replays, general routing, recorded prose answers and confidence calibration.
 
 ## Run a research investigation
 

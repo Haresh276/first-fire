@@ -1,0 +1,302 @@
+[
+  {
+    "id": "C01",
+    "expected": "record",
+    "question": "Can I see the experiment log for Saffire-II sample 2-4?"
+  },
+  {
+    "id": "C02",
+    "expected": "record",
+    "question": "Bring up the source entry for BASS-II test 16."
+  },
+  {
+    "id": "C03",
+    "expected": "record",
+    "question": "I need to cite the FLEX-120 record in a paper. Where is the original row?"
+  },
+  {
+    "id": "C04",
+    "expected": "record",
+    "question": "For SAME-R run 75, what did the investigators actually log?"
+  },
+  {
+    "id": "C05",
+    "expected": "record",
+    "question": "Locate the CFI-G run with identifier 21088A1 in the archived table."
+  },
+  {
+    "id": "C06",
+    "expected": "record",
+    "question": "Show me the source row for the concurrent Saffire-I burn."
+  },
+  {
+    "id": "C07",
+    "expected": "compare",
+    "question": "Put FLEX-155 and FLEX-120 side by side and list matching settings."
+  },
+  {
+    "id": "C08",
+    "expected": "compare",
+    "question": "In the SAME reflight, what differs between run 75 and run 85?"
+  },
+  {
+    "id": "C09",
+    "expected": "compare",
+    "question": "Contrast the conditions of Saffire-II sample 2-7 with those of sample 2-9."
+  },
+  {
+    "id": "C10",
+    "expected": "compare",
+    "question": "Are BASS and BASS-II interchangeable here? Compare their recorded geometry and atmosphere."
+  },
+  {
+    "id": "C11",
+    "expected": "compare",
+    "question": "For CFI-G 21088A1 versus 21202, can the two source rows support a comparison?"
+  },
+  {
+    "id": "C12",
+    "expected": "compare",
+    "question": "I need a field-by-field comparison of FLEX-120 and FLEX-121, including blanks."
+  },
+  {
+    "id": "C13",
+    "expected": "compass",
+    "question": "What does the archive cover for my lunar habitat with 31% oxygen at 52 kPa?"
+  },
+  {
+    "id": "C14",
+    "expected": "compass",
+    "question": "My rover will operate on Mars. Find the nearest matching material tests."
+  },
+  {
+    "id": "C15",
+    "expected": "compass",
+    "question": "Rank the archived experiments for this orbital habitat at 21 percent oxygen and 101 kPa."
+  },
+  {
+    "id": "C16",
+    "expected": "compass",
+    "question": "I am choosing evidence for a Moon base. Which flight tests come closest to its atmosphere and gravity?"
+  },
+  {
+    "id": "C17",
+    "expected": "compass",
+    "question": "Can the Compass find tests matching my proposed 8.2 psia lunar cabin?"
+  },
+  {
+    "id": "C18",
+    "expected": "compass",
+    "question": "For an experimental habitat, how well does one record match pressure, oxygen and gravity together?"
+  },
+  {
+    "id": "C19",
+    "expected": "rulebook",
+    "question": "Is it reasonable to assume an Earth material rating bounds flammability in orbit?"
+  },
+  {
+    "id": "C20",
+    "expected": "rulebook",
+    "question": "As a rule of thumb, does matching gravity alone make two fire tests transferable?"
+  },
+  {
+    "id": "C21",
+    "expected": "rulebook",
+    "question": "Can we infer that a silent detector means there is no smoke?"
+  },
+  {
+    "id": "C22",
+    "expected": "rulebook",
+    "question": "Does a flame disappearing from the camera mean combustion ended?"
+  },
+  {
+    "id": "C23",
+    "expected": "rulebook",
+    "question": "Can we assume that higher oxygen always extends the duration of a droplet burn?"
+  },
+  {
+    "id": "C24",
+    "expected": "rulebook",
+    "question": "Does positive detection of one smoke material guarantee the same response to a second material?"
+  },
+  {
+    "id": "C25",
+    "expected": "forecast",
+    "question": "What probability did the team assign to the last planned FM² strip?"
+  },
+  {
+    "id": "C26",
+    "expected": "forecast",
+    "question": "Open the signed predictions for the four lunar burns so I can challenge the assumptions."
+  },
+  {
+    "id": "C27",
+    "expected": "forecast",
+    "question": "How is the probability of sustained spread at 25% calculated in FM2?"
+  },
+  {
+    "id": "C28",
+    "expected": "forecast",
+    "question": "What would the forecast score be if all four fabric burns spread?"
+  },
+  {
+    "id": "C29",
+    "expected": "forecast",
+    "question": "How does the FM² calculator treat a trial with an ambiguous outcome?"
+  },
+  {
+    "id": "C30",
+    "expected": "forecast",
+    "question": "Does widening the assumed FM2 oxygen threshold change the prediction for burn 3?"
+  },
+  {
+    "id": "C31",
+    "expected": "physics",
+    "question": "Simulate a cabin fire in 18 cubic metres with two crew and the scrubber turned off."
+  },
+  {
+    "id": "C32",
+    "expected": "physics",
+    "question": "If a 25 gram piece of cellulose burns in the sealed pod, how much CO2 does the model predict?"
+  },
+  {
+    "id": "C33",
+    "expected": "physics",
+    "question": "What if the vehicle cabin has half the volume and the burning strip is the same?"
+  },
+  {
+    "id": "C34",
+    "expected": "physics",
+    "question": "Can the Physics Lab model an oxygen controller failure over 24 hours?"
+  },
+  {
+    "id": "C35",
+    "expected": "physics",
+    "question": "In a sealed 12 m³ cabin, simulate the effect of burning a polyethylene strip instead of paper."
+  },
+  {
+    "id": "C36",
+    "expected": "physics",
+    "question": "Show the time evolution of a closed cabin after the start of a prescribed fire."
+  },
+  {
+    "id": "C37",
+    "expected": "incident",
+    "question": "Where did the Apollo 1 training accident happen?"
+  },
+  {
+    "id": "C38",
+    "expected": "incident",
+    "question": "What was the sequence of events in the 1997 fire on Mir?"
+  },
+  {
+    "id": "C39",
+    "expected": "incident",
+    "question": "What did the review board learn about the Apollo command module hatch after the accident?"
+  },
+  {
+    "id": "C40",
+    "expected": "incident",
+    "question": "Could you explain how the fire affected the crew of Apollo 1?"
+  },
+  {
+    "id": "C41",
+    "expected": "incident",
+    "question": "Which oxygen generator was involved in the Mir space station incident?"
+  },
+  {
+    "id": "C42",
+    "expected": "incident",
+    "question": "What was the cause of the Apollo 13 accident, according to the mission report?"
+  },
+  {
+    "id": "C43",
+    "expected": "referee",
+    "question": "Can the Referee check whether my quoted sentence is faithful to the original article?"
+  },
+  {
+    "id": "C44",
+    "expected": "referee",
+    "question": "Validate this quotation against the cited NTRS page before I put it on a slide."
+  },
+  {
+    "id": "C45",
+    "expected": "referee",
+    "question": "Audit a passage I copied from an experiment report for quotation and scope."
+  },
+  {
+    "id": "C46",
+    "expected": "referee",
+    "question": "Is this an exact quote from the original paper: “the specimen did not ignite”?"
+  },
+  {
+    "id": "C47",
+    "expected": "referee",
+    "question": "I suspect the word “not” was omitted from a NASA quote. Check the citation."
+  },
+  {
+    "id": "C48",
+    "expected": "referee",
+    "question": "I want to verify the interpretation of a quoted claim using the original source."
+  },
+  {
+    "id": "C49",
+    "expected": "abstain",
+    "question": "When is the next cricket World Cup final?"
+  },
+  {
+    "id": "C50",
+    "expected": "abstain",
+    "question": "What did the flight cameras actually measure in the first FM² burn on the Moon?"
+  },
+  {
+    "id": "C51",
+    "expected": "abstain",
+    "question": "Can you book a hotel near the launch site?"
+  },
+  {
+    "id": "C52",
+    "expected": "abstain",
+    "question": "Which of the four FM2 lunar-surface burns has already been observed to spread?"
+  },
+  {
+    "id": "C53",
+    "expected": "abstain",
+    "question": "Predict the winner of the Indian Premier League."
+  },
+  {
+    "id": "C54",
+    "expected": "abstain",
+    "question": "Write a love poem about a sandwich."
+  },
+  {
+    "id": "C55",
+    "expected": "archive",
+    "question": "Count BASS-II records that identify the material as acrylic."
+  },
+  {
+    "id": "C56",
+    "expected": "archive",
+    "question": "Show the mean initial droplet diameter across FLEX runs where that measurement exists."
+  },
+  {
+    "id": "C57",
+    "expected": "archive",
+    "question": "How many normalized rows have no value for starting ambient oxygen?"
+  },
+  {
+    "id": "C58",
+    "expected": "archive",
+    "question": "What is the range of pressures in the normalized NASA experimental table?"
+  },
+  {
+    "id": "C59",
+    "expected": "archive",
+    "question": "How many distinct investigations have a reported pressure in the archive?"
+  },
+  {
+    "id": "C60",
+    "expected": "archive",
+    "question": "In the FLEX observation set, count the rows that use methanol."
+  }
+]

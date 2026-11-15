@@ -70,6 +70,23 @@
   window.FFJointCoverage=jointCoverage;
   const rangeText = vals => !vals ? '—' : vals[0] === vals[1] ? fmt(vals[0]) + '%' : fmt(vals[0]) + '–' + fmt(vals[1]) + '%';
   const cmpText = (a, b) => String(a || '').localeCompare(String(b || ''), 'en', {numeric:true});
+  function rankInvestigations(eligible,target,weights){
+    const compare=(a,b)=>b.known-a.known || a.score-b.score || cmpText(a.r.record_id,b.r.record_id);
+    const best=new Map();
+    eligible.forEach(r=>{
+      const oxy=oxygen(r,'ambient'), grav=num(r.gravity_g),press=num(r.pressure_psia);
+      const terms=[grav===null?null:Math.abs(grav-target[0])/0.165,
+                   oxy===null?null:Math.max(oxy[0]-target[1],target[1]-oxy[1],0)/5,
+                   press===null?null:Math.abs(press-target[2])/2];
+      let sum=0,weightSum=0,known=0;
+      terms.forEach((v,i)=>{if(v!==null){sum+=weights[i]*v*v;weightSum+=weights[i];known++;}});
+      if(!known)return;
+      const candidate={r,known,score:Math.sqrt(sum/weightSum),terms};
+      if(!best.has(r.accession)||compare(candidate,best.get(r.accession))<0)best.set(r.accession,candidate);
+    });
+    return [...best.values()].sort(compare);
+  }
+  window.FFRankInvestigations=rankInvestigations;
   function exportRows(rows) {
     if (!rows.length) return;
     const keys = Object.keys(rows[0]);
@@ -256,22 +273,7 @@
         if(joint.matches.length){
           const first=joint.matches[0];coverage.append(button('Read a matching row',()=>{rawDetails(detail,first,byId.get(first.accession));detail.scrollIntoView({block:'nearest'});},'ghost'));
         }
-        const calc=(weights)=>{
-          const best=new Map();
-          eligible.forEach(r=>{
-            const oxy=oxygen(r,'ambient'), grav=num(r.gravity_g),press=num(r.pressure_psia);
-            const terms=[grav===null?null:Math.abs(grav-target[0])/0.165,
-                         oxy===null?null:Math.max(oxy[0]-target[1],target[1]-oxy[1],0)/5,
-                         press===null?null:Math.abs(press-target[2])/2];
-            let sum=0,weightSum=0,known=0;
-            terms.forEach((v,i)=>{if(v!==null){sum+=weights[i]*v*v;weightSum+=weights[i];known++;}});
-            if(!known)return;
-            const candidate={r,known,score:Math.sqrt(sum/weightSum),terms};
-            if(!best.has(r.accession)||compare(candidate,best.get(r.accession))<0)best.set(r.accession,candidate);
-          });
-          return [...best.values()].sort(compare);
-        };
-        function compare(a,b){return b.known-a.known || a.score-b.score || cmpText(a.r.record_id,b.r.record_id);}
+        const calc=weights=>rankInvestigations(eligible,target,weights);
         const list=calc(w);
         if(!list.length){ranks.append(node('p','No eligible records. Try another material or test subject.'));return;}
         const t=node('table'),thead=node('thead'),tr=node('tr');['Rank','Closest source row','Recorded material','Gravity · ambient O₂ · pressure','Coverage','Distance'].forEach(v=>{const th=node('th',v);th.scope='col';tr.append(th);});thead.append(tr);t.append(thead);

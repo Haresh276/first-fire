@@ -65,7 +65,8 @@ The command needs Node.js 18 or later. It reads the packaged dashboard when avai
 
 | Fingerprint | SHA-256 |
 |---|---|
-| Shipped search function | `46a416be525f766722c106480db09cc7ad8548a610d8a58d7d23691c49bbb166` |
+| Shipped search function | `cfbb28300bc24aabb614518dd537ed4892c635969582e0775a7e116164e02040` |
+| Quantized search weights and vocabulary | `ec8813a1e15898e0614de4401bb663767dc0c0dde506bb1adf44a80649c26472` |
 | Cases and investigation metadata | `48cddf00e7f41773af6057565e31dd8057698cb7679aa83dda747dbf7808d5ca` |
 | Frozen queries and target map | `38267023233e14226562718b30868c790f00b35b8a2e9729768588b9f02efe5b` |
 

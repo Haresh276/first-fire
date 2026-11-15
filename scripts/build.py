@@ -12,7 +12,13 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from offline_edition import FILENAME as OFFLINE_EDITION, package_offline_site
+
+try:
+    from .compact_observations import compact_script
+    from .offline_edition import FILENAME as OFFLINE_EDITION, package_offline_site
+except ImportError:
+    from compact_observations import compact_script
+    from offline_edition import FILENAME as OFFLINE_EDITION, package_offline_site
 
 if __package__:
     from .rover_workbench import copy_rover_workbench
@@ -33,6 +39,38 @@ def csv_rows(path):
     return list(csv.reader(io.StringIO(txt, newline='')))
 def hsh(content):
     return hashlib.sha256(content).hexdigest()
+
+ROVER_EXAMPLES = ('lunar-cellulose', 'lunar-pe', 'mars-night-pe')
+ROVER_INPUTS = ('prototype/model.mjs', 'parts.json', 'sources.json', 'scenario.schema.json',
+                'result.schema.json', *(f'examples/{name}.json' for name in ROVER_EXAMPLES))
+
+def build_rover_bundle(stage):
+    """Package the rover team's pure module and catalogue for HTTP and file:// use."""
+    source = ROOT / 'rover-design'
+    model = (source / 'prototype/model.mjs').read_text(encoding='utf-8')
+    # Classic scripts load from a downloaded directory without module CORS restrictions.
+    # Only the declaration modifier changes. The model has no imported dependencies.
+    declarations = re.findall(r'^export function (\w+)\(', model, flags=re.M)
+    if not {'selectPart', 'setEnvironment', 'simulate'}.issubset(declarations):
+        raise ValueError('The rover module contract changed; check the research workspace adapter.')
+    classic = re.sub(r'^export (?=function \w+\()', '', model, flags=re.M)
+    if re.search(r'^\s*(?:import|export)\b', classic, flags=re.M):
+        raise ValueError('The rover calculator now has module dependencies; update its offline bundle.')
+    source_rows = read_json(source / 'sources.json')['sources']
+    fields = ('id', 'agency', 'title', 'url', 'locator', 'role', 'supports', 'limits', 'evidenceClass')
+    archive = {
+        'catalog': read_json(source / 'parts.json'),
+        'schema': read_json(source / 'scenario.schema.json'),
+        'resultSchema': read_json(source / 'result.schema.json'),
+        'sources': [{k: row[k] for k in fields if k in row} for row in source_rows],
+        'examples': {key: read_json(source / f'examples/{key}.json') for key in ROVER_EXAMPLES},
+        'modelSHA256': hsh(model.encode('utf-8')),
+    }
+    bundle = ("(() => {\n'use strict';\n" + classic
+              + "\nglobalThis.FFRoverModel = {simulate, selectPart, setEnvironment};\n})();\n"
+              + 'globalThis.FFRoverData = ' + packed(archive) + ';\n')
+    (stage / 'rover-model.js').write_text(bundle, encoding='utf-8')
+
 def build():
     for script in ('build_data.py','forecast.py','verify_quotes.py','build_referee_passages.py'):
         subprocess.run([sys.executable,str(ROOT/'scripts'/script)],check=True)
@@ -48,6 +86,7 @@ def build():
     with tempfile.TemporaryDirectory(dir=ROOT,prefix='.firstfire-build-') as temp:
         stage=Path(temp)/'dist';shutil.copytree(SITE,stage)
         copy_rover_workbench(ROOT, stage)
+        build_rover_bundle(stage)
         (stage/'data').mkdir()
         for f in ('cases.json','tests.csv','investigations.json','forecast.json','challenge-resources.json','incidents.json'):
             shutil.copy2(DATA/f,stage/'data'/f)
@@ -65,6 +104,7 @@ def build():
         forecast=read_json(DATA/'forecast.json')
         data={'incidents':read_json(DATA/'incidents.json'),'evidence':read_json(DATA/'evidence/pages.json'),'cases':cases,'investigations':studies,'forecast':forecast,'resources':read_json(DATA/'challenge-resources.json'),'research':[{'name':p.stem,'file':p.name,'text':p.read_text(encoding='utf-8')} for p in sorted(research)]}
         (stage/'observation-rows.js').write_text('Object.assign(window.FF,'+packed({'tests':tests,'rawTables':tables})+');\n',encoding='utf-8')
+        (stage/'observation-rows-lite.js').write_text(compact_script(tests,tables),encoding='utf-8')
         benchmark=DATA/'chat-benchmark.json'
         if benchmark.is_file():
             data['chatBenchmark']=read_json(benchmark)
@@ -79,7 +119,9 @@ def build():
             ('initial-interface','science-chat-browser-audit.json','First browser replay · 40 questions','The visible response needed to answer the question or explicitly withhold an unsupported numerical result.'),
             ('replay','science-chat-regression.json','Updated chat · 40 exposed questions','These questions were available during repairs. Compare each response with the original calculator and browser replies.'),
             ('acceptance','science-chat-acceptance.json','Updated chat · 24 new questions','The 24 prompts and reference answers were sealed separately before the UI adapter was frozen. Each prompt was entered in the static chat interface. These questions focus on the revised query handling.'),
-            ('corrected','science-chat-acceptance-replay.json','Released chat · replay of 24 questions','After the first attempt, repairs addressed the two failures. This replay checks the same 24 questions on the release.')):
+            ('corrected','science-chat-acceptance-replay.json','Earlier release · replay of 24 questions','After the first attempt, repairs addressed the two failures. This replay checks the previous interface.'),
+            ('master24','master-science-24.json','Master edition · 24-question replay','Actual visible chat with the evidence gate on a previously exposed bank.'),
+            ('master40','master-science-40.json','Master edition · 40-question replay','Actual visible chat with the evidence gate on the original 40-question archive bank.')):
             if (stage/filename).is_file():
                 cases_for_run=read_json(stage/filename)['cases']
                 if identifier=='initial-interface':

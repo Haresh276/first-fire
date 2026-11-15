@@ -1,0 +1,11 @@
+.trial-body{display:grid;gap:1rem;min-width:0}
+.trial-body button,.trial-body a{justify-self:start}
+.trial-snapshot{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem .85rem}
+.trial-snapshot span{overflow-wrap:anywhere}
+.trial-body p,.trial-body ul{margin:0}
+.trial-table-wrap{max-width:100%;overflow-x:auto}
+.trial-table-wrap table{width:100%;border-collapse:collapse;font-size:.9rem}
+.trial-table-wrap caption{text-align:left;font-weight:700;padding:.35rem 0}
+.trial-table-wrap th,.trial-table-wrap td{text-align:left;vertical-align:top;padding:.55rem .45rem;border-bottom:1px solid #cbd7d0}
+.trial-table-wrap thead th{font-weight:700;background:#eef3ec}
+.trial-comparison [role=status]:empty{display:none}

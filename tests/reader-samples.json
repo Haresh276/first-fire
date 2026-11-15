@@ -1,0 +1,12 @@
+[
+  {"id":"01","format":"pdf","level":"beginner","field":"general","text":"Secondary school science club. I make posters and help younger students with their first experiment."},
+  {"id":"02","format":"docx","level":"undergraduate","field":"medical","text":"Registered nurse, intensive care. Monitor patient oxygen and report changes to the respiratory team."},
+  {"id":"03","format":"pdf","level":"advanced","field":"mechanical","text":"Doctoral researcher in mechanical engineering. My thesis studies combustion on porous materials."},
+  {"id":"04","format":"docx","level":"undergraduate","field":"data","text":"Bachelor of mathematics. Summer data analyst, with regression models for transport surveys."},
+  {"id":"05","format":"txt","level":"beginner","field":"medical","text":"High school volunteer in a hospital ward. Preparing signs for visiting families."},
+  {"id":"06","format":"md","level":"advanced","field":"data","text":"MSc statistics. Research on Bayesian calibration and machine learning for chemical sensors."},
+  {"id":"07","format":"pdf","level":"undergraduate","field":"mechanical","text":"BTech coursework in aerospace propulsion, CAD and thermodynamics. Student launch-team designer."},
+  {"id":"08","format":"docx","level":"advanced","field":"medical","text":"Master's in nursing. Clinical education on hospital respiratory care and oxygen systems."},
+  {"id":"09","format":"docx","level":"beginner","field":"mechanical","text":"School robotics club. Designed a rover using CAD. Curious about future courses."},
+  {"id":"10","format":"pdf","level":"advanced","field":"general","text":"Postdoctoral fellow in materials history. Research publications and public museum outreach."}
+]
