@@ -18,9 +18,9 @@
     ['cellulose','Cellulose / paper','Charring solid','The cabin model uses dry cellulose and retains combustion water in the gas phase.','cellulose|paper',nist],
     ['polyethylene','Polyethylene','Melting polymer','The cabin model uses a CH₂ repeat unit and complete combustion.','polyethylene',nist]
   ];
-  const margins={pmma:[['0.8 mm sheet',1.9]],p213:[['Adhesive tape',1.4]],cotton:[['Flaming',.82],['Smouldering',1.8]],polycarbonate:[['Polycarbonate',2.3]],nomex:[['Nomex Velcro',.32]]};
+  const margins={pmma:[['0.8 mm sheet',1.9,'Lower']],p213:[['Adhesive tape',1.4,'Lower']],cotton:[['Flaming',.82,'Lower'],['Smouldering',1.8,'Not stated']],polycarbonate:[['Polycarbonate',2.3,'Higher']],nomex:[['Nomex Velcro',.32,'Higher']]};
   const materials=rows.map(([id,name,family,behavior,pattern,source])=>({id,name,family,behavior,pattern,source,
-    margin:margins[id]||[],direction:['pmma','cotton','p213'].includes(id)?'Lower':margins[id]?'Higher':'',heatMJkg:id==='cellulose'?15.2:id==='polyethylene'?43.4:null,
+    margin:margins[id]||[],heatMJkg:id==='cellulose'?15.2:id==='polyethylene'?43.4:null,
     oxygenKgKg:id==='cellulose'?6*31.998/162.141:id==='polyethylene'?1.5*31.998/14.027:null,
     density:({pmma:1190,nomex:1370,polycarbonate:1200})[id]||null,pyrolysisK:({pmma:618,nomex:750,polycarbonate:700})[id]||null}));
   // Digitized at 1500-pixel page width from JAXA slide 26. One pixel array per panel
@@ -36,6 +36,7 @@
       curve:[[1074,472],[1082,631],[1092,715],[1106,761],[1124,790],[1141,800],[1156,802],[1180,797],[1208,782],[1236,760],[1263,735],[1290,707],[1320,673],[1350,634],[1380,594],[1420,534]]}
   };
   const dataset={materials,charts,
+    icesFigureNote:"ICES-2025-392 Fig. 13 and the single-material figures disagree on some lunar limits. FLINT uses Fig. 13 and checks the alternate readings.",
     flowSource:'https://iss.jaxa.jp/kiboexp/news/images/2018ams_flare.pdf#page=26',
     reference:'https://www.jstage.jst.go.jp/article/tastj/16/1/16_28/_article',
     lunar,atmosSource:'https://ntrs.nasa.gov/citations/20240003211'};

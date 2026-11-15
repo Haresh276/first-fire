@@ -17,7 +17,9 @@ const out=path.resolve(process.argv[2]),base=pathToFileURL(path.resolve(process.
   }
   await go('rulebook','#rule-reading');await shot('rule','#rule-reading',650,224);
   await go('materials-lab?tab=margins','.margin-row');
-  // Include both directions in the NASA comparison, drawn by the live material library.
+  // ICES p. 9 only states the lower-limit direction for flaming cotton.
+  const cotton = p.locator('.margin-row').filter({hasText:'Smouldering'});
+  if (!(await cotton.innerText()).includes('Not stated')) throw new Error('Unstated smouldering direction is missing');
   await shot('material','.master-panel',900,355);
   await go('atlas','.atlas-matrix');await shot('atlas','.atlas-matrix',850,305);
   await p.setViewportSize({width:570,height:850});

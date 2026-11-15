@@ -138,7 +138,7 @@
         gravityG:r.gravity_g,pressurePsia:r.pressure_psia,oxygenPct:r.o2_initial_pct});
       return {id,name:mat.name,candidateCount:rows&&curated?candidates.length:null,jointCount:matches?.length??null,
         joint:matches?.map(describe)||[],nearest:archive?.rank?archive.rank(candidates,target,[1,1,1]).slice(0,3).map(x=>({...describe(x.r),known:x.known})):[],
-        margin:curated?.margin?.map(([specimen,value])=>({specimen,oxygenPoints:value,direction:curated.direction,
+        margin:curated?.margin?.map(([specimen,value,direction])=>({specimen,oxygenPoints:value,direction,
           source:curated.source,locator:'Table 2, ICES-2025-392',pressurePsia:8.2}))||[],
         reportedLimit:!curated&&Number.isFinite(mat.oxygenLimitPct)?{oxygenPct:mat.oxygenLimitPct,conditions:mat.limitConditions,...materialProperty(mat,'oxygenLimitPct')}:null,
         scope:curated?'Coordinates and material text only. Compare geometry, component, flow and endpoint in the source.':
@@ -408,7 +408,7 @@
         const item=E('details');item.open=evidence.id===selected.id;
         item.append(E('summary',evidence.name),info((evidence.jointCount??'Unmapped')+' joint material-and-condition matches. '+(evidence.candidateCount??'Unknown')+' archive records contain the material term. '+evidence.scope));
         if(evidence.nearest.length)item.append(table(['Closest record','Reported material','Gravity / O₂ / pressure'],evidence.nearest.map(record=>[link(record.id,'#atlas?record='+encodeURIComponent(record.id)),record.material,[record.gravityG??'—',record.oxygenPct??'—',record.pressurePsia??'—'].join(' / ')+' (g, %, psia)'])));
-        if(evidence.margin.length)item.append(table(['Reduced-gravity specimen','Conservative O₂ margin','Lunar limit vs. 1-g extrapolation'],evidence.margin.map(m=>[m.specimen,num(m.oxygenPoints)+' percentage points',m.direction])),info('The margins are calculated from 1-g slopes at 8.2 psia. They do not measure the size of the lunar shift.'),link('NASA Table 2 ↗',evidence.margin[0].source));
+        if(evidence.margin.length)item.append(table(['Reduced-gravity specimen','Conservative O₂ margin','Lunar limit vs. 1-g extrapolation'],evidence.margin.map(m=>[m.specimen,num(m.oxygenPoints)+' percentage points',m.direction])),info('The margins are calculated from 1-g slopes at 8.2 psia. They do not measure the size of the lunar shift. ICES Fig. 13 and the single-material figures disagree on some lunar limits.'),link('NASA Table 2 ↗',evidence.margin[0].source));
         if(evidence.reportedLimit){const m=evidence.reportedLimit;item.append(info(num(m.oxygenPct)+'% O₂ · '+m.tag+' · '+m.conditions));if(m.source)item.append(link(m.locator||'User-supplied source',m.source));}
         output.append(item);
       }

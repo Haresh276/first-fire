@@ -53,3 +53,8 @@ test('He and Ar interpolation agrees with 20 separate Cantera HP equilibrium sol
  const references=[["He","cellulose",12.2,35.1,1966.379],["He","cellulose",17.7,49.7,2255.477],["He","cellulose",22.4,74.4,2406.455],["He","cellulose",27.8,88.1,2516.293],["He","cellulose",37.9,102.3,2641.501],["He","polyethylene",12.2,35.1,2098.122],["He","polyethylene",17.7,49.7,2412.027],["He","polyethylene",22.4,74.4,2579.869],["He","polyethylene",27.8,88.1,2703.14],["He","polyethylene",37.9,102.3,2846.874],["Ar","cellulose",12.2,35.1,1966.379],["Ar","cellulose",17.7,49.7,2255.477],["Ar","cellulose",22.4,74.4,2406.455],["Ar","cellulose",27.8,88.1,2516.293],["Ar","cellulose",37.9,102.3,2641.501],["Ar","polyethylene",12.2,35.1,2098.122],["Ar","polyethylene",17.7,49.7,2412.027],["Ar","polyethylene",22.4,74.4,2579.869],["Ar","polyethylene",27.8,88.1,2703.14],["Ar","polyethylene",37.9,102.3,2846.874]];
  for(const [diluent,fuel,oxygen,pressure,kelvin] of references){const r=flameEstimate({diluent,oxygen,pressure},fuel,engine);assert(Math.abs(r-kelvin)/kelvin<.02,[diluent,fuel,oxygen,pressure].join(' '));}
 });
+
+test('ICES p. 9 distinguishes flaming from smouldering cotton',()=>{
+ const endpoints=Object.fromEntries(materials.find(m=>m.id==='cotton').margin.map(([name,,direction])=>[name,direction]));
+ assert.deepEqual(endpoints,{Flaming:'Lower',Smouldering:'Not stated'});
+});

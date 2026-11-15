@@ -27,7 +27,7 @@ SHOTS=[
  (233,312,'atlas','Archive coverage','0 lunar burns','Orbital flight archive','Yet our flight archive contains no lunar burns.'),
  (312,398,'compass','Habitat compass','1,622 rows','15 NASA investigations','FIRST FIRE maps 1,622 NASA source rows,'),
  (398,460,'referee','The Referee','Quote rejected','A missing word reverses the claim','checks quotations against their sources,'),
- (460,528,'rover','Vehicle designer','Cabin trial','Prescribed fire and atmosphere','and lets you test a rover cabin.'),
+ (460,528,'rover','Pressurized rover','Cabin trial','Prescribed fire and atmosphere','and lets you test a rover cabin.'),
  (528,623,'forecast','Lunar experiment','Four burns','FM² · Synergy Pro Navy fabric','NASA plans four fabric burns on the Moon.'),
  (623,720,'seal','Forecast sealed','14 NOV 2026','12:57:06 UTC','We signed our forecast. The results will show how it scored.')]
 W,H=1280,720

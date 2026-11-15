@@ -190,15 +190,15 @@
     const p=panel('Choose a material','See the tested specimen, the relevant archive records, and the limits of transferring the result.');const sel=select(data.materials.map(m=>[m.id,m.name]),'pmma');const info=el('div',null,'stack');p.append(field('Material',sel),info);
     function refresh(){const m=data.materials.find(a=>a.id===sel.value),re=new RegExp(m.pattern,'i'),matches=rows.filter(r=>re.test(r.material+' '+(r.material_detail||'')));
       info.replaceChildren(el('h3',m.name),el('p',m.family+'. '+m.behavior),el('p',matches.length+' normalized rows explicitly name this material or label. Related terminology may be recorded differently.'));
-      if(m.margin.length)info.append(el('p','In the reduced-gravity trials the limiting oxygen concentration was '+m.direction.toLowerCase()+' than the 1-g extrapolation for this specimen. Table 2 supplies conservative margins calculated from 1-g slopes.'),
-        table(['Specimen or endpoint','Conservative margin (O₂ points)'],m.margin.map(([label,n])=>[label,fmt(n)])));
+      if(m.margin.length)info.append(el('p','Table 2 gives conservative margins calculated from 1-g slopes. The direction column compares lunar limits with the Earth extrapolation. '+data.icesFigureNote),
+        table(['Specimen or endpoint','Conservative margin (O₂ points)','Lunar limit vs. 1-g extrapolation'],m.margin.map(([label,n,direction])=>[label,fmt(n),direction])));
       if(matches.length){const d=el('details');d.append(el('summary','Browse '+matches.length+' matching source rows'));const ul=el('ul');for(const r of matches){const li=el('li');li.append(link(r.accession+' · '+r.test_id+' · '+r.material,'#atlas?record='+encodeURIComponent(r.record_id)));ul.append(li);}d.append(ul);info.append(d);}
       info.append(link('Read the source for this material ↗',m.source));
     }sel.onchange=refresh;refresh();return p;
   }
   function margins(){
-    const p=panel('Five lunar-tested materials','Bar length is the conservative margin in oxygen percentage points from NASA’s Table 2. The separate direction label reports how the lunar limit compared with a 1-g extrapolation.');
-    for(const m of data.materials.filter(m=>m.margin.length))for(const [spec,n] of m.margin){const row=el('div',null,'margin-row');row.append(el('span',m.name+' · '+spec));const rail=el('div',null,'margin-rail'),bar=el('div');bar.style.width=(100*n/2.3)+'%';rail.append(bar);row.append(rail,el('strong',n+' points'),el('span',m.direction+' lunar limit'));p.append(row);}
+    const p=panel('Five lunar-tested materials','Bars show Table 2 margins in oxygen points. Direction compares each lunar limit with the 1-g extrapolation. Fig. 13 and the single-material figures disagree on some limits.');
+    for(const m of data.materials.filter(m=>m.margin.length))for(const [spec,n,direction] of m.margin){const row=el('div',null,'margin-row');row.append(el('span',m.name+' · '+spec));const rail=el('div',null,'margin-rail'),bar=el('div');bar.style.width=(100*n/2.3)+'%';rail.append(bar);row.append(rail,el('strong',n+' points'),el('span',direction==='Not stated'?direction:direction+' lunar limit'));p.append(row);}
     p.append(link('NASA ICES-2025-392, discussion and Table 2 ↗',data.lunar));return p;
   }
   function render(root,params=new URLSearchParams()){
