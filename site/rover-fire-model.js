@@ -10,7 +10,7 @@
   const extrapolated = 'Model extrapolation';
 
   function validity(cabin, fan = 0) {
-    return cabin.P_psia === defaultCabin.P_psia && cabin.gravity !== 'orbit' && fan === 0
+    return cabin.P_psia === defaultCabin.P_psia && cabin.gravity === defaultCabin.gravity && fan === 0
       ? validated : extrapolated;
   }
   function limit(cabin, item, fan = 0, pressure = cabin.P_psia) {

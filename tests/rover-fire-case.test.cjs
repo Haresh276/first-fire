@@ -59,3 +59,12 @@ test('Changing the cabin volume scales gas mass and reruns the sealed-cabin bala
   near(M.floodDose(small,item('NOMEX'),'CO2').kg,result('NOMEX').co2.kg/2,1e-3);
   assert.ok(M.timeline(small,item('PMMA')).summary.t_CO2_1pct_s < result('PMMA').timeline.t_CO2_1pct_s);
 });
+
+test('Earth still air and Mars predictions do not inherit the lunar validation label',()=>{
+  assert.equal(M.validity(cabin),M.validated);
+  assert.equal(M.validity(cabin,cabin.fan_m_s),M.extrapolated);
+  for(const gravity of ['mars','earth','orbit']){
+    assert.equal(M.validity({...cabin,gravity}),M.extrapolated);
+  }
+  assert.equal(M.validity({...cabin,P_psia:source.trade[0].P_psia}),M.extrapolated);
+});
