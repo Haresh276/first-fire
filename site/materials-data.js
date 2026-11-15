@@ -1,6 +1,6 @@
 // Values are for the named specimens. A missing property stays null.
 (() => {
-  const lunar='https://ntrs.nasa.gov/citations/20250006779';
+  const lunar='https://ntrs.nasa.gov/citations/20250002114';
   const saffire='https://ntrs.nasa.gov/citations/20170008805';
   const smoke='https://www.nist.gov/news-events/news/2018/05/nistnasa-study-shows-one-detector-doesnt-fit-all-smoke-spacecraft';
   const nist='https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1128.pdf';

@@ -18,13 +18,13 @@
 
 [Round 2 oral presentation](https://first-fire-lunar-lab.vercel.app/master-round2-slides.pdf) · [Timed run sheet](https://first-fire-lunar-lab.vercel.app/master-round2.html). For the global submission demonstration, use the short film or the six-slide deck below.
 
-[Six-slide judge demonstration](../demo.html) · [Public demonstration URL for the submission form](https://first-fire-lunar-lab.vercel.app/demo.html) · [Six-slide PDF](../first-fire-demo.pdf)
+[Six-slide judge demonstration](https://first-fire-lunar-lab.vercel.app/demo.html) · [Six-slide PDF](https://first-fire-lunar-lab.vercel.app/first-fire-demo.pdf)
 
-[Narrated 30-second film, with English captions](https://first-fire-lunar-lab.vercel.app/master-film.mp4) · [Round 2 team kit](../index.html#field-guide?tab=judges) · [One-page judge handout](../judge-brief.pdf)
+[Narrated 30-second film, with English captions](https://first-fire-lunar-lab.vercel.app/master-film.mp4) · [Round 2 team kit](https://first-fire-lunar-lab.vercel.app/index.html#field-guide?tab=judges) · [One-page judge handout](https://first-fire-lunar-lab.vercel.app/judge-brief.pdf)
 
 ## Final project
 
-[FIRST FIRE dashboard](../index.html) · [Public project URL for the submission form](https://first-fire-lunar-lab.vercel.app/) · [Download the offline edition](https://first-fire-lunar-lab.vercel.app/offline.html) · [FLINT Python source and data](https://first-fire-lunar-lab.vercel.app/flint/FIRST-FIRE_FLINT-engine.zip)
+[Public project URL for the submission form](https://first-fire-lunar-lab.vercel.app/) · [Download the offline edition](https://first-fire-lunar-lab.vercel.app/offline.html) · [FLINT Python source and data](https://first-fire-lunar-lab.vercel.app/flint/FIRST-FIRE_FLINT-engine.zip)
 
 ## High-level project summary
 
@@ -56,7 +56,7 @@ The current gated prose replay and the browser’s row-calculation tests measure
 
 ## NASA data and resources
 
-- [NASA Physical Sciences Informatics combustion catalog, a challenge-listed resource](https://psi.nasa.gov/physci/repo/search?q=combustion) · [Versioned FIRST FIRE manifest](https://first-fire-lunar-lab.vercel.app/data/raw/psi-manifest.json)
+- [Download each original NASA table from the submission page](https://first-fire-lunar-lab.vercel.app/submission.html#nasa-data) · [NASA Physical Sciences Informatics combustion catalog, a challenge-listed resource](https://psi.nasa.gov/physci/repo/search?q=combustion) · [Versioned FIRST FIRE manifest](https://first-fire-lunar-lab.vercel.app/data/raw/psi-manifest.json)
 - [FLEX, PSI-69 experimental table](https://doi.org/10.60555/mbq8-0451) · [NASA FLEX flight report](https://ntrs.nasa.gov/citations/20150023456)
 - [SAME-R, PSI-101, study version 4](https://doi.org/10.60555/2np7-jv14) · [Run 75](https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_238_18_kapton_run75.xls&version=1&studyVersion=4) · [Run 85](https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_242_12_kapton_run85.xls&version=1&studyVersion=4) · [Run 93](https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_250_13_kapton_run93.xls&version=1&studyVersion=4) · [Run 92](https://psi.nasa.gov/geode-py/ws/studies/PSI-101/download?file=PSI-101_Analyzed+Data_2010_250_16_kapton_run92.xls&version=1&studyVersion=4)
 - [Saffire-II, PSI-99](https://psi.nasa.gov/physci/repo/data/investigations/PSI-99) · [Flight report and Table I](https://ntrs.nasa.gov/citations/20170008805) · [NASA LUCI partial-gravity study](https://ntrs.nasa.gov/citations/20250010653) · [NASA FM² science requirements](https://ntrs.nasa.gov/citations/20260001966)
@@ -89,5 +89,5 @@ The current gated prose replay and the browser’s row-calculation tests measure
 - [NIST room smoke-alarm experiments and data dictionary](https://www.nist.gov/el/fire/engineered-fire-safety/data-smoke-alarm-performance) · [Room time series](https://www.nist.gov/system/files/documents/2016/12/15/roomdata.zip) · [Summary workbook](https://www.nist.gov/system/files/documents/2016/12/14/summary_nistsmokebox_roomresults.xlsx)
 
 - [Detector study by the investigators](https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/) · [CFI-G configuration and chamber conditions](https://api.drum.lib.umd.edu/server/api/core/bitstreams/278c77a3-6e86-4dc5-8413-c0381ebe74a9/content) · [Research bibliography and limits](https://first-fire-lunar-lab.vercel.app/research/review.md)
-- [Model2Vec model and license](https://huggingface.co/minishlab/potion-base-2M) · [Qwen3 0.6B model](https://huggingface.co/Qwen/Qwen3-0.6B) · [Ollama local runtime](https://github.com/ollama/ollama) · [OpenAI Codex](https://openai.com/codex/)
+- [Model2Vec model and license](https://huggingface.co/minishlab/potion-base-2M) · [Qwen3 0.6B model](https://huggingface.co/Qwen/Qwen3-0.6B) · [Ollama local runtime](https://github.com/ollama/ollama) · [OpenAI Codex](https://github.com/openai/codex)
 - [DM Sans](https://github.com/google/fonts/tree/main/ofl/dmsans) · [Barlow Condensed](https://github.com/google/fonts/tree/main/ofl/barlowcondensed) · [Code and third-party notices](https://first-fire-lunar-lab.vercel.app/licenses/software.txt) · [Additional public project and technical references](https://first-fire-lunar-lab.vercel.app/research/challenge-projects.md)
