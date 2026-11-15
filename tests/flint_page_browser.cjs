@@ -16,6 +16,8 @@ const core = require('../flint-engine/results/core/results.json');
     page.on('pageerror', err => errors.push(err.message));
     await page.goto(process.env.FLINT_URL || pathToFileURL(path.join(__dirname,'../site/flint.html')).href);
     assert.equal(await page.locator('#solid-limit').textContent(), (100 * core.gravity.PC.moon).toFixed(2)+'% O₂');
+    await page.locator('select[name=gravity]').selectOption('earth');
+    assert.match(await page.locator('#solid-validity').textContent(),/Model extrapolation/);
     await page.locator('select[name=gravity]').selectOption('orbit');
     assert.equal(await page.locator('#solid-limit').textContent(), 'Not modelled');
     await page.locator('select[name=fan]').selectOption('10');
