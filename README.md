@@ -1,6 +1,6 @@
 # FIRST FIRE
 
-[Open the 3D rover workbench](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/rover-workbench/prototype/index.html#workbench). Assemble a rover, drive a NASA reference course, and compare telemetry with a field trial. [Source and integration guide](rover-design/HANDOFF.md).
+[Open the judging route](https://first-fire-lunar-lab.vercel.app/judging.html) · [Pressurized Rover Fire Case](https://first-fire-lunar-lab.vercel.app/rover-fire-case.html) · [FLINT evidence and source](https://first-fire-lunar-lab.vercel.app/flint.html) · [Captioned film](https://first-fire-lunar-lab.vercel.app/master-film.mp4)
 
 A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall challenge](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/?tab=resources). Start with a research question and find the source, boundary and next test. The project does not issue a material rating or certify a cabin design.
 
@@ -8,17 +8,36 @@ A browser-based research desk for the 2026 NASA Space Apps [Flame in Freefall ch
 
 Open the [six-slide project demonstration](dist/demo.html) to follow a flight comparison from the original measurements to the next test. The [FLEX sensitivity view](dist/index.html#transfer-lab?view=sensitivity) lets you change the droplet matching rule before revealing burn durations. In the [SAME-R detector case](dist/detector.html), inspect optical readings and instrument power in four NASA flight workbooks. The [English and Telugu classroom exercise](dist/classroom.html) asks two readers to match a NIST alarm report to the original sensor record and exchange evidence. Results from independent participants have yet to be collected.
 
+## FLINT 1.1 and the Pressurized Rover Fire Case
+
+**Built (Python engine).** Start at the [FLINT report](site/flint.html) to compare the measured and predicted lunar limits, conditional FM² burn lengths, FLEX suppressant fits, the CFI-G negative result and the labelled atlas of solids and droplets. The browser calculator runs the calibrated thin-solid limit solver. The [original ZIP](site/flint/FIRST-FIRE_FLINT-engine.zip) contains the full Python analyses; its source and saved outputs are also in [flint-engine](flint-engine). Use Python 3.10+ in a clean virtual environment:
+
+```sh
+cd flint-engine
+python -m pip install numpy scipy matplotlib pytest
+python -m pytest -q
+python -m flint.report out
+python -m flint.micro_report micro_out
+python -m flint.rover_report rover_out
+```
+
+Compare the JSON and CSV results with [core, micro and rover reference outputs](flint-engine/results). Elapsed time can differ. The [PSI provenance manifest](site/flint/psi-pack-comparison.csv) compares each supplied table with the frozen source bytes. Keep the original package intact, including its legacy version strings.
+
+The [rover fire case](site/rover-fire-case.html) starts with cabin components, not a vehicle route. Select a material, change the atmosphere and compare the difference between cabin oxygen and its predicted spread limit. Inspect the pre-breathe trade, assumed ignition timeline, fan shutdown, CO₂ or N₂ addition and vent pressure against the cited experiments. Reference rows come from [rover_case.json](flint-engine/results/rover/rover_case.json). **Validated at 8.2 psia** applies only to the reference limit comparison; timelines and pressure-changing responses are **Model extrapolation**. These are scenarios, not operational procedures.
+
+The solid-fuel check holds out one material at a time under the ICES upward-burning protocol at 8.2 psia. Fig. 13 and the single-material figures disagree; FLINT reports both readings and omits cotton. Changing pressure, flow, geometry or gravity can take a scenario outside that comparison. Orbiting solids are extrapolated; a still solid in orbit without imposed flow is not modelled by this closure. The FLEX droplet fits have helium bias and heptane scatter. The CFI-G test did not establish a gas-jet hot-ignition rule.
+
 ## Master document edition
 
-[Download the offline app and optional primary-source reference packs](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/offline.html).
+[Download the offline app and optional primary-source reference packs](https://first-fire-lunar-lab.vercel.app/offline.html).
 
-Open the [field guide and instruments](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#field-guide), [vehicle designer](dist/index.html#vehicle-designer), [cabin model validation](research/master-physics.md) or [judge walkthrough](dist/index.html#field-guide?tab=judges). The [implementation record](research/master-requirements.md) maps each feature to the master document, its acceptance evidence and the remaining team work. The [38-page science reader](site/first-fire-field-guide.pdf) covers FM², combustion, low gravity and the glossary. The [review log and deposition package](dist/team-handoff.html) support participant and team verification.
+Open the [field guide and instruments](https://first-fire-lunar-lab.vercel.app/#field-guide), [vehicle designer](dist/index.html#vehicle-designer), [cabin model validation](research/master-physics.md) or [judge walkthrough](dist/index.html#field-guide?tab=judges). The [implementation record](research/master-requirements.md) maps each feature to the master document, its acceptance evidence and the remaining team work. The [38-page science reader](site/first-fire-field-guide.pdf) covers FM², combustion, low gravity and the glossary. The [review log and deposition package](dist/team-handoff.html) support participant and team verification.
 
 Use the new atmosphere and material tools to select a fuel and a cabin pressure. Inspect the original NASA or JAXA measurement before transferring it to a proposed vehicle. The [physics report](research/master-physics.md) compares the model with prescribed NIST burners, a Cantera reference and SIBAL flight measurements. [Research chat verification](research/answer-verification.md) separates numeric replays, general routing, recorded prose answers and confidence calibration.
 
 ## Run a research investigation
 
-Start the [guided research session](https://first-fire-lunar-lab.christsamuel26.chatgpt.site/#session), enter your question, and download the evidence record at any step. The same workflow runs in the offline edition.
+Start the [guided research session](https://first-fire-lunar-lab.vercel.app/#session), enter your question, and download the evidence record at any step. The same workflow runs in the offline edition.
 
 1. [Match real FLEX flight runs](dist/index.html#transfer-lab). Set common eligibility conditions and size tolerance before revealing paired differences. Test whether any comparison survives a same-day requirement.
 2. [Challenge a remote sensor reading](dist/index.html#transport-lab). Inspect transport, sensor lag and mass conservation; compare against published room repeat times, or fit one sensor trace and score a second run against a single-compartment baseline.
