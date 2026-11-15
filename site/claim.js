@@ -29,7 +29,7 @@
     },
     ices: {
       endpoint:'Direction of the material-specific extinction oxygen shift',material:'P213 tape and polycarbonate in the ICES comparison',gravity:'Short simulated lunar gravity compared with a 1-g reference',
-      finding:'The report places the P213 tape lunar extinction limit below its 1-g extrapolation and the polycarbonate result above its WSTF comparator. The direction depends on the material.',
+      finding:'The report places the P213 tape lunar extinction limit below its 1-g extrapolation and the polycarbonate result above its WSTF comparator. The direction depends on the material. ICES Fig. 13 and the single-material figures disagree on some lunar limits. FLINT uses Fig. 13, repeats the comparison with the alternate readings, and excludes cotton.',
       alternatives:['The two materials shifted in opposite directions relative to the stated references.','Both materials shifted in the same direction relative to those references.','Table 2 gives directly measured lunar safety limits for any sample.'],cites:[0,1]
     },
     fm2: {

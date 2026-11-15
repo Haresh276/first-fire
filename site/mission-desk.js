@@ -6,7 +6,7 @@
   const scale = ['Urban et al. · Saffire results, p. 8, Table 2 and Figure 10','https://ntrs.nasa.gov/api/citations/20210011521/downloads/ICES%202021-266%200503-2021%20final.pdf#page=8'];
   const rules = [
     {q:'Does an Earth oxygen limit bound flammability in reduced gravity?',id:'ices',domain:'Material screening', setting:'Glenn drop-tower centrifuge · simulated lunar gravity', sourceIndexes:[0,1],
-     scope:['Unresolved','Counterexample','Unresolved'],evidence:'At 8.2 psia, P213 tape extinguished at a lower oxygen concentration than the 1 g forced-flow extrapolation. Polycarbonate extinguished at a higher concentration than the measured ground values. These comparisons used a five-second flame endpoint.',
+     scope:['Unresolved','Counterexample','Unresolved'],evidence:'At 8.2 psia, P213 tape extinguished at a lower oxygen concentration than the 1 g forced-flow extrapolation. Polycarbonate extinguished at a higher concentration than the measured ground values. These comparisons used a five-second flame endpoint. ICES Fig. 13 and the single-material figures disagree on some lunar limits. FLINT uses Fig. 13, repeats the comparison with the alternate readings, and excludes cotton.',
      missing:'Match the material, flow, pressure, exposure time and ignition protocol before transferring a limiting-oxygen measurement.'},
     {q:'Will switching off ventilation extinguish a flame?',id:'sibal',domain:'Suppression',setting:'Mir · orbital microgravity',source:mir,
      scope:['Counterexample','Unresolved','Unresolved'],evidence:'On Mir, stopping forced flow extinguished the tested solid flames. Candle flames persisted in quiet air. Fuel and geometry change the answer even in orbit.',

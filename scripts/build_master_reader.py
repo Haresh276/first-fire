@@ -33,7 +33,14 @@ def build(src,out):
     c.setFont('Courier',8);c.drawString(44,90,'Source SHA-256');c.drawString(44,75,sha);c.showPage();c.save();tmp.seek(0)
     writer.add_page(PdfReader(tmp).pages[0]);writer.add_outline_item('About this edition',0)
     ranges=list(range(15,39))+list(range(96,102))+list(range(89,96))
-    for n in ranges:writer.add_page(original.pages[n-1])
+    for n in ranges:
+        page=writer.add_page(original.pages[n-1])
+        if any(term in (page.extract_text() or "").lower() for term in ("ices-2025-392","p213","lower lunar limit")):
+            foot=io.BytesIO(); note=Canvas(foot,pagesize=A4)
+            note.setFillColor(HexColor("#165448")); note.setFont("Helvetica",8)
+            note.drawString(40,24,"Source note (Master 2.1, F4): ICES Fig. 13 and single-material figures disagree on some lunar limits.")
+            note.drawString(40,13,"FLINT reports both readings. Only flaming cotton is stated to have a lower lunar limit; smouldering is not stated.")
+            note.save(); foot.seek(0); page.merge_page(PdfReader(foot).pages[0])
     for name,n in [('Combustion and gravity',16),('Atmospheres',19),('Experiments',21),('Ground facilities',25),('Forecast mathematics',26),('Data and software',28),('Evidence and citations',30),('Cabin physics',33),('Life support and materials',35),('Mars',37),('Glossary',96),('Common misconceptions',100),('Original proposal to implementation map',101),('Master bibliography and source-status key',89),('Partner and Earth sources',91),('Methods, tools and other teams',92),('Source corrections and claims',94)]:
         writer.add_outline_item(name,1+ranges.index(n))
     writer.add_metadata({'/Title':'FIRST FIRE Science Field Guide','/Author':'Team Code Blooded','/Subject':'Educational sections from Master Document 1.0, with release corrections'})
